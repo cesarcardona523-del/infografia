@@ -18,20 +18,22 @@
 
 ## 👨‍💻 Sobre este proyecto
 
-Este repositorio reúne **infografías estáticas** sobre temas de datos y tecnología — Arquitectura de BI, Análisis de Datos, y los que se vayan sumando — cada una como una página HTML independiente, sin backend ni paso de build.
-
-Está en etapa inicial: la estructura de carpetas por tema se define aquí, y cada infografía se agrega como su propia carpeta a medida que está lista.
+Este repositorio reúne **infografías técnicas premium** para LinkedIn sobre temas de datos y tecnología — Arquitectura, Python, Power BI, y los que se vayan sumando — organizadas por tema, con un catálogo de metadata incremental listo para publicar.
 
 ## 📁 Estructura
 
-Una carpeta por tema, cada una con su propia infografía autocontenida (HTML/CSS/JS):
-
 ```text
 infografia/
-├── arquitectura-bi/     → Infografía de Arquitectura de BI
-├── analisis-datos/      → Infografía de Análisis de Datos
-└── ...                  → Un tema nuevo, una carpeta nueva
+├── referencias/<Tema>/   → imágenes de referencia que se suministran para ese tema (input)
+├── <Tema>/               → salida: infografías generadas para ese tema, incremental en el tiempo
+│   ├── <topico>.prompt.md
+│   ├── <topico>.png       (o <topico>.html si no hay imagen generada)
+├── publicaciones.json    → catálogo único e incremental de metadata de todas las infografías
+├── INFOGRAFIA-SPEC.md    → spec de diseño visual (fija)
+└── INFOGRAFIA-INVESTIGAR.md → spec de análisis/metadata (fija)
 ```
+
+`<Tema>` es una categoría amplia (ej. `Arquitectura`, `Python`, `Power BI`) — dentro de una misma carpeta de tema conviven, en el tiempo, varias infografías de distintos tópicos.
 
 ## 🛠️ Stack Técnico
 
@@ -39,11 +41,23 @@ infografia/
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 
-Sin framework, sin bundler, sin paso de build — cada infografía es HTML/CSS/JS puro.
+Sin framework, sin bundler, sin paso de build. Cada infografía se construye en HTML/CSS puro (contenedor fijo 1200×627px) y se exporta automáticamente a PNG en alta resolución — sin depender de una herramienta externa de generación de imágenes.
+
+## 🎨 Diseño
+
+Todas las infografías siguen el mismo sistema de diseño, definido en [INFOGRAFIA-SPEC.md](INFOGRAFIA-SPEC.md): infografía técnica editorial (nunca fotografía ni escena real), paleta fija, tipografía, marca de agua y firma, tamaño 1200×627px optimizado para LinkedIn.
+
+Para crear una infografía nueva: se listan imágenes de referencia en `referencias/<Tema>/`, y ese contexto se combina con el spec de diseño en `/<Tema>/<topico>.prompt.md` — ver [CLAUDE.md](CLAUDE.md) para el flujo completo.
+
+## 📄 Catálogo de publicaciones
+
+Cada infografía agrega una entrada a [publicaciones.json](publicaciones.json), generada con el prompt de análisis de [INFOGRAFIA-INVESTIGAR.md](INFOGRAFIA-INVESTIGAR.md): tema, tópico y descripción en español e inglés, listos para programar la publicación. Las fechas se espacian +2 días entre entradas sucesivas, sin más de dos publicaciones el mismo día.
+
+Como último paso, el PNG final y esa misma entrada se publican también en el sitio real: `paginaweb/publications/` (imagen) y `paginaweb/publications/publicaciones.js` (catálogo consumido por el sitio, misma regla de incremental — nunca se sobreescribe).
 
 ## 🗺️ Estado
 
-🚧 En construcción — todavía no hay infografías publicadas. Este README se irá actualizando con enlaces a cada una conforme se completen.
+🚧 En construcción — todavía no hay infografías publicadas. Este README se irá actualizando con un enlace por cada infografía nueva.
 
 ---
 
