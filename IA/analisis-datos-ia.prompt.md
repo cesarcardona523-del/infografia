@@ -133,3 +133,30 @@ No inventar información técnica. No deformar texto. No generar texto ilegible 
 8. Calidad gráfica
 9. Branding discreto
 10. Preparación para LinkedIn
+
+---
+
+## Contexto específico — Analisis_Datos_IA
+
+**Evento:** Datafest 2026 — **Realizado por:** Bancolombia (aplica la excepción de paleta y la sección "Branding de Evento" de arriba).
+
+**Imágenes de referencia:** 3 capturas de diapositivas reales presentadas en Datafest 2026 (`../referencias/IA/analisis-datos-ia/Analitica_Datos_1.png`, `_2.png`, `_3.png`). Son contenido genuino de la charla, no una infografía terminada — el trabajo es **traducir las 3 diapositivas a una sola infografía editorial coherente**, no copiarlas como screenshots.
+
+**Tema de la charla:** Evolución del análisis de datos y los cambios que vienen — de registrar datos a delegar tareas en agentes de IA.
+
+**Contenido a fusionar (de las 3 diapositivas):**
+
+1. **Viaje de madurez en 7 etapas** (diapositiva 1): Digitalizar (Capturar) → Datos (Almacenar) → Automatizar (Ejecutar) → Analítica (Entender) → ML (Anticipar) → GenIA (Explicar) → Agentes (Actuar). Mensaje clave: "No todos los procesos necesitan llegar al último nivel."
+2. **Regla simple para decidir** (diapositiva 2): tabla de decisión — pasos repetitivos y reglas claras → Automatización/RPA; encontrar patrones o priorizar → Analítica/ML; solo una respuesta o resumen → GenIA; ejecutar un flujo completo → Agente; excepción/ética/riesgo/criterio crítico → Persona experta.
+3. **Tres conceptos clave en lenguaje de líder** (diapositiva 3): IA (entiende patrones y apoya decisiones), GenIA (lee, escribe, resume y explica), Agente (ejecuta pasos y gestiona tareas). Cierre: "No debemos enamorarnos de la tecnología. Debemos enamorarnos del problema que queremos resolver."
+
+**Investigación adicional:** se buscó contexto público sobre Datafest 2026 y Bancolombia — no se encontró cobertura pública específica de esta charla (parece un evento interno/no masivamente indexado), por lo que el contenido se basa fielmente en lo que muestran las 3 diapositivas, sin inventar datos adicionales no presentes en ellas.
+
+**Paleta (investigada):** Bancolombia usa negro/blanco como base de marca desde su renovación de 2021, con amarillo como "color de la confianza" y un set de tonos vibrantes adicionales para representar diversidad — exactamente lo que ya usan las diapositivas originales (fondo oscuro, círculos de colores vibrantes: teal, verde, dorado, rojo-naranja, morado, rosa). Mantener ese mismo lenguaje cromático en la infografía final.
+
+**Branding de evento:**
+- Mostrar "Datafest 2026" de forma visible (chip/badge, no solo marca de agua).
+- Mostrar "Realizado por: Bancolombia" — no se usó un logo descargado de internet (por precaución de derechos de marca de un asset externo); se usa un wordmark de texto "Bancolombia" en su amarillo de marca.
+- Mantener la firma personal (LinkedIn + cacm523) y la marca de agua "Cesar Cardona" al 5% sin cambios.
+
+**Título principal sugerido:** "Evolución del Análisis de Datos: de Registrar Datos a Delegar Tareas".

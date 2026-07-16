@@ -104,7 +104,7 @@ Debe parecer una firma elegante.
 Aplica únicamente si el usuario especifica, al crear la infografía, un **Evento** y/o una organización en **Realizado por**.
 
 - Mostrar de forma visible (no como marca de agua casi invisible) el nombre del evento, ej. `Datafest 2026`.
-- Mostrar `Realizado por: <Organización>` — ej. `Realizado por: Bancolombia`.
+- Mostrar `Realizado por: <Organización>` — ej. `Realizado por: AWS`.
 - Buscar el logo oficial de esa organización; si se encuentra uno confiable, usarlo en vez de texto plano. Si no se encuentra, mostrar solo el nombre en texto.
 - Esta información es adicional a la marca de agua ("Cesar Cardona" al 5%) y a la firma profesional (LinkedIn + `cacm523`) — ambas se mantienen sin cambios; el branding de evento no las reemplaza.
 - Ubicación sugerida: encabezado o pie de la infografía, en un bloque discreto pero legible, sin competir visualmente con el título principal.
@@ -133,3 +133,31 @@ No inventar información técnica. No deformar texto. No generar texto ilegible 
 8. Calidad gráfica
 9. Branding discreto
 10. Preparación para LinkedIn
+
+---
+
+## Contexto específico — IA Agentes
+
+**Evento:** Datafest 2026 — **Realizado por:** AWS (aplica la excepción de paleta y "Branding de Evento"; nótese que esta charla la presentó AWS, no Bancolombia, aunque sea el mismo evento Datafest 2026).
+
+**Imágenes de referencia:** 5 capturas de diapositivas reales (`../referencias/IA/ia-agentes/IA_Agent_1.png` a `_5.png`). Las imágenes 2 y 5 son el mismo diagrama (arquitectura workflow-based); las imágenes 3 y 4 son el mismo diagrama en dos momentos de animación (arquitectura goal-based). Usar cada diagrama una sola vez en la infografía final — no duplicar contenido repetido de la fuente.
+
+**Tema de la charla:** Evolución y transformación de los agentes de IA — de un agente simple a una arquitectura de agentes goal-based en un proceso de negocio real.
+
+**Contenido a fusionar:**
+
+1. **¿Qué es un agente de IA?** (imagen 1): un usuario envía un *prompt* y recibe una *respuesta* de un agente; internamente el agente ejecuta un loop de 4 pasos: Generar Plan → Seleccionar y Ejecutar Herramientas → Sintetizar Resultados → Auto-reflexionar.
+2. **Caso de uso: Cuentas por Pagar — arquitectura workflow-based** (imágenes 2/5): Invoice → Stage 1 (Vendor Performance Agent, alimentado también por un Forex Investor Agent) → Stage 2 → Stage 3 → Human in the Loop → Stage 4 → Stage 5 → Payment. Cadena secuencial de agentes especializados con un punto de supervisión humana.
+3. **La misma Cuentas por Pagar — arquitectura goal-based** (imágenes 3/4): Invoice → Planner → Orchestrator → Payment, donde Planner y Orchestrator gestionan los 5 "AP Agents" (Stage 1–5) como herramientas/skills, en vez de una cadena fija.
+
+**Investigación adicional (complemento real, verificado):** se confirmó en la documentación oficial de AWS ("Agentic AI patterns and workflows on AWS", AWS Prescriptive Guidance) la distinción real entre **agentic workflows** (flujo de control explícito y predefinido entre pasos, ideal para procesos estructurados y auditables) y **arquitecturas goal-based** (se define el objetivo, un orquestador con razonamiento decide el cómo y se adapta a excepciones — ideal para tareas dinámicas y ambiguas). Esta terminología no aparece explícitamente en las diapositivas 2/5 (solo dicen "Broader goal, dynamic process, adaptive exceptions") — se usa el término "workflow-based" como el nombre estándar de la industria para ese primer patrón, no una invención.
+
+**Cómo complementar (no solo redibujar):**
+
+- Presentar las dos arquitecturas de Cuentas por Pagar **lado a lado** para que la evolución/transformación sea explícita (workflow-based vs. goal-based), en vez de como diapositivas separadas de una animación.
+- Agregar un ribbon con la terminología oficial de AWS citada arriba, incluyendo cuándo conviene cada patrón (workflows para procesos estructurados y auditables; agentes goal-based para tareas dinámicas y ambiguas).
+- Mantener el loop de 4 pasos (Generar Plan → Ejecutar Herramientas → Sintetizar → Auto-reflexionar) como introducción conceptual antes del caso de uso.
+
+**Paleta:** fondo oscuro con acentos púrpura/magenta/rosa vibrante, igual al lenguaje visual ya usado en las diapositivas originales de AWS — mantenerlo, es coherente con la marca AWS de esta charla en particular.
+
+**Título principal sugerido:** "La Evolución de los Agentes de IA: de Workflows Rígidos a Arquitecturas Goal-Based".

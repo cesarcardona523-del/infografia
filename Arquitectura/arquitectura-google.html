@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Stack de Datos Serverless en Google Cloud Platform</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --navy:#0B1426;
+    --teal:#00C9A7;
+    --teal-dark:#04846A;
+    --teal-darker:#046656;
+    --teal-pale:#E1F6F0;
+    --terracotta:#C97B4A;
+    --terracotta-pale:#F6E7DA;
+    --muted:#5B6B7A;
+    --line:#DCE9E4;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    min-height:627px; display:flex; align-items:center; justify-content:center;
+    padding:32px 16px;
+    background:radial-gradient(circle at 20% 20%, #eafaf5 0%, #dcf1ea 45%, #cfe9e1 100%);
+    font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
+  .canvas{
+    position:relative; width:1200px; height:627px; margin:0 auto;
+    background:linear-gradient(160deg, #FFFFFF 0%, #F3FBF8 55%, #EAF7F1 100%);
+    border-radius:22px; box-shadow:0 24px 60px rgba(11,20,38,0.14); overflow:hidden;
+    padding:30px 40px 20px; color:var(--navy);
+  }
+  .watermark{
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    font-size:70px; font-weight:800; color:var(--navy); opacity:0.05;
+    transform:rotate(-16deg); letter-spacing:6px; pointer-events:none; user-select:none; white-space:nowrap;
+  }
+
+  .header{ position:relative; display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px; }
+  .title-block h1{ font-size:24px; margin:0 0 4px; font-weight:800; letter-spacing:-0.2px; }
+  .title-block p{ margin:0; font-size:12.5px; color:var(--muted); max-width:660px; }
+  .legend{ display:flex; gap:16px; align-items:center; font-size:10.5px; color:var(--muted); white-space:nowrap; padding-top:6px; }
+  .legend .item{ display:flex; align-items:center; gap:6px; }
+  .legend .swatch{ width:16px; height:0; border-top:3px solid var(--teal); }
+  .legend .swatch.batch{ border-top:3px dashed #9AA7AF; }
+
+  .stages{
+    position:relative; display:grid; grid-template-columns: 0.8fr 22px 1fr 22px 1fr 22px 1.15fr 22px 1fr;
+    align-items:stretch; margin-top:8px; height:432px;
+  }
+  .connector{ display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; }
+  .connector .chevron{ color:var(--teal-dark); font-size:15px; font-weight:700; line-height:1; }
+  .connector .batch-line{ width:14px; border-top:2px dashed #9AA7AF; }
+
+  .card{
+    background:var(--white); border:1px solid var(--line); border-radius:14px; padding:10px 11px 12px;
+    display:flex; flex-direction:column; box-shadow:0 6px 18px rgba(11,20,38,0.05); min-width:0;
+  }
+  .card-header{
+    background:linear-gradient(135deg, var(--teal), var(--teal-darker)); color:#fff; font-weight:700; font-size:10.2px;
+    text-transform:uppercase; letter-spacing:0.4px; padding:6px 8px; border-radius:8px; margin-bottom:9px; text-align:center;
+  }
+  .service{ display:flex; gap:7px; align-items:flex-start; margin-bottom:8px; }
+  .service .icon{
+    width:22px; height:22px; border-radius:6px; flex:none; display:flex; align-items:center; justify-content:center;
+    background:var(--teal-pale); color:var(--teal-darker);
+  }
+  .service.warm .icon{ background:var(--terracotta-pale); color:var(--terracotta); }
+  .service .icon svg{ width:12px; height:12px; }
+  .service .label b{ display:block; font-size:9.8px; line-height:1.25; font-weight:700; }
+  .service .label span{ display:block; font-size:8.4px; color:var(--muted); line-height:1.25; }
+
+  .code-window{
+    background:#0d1117; border-radius:9px; padding:7px 9px 8px; margin-top:4px;
+    font-family:"SF Mono","Menlo","Consolas",monospace; font-size:7.6px; line-height:1.55; color:#c9d1d9; white-space:pre-wrap;
+  }
+  .code-window .dots{ display:flex; gap:3px; margin-bottom:5px; }
+  .code-window .dots span{ width:5px; height:5px; border-radius:50%; display:inline-block; }
+  .code-window .dots span:nth-child(1){ background:#ff5f56; }
+  .code-window .dots span:nth-child(2){ background:#ffbd2e; }
+  .code-window .dots span:nth-child(3){ background:#27c93f; }
+  .kw{ color:#ff7b72; } .str{ color:#a5d6ff; } .fn{ color:#d2a8ff; } .cm{ color:#8b949e; } .pl{ color:#c9d1d9; }
+
+  .note{ margin-top:auto; padding-top:7px; font-size:8.3px; color:var(--muted); line-height:1.3; border-top:1px dashed var(--line); }
+  .note b{ color:var(--navy); }
+
+  .chart{ margin-top:6px; }
+  .chart b{ display:block; font-size:8.8px; margin-bottom:4px; }
+  .bars{ display:flex; align-items:flex-end; gap:3px; height:44px; }
+  .bars i{ flex:1; background:linear-gradient(180deg, var(--teal), var(--teal-darker)); border-radius:2px 2px 0 0; display:block; }
+
+  .ribbon{
+    margin-top:12px; display:flex; align-items:center; gap:10px;
+    background:linear-gradient(90deg, #0B1426, #123024); color:#EAF7F1; border-radius:12px; padding:9px 16px; font-size:10.5px;
+  }
+  .ribbon .icon{ width:22px; height:22px; flex:none; border-radius:6px; background:rgba(255,255,255,0.12); display:flex; align-items:center; justify-content:center; }
+  .ribbon .icon svg{ width:12px; height:12px; color:var(--teal); }
+  .ribbon b{ color:#fff; }
+  .ribbon span{ color:#B9CFC7; }
+
+  .footer{ position:absolute; bottom:14px; right:22px; display:flex; align-items:center; gap:6px; }
+  .li-badge{ width:18px; height:18px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; font-family: Arial, sans-serif; }
+  .footer span{ font-size:11px; font-weight:600; color:var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="canvas-wrap">
+  <div class="canvas">
+    <div class="watermark">Cesar Cardona</div>
+
+    <div class="header">
+      <div class="title-block">
+        <h1>Stack de Datos Serverless en Google Cloud Platform</h1>
+        <p>De múltiples orígenes a insights de negocio — infraestructura totalmente gestionada, sin aprovisionamiento manual en ninguna etapa.</p>
+      </div>
+      <div class="legend">
+        <div class="item"><span class="swatch"></span> Tiempo real</div>
+        <div class="item"><span class="swatch batch"></span> Batch</div>
+      </div>
+    </div>
+
+    <div class="stages">
+
+      <div class="card">
+        <div class="card-header">Sources</div>
+        <div class="service">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 4h12l2 16H4L6 4Z"/><path d="M9 4v4M15 4v4"/></svg></div>
+          <div class="label"><b>Archivos</b><span>Exports periódicos</span></div>
+        </div>
+        <div class="service">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg></div>
+          <div class="label"><b>APIs</b><span>Integraciones de aplicación</span></div>
+        </div>
+        <div class="service warm">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12c2-4 4-4 6 0s4 4 6 0 4-4 6 0"/></svg></div>
+          <div class="label"><b>Servicios Cloud</b><span>Eventos en tiempo real</span></div>
+        </div>
+        <div class="service">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6"/></svg></div>
+          <div class="label"><b>Bases de Datos</b><span>Cargas transaccionales</span></div>
+        </div>
+      </div>
+
+      <div class="connector"><div class="chevron">›</div><div class="batch-line"></div></div>
+
+      <div class="card">
+        <div class="card-header">Cloud Storage</div>
+        <div class="service">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 4h12l2 16H4L6 4Z"/><path d="M8 12h8M8 16h5"/></svg></div>
+          <div class="label"><b>Object Storage</b><span>Durabilidad de 11 nueves</span></div>
+        </div>
+        <div class="service">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18Z"/></svg></div>
+          <div class="label"><b>Multi-regional / Regional</b><span>Ubicación configurable por dataset</span></div>
+        </div>
+        <div class="service">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20V10M11 20V4M18 20v-7"/></svg></div>
+          <div class="label"><b>Rendimiento escalable</b><span>Sin límite práctico de capacidad</span></div>
+        </div>
+        <div class="note">Landing zone <b>única</b> para datos crudos de todas las fuentes.</div>
+      </div>
+
+      <div class="connector"><div class="chevron">›</div><div class="batch-line"></div></div>
+
+      <div class="card">
+        <div class="card-header">Dataflow</div>
+        <div class="service">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12c2-4 4-4 6 0s4 4 6 0 4-4 6 0"/></svg></div>
+          <div class="label"><b>Apache Beam</b><span>Un solo modelo para batch y streaming</span></div>
+        </div>
+        <div class="service">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16l-6 8v6l-4 2v-8L4 4Z"/></svg></div>
+          <div class="label"><b>Procesamiento serverless</b><span>Sin clústeres que administrar</span></div>
+        </div>
+        <div class="service">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/><circle cx="12" cy="12" r="2"/><path d="M8 7l3 3M16 7l-3 3M8 17l3-3M16 17l-3-3"/></svg></div>
+          <div class="label"><b>Autoescalado</b><span>Ajusta workers según la carga</span></div>
+        </div>
+        <div class="note">Mismo pipeline de código para <b>batch y streaming</b>.</div>
+      </div>
+
+      <div class="connector"><div class="chevron">›</div><div class="batch-line"></div></div>
+
+      <div class="card">
+        <div class="card-header">BigQuery</div>
+        <div class="service">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6"/><path d="M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/></svg></div>
+          <div class="label"><b>Data Warehouse serverless</b><span>Escala a petabytes sin aprovisionar</span></div>
+        </div>
+        <div class="service">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="6"/><path d="m20 20-4.3-4.3"/></svg></div>
+          <div class="label"><b>SQL estándar</b><span>Consultas ad-hoc sobre petabytes</span></div>
+        </div>
+        <div class="code-window">
+          <div class="dots"><span></span><span></span><span></span></div>
+<span class="kw">SELECT</span> <span class="fn">COUNT</span>(*), <span class="pl">region</span>
+<span class="kw">FROM</span> <span class="pl">user_project.event_logs</span>
+<span class="kw">GROUP BY</span> <span class="pl">region</span>
+<span class="kw">ORDER BY</span> 1 <span class="kw">DESC</span>;
+<span class="cm">-- tabla particionada por fecha</span>
+        </div>
+        <div class="note">Particionar y clusterizar es <b>mandatorio</b> para evitar escaneos completos de tabla.</div>
+      </div>
+
+      <div class="connector"><div class="chevron">›</div></div>
+
+      <div class="card">
+        <div class="card-header">Looker</div>
+        <div class="service">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6a2 2 0 0 1 2-2h11v16H6a2 2 0 0 1-2-2V6Z"/><path d="M17 4v16"/></svg></div>
+          <div class="label"><b>Modelado unificado</b><span>Una sola capa semántica para todos</span></div>
+        </div>
+        <div class="service">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20V10M11 20V4M18 20v-7"/></svg></div>
+          <div class="label"><b>Analítica embebida</b><span>Dashboards dentro de la app de negocio</span></div>
+        </div>
+        <div class="chart">
+          <b>Eventos por región</b>
+          <div class="bars"><i style="height:40%"></i><i style="height:65%"></i><i style="height:50%"></i><i style="height:80%"></i><i style="height:58%"></i></div>
+        </div>
+      </div>
+
+    </div><!-- /.stages -->
+
+    <div class="ribbon">
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6l7-3Z"/></svg></div>
+      <div><b>Gobernanza &amp; Costo</b> <span>— IAM y VPC Service Controls limitan qué proyectos e identidades acceden a cada dataset; particionar y clusterizar las tablas de BigQuery evita costos exorbitantes por escaneo completo.</span></div>
+    </div>
+
+    <div class="footer">
+      <div class="li-badge">in</div>
+      <span>cacm523</span>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

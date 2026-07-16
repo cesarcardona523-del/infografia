@@ -1,1 +1,202 @@
-[]
+[
+  {
+    "id": "automatizacion-agentesia",
+    "imagen": "Automatización/automatizacion-agentesia.png",
+    "fechaPublicacion": "2026-07-16T13:00:00",
+    "es": {
+      "tema": "Automatización",
+      "topico": "Automatización vs Autonomía: Arquitectura de Sistemas de IA Agénticos",
+      "descripcion": "La diferencia entre un sistema automatizado y uno agéntico no está en la tecnología subyacente, sino en quién controla la secuencia de pasos. Los chatbots basados en LLM responden preguntas puntuales sin planificación ni memoria de objetivos; RPA ejecuta flujos deterministas de tipo gatillo-regla-acción; y RAG recupera contexto de una base de conocimiento antes de responder, pero ninguno de los tres decide ni ejecuta acciones por cuenta propia. Un sistema agéntico invierte esa lógica: un orquestador basado en un modelo de lenguaje grande descompone el objetivo en un plan, mantiene memoria del estado de la tarea, invoca herramientas y APIs para ejecutar acciones reales, y puede coordinar sub-agentes especializados en tareas colaborativas. El elemento distintivo es el bucle de retroalimentación: el orquestador evalúa el resultado de cada acción y ajusta el plan en tiempo real, en lugar de seguir una secuencia fija definida de antemano. Esta capacidad de control dinámico habilita casos de uso imposibles para la automatización tradicional, como la investigación de múltiples pasos o la resolución de tareas ambiguas, pero también introduce riesgos nuevos: acciones autónomas sobre sistemas de producción exigen observabilidad de cada paso del agente, límites explícitos de herramientas y permisos por rol, y guardrails contra alucinación antes de otorgar autonomía real. Adoptar arquitecturas agénticas es recomendable cuando el problema requiere planificación adaptativa; para tareas simples y repetitivas, RPA o un chatbot siguen siendo la opción más simple y auditable."
+    },
+    "en": {
+      "tema": "Automation",
+      "topico": "Automation vs Autonomy: Architecture of Agentic AI Systems",
+      "descripcion": "The difference between an automated system and an agentic one lies not in the underlying technology but in who controls the sequence of steps. LLM-based chatbots answer one-off questions without planning or goal memory; RPA executes deterministic trigger-rule-action flows; and RAG retrieves context from a knowledge base before responding, yet none of the three decide or execute actions on their own. An agentic system inverts that logic: an orchestrator powered by a large language model decomposes the goal into a plan, maintains memory of the task's state, invokes tools and APIs to execute real actions, and can coordinate specialized sub-agents on collaborative tasks. The distinguishing element is the feedback loop: the orchestrator evaluates the outcome of each action and adjusts the plan in real time, rather than following a fixed sequence defined in advance. This dynamic control capability enables use cases impossible for traditional automation, such as multi-step research or resolving ambiguous tasks, but it also introduces new risks: autonomous actions on production systems require step-by-step observability of the agent, explicit tool and role-based permission limits, and guardrails against hallucination before granting real autonomy. Adopting agentic architectures is recommended when the problem requires adaptive planning; for simple, repetitive tasks, RPA or a chatbot remain the simpler, more auditable option."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "automatizacion-python",
+    "imagen": "Automatización/automatizacion-python.png",
+    "fechaPublicacion": "2026-07-18T13:00:00",
+    "es": {
+      "tema": "Automatización",
+      "topico": "Automatización de Reportes con Python: de Excel a Producción",
+      "descripcion": "La automatización de procesos ETL con Python es una de las vías más directas para eliminar hojas de cálculo manuales del flujo operativo de una organización. El patrón consiste en cuatro etapas: un origen de datos en Excel o CSV, generado manualmente; una carga estructurada mediante pandas, que tipa y valida las columnas antes de cualquier transformación; una etapa de procesamiento donde se filtran registros, se calculan columnas derivadas como márgenes o ganancias, y se aplican reglas de negocio; y una salida dual que persiste los datos limpios en una base de datos relacional vía SQLAlchemy y despacha alertas o reportes automáticos por correo mediante SMTP. Frente al proceso manual equivalente, este patrón reduce sustancialmente el tiempo operativo invertido en consolidar y distribuir reportes, al tiempo que valida los datos de forma programática antes de que lleguen a un destino compartido. Para llevarlo a producción de forma responsable, las credenciales de conexión deben inyectarse por variable de entorno o gestor de secretos y nunca quedar escritas en el código; conviene además envolver la ejecución con manejo de excepciones, reintentos y registro estructurado de cada corrida para poder auditar fallos. Este enfoque es adecuado para cargas de trabajo de volumen moderado y ejecutadas por un único script; en ecosistemas empresariales de mayor escala, es recomendable migrar la orquestación hacia Apache Airflow o el procesamiento hacia Apache Spark."
+    },
+    "en": {
+      "tema": "Automation",
+      "topico": "Automating Reports with Python: From Excel to Production",
+      "descripcion": "Automating ETL processes with Python is one of the most direct ways to remove manual spreadsheets from an organization's operational workflow. The pattern consists of four stages: a data source in Excel or CSV, generated manually; structured ingestion via pandas, which types and validates columns before any transformation; a processing stage where records are filtered, derived columns such as margins or profit are computed, and business rules are applied; and a dual output that persists the cleaned data into a relational database via SQLAlchemy and dispatches automated alerts or reports by email through SMTP. Compared to the equivalent manual process, this pattern substantially reduces the operational time spent consolidating and distributing reports, while validating the data programmatically before it reaches a shared destination. To move this responsibly into production, connection credentials must be injected via environment variables or a secrets manager and never hardcoded, and the execution should be wrapped with exception handling, retries, and structured logging of each run to allow auditing failures. This approach suits moderate-volume workloads run by a single script; in larger enterprise ecosystems, it is advisable to migrate orchestration to Apache Airflow or processing to Apache Spark."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "automatizacion-python-programada",
+    "imagen": "Automatización/automatizacion-python-programada.png",
+    "fechaPublicacion": "2026-07-20T13:00:00",
+    "es": {
+      "tema": "Automatización",
+      "topico": "Orquestación de Scripts en Python: Ejecución Programada a Nivel de Sistema Operativo",
+      "descripcion": "Registrar la ejecución periódica de un script de Python directamente en el programador de tareas del sistema operativo es una alternativa liviana frente a desplegar un orquestador dedicado para un flujo aislado. El patrón consiste en construir, desde el propio script en Python, un comando del programador nativo del sistema operativo (por ejemplo schtasks en Windows) que especifica la hora y la frecuencia de la corrida, la ruta del intérprete y la ubicación del script objetivo, y ejecutar ese comando mediante el módulo subprocess de la librería estándar. Una vez creada, la tarea queda registrada en el propio sistema operativo, que se encarga de dispararla automáticamente sin intervención manual diaria. En Linux o macOS el equivalente directo es una entrada de cron o un temporizador de systemd, siguiendo el mismo principio de delegar la recurrencia al sistema operativo en lugar de mantener un proceso propio corriendo en segundo plano. Este enfoque reduce el tiempo operativo dedicado a tareas repetitivas y aporta consistencia en la entrega de reportes, siempre a la misma hora. Sin embargo, registrar la tarea no garantiza por sí solo que se ejecute correctamente cada vez: es recomendable registrar el timestamp y el código de salida de cada corrida, y generar una alerta si la tarea falla o simplemente no se dispara, en lugar de asumir silenciosamente que ocurrió. Este patrón es adecuado para flujos aislados y de baja complejidad; en ecosistemas con múltiples dependencias entre tareas o que requieran reintentos y observabilidad avanzada, conviene migrar hacia un orquestador centralizado como Apache Airflow o cron jobs gestionados en Kubernetes."
+    },
+    "en": {
+      "tema": "Automation",
+      "topico": "Orchestrating Python Scripts: Scheduled Execution at the Operating System Level",
+      "descripcion": "Registering the periodic execution of a Python script directly with the operating system's task scheduler is a lightweight alternative to deploying a dedicated orchestrator for an isolated workflow. The pattern consists of building, from within the Python script itself, a command for the native OS scheduler (for example, schtasks on Windows) that specifies the time and frequency of the run, the interpreter's path, and the location of the target script, then executing that command via the subprocess module from the standard library. Once created, the task is registered with the operating system itself, which triggers it automatically without daily manual intervention. On Linux or macOS, the direct equivalent is a cron entry or a systemd timer, following the same principle of delegating recurrence to the operating system rather than keeping a custom background process running. This approach reduces the operational time spent on repetitive tasks and adds consistency to report delivery, always at the same time. However, registering the task alone does not guarantee it will run correctly every time: it is advisable to log the timestamp and exit code of each run, and raise an alert if the task fails or simply does not fire, rather than silently assuming it worked. This pattern suits isolated, low-complexity workflows; in ecosystems with multiple task dependencies or that require retries and advanced observability, it is worth migrating to a centralized orchestrator such as Apache Airflow or managed Kubernetes cron jobs."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "arquitectura-aws",
+    "imagen": "Arquitectura/arquitectura-aws.png",
+    "fechaPublicacion": "2026-07-22T13:00:00",
+    "es": {
+      "tema": "Arquitectura",
+      "topico": "Arquitectura de pipelines de datos a gran escala sobre AWS",
+      "descripcion": "La arquitectura de datos moderna sobre AWS combina servicios gestionados para resolver un problema común en organizaciones con múltiples fuentes de información: consolidar datos transaccionales, eventos en tiempo real y cargas por lotes en una plataforma analítica única y gobernada. El flujo comienza en la capa de ingesta, donde Amazon Kinesis Data Streams captura eventos en tiempo real, AWS IoT Core recibe telemetría de dispositivos conectados y AWS Database Migration Service replica datos desde bases transaccionales existentes sin interrumpir la operación. Toda esta información converge en Amazon S3, que actúa como data lake central para datos crudos y curados, con Amazon S3 Glacier como capa de archivado de bajo costo para retención a largo plazo. La etapa de procesamiento soporta tanto transformaciones batch como streaming: AWS Glue ejecuta ETL y descubre esquemas automáticamente, catalogándolos en AWS Glue Data Catalog; Amazon EMR aporta cómputo distribuido para cargas intensivas; y Amazon Kinesis Data Analytics procesa eventos en tránsito. Los datos ya modelados alimentan Amazon Redshift para consultas analíticas de procesamiento masivamente paralelo, mientras Amazon RDS soporta cargas relacionales complementarias. En la capa de consumo, Amazon Athena habilita consultas ad hoc directamente sobre el data lake y Amazon QuickSight entrega dashboards interactivos a usuarios de negocio. Este patrón es recomendable para organizaciones que necesitan escalar el volumen y la variedad de sus fuentes de datos sin comprometer gobernanza ni seguridad, aunque exige definir desde el inicio una estrategia clara de particionado, catalogación y control de acceso para evitar que el data lake se convierta en un data swamp."
+    },
+    "en": {
+      "tema": "Architecture",
+      "topico": "Large-scale data pipeline architecture on AWS",
+      "descripcion": "Modern data architecture on AWS combines managed services to address a common challenge in organizations working with multiple data sources: consolidating transactional data, real-time events, and batch workloads into a single, governed analytical platform. The flow begins at the ingestion layer, where Amazon Kinesis Data Streams captures real-time events, AWS IoT Core receives telemetry from connected devices, and AWS Database Migration Service replicates data from existing transactional databases without disrupting operations. All this information converges into Amazon S3, which serves as the central data lake for raw and curated data, with Amazon S3 Glacier providing low-cost archival storage for long-term retention. The processing stage supports both batch and streaming transformations: AWS Glue performs ETL and automatic schema discovery, cataloging results in the AWS Glue Data Catalog; Amazon EMR provides distributed compute for intensive workloads; and Amazon Kinesis Data Analytics processes data in motion. Once modeled, data feeds Amazon Redshift for massively parallel analytical queries, while Amazon RDS supports complementary relational workloads. At the consumption layer, Amazon Athena enables ad hoc queries directly against the data lake, and Amazon QuickSight delivers interactive dashboards to business users. This pattern suits organizations that need to scale the volume and variety of their data sources without compromising governance or security, though it requires defining a clear partitioning, cataloging, and access-control strategy from the outset to prevent the data lake from becoming a data swamp."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "arquitectura-azure",
+    "imagen": "Arquitectura/arquitectura-azure.png",
+    "fechaPublicacion": "2026-07-24T13:00:00",
+    "es": {
+      "tema": "Arquitectura",
+      "topico": "Arquitectura de Datos en Azure: Patrón Medallón de Extremo a Extremo",
+      "descripcion": "La adopción del patrón Medallón sobre ecosistemas nativos de Azure organiza el procesamiento de datos en tres capas de refinamiento progresivo, resolviendo el problema de administrar data lakes caóticos donde datos crudos, limpios y agregados conviven sin separación clara. El flujo de ingesta se orquesta con Azure Data Factory, que copia información desde APIs, webhooks y dispositivos IoT hacia Azure Data Lake Storage Gen2 como landing zone. En la capa Bronze los datos aterrizan sin modelar, en su formato original e inmutable. Apache Spark ejecuta la validación de esquema y tipos para promoverlos a la capa Silver, donde quedan estructurados, deduplicados y validados. Una segunda transformación con Spark agrega métricas de negocio y consolida los datos en la capa Gold, lista para consumo analítico. Azure Synapse Analytics expone esta capa mediante un SQL pool dedicado para consultas distribuidas de alto rendimiento, mientras Microsoft Purview cataloga y rastrea el linaje de los datos a través de las tres capas, permitiendo auditar de dónde proviene cada cifra que llega a un reporte. Power BI consume directamente la capa Gold para construir dashboards interactivos de negocio. Este patrón es recomendable para organizaciones que necesitan trazabilidad y calidad de datos verificable en cada etapa; dado que el flujo descrito es fundamentalmente batch vía Data Factory, escenarios que requieran ingesta en tiempo real deben complementarse con Azure Event Hubs y Stream Analytics."
+    },
+    "en": {
+      "tema": "Architecture",
+      "topico": "Data Architecture on Azure: End-to-End Medallion Pattern",
+      "descripcion": "Adopting the Medallion pattern over native Azure ecosystems organizes data processing into three progressive refinement layers, solving the problem of managing chaotic data lakes where raw, cleansed, and aggregated data coexist without clear separation. The ingestion flow is orchestrated with Azure Data Factory, which copies information from APIs, webhooks, and IoT devices into Azure Data Lake Storage Gen2 as the landing zone. In the Bronze layer, data lands unmodeled, in its original, immutable format. Apache Spark performs schema and type validation to promote it to the Silver layer, where it becomes structured, deduplicated, and validated. A second Spark transformation aggregates business metrics and consolidates the data into the Gold layer, ready for analytical consumption. Azure Synapse Analytics exposes this layer through a dedicated SQL pool for high-performance distributed queries, while Microsoft Purview catalogs and tracks data lineage across the three layers, making it possible to audit where every figure in a report originated. Power BI consumes the Gold layer directly to build interactive business dashboards. This pattern is recommended for organizations that need traceability and verifiable data quality at every stage; since the described flow is fundamentally batch via Data Factory, scenarios requiring real-time ingestion should be complemented with Azure Event Hubs and Stream Analytics."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "arquitectura-google",
+    "imagen": "Arquitectura/arquitectura-google.png",
+    "fechaPublicacion": "2026-07-26T13:00:00",
+    "es": {
+      "tema": "Arquitectura",
+      "topico": "Stack de Datos Serverless en Google Cloud Platform",
+      "descripcion": "El stack de datos nativo de Google Cloud Platform resuelve la complejidad operativa de aprovisionar y mantener infraestructura, permitiendo escalar de gigabytes a petabytes sin gestionar un solo clúster. El flujo inicia con la ingesta de archivos, APIs, servicios en la nube y bases de datos transaccionales hacia Cloud Storage, que ofrece durabilidad de once nueves y ubicación multi-regional o regional configurable por dataset. Dataflow procesa la información aplicando Apache Beam, un único modelo de programación que unifica cargas batch y streaming, con autoescalado de workers según el volumen sin necesidad de administrar clústeres. Los datos procesados se cargan en BigQuery, un data warehouse serverless que escala a petabytes y expone una interfaz SQL estándar para consultas ad hoc de alto rendimiento; particionar y clusterizar las tablas es una práctica obligatoria para evitar escaneos completos y costos elevados. Looker consume BigQuery a través de una capa de modelado semántico unificada, habilitando analítica embebida y dashboards dentro de las aplicaciones de negocio. Este stack es adecuado para organizaciones que necesitan elasticidad inmediata sin planificación de capacidad, aunque requiere gobernanza explícita: IAM y VPC Service Controls deben limitar qué proyectos e identidades pueden acceder a cada dataset, dado que el modelo serverless facilita el acceso pero no lo restringe por sí solo."
+    },
+    "en": {
+      "tema": "Architecture",
+      "topico": "Serverless Data Stack on Google Cloud Platform",
+      "descripcion": "Google Cloud Platform's native data stack removes the operational complexity of provisioning and maintaining infrastructure, allowing organizations to scale from gigabytes to petabytes without managing a single cluster. The flow begins with ingesting files, APIs, cloud services, and transactional databases into Cloud Storage, which offers eleven-nines durability and configurable multi-regional or regional placement per dataset. Dataflow processes the information using Apache Beam, a single programming model that unifies batch and streaming workloads, autoscaling workers based on volume without cluster management. Processed data is loaded into BigQuery, a serverless data warehouse that scales to petabytes and exposes a standard SQL interface for high-performance ad hoc queries; partitioning and clustering tables is a mandatory practice to avoid full scans and excessive costs. Looker consumes BigQuery through a unified semantic modeling layer, enabling embedded analytics and dashboards within business applications. This stack suits organizations that need immediate elasticity without capacity planning, though it requires explicit governance: IAM and VPC Service Controls must limit which projects and identities can access each dataset, since the serverless model makes access easy but does not restrict it on its own."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "arquitectura-oracle",
+    "imagen": "Arquitectura/arquitectura-oracle.png",
+    "fechaPublicacion": "2026-07-28T13:00:00",
+    "es": {
+      "tema": "Arquitectura",
+      "topico": "Arquitectura Lakehouse en Oracle Cloud Infrastructure (OCI)",
+      "descripcion": "La implementación de una arquitectura Lakehouse en Oracle Cloud Infrastructure unifica la flexibilidad de un data lake con el rendimiento y la gobernanza de un data warehouse tradicional, resolviendo el problema de mantener silos de información dispersos entre bases de datos, archivos y aplicaciones. El flujo inicia con OCI Data Integration, que se conecta de forma nativa a orígenes on-premise y en la nube para ejecutar la carga de datos y su transformación en tránsito bajo un patrón ETL/ELT. La información aterriza en OCI Object Storage, un data lake escalable capaz de almacenar datos crudos y estructurados en cualquier formato (JSON, Parquet, CSV, logs), mientras OCI Data Catalog cataloga esa información y gestiona su gobernanza y discovery de forma centralizada. OCI Autonomous Database consume estos datos directamente desde el lake para exponer un data warehouse autogestionado, con auto-tuning y auto-patching impulsados por Machine Learning embebido que optimiza las consultas sin intervención manual. Los insights resultantes alimentan directamente dashboards de analítica de negocio. Esta arquitectura es recomendable para organizaciones que buscan minimizar la sobrecarga operativa de administrar infraestructura de datos, aunque requiere gobernanza explícita: los compartments de OCI deben aislar recursos y políticas de IAM por proyecto o equipo, y conviene aplicar políticas de ciclo de vida en Object Storage para transicionar datos fríos hacia Archive Storage y controlar el costo de retención a largo plazo."
+    },
+    "en": {
+      "tema": "Architecture",
+      "topico": "Lakehouse Architecture on Oracle Cloud Infrastructure (OCI)",
+      "descripcion": "Implementing a Lakehouse architecture on Oracle Cloud Infrastructure unifies the flexibility of a data lake with the performance and governance of a traditional data warehouse, solving the problem of scattered information silos across databases, files, and applications. The flow begins with OCI Data Integration, which connects natively to on-premises and cloud sources to execute data loading and in-transit transformation under an ETL/ELT pattern. The information lands in OCI Object Storage, a scalable data lake capable of storing raw and structured data in any format (JSON, Parquet, CSV, logs), while OCI Data Catalog centrally manages its metadata, governance, and discovery. OCI Autonomous Database consumes this data directly from the lake to expose a self-managed data warehouse, with auto-tuning and auto-patching powered by embedded Machine Learning that optimizes queries without manual intervention. The resulting insights feed directly into business analytics dashboards. This architecture is recommended for organizations looking to minimize the operational overhead of managing data infrastructure, though it requires explicit governance: OCI compartments should isolate resources and IAM policies by project or team, and lifecycle policies should be applied to Object Storage to transition cold data to Archive Storage and control long-term retention costs."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "analisis-datos-ia",
+    "imagen": "IA/analisis-datos-ia.png",
+    "fechaPublicacion": "2026-07-16T09:00:00",
+    "es": {
+      "tema": "Inteligencia Artificial",
+      "topico": "Evolución del Análisis de Datos: de Registrar Datos a Delegar Tareas",
+      "descripcion": "La madurez en el uso de datos e inteligencia artificial dentro de una organización avanza por etapas claramente diferenciables, desde la simple digitalización de información hasta la delegación de tareas completas en agentes autónomos. El recorrido comienza con la captura de datos en formato digital, continúa con su almacenamiento estructurado, y avanza hacia la automatización de procesos repetitivos mediante reglas fijas. A partir de ahí, la analítica introduce la capacidad de entender patrones en los datos, el machine learning permite anticipar resultados, la IA generativa aporta la habilidad de explicar y resumir información en lenguaje natural, y finalmente los agentes de IA ejecutan flujos completos de principio a fin. No todas las organizaciones ni todos los procesos necesitan alcanzar el último nivel: la decisión de qué tecnología aplicar depende de la naturaleza del problema. Los pasos repetitivos y con reglas claras se resuelven con automatización o RPA; identificar patrones o priorizar información requiere analítica o machine learning; responder una pregunta puntual o resumir contenido es tarea de IA generativa; ejecutar un flujo completo de trabajo corresponde a un agente; y las decisiones con implicaciones éticas, regulatorias o de alto riesgo deben seguir recayendo en una persona experta. Esta forma de pensar evita adoptar tecnología por moda y enfoca la conversación en el problema de negocio que realmente se quiere resolver, más que en la sofisticación técnica de la solución elegida."
+    },
+    "en": {
+      "tema": "Artificial Intelligence",
+      "topico": "The Evolution of Data Analytics: From Recording Data to Delegating Tasks",
+      "descripcion": "Maturity in the use of data and artificial intelligence within an organization advances through clearly distinguishable stages, from simply digitizing information to delegating entire tasks to autonomous agents. The journey begins with capturing data in digital form, continues with structured storage, and progresses toward automating repetitive processes through fixed rules. From there, analytics introduces the ability to understand patterns in data, machine learning enables anticipating outcomes, generative AI adds the ability to explain and summarize information in natural language, and finally AI agents execute complete workflows end to end. Not every organization or process needs to reach the last level: the decision of which technology to apply depends on the nature of the problem. Repetitive steps with clear rules are solved with automation or RPA; identifying patterns or prioritizing information requires analytics or machine learning; answering a specific question or summarizing content is a job for generative AI; executing a complete workflow calls for an agent; and decisions with ethical, regulatory, or high-risk implications should still rest with an expert person. This way of thinking avoids adopting technology as a trend and keeps the conversation focused on the actual business problem to solve, rather than on the technical sophistication of the chosen solution."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "finalidades-de-las-ia",
+    "imagen": "IA/finalidades-de-las-ia.png",
+    "fechaPublicacion": "2026-07-16T09:05:00",
+    "es": {
+      "tema": "Inteligencia Artificial",
+      "topico": "Finalidades de las IA: el Enfoque Detrás de Cada Modelo",
+      "descripcion": "El enfoque de cada gran proveedor de inteligencia artificial frente a la incertidumbre determina buena parte de su comportamiento observable en producción. Gemini de Google prioriza el rigor contextual, lo que lo hace especialmente competente para sintetizar textos, aunque su desempeño se degrada cuando el contexto es demasiado extenso. Claude de Anthropic centra su diseño en la honestidad y la seguridad, y es, entre los modelos comparados, el que con mayor frecuencia reconoce explícitamente que no tiene una respuesta. La familia GPT de OpenAI opta por una asertividad orientada al negocio: prioriza siempre entregar una respuesta antes que admitir ignorancia, lo que mejora la cobertura percibida a costa de un mayor riesgo de alucinación. Los modelos DeepSeek y Qwen, de origen chino, se apoyan en su bajo costo y resuelven la falta de información mediante inferencia lógica. Esta caracterización, presentada como lectura cualitativa en una charla técnica, es consistente con reportes públicos de evaluación de modelos de 2026, que ubican a Claude con la tasa más alta de reconocimiento de incertidumbre entre los modelos evaluados, mientras la familia GPT tiende a maximizar la tasa de respuesta a costa de una mayor tasa de alucinación. Para equipos que integran estos modelos en productos de producción, esta diferencia de enfoque debería influir directamente en la elección de modelo según el caso de uso: tareas donde el costo de un error es alto favorecen modelos con mayor propensión a admitir incertidumbre, mientras que tareas de generación de contenido con revisión humana pueden tolerar modelos más asertivos."
+    },
+    "en": {
+      "tema": "Artificial Intelligence",
+      "topico": "The Purpose Behind Each AI Model: How They Handle Uncertainty",
+      "descripcion": "Each major AI provider's approach to uncertainty shapes much of its observable behavior in production. Google's Gemini prioritizes contextual rigor, making it especially competent at synthesizing text, though its performance degrades when context becomes too large. Anthropic's Claude centers its design on honesty and safety, and among the models compared, it is the one that most frequently and explicitly acknowledges when it doesn't have an answer. OpenAI's GPT family opts for a business-oriented assertiveness: it prioritizes always delivering an answer over admitting ignorance, which improves perceived coverage at the cost of a higher hallucination risk. DeepSeek and Qwen, of Chinese origin, lean on their low cost and resolve missing information through logical inference. This characterization, presented as a qualitative reading in a technical talk, is consistent with public 2026 model evaluation reports, which place Claude with the highest rate of acknowledging uncertainty among the models evaluated, while the GPT family tends to maximize its response rate at the cost of a higher hallucination rate. For teams integrating these models into production products, this difference in approach should directly inform model selection by use case: tasks where the cost of an error is high favor models more prone to admitting uncertainty, while content-generation tasks with human review can tolerate more assertive models."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "ia-agentes",
+    "imagen": "IA/ia-agentes.png",
+    "fechaPublicacion": "2026-07-16T09:10:00",
+    "es": {
+      "tema": "Inteligencia Artificial",
+      "topico": "La Evolución de los Agentes de IA: de Workflows Rígidos a Arquitecturas Goal-Based",
+      "descripcion": "La evolución de los agentes de inteligencia artificial puede entenderse mejor observando cómo un mismo proceso de negocio migra de una arquitectura a otra. Un agente, en su forma más simple, recibe un prompt de un usuario y ejecuta un ciclo interno de cuatro pasos: genera un plan, selecciona y ejecuta las herramientas necesarias, sintetiza los resultados y se autoevalúa antes de responder. Al aplicar este concepto a un proceso real de Cuentas por Pagar, surgen dos patrones arquitectónicos distintos. El primero, conocido como agentic workflow, encadena agentes especializados en una secuencia fija: la factura pasa por cinco etapas consecutivas, con un punto explícito de supervisión humana antes de completar el pago. Este patrón usa flujo de control predefinido y explícito entre pasos, lo que lo hace auditable y adecuado para procesos estructurados. El segundo patrón, de arquitectura goal-based, invierte la lógica: un Planner y un Orchestrator con capacidad de razonamiento reciben el objetivo (procesar la factura hasta el pago) y deciden dinámicamente cuáles de las cinco etapas invocar y en qué orden, tratándolas como herramientas disponibles en lugar de pasos obligatorios. Esta arquitectura tolera excepciones y variaciones del proceso sin necesidad de rediseñar el flujo completo. Según la guía prescriptiva de AWS sobre patrones de IA agéntica, los workflows convienen para tareas estructuradas y auditables, mientras que las arquitecturas goal-based son preferibles para tareas dinámicas, ambiguas o con múltiples caminos de excepción — la elección entre ambos patrones debería basarse en la naturaleza del proceso, no en la novedad tecnológica."
+    },
+    "en": {
+      "tema": "Artificial Intelligence",
+      "topico": "The Evolution of AI Agents: From Rigid Workflows to Goal-Based Architectures",
+      "descripcion": "The evolution of AI agents is best understood by observing how the same business process migrates from one architecture to another. An agent, in its simplest form, receives a prompt from a user and runs an internal four-step loop: it generates a plan, selects and executes the necessary tools, synthesizes results, and self-reflects before responding. Applying this concept to a real Accounts Payable process reveals two distinct architectural patterns. The first, known as an agentic workflow, chains specialized agents in a fixed sequence: the invoice passes through five consecutive stages, with an explicit human-in-the-loop checkpoint before payment is completed. This pattern uses predefined, explicit control flow between steps, making it auditable and well suited to structured processes. The second pattern, a goal-based architecture, inverts the logic: a Planner and an Orchestrator with reasoning capability receive the objective (process the invoice through to payment) and dynamically decide which of the five stages to invoke and in what order, treating them as available tools rather than mandatory steps. This architecture tolerates exceptions and process variations without requiring the entire flow to be redesigned. According to AWS's prescriptive guidance on agentic AI patterns, workflows suit structured, auditable tasks, while goal-based architectures are preferable for dynamic, ambiguous tasks with multiple exception paths — the choice between the two patterns should be based on the nature of the process, not on technological novelty."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  }
+]

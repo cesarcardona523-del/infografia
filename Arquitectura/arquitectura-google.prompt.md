@@ -74,8 +74,6 @@ Utilizar exclusivamente la paleta proporcionada. Extraer automáticamente: color
 
 No utilizar colores fuera de la paleta excepto blanco, gris y negro. Los verdes serán predominantes. Los tonos tierra funcionarán como colores secundarios.
 
-**Excepción — infografías de evento:** si la infografía se crea para un evento específico (variables `Evento` y/o `Realizado por`, ver sección "Branding de Evento"), la paleta puede ser más arriesgada y no está limitada al verde predominante de esta spec — se puede adoptar la paleta del evento o de la organización que lo realiza, siempre manteniendo blanco/gris/negro como neutros de apoyo y sin sacrificar legibilidad ni jerarquía visual.
-
 ## Tipografía
 
 Usar una tipografía similar a Inter, SF Pro, Segoe UI, Roboto, Helvetica o IBM Plex Sans. Mantener excelente legibilidad.
@@ -98,16 +96,6 @@ Agregar discretamente en la esquina inferior derecha:
 - Texto: `cacm523` (no la URL completa).
 
 Debe parecer una firma elegante.
-
-## Branding de Evento (opcional)
-
-Aplica únicamente si el usuario especifica, al crear la infografía, un **Evento** y/o una organización en **Realizado por**.
-
-- Mostrar de forma visible (no como marca de agua casi invisible) el nombre del evento, ej. `Datafest 2026`.
-- Mostrar `Realizado por: <Organización>` — ej. `Realizado por: Bancolombia`.
-- Buscar el logo oficial de esa organización; si se encuentra uno confiable, usarlo en vez de texto plano. Si no se encuentra, mostrar solo el nombre en texto.
-- Esta información es adicional a la marca de agua ("Cesar Cardona" al 5%) y a la firma profesional (LinkedIn + `cacm523`) — ambas se mantienen sin cambios; el branding de evento no las reemplaza.
-- Ubicación sugerida: encabezado o pie de la infografía, en un bloque discreto pero legible, sin competir visualmente con el título principal.
 
 ## Calidad
 
@@ -133,3 +121,30 @@ No inventar información técnica. No deformar texto. No generar texto ilegible 
 8. Calidad gráfica
 9. Branding discreto
 10. Preparación para LinkedIn
+
+---
+
+## Contexto específico — Arquitectura_Google
+
+**Imagen de referencia:** `../referencias/Arquitectura/arquitectura-google/Arquitectura_Google_Cloud.jpeg` (diagrama ya existente, "The GCP Data Stack Unveiled"). No se debe replicar tal cual — **complementarla**: mantener el flujo de 4 servicios (Cloud Storage → Dataflow → BigQuery → Looker), corrigiendo la duplicación de texto de la referencia y agregando gobernanza/costos que no tiene.
+
+**Tema:** Stack de datos serverless en Google Cloud Platform, de la ingesta al consumo analítico.
+
+**Estructura a mantener:**
+
+1. **Sources** — archivos, APIs, servicios cloud, bases de datos (iconos de origen, como en la referencia).
+2. **Cloud Storage** — almacenamiento de objetos: durabilidad, multi-regional/regional, rendimiento escalable.
+3. **Dataflow** — Apache Beam (batch y streaming unificado), procesamiento serverless, autoescalado.
+4. **BigQuery** — data warehouse serverless a escala de petabytes, interfaz SQL estándar; snippet de consulta SQL representativo.
+5. **Looker** — modelado de datos unificado, analítica embebida, dashboards.
+
+**Cómo complementarla (no solo redibujar igual):**
+
+- **Corregir la duplicación de la referencia**: cada tarjeta (Cloud Storage, Dataflow) repite exactamente las mismas 3 viñetas arriba y abajo del ícono — es un defecto de la referencia. En la versión nueva, cada atributo aparece una sola vez.
+- **Explicitar streaming vs. batch**: Dataflow soporta ambos (Apache Beam), pero la referencia no lo distingue visualmente — usar el mismo lenguaje de leyenda (línea sólida = tiempo real, discontinua = batch) ya usado en la infografía de AWS de este mismo repositorio, para mantener consistencia entre infografías de Arquitectura.
+- **Agregar gobernanza y costos que faltan en la referencia**: IAM + VPC Service Controls para limitar qué proyectos/identidades acceden a cada dataset, y la recomendación estándar de particionar y clusterizar las tablas de BigQuery para evitar escaneos completos de tabla y costos elevados — la referencia no menciona ningún control de acceso ni consideración de costo.
+- El SQL de la referencia (`SELECT COUNT(*), region FROM user_project.event_logs GROUP BY region ORDER BY 1 DESC;`) es válido — mantenerlo como base pero se puede acompañar de un comentario sobre partición.
+
+**Paleta:** verde predominante (coherente con el resto de infografías de Arquitectura), sin el beige/dorado que usa la referencia para Dataflow — mantener consistencia cromática con AWS y Azure ya construidas en este repo.
+
+**Título principal sugerido:** "Stack de Datos Serverless en Google Cloud Platform".

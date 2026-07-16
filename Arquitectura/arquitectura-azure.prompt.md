@@ -74,8 +74,6 @@ Utilizar exclusivamente la paleta proporcionada. Extraer automáticamente: color
 
 No utilizar colores fuera de la paleta excepto blanco, gris y negro. Los verdes serán predominantes. Los tonos tierra funcionarán como colores secundarios.
 
-**Excepción — infografías de evento:** si la infografía se crea para un evento específico (variables `Evento` y/o `Realizado por`, ver sección "Branding de Evento"), la paleta puede ser más arriesgada y no está limitada al verde predominante de esta spec — se puede adoptar la paleta del evento o de la organización que lo realiza, siempre manteniendo blanco/gris/negro como neutros de apoyo y sin sacrificar legibilidad ni jerarquía visual.
-
 ## Tipografía
 
 Usar una tipografía similar a Inter, SF Pro, Segoe UI, Roboto, Helvetica o IBM Plex Sans. Mantener excelente legibilidad.
@@ -98,16 +96,6 @@ Agregar discretamente en la esquina inferior derecha:
 - Texto: `cacm523` (no la URL completa).
 
 Debe parecer una firma elegante.
-
-## Branding de Evento (opcional)
-
-Aplica únicamente si el usuario especifica, al crear la infografía, un **Evento** y/o una organización en **Realizado por**.
-
-- Mostrar de forma visible (no como marca de agua casi invisible) el nombre del evento, ej. `Datafest 2026`.
-- Mostrar `Realizado por: <Organización>` — ej. `Realizado por: Bancolombia`.
-- Buscar el logo oficial de esa organización; si se encuentra uno confiable, usarlo en vez de texto plano. Si no se encuentra, mostrar solo el nombre en texto.
-- Esta información es adicional a la marca de agua ("Cesar Cardona" al 5%) y a la firma profesional (LinkedIn + `cacm523`) — ambas se mantienen sin cambios; el branding de evento no las reemplaza.
-- Ubicación sugerida: encabezado o pie de la infografía, en un bloque discreto pero legible, sin competir visualmente con el título principal.
 
 ## Calidad
 
@@ -133,3 +121,30 @@ No inventar información técnica. No deformar texto. No generar texto ilegible 
 8. Calidad gráfica
 9. Branding discreto
 10. Preparación para LinkedIn
+
+---
+
+## Contexto específico — Arquitectura_Azure
+
+**Imagen de referencia:** `../referencias/Arquitectura/arquitectura-azure/Arquitectura_Azure_Cloud.jpeg` (diagrama ya existente, "Modern Azure Data Pipeline & Medallion Architecture"). No se debe replicar tal cual — **complementarla**: mantener las 5 secciones y la arquitectura Medallón (Bronze/Silver/Gold), pero corregir el código ilegible de la referencia y agregar gobernanza que no tiene.
+
+**Tema:** Arquitectura moderna de datos en Azure basada en el patrón Medallón (Bronze/Silver/Gold), de la ingesta hasta la visualización en Power BI.
+
+**Estructura a mantener (5 secciones):**
+
+1. **Data Sources** — APIs, Webhooks, dispositivos IoT.
+2. **Ingestion & Staging** — Azure Data Factory (orquesta la copia), Azure Data Lake Storage Gen2 (landing zone).
+3. **Medallion Processing** — tres capas apiladas: Bronze (raw, sin modelar), Silver (limpia, estructurada y validada) y Gold (agregada, lista para negocio), con Apache Spark ejecutando la limpieza/transformación entre capas.
+4. **Analysis & Transform** — Azure Synapse Analytics (SQL pool dedicado).
+5. **Presentation & Insights** — Power BI (dashboards interactivos).
+
+**Cómo complementarla (no solo redibujar igual):**
+
+- **Corregir el código ilegible de la referencia**: los bloques de código de Bronze/Silver/Gold en la referencia muestran texto corrupto/no funcional (ej. "nzore_dskes", "sicons:noueration"). Reemplazar por un único snippet SQL real y coherente en la capa Gold (ej. una tabla de KPIs agregada por región).
+- **Agregar gobernanza que falta en la referencia**: incluir Microsoft Purview como capa de catalogación y linaje de datos entre las tres capas del Medallón — la referencia no menciona ningún mecanismo de gobernanza.
+- **Explicitar el patrón de ingesta**: este flujo es batch vía Azure Data Factory; anotar que para ingesta en tiempo real el equivalente en Azure es Event Hubs + Stream Analytics (la referencia no distingue esto, y todo el diagrama sugiere solo batch).
+- Mantener las 3 capas del Medallón visualmente diferenciadas con su color convencional (bronze = tono tierra cálido, silver = gris neutro, gold = tono dorado/tierra), dentro de la paleta permitida.
+
+**Paleta:** verde predominante para el resto de la composición (Data Sources, Ingestion, Synapse, Power BI), con los tres acentos tierra (bronze/plata-gris/dorado) reservados exclusivamente para diferenciar las tres capas del Medallón.
+
+**Título principal sugerido:** "Arquitectura de Datos en Azure: Patrón Medallón de Extremo a Extremo".

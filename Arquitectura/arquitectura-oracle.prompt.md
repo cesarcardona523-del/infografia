@@ -74,8 +74,6 @@ Utilizar exclusivamente la paleta proporcionada. Extraer automáticamente: color
 
 No utilizar colores fuera de la paleta excepto blanco, gris y negro. Los verdes serán predominantes. Los tonos tierra funcionarán como colores secundarios.
 
-**Excepción — infografías de evento:** si la infografía se crea para un evento específico (variables `Evento` y/o `Realizado por`, ver sección "Branding de Evento"), la paleta puede ser más arriesgada y no está limitada al verde predominante de esta spec — se puede adoptar la paleta del evento o de la organización que lo realiza, siempre manteniendo blanco/gris/negro como neutros de apoyo y sin sacrificar legibilidad ni jerarquía visual.
-
 ## Tipografía
 
 Usar una tipografía similar a Inter, SF Pro, Segoe UI, Roboto, Helvetica o IBM Plex Sans. Mantener excelente legibilidad.
@@ -98,16 +96,6 @@ Agregar discretamente en la esquina inferior derecha:
 - Texto: `cacm523` (no la URL completa).
 
 Debe parecer una firma elegante.
-
-## Branding de Evento (opcional)
-
-Aplica únicamente si el usuario especifica, al crear la infografía, un **Evento** y/o una organización en **Realizado por**.
-
-- Mostrar de forma visible (no como marca de agua casi invisible) el nombre del evento, ej. `Datafest 2026`.
-- Mostrar `Realizado por: <Organización>` — ej. `Realizado por: Bancolombia`.
-- Buscar el logo oficial de esa organización; si se encuentra uno confiable, usarlo en vez de texto plano. Si no se encuentra, mostrar solo el nombre en texto.
-- Esta información es adicional a la marca de agua ("Cesar Cardona" al 5%) y a la firma profesional (LinkedIn + `cacm523`) — ambas se mantienen sin cambios; el branding de evento no las reemplaza.
-- Ubicación sugerida: encabezado o pie de la infografía, en un bloque discreto pero legible, sin competir visualmente con el título principal.
 
 ## Calidad
 
@@ -133,3 +121,30 @@ No inventar información técnica. No deformar texto. No generar texto ilegible 
 8. Calidad gráfica
 9. Branding discreto
 10. Preparación para LinkedIn
+
+---
+
+## Contexto específico — Arquitectura_Oracle
+
+**Imagen de referencia:** `../referencias/Arquitectura/arquitectura-oracle/Arquitectura_Oracle_Cloud.jpeg` (diagrama ya existente, "Oracle Cloud Infrastructure (OCI) Lakehouse Architecture"). No se debe replicar tal cual — **complementarla**: mantener el flujo de 5 etapas, corrigiendo las viñetas con texto ilegible/corrupto de la referencia y agregando gobernanza de compartments que no tiene.
+
+**Tema:** Arquitectura Lakehouse en Oracle Cloud Infrastructure (OCI), de la ingesta hasta los insights de negocio.
+
+**Estructura a mantener (5 etapas):**
+
+1. **Data Sources** — bases de datos, archivos/JSON, aplicaciones.
+2. **Ingestion** — OCI Data Integration: ingesta, ETL/ELT, conectividad (carga de datos + transformación).
+3. **Data Lake (Storage)** — OCI Object Storage: data lake escalable para datos crudos y estructurados; conectado a OCI Data Catalog (metadata, gobernanza de datos, discovery).
+4. **Data Management & Analytics** — OCI Autonomous Database: data warehouse totalmente gestionado, auto-administrado (self-driving), con Machine Learning embebido; acceso externo a los datos del lake y procesamiento.
+5. **Insights & Analytics** — dashboards e insights de negocio.
+
+**Cómo complementarla (no solo redibujar igual):**
+
+- **Corregir las viñetas ilegibles de la referencia**: los bullets inferiores de "Data Lake (Storage)" y "Data Management & Analytics" en la referencia contienen texto corrupto/no legible (ej. "Data Topæ, data ond pfler /Data", "Files and Poreforms", "Data Variboote"). Reemplazar por descripciones claras y reales: tipos de dato soportados (JSON, Parquet, CSV, logs), y capacidades reales de Autonomous Database (auto-tuning, auto-patching, auto-scaling).
+- **Agregar gobernanza que falta en la referencia**: los *compartments* de OCI como mecanismo de aislamiento de recursos y políticas de IAM por proyecto/equipo — concepto distintivo de OCI que la referencia no menciona en absoluto.
+- **Agregar recomendación de costo**: políticas de ciclo de vida en Object Storage (tiering hacia Archive Storage) para controlar el costo de retención a largo plazo, coherente con el resto de infografías de Arquitectura de este repositorio.
+- Mantener el OCI Data Catalog como chip conector entre Object Storage y Autonomous Database, igual que en la referencia (metadata, gobernanza, discovery).
+
+**Paleta:** verde predominante (coherente con AWS, Azure y Google Cloud ya construidas en este repo), con acentos tierra para 1–2 elementos que requieran destacarse (ej. Data Catalog).
+
+**Título principal sugerido:** "Arquitectura Lakehouse en Oracle Cloud Infrastructure (OCI)".

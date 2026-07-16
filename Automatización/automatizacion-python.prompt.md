@@ -74,8 +74,6 @@ Utilizar exclusivamente la paleta proporcionada. Extraer automáticamente: color
 
 No utilizar colores fuera de la paleta excepto blanco, gris y negro. Los verdes serán predominantes. Los tonos tierra funcionarán como colores secundarios.
 
-**Excepción — infografías de evento:** si la infografía se crea para un evento específico (variables `Evento` y/o `Realizado por`, ver sección "Branding de Evento"), la paleta puede ser más arriesgada y no está limitada al verde predominante de esta spec — se puede adoptar la paleta del evento o de la organización que lo realiza, siempre manteniendo blanco/gris/negro como neutros de apoyo y sin sacrificar legibilidad ni jerarquía visual.
-
 ## Tipografía
 
 Usar una tipografía similar a Inter, SF Pro, Segoe UI, Roboto, Helvetica o IBM Plex Sans. Mantener excelente legibilidad.
@@ -98,16 +96,6 @@ Agregar discretamente en la esquina inferior derecha:
 - Texto: `cacm523` (no la URL completa).
 
 Debe parecer una firma elegante.
-
-## Branding de Evento (opcional)
-
-Aplica únicamente si el usuario especifica, al crear la infografía, un **Evento** y/o una organización en **Realizado por**.
-
-- Mostrar de forma visible (no como marca de agua casi invisible) el nombre del evento, ej. `Datafest 2026`.
-- Mostrar `Realizado por: <Organización>` — ej. `Realizado por: Bancolombia`.
-- Buscar el logo oficial de esa organización; si se encuentra uno confiable, usarlo en vez de texto plano. Si no se encuentra, mostrar solo el nombre en texto.
-- Esta información es adicional a la marca de agua ("Cesar Cardona" al 5%) y a la firma profesional (LinkedIn + `cacm523`) — ambas se mantienen sin cambios; el branding de evento no las reemplaza.
-- Ubicación sugerida: encabezado o pie de la infografía, en un bloque discreto pero legible, sin competir visualmente con el título principal.
 
 ## Calidad
 
@@ -133,3 +121,34 @@ No inventar información técnica. No deformar texto. No generar texto ilegible 
 8. Calidad gráfica
 9. Branding discreto
 10. Preparación para LinkedIn
+
+---
+
+## Contexto específico — Automatizacion_Python
+
+**Imagen de referencia:** `../referencias/Automatización/automatizacion-python/Automatizacion_Python.jpeg` (infografía ya existente, fondo oscuro). No se debe replicar tal cual — **complementarla**: mantener el flujo general (Excel → carga estructurada → procesamiento en Python → salida dual a SQL y Email) y la métrica de eficiencia visible en la referencia, pero corrigiendo un bug real del snippet de código y agregando buenas prácticas de producción que la referencia no tiene.
+
+**Tema:** Pipeline de automatización ETL con Python que reemplaza procesos manuales en hojas de cálculo.
+
+**Estructura a mantener (4 etapas en flujo horizontal):**
+
+1. **Origen de Datos** — archivo Excel/CSV con datos de ventas u operación diaria.
+2. **Carga Estructurada** — pandas lee y valida el archivo antes de procesar.
+3. **Procesamiento (Python)** — limpieza, transformación y reglas de negocio, con snippet de código.
+4. **Salida dual** — Base de Datos (SQL), almacenamiento seguro; y Comunicación (Email), envío automático de alertas/reportes.
+
+**Panel lateral (mantener las 3 tarjetas de la referencia, pero 2 de ellas rediseñadas):**
+
+- **Impacto/Eficiencia** — mantener la cifra "75%" de reducción de tiempo operativo visible en la referencia (es un dato que trae la propia imagen, no se inventa), enmarcada como comparación frente al proceso manual.
+- **Calidad de datos**: la referencia trae un gráfico de barras ambiguo (ejes/leyenda poco claros, "Errores" vs. una serie sin etiqueta legible) — **no reproducir ese gráfico** (sería inventar datos que no se pueden leer con certeza). Reemplazar por una comparación cualitativa **Antes vs. Después**: manual/propenso a error humano vs. automatizado/validado programáticamente.
+- **Casos de Uso** — mantener igual que la referencia: Dashboards Activos, Reportes Diarios, Limpieza de Datos.
+
+**Cómo complementarla (no solo redibujar igual):**
+
+- **Corregir el bug del snippet**: la referencia repite la misma línea de filtro dos veces (`df_clean = df[df['Ventas'] > 1000]` aparece duplicada) — en la versión nueva, mostrar el snippet correcto y coherente (filtro una sola vez, cálculo de `Ganancia`, guardado en SQL).
+- **Agregar buena práctica de seguridad que falta en la referencia**: la referencia muestra el connection string de la base de datos con usuario y contraseña en texto plano (`postgresql://usr:pwd@host/db`) directamente en el código — corregir esto en el snippet nuevo usando una variable de entorno (`os.environ["DATABASE_URL"]`), y explicitarlo como práctica recomendada en un callout de gobernanza (mismo patrón que las infografías anteriores de Arquitectura/Automatización): credenciales vía variables de entorno o secret manager, manejo de excepciones con reintentos, y logging estructurado de cada corrida.
+- Mantener la recomendación de escalabilidad ya usada para este mismo tema en el sitio: para volúmenes grandes, considerar Apache Airflow o Apache Spark en vez de un script aislado.
+
+**Paleta:** verde predominante (coherente con el resto de infografías de este repo), evitar el fondo oscuro de la referencia — usar el fondo claro/editorial de INFOGRAFIA-SPEC.md.
+
+**Título principal sugerido:** "Automatización de Reportes con Python: de Excel a Producción".

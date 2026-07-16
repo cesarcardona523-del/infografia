@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Finalidades de las IA: el Enfoque Detrás de Cada Modelo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --green:#39FF9C;
+    --green-dim:#1E8B5C;
+    --green-pale:rgba(57,255,156,0.08);
+    --ink:#E8FFF3;
+    --muted:#7FA893;
+    --yellow:#FFD400;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    min-height:627px; display:flex; align-items:center; justify-content:center;
+    padding:32px 16px; background:#020403;
+    font-family: "SF Mono","Menlo","Consolas",monospace;
+  }
+  .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
+  .canvas{
+    position:relative; width:1200px; height:627px; margin:0 auto;
+    background:
+      repeating-linear-gradient(0deg, rgba(57,255,156,0.03) 0px, rgba(57,255,156,0.03) 1px, transparent 1px, transparent 3px),
+      radial-gradient(circle at 50% 0%, #0b1410 0%, #030503 60%, #000 100%);
+    border:1px solid var(--green-dim); border-radius:14px; overflow:hidden;
+    padding:26px 40px 18px; color:var(--ink);
+    display:flex; flex-direction:column; justify-content:center; gap:8px;
+  }
+  .corner{ position:absolute; width:26px; height:26px; border-color:var(--green); border-style:solid; opacity:0.7; }
+  .corner.tl{ top:14px; left:14px; border-width:2px 0 0 2px; }
+  .corner.tr{ top:14px; right:14px; border-width:2px 2px 0 0; }
+  .corner.bl{ bottom:14px; left:14px; border-width:0 0 2px 2px; }
+  .corner.br{ bottom:14px; right:14px; border-width:0 2px 2px 0; }
+
+  .watermark{
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    font-size:70px; font-weight:800; color:#fff; opacity:0.04;
+    transform:rotate(-16deg); letter-spacing:6px; pointer-events:none; user-select:none; white-space:nowrap;
+  }
+
+  .header{ display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:14px; }
+  .title-block .eyebrow{ font-size:11px; color:var(--green); letter-spacing:2px; margin-bottom:6px; }
+  .title-block h1{ font-size:22px; margin:0 0 6px; font-weight:700; letter-spacing:-0.2px; max-width:760px; color:var(--ink); }
+  .title-block p{ margin:0; font-size:11.5px; color:var(--muted); max-width:680px; }
+
+  .event-badges{ display:flex; flex-direction:column; align-items:flex-end; gap:6px; font-family: Inter, sans-serif; }
+  .event-chip{
+    background:transparent; border:1px solid var(--green); color:var(--green); font-weight:700; font-size:11px;
+    padding:5px 12px; border-radius:20px; white-space:nowrap;
+  }
+  .realizado{ font-size:10.5px; color:var(--muted); white-space:nowrap; }
+  .realizado b{ color:var(--yellow); font-weight:800; }
+
+  table{ width:100%; border-collapse:collapse; margin-top:6px; }
+  th{ text-align:left; font-size:11px; color:var(--green); text-transform:uppercase; letter-spacing:1px; padding:8px 10px; border-bottom:1px solid var(--green-dim); }
+  td{ padding:12px 10px; font-size:12px; color:var(--ink); border-bottom:1px solid rgba(57,255,156,0.15); vertical-align:top; line-height:1.4; }
+  tr:nth-child(even) td{ background:var(--green-pale); }
+  td.model{ font-weight:700; color:var(--green); white-space:nowrap; width:150px; }
+  td.model span{ display:block; font-weight:400; color:var(--muted); font-size:10.5px; }
+  td.enfoque{ width:190px; color:var(--yellow); font-weight:600; }
+
+  .prompt-line{ display:flex; align-items:center; gap:6px; margin-top:8px; font-size:11px; color:var(--green); }
+  .prompt-line .cursor{ display:inline-block; width:7px; height:13px; background:var(--green); animation:blink 1.1s steps(1) infinite; }
+  @keyframes blink{ 50%{ opacity:0; } }
+
+  .footnote{
+    margin-top:12px; font-size:9.8px; color:var(--muted); line-height:1.4; border-top:1px dashed var(--green-dim);
+    padding-top:8px; font-family: Inter, sans-serif;
+  }
+  .footnote b{ color:var(--green); }
+
+  .footer{ position:absolute; bottom:12px; right:22px; display:flex; align-items:center; gap:6px; font-family: Inter, sans-serif; }
+  .li-badge{ width:18px; height:18px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; font-family: Arial, sans-serif; }
+  .footer span{ font-size:11px; font-weight:600; color:var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="canvas-wrap">
+  <div class="canvas">
+    <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+    <div class="watermark">Cesar Cardona</div>
+
+    <div class="header">
+      <div class="title-block">
+        <div class="eyebrow">// MATRIZ_DE_FIABILIDAD.LOG</div>
+        <h1>Finalidades de las IA: el Enfoque Detrás de Cada Modelo</h1>
+        <p>No todos los modelos priorizan lo mismo — algunos apuestan por la honestidad, otros por siempre tener una respuesta.</p>
+      </div>
+      <div class="event-badges">
+        <div class="event-chip">Datafest 2026</div>
+        <div class="realizado">Realizado por: <b>Bancolombia</b></div>
+      </div>
+    </div>
+
+    <table>
+      <tr><th>Modelo</th><th>Enfoque</th><th>Diagnóstico</th></tr>
+      <tr>
+        <td class="model">Google<span>(Gemini)</span></td>
+        <td class="enfoque">Rigurosidad contextual</td>
+        <td>Excelente para sintetizar textos, pero cuidado si son demasiado grandes.</td>
+      </tr>
+      <tr>
+        <td class="model">Anthropic<span>(Claude)</span></td>
+        <td class="enfoque">Honestidad y seguridad</td>
+        <td>Es el modelo que más admite que "no sabe".</td>
+      </tr>
+      <tr>
+        <td class="model">OpenAI<span>(Familia GPT)</span></td>
+        <td class="enfoque">"Asertividad Comercial"</td>
+        <td>Prioriza responder siempre y no admitir ignorancia.</td>
+      </tr>
+      <tr>
+        <td class="model">DeepSeek / Qwen<span>(made in China)</span></td>
+        <td class="enfoque">El bajo costo</td>
+        <td>Resuelve de manera lógica su falta de información.</td>
+      </tr>
+    </table>
+    <div class="prompt-line">$ diagnostico --status<span class="cursor"></span></div>
+
+    <div class="footnote"><b>Nota:</b> esta matriz es la lectura cualitativa del expositor en Datafest 2026, no un benchmark oficial. Coincide con reportes públicos de 2026 sobre calibración de modelos, que ubican a Claude con la tasa más alta de admitir incertidumbre ("no lo sé") entre los modelos evaluados, mientras la familia GPT tiende a maximizar la tasa de respuesta a costa de mayor riesgo de alucinación.</div>
+
+    <div class="footer">
+      <div class="li-badge">in</div>
+      <span>cacm523</span>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

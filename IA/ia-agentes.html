@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>La Evolución de los Agentes de IA: de Workflows Rígidos a Arquitecturas Goal-Based</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --bg:#0c0912;
+    --bg2:#160f22;
+    --purple:#9333EA;
+    --magenta:#D6249F;
+    --pink:#F14FA0;
+    --coral:#FF4D6D;
+    --ink:#F3EFFA;
+    --muted:#B3A8C4;
+    --line:#2E2440;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    min-height:627px; display:flex; align-items:center; justify-content:center;
+    padding:32px 16px; background:#050308;
+    font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
+  .canvas{
+    position:relative; width:1200px; height:627px; margin:0 auto;
+    background:radial-gradient(circle at 80% 10%, #2a1740 0%, var(--bg) 45%, var(--bg2) 100%);
+    border-radius:22px; box-shadow:0 24px 60px rgba(0,0,0,0.5); overflow:hidden;
+    padding:24px 38px 16px; color:var(--ink);
+    display:flex; flex-direction:column; justify-content:center; gap:10px;
+  }
+  .watermark{
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    font-size:70px; font-weight:800; color:#fff; opacity:0.045;
+    transform:rotate(-16deg); letter-spacing:6px; pointer-events:none; user-select:none; white-space:nowrap;
+  }
+
+  .header{ display:flex; justify-content:space-between; align-items:flex-start; }
+  .title-block h1{ font-size:21px; margin:0 0 5px; font-weight:800; letter-spacing:-0.2px; max-width:760px; }
+  .title-block p{ margin:0; font-size:11.5px; color:var(--muted); max-width:700px; }
+  .event-badges{ display:flex; flex-direction:column; align-items:flex-end; gap:6px; }
+  .event-chip{ background:var(--purple); color:#fff; font-weight:800; font-size:11px; padding:5px 12px; border-radius:20px; white-space:nowrap; }
+  .realizado{ font-size:10.5px; color:var(--muted); white-space:nowrap; }
+  .realizado b{ color:var(--pink); font-weight:800; }
+
+  .concept{
+    display:flex; align-items:center; gap:14px; background:rgba(255,255,255,0.03);
+    border:1px solid var(--line); border-radius:14px; padding:10px 16px;
+  }
+  .concept h2{ margin:0; font-size:11px; text-transform:uppercase; letter-spacing:0.5px; color:var(--pink); font-weight:800; flex:none; width:150px; }
+  .person{ display:flex; flex-direction:column; align-items:center; font-size:9px; color:var(--muted); flex:none; }
+  .person svg{ width:26px; height:26px; color:var(--ink); }
+  .arrows{ display:flex; flex-direction:column; gap:3px; font-size:8px; color:var(--muted); flex:none; width:70px; text-align:center; }
+  .agent-orb{
+    width:52px; height:52px; border-radius:50%; flex:none;
+    background:radial-gradient(circle, var(--pink) 0%, var(--purple) 70%);
+    display:flex; align-items:center; justify-content:center; font-size:8px; font-weight:800; color:#fff; text-align:center;
+    box-shadow:0 0 18px rgba(214,36,159,0.5);
+  }
+  .loop{ display:flex; align-items:center; gap:6px; flex:1; justify-content:space-evenly; }
+  .loop .step{ display:flex; flex-direction:column; align-items:center; font-size:8.3px; color:var(--muted); width:82px; text-align:center; }
+  .loop .step .dot{ width:16px; height:16px; border-radius:50%; background:var(--purple); margin-bottom:3px; }
+  .loop .chevron{ color:var(--muted); font-size:11px; }
+
+  .compare{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .arch{ background:rgba(255,255,255,0.03); border:1px solid var(--line); border-radius:14px; padding:11px 13px; }
+  .arch h3{ margin:0 0 3px; font-size:12px; font-weight:800; color:var(--ink); }
+  .arch .sub{ margin:0 0 9px; font-size:8.8px; color:var(--muted); }
+
+  .chain{ display:flex; align-items:center; flex-wrap:nowrap; gap:2px; }
+  .node{ display:flex; flex-direction:column; align-items:center; font-size:6.8px; color:var(--muted); flex:none; }
+  .node .circle{ width:20px; height:20px; border-radius:50%; background:linear-gradient(135deg, var(--purple), var(--pink)); margin-bottom:2px; }
+  .node.human .circle{ background:var(--coral); }
+  .node.pill .circle{ display:none; }
+  .pilltag{ background:var(--coral); color:#fff; font-weight:800; font-size:7px; padding:2px 6px; border-radius:8px; margin-bottom:2px; }
+  .mini-chevron{ color:var(--muted); font-size:9px; flex:none; }
+
+  .goal-flow{ display:flex; align-items:center; gap:4px; margin-bottom:9px; }
+  .goal-box{ border:1px dashed var(--purple); border-radius:8px; padding:4px 8px; font-size:8px; font-weight:700; color:var(--ink); text-align:center; }
+  .goal-box.orch{ border-color:var(--pink); }
+  .tools-row{ display:flex; gap:4px; justify-content:center; border-top:1px solid var(--line); padding-top:7px; }
+  .tool-chip{ background:rgba(147,51,234,0.15); border:1px solid var(--purple); border-radius:10px; padding:3px 7px; font-size:6.8px; color:var(--ink); }
+
+  .ribbon{
+    display:flex; align-items:center; gap:10px;
+    background:linear-gradient(90deg, #1a0f26, #2a1740); color:#EDE6F5; border-radius:12px; padding:8px 16px; font-size:9.6px;
+  }
+  .ribbon .icon{ width:20px; height:20px; flex:none; border-radius:6px; background:rgba(255,255,255,0.12); display:flex; align-items:center; justify-content:center; }
+  .ribbon .icon svg{ width:11px; height:11px; color:var(--pink); }
+  .ribbon b{ color:#fff; }
+  .ribbon span{ color:#C9BCDA; }
+
+  .footer{ position:absolute; bottom:12px; right:20px; display:flex; align-items:center; gap:6px; }
+  .li-badge{ width:18px; height:18px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; font-family: Arial, sans-serif; }
+  .footer span{ font-size:11px; font-weight:600; color:var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="canvas-wrap">
+  <div class="canvas">
+    <div class="watermark">Cesar Cardona</div>
+
+    <div class="header">
+      <div class="title-block">
+        <h1>La Evolución de los Agentes de IA: de Workflows Rígidos a Arquitecturas Goal-Based</h1>
+        <p>Del loop simple de un agente a la transformación de un proceso real de Cuentas por Pagar.</p>
+      </div>
+      <div class="event-badges">
+        <div class="event-chip">Datafest 2026</div>
+        <div class="realizado">Realizado por: <b>AWS</b></div>
+      </div>
+    </div>
+
+    <div class="concept">
+      <h2>¿Qué es un agente?</h2>
+      <div class="person">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+        Usuario
+      </div>
+      <div class="arrows">
+        <div>Prompt →</div>
+        <div>← Respuesta</div>
+      </div>
+      <div class="agent-orb">AGENT</div>
+      <div class="loop">
+        <div class="step"><div class="dot"></div>Generar Plan</div>
+        <div class="chevron">→</div>
+        <div class="step"><div class="dot"></div>Ejecutar Herramientas</div>
+        <div class="chevron">→</div>
+        <div class="step"><div class="dot"></div>Sintetizar Resultados</div>
+        <div class="chevron">→</div>
+        <div class="step"><div class="dot"></div>Auto-reflexionar</div>
+      </div>
+    </div>
+
+    <div class="compare">
+      <div class="arch">
+        <h3>Workflow-based</h3>
+        <p class="sub">Cuentas por Pagar · cadena fija de agentes especializados</p>
+        <div class="chain">
+          <div class="node pill"><span class="pilltag">Invoice</span></div>
+          <div class="mini-chevron">→</div>
+          <div class="node"><div class="circle"></div>Stage 1</div>
+          <div class="mini-chevron">→</div>
+          <div class="node"><div class="circle"></div>Stage 2</div>
+          <div class="mini-chevron">→</div>
+          <div class="node"><div class="circle"></div>Stage 3</div>
+          <div class="mini-chevron">→</div>
+          <div class="node human"><div class="circle"></div>Human</div>
+          <div class="mini-chevron">→</div>
+          <div class="node"><div class="circle"></div>Stage 4</div>
+          <div class="mini-chevron">→</div>
+          <div class="node"><div class="circle"></div>Stage 5</div>
+          <div class="mini-chevron">→</div>
+          <div class="node pill"><span class="pilltag">Payment</span></div>
+        </div>
+      </div>
+
+      <div class="arch">
+        <h3>Goal-based</h3>
+        <p class="sub">Mismo caso · objetivo fijo, ruta adaptable a excepciones</p>
+        <div class="goal-flow">
+          <div class="goal-box">Invoice</div>
+          <div class="mini-chevron">→</div>
+          <div class="goal-box">Planner</div>
+          <div class="mini-chevron">→</div>
+          <div class="goal-box orch">Orchestrator</div>
+          <div class="mini-chevron">→</div>
+          <div class="goal-box">Payment</div>
+        </div>
+        <div class="tools-row">
+          <div class="tool-chip">Stage 1</div>
+          <div class="tool-chip">Stage 2</div>
+          <div class="tool-chip">Stage 3</div>
+          <div class="tool-chip">Stage 4</div>
+          <div class="tool-chip">Stage 5</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ribbon">
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6l7-3Z"/></svg></div>
+      <div><b>Terminología AWS</b> <span>— un "agentic workflow" usa flujo de control explícito entre pasos (ideal para procesos estructurados y auditables); una arquitectura goal-based define el objetivo y deja que un orquestador con razonamiento decida el cómo, adaptándose a excepciones (ideal para tareas dinámicas y ambiguas).</span></div>
+    </div>
+
+    <div class="footer">
+      <div class="li-badge">in</div>
+      <span>cacm523</span>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

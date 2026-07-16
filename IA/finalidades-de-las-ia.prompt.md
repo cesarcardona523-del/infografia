@@ -133,3 +133,30 @@ No inventar información técnica. No deformar texto. No generar texto ilegible 
 8. Calidad gráfica
 9. Branding discreto
 10. Preparación para LinkedIn
+
+---
+
+## Contexto específico — Finalidades de las IA
+
+**Evento:** Datafest 2026 — **Realizado por:** Bancolombia (aplica la excepción de paleta y "Branding de Evento").
+
+**Imagen de referencia:** 1 captura de diapositiva real de Datafest 2026 (`../referencias/IA/finalidades-de-las-ia/Fiabilidad_Modelos.png`), estilo terminal/CLI (verde fósforo sobre negro, monoespaciado, esquinas tipo HUD). Es contenido genuino de la charla — traducir la tabla a una infografía editorial, no copiarla como screenshot.
+
+**Tema de la charla:** "Matriz de Fiabilidad de Modelos" — el enfoque/finalidad implícita de cada gran proveedor de IA y qué tan dispuesto está cada modelo a admitir que no sabe algo.
+
+**Contenido a mantener (tabla de 4 filas, Modelo | Enfoque | Diagnóstico):**
+
+1. **Google (Gemini)** — Enfoque: Rigurosidad contextual. Diagnóstico: Excelente para sintetizar textos, pero cuidado si son demasiado grandes.
+2. **Anthropic (Claude)** — Enfoque: Honestidad y seguridad. Diagnóstico: Es el modelo que más admite que "no sabe".
+3. **OpenAI (Familia GPT)** — Enfoque: "Asertividad Comercial". Diagnóstico: Prioriza responder siempre y no admitir ignorancia.
+4. **DeepSeek / Qwen (made in China)** — Enfoque: El bajo costo. Diagnóstico: Resuelve de manera lógica su falta de información.
+
+**Investigación adicional (complemento real, verificado):** se buscó en internet si esta caracterización cualitativa coincide con benchmarks públicos de 2026. Sí coincide: reportes de referencia de hallucination/calibración de 2026 ubican a Claude como el modelo con la tasa más alta de admitir "no lo sé" entre los modelos evaluados, mientras GPT tiende a maximizar la tasa de respuesta (alta cobertura) a costa de una mayor tasa de alucinación. Agregar esto como una nota de respaldo breve, dejando claro que la matriz original es una **lectura cualitativa del expositor**, no un benchmark oficial — no inventar cifras específicas no verificadas directamente por esta sesión, mantenerlo en términos generales.
+
+**Cómo complementar (no solo redibujar):**
+
+- Mantener el lenguaje visual "terminal/matrix" de la referencia (verde fósforo, monoespaciado, esquinas HUD) — es una identidad visual fuerte y coherente con el título "Matriz de Fiabilidad".
+- Agregar la nota de respaldo de benchmarks públicos 2026 mencionada arriba, aclarando que la matriz es una lectura cualitativa del expositor.
+- Incluir el badge de evento (Datafest 2026 / Realizado por: Bancolombia) igual que en las otras infografías de este mismo evento, para mantener coherencia de marca entre las tres piezas.
+
+**Título principal sugerido:** "Finalidades de las IA: el Enfoque Detrás de Cada Modelo".

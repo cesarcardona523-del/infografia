@@ -74,8 +74,6 @@ Utilizar exclusivamente la paleta proporcionada. Extraer automáticamente: color
 
 No utilizar colores fuera de la paleta excepto blanco, gris y negro. Los verdes serán predominantes. Los tonos tierra funcionarán como colores secundarios.
 
-**Excepción — infografías de evento:** si la infografía se crea para un evento específico (variables `Evento` y/o `Realizado por`, ver sección "Branding de Evento"), la paleta puede ser más arriesgada y no está limitada al verde predominante de esta spec — se puede adoptar la paleta del evento o de la organización que lo realiza, siempre manteniendo blanco/gris/negro como neutros de apoyo y sin sacrificar legibilidad ni jerarquía visual.
-
 ## Tipografía
 
 Usar una tipografía similar a Inter, SF Pro, Segoe UI, Roboto, Helvetica o IBM Plex Sans. Mantener excelente legibilidad.
@@ -98,16 +96,6 @@ Agregar discretamente en la esquina inferior derecha:
 - Texto: `cacm523` (no la URL completa).
 
 Debe parecer una firma elegante.
-
-## Branding de Evento (opcional)
-
-Aplica únicamente si el usuario especifica, al crear la infografía, un **Evento** y/o una organización en **Realizado por**.
-
-- Mostrar de forma visible (no como marca de agua casi invisible) el nombre del evento, ej. `Datafest 2026`.
-- Mostrar `Realizado por: <Organización>` — ej. `Realizado por: Bancolombia`.
-- Buscar el logo oficial de esa organización; si se encuentra uno confiable, usarlo en vez de texto plano. Si no se encuentra, mostrar solo el nombre en texto.
-- Esta información es adicional a la marca de agua ("Cesar Cardona" al 5%) y a la firma profesional (LinkedIn + `cacm523`) — ambas se mantienen sin cambios; el branding de evento no las reemplaza.
-- Ubicación sugerida: encabezado o pie de la infografía, en un bloque discreto pero legible, sin competir visualmente con el título principal.
 
 ## Calidad
 
@@ -133,3 +121,27 @@ No inventar información técnica. No deformar texto. No generar texto ilegible 
 8. Calidad gráfica
 9. Branding discreto
 10. Preparación para LinkedIn
+
+---
+
+## Contexto específico — Automatizacion_Python (ejecución programada)
+
+**Imagen de referencia:** `../referencias/Automatización/automatizacion-python-programada/Python_script_execution.jpeg` (infografía ya existente, fondo oscuro, título "Ejecución Programada: ventas_rep.py"). No se debe replicar tal cual — **complementarla**: mantener el snippet de código y el flujo de 4 pasos, pero agregar la portabilidad multiplataforma y la observabilidad que la referencia no cubre.
+
+**Tema:** Programación de la ejecución automática y recurrente de un script de Python a nivel de sistema operativo (Windows Task Scheduler vía `schtasks`), sin depender de un orquestador externo.
+
+**Estructura a mantener:**
+
+- **Snippet de código** (recortado a lo representativo, no las 19 líneas completas): construcción del comando `schtasks /Create /SC DAILY /ST {HORA} /TN "{NOMBRE}" /TR '"{sys.executable}" "{SCRIPT}"' /F` y ejecución vía `subprocess.run(cmd, shell=True, check=True)`.
+- **Flujo de 4 pasos** (en grid 2×2, como la referencia): Definición de Programación → Especificación del Script (`ventas_rep.py`) → Creación de Tarea (`schtasks`) → Ejecución Automatizada.
+- **Beneficios** (mantener ambos, son afirmaciones cualitativas razonables, no cifras inventadas): Ahorro de Tiempo (automatiza tareas repetitivas) y Reportes Confiables (información consistente y puntual).
+
+**Cómo complementarla (no solo redibujar igual):**
+
+- **Portabilidad**: la referencia es exclusivamente Windows (`schtasks`). Agregar una nota explícita de que en Linux/macOS el equivalente es una entrada de `cron` o un temporizador de `systemd` — información técnica ampliamente conocida, no inventada.
+- **Observabilidad que falta en la referencia**: crear la tarea programada no garantiza que se ejecute correctamente cada día — agregar un callout de buenas prácticas: registrar el resultado de cada corrida (log con timestamp y código de salida) y alertar si la tarea falla o no corre, en vez de asumir silenciosamente que sí ocurrió.
+- No convertir el flujo en un loop cerrado dibujado: la recurrencia diaria ya la garantiza el flag `/SC DAILY` del propio comando, no hace falta una flecha de retorno — evitar inventar un elemento visual que la referencia tampoco tiene.
+
+**Paleta:** verde predominante, fondo claro (evitar el fondo oscuro de la referencia), coherente con el resto de infografías del tema Automatización.
+
+**Título principal sugerido:** "Orquestación de Scripts en Python: Ejecución Programada a Nivel de Sistema Operativo".

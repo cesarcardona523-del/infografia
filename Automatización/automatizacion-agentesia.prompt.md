@@ -74,8 +74,6 @@ Utilizar exclusivamente la paleta proporcionada. Extraer automáticamente: color
 
 No utilizar colores fuera de la paleta excepto blanco, gris y negro. Los verdes serán predominantes. Los tonos tierra funcionarán como colores secundarios.
 
-**Excepción — infografías de evento:** si la infografía se crea para un evento específico (variables `Evento` y/o `Realizado por`, ver sección "Branding de Evento"), la paleta puede ser más arriesgada y no está limitada al verde predominante de esta spec — se puede adoptar la paleta del evento o de la organización que lo realiza, siempre manteniendo blanco/gris/negro como neutros de apoyo y sin sacrificar legibilidad ni jerarquía visual.
-
 ## Tipografía
 
 Usar una tipografía similar a Inter, SF Pro, Segoe UI, Roboto, Helvetica o IBM Plex Sans. Mantener excelente legibilidad.
@@ -98,16 +96,6 @@ Agregar discretamente en la esquina inferior derecha:
 - Texto: `cacm523` (no la URL completa).
 
 Debe parecer una firma elegante.
-
-## Branding de Evento (opcional)
-
-Aplica únicamente si el usuario especifica, al crear la infografía, un **Evento** y/o una organización en **Realizado por**.
-
-- Mostrar de forma visible (no como marca de agua casi invisible) el nombre del evento, ej. `Datafest 2026`.
-- Mostrar `Realizado por: <Organización>` — ej. `Realizado por: Bancolombia`.
-- Buscar el logo oficial de esa organización; si se encuentra uno confiable, usarlo en vez de texto plano. Si no se encuentra, mostrar solo el nombre en texto.
-- Esta información es adicional a la marca de agua ("Cesar Cardona" al 5%) y a la firma profesional (LinkedIn + `cacm523`) — ambas se mantienen sin cambios; el branding de evento no las reemplaza.
-- Ubicación sugerida: encabezado o pie de la infografía, en un bloque discreto pero legible, sin competir visualmente con el título principal.
 
 ## Calidad
 
@@ -133,3 +121,33 @@ No inventar información técnica. No deformar texto. No generar texto ilegible 
 8. Calidad gráfica
 9. Branding discreto
 10. Preparación para LinkedIn
+
+---
+
+## Contexto específico — Automatización_AgentesIA
+
+**Imagen de referencia:** `../referencias/Automatización/automatizacion-agentesia/AI_Agents_vs_Non-Agentic_Systems.jpeg` (infografía ya existente, fondo oscuro, comparación de dos paneles). No se debe replicar tal cual — **complementarla**: mantener la comparación de dos bloques (No agéntico vs Agéntico) y el diagrama circular del orquestador, pero enriquecer con la lógica técnica de control y la capa de gobernanza que la referencia no explicita, y traducir el estilo al sistema de diseño claro/verde de INFOGRAFIA-SPEC.md (la referencia usa fondo oscuro y rojo/verde — aquí no se usa rojo, se usa gris neutro vs. verde para el contraste).
+
+**Tema:** Diferencia arquitectónica entre sistemas de IA no agénticos (automatización tradicional) y sistemas agénticos (autónomos), y qué se necesita para llevar estos últimos a producción.
+
+**Estructura a mantener (dos paneles + diagrama circular):**
+
+1. **Panel "No Agéntico — Automatización"** (header gris neutro, no rojo):
+   - Chatbots basados en LLM — responde preguntas puntuales, sin planificación ni memoria de objetivos.
+   - RPA (Automatización Robótica de Procesos) — flujo determinista: gatillo → regla fija → acción.
+   - RAG (Generación Aumentada por Recuperación) — recupera contexto de una base de conocimiento antes de responder, pero no decide ni ejecuta acciones por sí mismo.
+2. **Panel "Agéntico — Autonomía"** (header verde), diagrama circular/radial:
+   - Centro: Orquestador / LLM.
+   - Satélites conectados en bucle: Memoria (descompone objetivos y define siguientes pasos), Planificación (diseña el plan de ejecución), Herramientas / APIs (ejecuta acciones sobre sistemas reales), Sub-Agentes (especialistas que colaboran en la tarea).
+   - El lazo que conecta los 4 satélites representa los **bucles de retroalimentación**: evalúa resultados y ajusta el plan.
+
+**Cómo complementarla (no solo redibujar igual):**
+
+- Explicitar la diferencia de **flujo de control**: no agéntico = flujo fijo, definido por el desarrollador antes de ejecutarse; agéntico = flujo dinámico, decidido por el propio LLM en cada paso según el resultado anterior. La referencia no lo dice en estos términos.
+- Agregar una capa de **gobernanza de IA** como callout transversal (equivalente al callout de seguridad que usamos en la infografía de AWS): observabilidad de cada paso del agente, límites de herramientas/permisos por rol, y guardrails contra alucinación — requisitos antes de delegar acciones autónomas sobre sistemas de producción. La referencia no menciona riesgos ni gobernanza.
+- Mantener la frase ancla de la referencia ("La automatización sigue órdenes. La autonomía las resuelve.") como tagline, integrada al header en vez de como bloque aparte.
+- No usar rojo para el panel "No agéntico" (fuera de la paleta permitida) — usar gris/neutro para ese contraste, reservando el verde para "Agéntico".
+
+**Paleta:** verde predominante para el panel/diagrama agéntico; gris neutro (no rojo) para el panel no agéntico; ribbon de gobernanza en navy oscuro, igual que el patrón ya usado en la infografía de Arquitectura AWS.
+
+**Título principal sugerido:** "Automatización vs Autonomía: Arquitectura de Sistemas de IA Agénticos".

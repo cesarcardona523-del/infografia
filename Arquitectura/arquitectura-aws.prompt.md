@@ -74,8 +74,6 @@ Utilizar exclusivamente la paleta proporcionada. Extraer automáticamente: color
 
 No utilizar colores fuera de la paleta excepto blanco, gris y negro. Los verdes serán predominantes. Los tonos tierra funcionarán como colores secundarios.
 
-**Excepción — infografías de evento:** si la infografía se crea para un evento específico (variables `Evento` y/o `Realizado por`, ver sección "Branding de Evento"), la paleta puede ser más arriesgada y no está limitada al verde predominante de esta spec — se puede adoptar la paleta del evento o de la organización que lo realiza, siempre manteniendo blanco/gris/negro como neutros de apoyo y sin sacrificar legibilidad ni jerarquía visual.
-
 ## Tipografía
 
 Usar una tipografía similar a Inter, SF Pro, Segoe UI, Roboto, Helvetica o IBM Plex Sans. Mantener excelente legibilidad.
@@ -98,16 +96,6 @@ Agregar discretamente en la esquina inferior derecha:
 - Texto: `cacm523` (no la URL completa).
 
 Debe parecer una firma elegante.
-
-## Branding de Evento (opcional)
-
-Aplica únicamente si el usuario especifica, al crear la infografía, un **Evento** y/o una organización en **Realizado por**.
-
-- Mostrar de forma visible (no como marca de agua casi invisible) el nombre del evento, ej. `Datafest 2026`.
-- Mostrar `Realizado por: <Organización>` — ej. `Realizado por: Bancolombia`.
-- Buscar el logo oficial de esa organización; si se encuentra uno confiable, usarlo en vez de texto plano. Si no se encuentra, mostrar solo el nombre en texto.
-- Esta información es adicional a la marca de agua ("Cesar Cardona" al 5%) y a la firma profesional (LinkedIn + `cacm523`) — ambas se mantienen sin cambios; el branding de evento no las reemplaza.
-- Ubicación sugerida: encabezado o pie de la infografía, en un bloque discreto pero legible, sin competir visualmente con el título principal.
 
 ## Calidad
 
@@ -133,3 +121,31 @@ No inventar información técnica. No deformar texto. No generar texto ilegible 
 8. Calidad gráfica
 9. Branding discreto
 10. Preparación para LinkedIn
+
+---
+
+## Contexto específico — Arquitectura_AWS
+
+**Imagen de referencia:** `../referencias/Arquitectura/arquitectura-aws/Arquitectura_AWS_Big_Data.jpeg` (diagrama ya existente). No se debe replicar tal cual — **complementarla**: mantener el mismo flujo de 5 etapas y el mismo lenguaje visual (cards con encabezado verde, iconos de servicio, flechas de conexión), pero enriquecer el contenido técnico con más profundidad y detalle del que ya trae.
+
+**Tema:** Arquitectura moderna de pipeline de Big Data en AWS, de extremo a extremo — de la ingesta de datos crudos hasta el consumo analítico.
+
+**Estructura de 5 etapas a mantener:**
+
+1. **Ingestion** — Amazon Kinesis Data Streams, AWS IoT Core, AWS Database Migration Service (DMS), datos batch.
+2. **Data Lake (S3)** — Amazon S3 como almacenamiento central escalable (raw & curated data), con archivado en S3 Glacier.
+3. **Processing** — AWS Glue (ETL & Schema Discovery), Amazon EMR (Cluster Computing), Amazon Kinesis Data Analytics; snippets de código Python/Spark representativos; metadata fluyendo hacia AWS Glue Catalog.
+4. **Data Warehouse (Redshift)** — Amazon Redshift (Massively Parallel Processing) y Amazon RDS como base relacional de pre-procesamiento.
+5. **Analytics** — Amazon Athena (consultas interactivas) y Amazon QuickSight (dashboards de BI y visualización).
+
+**Cómo complementarla (no solo redibujar igual):**
+
+- Agregar las flechas/relaciones que en la referencia quedan ambiguas (ej. dejar explícito qué conecta con Athena vs. QuickSight).
+- Añadir un indicador de tipo de flujo por conexión (batch vs. streaming en tiempo real), algo que la referencia no distingue.
+- Profundizar el snippet de código de la etapa de Processing: mostrar un fragmento realista y coherente de un Glue Job (no texto ilegible/decorativo como en la referencia).
+- Añadir un callout de seguridad/gobernanza (IAM, encriptación en S3, Lake Formation) como capa transversal discreta, ya que no aparece en la referencia y es parte estándar de esta arquitectura en AWS.
+- Mantener las 5 etapas como cards de igual jerarquía visual, con buen uso del espacio en blanco entre bloques.
+
+**Paleta:** verdes como predominante (igual que la referencia), con acentos cálidos/tierra para 1–2 servicios que requieran destacarse (ej. Kinesis en Ingestion y Processing).
+
+**Título principal sugerido:** "Arquitectura de Pipelines de Big Data en AWS".

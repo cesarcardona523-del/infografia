@@ -57,7 +57,18 @@ Como último paso, el PNG final y esa misma entrada se publican también en el s
 
 ## 🗺️ Estado
 
-🚧 En construcción — todavía no hay infografías publicadas. Este README se irá actualizando con un enlace por cada infografía nueva.
+- ✅ Automatización vs Autonomía: Arquitectura de Sistemas de IA Agénticos — tema `Automatización` — [HTML](Automatización/automatizacion-agentesia.html) · [PNG](Automatización/automatizacion-agentesia.png)
+- ✅ Automatización de Reportes con Python: de Excel a Producción — tema `Automatización` — [HTML](Automatización/automatizacion-python.html) · [PNG](Automatización/automatizacion-python.png)
+- ✅ Orquestación de Scripts en Python: Ejecución Programada a Nivel de Sistema Operativo — tema `Automatización` — [HTML](Automatización/automatizacion-python-programada.html) · [PNG](Automatización/automatizacion-python-programada.png)
+- ✅ Arquitectura de Pipelines de Big Data en AWS — tema `Arquitectura` — [HTML](Arquitectura/arquitectura-aws.html) · [PNG](Arquitectura/arquitectura-aws.png)
+- ✅ Arquitectura de Datos en Azure: Patrón Medallón de Extremo a Extremo — tema `Arquitectura` — [HTML](Arquitectura/arquitectura-azure.html) · [PNG](Arquitectura/arquitectura-azure.png)
+- ✅ Stack de Datos Serverless en Google Cloud Platform — tema `Arquitectura` — [HTML](Arquitectura/arquitectura-google.html) · [PNG](Arquitectura/arquitectura-google.png)
+- ✅ Arquitectura Lakehouse en Oracle Cloud Infrastructure (OCI) — tema `Arquitectura` — [HTML](Arquitectura/arquitectura-oracle.html) · [PNG](Arquitectura/arquitectura-oracle.png)
+- ✅ Evolución del Análisis de Datos: de Registrar Datos a Delegar Tareas — tema `IA` — Datafest 2026 / Bancolombia — [HTML](IA/analisis-datos-ia.html) · [PNG](IA/analisis-datos-ia.png)
+- ✅ Finalidades de las IA: el Enfoque Detrás de Cada Modelo — tema `IA` — Datafest 2026 / Bancolombia — [HTML](IA/finalidades-de-las-ia.html) · [PNG](IA/finalidades-de-las-ia.png)
+- ✅ La Evolución de los Agentes de IA: de Workflows Rígidos a Arquitecturas Goal-Based — tema `IA` — Datafest 2026 / AWS — [HTML](IA/ia-agentes.html) · [PNG](IA/ia-agentes.png)
+
+Este README se irá actualizando con un enlace por cada infografía nueva.
 
 ---
 
