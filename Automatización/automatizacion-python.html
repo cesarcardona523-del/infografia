@@ -6,39 +6,38 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   :root{
-    --navy:#0B1426;
-    --teal:#00C9A7;
-    --teal-dark:#04846A;
-    --teal-darker:#046656;
-    --teal-pale:#E1F6F0;
-    --terracotta:#C97B4A;
-    --terracotta-pale:#F6E7DA;
+    --navy:#0E2233;
+    --teal:#306998;
+    --teal-dark:#254E73;
+    --teal-darker:#1B3A57;
+    --teal-pale:#E7EEF5;
+    --terracotta:#B08A00;
+    --terracotta-pale:#FFF6D9;
     --gray:#5B6B7A;
-    --line:#DCE9E4;
+    --line:#DCE4EC;
     --white:#FFFFFF;
+    --yellow:#FFD43B;
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
   body{
     min-height:627px; display:flex; align-items:center; justify-content:center;
     padding:32px 16px;
-    background:radial-gradient(circle at 20% 20%, #eafaf5 0%, #dcf1ea 45%, #cfe9e1 100%);
+    background:radial-gradient(circle at 20% 20%, #eef4fa 0%, #dfe9f3 45%, #cfdeed 100%);
     font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   }
   .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
   .canvas{
     position:relative; width:1200px; height:627px; margin:0 auto;
-    background:linear-gradient(160deg, #FFFFFF 0%, #F3FBF8 55%, #EAF7F1 100%);
-    border-radius:22px; box-shadow:0 24px 60px rgba(11,20,38,0.14); overflow:hidden;
+    background:linear-gradient(160deg, #FFFFFF 0%, #F5F8FB 55%, #EDF2F8 100%);
+    border-radius:22px; box-shadow:0 24px 60px rgba(14,34,51,0.14); overflow:hidden;
     padding:26px 40px 18px; color:var(--navy);
   }
-  .watermark{
-    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
-    font-size:70px; font-weight:800; color:var(--navy); opacity:0.05;
-    transform:rotate(-16deg); letter-spacing:6px; pointer-events:none; user-select:none; white-space:nowrap;
-  }
-
-  .header{ margin-bottom:10px; }
+  .header{ margin-bottom:10px; display:flex; align-items:flex-start; gap:12px; }
+  .py-mark{ width:34px; height:34px; flex:none; position:relative; margin-top:2px; }
+  .py-mark i{ position:absolute; width:22px; height:22px; border-radius:7px 7px 7px 2px; }
+  .py-mark i:first-child{ background:var(--teal); top:0; left:0; }
+  .py-mark i:last-child{ background:var(--yellow); bottom:0; right:0; border-radius:7px 2px 7px 7px; }
   .header h1{ font-size:22px; margin:0 0 5px; font-weight:800; letter-spacing:-0.2px; }
   .header p.sub{ margin:0; font-size:12px; color:var(--gray); max-width:820px; }
 
@@ -111,12 +110,12 @@
 
   .ribbon{
     margin-top:10px; display:flex; align-items:center; gap:10px;
-    background:linear-gradient(90deg, #0B1426, #123024); color:#EAF7F1; border-radius:12px; padding:8px 16px; font-size:10px;
+    background:linear-gradient(90deg, #0E2233, #1B3A57); color:#EAF1F8; border-radius:12px; padding:8px 16px; font-size:10px;
   }
   .ribbon .icon{ width:20px; height:20px; flex:none; border-radius:6px; background:rgba(255,255,255,0.12); display:flex; align-items:center; justify-content:center; }
-  .ribbon .icon svg{ width:11px; height:11px; color:var(--teal); }
+  .ribbon .icon svg{ width:11px; height:11px; color:var(--yellow); }
   .ribbon b{ color:#fff; }
-  .ribbon span{ color:#B9CFC7; }
+  .ribbon span{ color:#B9CBDC; }
 
   .footer{ position:absolute; bottom:12px; right:22px; display:flex; align-items:center; gap:6px; }
   .li-badge{ width:18px; height:18px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; font-family: Arial, sans-serif; }
@@ -127,11 +126,13 @@
 
 <div class="canvas-wrap">
   <div class="canvas">
-    <div class="watermark">Cesar Cardona</div>
 
     <div class="header">
-      <h1>Automatización de Reportes con Python: de Excel a Producción</h1>
-      <p class="sub">Un pipeline ETL real que reemplaza hojas de cálculo manuales por un flujo repetible, validado y auditable.</p>
+      <div class="py-mark"><i></i><i></i></div>
+      <div>
+        <h1>Automatización de Reportes con Python: de Excel a Producción</h1>
+        <p class="sub">Un pipeline ETL real que reemplaza hojas de cálculo manuales por un flujo repetible, validado y auditable.</p>
+      </div>
     </div>
 
     <div class="layout">

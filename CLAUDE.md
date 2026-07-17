@@ -36,6 +36,7 @@ El usuario da el tema y el `<topico-slug>`, y adjunta o lista una o varias imág
 4. Entregable final de la infografía, en `/<Tema>/`:
    - Si el usuario trae la imagen ya generada (vía herramienta externa de generación de imágenes), guardarla como `/<Tema>/<topico-slug>.png`.
    - Si no hay imagen externa, construir el HTML de la infografía ("infografía bonita") en `/<Tema>/<topico-slug>.html`, siguiendo el mismo sistema de diseño de INFOGRAFIA-SPEC.md (paleta, tipografía, composición, branding) con HTML/CSS puro, con el contenedor principal en una clase `.canvas` de tamaño fijo 1200×627px.
+   - Antes de exportar, revisar la sección "Riqueza Visual" de INFOGRAFIA-SPEC.md: si hay datos comparables o tabulares, usar un gráfico o tabla real (no solo viñetas); usar iconos con propósito semántico; incluir al menos un elemento gráfico no textual; y un color de acento además del verde principal.
    - Exportar automáticamente ese HTML a `/<Tema>/<topico-slug>.png` (no hace falta pedírselo al usuario ni depender de una herramienta externa):
      1. Renderizar con Chrome headless a 2x escala, viewport `1264×691` (1200×627 + 32px de margen por lado, si el HTML mantiene ese padding de body): `"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless --disable-gpu --hide-scrollbars --force-device-scale-factor=2 --window-size=1264,691 --screenshot=raw.png file:///ruta/al/<topico-slug>.html`
      2. Recortar exactamente el `.canvas` con PIL: offset `(64,64)` (32px de margen × 2 de escala) y tamaño `(2400,1254)` — ajustar el offset si el padding del body del HTML cambia.
@@ -64,7 +65,7 @@ Si se especifican, aplican las reglas de la sección "Branding de Evento" de INF
 3. **Complementar el contenido investigando en internet** sobre el evento/la presentación/la organización, para enriquecer el tema técnico más allá de lo que muestra la imagen de referencia. Si la búsqueda no arroja suficiente información para entender bien de qué trataba, **preguntarle al usuario** en vez de inventar o asumir — el usuario asistió al evento y puede aclarar qué quiso decir el expositor.
 4. **Colores**: buscar los colores de marca oficiales de la organización en "Realizado por" y usarlos como base de la paleta. Si no se encuentra información de marca confiable, decidir una paleta propia y arriesgada (dentro del criterio de la excepción de paleta de INFOGRAFIA-SPEC.md) — no hace falta preguntarle al usuario por esto en particular.
 5. **`fechaPublicacion` siempre es la fecha/hora actual** (hoy), tanto en `publicaciones.json` como en `paginaweb/publications/publicaciones.js` — no sigue la regla de +2 días de la última entrada del catálogo, porque es contenido de coyuntura ligado a un evento puntual, no una publicación programada.
-6. La firma personal (LinkedIn + `cacm523`) y la marca de agua ("Cesar Cardona" al 5%) se mantienen sin cambios — el branding de evento convive con ellas, no las reemplaza.
+6. La firma personal (LinkedIn + `cacm523`) se mantiene sin cambios — el branding de evento convive con ella, no la reemplaza.
 
 ## Reglas del catálogo `publicaciones.json`
 

@@ -68,24 +68,11 @@ Si existen diagramas: mantener jerarquía, flechas, dependencias, conectores y f
 
 Si aparecen gráficas: mantener proporciones, tendencias, leyendas y colores, pero con diseño premium.
 
-## Riqueza Visual (evitar diseños planos)
-
-Ninguna infografía debe depender únicamente de tarjetas de texto con viñetas. Cuando el contenido lo permita:
-
-- **Datos comparables, cifras o relaciones tabulares** → representarlos como gráfico (barras, dona/gauge, funnel, línea) o tabla real, no como lista de viñetas. Si la referencia trae una cifra verificable, usarla en el gráfico; si no hay cifras reales, usar visualizaciones **conceptuales/cualitativas** (ej. un funnel que se angosta para representar refinamiento progresivo) sin inventar números específicos para rellenarlas.
-- **Iconografía con propósito**: cada ícono debe representar semánticamente el concepto exacto (una base de datos, un flujo, una capa de gobernanza), no ser un ícono genérico intercambiable.
-- **Al menos un elemento gráfico no textual** por infografía (diagrama, gráfico, tabla o ilustración de flujo), además de las tarjetas de texto — esto es lo que evita que el diseño se sienta plano.
-- Esto no reemplaza la regla de "no inventar información técnica": todo elemento visual debe derivarse de lo que la referencia o el usuario aportó, nunca de datos fabricados para verse mejor.
-
 ## Paleta de Colores
 
 Utilizar exclusivamente la paleta proporcionada. Extraer automáticamente: color principal, secundarios, acentos, fondos. La imagen debe mantener una identidad cromática uniforme.
 
 No utilizar colores fuera de la paleta excepto blanco, gris y negro. Los verdes serán predominantes. Los tonos tierra funcionarán como colores secundarios.
-
-Cada infografía debe usar al menos un color de acento además del verde principal (ej. un tono tierra para destacar un elemento crítico) para que la composición no se sienta monocromática o plana — la variación de color es también una herramienta de jerarquía visual, no solo de marca.
-
-**Excepción — infografías de evento:** si la infografía se crea para un evento específico (variables `Evento` y/o `Realizado por`, ver sección "Branding de Evento"), la paleta puede ser más arriesgada y no está limitada al verde predominante de esta spec — se puede adoptar la paleta del evento o de la organización que lo realiza, siempre manteniendo blanco/gris/negro como neutros de apoyo y sin sacrificar legibilidad ni jerarquía visual.
 
 ## Tipografía
 
@@ -102,16 +89,6 @@ Agregar discretamente en la esquina inferior derecha:
 - Texto: `cacm523` (no la URL completa).
 
 Debe parecer una firma elegante.
-
-## Branding de Evento (opcional)
-
-Aplica únicamente si el usuario especifica, al crear la infografía, un **Evento** y/o una organización en **Realizado por**.
-
-- Mostrar de forma visible (no como marca de agua casi invisible) el nombre del evento, ej. `Datafest 2026`.
-- Mostrar `Realizado por: <Organización>` — ej. `Realizado por: Bancolombia`.
-- Buscar el logo oficial de esa organización; si se encuentra uno confiable, usarlo en vez de texto plano. Si no se encuentra, mostrar solo el nombre en texto.
-- Esta información es adicional a la firma profesional (LinkedIn + `cacm523`) — se mantiene sin cambios; el branding de evento no la reemplaza.
-- Ubicación sugerida: encabezado o pie de la infografía, en un bloque discreto pero legible, sin competir visualmente con el título principal.
 
 ## Calidad
 
@@ -137,3 +114,31 @@ No inventar información técnica. No deformar texto. No generar texto ilegible 
 8. Calidad gráfica
 9. Branding discreto
 10. Preparación para LinkedIn
+
+---
+
+## Contexto específico — Arquitectura_Datos
+
+**Imagen de referencia:** `../referencias/Arquitectura/arquitectura-datos/Arquitectura_Datos.jpg` (cuadro comparativo ya existente, formato 3×3, fondo claro). No se debe replicar tal cual — **complementarla**: mantener los 9 patrones y su estructura de comparación, pero traducirla al sistema de diseño de este repositorio y agregar una guía de decisión que la referencia no tiene.
+
+**Tema:** Panorama comparativo de los 9 patrones de arquitectura de datos más usados en la industria.
+
+**Los 9 patrones a mantener (grid 3×3):**
+
+1. **Data Warehouse** — Sources → ETL → Warehouse. Repositorio centralizado para datos estructurados, optimizado para análisis histórico.
+2. **Data Lake** — Sources → Ingestion → Lake (Raw/Refined) → Analysis. Almacén flexible para datos crudos y estructurados a gran escala, bajo costo.
+3. **Lambda Architecture** — Sources → Batch Layer + Speed Layer → Serving Layer → Queries. Combina procesamiento por lotes y en tiempo real para vistas completas.
+4. **Kappa Architecture** — Sources → Speed Layer (Stream) → Serving Layer → Queries. Procesa todo como un flujo continuo, simplificando Lambda.
+5. **Data Mesh** — Domain A/B/C Product → Self-Service Platform & Governance. Enfoque descentralizado basado en dominios, tratando los datos como producto.
+6. **Data Lakehouse** — Sources → Lakehouse (Metadata, ACID) → BI & AI. Unifica Data Lake y Data Warehouse, soportando BI y ML con gestión transaccional.
+7. **Data Fabric** — Sources → Fabric (Integración Inteligente, Metadata Activa) → Consumers. Capa de gestión inteligente y automatizada que conecta datos dispersos.
+8. **Event-Driven Architecture** — Producers → Event Broker → Consumer A/B. Arquitectura reactiva donde los servicios se comunican mediante eventos asíncronos.
+9. **Streaming Architecture** — Streaming Sources → Stream Processing → Real-time Storage/Action. Procesamiento continuo de datos en movimiento para perspectivas inmediatas.
+
+**Cómo complementar (no solo redibujar):**
+
+- Agregar un bloque final de "cómo elegir" con un criterio real y verificable (no inventado): estos patrones no son mutuamente excluyentes — un Data Lakehouse moderno con frecuencia incorpora ingesta event-driven, y una arquitectura Kappa puede verse como una simplificación de Lambda cuando el batch layer deja de ser necesario. La elección real depende de la latencia requerida, el nivel de gobernanza deseado (centralizada vs. por dominio) y el presupuesto de almacenamiento/cómputo disponible.
+- Mantener las 9 tarjetas con igual jerarquía visual (grid 3×3), con encabezados uniformes en verde (paleta estándar del repositorio, sin la paleta arriesgada de las infografías de evento — esta es una publicación regular).
+- Usar acentos tierra solo para 1–2 patrones híbridos que convenga destacar (ej. Lambda/Kappa, por combinar batch y streaming).
+
+**Título principal sugerido:** "Arquitecturas de Datos: 9 Patrones que Todo Arquitecto Debe Conocer".

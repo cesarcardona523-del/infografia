@@ -6,15 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   :root{
-    --navy:#0B1426;
-    --teal:#00C9A7;
-    --teal-dark:#04846A;
-    --teal-darker:#046656;
-    --teal-pale:#E1F6F0;
-    --gray:#5B6B7A;
-    --gray-dark:#3E4A54;
-    --gray-pale:#EEF1F3;
-    --line:#DCE9E4;
+    --navy:#1C1B19;
+    --teal:#D97706;
+    --teal-dark:#B45309;
+    --teal-darker:#8A3F0A;
+    --teal-pale:#FBEBD6;
+    --gray:#6B6862;
+    --gray-dark:#3A3733;
+    --gray-pale:#EEECE9;
+    --line:#E4E0DA;
     --white:#FFFFFF;
   }
   *{box-sizing:border-box;}
@@ -25,7 +25,7 @@
     align-items:center;
     justify-content:center;
     padding:32px 16px;
-    background:radial-gradient(circle at 20% 20%, #eafaf5 0%, #dcf1ea 45%, #cfe9e1 100%);
+    background:radial-gradient(circle at 20% 20%, #f2f0ec 0%, #e7e3dc 45%, #dcd6cb 100%);
     font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   }
   .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
@@ -34,25 +34,19 @@
     width:1200px;
     height:627px;
     margin:0 auto;
-    background:linear-gradient(160deg, #FFFFFF 0%, #F3FBF8 55%, #EAF7F1 100%);
+    background:linear-gradient(160deg, #FFFFFF 0%, #F8F6F2 55%, #F1EDE5 100%);
     border-radius:22px;
-    box-shadow:0 24px 60px rgba(11,20,38,0.14);
+    box-shadow:0 24px 60px rgba(28,27,25,0.16);
     overflow:hidden;
     padding:26px 40px 18px;
     color:var(--navy);
   }
-  .watermark{
-    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
-    font-size:70px; font-weight:800; color:var(--navy); opacity:0.05;
-    transform:rotate(-16deg); letter-spacing:6px; pointer-events:none; user-select:none; white-space:nowrap;
-  }
-
   .header{ position:relative; margin-bottom:10px; }
   .header h1{ font-size:23px; margin:0 0 5px; font-weight:800; letter-spacing:-0.2px; }
   .header .tagline{
     display:inline-flex; align-items:center; gap:6px;
     font-size:12px; color:var(--teal-darker); font-weight:700;
-    background:var(--teal-pale); border:1px solid #c7ebe1; border-radius:20px;
+    background:var(--teal-pale); border:1px solid #F0D4AE; border-radius:20px;
     padding:4px 12px; margin-top:2px;
   }
   .header .tagline b{ font-weight:800; }
@@ -100,7 +94,7 @@
 
   .diagram-wrap{ position:relative; flex:1; display:flex; align-items:center; justify-content:center; }
   .diagram{ position:relative; width:640px; height:296px; }
-  .diagram svg{ position:absolute; inset:0; width:100%; height:100%; overflow:visible; }
+  .diagram svg.connectors{ position:absolute; inset:0; width:100%; height:100%; overflow:visible; }
 
   .node{ position:absolute; transform:translate(-50%,-50%); display:flex; flex-direction:column; align-items:center; width:150px; }
   .node .circle{
@@ -127,7 +121,7 @@
 
   .ribbon{
     margin-top:10px; display:flex; align-items:center; gap:10px;
-    background:linear-gradient(90deg, #0B1426, #123024); color:#EAF7F1;
+    background:linear-gradient(90deg, #1C1B19, #3A3733); color:#F2EDE5;
     border-radius:12px; padding:8px 16px; font-size:10px;
   }
   .ribbon .icon{
@@ -136,7 +130,7 @@
   }
   .ribbon .icon svg{ width:11px; height:11px; color:var(--teal); }
   .ribbon b{ color:#fff; }
-  .ribbon span{ color:#B9CFC7; }
+  .ribbon span{ color:#C7C0B4; }
 
   .footer{ position:absolute; bottom:12px; right:22px; display:flex; align-items:center; gap:6px; }
   .li-badge{ width:18px; height:18px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; font-family: Arial, sans-serif; }
@@ -147,7 +141,6 @@
 
 <div class="canvas-wrap">
   <div class="canvas">
-    <div class="watermark">Cesar Cardona</div>
 
     <div class="header">
       <h1>Automatización vs Autonomía: Arquitectura de Sistemas de IA Agénticos</h1>
@@ -191,21 +184,21 @@
 
         <div class="diagram-wrap">
           <div class="diagram">
-            <svg viewBox="0 0 640 296">
-              <line x1="120" y1="62" x2="320" y2="150" stroke="#c7ebe1" stroke-width="2"/>
-              <line x1="520" y1="62" x2="320" y2="150" stroke="#c7ebe1" stroke-width="2"/>
-              <line x1="520" y1="238" x2="320" y2="150" stroke="#c7ebe1" stroke-width="2"/>
-              <line x1="120" y1="238" x2="320" y2="150" stroke="#c7ebe1" stroke-width="2"/>
+            <svg class="connectors" viewBox="0 0 640 296">
+              <line x1="120" y1="62" x2="320" y2="150" stroke="#F0D4AE" stroke-width="2"/>
+              <line x1="520" y1="62" x2="320" y2="150" stroke="#F0D4AE" stroke-width="2"/>
+              <line x1="520" y1="238" x2="320" y2="150" stroke="#F0D4AE" stroke-width="2"/>
+              <line x1="120" y1="238" x2="320" y2="150" stroke="#F0D4AE" stroke-width="2"/>
 
               <defs>
                 <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                  <path d="M0 0 L10 5 L0 10 z" fill="#04846A"/>
+                  <path d="M0 0 L10 5 L0 10 z" fill="#B45309"/>
                 </marker>
               </defs>
-              <path d="M 120 62 Q 320 14 520 62" fill="none" stroke="#04846A" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
-              <path d="M 520 62 Q 572 150 520 238" fill="none" stroke="#04846A" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
-              <path d="M 520 238 Q 320 286 120 238" fill="none" stroke="#04846A" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
-              <path d="M 120 238 Q 68 150 120 62" fill="none" stroke="#04846A" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+              <path d="M 120 62 Q 320 14 520 62" fill="none" stroke="#B45309" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+              <path d="M 520 62 Q 572 150 520 238" fill="none" stroke="#B45309" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+              <path d="M 520 238 Q 320 286 120 238" fill="none" stroke="#B45309" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+              <path d="M 120 238 Q 68 150 120 62" fill="none" stroke="#B45309" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
             </svg>
 
             <div class="node" style="left:120px; top:62px;">

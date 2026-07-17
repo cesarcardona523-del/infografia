@@ -6,76 +6,75 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   :root{
-    --navy:#0B1426;
-    --teal:#00C9A7;
-    --teal-dark:#04846A;
-    --teal-darker:#046656;
-    --teal-pale:#E1F6F0;
-    --terracotta:#C97B4A;
-    --terracotta-pale:#F6E7DA;
-    --muted:#5B6B7A;
-    --line:#DCE9E4;
+    --bg-0:#0F1621;
+    --bg-1:#16202C;
+    --panel:#182430;
+    --panel-line:#2A3947;
+    --orange:#FF9900;
+    --orange-dim:#C97A1A;
+    --ink:#E9EDF1;
+    --muted:#93A3B0;
+    --muted-2:#5E6E7C;
     --white:#FFFFFF;
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
   body{
     min-height:627px; display:flex; align-items:center; justify-content:center;
-    padding:32px 16px;
-    background:radial-gradient(circle at 20% 20%, #eafaf5 0%, #dcf1ea 45%, #cfe9e1 100%);
+    padding:32px 16px; background:#080c11;
     font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   }
   .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
   .canvas{
     position:relative; width:1200px; height:627px; margin:0 auto;
-    background:linear-gradient(160deg, #FFFFFF 0%, #F3FBF8 55%, #EAF7F1 100%);
-    border-radius:22px; box-shadow:0 24px 60px rgba(11,20,38,0.14); overflow:hidden;
-    padding:30px 40px 20px; color:var(--navy);
-  }
-  .watermark{
-    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
-    font-size:70px; font-weight:800; color:var(--navy); opacity:0.05;
-    transform:rotate(-16deg); letter-spacing:6px; pointer-events:none; user-select:none; white-space:nowrap;
+    background:radial-gradient(140% 100% at 100% 0%, #1c2b3a 0%, var(--bg-1) 45%, var(--bg-0) 100%);
+    border-radius:14px; box-shadow:0 24px 60px rgba(0,0,0,0.55); overflow:hidden;
+    padding:26px 38px 18px; color:var(--ink);
   }
 
-  .header{ position:relative; display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px; }
-  .title-block h1{ font-size:25px; margin:0 0 4px; font-weight:800; letter-spacing:-0.2px; }
-  .title-block p{ margin:0; font-size:12.5px; color:var(--muted); max-width:640px; }
-  .legend{ display:flex; gap:16px; align-items:center; font-size:10.5px; color:var(--muted); white-space:nowrap; padding-top:6px; }
-  .legend .item{ display:flex; align-items:center; gap:6px; }
-  .legend .swatch{ width:16px; height:0; border-top:3px solid var(--teal); }
-  .legend .swatch.batch{ border-top:3px dashed #9AA7AF; }
+  .header{ display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px; }
+  .title-block .eyebrow{ font-size:10.5px; font-weight:800; letter-spacing:2px; color:var(--orange); text-transform:uppercase; margin-bottom:5px; }
+  .title-block h1{ font-size:23px; margin:0 0 5px; font-weight:800; letter-spacing:-0.2px; color:#fff; }
+  .title-block p{ margin:0; font-size:12px; color:var(--muted); max-width:620px; }
+
+  .coverage{ text-align:right; }
+  .cov-title{ font-size:9px; color:var(--muted-2); font-weight:700; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:4px; }
+  .cov-table{ border-collapse:collapse; }
+  .cov-table td{ font-size:7.6px; color:var(--muted); padding:2px 5px; text-align:center; }
+  .cov-table tr:first-child td{ font-weight:700; color:var(--ink); }
+  .cov-table td.on::after, .cov-table td.off::after{ content:""; display:inline-block; width:9px; height:9px; border-radius:50%; }
+  .cov-table td.on::after{ background:var(--orange); }
+  .cov-table td.off::after{ background:#2A3947; }
 
   .stages{
-    position:relative; display:grid; grid-template-columns: 1fr 22px 1fr 22px 1fr 22px 1fr 22px 1fr;
-    align-items:stretch; margin-top:8px; height:432px;
+    position:relative; display:grid; grid-template-columns: 1fr 20px 1fr 20px 1fr 20px 1fr 20px 1fr;
+    align-items:stretch; margin-top:6px; height:426px;
   }
-  .connector{ display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; }
-  .connector .chevron{ color:var(--teal-dark); font-size:15px; font-weight:700; line-height:1; }
-  .connector .batch-line{ width:14px; border-top:2px dashed #9AA7AF; }
+  .connector{ display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; }
+  .connector .chevron{ color:var(--orange-dim); font-size:14px; font-weight:700; line-height:1; }
 
   .card{
-    background:var(--white); border:1px solid var(--line); border-radius:14px; padding:10px 11px 12px;
-    display:flex; flex-direction:column; box-shadow:0 6px 18px rgba(11,20,38,0.05); min-width:0;
+    background:var(--panel); border:1px solid var(--panel-line); border-top:2px solid var(--orange);
+    border-radius:6px; padding:11px 11px 12px; display:flex; flex-direction:column; min-width:0;
   }
   .card-header{
-    background:linear-gradient(135deg, var(--teal), var(--teal-darker)); color:#fff; font-weight:700; font-size:10.5px;
-    text-transform:uppercase; letter-spacing:0.5px; padding:6px 8px; border-radius:8px; margin-bottom:9px; text-align:center;
+    font-weight:800; font-size:10px; text-transform:uppercase; letter-spacing:0.6px; color:var(--orange);
+    margin-bottom:9px; padding-bottom:7px; border-bottom:1px solid var(--panel-line);
   }
   .service{ display:flex; gap:7px; align-items:flex-start; margin-bottom:8px; }
   .service .icon{
-    width:23px; height:23px; border-radius:6px; flex:none; display:flex; align-items:center; justify-content:center;
-    background:var(--teal-pale); color:var(--teal-darker);
+    width:22px; height:22px; border-radius:5px; flex:none; display:flex; align-items:center; justify-content:center;
+    background:rgba(255,153,0,0.1); color:var(--orange);
   }
-  .service.warm .icon{ background:var(--terracotta-pale); color:var(--terracotta); }
-  .service .icon svg{ width:13px; height:13px; }
-  .service .label b{ display:block; font-size:10px; line-height:1.25; font-weight:700; }
-  .service .label span{ display:block; font-size:8.7px; color:var(--muted); line-height:1.25; }
+  .service.dim .icon{ background:rgba(255,255,255,0.06); color:var(--muted); }
+  .service .icon svg{ width:12px; height:12px; }
+  .service .label b{ display:block; font-size:10px; line-height:1.25; font-weight:700; color:var(--ink); }
+  .service .label span{ display:block; font-size:8.6px; color:var(--muted); line-height:1.25; }
 
-  .divider{ height:1px; background:var(--line); margin:2px 0 8px; }
+  .divider{ height:1px; background:var(--panel-line); margin:2px 0 8px; }
 
   .code-window{
-    background:#0d1117; border-radius:9px; padding:7px 9px 8px; margin-top:2px;
+    background:#0a0f14; border:1px solid var(--panel-line); border-radius:6px; padding:7px 9px 8px; margin-top:2px;
     font-family:"SF Mono","Menlo","Consolas",monospace; font-size:7.6px; line-height:1.6; color:#c9d1d9; white-space:pre-wrap;
   }
   .code-window .dots{ display:flex; gap:3px; margin-bottom:5px; }
@@ -83,31 +82,31 @@
   .code-window .dots span:nth-child(1){ background:#ff5f56; }
   .code-window .dots span:nth-child(2){ background:#ffbd2e; }
   .code-window .dots span:nth-child(3){ background:#27c93f; }
-  .kw{ color:#ff7b72; } .str{ color:#a5d6ff; } .fn{ color:#d2a8ff; } .cm{ color:#8b949e; } .pl{ color:#c9d1d9; }
+  .kw{ color:#ff9d6c; } .str{ color:#8ec9ff; } .fn{ color:#d2a8ff; } .cm{ color:#6e7c88; } .pl{ color:#c9d1d9; }
 
   .catalog-chip{
-    margin-top:8px; display:flex; align-items:flex-start; gap:7px; background:var(--teal-pale);
-    border:1px solid #c7ebe1; border-radius:9px; padding:7px 8px;
+    margin-top:8px; display:flex; align-items:flex-start; gap:7px; background:rgba(255,153,0,0.08);
+    border:1px solid rgba(255,153,0,0.25); border-radius:6px; padding:7px 8px;
   }
   .catalog-chip .icon{
-    width:20px; height:20px; border-radius:6px; flex:none; display:flex; align-items:center; justify-content:center;
-    background:var(--teal-darker); color:#fff;
+    width:20px; height:20px; border-radius:5px; flex:none; display:flex; align-items:center; justify-content:center;
+    background:var(--orange); color:#1a1200;
   }
   .catalog-chip .icon svg{ width:11px; height:11px; }
-  .catalog-chip b{ display:block; font-size:9.3px; }
+  .catalog-chip b{ display:block; font-size:9.3px; color:var(--ink); }
   .catalog-chip span{ display:block; font-size:8.2px; color:var(--muted); line-height:1.25; }
 
-  .note{ margin-top:auto; padding-top:7px; font-size:8.3px; color:var(--muted); line-height:1.3; border-top:1px dashed var(--line); }
-  .note b{ color:var(--navy); }
+  .note{ margin-top:auto; padding-top:7px; font-size:8.3px; color:var(--muted); line-height:1.3; border-top:1px dashed var(--panel-line); }
+  .note b{ color:var(--ink); }
 
   .ribbon{
     margin-top:12px; display:flex; align-items:center; gap:10px;
-    background:linear-gradient(90deg, #0B1426, #123024); color:#EAF7F1; border-radius:12px; padding:9px 16px; font-size:10.5px;
+    background:rgba(255,153,0,0.07); border:1px solid rgba(255,153,0,0.25); border-radius:8px; padding:9px 16px; font-size:10.3px;
   }
-  .ribbon .icon{ width:22px; height:22px; flex:none; border-radius:6px; background:rgba(255,255,255,0.12); display:flex; align-items:center; justify-content:center; }
-  .ribbon .icon svg{ width:12px; height:12px; color:var(--teal); }
+  .ribbon .icon{ width:22px; height:22px; flex:none; border-radius:5px; background:rgba(255,153,0,0.15); display:flex; align-items:center; justify-content:center; }
+  .ribbon .icon svg{ width:12px; height:12px; color:var(--orange); }
   .ribbon b{ color:#fff; }
-  .ribbon span{ color:#B9CFC7; }
+  .ribbon span{ color:var(--muted); }
 
   .footer{ position:absolute; bottom:14px; right:22px; display:flex; align-items:center; gap:6px; }
   .li-badge{ width:18px; height:18px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; font-family: Arial, sans-serif; }
@@ -118,16 +117,20 @@
 
 <div class="canvas-wrap">
   <div class="canvas">
-    <div class="watermark">Cesar Cardona</div>
 
     <div class="header">
       <div class="title-block">
+        <div class="eyebrow">AWS · Big Data</div>
         <h1>Arquitectura de Pipelines de Big Data en AWS</h1>
         <p>De la ingesta de datos crudos al consumo analítico — servicios gestionados de extremo a extremo, listos para escalar volumen y variedad de fuentes.</p>
       </div>
-      <div class="legend">
-        <div class="item"><span class="swatch"></span> Tiempo real</div>
-        <div class="item"><span class="swatch batch"></span> Batch</div>
+      <div class="coverage">
+        <div class="cov-title">Cobertura por etapa</div>
+        <table class="cov-table">
+          <tr><td></td><td>Ingest.</td><td>Lake</td><td>Proc.</td><td>DW</td><td>Analytics</td></tr>
+          <tr><td>Real-time</td><td class="on"></td><td class="on"></td><td class="on"></td><td class="off"></td><td class="on"></td></tr>
+          <tr><td>Batch</td><td class="on"></td><td class="on"></td><td class="on"></td><td class="on"></td><td class="on"></td></tr>
+        </table>
       </div>
     </div>
 
@@ -135,26 +138,26 @@
 
       <div class="card">
         <div class="card-header">1 · Ingestion</div>
-        <div class="service warm">
+        <div class="service">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12c2-4 4-4 6 0s4 4 6 0 4-4 6 0"/></svg></div>
           <div class="label"><b>Kinesis Data Streams</b><span>Ingesta de eventos en tiempo real</span></div>
         </div>
-        <div class="service">
+        <div class="service dim">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 18a4 4 0 1 1 .7-7.94A5 5 0 0 1 16 9a4.5 4.5 0 0 1 1 8.9"/><path d="M12 21v-4M9 19l3-2 3 2"/></svg></div>
           <div class="label"><b>AWS IoT Core</b><span>Telemetría de dispositivos conectados</span></div>
         </div>
-        <div class="service">
+        <div class="service dim">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/><path d="M8 7l-2 2 2 2M16 12l2 2-2 2"/></svg></div>
           <div class="label"><b>AWS DMS</b><span>Replicación desde bases transaccionales</span></div>
         </div>
-        <div class="service">
+        <div class="service dim">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M4 10h16M9 5v14"/></svg></div>
           <div class="label"><b>Cargas Batch</b><span>Archivos periódicos desde sistemas externos</span></div>
         </div>
         <div class="note">Streaming y batch conviven desde el origen: <b>misma plataforma, dos velocidades</b>.</div>
       </div>
 
-      <div class="connector"><div class="chevron">›</div><div class="batch-line"></div></div>
+      <div class="connector"><div class="chevron">›</div></div>
 
       <div class="card">
         <div class="card-header">2 · Data Lake (S3)</div>
@@ -162,19 +165,19 @@
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 4h12l2 16H4L6 4Z"/><path d="M9 4v4M15 4v4"/></svg></div>
           <div class="label"><b>Amazon S3 — Raw Zone</b><span>Datos crudos, formato original</span></div>
         </div>
-        <div class="service">
+        <div class="service dim">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 4h12l2 16H4L6 4Z"/><path d="M8 12h8M8 16h5"/></svg></div>
           <div class="label"><b>Amazon S3 — Curated Zone</b><span>Datos limpios, listos para consumo</span></div>
         </div>
         <div class="divider"></div>
-        <div class="service">
+        <div class="service dim">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v12m0 0-4-4m4 4 4-4"/><path d="M5 21h14"/></svg></div>
           <div class="label"><b>S3 Glacier</b><span>Archivado de bajo costo, retención larga</span></div>
         </div>
-        <div class="note">Almacenamiento central <b>escalable y desacoplado</b> del cómputo — un solo lugar de verdad para todas las fuentes.</div>
+        <div class="note">Almacenamiento central <b>escalable y desacoplado</b> del cómputo.</div>
       </div>
 
-      <div class="connector"><div class="chevron">›</div><div class="batch-line"></div></div>
+      <div class="connector"><div class="chevron">›</div></div>
 
       <div class="card">
         <div class="card-header">3 · Processing</div>
@@ -182,11 +185,11 @@
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16l-6 8v6l-4 2v-8L4 4Z"/></svg></div>
           <div class="label"><b>AWS Glue</b><span>ETL y descubrimiento de esquema</span></div>
         </div>
-        <div class="service">
+        <div class="service dim">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/><circle cx="12" cy="12" r="2"/><path d="M8 7l3 3M16 7l-3 3M8 17l3-3M16 17l-3-3"/></svg></div>
           <div class="label"><b>Amazon EMR</b><span>Cómputo distribuido para cargas intensivas</span></div>
         </div>
-        <div class="service warm">
+        <div class="service">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12c2-4 4-4 6 0s4 4 6 0 4-4 6 0"/></svg></div>
           <div class="label"><b>Kinesis Data Analytics</b><span>Procesamiento de eventos en tránsito</span></div>
         </div>
@@ -202,11 +205,11 @@
         </div>
         <div class="catalog-chip">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6a2 2 0 0 1 2-2h11v16H6a2 2 0 0 1-2-2V6Z"/><path d="M17 4v16"/></svg></div>
-          <div><b>AWS Glue Data Catalog</b><span>Metadata centralizada — esquema fuente para Athena y Redshift Spectrum</span></div>
+          <div><b>AWS Glue Data Catalog</b><span>Metadata centralizada — fuente para Athena y Redshift Spectrum</span></div>
         </div>
       </div>
 
-      <div class="connector"><div class="chevron">›</div><div class="batch-line"></div></div>
+      <div class="connector"><div class="chevron">›</div></div>
 
       <div class="card">
         <div class="card-header">4 · Data Warehouse</div>
@@ -214,14 +217,14 @@
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6"/><path d="M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/></svg></div>
           <div class="label"><b>Amazon Redshift</b><span>Procesamiento masivamente paralelo (MPP)</span></div>
         </div>
-        <div class="service">
+        <div class="service dim">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6"/></svg></div>
           <div class="label"><b>Amazon RDS</b><span>Base relacional para pre-procesamiento</span></div>
         </div>
-        <div class="note">Modelos <b>estrella / copo de nieve</b> optimizados para consultas analíticas concurrentes.</div>
+        <div class="note">Modelos <b>estrella / copo de nieve</b> optimizados para consultas concurrentes.</div>
       </div>
 
-      <div class="connector"><div class="chevron">›</div><div class="batch-line"></div></div>
+      <div class="connector"><div class="chevron">›</div></div>
 
       <div class="card">
         <div class="card-header">5 · Analytics</div>
@@ -229,11 +232,11 @@
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="6"/><path d="m20 20-4.3-4.3"/></svg></div>
           <div class="label"><b>Amazon Athena</b><span>SQL ad-hoc directo sobre S3 y Glue Catalog</span></div>
         </div>
-        <div class="service">
+        <div class="service dim">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20V10M11 20V4M18 20v-7"/></svg></div>
           <div class="label"><b>Amazon QuickSight</b><span>Dashboards de BI, alimentado por Redshift/Athena</span></div>
         </div>
-        <div class="note">Athena consulta el <b>lake directamente</b> (batch/ad-hoc); QuickSight sirve <b>insights recurrentes</b> vía Redshift.</div>
+        <div class="note">Athena consulta el <b>lake directamente</b>; QuickSight sirve <b>insights recurrentes</b>.</div>
       </div>
 
     </div><!-- /.stages -->

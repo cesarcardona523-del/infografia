@@ -198,5 +198,45 @@
       "likes": 0,
       "shares": 0
     }
+  },
+  {
+    "id": "arquitectura-datos",
+    "imagen": "Arquitectura/arquitectura-datos.png",
+    "fechaPublicacion": "2026-07-18T09:10:00",
+    "es": {
+      "tema": "Arquitectura",
+      "topico": "Arquitecturas de Datos: 9 Patrones que Todo Arquitecto Debe Conocer",
+      "descripcion": "El panorama de arquitecturas de datos disponibles hoy responde a necesidades muy distintas de latencia, gobernanza y costo, y conocer sus diferencias evita adoptar un patrón por moda en lugar de por adecuación al problema. El Data Warehouse centraliza datos ya estructurados y optimizados para análisis histórico, mientras el Data Lake prioriza flexibilidad y bajo costo para datos crudos a gran escala. La arquitectura Lambda combina una capa batch y una de streaming para ofrecer vistas completas y de baja latencia a la vez, y Kappa simplifica ese mismo problema procesando todo como un flujo continuo cuando la capa batch deja de ser indispensable. Data Mesh invierte la lógica centralizada tradicional, tratando los datos como producto y delegando su gestión a equipos de dominio sobre una plataforma de autoservicio común. El Data Lakehouse unifica las ventajas del lake y el warehouse añadiendo metadata y garantías transaccionales (ACID) sobre el propio almacenamiento de objetos. Data Fabric aporta una capa de integración inteligente que conecta fuentes dispersas sin centralizar físicamente los datos. Las arquitecturas Event-Driven y de Streaming, finalmente, priorizan la reacción inmediata ante eventos y el procesamiento continuo de datos en movimiento. Estos patrones no son mutuamente excluyentes: un Lakehouse moderno frecuentemente incorpora ingesta event-driven, y la elección real entre ellos depende de la latencia requerida, el nivel de gobernanza deseado y el presupuesto de cómputo y almacenamiento disponible."
+    },
+    "en": {
+      "tema": "Architecture",
+      "topico": "Data Architectures: 9 Patterns Every Architect Should Know",
+      "descripcion": "Today's landscape of data architecture patterns responds to very different needs around latency, governance, and cost, and understanding these differences prevents adopting a pattern out of trend rather than fit for the problem. The Data Warehouse centralizes already-structured data optimized for historical analysis, while the Data Lake prioritizes flexibility and low cost for raw data at scale. Lambda architecture combines a batch layer and a streaming layer to deliver complete, low-latency views at once, and Kappa simplifies that same problem by processing everything as a continuous stream once the batch layer is no longer necessary. Data Mesh inverts the traditional centralized logic, treating data as a product and delegating its management to domain teams over a shared self-service platform. The Data Lakehouse unifies the advantages of the lake and the warehouse by adding metadata and transactional (ACID) guarantees on top of object storage itself. Data Fabric provides an intelligent integration layer that connects scattered sources without physically centralizing the data. Event-Driven and Streaming architectures, finally, prioritize immediate reaction to events and continuous processing of data in motion. These patterns are not mutually exclusive: a modern Lakehouse frequently incorporates event-driven ingestion, and the real choice among them depends on the required latency, the desired level of governance, and the available compute and storage budget."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "arquitectura-medallon",
+    "imagen": "Arquitectura/arquitectura-medallon.png",
+    "fechaPublicacion": "2026-07-20T09:10:00",
+    "es": {
+      "tema": "Arquitectura",
+      "topico": "Arquitectura Medallion: Bronze, Silver y Gold sin Atajos",
+      "descripcion": "La arquitectura Medallion organiza el procesamiento de datos en capas de refinamiento progresivo, y buena parte de los problemas que surgen al implementarla provienen de saltarse o difuminar los límites entre esas capas. La capa Bronze captura los datos exactamente como llegan de la fuente, sin transformarlos, funcionando como un histórico completo de solo escritura (por ejemplo sobre almacenamiento de objetos como AWS S3); su esquema puede cambiar sin romper nada porque no se le exige estructura todavía. Antes de avanzar a Silver, existe un paso que con frecuencia queda implícito y termina ejecutándose de forma desordenada: la depuración explícita de duplicados, nulos, formatos, catálogos, claves y trazabilidad, además de la aplicación de reglas de negocio — es en este punto donde se corrige el dato, no en el reporte final. Solo entonces los datos llegan a Silver como información limpia, íntegra y gobernada, lista para modelar (por ejemplo en un motor como Snowflake). La capa Gold agrega esos datos en métricas de negocio y esquemas de estrella optimizados para consulta, quedando lista para su consumo en herramientas de BI como Power BI. Cada capa tiene un dueño natural: Data Engineers en Bronze, Analytics Engineers y Data Scientists en Silver, y analistas de negocio en Gold. Los errores más comunes al implementar este patrón son transformar datos directamente en Bronze, saltarse la capa Silver por completo, usar Gold para exploración de datos crudos, u omitir las validaciones de calidad — todos ellos erosionan la confiabilidad que esta arquitectura está diseñada para garantizar."
+    },
+    "en": {
+      "tema": "Architecture",
+      "topico": "Medallion Architecture: Bronze, Silver, and Gold Without Shortcuts",
+      "descripcion": "The Medallion architecture organizes data processing into progressive refinement layers, and most of the problems that arise when implementing it come from skipping or blurring the boundaries between those layers. The Bronze layer captures data exactly as it arrives from the source, without transforming it, acting as a complete, append-only history (for example, on object storage such as AWS S3); its schema can change without breaking anything because no structure is enforced yet. Before moving on to Silver, there is a step that is frequently left implicit and ends up executed inconsistently: the explicit cleansing of duplicates, nulls, formats, catalogs, keys, and lineage, along with the application of business rules — this is where the data gets corrected, not in the final report. Only then does data reach Silver as clean, integrated, governed information ready to be modeled (for example, in an engine like Snowflake). The Gold layer aggregates that data into business metrics and star schemas optimized for querying, ready for consumption in BI tools such as Power BI. Each layer has a natural owner: Data Engineers in Bronze, Analytics Engineers and Data Scientists in Silver, and business analysts in Gold. The most common mistakes when implementing this pattern are transforming data directly in Bronze, skipping the Silver layer entirely, using Gold for raw data exploration, or omitting quality checks — all of which erode the reliability this architecture is designed to guarantee."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
   }
 ]

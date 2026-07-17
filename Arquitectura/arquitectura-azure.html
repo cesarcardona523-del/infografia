@@ -6,217 +6,170 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   :root{
-    --navy:#0B1426;
-    --teal:#00C9A7;
-    --teal-dark:#04846A;
-    --teal-darker:#046656;
-    --teal-pale:#E1F6F0;
-    --bronze:#B5713F;
-    --bronze-pale:#F3E3D3;
-    --silver:#6B7680;
-    --silver-pale:#EBEDEF;
-    --gold:#B8923F;
-    --gold-pale:#F3E9D2;
-    --muted:#5B6B7A;
-    --line:#DCE9E4;
+    --blue:#0078D4;
+    --blue-dark:#004C87;
+    --blue-pale:#EAF3FB;
+    --ink:#1B1B1F;
+    --muted:#5B6570;
+    --line:#DDE6EE;
+    --bronze:#B5713F; --bronze-pale:#F3E3D3;
+    --silver:#6B7680; --silver-pale:#EBEDEF;
+    --gold:#B8923F; --gold-pale:#F3E9D2;
     --white:#FFFFFF;
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
   body{
     min-height:627px; display:flex; align-items:center; justify-content:center;
-    padding:32px 16px;
-    background:radial-gradient(circle at 20% 20%, #eafaf5 0%, #dcf1ea 45%, #cfe9e1 100%);
-    font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    padding:32px 16px; background:#eef3f8;
+    font-family: "Segoe UI", Inter, -apple-system, Roboto, Helvetica, Arial, sans-serif;
   }
   .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
   .canvas{
     position:relative; width:1200px; height:627px; margin:0 auto;
-    background:linear-gradient(160deg, #FFFFFF 0%, #F3FBF8 55%, #EAF7F1 100%);
-    border-radius:22px; box-shadow:0 24px 60px rgba(11,20,38,0.14); overflow:hidden;
-    padding:26px 36px 18px; color:var(--navy);
-  }
-  .watermark{
-    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
-    font-size:66px; font-weight:800; color:var(--navy); opacity:0.05;
-    transform:rotate(-16deg); letter-spacing:6px; pointer-events:none; user-select:none; white-space:nowrap;
+    background:linear-gradient(180deg, #FFFFFF 0%, #F7FAFD 100%);
+    border-radius:10px; box-shadow:0 20px 50px rgba(0,60,110,0.14); overflow:hidden;
+    padding:26px 36px 16px; color:var(--ink);
+    border-top:5px solid var(--blue);
   }
 
   .header{ margin-bottom:10px; }
-  .header h1{ font-size:21px; margin:0 0 4px; font-weight:800; letter-spacing:-0.2px; }
-  .header p{ margin:0; font-size:12px; color:var(--muted); max-width:820px; }
+  .header .eyebrow{ font-size:10.5px; font-weight:700; letter-spacing:1.6px; color:var(--blue); text-transform:uppercase; margin-bottom:4px; }
+  .header h1{ font-size:21px; margin:0 0 4px; font-weight:700; letter-spacing:-0.2px; }
+  .header p{ margin:0; font-size:11.5px; color:var(--muted); max-width:820px; }
 
-  .stages{
-    position:relative; display:grid; grid-template-columns: 0.72fr 20px 0.85fr 20px 1.5fr 20px 0.85fr 20px 0.8fr;
-    align-items:stretch; margin-top:8px; height:414px;
-  }
-  .connector{ display:flex; align-items:center; justify-content:center; }
-  .connector .chevron{ color:var(--teal-dark); font-size:14px; font-weight:700; }
+  .layout{ display:grid; grid-template-columns: 190px 1fr 230px; gap:14px; margin-top:8px; height:428px; }
 
-  .card{
-    background:var(--white); border:1px solid var(--line); border-radius:14px; padding:9px 10px 10px;
-    display:flex; flex-direction:column; box-shadow:0 6px 18px rgba(11,20,38,0.05); min-width:0;
-  }
-  .card-header{
-    background:linear-gradient(135deg, var(--teal), var(--teal-darker)); color:#fff; font-weight:700; font-size:9.6px;
-    text-transform:uppercase; letter-spacing:0.4px; padding:6px 7px; border-radius:8px; margin-bottom:8px; text-align:center;
-  }
-  .service{ display:flex; gap:6px; align-items:flex-start; margin-bottom:8px; }
-  .service .icon{
-    width:21px; height:21px; border-radius:6px; flex:none; display:flex; align-items:center; justify-content:center;
-    background:var(--teal-pale); color:var(--teal-darker);
-  }
-  .service .icon svg{ width:12px; height:12px; }
-  .service .label b{ display:block; font-size:9.6px; line-height:1.25; font-weight:700; }
-  .service .label span{ display:block; font-size:8.3px; color:var(--muted); line-height:1.25; }
+  .col{ display:flex; flex-direction:column; gap:10px; }
 
-  .note{ margin-top:auto; padding-top:6px; font-size:7.9px; color:var(--muted); line-height:1.3; border-top:1px dashed var(--line); }
-  .note b{ color:var(--navy); }
+  .mini{
+    background:var(--white); border:1px solid var(--line); border-radius:8px; padding:9px 10px;
+  }
+  .mini h4{ margin:0 0 6px; font-size:9.5px; text-transform:uppercase; letter-spacing:0.4px; color:var(--blue-dark); font-weight:700; }
+  .mini .service{ display:flex; gap:6px; align-items:flex-start; margin-bottom:7px; }
+  .mini .icon{ width:19px; height:19px; border-radius:5px; flex:none; display:flex; align-items:center; justify-content:center; background:var(--blue-pale); color:var(--blue); }
+  .mini .icon svg{ width:11px; height:11px; }
+  .mini b{ display:block; font-size:9.3px; font-weight:700; }
+  .mini span{ display:block; font-size:8px; color:var(--muted); line-height:1.25; }
 
-  /* Medallion layers */
-  .layers{ display:flex; flex-direction:column; gap:5px; flex:1; }
-  .layer{ border-radius:9px; padding:6px 8px; flex:1; display:flex; flex-direction:column; }
-  .layer.bronze{ background:var(--bronze-pale); border:1px solid #e3c7a8; }
-  .layer.silver{ background:var(--silver-pale); border:1px solid #d3d8dc; }
-  .layer.gold{ background:var(--gold-pale); border:1px solid #e6d5a3; }
-  .layer .lhead{ display:flex; align-items:center; gap:6px; margin-bottom:3px; }
+  .tower{ display:flex; flex-direction:column; gap:6px; flex:1; justify-content:center; }
+  .layer{
+    border-radius:8px; padding:9px 12px; position:relative;
+    box-shadow:0 3px 0 rgba(0,0,0,0.06);
+  }
+  .layer.bronze{ background:var(--bronze-pale); border:1px solid #e3c7a8; margin-right:0; }
+  .layer.silver{ background:var(--silver-pale); border:1px solid #d3d8dc; margin-left:14px; margin-right:14px; }
+  .layer.gold{ background:var(--gold-pale); border:1px solid #e6d5a3; margin-left:28px; }
+  .layer .lhead{ display:flex; align-items:center; gap:6px; margin-bottom:2px; }
   .layer .dot{ width:9px; height:9px; border-radius:50%; flex:none; }
-  .layer.bronze .dot{ background:var(--bronze); }
-  .layer.silver .dot{ background:var(--silver); }
-  .layer.gold .dot{ background:var(--gold); }
-  .layer b{ font-size:9.6px; font-weight:800; }
-  .layer p{ margin:0; font-size:7.9px; color:var(--muted); line-height:1.25; }
+  .layer.bronze .dot{ background:var(--bronze); } .layer.silver .dot{ background:var(--silver); } .layer.gold .dot{ background:var(--gold); }
+  .layer b{ font-size:11px; font-weight:700; }
+  .layer p{ margin:2px 0 0; font-size:8.6px; color:var(--muted); line-height:1.3; }
   .layer .mini-code{
-    margin-top:4px; background:#0d1117; border-radius:6px; padding:5px 6px; font-family:"SF Mono","Menlo",monospace;
-    font-size:6.6px; line-height:1.4; color:#c9d1d9; white-space:pre-wrap;
+    margin-top:5px; background:#0d1117; border-radius:6px; padding:5px 7px; font-family:"SF Mono","Menlo",monospace;
+    font-size:6.8px; line-height:1.4; color:#c9d1d9; white-space:pre-wrap;
   }
-  .xform{ display:flex; align-items:center; gap:5px; font-size:7.3px; color:var(--teal-darker); font-weight:700; padding:1px 2px; }
+  .xform{ display:flex; align-items:center; gap:5px; font-size:7.6px; color:var(--blue-dark); font-weight:700; padding-left:14px; }
   .xform svg{ width:9px; height:9px; }
+
+  .capa-table{ width:100%; border-collapse:collapse; margin-top:5px; }
+  .capa-table td{ font-size:8px; color:var(--ink); padding:2.5px 0; border-bottom:1px dashed var(--line); }
+  .capa-table td.ck{ text-align:right; color:var(--blue); font-weight:800; width:16px; }
+
+  .chart{ margin-top:6px; }
+  .chart b{ display:block; font-size:8px; margin-bottom:3px; color:var(--muted); font-weight:700; }
+  .bars{ display:flex; align-items:flex-end; gap:2px; height:30px; }
+  .bars i{ flex:1; background:linear-gradient(180deg, var(--blue), var(--blue-dark)); border-radius:2px 2px 0 0; display:block; }
 
   .ribbon{
     margin-top:10px; display:flex; align-items:center; gap:10px;
-    background:linear-gradient(90deg, #0B1426, #123024); color:#EAF7F1; border-radius:12px; padding:8px 16px; font-size:9.8px;
+    background:linear-gradient(90deg, var(--blue-dark), var(--blue)); color:#EAF3FB; border-radius:8px; padding:8px 16px; font-size:9.8px;
   }
-  .ribbon .icon{ width:20px; height:20px; flex:none; border-radius:6px; background:rgba(255,255,255,0.12); display:flex; align-items:center; justify-content:center; }
-  .ribbon .icon svg{ width:11px; height:11px; color:var(--teal); }
+  .ribbon .icon{ width:20px; height:20px; flex:none; border-radius:5px; background:rgba(255,255,255,0.16); display:flex; align-items:center; justify-content:center; }
+  .ribbon .icon svg{ width:11px; height:11px; color:#fff; }
   .ribbon b{ color:#fff; }
-  .ribbon span{ color:#B9CFC7; }
+  .ribbon span{ color:#DCEBFA; }
 
   .footer{ position:absolute; bottom:12px; right:20px; display:flex; align-items:center; gap:6px; }
   .li-badge{ width:18px; height:18px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; font-family: Arial, sans-serif; }
   .footer span{ font-size:11px; font-weight:600; color:var(--muted); }
-
-  .chart{ margin-top:6px; }
-  .chart b{ display:block; font-size:8.6px; margin-bottom:3px; }
-  .bars{ display:flex; align-items:flex-end; gap:2px; height:36px; }
-  .bars i{ flex:1; background:linear-gradient(180deg, var(--teal), var(--teal-darker)); border-radius:2px 2px 0 0; display:block; }
 </style>
 </head>
 <body>
 
 <div class="canvas-wrap">
   <div class="canvas">
-    <div class="watermark">Cesar Cardona</div>
 
     <div class="header">
+      <div class="eyebrow">Microsoft Azure · Data Platform</div>
       <h1>Arquitectura de Datos en Azure: Patrón Medallón de Extremo a Extremo</h1>
-      <p>De múltiples orígenes crudos a insights de negocio — tres capas de refinamiento progresivo (Bronze → Silver → Gold) con gobernanza integrada.</p>
+      <p>De múltiples orígenes crudos a insights de negocio — tres capas de refinamiento progresivo con gobernanza integrada.</p>
     </div>
 
-    <div class="stages">
+    <div class="layout">
 
-      <div class="card">
-        <div class="card-header">1 · Data Sources</div>
-        <div class="service">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg></div>
-          <div class="label"><b>APIs</b><span>Integraciones de terceros</span></div>
+      <div class="col">
+        <div class="mini">
+          <h4>Data Sources</h4>
+          <div class="service"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></div><div><b>APIs</b><span>Integraciones de terceros</span></div></div>
+          <div class="service"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 12a8 8 0 0 1 8-8M4 12a8 8 0 0 0 8 8M4 12h16"/></svg></div><div><b>Webhooks</b><span>Eventos push externos</span></div></div>
+          <div class="service"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="7" y="7" width="10" height="10" rx="1"/><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/></svg></div><div><b>IoT</b><span>Telemetría de dispositivos</span></div></div>
         </div>
-        <div class="service">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 12a8 8 0 0 1 8-8M4 12a8 8 0 0 0 8 8M4 12h16"/></svg></div>
-          <div class="label"><b>Webhooks</b><span>Eventos push de sistemas externos</span></div>
+        <div class="mini">
+          <h4>Ingestion &amp; Staging</h4>
+          <div class="service"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div><div><b>Data Factory</b><span>Orquesta la copia (batch)</span></div></div>
+          <div class="service"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 4h12l2 16H4L6 4Z"/><path d="M9 4v4M15 4v4"/></svg></div><div><b>ADLS Gen2</b><span>Landing zone del lake</span></div></div>
+          <p style="font-size:7.6px; color:var(--muted); margin:4px 0 0; line-height:1.3;">Para tiempo real: <b style="color:var(--ink)">Event Hubs + Stream Analytics</b></p>
         </div>
-        <div class="service">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="7" y="7" width="10" height="10" rx="1"/><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/></svg></div>
-          <div class="label"><b>IoT</b><span>Telemetría de dispositivos</span></div>
-        </div>
-        <div class="note">Fuentes <b>heterogéneas</b>, estructuradas y no estructuradas.</div>
       </div>
 
-      <div class="connector"><div class="chevron">›</div></div>
-
-      <div class="card">
-        <div class="card-header">2 · Ingestion &amp; Staging</div>
-        <div class="service">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
-          <div class="label"><b>Azure Data Factory</b><span>Orquesta la copia (batch) desde origen</span></div>
+      <div class="tower">
+        <div class="layer bronze">
+          <div class="lhead"><span class="dot"></span><b>Bronze — Raw</b></div>
+          <p>Datos sin modelar, tal como llegan (JSON/CSV crudos, inmutables).</p>
         </div>
-        <div class="service">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 4h12l2 16H4L6 4Z"/><path d="M9 4v4M15 4v4"/></svg></div>
-          <div class="label"><b>ADLS Gen2</b><span>Landing zone del data lake</span></div>
+        <div class="xform"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg> Spark valida esquema y tipos</div>
+        <div class="layer silver">
+          <div class="lhead"><span class="dot"></span><b>Silver — Cleansed</b></div>
+          <p>Datos estructurados, deduplicados y validados.</p>
         </div>
-        <div class="note">Patrón <b>batch</b>: para tiempo real, el equivalente es Event Hubs + Stream Analytics.</div>
-      </div>
-
-      <div class="connector"><div class="chevron">›</div></div>
-
-      <div class="card">
-        <div class="card-header">3 · Medallion Processing</div>
-        <div class="layers">
-          <div class="layer bronze">
-            <div class="lhead"><span class="dot"></span><b>Bronze — Raw</b></div>
-            <p>Datos sin modelar, tal como llegan (JSON/CSV crudos, inmutables).</p>
-          </div>
-          <div class="xform"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg> Spark: valida esquema y tipos</div>
-          <div class="layer silver">
-            <div class="lhead"><span class="dot"></span><b>Silver — Cleansed</b></div>
-            <p>Datos estructurados, deduplicados y validados.</p>
-          </div>
-          <div class="xform"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg> Spark: agrega métricas de negocio</div>
-          <div class="layer gold">
-            <div class="lhead"><span class="dot"></span><b>Gold — Business Ready</b></div>
-            <p>Agregados y KPIs, listos para consumo en BI.</p>
-            <div class="mini-code">CREATE TABLE gold.kpi_ventas AS
+        <div class="xform"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg> Spark agrega métricas de negocio</div>
+        <div class="layer gold">
+          <div class="lhead"><span class="dot"></span><b>Gold — Business Ready</b></div>
+          <p>Agregados y KPIs, listos para consumo en BI.</p>
+          <div class="mini-code">CREATE TABLE gold.kpi_ventas AS
 SELECT region, SUM(monto) AS total
 FROM silver.ventas GROUP BY region;</div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="mini">
+          <h4>Analysis &amp; Transform</h4>
+          <div class="service"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="6"/><path d="m20 20-4.3-4.3"/></svg></div><div><b>Synapse Analytics</b><span>SQL pool dedicado</span></div></div>
+          <div class="service"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6a2 2 0 0 1 2-2h11v16H6a2 2 0 0 1-2-2V6Z"/><path d="M17 4v16"/></svg></div><div><b>Microsoft Purview</b><span>Catálogo y linaje</span></div></div>
+          <table class="capa-table">
+            <tr><td>Catalogación auto.</td><td class="ck">✓</td></tr>
+            <tr><td>Linaje extremo a extremo</td><td class="ck">✓</td></tr>
+            <tr><td>Clasificación</td><td class="ck">✓</td></tr>
+          </table>
+        </div>
+        <div class="mini" style="flex:1;">
+          <h4>Presentation</h4>
+          <div class="service"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20V10M11 20V4M18 20v-7"/></svg></div><div><b>Power BI</b><span>Dashboards interactivos</span></div></div>
+          <div class="chart">
+            <b>Ventas por región</b>
+            <div class="bars"><i style="height:35%"></i><i style="height:55%"></i><i style="height:40%"></i><i style="height:70%"></i><i style="height:60%"></i><i style="height:85%"></i></div>
           </div>
+          <p style="font-size:7.8px; color:var(--muted); line-height:1.35; margin-top:10px; padding-top:8px; border-top:1px dashed var(--line);">Power BI se conecta <b style="color:var(--ink)">únicamente a Gold</b> — nunca directo a Bronze o Silver.</p>
         </div>
       </div>
 
-      <div class="connector"><div class="chevron">›</div></div>
-
-      <div class="card">
-        <div class="card-header">4 · Analysis &amp; Transform</div>
-        <div class="service">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="6"/><path d="m20 20-4.3-4.3"/></svg></div>
-          <div class="label"><b>Azure Synapse Analytics</b><span>SQL pool dedicado, consultas distribuidas</span></div>
-        </div>
-        <div class="service">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6a2 2 0 0 1 2-2h11v16H6a2 2 0 0 1-2-2V6Z"/><path d="M17 4v16"/></svg></div>
-          <div class="label"><b>Microsoft Purview</b><span>Catálogo y linaje de datos entre capas</span></div>
-        </div>
-        <div class="note">Purview rastrea <b>de dónde viene cada dato</b> hasta el reporte final.</div>
-      </div>
-
-      <div class="connector"><div class="chevron">›</div></div>
-
-      <div class="card">
-        <div class="card-header">5 · Presentation</div>
-        <div class="service">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20V10M11 20V4M18 20v-7"/></svg></div>
-          <div class="label"><b>Power BI</b><span>Dashboards interactivos de negocio</span></div>
-        </div>
-        <div class="chart">
-          <b>Ventas por región</b>
-          <div class="bars"><i style="height:35%"></i><i style="height:55%"></i><i style="height:40%"></i><i style="height:70%"></i><i style="height:60%"></i><i style="height:85%"></i></div>
-        </div>
-        <div class="note">Alimentado <b>directamente</b> desde la capa Gold.</div>
-      </div>
-
-    </div><!-- /.stages -->
+    </div><!-- /.layout -->
 
     <div class="ribbon">
       <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6l7-3Z"/></svg></div>
-      <div><b>Gobernanza de datos</b> <span>— Microsoft Purview cataloga y rastrea el linaje entre capas; cada promoción Bronze→Silver→Gold debe validar esquema y calidad antes de avanzar, para no propagar datos corruptos a los reportes de negocio.</span></div>
+      <div><b>Gobernanza de datos</b> <span>— Microsoft Purview cataloga y rastrea el linaje entre capas; cada promoción Bronze→Silver→Gold valida esquema y calidad antes de avanzar.</span></div>
     </div>
 
     <div class="footer">

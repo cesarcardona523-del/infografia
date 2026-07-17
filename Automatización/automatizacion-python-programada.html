@@ -6,39 +6,38 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   :root{
-    --navy:#0B1426;
-    --teal:#00C9A7;
-    --teal-dark:#04846A;
-    --teal-darker:#046656;
-    --teal-pale:#E1F6F0;
-    --terracotta:#C97B4A;
-    --terracotta-pale:#F6E7DA;
+    --navy:#0E2233;
+    --teal:#306998;
+    --teal-dark:#254E73;
+    --teal-darker:#1B3A57;
+    --teal-pale:#E7EEF5;
+    --terracotta:#B08A00;
+    --terracotta-pale:#FFF6D9;
     --gray:#5B6B7A;
-    --line:#DCE9E4;
+    --line:#DCE4EC;
     --white:#FFFFFF;
+    --yellow:#FFD43B;
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
   body{
     min-height:627px; display:flex; align-items:center; justify-content:center;
     padding:32px 16px;
-    background:radial-gradient(circle at 20% 20%, #eafaf5 0%, #dcf1ea 45%, #cfe9e1 100%);
+    background:radial-gradient(circle at 20% 20%, #eef4fa 0%, #dfe9f3 45%, #cfdeed 100%);
     font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   }
   .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
   .canvas{
     position:relative; width:1200px; height:627px; margin:0 auto;
-    background:linear-gradient(160deg, #FFFFFF 0%, #F3FBF8 55%, #EAF7F1 100%);
-    border-radius:22px; box-shadow:0 24px 60px rgba(11,20,38,0.14); overflow:hidden;
+    background:linear-gradient(160deg, #FFFFFF 0%, #F5F8FB 55%, #EDF2F8 100%);
+    border-radius:22px; box-shadow:0 24px 60px rgba(14,34,51,0.14); overflow:hidden;
     padding:26px 40px 18px; color:var(--navy);
   }
-  .watermark{
-    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
-    font-size:70px; font-weight:800; color:var(--navy); opacity:0.05;
-    transform:rotate(-16deg); letter-spacing:6px; pointer-events:none; user-select:none; white-space:nowrap;
-  }
-
-  .header{ margin-bottom:10px; }
+  .header{ margin-bottom:10px; display:flex; align-items:flex-start; gap:12px; }
+  .py-mark{ width:34px; height:34px; flex:none; position:relative; margin-top:2px; }
+  .py-mark i{ position:absolute; width:22px; height:22px; border-radius:7px 7px 7px 2px; }
+  .py-mark i:first-child{ background:var(--teal); top:0; left:0; }
+  .py-mark i:last-child{ background:var(--yellow); bottom:0; right:0; border-radius:7px 2px 7px 7px; }
   .header h1{ font-size:21px; margin:0 0 5px; font-weight:800; letter-spacing:-0.2px; }
   .header p.sub{ margin:0; font-size:12px; color:var(--gray); max-width:840px; }
 
@@ -96,14 +95,18 @@
   .benefit b{ display:block; font-size:9.6px; font-weight:800; }
   .benefit span{ display:block; font-size:8.4px; color:var(--gray); line-height:1.25; }
 
+  .week-strip{ display:flex; align-items:center; gap:5px; margin-top:8px; }
+  .wd{ width:16px; height:16px; border-radius:4px; background:var(--teal); color:#fff; font-size:7.5px; font-weight:800; display:flex; align-items:center; justify-content:center; }
+  .wd-label{ font-size:8px; color:var(--gray); margin-left:4px; }
+
   .ribbon{
     display:flex; align-items:center; gap:10px;
-    background:linear-gradient(90deg, #0B1426, #123024); color:#EAF7F1; border-radius:12px; padding:8px 16px; font-size:10px;
+    background:linear-gradient(90deg, #0E2233, #1B3A57); color:#EAF1F8; border-radius:12px; padding:8px 16px; font-size:10px;
   }
   .ribbon .icon{ width:20px; height:20px; flex:none; border-radius:6px; background:rgba(255,255,255,0.12); display:flex; align-items:center; justify-content:center; }
-  .ribbon .icon svg{ width:11px; height:11px; color:var(--teal); }
+  .ribbon .icon svg{ width:11px; height:11px; color:var(--yellow); }
   .ribbon b{ color:#fff; }
-  .ribbon span{ color:#B9CFC7; }
+  .ribbon span{ color:#B9CBDC; }
 
   .footer{ position:absolute; bottom:12px; right:22px; display:flex; align-items:center; gap:6px; }
   .li-badge{ width:18px; height:18px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; font-family: Arial, sans-serif; }
@@ -114,11 +117,13 @@
 
 <div class="canvas-wrap">
   <div class="canvas">
-    <div class="watermark">Cesar Cardona</div>
 
     <div class="header">
-      <h1>Orquestación de Scripts en Python: Ejecución Programada a Nivel de Sistema Operativo</h1>
-      <p class="sub">Registrar un script en el programador de tareas nativo, sin desplegar un orquestador externo para un flujo aislado.</p>
+      <div class="py-mark"><i></i><i></i></div>
+      <div>
+        <h1>Orquestación de Scripts en Python: Ejecución Programada a Nivel de Sistema Operativo</h1>
+        <p class="sub">Registrar un script en el programador de tareas nativo, sin desplegar un orquestador externo para un flujo aislado.</p>
+      </div>
     </div>
 
     <div class="layout">
@@ -149,12 +154,12 @@
             <svg class="connectors" viewBox="0 0 620 210">
               <defs>
                 <marker id="arrow2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                  <path d="M0 0 L10 5 L0 10 z" fill="#04846A"/>
+                  <path d="M0 0 L10 5 L0 10 z" fill="#254E73"/>
                 </marker>
               </defs>
-              <path d="M 150 50 L 465 50" fill="none" stroke="#04846A" stroke-width="2" marker-end="url(#arrow2)"/>
-              <path d="M 500 75 Q 500 140 248 158" fill="none" stroke="#04846A" stroke-width="2" marker-end="url(#arrow2)"/>
-              <path d="M 248 160 L 465 160" fill="none" stroke="#04846A" stroke-width="2" marker-end="url(#arrow2)"/>
+              <path d="M 150 50 L 465 50" fill="none" stroke="#254E73" stroke-width="2" marker-end="url(#arrow2)"/>
+              <path d="M 500 75 Q 500 140 248 158" fill="none" stroke="#254E73" stroke-width="2" marker-end="url(#arrow2)"/>
+              <path d="M 248 160 L 465 160" fill="none" stroke="#254E73" stroke-width="2" marker-end="url(#arrow2)"/>
             </svg>
 
             <div class="step" style="left:115px; top:50px;">
@@ -195,6 +200,10 @@
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20V10M11 20V4M18 20v-7"/></svg></div>
             <div><b>Reportes Confiables</b><span>Información consistente y puntual, misma hora cada día.</span></div>
           </div>
+        </div>
+        <div class="week-strip">
+          <span class="wd">L</span><span class="wd">M</span><span class="wd">M</span><span class="wd">J</span><span class="wd">V</span><span class="wd">S</span><span class="wd">D</span>
+          <span class="wd-label">08:00 — se ejecuta todos los días (/SC DAILY)</span>
         </div>
       </div>
     </div><!-- /.layout -->

@@ -68,24 +68,11 @@ Si existen diagramas: mantener jerarquía, flechas, dependencias, conectores y f
 
 Si aparecen gráficas: mantener proporciones, tendencias, leyendas y colores, pero con diseño premium.
 
-## Riqueza Visual (evitar diseños planos)
-
-Ninguna infografía debe depender únicamente de tarjetas de texto con viñetas. Cuando el contenido lo permita:
-
-- **Datos comparables, cifras o relaciones tabulares** → representarlos como gráfico (barras, dona/gauge, funnel, línea) o tabla real, no como lista de viñetas. Si la referencia trae una cifra verificable, usarla en el gráfico; si no hay cifras reales, usar visualizaciones **conceptuales/cualitativas** (ej. un funnel que se angosta para representar refinamiento progresivo) sin inventar números específicos para rellenarlas.
-- **Iconografía con propósito**: cada ícono debe representar semánticamente el concepto exacto (una base de datos, un flujo, una capa de gobernanza), no ser un ícono genérico intercambiable.
-- **Al menos un elemento gráfico no textual** por infografía (diagrama, gráfico, tabla o ilustración de flujo), además de las tarjetas de texto — esto es lo que evita que el diseño se sienta plano.
-- Esto no reemplaza la regla de "no inventar información técnica": todo elemento visual debe derivarse de lo que la referencia o el usuario aportó, nunca de datos fabricados para verse mejor.
-
 ## Paleta de Colores
 
 Utilizar exclusivamente la paleta proporcionada. Extraer automáticamente: color principal, secundarios, acentos, fondos. La imagen debe mantener una identidad cromática uniforme.
 
 No utilizar colores fuera de la paleta excepto blanco, gris y negro. Los verdes serán predominantes. Los tonos tierra funcionarán como colores secundarios.
-
-Cada infografía debe usar al menos un color de acento además del verde principal (ej. un tono tierra para destacar un elemento crítico) para que la composición no se sienta monocromática o plana — la variación de color es también una herramienta de jerarquía visual, no solo de marca.
-
-**Excepción — infografías de evento:** si la infografía se crea para un evento específico (variables `Evento` y/o `Realizado por`, ver sección "Branding de Evento"), la paleta puede ser más arriesgada y no está limitada al verde predominante de esta spec — se puede adoptar la paleta del evento o de la organización que lo realiza, siempre manteniendo blanco/gris/negro como neutros de apoyo y sin sacrificar legibilidad ni jerarquía visual.
 
 ## Tipografía
 
@@ -102,16 +89,6 @@ Agregar discretamente en la esquina inferior derecha:
 - Texto: `cacm523` (no la URL completa).
 
 Debe parecer una firma elegante.
-
-## Branding de Evento (opcional)
-
-Aplica únicamente si el usuario especifica, al crear la infografía, un **Evento** y/o una organización en **Realizado por**.
-
-- Mostrar de forma visible (no como marca de agua casi invisible) el nombre del evento, ej. `Datafest 2026`.
-- Mostrar `Realizado por: <Organización>` — ej. `Realizado por: Bancolombia`.
-- Buscar el logo oficial de esa organización; si se encuentra uno confiable, usarlo en vez de texto plano. Si no se encuentra, mostrar solo el nombre en texto.
-- Esta información es adicional a la firma profesional (LinkedIn + `cacm523`) — se mantiene sin cambios; el branding de evento no la reemplaza.
-- Ubicación sugerida: encabezado o pie de la infografía, en un bloque discreto pero legible, sin competir visualmente con el título principal.
 
 ## Calidad
 
@@ -137,3 +114,33 @@ No inventar información técnica. No deformar texto. No generar texto ilegible 
 8. Calidad gráfica
 9. Branding discreto
 10. Preparación para LinkedIn
+
+---
+
+## Contexto específico — Arquitectura_Medallon
+
+**Imágenes de referencia:** 2 infografías ya existentes y complementarias entre sí:
+- `../referencias/Arquitectura/arquitectura-medallon/Arquitectura_Medallon_1.jpg` — explicación conceptual genérica de Bronze/Silver/Gold (fondo oscuro), con errores comunes, key takeaways y "quién usa cada capa".
+- `../referencias/Arquitectura/arquitectura-medallon/Arquitectura_Medallon_2.jpg` — implementación real con un stack concreto (fondo claro, estilo botánico): AWS S3 (Bronze) → **etapa explícita de depuración** → Snowflake (Silver) → Snowflake (Gold) → Power BI.
+
+No se deben replicar tal cual — **fusionar y complementar**: la imagen 2 aporta un matiz que la imagen 1 no deja tan explícito (la depuración es una etapa separada y explícita, no algo que simplemente "pasa en Silver").
+
+**Tema:** Arquitectura Medallion (Bronze/Silver/Gold) explicada con rigor: qué hace cada capa, quién la usa, y los errores más comunes al implementarla.
+
+**Estructura a fusionar (4 tarjetas en flujo horizontal):**
+
+1. **Bronze** — captura sin transformar (ej. AWS S3), copia exacta de la fuente, histórico completo, append-only. Usado por: Data Engineers.
+2. **Depuración** (etapa explícita, destacada con acento cálido) — duplicados, nulos, normalización, catálogos y claves, trazabilidad, reglas de negocio. "Aquí se corrige el dato — no en el dashboard."
+3. **Silver** — datos limpios, íntegros y confiables (ej. Snowflake), estandarizado y gobernado, listo para modelar. Usado por: Analytics Engineers & Data Scientists.
+4. **Gold** — agregado, métricas de negocio, star schemas (ej. Snowflake), optimizado para consulta. Usado por: Analistas y Negocio, vía Power BI.
+
+**Cómo complementar (no solo redibujar):**
+
+- Elevar la "Depuración" a su propia tarjeta/paso visualmente distinto (con acento cálido, distinto del resto), en vez de dejarla implícita dentro de Silver — es el aporte diferencial de la imagen 2 frente a la imagen 1.
+- Incluir los errores comunes de la imagen 1 como un ribbon final: transformar datos en Bronze, saltarse Silver por completo, usar Gold para exploración de datos crudos, omitir validaciones de calidad.
+- Cerrar con la idea ancla de la imagen 2: "El valor está en el proceso, no en el dashboard."
+- No reproducir la cifra decorativa "+125.8%" de la imagen 1 (es un dato de ejemplo genérico de plantilla, no un dato real verificable) — omitirla en vez de presentarla como cifra real.
+
+**Paleta:** verde predominante (paleta estándar del repositorio, sin acentos de evento), con un acento cálido/tierra reservado exclusivamente para la tarjeta de "Depuración", para que resalte como el paso crítico.
+
+**Título principal sugerido:** "Arquitectura Medallion: Bronze, Silver y Gold sin Atajos".

@@ -67,6 +67,8 @@ Como último paso, el PNG final y esa misma entrada se publican también en el s
 - ✅ Evolución del Análisis de Datos: de Registrar Datos a Delegar Tareas — tema `IA` — Datafest 2026 / Bancolombia — [HTML](IA/analisis-datos-ia.html) · [PNG](IA/analisis-datos-ia.png)
 - ✅ Finalidades de las IA: el Enfoque Detrás de Cada Modelo — tema `IA` — Datafest 2026 / Bancolombia — [HTML](IA/finalidades-de-las-ia.html) · [PNG](IA/finalidades-de-las-ia.png)
 - ✅ La Evolución de los Agentes de IA: de Workflows Rígidos a Arquitecturas Goal-Based — tema `IA` — Datafest 2026 / AWS — [HTML](IA/ia-agentes.html) · [PNG](IA/ia-agentes.png)
+- ✅ Arquitecturas de Datos: 9 Patrones que Todo Arquitecto Debe Conocer — tema `Arquitectura` — [HTML](Arquitectura/arquitectura-datos.html) · [PNG](Arquitectura/arquitectura-datos.png)
+- ✅ Arquitectura Medallion: Bronze, Silver y Gold sin Atajos — tema `Arquitectura` — [HTML](Arquitectura/arquitectura-medallon.html) · [PNG](Arquitectura/arquitectura-medallon.png)
 
 Este README se irá actualizando con un enlace por cada infografía nueva.
 
