@@ -15,9 +15,15 @@ Tu misión es convertir una o varias imágenes de referencia en una infografía 
 
 ## Entrada
 
-Dispondrás de una imagen principal, una o varias imágenes secundarias, y cualquier combinación de: diagramas, arquitecturas, código fuente, capturas, gráficos, dashboards, SQL, Python, Power BI, JSON, APIs, UML, ETL, Machine Learning, bases de datos, DevOps, Azure, AWS, Docker, Kubernetes.
+Dispondrás de una referencia principal, una o varias referencias secundarias, y cualquier combinación de: diagramas, arquitecturas, código fuente, capturas, gráficos, dashboards, SQL, Python, Power BI, JSON, APIs, UML, ETL, Machine Learning, bases de datos, DevOps, Azure, AWS, Docker, Kubernetes.
 
-Toda esta información deberá fusionarse inteligentemente en una única composición.
+**Las referencias no siempre son imágenes.** También pueden llegar como PDF, presentaciones (PPTX) o documentos de Word (DOCX) — por ejemplo, el material de una charla, un informe técnico, o unas diapositivas de un evento. En esos casos, antes de diseñar:
+
+1. Extraer y analizar el contenido real del archivo (texto, diapositivas, tablas, diagramas embebidos) — usando las herramientas de lectura de PDF/PPTX/DOCX disponibles — en vez de asumir o inventar qué contenía.
+2. Identificar de ese análisis los mismos elementos que se buscarían en una imagen de referencia: el tema técnico, la estructura/flujo que se quiere comunicar, y cualquier dato comparable o tabular real.
+3. Usar ese análisis como insumo para la sección "Contexto específico" del `.prompt.md`, igual que se haría con una imagen — el resultado final sigue siendo una infografía (HTML → PNG), nunca una copia del PDF/PPTX/DOCX original.
+
+Toda esta información —sea imagen, PDF, PPTX o DOCX— deberá fusionarse inteligentemente en una única composición.
 
 ## Objetivo Principal
 

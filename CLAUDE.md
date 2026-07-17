@@ -17,7 +17,9 @@ publicaciones.json                   → catálogo único e incremental de metad
 
 `<Tema>` es una categoría amplia (ej. `Arquitectura`, `Python`, `Power BI`), no un slug único por infografía — coincide con el valor `es.tema` del schema de metadata. Dentro de una misma carpeta de tema conviven, a lo largo del tiempo, varias infografías (distintos tópicos), cada una incremental respecto a las anteriores — nunca se sobreescribe el trabajo previo.
 
-**Varias imágenes de referencia para una misma infografía** van juntas en `referencias/<Tema>/<topico-slug>/` (una imagen principal + secundarias, tal como lo permite la sección "Entrada" de INFOGRAFIA-SPEC.md). El subfolder por tópico es lo que evita ambigüedad cuando un mismo tema acumula referencias de varias infografías distintas con el tiempo.
+**Varias referencias para una misma infografía** van juntas en `referencias/<Tema>/<topico-slug>/` (una referencia principal + secundarias, tal como lo permite la sección "Entrada" de INFOGRAFIA-SPEC.md). El subfolder por tópico es lo que evita ambigüedad cuando un mismo tema acumula referencias de varias infografías distintas con el tiempo.
+
+**Las referencias no siempre son imágenes.** El usuario puede adjuntar PDF, presentaciones (PPTX) o documentos de Word (DOCX) en vez de (o junto a) imágenes — ej. el material de una charla o un informe técnico. En ese caso, guardar el archivo tal cual en `referencias/<Tema>/<topico-slug>/` igual que una imagen, pero antes de escribir el `.prompt.md` hay que **analizar su contenido real** (extraer texto/diapositivas/tablas con las herramientas de lectura de PDF/PPTX/DOCX disponibles) — nunca asumir de qué trataba solo por el nombre del archivo. Ver la sección "Entrada" de INFOGRAFIA-SPEC.md para el detalle de este análisis.
 
 **Si el usuario deja las imágenes sueltas** directamente en `referencias/<Tema>/` con un prefijo común (ej. `Arquitectura_AWS_1.jpg`, `Arquitectura_AWS_2.png`, `Arquitectura_AWS_3.gif`), en vez de preguntar, agruparlas automáticamente:
 - Derivar el `<topico-slug>` del prefijo común, en kebab-case (`Arquitectura_AWS` → `arquitectura-aws`).
@@ -80,6 +82,8 @@ Si se especifican, aplican las reglas de la sección "Branding de Evento" de INF
 ## Reglas generales
 
 - No modificar INFOGRAFIA-SPEC.md ni INFOGRAFIA-INVESTIGAR.md al trabajar un tema — son compartidos por todos los temas.
-- No inventar contexto técnico, cifras ni métricas que no estén respaldadas por la imagen de referencia o por el usuario.
+- No inventar contexto técnico, cifras ni métricas que no estén respaldadas por la referencia (imagen, PDF, PPTX, DOCX) o por el usuario.
 - Nombre de carpeta de tema consistente entre `referencias/<Tema>/`, `<Tema>/` y el valor `es.tema` usado en `publicaciones.json` para esa misma familia de infografías.
 - Si falta el tema, el contexto, o no está claro el topico-slug, preguntar antes de crear carpetas o agregar al catálogo.
+- **Cada vez que se cree o modifique algo en este proyecto** (una infografía nueva, un rediseño, una regla de este CLAUDE.md, etc.), actualizar el `README.md` correspondiente **en ambos repositorios**: este (`infografia/README.md`) y `/Users/caesar/Documents/GitHub/paginaweb/README.md`, no solo uno de los dos — son dos catálogos públicos independientes que deben quedar consistentes con el estado real del trabajo.
+- **La sección "📈 Estadísticas del Repositorio" de cada README (infografia y paginaweb) se debe recalcular y actualizar** en esa misma pasada, con `git log`/`git shortlog` sobre el git de ese repositorio (commits, archivos, líneas +/-, primer/último commit, commits por autor) — nunca dejarla con una cifra vieja. Si el cambio en curso no se ha comiteado todavía, recalcular después de comitear, no antes.
