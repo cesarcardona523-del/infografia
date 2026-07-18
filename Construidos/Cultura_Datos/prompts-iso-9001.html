@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>15 Prompts Esenciales para Implementar un SGC ISO 9001</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --s1:#3D5A80; --s2:#33506F; --s3:#29455E; --s4:#1F394D; --s5:#152D3D;
+    --pale:#EEF1F5; --line:#DDE3EA;
+    --ink:#1D2129; --muted:#5C6470; --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    min-height:627px; display:flex; align-items:center; justify-content:center;
+    padding:32px 16px; background:#EBEEF2;
+    font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
+  .canvas{
+    position:relative; width:1200px; height:627px; margin:0 auto;
+    background:var(--white);
+    border-radius:16px; box-shadow:0 20px 50px rgba(21,45,61,0.18); overflow:hidden;
+    padding:16px 32px 12px; color:var(--ink);
+    display:flex; flex-direction:column; min-height:0;
+  }
+
+  .header{ text-align:center; margin-bottom:9px; }
+  .header .eyebrow{ font-size:10.5px; font-weight:700; letter-spacing:1.8px; color:var(--s3); text-transform:uppercase; margin-bottom:3px; }
+  .header h1{ font-size:20px; margin:0 0 4px; font-weight:800; letter-spacing:-0.2px; }
+  .header p{ margin:0 auto; font-size:11px; color:var(--muted); max-width:760px; }
+
+  .grid{ flex:1; min-height:0; display:grid; grid-template-columns: repeat(5,1fr); gap:10px; }
+  .col{ display:flex; flex-direction:column; border:1px solid var(--line); border-radius:10px; overflow:hidden; }
+  .col .head{ color:#fff; padding:9px 10px; text-align:center; }
+  .col .head b{ display:block; font-size:10.8px; font-weight:800; }
+  .col .head span{ display:block; font-size:7.6px; opacity:0.85; margin-top:2px; }
+  .c1 .head{ background:var(--s1); } .c2 .head{ background:var(--s2); } .c3 .head{ background:var(--s3); } .c4 .head{ background:var(--s4); } .c5 .head{ background:var(--s5); }
+
+  .rows{ flex:1; display:flex; flex-direction:column; background:var(--pale); }
+  .row{ flex:1; display:flex; align-items:center; gap:8px; padding:7px 10px; border-top:1px solid var(--line); }
+  .row .n{ width:18px; height:18px; border-radius:5px; background:var(--white); border:1px solid var(--line); color:var(--ink); font-size:8.6px; font-weight:800; display:flex; align-items:center; justify-content:center; flex:none; }
+  .row span{ font-size:9px; line-height:1.28; color:var(--ink); font-weight:600; }
+
+  .ribbon{
+    margin-top:10px; display:flex; align-items:center; gap:10px;
+    background:var(--ink); color:#EBEEF3; border-radius:10px; padding:8px 18px; font-size:10px;
+  }
+  .ribbon .icon{ width:20px; height:20px; flex:none; border-radius:6px; background:rgba(255,255,255,0.14); display:flex; align-items:center; justify-content:center; }
+  .ribbon .icon svg{ width:11px; height:11px; color:#8FB3D9; }
+  .ribbon b{ color:#fff; }
+  .ribbon span{ color:#B9C2CE; }
+
+  .footer{ position:absolute; bottom:9px; right:20px; display:flex; align-items:center; gap:6px; }
+  .li-badge{ width:15px; height:15px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:9.5px; font-weight:800; font-family: Arial, sans-serif; }
+  .footer span{ font-size:9.5px; font-weight:600; color:var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="canvas-wrap">
+  <div class="canvas">
+
+    <div class="header">
+      <div class="eyebrow">Gestión de Calidad</div>
+      <h1>15 Prompts Esenciales para Implementar un SGC ISO 9001</h1>
+      <p>Herramientas prácticas para planificar, ejecutar, controlar y cerrar un proyecto de implementación hasta lograr la certificación.</p>
+    </div>
+
+    <div class="grid">
+      <div class="col c1">
+        <div class="head"><b>Fase 1</b><span>Inicio del Proyecto</span></div>
+        <div class="rows">
+          <div class="row"><div class="n">1</div><span>Matriz de análisis del contexto</span></div>
+          <div class="row"><div class="n">2</div><span>Project Charter del proyecto</span></div>
+          <div class="row"><div class="n">3</div><span>Plantilla para definir el alcance del SGC</span></div>
+          <div class="row"><div class="n">4</div><span>Matriz de partes interesadas</span></div>
+        </div>
+      </div>
+      <div class="col c2">
+        <div class="head"><b>Fase 2</b><span>Planificación</span></div>
+        <div class="rows">
+          <div class="row"><div class="n">5</div><span>EDT/WBS y cronograma del proyecto</span></div>
+          <div class="row"><div class="n">6</div><span>Arquitectura de procesos</span></div>
+          <div class="row"><div class="n">7</div><span>Arquitectura documental del SGC</span></div>
+          <div class="row"><div class="n">8</div><span>Matriz de riesgos y oportunidades</span></div>
+        </div>
+      </div>
+      <div class="col c3">
+        <div class="head"><b>Fase 3</b><span>Organización y Ejecución</span></div>
+        <div class="rows">
+          <div class="row"><div class="n">9</div><span>Formato de seguimiento y control del proyecto</span></div>
+          <div class="row"><div class="n">10</div><span>Matriz de gestión de entregables</span></div>
+        </div>
+      </div>
+      <div class="col c4">
+        <div class="head"><b>Fase 4</b><span>Seguimiento y Control</span></div>
+        <div class="rows">
+          <div class="row"><div class="n">11</div><span>Programa y plan de auditoría interna</span></div>
+          <div class="row"><div class="n">12</div><span>Agenda para la revisión por la dirección</span></div>
+          <div class="row"><div class="n">13</div><span>Metodología para análisis de causa raíz</span></div>
+        </div>
+      </div>
+      <div class="col c5">
+        <div class="head"><b>Fase 5</b><span>Cierre del Proyecto</span></div>
+        <div class="rows">
+          <div class="row"><div class="n">14</div><span>Cierre administrativo y verificación previa a la certificación</span></div>
+          <div class="row"><div class="n">15</div><span>Sostenibilidad y Plan de Madurez del SGC</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ribbon">
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z"/></svg></div>
+      <div><b>Por qué importa</b> <span>— cada prompt corresponde a un entregable real trazado a las cláusulas de ISO 9001:2015 e ISO 21502:2020, no a una plantilla genérica.</span></div>
+    </div>
+
+    <div class="footer">
+      <div class="li-badge">in</div>
+      <span>cacm523</span>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

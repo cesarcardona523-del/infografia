@@ -11,9 +11,11 @@ Ninguna de las dos se modifica al trabajar un tema puntual — son la fuente de 
 
 ```
 referencias/<Tema>/<topico-slug>/   → imágenes de referencia de UNA infografía puntual (input): imagen principal + secundarias
-<Tema>/                              → carpeta de salida en la raíz, mismo nombre que el tema (output, incremental)
+Construidos/<Tema>/                 → carpeta de salida, mismo nombre que el tema (output, incremental) — TODO lo construido vive aquí, nunca en la raíz
 publicaciones.json                   → catálogo único e incremental de metadata de TODAS las infografías, todos los temas
 ```
+
+**Toda infografía ya construida (HTML, PNG, prompt.md) vive dentro de `Construidos/<Tema>/`, nunca directamente en la raíz del repositorio.** Esta es una convención fija del proyecto — no crear carpetas de tema sueltas en la raíz.
 
 `<Tema>` es una categoría amplia (ej. `Arquitectura`, `Python`, `Power BI`), no un slug único por infografía — coincide con el valor `es.tema` del schema de metadata. Dentro de una misma carpeta de tema conviven, a lo largo del tiempo, varias infografías (distintos tópicos), cada una incremental respecto a las anteriores — nunca se sobreescribe el trabajo previo.
 
@@ -31,22 +33,23 @@ publicaciones.json                   → catálogo único e incremental de metad
 
 El usuario da el tema y el `<topico-slug>`, y adjunta o lista una o varias imágenes de referencia. Si no da un topico-slug explícito, se deriva del tema/contexto de las imágenes. Opcionalmente puede indicar **Evento** y **Realizado por** (ver sección "Branding de evento" más abajo). A partir de ahí:
 
-1. Crear (o reutilizar si ya existe) la carpeta `/<Tema>/` en la raíz.
+1. Crear (o reutilizar si ya existe) la carpeta `Construidos/<Tema>/`.
 2. Guardar todas las imágenes de referencia de esta infografía en `referencias/<Tema>/<topico-slug>/` (creando la carpeta si no existe) — todas juntas, sin mezclarlas con las de otro tópico del mismo tema.
-3. Generar `/<Tema>/<topico-slug>.prompt.md`: el contenido completo de INFOGRAFIA-SPEC.md tal cual + una sección final `## Contexto específico — <Topico>` con la descripción del tema, el contenido técnico particular, y qué imágenes de referencia usar (cuál es la principal y cuáles las secundarias, si aplica). Si el usuario dio Evento y/o Realizado por, incluirlos en esta sección también.
+3. Generar `Construidos/<Tema>/<topico-slug>.prompt.md`: el contenido completo de INFOGRAFIA-SPEC.md tal cual + una sección final `## Contexto específico — <Topico>` con la descripción del tema, el contenido técnico particular, y qué imágenes de referencia usar (cuál es la principal y cuáles las secundarias, si aplica). Si el usuario dio Evento y/o Realizado por, incluirlos en esta sección también.
    - **Siempre complementar, nunca solo replicar.** Si la referencia ya es una infografía o diagrama terminado, no pedir una copia idéntica: describir su estructura y pedir explícitamente enriquecerla (más detalle técnico, elementos relacionados que falten, mejor jerarquía), manteniendo siempre el sistema de diseño de INFOGRAFIA-SPEC.md.
-4. Entregable final de la infografía, en `/<Tema>/`:
-   - Si el usuario trae la imagen ya generada (vía herramienta externa de generación de imágenes), guardarla como `/<Tema>/<topico-slug>.png`.
-   - Si no hay imagen externa, construir el HTML de la infografía ("infografía bonita") en `/<Tema>/<topico-slug>.html`, siguiendo el mismo sistema de diseño de INFOGRAFIA-SPEC.md (paleta, tipografía, composición, branding) con HTML/CSS puro, con el contenedor principal en una clase `.canvas` de tamaño fijo 1200×627px.
+   - **Diseño arriesgado, no plantillado.** Cada infografía nueva debe tomar al menos una decisión de composición o metáfora visual distinta a las ya usadas en el mismo tema — evitar reciclar la misma estructura de grid/columnas de la pieza anterior. Preferir metáforas visuales concretas ligadas al contenido (pirámides de dependencia, icebergs, caminos en zigzag, básculas, etc.) sobre el genérico "grid de tarjetas" cuando el contenido lo permita.
+4. Entregable final de la infografía, en `Construidos/<Tema>/`:
+   - Si el usuario trae la imagen ya generada (vía herramienta externa de generación de imágenes), guardarla como `Construidos/<Tema>/<topico-slug>.png`.
+   - Si no hay imagen externa, construir el HTML de la infografía ("infografía bonita") en `Construidos/<Tema>/<topico-slug>.html`, siguiendo el mismo sistema de diseño de INFOGRAFIA-SPEC.md (paleta, tipografía, composición, branding) con HTML/CSS puro, con el contenedor principal en una clase `.canvas` de tamaño fijo 1200×627px.
    - Antes de exportar, revisar la sección "Riqueza Visual" de INFOGRAFIA-SPEC.md: si hay datos comparables o tabulares, usar un gráfico o tabla real (no solo viñetas); usar iconos con propósito semántico; incluir al menos un elemento gráfico no textual; y un color de acento además del verde principal.
-   - Exportar automáticamente ese HTML a `/<Tema>/<topico-slug>.png` (no hace falta pedírselo al usuario ni depender de una herramienta externa):
+   - Exportar automáticamente ese HTML a `Construidos/<Tema>/<topico-slug>.png` (no hace falta pedírselo al usuario ni depender de una herramienta externa):
      1. Renderizar con Chrome headless a 2x escala, viewport `1264×691` (1200×627 + 32px de margen por lado, si el HTML mantiene ese padding de body): `"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless --disable-gpu --hide-scrollbars --force-device-scale-factor=2 --window-size=1264,691 --screenshot=raw.png file:///ruta/al/<topico-slug>.html`
      2. Recortar exactamente el `.canvas` con PIL: offset `(64,64)` (32px de margen × 2 de escala) y tamaño `(2400,1254)` — ajustar el offset si el padding del body del HTML cambia.
-     3. Guardar el recorte como `/<Tema>/<topico-slug>.png`.
+     3. Guardar el recorte como `Construidos/<Tema>/<topico-slug>.png`.
    - El HTML y el PNG conviven — el HTML es la fuente editable, el PNG es el asset final listo para publicar.
 5. Ejecutar el prompt de INFOGRAFIA-INVESTIGAR.md sobre la(s) imagen(es) de referencia de este tópico, para generar el objeto de metadata, y agregarlo a `publicaciones.json` (ver reglas abajo).
 6. Publicar en el sitio real (siempre, como último paso, sin que el usuario tenga que pedirlo cada vez):
-   - Copiar `/<Tema>/<topico-slug>.png` a `/Users/caesar/Documents/GitHub/paginaweb/publications/`, con un nombre de archivo distintivo en `Title_Case_Con_Guion_Bajo` (ej. `Arquitectura_AWS_Big_Data_Pipeline.png`), sin sobreescribir archivos existentes de ese folder.
+   - Copiar `Construidos/<Tema>/<topico-slug>.png` a `/Users/caesar/Documents/GitHub/paginaweb/publications/`, con un nombre de archivo distintivo en `Title_Case_Con_Guion_Bajo` (ej. `Arquitectura_AWS_Big_Data_Pipeline.png`), sin sobreescribir archivos existentes de ese folder.
    - Agregar una entrada al final del arreglo `publicaciones` en `/Users/caesar/Documents/GitHub/paginaweb/publications/publicaciones.js` (variable global `window.PUBLICACIONES_DATA`, no un `.json` puro). Mismo objeto que en `publicaciones.json`, pero:
      - `imagen` siempre con el prefijo `publications/`, ej. `"publications/Arquitectura_AWS_Big_Data_Pipeline.png"`.
      - `fechaPublicacion` = fecha de la última entrada existente **en ese archivo** (no en `publicaciones.json`) + 2 días — son dos catálogos independientes, cada uno con su propia secuencia de fechas. Seguir el formato de offset que use la entrada más reciente de ese archivo (a la fecha de este documento: `-05:00`, no `Z`).
@@ -72,7 +75,7 @@ Si se especifican, aplican las reglas de la sección "Branding de Evento" de INF
 ## Reglas del catálogo `publicaciones.json`
 
 - Un único archivo JSON en la raíz: un arreglo `[ ... ]` de objetos, cada uno con exactamente el schema de INFOGRAFIA-INVESTIGAR.md (`id`, `imagen`, `fechaPublicacion`, `es{tema,topico,descripcion}`, `en{tema,topico,descripcion}`, `baseStats{views,likes,shares}`).
-- `imagen` apunta al asset final publicable, ruta relativa a la raíz del repo: `<Tema>/<topico-slug>.png` (no al archivo de referencia de `referencias/`).
+- `imagen` apunta al asset final publicable, ruta relativa a la raíz del repo: `Construidos/<Tema>/<topico-slug>.png` (no al archivo de referencia de `referencias/`).
 - Cada infografía nueva agrega un objeto **al final** del arreglo — nunca se reescribe ni se borra una entrada existente.
 - `fechaPublicacion` de la entrada nueva = fecha de la última entrada existente en el arreglo + 2 días (ISO 8601). Si el catálogo está vacío, usar la fecha/hora actual. **Esta suma es siempre relativa a la última fecha ya guardada en el catálogo, nunca a la fecha real de hoy** — si la última entrada quedó con una fecha de hace un mes (porque el catálogo va "adelantado" respecto al calendario real), la siguiente sigue siendo esa fecha + 2 días, no la fecha de hoy + 2 días. Esta regla es para publicaciones normales; **las infografías de evento son la única excepción** y siempre usan la fecha/hora actual (ver "Branding de evento" arriba).
 - Nunca debe haber más de dos entradas con la misma fecha en el catálogo completo — verificarlo antes de agregar (el espaciado de +2 días ya lo garantiza en el flujo normal).
@@ -83,7 +86,8 @@ Si se especifican, aplican las reglas de la sección "Branding de Evento" de INF
 
 - No modificar INFOGRAFIA-SPEC.md ni INFOGRAFIA-INVESTIGAR.md al trabajar un tema — son compartidos por todos los temas.
 - No inventar contexto técnico, cifras ni métricas que no estén respaldadas por la referencia (imagen, PDF, PPTX, DOCX) o por el usuario.
-- Nombre de carpeta de tema consistente entre `referencias/<Tema>/`, `<Tema>/` y el valor `es.tema` usado en `publicaciones.json` para esa misma familia de infografías.
+- Nombre de carpeta de tema consistente entre `referencias/<Tema>/`, `Construidos/<Tema>/` y el valor `es.tema` usado en `publicaciones.json` para esa misma familia de infografías.
 - Si falta el tema, el contexto, o no está claro el topico-slug, preguntar antes de crear carpetas o agregar al catálogo.
+- **Diseño arriesgado, no plantillado** (pedido explícito del usuario): al crear cada infografía nueva, evaluar si la composición se siente repetida respecto a piezas anteriores del mismo tema y, si es así, cambiar deliberadamente el layout, la metáfora visual o la paleta antes de construir. La corrección de "queda mucho espacio vacío" nunca debe resolverse solo agrandando fuentes — primero considerar si un elemento visual más audaz (un diagrama real, una metáfora nueva) resuelve mejor el espacio y el mensaje.
 - **Cada vez que se cree o modifique algo en este proyecto** (una infografía nueva, un rediseño, una regla de este CLAUDE.md, etc.), actualizar el `README.md` correspondiente **en ambos repositorios**: este (`infografia/README.md`) y `/Users/caesar/Documents/GitHub/paginaweb/README.md`, no solo uno de los dos — son dos catálogos públicos independientes que deben quedar consistentes con el estado real del trabajo.
 - **La sección "📈 Estadísticas del Repositorio" de cada README (infografia y paginaweb) se debe recalcular y actualizar** en esa misma pasada, con `git log`/`git shortlog` sobre el git de ese repositorio (commits, archivos, líneas +/-, primer/último commit, commits por autor) — nunca dejarla con una cifra vieja. Si el cambio en curso no se ha comiteado todavía, recalcular después de comitear, no antes.

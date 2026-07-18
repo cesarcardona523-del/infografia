@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>La Realidad de la Transformación con IA</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --paper:#F3EEE3; --paper-line:#E2D9C6;
+    --navy:#16223F; --muted-l:#5B6478;
+    --dark:#1B1712; --dark2:#241E17;
+    --ember:#E8703A; --ember-dark:#B8532A;
+    --cream:#EDE6D8; --muted-d:#B7A896;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    min-height:627px; display:flex; align-items:center; justify-content:center;
+    padding:32px 16px; background:#15110D;
+    font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
+  .canvas{
+    position:relative; width:1200px; height:627px; margin:0 auto;
+    background:linear-gradient(160deg, var(--dark) 0%, var(--dark2) 100%);
+    border-radius:16px; box-shadow:0 24px 60px rgba(0,0,0,0.55); overflow:hidden;
+    color:var(--cream);
+  }
+
+  .top-panel{
+    position:absolute; top:0; left:0; right:0; height:53%;
+    background:linear-gradient(160deg, #FBF8F1 0%, var(--paper) 100%);
+    clip-path: polygon(0% 0%, 100% 0%, 100% 83%, 96% 91%, 91% 82%, 86% 94%, 81% 84%, 76% 92%, 71% 81%, 66% 95%, 61% 83%, 56% 90%, 51% 82%, 46% 93%, 41% 85%, 36% 91%, 31% 81%, 26% 94%, 21% 84%, 16% 90%, 11% 82%, 6% 93%, 0% 87%);
+    padding:16px 30px 30px; color:var(--navy);
+    display:flex; flex-direction:column;
+  }
+  .top-panel .eyebrow{ font-size:10px; font-weight:700; letter-spacing:1.8px; color:var(--ember-dark); text-transform:uppercase; text-align:center; margin-bottom:3px; }
+  .top-panel h1{ font-size:20px; margin:0 0 3px; font-weight:800; text-align:center; letter-spacing:-0.2px; }
+  .top-panel h1 em{ font-style:normal; color:var(--ember-dark); }
+  .top-panel .sub{ text-align:center; font-size:11px; font-weight:700; color:var(--muted-l); margin-bottom:8px; }
+  .top-grid{ flex:1; display:grid; grid-template-columns: repeat(3,1fr); gap:8px; }
+  .belief{ background:rgba(232,112,58,0.08); border:1px solid var(--paper-line); border-radius:8px; padding:8px 11px; display:flex; align-items:center; gap:8px; }
+  .belief .icon{ width:22px; height:22px; border-radius:6px; background:var(--paper-line); color:var(--muted-l); display:flex; align-items:center; justify-content:center; flex:none; }
+  .belief .icon svg{ width:12px; height:12px; }
+  .belief span{ font-size:10px; font-weight:700; line-height:1.25; }
+
+  .bottom-panel{ position:absolute; left:0; right:0; bottom:0; top:44%; padding:60px 30px 14px; display:flex; flex-direction:column; }
+  .bottom-panel .label{ text-align:center; font-size:12.5px; font-weight:800; color:var(--ember); margin-bottom:8px; }
+  .bottom-panel .label b{ color:#fff; }
+  .bottom-grid{ flex:1; display:grid; grid-template-columns: repeat(4,1fr); grid-template-rows: 1fr 1fr; gap:9px; }
+  .real{ background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:9px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; gap:6px; }
+  .real .icon{ width:24px; height:24px; border-radius:7px; background:var(--ember); color:#1B1712; display:flex; align-items:center; justify-content:center; }
+  .real .icon svg{ width:13px; height:13px; }
+  .real span{ font-size:9.6px; font-weight:700; line-height:1.32; color:var(--cream); }
+
+  .tear-label{ position:absolute; left:50%; top:44%; transform:translate(-50%,-50%); background:var(--ember); color:#1B1712; font-size:10px; font-weight:800; padding:5px 16px; border-radius:20px; box-shadow:0 6px 16px rgba(0,0,0,0.35); z-index:5; text-transform:uppercase; letter-spacing:0.5px; }
+
+  .footer{ position:absolute; bottom:9px; right:20px; display:flex; align-items:center; gap:6px; z-index:5; }
+  .li-badge{ width:15px; height:15px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:9.5px; font-weight:800; font-family: Arial, sans-serif; }
+  .footer span{ font-size:9.5px; font-weight:600; color:var(--muted-d); }
+</style>
+</head>
+<body>
+
+<div class="canvas-wrap">
+  <div class="canvas">
+
+    <div class="top-panel">
+      <div class="eyebrow">Lo que se cree</div>
+      <h1>La Realidad de la <em>Transformación con IA</em></h1>
+      <div class="sub">Lo que muchos líderes creen que es la transformación con IA</div>
+      <div class="top-grid">
+        <div class="belief"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20V4M4 20h16"/><rect x="7" y="13" width="3" height="7"/><rect x="12" y="8" width="3" height="12"/><rect x="17" y="5" width="3" height="15"/></svg></div><span>Métricas de adopción al alza</span></div>
+        <div class="belief"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></div><span>Herramientas de IA compradas</span></div>
+        <div class="belief"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="14" rx="1.5"/><path d="M8 21h8M12 18v3"/></svg></div><span>Presentación estratégica aprobada</span></div>
+        <div class="belief"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><span>Presupuesto aprobado</span></div>
+        <div class="belief"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z"/></svg></div><span>Pilotos mostrando resultados</span></div>
+        <div class="belief"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 10 12 4 2 10l10 6 10-6Z"/><path d="M6 12.5V17c0 1.1 2.7 2 6 2s6-.9 6-2v-4.5"/></svg></div><span>Sesiones de formación completadas</span></div>
+      </div>
+    </div>
+
+    <div class="tear-label">Lo que realmente implica ↓</div>
+
+    <div class="bottom-panel">
+      <div class="label">Lo que realmente implica la transformación con <b>IA</b></div>
+      <div class="bottom-grid">
+        <div class="real"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></div><span>Infraestructura de datos resuelta antes de escalar</span></div>
+        <div class="real"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div><span>Tiempo hasta valor medido desde el día uno</span></div>
+        <div class="real"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6Z"/></svg></div><span>Liderazgo formado más allá de las herramientas</span></div>
+        <div class="real"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 17V7a2 2 0 0 1 2-2h5l2 2h7v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/></svg></div><span>Flujos rediseñados antes de desplegar agentes</span></div>
+        <div class="real"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="9" cy="8" r="3"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><circle cx="17" cy="8" r="2.4"/><path d="M15 20a4.5 4.5 0 0 1 7-3.6"/></svg></div><span>Roles humanos redefinidos en el proceso</span></div>
+        <div class="real"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="10" width="16" height="10" rx="1.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div><span>Gobernanza integrada en la arquitectura</span></div>
+        <div class="real"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v6M12 16v6M4.9 4.9l4.2 4.2M14.9 14.9l4.2 4.2M2 12h6M16 12h6M4.9 19.1l4.2-4.2M14.9 9.1l4.2-4.2"/></svg></div><span>Modelo operativo rediseñado alrededor de la IA</span></div>
+        <div class="real"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="5" y="5" width="14" height="14" rx="3"/><circle cx="9" cy="10" r="1.2" fill="currentColor"/><circle cx="15" cy="10" r="1.2" fill="currentColor"/><path d="M9 15h6"/></svg></div><span>Modelo operativo agéntico establecido</span></div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="li-badge">in</div>
+      <span>cacm523</span>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

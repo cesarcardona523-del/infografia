@@ -24,16 +24,16 @@ Este repositorio reúne **infografías técnicas premium** para LinkedIn sobre t
 
 ```text
 infografia/
-├── referencias/<Tema>/   → imágenes de referencia que se suministran para ese tema (input)
-├── <Tema>/               → salida: infografías generadas para ese tema, incremental en el tiempo
+├── referencias/<Tema>/          → imágenes de referencia que se suministran para ese tema (input)
+├── Construidos/<Tema>/          → salida: infografías generadas para ese tema, incremental en el tiempo
 │   ├── <topico>.prompt.md
-│   ├── <topico>.png       (o <topico>.html si no hay imagen generada)
+│   ├── <topico>.png              (o <topico>.html si no hay imagen generada)
 ├── publicaciones.json    → catálogo único e incremental de metadata de todas las infografías
 ├── INFOGRAFIA-SPEC.md    → spec de diseño visual (fija)
 └── INFOGRAFIA-INVESTIGAR.md → spec de análisis/metadata (fija)
 ```
 
-`<Tema>` es una categoría amplia (ej. `Arquitectura`, `Python`, `Power BI`) — dentro de una misma carpeta de tema conviven, en el tiempo, varias infografías de distintos tópicos.
+`<Tema>` es una categoría amplia (ej. `Arquitectura`, `Python`, `Power BI`) — dentro de una misma carpeta de tema conviven, en el tiempo, varias infografías de distintos tópicos. Toda infografía ya construida vive dentro de `Construidos/<Tema>/`, nunca directamente en la raíz del repositorio.
 
 ## 🛠️ Stack Técnico
 
@@ -47,7 +47,7 @@ Sin framework, sin bundler, sin paso de build. Cada infografía se construye en 
 
 Todas las infografías siguen el mismo sistema de diseño, definido en [INFOGRAFIA-SPEC.md](INFOGRAFIA-SPEC.md): infografía técnica editorial (nunca fotografía ni escena real), paleta fija, tipografía, marca de agua y firma, tamaño 1200×627px optimizado para LinkedIn.
 
-Para crear una infografía nueva: se listan imágenes de referencia en `referencias/<Tema>/`, y ese contexto se combina con el spec de diseño en `/<Tema>/<topico>.prompt.md` — ver [CLAUDE.md](CLAUDE.md) para el flujo completo.
+Para crear una infografía nueva: se listan imágenes de referencia en `referencias/<Tema>/`, y ese contexto se combina con el spec de diseño en `Construidos/<Tema>/<topico>.prompt.md` — ver [CLAUDE.md](CLAUDE.md) para el flujo completo.
 
 ## 📄 Catálogo de publicaciones
 
@@ -57,50 +57,58 @@ Como último paso, el PNG final y esa misma entrada se publican también en el s
 
 ## 🗺️ Estado
 
-- ✅ Automatización vs Autonomía: Arquitectura de Sistemas de IA Agénticos — tema `Automatización` — [HTML](Automatización/automatizacion-agentesia.html) · [PNG](Automatización/automatizacion-agentesia.png)
-- ✅ Automatización de Reportes con Python: de Excel a Producción — tema `Automatización` — [HTML](Automatización/automatizacion-python.html) · [PNG](Automatización/automatizacion-python.png)
-- ✅ Orquestación de Scripts en Python: Ejecución Programada a Nivel de Sistema Operativo — tema `Automatización` — [HTML](Automatización/automatizacion-python-programada.html) · [PNG](Automatización/automatizacion-python-programada.png)
-- ✅ Arquitectura de Pipelines de Big Data en AWS — tema `Arquitectura` — [HTML](Arquitectura/arquitectura-aws.html) · [PNG](Arquitectura/arquitectura-aws.png)
-- ✅ Arquitectura de Datos en Azure: Patrón Medallón de Extremo a Extremo — tema `Arquitectura` — [HTML](Arquitectura/arquitectura-azure.html) · [PNG](Arquitectura/arquitectura-azure.png)
-- ✅ Stack de Datos Serverless en Google Cloud Platform — tema `Arquitectura` — [HTML](Arquitectura/arquitectura-google.html) · [PNG](Arquitectura/arquitectura-google.png)
-- ✅ Arquitectura Lakehouse en Oracle Cloud Infrastructure (OCI) — tema `Arquitectura` — [HTML](Arquitectura/arquitectura-oracle.html) · [PNG](Arquitectura/arquitectura-oracle.png)
-- ✅ Evolución del Análisis de Datos: de Registrar Datos a Delegar Tareas — tema `IA` — Datafest 2026 / Bancolombia — [HTML](IA/analisis-datos-ia.html) · [PNG](IA/analisis-datos-ia.png)
-- ✅ Finalidades de las IA: el Enfoque Detrás de Cada Modelo — tema `IA` — Datafest 2026 / Bancolombia — [HTML](IA/finalidades-de-las-ia.html) · [PNG](IA/finalidades-de-las-ia.png)
-- ✅ La Evolución de los Agentes de IA: de Workflows Rígidos a Arquitecturas Goal-Based — tema `IA` — Datafest 2026 / AWS — [HTML](IA/ia-agentes.html) · [PNG](IA/ia-agentes.png)
-- ✅ Arquitecturas de Datos: 9 Patrones que Todo Arquitecto Debe Conocer — tema `Arquitectura` — [HTML](Arquitectura/arquitectura-datos.html) · [PNG](Arquitectura/arquitectura-datos.png)
-- ✅ Arquitectura Medallion: Bronze, Silver y Gold sin Atajos — tema `Arquitectura` — [HTML](Arquitectura/arquitectura-medallon.html) · [PNG](Arquitectura/arquitectura-medallon.png)
-- ✅ Bases de Datos Populares: un Mapa por Familias para Elegir con Criterio — tema `Base de Datos` — [HTML](Base_de_Datos/bases-de-datos-populares.html) · [PNG](Base_de_Datos/bases-de-datos-populares.png)
-- ✅ BI vs BA: del Espejo Retrovisor a la Brújula del Negocio — tema `BI` — [HTML](BI/bi-vs-ba.html) · [PNG](BI/bi-vs-ba.png)
-- ✅ BI de Autoservicio: Analítica sin Depender de TI en Cada Pregunta — tema `BI` — [HTML](BI/bi-autoservicio.html) · [PNG](BI/bi-autoservicio.png)
-- ✅ 5 Razones para Implementar Big Data y Analytics — tema `Bigdata` — [HTML](Bigdata/razones-implementar-bigdata.html) · [PNG](Bigdata/razones-implementar-bigdata.png)
-- ✅ Big Data = Big Innovation: Cómo los Datos Transforman Sectores Enteros — tema `Bigdata` — [HTML](Bigdata/bigdata-big-innovation.html) · [PNG](Bigdata/bigdata-big-innovation.png)
-- ✅ CONPES 3920: la Política Nacional de Big Data en Colombia — tema `Bigdata` — [HTML](Bigdata/conpes-3920-bigdata.html) · [PNG](Bigdata/conpes-3920-bigdata.png)
-- ✅ Big Data en las Grandes Empresas: de la Pila Técnica al Valor de Negocio — tema `Bigdata` — [HTML](Bigdata/bigdata-grandes-empresas.html) · [PNG](Bigdata/bigdata-grandes-empresas.png)
-- ✅ Cómo Escribir Prompts Efectivos para ChatGPT — tema `ChatGPT` — [HTML](ChatGPT/prompts-efectivos-chatgpt.html) · [PNG](ChatGPT/prompts-efectivos-chatgpt.png)
-- ✅ Claude Llega a Excel y lo Cambia Todo — tema `Claude` — [HTML](Claude/claude-excel.html) · [PNG](Claude/claude-excel.png)
-- ✅ El Ciclo de Vida de un Proyecto de Ciencia de Datos — tema `Cultura_Datos` — [HTML](Cultura_Datos/ciclo-vida-ciencia-datos.html) · [PNG](Cultura_Datos/ciclo-vida-ciencia-datos.png)
-- ✅ Estadística Práctica para Científicos de Datos — tema `Cultura_Datos` — [HTML](Cultura_Datos/estadisticas-ciencia-datos.html) · [PNG](Cultura_Datos/estadisticas-ciencia-datos.png)
-- ✅ De Datos a Decisiones: la Escalera del Valor Analítico — tema `Cultura_Datos` — [HTML](Cultura_Datos/escalera-valor-analitico.html) · [PNG](Cultura_Datos/escalera-valor-analitico.png)
-- ✅ La Pregunta Define el Análisis — tema `Cultura_Datos` — [HTML](Cultura_Datos/preguntas-analisis.html) · [PNG](Cultura_Datos/preguntas-analisis.png)
-- ✅ Leer Datos vs. Analizar Información — tema `Cultura_Datos` — [HTML](Cultura_Datos/leer-datos-vs-analizar-informacion.html) · [PNG](Cultura_Datos/leer-datos-vs-analizar-informacion.png)
-- ✅ Tipos de Normalización en Ciencia de Datos — tema `Cultura_Datos` — [HTML](Cultura_Datos/normalizacion-ciencia-datos.html) · [PNG](Cultura_Datos/normalizacion-ciencia-datos.png)
-- ✅ Beneficios de una Cultura de Datos — tema `Cultura_Datos` — [HTML](Cultura_Datos/beneficios-cultura-dato.html) · [PNG](Cultura_Datos/beneficios-cultura-dato.png)
-- ✅ Cómo Construir una Cultura de Datos — tema `Cultura_Datos` — [HTML](Cultura_Datos/construir-cultura-dato.html) · [PNG](Cultura_Datos/construir-cultura-dato.png)
-- ✅ Modernizando la Integración de Datos — tema `Cultura_Datos` — [HTML](Cultura_Datos/modernizacion-integracion-datos.html) · [PNG](Cultura_Datos/modernizacion-integracion-datos.png)
-- ✅ La Regla del Z en Dashboards — tema `Dashboard` — [HTML](Dashboard/reglas-diseno-dashboard.html) · [PNG](Dashboard/reglas-diseno-dashboard.png)
-- ✅ Tipos de Dashboards — tema `Dashboard` — [HTML](Dashboard/tipos-dashboard.html) · [PNG](Dashboard/tipos-dashboard.png)
-- ✅ Top 6 Conceptos de Datos — tema `Cultura_Datos` — [HTML](Cultura_Datos/conceptos-datos.html) · [PNG](Cultura_Datos/conceptos-datos.png)
-- ✅ 10 Términos Esenciales de Ciencia de Datos y Machine Learning — tema `Cultura_Datos` — [HTML](Cultura_Datos/terminos-ciencia-datos.html) · [PNG](Cultura_Datos/terminos-ciencia-datos.png)
-- ✅ Databricks: Datos en Conocimiento 12x Más Rápido — tema `Arquitectura` — [HTML](Arquitectura/databricks.html) · [PNG](Arquitectura/databricks.png)
-- ✅ ¿Docente o Líder de Aprendizaje? Los 3 Cambios que Redefinen la Enseñanza — tema `Docencia` — [HTML](Docencia/docente-lider-aprendizaje.html) · [PNG](Docencia/docente-lider-aprendizaje.png)
-- ✅ ¿Cómo Liderar a Cada Generación? 8 Claves para Boomers, Gen X, Millennials y Gen Z — tema `Liderazgo` — [HTML](Liderazgo/liderar-cada-generacion.html) · [PNG](Liderazgo/liderar-cada-generacion.png)
-- ✅ 8 Conceptos Estadísticos Esenciales para Ciencia de Datos — tema `Cultura_Datos` — [HTML](Cultura_Datos/conceptos-estadisticos-basicos.html) · [PNG](Cultura_Datos/conceptos-estadisticos-basicos.png)
-- ✅ Hoja de Ruta de Estadística para Analistas de Datos — tema `Cultura_Datos` — [HTML](Cultura_Datos/hoja-de-ruta-estadistica.html) · [PNG](Cultura_Datos/hoja-de-ruta-estadistica.png)
-- ✅ ¿Para Qué Sirve la Correlación? Guía Práctica del Coeficiente R — tema `Cultura_Datos` — [HTML](Cultura_Datos/correlacion-estadistica.html) · [PNG](Cultura_Datos/correlacion-estadistica.png)
-- ✅ 4 Gráficos de Excel que Todo Analista de Costos Debería Usar — tema `Excel` — [HTML](Excel/graficos-excel.html) · [PNG](Excel/graficos-excel.png)
-- ✅ XLSX vs. TXT/CSV vs. Parquet: Qué Formato Usar para Análisis Masivo — tema `Excel` — [HTML](Excel/tipos-archivos-excel.html) · [PNG](Excel/tipos-archivos-excel.png)
-- ✅ Automatiza tus Excel con Macros VBA: Guía Práctica — tema `Excel` — [HTML](Excel/automatizar-macros-excel.html) · [PNG](Excel/automatizar-macros-excel.png)
-- ✅ Tablas Dinámicas en Excel: Qué Son y Cuándo Usarlas — tema `Excel` — [HTML](Excel/tablas-dinamicas-excel.html) · [PNG](Excel/tablas-dinamicas-excel.png)
+- ✅ Automatización vs Autonomía: Arquitectura de Sistemas de IA Agénticos — tema `Automatización` — [HTML](Construidos/Automatización/automatizacion-agentesia.html) · [PNG](Construidos/Automatización/automatizacion-agentesia.png)
+- ✅ Automatización de Reportes con Python: de Excel a Producción — tema `Automatización` — [HTML](Construidos/Automatización/automatizacion-python.html) · [PNG](Construidos/Automatización/automatizacion-python.png)
+- ✅ Orquestación de Scripts en Python: Ejecución Programada a Nivel de Sistema Operativo — tema `Automatización` — [HTML](Construidos/Automatización/automatizacion-python-programada.html) · [PNG](Construidos/Automatización/automatizacion-python-programada.png)
+- ✅ Arquitectura de Pipelines de Big Data en AWS — tema `Arquitectura` — [HTML](Construidos/Arquitectura/arquitectura-aws.html) · [PNG](Construidos/Arquitectura/arquitectura-aws.png)
+- ✅ Arquitectura de Datos en Azure: Patrón Medallón de Extremo a Extremo — tema `Arquitectura` — [HTML](Construidos/Arquitectura/arquitectura-azure.html) · [PNG](Construidos/Arquitectura/arquitectura-azure.png)
+- ✅ Stack de Datos Serverless en Google Cloud Platform — tema `Arquitectura` — [HTML](Construidos/Arquitectura/arquitectura-google.html) · [PNG](Construidos/Arquitectura/arquitectura-google.png)
+- ✅ Arquitectura Lakehouse en Oracle Cloud Infrastructure (OCI) — tema `Arquitectura` — [HTML](Construidos/Arquitectura/arquitectura-oracle.html) · [PNG](Construidos/Arquitectura/arquitectura-oracle.png)
+- ✅ Evolución del Análisis de Datos: de Registrar Datos a Delegar Tareas — tema `IA` — Datafest 2026 / Bancolombia — [HTML](Construidos/IA/analisis-datos-ia.html) · [PNG](Construidos/IA/analisis-datos-ia.png)
+- ✅ Finalidades de las IA: el Enfoque Detrás de Cada Modelo — tema `IA` — Datafest 2026 / Bancolombia — [HTML](Construidos/IA/finalidades-de-las-ia.html) · [PNG](Construidos/IA/finalidades-de-las-ia.png)
+- ✅ La Evolución de los Agentes de IA: de Workflows Rígidos a Arquitecturas Goal-Based — tema `IA` — Datafest 2026 / AWS — [HTML](Construidos/IA/ia-agentes.html) · [PNG](Construidos/IA/ia-agentes.png)
+- ✅ Arquitecturas de Datos: 9 Patrones que Todo Arquitecto Debe Conocer — tema `Arquitectura` — [HTML](Construidos/Arquitectura/arquitectura-datos.html) · [PNG](Construidos/Arquitectura/arquitectura-datos.png)
+- ✅ Arquitectura Medallion: Bronze, Silver y Gold sin Atajos — tema `Arquitectura` — [HTML](Construidos/Arquitectura/arquitectura-medallon.html) · [PNG](Construidos/Arquitectura/arquitectura-medallon.png)
+- ✅ Bases de Datos Populares: un Mapa por Familias para Elegir con Criterio — tema `Base de Datos` — [HTML](Construidos/Base_de_Datos/bases-de-datos-populares.html) · [PNG](Construidos/Base_de_Datos/bases-de-datos-populares.png)
+- ✅ BI vs BA: del Espejo Retrovisor a la Brújula del Negocio — tema `BI` — [HTML](Construidos/BI/bi-vs-ba.html) · [PNG](Construidos/BI/bi-vs-ba.png)
+- ✅ BI de Autoservicio: Analítica sin Depender de TI en Cada Pregunta — tema `BI` — [HTML](Construidos/BI/bi-autoservicio.html) · [PNG](Construidos/BI/bi-autoservicio.png)
+- ✅ 5 Razones para Implementar Big Data y Analytics — tema `Bigdata` — [HTML](Construidos/Bigdata/razones-implementar-bigdata.html) · [PNG](Construidos/Bigdata/razones-implementar-bigdata.png)
+- ✅ Big Data = Big Innovation: Cómo los Datos Transforman Sectores Enteros — tema `Bigdata` — [HTML](Construidos/Bigdata/bigdata-big-innovation.html) · [PNG](Construidos/Bigdata/bigdata-big-innovation.png)
+- ✅ CONPES 3920: la Política Nacional de Big Data en Colombia — tema `Bigdata` — [HTML](Construidos/Bigdata/conpes-3920-bigdata.html) · [PNG](Construidos/Bigdata/conpes-3920-bigdata.png)
+- ✅ Big Data en las Grandes Empresas: de la Pila Técnica al Valor de Negocio — tema `Bigdata` — [HTML](Construidos/Bigdata/bigdata-grandes-empresas.html) · [PNG](Construidos/Bigdata/bigdata-grandes-empresas.png)
+- ✅ Cómo Escribir Prompts Efectivos para ChatGPT — tema `ChatGPT` — [HTML](Construidos/ChatGPT/prompts-efectivos-chatgpt.html) · [PNG](Construidos/ChatGPT/prompts-efectivos-chatgpt.png)
+- ✅ Claude Llega a Excel y lo Cambia Todo — tema `Claude` — [HTML](Construidos/Claude/claude-excel.html) · [PNG](Construidos/Claude/claude-excel.png)
+- ✅ El Ciclo de Vida de un Proyecto de Ciencia de Datos — tema `Cultura_Datos` — [HTML](Construidos/Cultura_Datos/ciclo-vida-ciencia-datos.html) · [PNG](Construidos/Cultura_Datos/ciclo-vida-ciencia-datos.png)
+- ✅ Estadística Práctica para Científicos de Datos — tema `Cultura_Datos` — [HTML](Construidos/Cultura_Datos/estadisticas-ciencia-datos.html) · [PNG](Construidos/Cultura_Datos/estadisticas-ciencia-datos.png)
+- ✅ De Datos a Decisiones: la Escalera del Valor Analítico — tema `Cultura_Datos` — [HTML](Construidos/Cultura_Datos/escalera-valor-analitico.html) · [PNG](Construidos/Cultura_Datos/escalera-valor-analitico.png)
+- ✅ La Pregunta Define el Análisis — tema `Cultura_Datos` — [HTML](Construidos/Cultura_Datos/preguntas-analisis.html) · [PNG](Construidos/Cultura_Datos/preguntas-analisis.png)
+- ✅ Leer Datos vs. Analizar Información — tema `Cultura_Datos` — [HTML](Construidos/Cultura_Datos/leer-datos-vs-analizar-informacion.html) · [PNG](Construidos/Cultura_Datos/leer-datos-vs-analizar-informacion.png)
+- ✅ Tipos de Normalización en Ciencia de Datos — tema `Cultura_Datos` — [HTML](Construidos/Cultura_Datos/normalizacion-ciencia-datos.html) · [PNG](Construidos/Cultura_Datos/normalizacion-ciencia-datos.png)
+- ✅ Beneficios de una Cultura de Datos — tema `Cultura_Datos` — [HTML](Construidos/Cultura_Datos/beneficios-cultura-dato.html) · [PNG](Construidos/Cultura_Datos/beneficios-cultura-dato.png)
+- ✅ Cómo Construir una Cultura de Datos — tema `Cultura_Datos` — [HTML](Construidos/Cultura_Datos/construir-cultura-dato.html) · [PNG](Construidos/Cultura_Datos/construir-cultura-dato.png)
+- ✅ Modernizando la Integración de Datos — tema `Cultura_Datos` — [HTML](Construidos/Cultura_Datos/modernizacion-integracion-datos.html) · [PNG](Construidos/Cultura_Datos/modernizacion-integracion-datos.png)
+- ✅ La Regla del Z en Dashboards — tema `Dashboard` — [HTML](Construidos/Dashboard/reglas-diseno-dashboard.html) · [PNG](Construidos/Dashboard/reglas-diseno-dashboard.png)
+- ✅ Tipos de Dashboards — tema `Dashboard` — [HTML](Construidos/Dashboard/tipos-dashboard.html) · [PNG](Construidos/Dashboard/tipos-dashboard.png)
+- ✅ Top 6 Conceptos de Datos — tema `Cultura_Datos` — [HTML](Construidos/Cultura_Datos/conceptos-datos.html) · [PNG](Construidos/Cultura_Datos/conceptos-datos.png)
+- ✅ 10 Términos Esenciales de Ciencia de Datos y Machine Learning — tema `Cultura_Datos` — [HTML](Construidos/Cultura_Datos/terminos-ciencia-datos.html) · [PNG](Construidos/Cultura_Datos/terminos-ciencia-datos.png)
+- ✅ Databricks: Datos en Conocimiento 12x Más Rápido — tema `Arquitectura` — [HTML](Construidos/Arquitectura/databricks.html) · [PNG](Construidos/Arquitectura/databricks.png)
+- ✅ ¿Docente o Líder de Aprendizaje? Los 3 Cambios que Redefinen la Enseñanza — tema `Docencia` — [HTML](Construidos/Docencia/docente-lider-aprendizaje.html) · [PNG](Construidos/Docencia/docente-lider-aprendizaje.png)
+- ✅ ¿Cómo Liderar a Cada Generación? 8 Claves para Boomers, Gen X, Millennials y Gen Z — tema `Liderazgo` — [HTML](Construidos/Liderazgo/liderar-cada-generacion.html) · [PNG](Construidos/Liderazgo/liderar-cada-generacion.png)
+- ✅ 8 Conceptos Estadísticos Esenciales para Ciencia de Datos — tema `Cultura_Datos` — [HTML](Construidos/Cultura_Datos/conceptos-estadisticos-basicos.html) · [PNG](Construidos/Cultura_Datos/conceptos-estadisticos-basicos.png)
+- ✅ Hoja de Ruta de Estadística para Analistas de Datos — tema `Cultura_Datos` — [HTML](Construidos/Cultura_Datos/hoja-de-ruta-estadistica.html) · [PNG](Construidos/Cultura_Datos/hoja-de-ruta-estadistica.png)
+- ✅ ¿Para Qué Sirve la Correlación? Guía Práctica del Coeficiente R — tema `Cultura_Datos` — [HTML](Construidos/Cultura_Datos/correlacion-estadistica.html) · [PNG](Construidos/Cultura_Datos/correlacion-estadistica.png)
+- ✅ 4 Gráficos de Excel que Todo Analista de Costos Debería Usar — tema `Excel` — [HTML](Construidos/Excel/graficos-excel.html) · [PNG](Construidos/Excel/graficos-excel.png)
+- ✅ XLSX vs. TXT/CSV vs. Parquet: Qué Formato Usar para Análisis Masivo — tema `Excel` — [HTML](Construidos/Excel/tipos-archivos-excel.html) · [PNG](Construidos/Excel/tipos-archivos-excel.png)
+- ✅ Automatiza tus Excel con Macros VBA: Guía Práctica — tema `Excel` — [HTML](Construidos/Excel/automatizar-macros-excel.html) · [PNG](Construidos/Excel/automatizar-macros-excel.png)
+- ✅ Tablas Dinámicas en Excel: Qué Son y Cuándo Usarlas — tema `Excel` — [HTML](Construidos/Excel/tablas-dinamicas-excel.html) · [PNG](Construidos/Excel/tablas-dinamicas-excel.png)
+- ✅ El Mapa de Vocabulario Esencial de IA — tema `IA` — [HTML](Construidos/IA/terminos-ia.html) · [PNG](Construidos/IA/terminos-ia.png)
+- ✅ 30 Skills de Claude para Pequeñas Empresas — tema `Claude` — [HTML](Construidos/Claude/skill-claude.html) · [PNG](Construidos/Claude/skill-claude.png)
+- ✅ Hay una Diferencia Abismal entre Saber Usar y Dominar Power BI — tema `PowerBI` — [HTML](Construidos/PowerBI/usar-dominar-power-bi.html) · [PNG](Construidos/PowerBI/usar-dominar-power-bi.png)
+- ✅ 15 Prompts Esenciales para Implementar un SGC ISO 9001 — tema `Cultura_Datos` — [HTML](Construidos/Cultura_Datos/prompts-iso-9001.html) · [PNG](Construidos/Cultura_Datos/prompts-iso-9001.png)
+- ✅ Conecta Power BI con Python: Pronóstico de Datos — tema `PowerBI` — [HTML](Construidos/PowerBI/integracion-python-power-bi.html) · [PNG](Construidos/PowerBI/integracion-python-power-bi.png)
+- ✅ La Pelea Diaria de un Analista de Datos con los KPIs — tema `Roles` — [HTML](Construidos/Roles/kpi-analista-datos.html) · [PNG](Construidos/Roles/kpi-analista-datos.png)
+- ✅ Arquitectura Medallion: Datos Confiables en Cada Capa — tema `Arquitectura` — [HTML](Construidos/Arquitectura/arquitectura-medallon-datos-confiables.html) · [PNG](Construidos/Arquitectura/arquitectura-medallon-datos-confiables.png)
+- ✅ Relación de Dependencia e Integración: Python, Estadística, ML e IA — tema `Cultura_Datos` — [HTML](Construidos/Cultura_Datos/integracion-python-estadistica-ml-ia.html) · [PNG](Construidos/Cultura_Datos/integracion-python-estadistica-ml-ia.png)
 
 Este README se irá actualizando con un enlace por cada infografía nueva.
 

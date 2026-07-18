@@ -1,7 +1,7 @@
 [
   {
     "id": "automatizacion-agentesia",
-    "imagen": "Automatización/automatizacion-agentesia.png",
+    "imagen": "Construidos/Automatización/automatizacion-agentesia.png",
     "fechaPublicacion": "2026-07-16T13:00:00",
     "es": {
       "tema": "Automatización",
@@ -21,7 +21,7 @@
   },
   {
     "id": "automatizacion-python",
-    "imagen": "Automatización/automatizacion-python.png",
+    "imagen": "Construidos/Automatización/automatizacion-python.png",
     "fechaPublicacion": "2026-07-18T13:00:00",
     "es": {
       "tema": "Automatización",
@@ -41,7 +41,7 @@
   },
   {
     "id": "automatizacion-python-programada",
-    "imagen": "Automatización/automatizacion-python-programada.png",
+    "imagen": "Construidos/Automatización/automatizacion-python-programada.png",
     "fechaPublicacion": "2026-07-20T13:00:00",
     "es": {
       "tema": "Automatización",
@@ -61,7 +61,7 @@
   },
   {
     "id": "arquitectura-aws",
-    "imagen": "Arquitectura/arquitectura-aws.png",
+    "imagen": "Construidos/Arquitectura/arquitectura-aws.png",
     "fechaPublicacion": "2026-07-22T13:00:00",
     "es": {
       "tema": "Arquitectura",
@@ -81,7 +81,7 @@
   },
   {
     "id": "arquitectura-azure",
-    "imagen": "Arquitectura/arquitectura-azure.png",
+    "imagen": "Construidos/Arquitectura/arquitectura-azure.png",
     "fechaPublicacion": "2026-07-24T13:00:00",
     "es": {
       "tema": "Arquitectura",
@@ -101,7 +101,7 @@
   },
   {
     "id": "arquitectura-google",
-    "imagen": "Arquitectura/arquitectura-google.png",
+    "imagen": "Construidos/Arquitectura/arquitectura-google.png",
     "fechaPublicacion": "2026-07-26T13:00:00",
     "es": {
       "tema": "Arquitectura",
@@ -121,7 +121,7 @@
   },
   {
     "id": "arquitectura-oracle",
-    "imagen": "Arquitectura/arquitectura-oracle.png",
+    "imagen": "Construidos/Arquitectura/arquitectura-oracle.png",
     "fechaPublicacion": "2026-07-28T13:00:00",
     "es": {
       "tema": "Arquitectura",
@@ -141,7 +141,7 @@
   },
   {
     "id": "analisis-datos-ia",
-    "imagen": "IA/analisis-datos-ia.png",
+    "imagen": "Construidos/IA/analisis-datos-ia.png",
     "fechaPublicacion": "2026-07-16T09:00:00",
     "es": {
       "tema": "Inteligencia Artificial",
@@ -161,7 +161,7 @@
   },
   {
     "id": "finalidades-de-las-ia",
-    "imagen": "IA/finalidades-de-las-ia.png",
+    "imagen": "Construidos/IA/finalidades-de-las-ia.png",
     "fechaPublicacion": "2026-07-16T09:05:00",
     "es": {
       "tema": "Inteligencia Artificial",
@@ -181,7 +181,7 @@
   },
   {
     "id": "ia-agentes",
-    "imagen": "IA/ia-agentes.png",
+    "imagen": "Construidos/IA/ia-agentes.png",
     "fechaPublicacion": "2026-07-16T09:10:00",
     "es": {
       "tema": "Inteligencia Artificial",
@@ -201,7 +201,7 @@
   },
   {
     "id": "arquitectura-datos",
-    "imagen": "Arquitectura/arquitectura-datos.png",
+    "imagen": "Construidos/Arquitectura/arquitectura-datos.png",
     "fechaPublicacion": "2026-07-18T09:10:00",
     "es": {
       "tema": "Arquitectura",
@@ -221,7 +221,7 @@
   },
   {
     "id": "arquitectura-medallon",
-    "imagen": "Arquitectura/arquitectura-medallon.png",
+    "imagen": "Construidos/Arquitectura/arquitectura-medallon.png",
     "fechaPublicacion": "2026-07-20T09:10:00",
     "es": {
       "tema": "Arquitectura",
@@ -241,7 +241,7 @@
   },
   {
     "id": "bases-de-datos-populares",
-    "imagen": "Base_de_Datos/bases-de-datos-populares.png",
+    "imagen": "Construidos/Base_de_Datos/bases-de-datos-populares.png",
     "fechaPublicacion": "2026-07-22T09:10:00",
     "es": {
       "tema": "Base de Datos",
@@ -261,7 +261,7 @@
   },
   {
     "id": "bi-vs-ba",
-    "imagen": "BI/bi-vs-ba.png",
+    "imagen": "Construidos/BI/bi-vs-ba.png",
     "fechaPublicacion": "2026-07-24T09:10:00",
     "es": {
       "tema": "BI",
@@ -281,7 +281,7 @@
   },
   {
     "id": "bi-autoservicio",
-    "imagen": "BI/bi-autoservicio.png",
+    "imagen": "Construidos/BI/bi-autoservicio.png",
     "fechaPublicacion": "2026-07-26T09:10:00",
     "es": {
       "tema": "BI",
@@ -301,7 +301,7 @@
   },
   {
     "id": "razones-implementar-bigdata",
-    "imagen": "Bigdata/razones-implementar-bigdata.png",
+    "imagen": "Construidos/Bigdata/razones-implementar-bigdata.png",
     "fechaPublicacion": "2026-07-28T09:10:00",
     "es": {
       "tema": "Bigdata",
@@ -321,7 +321,7 @@
   },
   {
     "id": "bigdata-big-innovation",
-    "imagen": "Bigdata/bigdata-big-innovation.png",
+    "imagen": "Construidos/Bigdata/bigdata-big-innovation.png",
     "fechaPublicacion": "2026-07-30T09:10:00",
     "es": {
       "tema": "Bigdata",
@@ -341,7 +341,7 @@
   },
   {
     "id": "conpes-3920-bigdata",
-    "imagen": "Bigdata/conpes-3920-bigdata.png",
+    "imagen": "Construidos/Bigdata/conpes-3920-bigdata.png",
     "fechaPublicacion": "2026-08-01T09:10:00",
     "es": {
       "tema": "Bigdata",
@@ -361,7 +361,7 @@
   },
   {
     "id": "bigdata-grandes-empresas",
-    "imagen": "Bigdata/bigdata-grandes-empresas.png",
+    "imagen": "Construidos/Bigdata/bigdata-grandes-empresas.png",
     "fechaPublicacion": "2026-08-03T09:10:00",
     "es": {
       "tema": "Bigdata",
@@ -381,7 +381,7 @@
   },
   {
     "id": "prompts-efectivos-chatgpt",
-    "imagen": "ChatGPT/prompts-efectivos-chatgpt.png",
+    "imagen": "Construidos/ChatGPT/prompts-efectivos-chatgpt.png",
     "fechaPublicacion": "2026-08-05T09:10:00",
     "es": {
       "tema": "ChatGPT",
@@ -401,7 +401,7 @@
   },
   {
     "id": "claude-excel",
-    "imagen": "Claude/claude-excel.png",
+    "imagen": "Construidos/Claude/claude-excel.png",
     "fechaPublicacion": "2026-08-07T09:10:00",
     "es": {
       "tema": "Claude",
@@ -421,7 +421,7 @@
   },
   {
     "id": "ciclo-vida-ciencia-datos",
-    "imagen": "Cultura_Datos/ciclo-vida-ciencia-datos.png",
+    "imagen": "Construidos/Cultura_Datos/ciclo-vida-ciencia-datos.png",
     "fechaPublicacion": "2026-08-09T09:10:00",
     "es": {
       "tema": "Cultura de Datos",
@@ -441,7 +441,7 @@
   },
   {
     "id": "estadisticas-ciencia-datos",
-    "imagen": "Cultura_Datos/estadisticas-ciencia-datos.png",
+    "imagen": "Construidos/Cultura_Datos/estadisticas-ciencia-datos.png",
     "fechaPublicacion": "2026-08-11T09:10:00",
     "es": {
       "tema": "Cultura de Datos",
@@ -461,7 +461,7 @@
   },
   {
     "id": "escalera-valor-analitico",
-    "imagen": "Cultura_Datos/escalera-valor-analitico.png",
+    "imagen": "Construidos/Cultura_Datos/escalera-valor-analitico.png",
     "fechaPublicacion": "2026-08-13T09:10:00",
     "es": {
       "tema": "Cultura de Datos",
@@ -481,7 +481,7 @@
   },
   {
     "id": "preguntas-analisis",
-    "imagen": "Cultura_Datos/preguntas-analisis.png",
+    "imagen": "Construidos/Cultura_Datos/preguntas-analisis.png",
     "fechaPublicacion": "2026-08-15T09:10:00",
     "es": {
       "tema": "Cultura de Datos",
@@ -501,7 +501,7 @@
   },
   {
     "id": "leer-datos-vs-analizar-informacion",
-    "imagen": "Cultura_Datos/leer-datos-vs-analizar-informacion.png",
+    "imagen": "Construidos/Cultura_Datos/leer-datos-vs-analizar-informacion.png",
     "fechaPublicacion": "2026-08-17T09:10:00",
     "es": {
       "tema": "Cultura de Datos",
@@ -521,7 +521,7 @@
   },
   {
     "id": "normalizacion-ciencia-datos",
-    "imagen": "Cultura_Datos/normalizacion-ciencia-datos.png",
+    "imagen": "Construidos/Cultura_Datos/normalizacion-ciencia-datos.png",
     "fechaPublicacion": "2026-08-19T09:10:00",
     "es": {
       "tema": "Cultura de Datos",
@@ -541,7 +541,7 @@
   },
   {
     "id": "beneficios-cultura-dato",
-    "imagen": "Cultura_Datos/beneficios-cultura-dato.png",
+    "imagen": "Construidos/Cultura_Datos/beneficios-cultura-dato.png",
     "fechaPublicacion": "2026-08-21T09:10:00",
     "es": {
       "tema": "Cultura de Datos",
@@ -561,7 +561,7 @@
   },
   {
     "id": "construir-cultura-dato",
-    "imagen": "Cultura_Datos/construir-cultura-dato.png",
+    "imagen": "Construidos/Cultura_Datos/construir-cultura-dato.png",
     "fechaPublicacion": "2026-08-23T09:10:00",
     "es": {
       "tema": "Cultura de Datos",
@@ -581,7 +581,7 @@
   },
   {
     "id": "modernizacion-integracion-datos",
-    "imagen": "Cultura_Datos/modernizacion-integracion-datos.png",
+    "imagen": "Construidos/Cultura_Datos/modernizacion-integracion-datos.png",
     "fechaPublicacion": "2026-08-25T09:10:00",
     "es": {
       "tema": "Cultura de Datos",
@@ -601,7 +601,7 @@
   },
   {
     "id": "reglas-diseno-dashboard",
-    "imagen": "Dashboard/reglas-diseno-dashboard.png",
+    "imagen": "Construidos/Dashboard/reglas-diseno-dashboard.png",
     "fechaPublicacion": "2026-08-27T09:10:00",
     "es": {
       "tema": "Dashboard",
@@ -621,7 +621,7 @@
   },
   {
     "id": "tipos-dashboard",
-    "imagen": "Dashboard/tipos-dashboard.png",
+    "imagen": "Construidos/Dashboard/tipos-dashboard.png",
     "fechaPublicacion": "2026-08-29T09:10:00",
     "es": {
       "tema": "Dashboard",
@@ -641,7 +641,7 @@
   },
   {
     "id": "conceptos-datos",
-    "imagen": "Cultura_Datos/conceptos-datos.png",
+    "imagen": "Construidos/Cultura_Datos/conceptos-datos.png",
     "fechaPublicacion": "2026-08-31T09:10:00",
     "es": {
       "tema": "Cultura de Datos",
@@ -661,7 +661,7 @@
   },
   {
     "id": "terminos-ciencia-datos",
-    "imagen": "Cultura_Datos/terminos-ciencia-datos.png",
+    "imagen": "Construidos/Cultura_Datos/terminos-ciencia-datos.png",
     "fechaPublicacion": "2026-09-02T09:10:00",
     "es": {
       "tema": "Cultura de Datos",
@@ -681,7 +681,7 @@
   },
   {
     "id": "databricks",
-    "imagen": "Arquitectura/databricks.png",
+    "imagen": "Construidos/Arquitectura/databricks.png",
     "fechaPublicacion": "2026-09-04T09:10:00",
     "es": {
       "tema": "Arquitectura",
@@ -701,7 +701,7 @@
   },
   {
     "id": "docente-lider-aprendizaje",
-    "imagen": "Docencia/docente-lider-aprendizaje.png",
+    "imagen": "Construidos/Docencia/docente-lider-aprendizaje.png",
     "fechaPublicacion": "2026-09-06T09:10:00",
     "es": {
       "tema": "Docencia",
@@ -721,7 +721,7 @@
   },
   {
     "id": "liderar-cada-generacion",
-    "imagen": "Liderazgo/liderar-cada-generacion.png",
+    "imagen": "Construidos/Liderazgo/liderar-cada-generacion.png",
     "fechaPublicacion": "2026-09-08T09:10:00",
     "es": {
       "tema": "Liderazgo",
@@ -741,7 +741,7 @@
   },
   {
     "id": "conceptos-estadisticos-basicos",
-    "imagen": "Cultura_Datos/conceptos-estadisticos-basicos.png",
+    "imagen": "Construidos/Cultura_Datos/conceptos-estadisticos-basicos.png",
     "fechaPublicacion": "2026-09-10T09:10:00",
     "es": {
       "tema": "Cultura_Datos",
@@ -761,7 +761,7 @@
   },
   {
     "id": "hoja-de-ruta-estadistica",
-    "imagen": "Cultura_Datos/hoja-de-ruta-estadistica.png",
+    "imagen": "Construidos/Cultura_Datos/hoja-de-ruta-estadistica.png",
     "fechaPublicacion": "2026-09-12T09:10:00",
     "es": {
       "tema": "Cultura_Datos",
@@ -781,7 +781,7 @@
   },
   {
     "id": "correlacion-estadistica",
-    "imagen": "Cultura_Datos/correlacion-estadistica.png",
+    "imagen": "Construidos/Cultura_Datos/correlacion-estadistica.png",
     "fechaPublicacion": "2026-09-14T09:10:00",
     "es": {
       "tema": "Cultura_Datos",
@@ -801,7 +801,7 @@
   },
   {
     "id": "graficos-excel",
-    "imagen": "Excel/graficos-excel.png",
+    "imagen": "Construidos/Excel/graficos-excel.png",
     "fechaPublicacion": "2026-09-16T09:10:00",
     "es": {
       "tema": "Excel",
@@ -821,7 +821,7 @@
   },
   {
     "id": "tipos-archivos-excel",
-    "imagen": "Excel/tipos-archivos-excel.png",
+    "imagen": "Construidos/Excel/tipos-archivos-excel.png",
     "fechaPublicacion": "2026-09-18T09:10:00",
     "es": {
       "tema": "Excel",
@@ -841,7 +841,7 @@
   },
   {
     "id": "automatizar-macros-excel",
-    "imagen": "Excel/automatizar-macros-excel.png",
+    "imagen": "Construidos/Excel/automatizar-macros-excel.png",
     "fechaPublicacion": "2026-09-20T09:10:00",
     "es": {
       "tema": "Excel",
@@ -861,7 +861,7 @@
   },
   {
     "id": "tablas-dinamicas-excel",
-    "imagen": "Excel/tablas-dinamicas-excel.png",
+    "imagen": "Construidos/Excel/tablas-dinamicas-excel.png",
     "fechaPublicacion": "2026-09-22T09:10:00",
     "es": {
       "tema": "Excel",
@@ -872,6 +872,206 @@
       "tema": "Excel",
       "topico": "Pivot Tables in Excel: What They Are and When to Use Them",
       "descripcion": "A pivot table is a data summary packaged into a format that lets you generate reports and explore trends without altering the underlying information. The term \"pivot\" refers to rotating the data to view it from a different angle: the table doesn't add, subtract, or modify the source values, it simply reorganizes them to reveal patterns that weren't obvious in the raw spreadsheet. This capability makes it especially useful when the sheer volume of rows makes any manual calculation impractical.\n\nFive concrete scenarios illustrate its practical value. Comparing sales totals across products, which would normally require manually accumulating each figure row by row, is solved by automatically summing thousands of records in seconds. Showing sales as a percentage of the total —by setting the column to \"Show Values As % of Grand Total\"— turns an absolute figure into its relative weight without writing a single formula: in one real case, total sales of $200,000 with one product generating $45,000 automatically translate into a 22.5% contribution. Combining duplicate data groups and sums repeated instances of the same element without having to search for them manually, while getting a count of separate elements —such as employees per department— eliminates the task of sorting and counting row by row. Finally, assigning default values to empty cells (like $0 or N/A) through the pivot table's options avoids the ambiguity of missing data in shared reports.\n\nMastering these capabilities doesn't require advanced formula knowledge: the pivot table does that calculation work for the analyst."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "terminos-ia",
+    "imagen": "Construidos/IA/terminos-ia.png",
+    "fechaPublicacion": "2026-09-24T09:10:00",
+    "es": {
+      "tema": "IA",
+      "topico": "El Mapa de Vocabulario Esencial de IA",
+      "descripcion": "El vocabulario técnico de la inteligencia artificial se organiza en una jerarquía clara: la Inteligencia Artificial (IA) engloba sistemas que realizan tareas que normalmente requieren cognición humana —razonamiento, aprendizaje, percepción y toma de decisiones—, dentro de la cual el Aprendizaje Automático es el subcampo donde los sistemas aprenden patrones a partir de datos, el Aprendizaje Profundo aplica redes neuronales multicapa para representaciones jerárquicas, y la Red Neuronal es el modelo computacional de nodos interconectados que hace posible ese aprendizaje.\n\nSobre esa base se apoyan seis categorías de vocabulario que aparecen en cualquier conversación técnica actual sobre IA. Los paradigmas de aprendizaje —supervisado, no supervisado, por refuerzo y auto-supervisado— definen cómo un modelo extrae conocimiento de los datos disponibles. La IA generativa introduce términos como LLM, GAN y RAG, que describen cómo los modelos producen contenido nuevo o combinan conocimiento externo. Los agentes de IA —autónomos, orquestados mediante MCP o conversacionales— representan la evolución hacia sistemas que actúan con menor intervención humana. El comportamiento y los problemas del modelo —alucinaciones, sobreajuste, sesgo algorítmico, deriva del modelo— explican por qué un sistema puede fallar en producción. La evaluación y las métricas —accuracy, precision, recall, F1 score, benchmark— cuantifican qué tan bien funciona realmente un modelo. Y la seguridad y la ética —IA explicable, guardrails, privacidad de datos, red teaming— delimitan cómo desplegar estos sistemas de forma responsable.\n\nDominar este vocabulario compacto es lo que permite leer una arquitectura, un paper técnico o la documentación de un producto de IA sin perderse en la jerga."
+    },
+    "en": {
+      "tema": "AI",
+      "topico": "The Essential AI Vocabulary Map",
+      "descripcion": "The technical vocabulary of artificial intelligence is organized in a clear hierarchy: Artificial Intelligence (AI) encompasses systems that perform tasks that normally require human cognition —reasoning, learning, perception, and decision-making— within which Machine Learning is the subfield where systems learn patterns from data, Deep Learning applies multi-layer neural networks for hierarchical representations, and the Neural Network is the computational model of interconnected nodes that makes that learning possible.\n\nSix vocabulary categories build on that foundation and show up in any current technical conversation about AI. Learning paradigms —supervised, unsupervised, reinforcement, and self-supervised— define how a model extracts knowledge from available data. Generative AI introduces terms like LLM, GAN, and RAG, which describe how models produce new content or combine external knowledge. AI agents —autonomous, orchestrated via MCP, or conversational— represent the shift toward systems that act with less human intervention. Model behavior and problems —hallucinations, overfitting, algorithmic bias, model drift— explain why a system can fail in production. Evaluation and metrics —accuracy, precision, recall, F1 score, benchmark— quantify how well a model actually performs. And security and ethics —explainable AI, guardrails, data privacy, red teaming— outline how to deploy these systems responsibly.\n\nMastering this compact vocabulary is what makes it possible to read an architecture, a technical paper, or an AI product's documentation without getting lost in the jargon."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "skill-claude",
+    "imagen": "Construidos/Claude/skill-claude.png",
+    "fechaPublicacion": "2026-09-26T09:10:00",
+    "es": {
+      "tema": "Claude",
+      "topico": "30 Skills de Claude para Pequeñas Empresas",
+      "descripcion": "Una skill de Claude es un flujo de trabajo reutilizable, no un prompt suelto que hay que reescribir cada vez: se conecta a las herramientas reales del negocio —Gmail, Canva, Slack, Drive, QuickBooks, Calendar, DocuSign, Stripe, PayPal, HubSpot, Square o Microsoft 365 Copilot— y ejecuta una tarea completa de principio a fin. Para una pequeña empresa, esto convierte una automatización compleja en algo tan simple como invocar un nombre de skill.\n\nEstas skills se organizan en cinco áreas del negocio. En inteligencia de negocio, skills como el resumen del lunes o del viernes entregan una vista de una página con caja, ventas, pipeline y prioridades, mientras que la revisión trimestral consolida ingresos, márgenes y riesgos en formato narrativo. En dinero y finanzas, una foto de caja lee pagos y facturas para construir una previsión a 30/60/90 días, y el cierre de fin de mes automatiza la revisión de libros antes de reportar. En ventas y marketing, el triaje de leads puntúa oportunidades por interés y urgencia, mientras que el creador en Canva construye una campaña completa desde un solo brief. En clientes y operaciones, el mantenimiento de CRM detecta duplicados y campos vacíos, y la revisión de contrato entrega un resumen con banderas rojas antes de firmar. Finalmente, en contratación y puesta en marcha, el onboarding de pyme actúa como skill base que entiende el negocio y conecta el resto de herramientas para las demás automatizaciones.\n\nEl resultado es que tareas que antes requerían saltar entre media docena de aplicaciones ahora se resuelven invocando una sola skill, con el contexto del negocio ya incorporado."
+    },
+    "en": {
+      "tema": "Claude",
+      "topico": "30 Claude Skills for Small Businesses",
+      "descripcion": "A Claude skill is a reusable workflow, not a loose prompt that has to be rewritten every time: it connects to the business's actual tools —Gmail, Canva, Slack, Drive, QuickBooks, Calendar, DocuSign, Stripe, PayPal, HubSpot, Square, or Microsoft 365 Copilot— and runs a complete task from start to finish. For a small business, this turns a complex automation into something as simple as invoking a skill name.\n\nThese skills are organized into five business areas. In business intelligence, skills like the Monday or Friday recap deliver a one-page view of cash, sales, pipeline, and priorities, while the quarterly review consolidates revenue, margins, and risks into narrative form. In money and finance, a cash snapshot reads payments and invoices to build a 30/60/90-day forecast, and month-end close automates the books review before reporting. In sales and marketing, lead triage scores opportunities by interest and urgency, while the Canva creator builds a full campaign from a single brief. In customers and operations, CRM maintenance detects duplicates and empty fields, and contract review delivers a summary with red flags before signing. Finally, in hiring and setup, small-business onboarding acts as the base skill that understands the business and connects the rest of the tools for the other automations.\n\nThe result is that tasks which used to require jumping between half a dozen applications are now handled by invoking a single skill, with the business context already built in."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "usar-dominar-power-bi",
+    "imagen": "Construidos/PowerBI/usar-dominar-power-bi.png",
+    "fechaPublicacion": "2026-09-28T09:10:00",
+    "es": {
+      "tema": "PowerBI",
+      "topico": "Hay una Diferencia Abismal entre Saber Usar y Dominar Power BI",
+      "descripcion": "Existe una diferencia abismal entre saber usar Power BI y dominarlo, y esa diferencia se explica mejor con la metáfora de un iceberg. La visualización —los gráficos de barras, dona y líneas que ve la audiencia final— es apenas la punta visible: lo único que se percibe a simple vista, pero también la parte más pequeña del trabajo real detrás de un reporte.\n\nDebajo de la línea de flotación se encuentra el trabajo que realmente separa a un usuario ocasional de alguien que domina la herramienta. Transformar significa preparar y depurar los datos de calidad antes de que lleguen a cualquier modelo: limpiar inconsistencias, corregir tipos de datos y estandarizar formatos. Modelar implica diseñar una estructura de datos sólida y escalable —relaciones entre tablas, granularidad correcta, medidas bien definidas— que sostenga el reporte a medida que crecen los datos y las preguntas del negocio. Y en la base de todo está la arquitectura: pensar la información antes de construir cualquier visualización, decidir qué se mide, cómo se relaciona y para quién se construye el reporte.\n\nUn reporte visualmente atractivo puede ocultar una base de datos mal modelada o sin transformar correctamente, y esa base termina siendo la que determina si el reporte escala, se mantiene y responde con precisión a medida que el negocio cambia. La pregunta que vale la pena hacerse no es qué tan bonito se ve el dashboard, sino en qué etapa del iceberg se está trabajando realmente."
+    },
+    "en": {
+      "tema": "PowerBI",
+      "topico": "There's an Abysmal Difference Between Knowing How to Use and Mastering Power BI",
+      "descripcion": "There is an abysmal difference between knowing how to use Power BI and truly mastering it, and that difference is best explained through the metaphor of an iceberg. Visualization —the bar, donut, and line charts the final audience sees— is just the visible tip: the only part perceived at a glance, but also the smallest part of the real work behind a report.\n\nBelow the waterline lies the work that actually separates a casual user from someone who has mastered the tool. Transforming means preparing and cleaning quality data before it ever reaches a model: fixing inconsistencies, correcting data types, and standardizing formats. Modeling means designing a solid, scalable data structure —relationships between tables, correct granularity, well-defined measures— that can sustain the report as data and business questions grow. And at the very base of it all is architecture: thinking through the information before building any visualization, deciding what gets measured, how it relates, and who the report is built for.\n\nA visually appealing report can hide a poorly modeled or improperly transformed database, and that foundation ends up determining whether the report scales, stays maintainable, and responds accurately as the business changes. The question worth asking isn't how pretty the dashboard looks, but which layer of the iceberg you're actually working on."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "prompts-iso-9001",
+    "imagen": "Construidos/Cultura_Datos/prompts-iso-9001.png",
+    "fechaPublicacion": "2026-09-30T09:10:00",
+    "es": {
+      "tema": "Cultura_Datos",
+      "topico": "15 Prompts Esenciales para Implementar un SGC ISO 9001",
+      "descripcion": "Implementar un Sistema de Gestión de Calidad bajo ISO 9001 es un proyecto con fases claramente definidas, y cada fase tiene entregables documentales concretos que pueden generarse con ayuda de prompts bien estructurados en vez de partir de una plantilla en blanco. La fase de inicio establece las bases del proyecto: una matriz de análisis del contexto identifica factores internos y externos, un Project Charter formaliza propósito, alcance y patrocinador, una plantilla define los límites del SGC, y una matriz de partes interesadas mapea necesidades y niveles de influencia.\n\nLa fase de planificación traduce esas bases en una hoja de ruta ejecutable: una EDT/WBS con cronograma general hasta la certificación, una arquitectura de procesos que organiza estratégicos, operativos y de apoyo, una arquitectura documental que controla toda la información del sistema, y una matriz de riesgos y oportunidades que anticipa qué puede afectar el proyecto. La fase de organización y ejecución se apoya en un formato de seguimiento del avance por fase y una matriz que gestiona los entregables comprometidos con cada responsable.\n\nLa fase de seguimiento y control introduce los mecanismos de verificación continua: un programa de auditoría interna, una agenda para la revisión por la dirección, y una metodología de análisis de causa raíz —con herramientas como los 5 porqués o el diagrama de Ishikawa— para prevenir que las no conformidades se repitan. Finalmente, la fase de cierre verifica que el proyecto esté listo para la auditoría de certificación y define un plan de sostenibilidad a 90 días que evita que el sistema se abandone justo después de certificarse."
+    },
+    "en": {
+      "tema": "Data Culture",
+      "topico": "15 Essential Prompts for Implementing an ISO 9001 QMS",
+      "descripcion": "Implementing a Quality Management System under ISO 9001 is a project with clearly defined phases, and each phase has concrete documentary deliverables that can be generated with well-structured prompts instead of starting from a blank template. The initiation phase lays the project's foundations: a context analysis matrix identifies internal and external factors, a Project Charter formalizes purpose, scope, and sponsorship, a template defines the QMS boundaries, and a stakeholder matrix maps needs and levels of influence.\n\nThe planning phase translates those foundations into an executable roadmap: a WBS with an overall schedule through certification, a process architecture that organizes strategic, operational, and support processes, a documentary architecture that controls all of the system's information, and a risk-and-opportunity matrix that anticipates what could affect the project. The organization and execution phase relies on a progress-tracking format by phase and a matrix that manages deliverables committed to each owner.\n\nThe monitoring and control phase introduces the continuous verification mechanisms: an internal audit program, an agenda for management review, and a root-cause analysis methodology —using tools like the 5 whys or the Ishikawa diagram— to prevent nonconformities from recurring. Finally, the closing phase verifies the project is ready for the certification audit and defines a 90-day sustainability plan that keeps the system from being abandoned right after certification."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "integracion-python-power-bi",
+    "imagen": "Construidos/PowerBI/integracion-python-power-bi.png",
+    "fechaPublicacion": "2026-10-02T09:10:00",
+    "es": {
+      "tema": "PowerBI",
+      "topico": "Conecta Power BI con Python: Pronóstico de Datos",
+      "descripcion": "Integrar Python dentro de Power BI permite llevar el modelado predictivo hasta el mismo reporte que el negocio consume a diario, sin depender de un notebook separado que hay que mantener y ejecutar por fuera. El proceso comienza importando y preparando los datos históricos —por ejemplo, ventas mensuales— y estableciendo los tipos de datos correctos dentro de Power BI, un paso que condiciona todo el modelado posterior.\n\nCon los datos listos, el desarrollo del script de Python configura el entorno en las opciones de Power BI y aplica librerías especializadas en modelado predictivo: pandas para manipulación de datos, Prophet para series de tiempo y scikit-learn para algoritmos de machine learning más generales. La ejecución del modelo invoca la función predictiva, genera las predicciones, calcula métricas de precisión y trata valores nulos o atípicos que podrían distorsionar el pronóstico.\n\nEl resultado final se visualiza de forma avanzada directamente en el lienzo de Power BI: un gráfico que compara los datos históricos reales contra la predicción futura, presentada con una banda de confianza del 95% que comunica la incertidumbre del pronóstico en lugar de ocultarla. En un caso real, un modelo entrenado sobre doce meses de datos históricos proyectó ventas pronosticadas por $1.2M, disponibles para el negocio sin salir del reporte habitual."
+    },
+    "en": {
+      "tema": "PowerBI",
+      "topico": "Connect Power BI with Python: Data Forecasting",
+      "descripcion": "Integrating Python inside Power BI brings predictive modeling into the very report the business consumes daily, without depending on a separate notebook that has to be maintained and run outside of it. The process starts by importing and preparing historical data —monthly sales, for example— and setting the correct data types within Power BI, a step that shapes all the modeling that follows.\n\nWith the data ready, developing the Python script configures the environment in Power BI's options and applies libraries specialized in predictive modeling: pandas for data manipulation, Prophet for time series, and scikit-learn for more general machine learning algorithms. Running the model invokes the predictive function, generates the predictions, calculates accuracy metrics, and handles null or outlier values that could distort the forecast.\n\nThe final result is visualized in an advanced way directly on the Power BI canvas: a chart comparing actual historical data against the future prediction, presented with a 95% confidence band that communicates the forecast's uncertainty instead of hiding it. In one real case, a model trained on twelve months of historical data projected forecasted sales of $1.2M, available to the business without ever leaving the regular report."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "kpi-analista-datos",
+    "imagen": "Construidos/Roles/kpi-analista-datos.png",
+    "fechaPublicacion": "2026-10-04T09:10:00",
+    "es": {
+      "tema": "Roles",
+      "topico": "La Pelea Diaria de un Analista de Datos con los KPIs",
+      "descripcion": "El trabajo diario de un analista de datos con sus KPIs no se trata de tener datos, sino de hacer que esos datos cuenten lo que realmente importa para el negocio. Todo empieza definiendo qué medir: alinear cada KPI con un objetivo de negocio concreto —por ejemplo, si el objetivo es crecer las ventas, el KPI clave es el ingreso, no una métrica de vanidad que no se conecta con esa meta. Antes de construir cualquier indicador, los datos deben limpiarse y validarse, porque datos sucios producen decisiones sucias: la calidad de los datos de entrada determina la confiabilidad de todo lo que viene después.\n\nCon datos limpios, el analista construye y monitorea los KPIs en dashboards claros, actualizados y confiables, pero el trabajo no termina ahí: requiere analizar tendencias y anomalías de forma activa, buscando patrones y detectando outliers para entender el \"por qué\" detrás de cada cambio. Ese análisis solo genera valor si se comunica bien —si el insight no se entiende, no sirve— por lo que convertir un hallazgo técnico en una historia clara es tan importante como el análisis mismo; un ejemplo real de este tipo de insight es identificar que la conversión cayó 15% por una baja específica en un canal.\n\nFinalmente, el ciclo se repite: el negocio cambia constantemente, así que los KPIs también deben iterar, siguiendo un ciclo continuo de medir, analizar, decidir y mejorar. El objetivo final de todo este proceso es transformar datos en decisiones que generen impacto real en el negocio."
+    },
+    "en": {
+      "tema": "Roles",
+      "topico": "The Daily Fight of a Data Analyst with KPIs",
+      "descripcion": "A data analyst's daily work with KPIs isn't about having data — it's about making that data count for what actually matters to the business. It all starts by defining what to measure: aligning each KPI with a concrete business objective — for example, if the objective is to grow sales, the key KPI is revenue, not a vanity metric disconnected from that goal. Before building any indicator, data must be cleaned and validated, because dirty data produces dirty decisions: the quality of the input data determines the reliability of everything that follows.\n\nWith clean data, the analyst builds and monitors KPIs in dashboards that are clear, up to date, and trustworthy, but the work doesn't stop there: it requires actively analyzing trends and anomalies, looking for patterns and detecting outliers to understand the \"why\" behind every change. That analysis only creates value if it's communicated well —if an insight isn't understood, it's useless— so turning a technical finding into a clear story matters as much as the analysis itself; one real example of this kind of insight is identifying that conversion dropped 15% due to a specific decline in one channel.\n\nFinally, the cycle repeats: the business keeps changing, so the KPIs have to iterate too, following a continuous loop of measuring, analyzing, deciding, and improving. The ultimate goal of this whole process is to turn data into decisions that generate real business impact."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "arquitectura-medallon-datos-confiables",
+    "imagen": "Construidos/Arquitectura/arquitectura-medallon-datos-confiables.png",
+    "fechaPublicacion": "2026-10-06T09:10:00",
+    "es": {
+      "tema": "Arquitectura",
+      "topico": "Arquitectura Medallion: Datos Confiables en Cada Capa",
+      "descripcion": "La arquitectura Medallion transforma datos crudos en información valiosa mediante tres capas progresivas, cada una con un nivel distinto de confianza para el negocio. La capa Bronze conserva los datos originales exactamente como llegan de cualquier fuente —bases de datos, archivos, APIs, aplicaciones, ERP/SaaS o streaming— sin modificarlos, manteniendo historial, versionado completo, trazabilidad y auditoría; su valor no está en ser útil para análisis inmediato, sino en preservar una copia fiel y verificable del origen. La capa Silver aplica limpieza y estandarización, validación con reglas de calidad y eliminación de duplicados, elevando el nivel de confianza de los datos hasta hacerlos consistentes y confiables para consumo interno.\n\nLa capa Gold agrega y modela esos datos ya confiables hasta dejarlos listos para analítica, dashboards e inteligencia artificial, con el nivel más alto de confianza y con la consistencia y el rendimiento que exige el uso directo del negocio. La progresión entre capas no es solo técnica: es una progresión de confiabilidad, donde cada etapa añade una capa de gobernanza y control de calidad sobre la anterior.\n\nEsta arquitectura sostiene cuatro resultados concretos: confianza en los datos que se usan para decidir, eficiencia en los procesos que dependen de ellos, valor real para el negocio en cada capa, y gobernanza con trazabilidad completa desde el dato crudo hasta el reporte final. Mejores datos producen mejores decisiones, y mejores decisiones producen mayor impacto."
+    },
+    "en": {
+      "tema": "Architecture",
+      "topico": "Medallion Architecture: Trustworthy Data at Every Layer",
+      "descripcion": "The Medallion architecture transforms raw data into valuable information through three progressive layers, each with a distinct level of trust for the business. The Bronze layer preserves the original data exactly as it arrives from any source —databases, files, APIs, applications, ERP/SaaS, or streaming— without modifying it, keeping full history, versioning, traceability, and auditability; its value isn't immediate analytical usefulness, but preserving a faithful, verifiable copy of the source. The Silver layer applies cleansing and standardization, validation through quality rules, and duplicate removal, raising the data's trust level until it becomes consistent and reliable for internal consumption.\n\nThe Gold layer aggregates and models that already-trustworthy data until it's ready for analytics, dashboards, and artificial intelligence, with the highest level of trust and the consistency and performance the business's direct use demands. The progression between layers isn't just technical: it's a progression of trustworthiness, where each stage adds a layer of governance and quality control on top of the previous one.\n\nThis architecture sustains four concrete outcomes: trust in the data used to make decisions, efficiency in the processes that depend on it, real business value at every layer, and governance with full traceability from raw data to final report. Better data produces better decisions, and better decisions produce greater impact."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "integracion-python-estadistica-ml-ia",
+    "imagen": "Construidos/Cultura_Datos/integracion-python-estadistica-ml-ia.png",
+    "fechaPublicacion": "2026-10-08T09:10:00",
+    "es": {
+      "tema": "Cultura_Datos",
+      "topico": "Relación de Dependencia e Integración: Python, Estadística, ML e IA",
+      "descripcion": "El stack técnico detrás de cualquier proyecto de inteligencia artificial se organiza en cuatro niveles que se apoyan unos sobre otros, sin que ninguno reemplace al anterior. En la base está Python como lenguaje y conjunto de herramientas, con bibliotecas específicas para cada necesidad: NumPy y Pandas para manipulación de datos, Matplotlib para visualización, SciPy para cómputo científico, y Scikit-learn, TensorFlow y PyTorch para modelado. Sobre esa base se apoyan, en paralelo, dos disciplinas con roles distintos: la estadística aporta el fundamento teórico —probabilidad, inferencia, análisis exploratorio, pruebas de hipótesis y modelado estadístico— mientras que el machine learning aporta la metodología de modelado propiamente dicha —aprendizaje supervisado y no supervisado, algoritmos como regresión, árboles de decisión y SVM, entrenamiento y evaluación de modelos.\n\nEl aprendizaje profundo, basado en redes neuronales, depende directamente del machine learning: es una extensión metodológica que requiere que los fundamentos de modelado ya estén dominados. En la cúspide de esta jerarquía está la inteligencia artificial, que no sustituye a ninguno de los niveles anteriores, sino que los integra: recibe una integración directa de la estadística (los fundamentos probabilísticos que sustentan cualquier sistema inteligente) y una relación de dependencia del aprendizaje profundo, que provee los modelos concretos detrás de aplicaciones como la visión por computadora, el procesamiento de lenguaje natural, la robótica y los sistemas expertos.\n\nEntender esta jerarquía de dependencias es clave para evitar un error común: tratar la IA como una caja negra separada, cuando en realidad es la integración de disciplinas que, individualmente, ya existían y seguían reglas propias mucho antes de que la inteligencia artificial las combinara."
+    },
+    "en": {
+      "tema": "Data Culture",
+      "topico": "Dependency and Integration Relationship: Python, Statistics, ML, and AI",
+      "descripcion": "The technical stack behind any artificial intelligence project is organized into four levels that build on one another, with none replacing the one before it. At the base is Python as a language and toolset, with specific libraries for each need: NumPy and Pandas for data manipulation, Matplotlib for visualization, SciPy for scientific computing, and Scikit-learn, TensorFlow, and PyTorch for modeling. Built on that foundation, in parallel, are two disciplines with distinct roles: statistics provides the theoretical foundation —probability, inference, exploratory analysis, hypothesis testing, and statistical modeling— while machine learning provides the actual modeling methodology —supervised and unsupervised learning, algorithms like regression, decision trees, and SVM, model training and evaluation.\n\nDeep learning, based on neural networks, depends directly on machine learning: it's a methodological extension that requires the modeling fundamentals to already be mastered. At the top of this hierarchy sits artificial intelligence, which doesn't replace any of the levels below it, but integrates them: it receives direct integration from statistics (the probabilistic foundations underlying any intelligent system) and a dependency relationship from deep learning, which provides the concrete models behind applications like computer vision, natural language processing, robotics, and expert systems.\n\nUnderstanding this dependency hierarchy is key to avoiding a common mistake: treating AI as a separate black box, when it's actually the integration of disciplines that, individually, already existed and followed their own rules long before artificial intelligence combined them."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "stack-claude",
+    "imagen": "Construidos/Claude/stack-claude.png",
+    "fechaPublicacion": "2026-10-10T09:10:00",
+    "es": {
+      "tema": "Claude",
+      "topico": "Stack de Claude 2026 para Líderes Empresariales",
+      "descripcion": "El ecosistema de Claude se organiza en tres capas complementarias, y la mayoría de las organizaciones solo aprovecha una de ellas. La primera capa funciona como socio de pensamiento: razonamiento profundo y estrategia aplicados a fijar objetivos a largo plazo, definir la visión general, analizar la estrategia de la competencia, sintetizar datos de mercado, evaluar opciones de riesgo, ponderar trade-offs complejos y construir hojas de ruta a varios años. Esta capa acelera directamente a las personas que toman decisiones.\n\nLa segunda capa opera como socio de ingeniería: generación de código limpio en Python, JavaScript y otros lenguajes, resolución de bugs complejos, análisis de stack traces, refactorización de módulos legado, mejora de la mantenibilidad, auto-commit de cambios e integración directa con el flujo de Git. Esta capa acelera a los equipos de ingeniería completos, no solo a un desarrollador individual.\n\nLa tercera capa actúa como socio de operaciones: automatización de tareas repetitivas, entrada de datos y programación, conexión con servicios cloud, gestión de workflows complejos, coordinación de tareas entre aplicaciones distintas, gestión de proyectos y documentos, y mantenimiento de contexto persistente entre sesiones. Esta capa acelera a unidades de negocio completas, no solo a un rol específico.\n\nEntender estas tres capas como un ecosistema integrado —no como herramientas aisladas— es lo que separa a las organizaciones que usan Claude de forma superficial de las que lo integran como ventaja competitiva real."
+    },
+    "en": {
+      "tema": "Claude",
+      "topico": "The 2026 Claude Stack for Business Leaders",
+      "descripcion": "The Claude ecosystem is organized into three complementary layers, and most organizations only take advantage of one of them. The first layer functions as a thinking partner: deep reasoning and strategy applied to setting long-term goals, defining the overall vision, analyzing competitive strategy, synthesizing market data, evaluating risk options, weighing complex trade-offs, and building multi-year roadmaps. This layer directly accelerates the people making decisions.\n\nThe second layer operates as an engineering partner: generating clean code in Python, JavaScript, and other languages, resolving complex bugs, analyzing stack traces, refactoring legacy modules, improving maintainability, auto-committing changes, and integrating directly with the Git workflow. This layer accelerates entire engineering teams, not just an individual developer.\n\nThe third layer acts as an operations partner: automating repetitive tasks, data entry and scheduling, connecting with cloud services, managing complex workflows, coordinating tasks across different applications, managing projects and documents, and maintaining persistent context across sessions. This layer accelerates entire business units, not just one specific role.\n\nUnderstanding these three layers as an integrated ecosystem —not as isolated tools— is what separates organizations that use Claude superficially from those that integrate it as a real competitive advantage."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "transformacion-ia",
+    "imagen": "Construidos/IA/transformacion-ia.png",
+    "fechaPublicacion": "2026-10-12T09:10:00",
+    "es": {
+      "tema": "IA",
+      "topico": "La Realidad de la Transformación con IA",
+      "descripcion": "Existe una brecha real entre lo que muchos líderes creen que es la transformación con IA y lo que esa transformación realmente exige. En la superficie, los indicadores que suelen celebrarse son visibles y fáciles de reportar: métricas de adopción al alza, herramientas de IA ya compradas, una presentación estratégica aprobada, presupuesto asignado, pilotos mostrando resultados preliminares y sesiones de formación completadas. Todos estos son señales legítimas de actividad, pero ninguna garantiza que la transformación esté realmente ocurriendo.\n\nLo que sostiene una transformación real ocurre en un nivel menos visible y más difícil de comunicar en una diapositiva. Requiere resolver la infraestructura de datos antes de intentar escalar cualquier iniciativa, definir y medir el tiempo hasta obtener valor desde el primer día en vez de posponerlo indefinidamente, formar al liderazgo más allá del simple uso de herramientas, y rediseñar los flujos de trabajo antes —no después— de desplegar agentes de IA en producción. También exige redefinir explícitamente los roles humanos dentro de ese proceso, integrar la gobernanza directamente en la arquitectura técnica en vez de añadirla como control posterior, y rediseñar el modelo operativo completo alrededor de la IA hasta establecer un modelo verdaderamente agéntico.\n\nConfundir los indicadores superficiales con el trabajo estructural de fondo es la razón más común por la que las iniciativas de IA generan actividad visible sin generar transformación real."
+    },
+    "en": {
+      "tema": "AI",
+      "topico": "The Reality of AI Transformation",
+      "descripcion": "There's a real gap between what many leaders believe AI transformation is and what that transformation actually requires. On the surface, the indicators usually celebrated are visible and easy to report: rising adoption metrics, AI tools already purchased, an approved strategic presentation, allocated budget, pilots showing preliminary results, and completed training sessions. All of these are legitimate signs of activity, but none of them guarantee that transformation is actually happening.\n\nWhat sustains a real transformation happens at a less visible level, one that's harder to communicate on a slide. It requires solving the data infrastructure before attempting to scale any initiative, defining and measuring time-to-value from day one instead of postponing it indefinitely, training leadership beyond simply using tools, and redesigning workflows before —not after— deploying AI agents into production. It also demands explicitly redefining human roles within that process, integrating governance directly into the technical architecture instead of bolting it on as an afterthought, and redesigning the entire operating model around AI until a genuinely agentic model is established.\n\nConfusing surface-level indicators with the underlying structural work is the most common reason AI initiatives generate visible activity without generating real transformation."
     },
     "baseStats": {
       "views": 0,

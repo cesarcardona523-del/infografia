@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Evolución de las Herramientas que Debe Dominar un Analista de Datos</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --c1:#2563A8; --c2:#7B4FC9; --c3:#C9427C; --c4:#DB7A1F; --c5:#2E9E6B; --c6:#1DA0A8; --c7:#8A5A3E;
+    --ink:#1D2129; --muted:#5C6470; --line:#E5E7EA; --white:#FFFFFF; --paper:#F7F8FA;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    min-height:627px; display:flex; align-items:center; justify-content:center;
+    padding:32px 16px; background:#EEF0F3;
+    font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
+  .canvas{
+    position:relative; width:1200px; height:627px; margin:0 auto;
+    background:var(--white);
+    border-radius:16px; box-shadow:0 20px 50px rgba(37,99,168,0.15); overflow:hidden;
+    padding:14px 30px 10px; color:var(--ink);
+    display:flex; flex-direction:column; min-height:0;
+  }
+
+  .header{ text-align:center; margin-bottom:6px; }
+  .header .eyebrow{ font-size:10px; font-weight:700; letter-spacing:1.8px; color:var(--c1); text-transform:uppercase; margin-bottom:2px; }
+  .header h1{ font-size:18.5px; margin:0 0 2px; font-weight:800; letter-spacing:-0.2px; }
+  .header p{ margin:0 auto; font-size:10px; color:var(--muted); max-width:760px; }
+
+  .eras{ display:grid; grid-template-columns: 84px 1fr 22px 1fr 22px 1fr; gap:0 6px; margin-bottom:4px; }
+  .eras div{ text-align:center; font-size:9.5px; font-weight:800; color:var(--muted); padding:3px 0; }
+  .eras .e1{ background:var(--paper); border-radius:6px; }
+  .eras .e2{ background:var(--paper); border-radius:6px; }
+  .eras .e3{ background:var(--paper); border-radius:6px; }
+
+  .rows{ flex:1; min-height:0; display:flex; flex-direction:column; gap:5px; }
+  .row{ flex:1; display:grid; grid-template-columns: 84px 1fr 22px 1fr 22px 1fr; align-items:center; gap:0 6px; }
+  .rlabel{ display:flex; align-items:center; gap:6px; }
+  .rlabel .icon{ width:22px; height:22px; border-radius:6px; color:#fff; display:flex; align-items:center; justify-content:center; flex:none; }
+  .rlabel .icon svg{ width:12px; height:12px; }
+  .rlabel span{ font-size:8.6px; font-weight:800; color:var(--ink); line-height:1.15; }
+
+  .chip{ border-radius:8px; padding:6px 10px; font-size:9.6px; font-weight:700; text-align:center; border:1px solid var(--line); }
+  .chip.empty{ background:transparent; border:1px dashed var(--line); color:var(--muted); font-weight:600; font-size:8.6px; }
+  .arrow{ display:flex; align-items:center; justify-content:center; color:var(--muted); }
+  .arrow svg{ width:18px; height:10px; }
+
+  .ribbon{
+    margin-top:6px; display:flex; align-items:center; gap:10px;
+    background:var(--ink); color:#EDEFF3; border-radius:9px; padding:7px 16px; font-size:9.5px;
+  }
+  .ribbon .icon{ width:18px; height:18px; flex:none; border-radius:5px; background:rgba(255,255,255,0.14); display:flex; align-items:center; justify-content:center; }
+  .ribbon .icon svg{ width:10px; height:10px; color:var(--c4); }
+  .ribbon b{ color:#fff; }
+  .ribbon span.desc{ color:#B9C2CE; }
+
+  .footer{ position:absolute; bottom:8px; right:20px; display:flex; align-items:center; gap:6px; }
+  .li-badge{ width:14px; height:14px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:9px; font-weight:800; font-family: Arial, sans-serif; }
+  .footer span{ font-size:9px; font-weight:600; color:var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="canvas-wrap">
+  <div class="canvas">
+
+    <div class="header">
+      <div class="eyebrow">Evolución de Herramientas</div>
+      <h1>Evolución de las Herramientas que Debe Dominar un Analista de Datos</h1>
+      <p>7 líneas de evolución reales — de la hoja de cálculo aislada al mismo stack potenciado por IA generativa.</p>
+    </div>
+
+    <div class="eras">
+      <div></div>
+      <div class="e1">HACE 5 AÑOS (2021)</div><div></div>
+      <div class="e2">HOY (2026)</div><div></div>
+      <div class="e3">TENDENCIA 2027</div>
+    </div>
+
+    <div class="rows">
+      <div class="row">
+        <div class="rlabel"><div class="icon" style="background:var(--c1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/></svg></div><span>Excel</span></div>
+        <div class="chip" style="background:#EAF1FA; border-color:#CFE0F5;">Microsoft Excel</div>
+        <div class="arrow"><svg viewBox="0 0 24 14"><path d="M0 7h18M13 2l8 5-8 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="chip" style="background:#EAF1FA; border-color:#CFE0F5;">Excel (Power Query, Power Pivot)</div>
+        <div class="arrow"><svg viewBox="0 0 24 14"><path d="M0 7h18M13 2l8 5-8 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="chip" style="background:var(--c1); color:#fff; border-color:var(--c1);">Excel + Copilot</div>
+      </div>
+
+      <div class="row">
+        <div class="rlabel"><div class="icon" style="background:var(--c2)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></div><span>SQL</span></div>
+        <div class="chip" style="background:#F1ECFA; border-color:#DDCBF2;">SQL Server</div>
+        <div class="arrow"><svg viewBox="0 0 24 14"><path d="M0 7h18M13 2l8 5-8 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="chip" style="background:#F1ECFA; border-color:#DDCBF2;">SQL (Server, Postgres, MySQL, Oracle)</div>
+        <div class="arrow"><svg viewBox="0 0 24 14"><path d="M0 7h18M13 2l8 5-8 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="chip" style="background:var(--c2); color:#fff; border-color:var(--c2);">SQL + IA Generativa</div>
+      </div>
+
+      <div class="row">
+        <div class="rlabel"><div class="icon" style="background:var(--c3)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20V4M4 20h16"/><rect x="7" y="13" width="3" height="7"/><rect x="12" y="8" width="3" height="12"/><rect x="17" y="5" width="3" height="15"/></svg></div><span>Power BI</span></div>
+        <div class="chip" style="background:#FBEAF1; border-color:#F3CBDD;">Power BI</div>
+        <div class="arrow"><svg viewBox="0 0 24 14"><path d="M0 7h18M13 2l8 5-8 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="chip" style="background:#FBEAF1; border-color:#F3CBDD;">Power BI</div>
+        <div class="arrow"><svg viewBox="0 0 24 14"><path d="M0 7h18M13 2l8 5-8 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="chip" style="background:var(--c3); color:#fff; border-color:var(--c3);">Power BI + Microsoft Fabric</div>
+      </div>
+
+      <div class="row">
+        <div class="rlabel"><div class="icon" style="background:var(--c4)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg></div><span>Tableau</span></div>
+        <div class="chip" style="background:#FCF1E4; border-color:#F2DAB3;">Tableau</div>
+        <div class="arrow"><svg viewBox="0 0 24 14"><path d="M0 7h18M13 2l8 5-8 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="chip" style="background:#FCF1E4; border-color:#F2DAB3;">Tableau</div>
+        <div class="arrow"><svg viewBox="0 0 24 14"><path d="M0 7h18M13 2l8 5-8 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="chip" style="background:var(--c4); color:#fff; border-color:var(--c4);">Tableau Pulse (IA)</div>
+      </div>
+
+      <div class="row">
+        <div class="rlabel"><div class="icon" style="background:var(--c5)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="14" rx="1.5"/><path d="M8 21h8M12 18v3"/></svg></div><span>Dashboards</span></div>
+        <div class="chip" style="background:#E9F5EE; border-color:#C7E7D5;">Dashboards</div>
+        <div class="arrow"><svg viewBox="0 0 24 14"><path d="M0 7h18M13 2l8 5-8 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="chip" style="background:#E9F5EE; border-color:#C7E7D5;">Dashboards Interactivas</div>
+        <div class="arrow"><svg viewBox="0 0 24 14"><path d="M0 7h18M13 2l8 5-8 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="chip" style="background:var(--c5); color:#fff; border-color:var(--c5);">Analítica Aumentada</div>
+      </div>
+
+      <div class="row">
+        <div class="rlabel"><div class="icon" style="background:var(--c6)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2c-2 0-4 .5-4 2v3h6v1H6c-2 0-3 2-3 5s1 5 3 5h2v-3c0-2 1.5-3 3-3h4c1.5 0 3-1 3-3V4c0-1.5-3-2-5-2h-1Z"/></svg></div><span>Python</span></div>
+        <div class="chip empty">— no dominante aún —</div>
+        <div class="arrow"><svg viewBox="0 0 24 14"><path d="M0 7h18M13 2l8 5-8 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="chip" style="background:#E3F4F5; border-color:#BEE5E7;">Python</div>
+        <div class="arrow"><svg viewBox="0 0 24 14"><path d="M0 7h18M13 2l8 5-8 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="chip" style="background:var(--c6); color:#fff; border-color:var(--c6);">Python + Agentes IA</div>
+      </div>
+
+      <div class="row">
+        <div class="rlabel"><div class="icon" style="background:var(--c7)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3 3 20h18Z"/><path d="M9 15h6"/></svg></div><span>APIs</span></div>
+        <div class="chip empty">— no dominante aún —</div>
+        <div class="arrow"><svg viewBox="0 0 24 14"><path d="M0 7h18M13 2l8 5-8 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="chip" style="background:#F1EAE5; border-color:#E4D2C6;">APIs REST</div>
+        <div class="arrow"><svg viewBox="0 0 24 14"><path d="M0 7h18M13 2l8 5-8 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="chip" style="background:var(--c7); color:#fff; border-color:var(--c7);">APIs + MCP</div>
+      </div>
+    </div>
+
+    <div class="ribbon">
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z"/></svg></div>
+      <div><b>Por qué importa</b> <span class="desc">— las herramientas base no desaparecen, se potencian con IA generativa; dominar el fundamento sigue siendo el requisito de entrada.</span></div>
+    </div>
+
+    <div class="footer">
+      <div class="li-badge">in</div>
+      <span>cacm523</span>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

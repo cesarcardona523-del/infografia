@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>El Mapa de Vocabulario Esencial de IA</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --indigo:#4B3FD1; --indigo-dark:#372DA0; --indigo-pale:#EEECFB; --line:#E0DEF2;
+    --cyan:#0E9BAE; --cyan-pale:#E2F4F6;
+    --ink:#1D2129; --muted:#5C6470; --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    min-height:627px; display:flex; align-items:center; justify-content:center;
+    padding:32px 16px; background:#EEEDF7;
+    font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
+  .canvas{
+    position:relative; width:1200px; height:627px; margin:0 auto;
+    background:var(--white);
+    border-radius:16px; box-shadow:0 20px 50px rgba(55,45,160,0.16); overflow:hidden;
+    padding:16px 32px 12px; color:var(--ink);
+    display:flex; flex-direction:column; min-height:0;
+  }
+
+  .header{ text-align:center; margin-bottom:8px; }
+  .header .eyebrow{ font-size:10.5px; font-weight:700; letter-spacing:1.8px; color:var(--indigo); text-transform:uppercase; margin-bottom:3px; }
+  .header h1{ font-size:20px; margin:0 0 4px; font-weight:800; letter-spacing:-0.2px; }
+  .header p{ margin:0 auto; font-size:10.8px; color:var(--muted); max-width:760px; }
+
+  .hier{ display:flex; align-items:stretch; gap:6px; margin-bottom:10px; height:86px; }
+  .hbox{ flex:1; background:var(--indigo-pale); border:1px solid var(--line); border-radius:9px; padding:9px 14px; display:flex; align-items:center; gap:11px; }
+  .hbox .icon{ width:34px; height:34px; border-radius:9px; background:var(--indigo); color:#fff; display:flex; align-items:center; justify-content:center; flex:none; }
+  .hbox .icon svg{ width:18px; height:18px; }
+  .hbox b{ display:block; font-size:12.5px; font-weight:800; }
+  .hbox span{ display:block; font-size:9px; color:var(--muted); line-height:1.3; }
+  .harrow{ flex:none; display:flex; align-items:center; color:var(--muted); }
+
+  .grid{ flex:1; min-height:0; display:grid; grid-template-columns: repeat(3,1fr); grid-template-rows: 1fr 1fr; gap:10px; }
+  .card{ background:#FCFCFE; border:1px solid var(--line); border-radius:10px; padding:14px 20px; display:flex; flex-direction:column; justify-content:center; }
+  .card .cat{ display:flex; align-items:center; gap:9px; margin-bottom:10px; }
+  .card .cat .icon{ width:26px; height:26px; border-radius:7px; background:var(--cyan); color:#fff; display:flex; align-items:center; justify-content:center; flex:none; }
+  .card .cat .icon svg{ width:14px; height:14px; }
+  .card .cat b{ font-size:13px; font-weight:800; }
+  .term{ font-size:11px; line-height:1.65; color:var(--muted); margin-bottom:7px; }
+  .term:last-child{ margin-bottom:0; }
+  .term b{ color:var(--ink); }
+
+  .ribbon{
+    margin-top:9px; display:flex; align-items:center; gap:10px;
+    background:var(--ink); color:#ECEAF9; border-radius:10px; padding:8px 18px; font-size:10px;
+  }
+  .ribbon .icon{ width:20px; height:20px; flex:none; border-radius:6px; background:rgba(255,255,255,0.14); display:flex; align-items:center; justify-content:center; }
+  .ribbon .icon svg{ width:11px; height:11px; color:var(--cyan); }
+  .ribbon b{ color:#fff; }
+  .ribbon span{ color:#BFC0D6; }
+
+  .footer{ position:absolute; bottom:9px; right:20px; display:flex; align-items:center; gap:6px; }
+  .li-badge{ width:15px; height:15px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:9.5px; font-weight:800; font-family: Arial, sans-serif; }
+  .footer span{ font-size:9.5px; font-weight:600; color:var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="canvas-wrap">
+  <div class="canvas">
+
+    <div class="header">
+      <div class="eyebrow">Glosario Técnico</div>
+      <h1>El Mapa de Vocabulario Esencial de IA</h1>
+      <p>De la jerarquía fundamental a los términos que aparecen en cualquier conversación técnica sobre inteligencia artificial hoy.</p>
+    </div>
+
+    <div class="hier">
+      <div class="hbox"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 3a3 3 0 0 0-3 3v.2A3 3 0 0 0 4 9v1a3 3 0 0 0 0 4v1a3 3 0 0 0 2 2.8V18a3 3 0 0 0 3 3M15 3a3 3 0 0 1 3 3v.2a3 3 0 0 1 2 2.8v1a3 3 0 0 1 0 4v1a3 3 0 0 1-2 2.8V18a3 3 0 0 1-3 3"/></svg></div><div><b>IA</b><span>Cognición humana: razonamiento y aprendizaje</span></div></div>
+      <div class="harrow">→</div>
+      <div class="hbox"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 18 10 12 14 16 20 6M14 6h6v6"/></svg></div><div><b>Aprendizaje Automático</b><span>Sistemas que aprenden patrones de datos</span></div></div>
+      <div class="harrow">→</div>
+      <div class="hbox"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="18" cy="18" r="2"/><circle cx="12" cy="12" r="2"/><path d="M8 7l3 4M16 7l-3 4M8 17l3-4M16 17l-3-4"/></svg></div><div><b>Aprendizaje Profundo</b><span>Redes neuronales multicapa</span></div></div>
+      <div class="harrow">→</div>
+      <div class="hbox"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="5" cy="6" r="1.8"/><circle cx="5" cy="18" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="6" r="1.8"/><circle cx="19" cy="18" r="1.8"/><path d="M6.6 7 10.5 10.7M6.6 17 10.5 13.3M13.5 10.7 17.4 7M13.5 13.3 17.4 17"/></svg></div><div><b>Red Neuronal</b><span>Nodos interconectados en capas</span></div></div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="cat"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 10 12 4 2 10l10 6 10-6Z"/><path d="M6 12.5V17c0 1.1 2.7 2 6 2s6-.9 6-2v-4.5"/></svg></div><b>Paradigmas de Aprendizaje</b></div>
+        <div class="term"><b>Supervisado</b> — entrena con datos etiquetados.</div>
+        <div class="term"><b>No supervisado</b> — encuentra patrones sin etiquetas.</div>
+        <div class="term"><b>Por refuerzo</b> — prueba y error optimizando recompensas.</div>
+        <div class="term"><b>Auto-supervisado</b> — genera etiquetas a partir de los propios datos.</div>
+      </div>
+      <div class="card">
+        <div class="cat"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M6 6l2 2M16 16l2 2M6 18l2-2M16 8l2-2"/><circle cx="12" cy="12" r="3.5"/></svg></div><b>IA Generativa</b></div>
+        <div class="term"><b>LLM</b> — modelo entrenado con grandes volúmenes de texto.</div>
+        <div class="term"><b>GAN</b> — dos redes que compiten para generar datos realistas.</div>
+        <div class="term"><b>RAG</b> — combina modelos con bases de conocimiento externas.</div>
+        <div class="term"><b>Modelos de difusión</b> — generan datos eliminando ruido progresivamente.</div>
+      </div>
+      <div class="card">
+        <div class="cat"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="5" y="5" width="14" height="14" rx="3"/><circle cx="9" cy="10" r="1.2" fill="currentColor"/><circle cx="15" cy="10" r="1.2" fill="currentColor"/><path d="M9 15h6"/></svg></div><b>Agentes de IA</b></div>
+        <div class="term"><b>Agente autónomo</b> — percibe, razona y actúa sin intervención constante.</div>
+        <div class="term"><b>Orquestación</b> — coordina múltiples pasos o herramientas.</div>
+        <div class="term"><b>MCP</b> — estándar para conectar modelos con datos y herramientas.</div>
+        <div class="term"><b>IA conversacional</b> — sistemas que interactúan mediante lenguaje natural.</div>
+      </div>
+      <div class="card">
+        <div class="cat"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3 3 20h18Z"/><path d="M12 9v5"/><circle cx="12" cy="17" r="0.6" fill="currentColor"/></svg></div><b>Comportamiento &amp; Problemas</b></div>
+        <div class="term"><b>Alucinaciones</b> — respuestas plausibles pero incorrectas o inventadas.</div>
+        <div class="term"><b>Sobreajuste</b> — el modelo memoriza en vez de generalizar.</div>
+        <div class="term"><b>Sesgo algorítmico</b> — intenta eludir restricciones del sistema.</div>
+        <div class="term"><b>Deriva del modelo</b> — pérdida de rendimiento por cambios en los datos.</div>
+      </div>
+      <div class="card">
+        <div class="cat"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20V4M4 20h16"/><rect x="7" y="13" width="3" height="7"/><rect x="12" y="8" width="3" height="12"/><rect x="17" y="5" width="3" height="15"/></svg></div><b>Evaluación &amp; Métricas</b></div>
+        <div class="term"><b>Accuracy</b> — proporción de predicciones correctas.</div>
+        <div class="term"><b>Precision / Recall</b> — precisión de positivos / cobertura de positivos reales.</div>
+        <div class="term"><b>Benchmark</b> — prueba estandarizada para comparar modelos.</div>
+        <div class="term"><b>F1 Score</b> — media armónica entre precisión y recall.</div>
+      </div>
+      <div class="card">
+        <div class="cat"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6Z"/></svg></div><b>Seguridad &amp; Ética</b></div>
+        <div class="term"><b>IA explicable (XAI)</b> — hace comprensibles las decisiones del modelo.</div>
+        <div class="term"><b>Guardrails</b> — restricciones para prevenir usos indebidos.</div>
+        <div class="term"><b>Privacidad de datos</b> — protección de información personal.</div>
+        <div class="term"><b>Red teaming</b> — pruebas para identificar vulnerabilidades.</div>
+      </div>
+    </div>
+
+    <div class="ribbon">
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z"/></svg></div>
+      <div><b>Por qué importa</b> <span>— este vocabulario compacto es la base para leer cualquier arquitectura, paper o producto de IA sin perderse en la jerga.</span></div>
+    </div>
+
+    <div class="footer">
+      <div class="li-badge">in</div>
+      <span>cacm523</span>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

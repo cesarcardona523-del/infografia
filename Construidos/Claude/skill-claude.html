@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>30 Skills de Claude para Pequeñas Empresas</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --clay:#D97757; --clay-dark:#B35A3D; --cream:#F0EEE6; --cream-2:#E8E4D8;
+    --slate:#5C6470;
+    --ink:#26211B; --muted:#6B6357; --line:#DDD6C7; --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    min-height:627px; display:flex; align-items:center; justify-content:center;
+    padding:32px 16px; background:#EFEBE0;
+    font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
+  .canvas{
+    position:relative; width:1200px; height:627px; margin:0 auto;
+    background:var(--white);
+    border-radius:16px; box-shadow:0 20px 50px rgba(179,90,61,0.18); overflow:hidden;
+    padding:16px 32px 12px; color:var(--ink);
+    display:flex; flex-direction:column; min-height:0;
+  }
+
+  .header{ text-align:center; margin-bottom:8px; }
+  .header .eyebrow{ font-size:10.5px; font-weight:700; letter-spacing:1.8px; color:var(--clay); text-transform:uppercase; margin-bottom:3px; }
+  .header h1{ font-size:20px; margin:0 0 4px; font-weight:800; letter-spacing:-0.2px; }
+  .header p{ margin:0 auto; font-size:10.8px; color:var(--muted); max-width:760px; }
+
+  .integrations{ display:flex; align-items:center; justify-content:center; gap:8px; flex-wrap:wrap; margin-bottom:10px; padding:7px 12px; background:var(--cream); border:1px solid var(--line); border-radius:9px; }
+  .integrations .lbl{ font-size:9px; font-weight:800; color:var(--clay-dark); text-transform:uppercase; letter-spacing:0.5px; margin-right:4px; }
+  .integrations span.chip{ font-size:8.8px; font-weight:700; color:var(--ink); background:var(--white); border:1px solid var(--line); border-radius:20px; padding:3px 10px; }
+
+  .grid{ flex:1; min-height:0; display:grid; grid-template-columns: repeat(5,1fr); gap:10px; }
+  .card{ background:var(--cream); border:1px solid var(--line); border-radius:11px; padding:11px 12px; display:flex; flex-direction:column; }
+  .card .top{ display:flex; align-items:center; gap:7px; margin-bottom:9px; }
+  .card .icon{ width:26px; height:26px; border-radius:7px; background:var(--clay); color:#fff; display:flex; align-items:center; justify-content:center; flex:none; }
+  .card .icon svg{ width:14px; height:14px; }
+  .card .top b{ font-size:10px; font-weight:800; line-height:1.2; }
+  .skill{ background:var(--white); border:1px solid var(--cream-2); border-radius:8px; padding:9px 11px; margin-bottom:9px; }
+  .skill:last-child{ margin-bottom:0; }
+  .skill code{ display:block; font-family: "SF Mono", Menlo, Consolas, monospace; font-size:9.8px; font-weight:700; color:var(--clay-dark); margin-bottom:5px; }
+  .skill span{ font-size:9.4px; color:var(--muted); line-height:1.48; }
+
+  .ribbon{
+    margin-top:9px; display:flex; align-items:center; gap:10px;
+    background:var(--ink); color:#F3EFE6; border-radius:10px; padding:8px 18px; font-size:10px;
+  }
+  .ribbon .icon{ width:20px; height:20px; flex:none; border-radius:6px; background:rgba(255,255,255,0.14); display:flex; align-items:center; justify-content:center; }
+  .ribbon .icon svg{ width:11px; height:11px; color:var(--clay); }
+  .ribbon b{ color:#fff; }
+  .ribbon span{ color:#C9C0B0; }
+
+  .footer{ position:absolute; bottom:9px; right:20px; display:flex; align-items:center; gap:6px; }
+  .li-badge{ width:15px; height:15px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:9.5px; font-weight:800; font-family: Arial, sans-serif; }
+  .footer span{ font-size:9.5px; font-weight:600; color:var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="canvas-wrap">
+  <div class="canvas">
+
+    <div class="header">
+      <div class="eyebrow">Claude para Negocios</div>
+      <h1>30 Skills de Claude para Pequeñas Empresas</h1>
+      <p>Automatizaciones listas para usar, organizadas en 5 áreas del negocio — de la caja diaria al onboarding de un nuevo empleado.</p>
+    </div>
+
+    <div class="integrations">
+      <span class="lbl">Funciona con</span>
+      <span class="chip">Gmail</span><span class="chip">Canva</span><span class="chip">Slack</span><span class="chip">Drive</span>
+      <span class="chip">QuickBooks</span><span class="chip">Calendar</span><span class="chip">DocuSign</span><span class="chip">Stripe</span>
+      <span class="chip">PayPal</span><span class="chip">HubSpot</span><span class="chip">Square</span><span class="chip">Microsoft 365 Copilot</span>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="top"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20V4M4 20h16"/><rect x="7" y="13" width="3" height="7"/><rect x="12" y="8" width="3" height="12"/><rect x="17" y="5" width="3" height="15"/></svg></div><b>Inteligencia de Negocio</b></div>
+        <div class="skill"><code>pulso-del-negocio</code><span>Vista de una página con caja, ventas, pipeline y agenda de la semana.</span></div>
+        <div class="skill"><code>resumen-del-lunes</code><span>Arranque de semana con ventas, pipeline, calendario y prioridades del día.</span></div>
+        <div class="skill"><code>resumen-del-viernes</code><span>Qué se vendió, qué se ganó y qué vigilar la próxima semana.</span></div>
+        <div class="skill"><code>revisión-trimestral</code><span>Ingresos, márgenes, salud de clientes, oportunidades y riesgos.</span></div>
+      </div>
+      <div class="card">
+        <div class="top"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9 9.5a3 3 0 0 1 3-1.5 2.5 2.5 0 0 1 0 5 2.5 2.5 0 0 0 0 5 3 3 0 0 0 3-1.5"/></svg></div><b>Dinero y Finanzas</b></div>
+        <div class="skill"><code>foto-de-caja</code><span>Lee caja, facturas y pagos; construye previsión a 30/60/90 días.</span></div>
+        <div class="skill"><code>analizador-de-márgenes</code><span>Construye una tabla de márgenes por producto con punto de equilibrio.</span></div>
+        <div class="skill"><code>cierre-fin-de-mes</code><span>Revisa libros, detecta diferencias y prepara el paquete de cierre.</span></div>
+        <div class="skill"><code>organizador-de-impuestos</code><span>Calcula impuestos trimestrales y prepara un listado anual para la gestoría.</span></div>
+      </div>
+      <div class="card">
+        <div class="top"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18"/></svg></div><b>Ventas y Marketing</b></div>
+        <div class="skill"><code>triaje-de-leads</code><span>Puntúa leads por interés, encaje y urgencia; genera ficha para llamada.</span></div>
+        <div class="skill"><code>estrategia-de-contenido</code><span>Lee datos de ventas y propone un plan de contenido alineado.</span></div>
+        <div class="skill"><code>creador-en-canva</code><span>Construye una campaña desde un brief: calendario, piezas y copies.</span></div>
+        <div class="skill"><code>briefing-de-llamada</code><span>Revisa historial comercial y prepara oferta, activos y siguiente paso.</span></div>
+      </div>
+      <div class="card">
+        <div class="top"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="9" cy="8" r="3"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><circle cx="17" cy="8" r="2.4"/><path d="M15 20a4.5 4.5 0 0 1 7-3.6"/></svg></div><b>Clientes y Operaciones</b></div>
+        <div class="skill"><code>mantenimiento-crm</code><span>Detecta oportunidades obsoletas, duplicadas y campos vacíos.</span></div>
+        <div class="skill"><code>limpieza-crm</code><span>Identifica duplicados, contactos desactualizados y datos faltantes.</span></div>
+        <div class="skill"><code>revisión-de-contrato</code><span>Lee un contrato y entrega resumen claro con banderas rojas.</span></div>
+        <div class="skill"><code>desviar-ticket</code><span>Lee un correo de cliente, revisa historial y propone la respuesta.</span></div>
+      </div>
+      <div class="card">
+        <div class="top"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 12h6M12 9v6"/></svg></div><b>Contratación y Puesta en Marcha</b></div>
+        <div class="skill"><code>onboarding-pyme</code><span>Skill base que entiende el negocio y conecta el resto de herramientas.</span></div>
+        <div class="skill"><code>creador-de-ofertas</code><span>Redacta oferta de empleo, guía de entrevista y rúbrica.</span></div>
+        <div class="skill" style="background:var(--cream); border-style:dashed;"><span>Categoría más compacta del set — cubre onboarding y hiring de principio a fin con solo estas dos skills base.</span></div>
+      </div>
+    </div>
+
+    <div class="ribbon">
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z"/></svg></div>
+      <div><b>Por qué importa</b> <span>— cada skill es un flujo de trabajo reutilizable, no un prompt suelto: se conecta a las herramientas reales del negocio.</span></div>
+    </div>
+
+    <div class="footer">
+      <div class="li-badge">in</div>
+      <span>cacm523</span>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

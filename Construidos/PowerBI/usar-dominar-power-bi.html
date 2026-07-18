@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Hay una Diferencia Abismal entre Saber Usar y Dominar Power BI</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --gold:#F2C811; --gold-dark:#C79A0A;
+    --navy:#0B2A4A; --navy2:#0A2039; --deep:#061626;
+    --ice:#EAF3FB; --ice2:#BBD8EE;
+    --ink:#0B1622; --muted:#7D93A8; --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    min-height:627px; display:flex; align-items:center; justify-content:center;
+    padding:32px 16px; background:#0A1F33;
+    font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
+  .canvas{
+    position:relative; width:1200px; height:627px; margin:0 auto;
+    background:linear-gradient(180deg, var(--navy) 0%, var(--navy2) 55%, var(--deep) 100%);
+    border-radius:16px; box-shadow:0 20px 50px rgba(0,0,0,0.4); overflow:hidden;
+    padding:18px 34px 12px; color:var(--white);
+    display:flex; flex-direction:column; min-height:0;
+  }
+
+  .header{ text-align:center; margin-bottom:8px; }
+  .header .eyebrow{ font-size:10.5px; font-weight:700; letter-spacing:1.8px; color:var(--gold); text-transform:uppercase; margin-bottom:4px; }
+  .header h1{ font-size:21px; margin:0 0 4px; font-weight:800; letter-spacing:-0.2px; }
+  .header h1 em{ font-style:normal; color:var(--gold); }
+  .header p{ margin:0 auto; font-size:11px; color:#B7C7D8; max-width:720px; }
+
+  .main{ flex:1; min-height:0; display:flex; align-items:center; gap:26px; }
+  .iceberg-wrap{ flex:none; width:340px; height:100%; position:relative; }
+  .iceberg-wrap svg{ width:100%; height:100%; }
+
+  .legend{ flex:1; display:flex; flex-direction:column; gap:9px; height:100%; justify-content:center; }
+  .lrow{ display:flex; align-items:center; gap:13px; padding:10px 16px; border-radius:10px; }
+  .lrow.tip{ background:rgba(242,200,17,0.14); border:1px solid rgba(242,200,17,0.4); }
+  .lrow.deep{ background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.12); }
+  .lrow .icon{ width:34px; height:34px; border-radius:9px; display:flex; align-items:center; justify-content:center; flex:none; }
+  .lrow.tip .icon{ background:var(--gold); color:var(--navy); }
+  .lrow.deep .icon{ background:rgba(255,255,255,0.14); color:var(--ice); }
+  .lrow .icon svg{ width:18px; height:18px; }
+  .lrow b{ display:block; font-size:13.5px; font-weight:800; }
+  .lrow.tip b{ color:var(--gold); }
+  .lrow.deep b{ color:var(--ice); }
+  .lrow span{ display:block; font-size:10.3px; color:#AEC0D2; line-height:1.3; margin-top:1px; }
+
+  .ribbon{
+    margin-top:9px; display:flex; align-items:center; justify-content:center; gap:10px;
+    background:rgba(242,200,17,0.12); border:1px solid rgba(242,200,17,0.35); color:var(--white); border-radius:10px; padding:9px 18px; font-size:12px; text-align:center;
+  }
+  .ribbon b{ color:var(--gold); }
+
+  .footer{ position:absolute; bottom:9px; right:20px; display:flex; align-items:center; gap:6px; }
+  .li-badge{ width:15px; height:15px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:9.5px; font-weight:800; font-family: Arial, sans-serif; }
+  .footer span{ font-size:9.5px; font-weight:600; color:#8A9CAE; }
+</style>
+</head>
+<body>
+
+<div class="canvas-wrap">
+  <div class="canvas">
+
+    <div class="header">
+      <div class="eyebrow">Power BI</div>
+      <h1>Hay una Diferencia <em>Abismal</em> entre Saber Usar y Dominar Power BI</h1>
+      <p>La visualización es solo la punta del iceberg — lo que realmente separa a un usuario de un experto ocurre debajo del agua.</p>
+    </div>
+
+    <div class="main">
+      <div class="iceberg-wrap">
+        <svg viewBox="0 0 340 470" preserveAspectRatio="xMidYMid meet">
+          <rect x="0" y="230" width="340" height="240" fill="#0A2C4D" opacity="0.55"/>
+          <line x1="0" y1="230" x2="340" y2="230" stroke="var(--gold)" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.7"/>
+          <text x="332" y="222" text-anchor="end" font-size="11" font-weight="800" fill="var(--gold)">NIVEL DEL AGUA</text>
+
+          <polygon points="170,60 208,230 132,230" fill="var(--ice)" opacity="0.95"/>
+          <polygon points="150,60 170,60 190,150 150,150" fill="var(--ice2)" opacity="0.5"/>
+
+          <polygon points="132,230 208,230 268,320 170,455 72,320" fill="var(--ice2)" opacity="0.5"/>
+          <polygon points="132,230 208,230 240,275 100,275" fill="var(--ice)" opacity="0.28"/>
+          <polygon points="100,275 240,275 268,320 72,320" fill="var(--ice2)" opacity="0.35"/>
+          <polygon points="72,320 268,320 170,455" fill="var(--ice2)" opacity="0.22"/>
+        </svg>
+      </div>
+
+      <div class="legend">
+        <div class="lrow tip">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20V4M4 20h16"/><rect x="7" y="13" width="3" height="7"/><rect x="12" y="8" width="3" height="12"/><rect x="17" y="5" width="3" height="15"/></svg></div>
+          <div><b>Visualización — la punta del iceberg</b><span>Lo único que se ve: gráficos de barras, dona y líneas.</span></div>
+        </div>
+        <div class="lrow deep">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/></svg></div>
+          <div><b>Modelar</b><span>Diseñar una estructura de datos sólida y escalable.</span></div>
+        </div>
+        <div class="lrow deep">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 9v11"/></svg></div>
+          <div><b>Transformar</b><span>Preparar y depurar datos de calidad antes de modelar.</span></div>
+        </div>
+        <div class="lrow deep">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 3a3 3 0 0 0-3 3v.2A3 3 0 0 0 4 9v1a3 3 0 0 0 0 4v1a3 3 0 0 0 2 2.8V18a3 3 0 0 0 3 3M15 3a3 3 0 0 1 3 3v.2a3 3 0 0 1 2 2.8v1a3 3 0 0 1 0 4v1a3 3 0 0 1-2 2.8V18a3 3 0 0 1-3 3"/></svg></div>
+          <div><b>Arquitectura</b><span>Pensar la información antes de cualquier visualización.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ribbon">¿Tú en qué etapa sientes que estás — <b>usar</b> Power BI, o <b>dominarlo</b>?</div>
+
+    <div class="footer">
+      <div class="li-badge">in</div>
+      <span>cacm523</span>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

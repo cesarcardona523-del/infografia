@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>La Pelea Diaria de un Analista de Datos con los KPIs</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --teal:#28C7C0; --teal-dark:#1A8F8A; --teal-pale:rgba(40,199,192,0.12);
+    --red:#E85B4F; --green:#3FBF83;
+    --bg:#0C2230; --bg2:#0F2B3B; --card:#123342; --line:#1D4657;
+    --ink:#EAF3F5; --muted:#8FADB9; --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    min-height:627px; display:flex; align-items:center; justify-content:center;
+    padding:32px 16px; background:#081824;
+    font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
+  .canvas{
+    position:relative; width:1200px; height:627px; margin:0 auto;
+    background:linear-gradient(160deg, var(--bg) 0%, var(--bg2) 100%);
+    border-radius:16px; box-shadow:0 20px 50px rgba(0,0,0,0.4); overflow:hidden;
+    padding:16px 32px 12px; color:var(--ink);
+    display:flex; flex-direction:column; min-height:0;
+  }
+
+  .header{ text-align:center; margin-bottom:9px; }
+  .header .eyebrow{ font-size:10.5px; font-weight:700; letter-spacing:1.8px; color:var(--teal); text-transform:uppercase; margin-bottom:3px; }
+  .header h1{ font-size:20px; margin:0 0 4px; font-weight:800; letter-spacing:-0.2px; color:#fff; }
+  .header p{ margin:0 auto; font-size:11px; color:var(--muted); max-width:720px; }
+
+  .grid{ flex:1; min-height:0; display:grid; grid-template-columns: repeat(3,1fr); grid-template-rows: 1fr 1fr; gap:10px; }
+  .card{ background:var(--card); border:1px solid var(--line); border-radius:11px; padding:14px 18px; display:flex; flex-direction:column; justify-content:center; gap:12px; }
+  .card .top{ display:flex; align-items:center; gap:10px; }
+  .card .n{ width:26px; height:26px; border-radius:8px; background:var(--teal); color:var(--bg); font-weight:800; font-size:13px; display:flex; align-items:center; justify-content:center; flex:none; }
+  .card b{ font-size:13.5px; font-weight:800; color:#fff; }
+  .card p{ margin:0; font-size:10.8px; color:var(--muted); line-height:1.45; }
+  .viz svg{ width:100%; height:64px; display:block; }
+
+  .chips{ display:flex; align-items:center; gap:10px; }
+  .chip{ flex:1; background:rgba(255,255,255,0.06); border:1px solid var(--line); border-radius:8px; padding:9px 11px; font-size:9.8px; }
+  .chip b{ display:block; font-size:10.5px; color:var(--teal); margin-bottom:2px; }
+
+  .quote{ background:rgba(40,199,192,0.1); border-left:3px solid var(--teal); border-radius:7px; padding:11px 14px; font-size:11px; color:var(--ink); line-height:1.5; }
+  .quote b{ color:var(--teal); }
+
+  .ribbon{
+    margin-top:9px; display:flex; align-items:center; justify-content:center; gap:10px;
+    background:var(--teal); color:var(--bg); border-radius:10px; padding:9px 18px; font-size:11.5px; font-weight:700; text-align:center;
+  }
+
+  .footer{ position:absolute; bottom:9px; right:20px; display:flex; align-items:center; gap:6px; }
+  .li-badge{ width:15px; height:15px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:9.5px; font-weight:800; font-family: Arial, sans-serif; }
+  .footer span{ font-size:9.5px; font-weight:600; color:var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="canvas-wrap">
+  <div class="canvas">
+
+    <div class="header">
+      <div class="eyebrow">El Rol del Analista</div>
+      <h1>La Pelea Diaria de un Analista de Datos con los KPIs</h1>
+      <p>No se trata de tener datos. Se trata de hacer que cuenten lo que importa.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="top"><div class="n">1</div><b>Defino Qué Medir</b></div>
+        <p>Alineo los KPIs con los objetivos del negocio.</p>
+        <div class="chips">
+          <div class="chip"><b>Objetivo</b>Crecer ventas</div>
+          <div class="chip"><b>KPI clave</b>Ingresos</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="top"><div class="n">2</div><b>Limpio y Valido Datos</b></div>
+        <p>Datos sucios = decisiones sucias. La calidad lo es todo.</p>
+        <div class="viz"><svg viewBox="0 0 200 46">
+          <g stroke="var(--red)" stroke-width="2" stroke-linecap="round">
+            <path d="M8 8l10 10M18 8l-10 10"/><path d="M32 8l10 10M42 8l-10 10"/><path d="M56 8l10 10M66 8l-10 10"/>
+            <path d="M8 26l10 10M18 26l-10 10"/><path d="M32 26l10 10M42 26l-10 10"/>
+          </g>
+          <path d="M92 23h16" stroke="var(--muted)" stroke-width="1.6" marker-end="url(#ah)"/>
+          <defs><marker id="ah" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6Z" fill="var(--muted)"/></marker></defs>
+          <g fill="var(--green)">
+            <circle cx="128" cy="13" r="4"/><circle cx="146" cy="13" r="4"/><circle cx="164" cy="13" r="4"/><circle cx="182" cy="13" r="4"/>
+            <circle cx="128" cy="31" r="4"/><circle cx="146" cy="31" r="4"/><circle cx="164" cy="31" r="4"/><circle cx="182" cy="31" r="4"/>
+          </g>
+        </svg></div>
+      </div>
+      <div class="card">
+        <div class="top"><div class="n">3</div><b>Construyo y Monitoreo KPIs</b></div>
+        <p>Dashboards claros, actualizados y confiables.</p>
+        <div class="viz"><svg viewBox="0 0 200 46">
+          <line x1="6" y1="40" x2="194" y2="40" stroke="var(--line)" stroke-width="1"/>
+          <polyline points="10,32 40,26 70,30 100,18 130,22 160,10 190,14" fill="none" stroke="var(--teal)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="190" cy="14" r="3" fill="var(--teal)"/>
+        </svg></div>
+      </div>
+      <div class="card">
+        <div class="top"><div class="n">4</div><b>Analizo Tendencias y Anomalías</b></div>
+        <p>Busco patrones, detecto outliers y encuentro el "por qué".</p>
+        <div class="viz"><svg viewBox="0 0 200 46">
+          <line x1="6" y1="40" x2="194" y2="40" stroke="var(--line)" stroke-width="1"/>
+          <polyline points="10,30 40,24 70,28 100,32 118,10 136,30 160,20 190,24" fill="none" stroke="var(--teal)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="118" cy="10" r="6.5" fill="none" stroke="var(--red)" stroke-width="1.8"/>
+        </svg></div>
+      </div>
+      <div class="card">
+        <div class="top"><div class="n">5</div><b>Comunico Insights</b></div>
+        <p>Si no se entiende, no sirve. Storytelling con datos.</p>
+        <div class="quote"><b>Insight clave —</b> la conversión cayó 15% por baja en el canal A.</div>
+      </div>
+      <div class="card">
+        <div class="top"><div class="n">6</div><b>Itero y Mejoro</b></div>
+        <p>El negocio cambia. Los KPIs también.</p>
+        <div class="viz"><svg viewBox="0 0 200 46">
+          <g font-size="8" fill="var(--ink)" text-anchor="middle" font-weight="700">
+            <text x="30" y="10">Medir</text><text x="170" y="10">Analizar</text>
+            <text x="30" y="42">Mejorar</text><text x="170" y="42">Decidir</text>
+          </g>
+          <path d="M55 8h85" stroke="var(--teal)" stroke-width="1.6" marker-end="url(#ah2)"/>
+          <path d="M170 16v14" stroke="var(--teal)" stroke-width="1.6" marker-end="url(#ah2)"/>
+          <path d="M145 38h-85" stroke="var(--teal)" stroke-width="1.6" marker-end="url(#ah2)"/>
+          <path d="M30 30v-14" stroke="var(--teal)" stroke-width="1.6" marker-end="url(#ah2)"/>
+          <defs><marker id="ah2" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6Z" fill="var(--teal)"/></marker></defs>
+        </svg></div>
+      </div>
+    </div>
+
+    <div class="ribbon">El objetivo final: transformar datos en decisiones que generen impacto real.</div>
+
+    <div class="footer">
+      <div class="li-badge">in</div>
+      <span>cacm523</span>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

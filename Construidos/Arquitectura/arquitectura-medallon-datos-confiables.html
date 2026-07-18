@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Arquitectura Medallion: Datos Confiables en Cada Capa</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --violet:#5B3FA6; --violet-dark:#432E80; --violet-pale:#EFEAF9; --line:#E1DAF2;
+    --bronze:#C1793D; --silver:#8B95A3; --gold:#C9971E;
+    --ink:#1D2129; --muted:#5C6470; --white:#FFFFFF; --paper:#F7F8FA;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    min-height:627px; display:flex; align-items:center; justify-content:center;
+    padding:32px 16px; background:#EFEBF8;
+    font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
+  .canvas{
+    position:relative; width:1200px; height:627px; margin:0 auto;
+    background:var(--white);
+    border-radius:16px; box-shadow:0 20px 50px rgba(67,46,128,0.18); overflow:hidden;
+    padding:16px 32px 12px; color:var(--ink);
+    display:flex; flex-direction:column; min-height:0;
+  }
+
+  .header{ text-align:center; margin-bottom:9px; }
+  .header .eyebrow{ font-size:10.5px; font-weight:700; letter-spacing:1.8px; color:var(--violet); text-transform:uppercase; margin-bottom:3px; }
+  .header h1{ font-size:20px; margin:0 0 4px; font-weight:800; letter-spacing:-0.2px; }
+  .header p{ margin:0 auto; font-size:11px; color:var(--muted); max-width:760px; }
+
+  .layers{ flex:1; min-height:0; display:grid; grid-template-columns: repeat(3,1fr); gap:13px; }
+  .layer{ background:var(--violet-pale); border:1px solid var(--line); border-radius:12px; padding:18px 22px; display:flex; flex-direction:column; justify-content:center; gap:12px; position:relative; overflow:hidden; }
+  .layer::before{ content:""; position:absolute; top:0; left:0; right:0; height:6px; }
+  .layer.bronze::before{ background:var(--bronze); } .layer.silver::before{ background:var(--silver); } .layer.gold::before{ background:var(--gold); }
+  .layer .top{ display:flex; align-items:center; gap:13px; }
+  .layer .dot{ width:42px; height:42px; border-radius:11px; display:flex; align-items:center; justify-content:center; color:#fff; flex:none; }
+  .layer.bronze .dot{ background:var(--bronze); } .layer.silver .dot{ background:var(--silver); } .layer.gold .dot{ background:var(--gold); }
+  .layer .dot svg{ width:22px; height:22px; }
+  .layer b{ font-size:18px; font-weight:800; display:block; }
+  .layer .tag{ font-size:11px; color:var(--muted); font-weight:700; }
+  .layer ul{ margin:0; padding-left:18px; }
+  .layer li{ font-size:12.5px; line-height:1.9; color:var(--ink); }
+  .meter{ margin-top:4px; }
+  .meter .lbl{ display:flex; justify-content:space-between; font-size:9.5px; font-weight:700; color:var(--muted); margin-bottom:5px; }
+  .meter .track{ height:8px; border-radius:5px; background:rgba(0,0,0,0.08); overflow:hidden; }
+  .meter .fill{ height:100%; border-radius:5px; }
+  .layer.bronze .meter .fill{ background:var(--bronze); width:30%; }
+  .layer.silver .meter .fill{ background:var(--silver); width:65%; }
+  .layer.gold .meter .fill{ background:var(--gold); width:96%; }
+
+  .sources{ display:flex; align-items:center; justify-content:center; gap:16px; margin:11px 0; padding:13px 16px; background:var(--paper); border:1px solid var(--line); border-radius:10px; }
+  .sources .lbl{ font-size:10.5px; font-weight:800; color:var(--violet); text-transform:uppercase; letter-spacing:0.5px; margin-right:4px; }
+  .src{ display:flex; align-items:center; gap:7px; font-size:11px; font-weight:700; color:var(--ink); }
+  .src .icon{ width:24px; height:24px; border-radius:7px; background:var(--violet-pale); color:var(--violet); display:flex; align-items:center; justify-content:center; }
+  .src .icon svg{ width:13px; height:13px; }
+
+  .pillars{ display:grid; grid-template-columns: repeat(4,1fr); gap:11px; }
+  .pillar{ display:flex; align-items:center; gap:10px; background:var(--ink); border-radius:10px; padding:12px 15px; }
+  .pillar .icon{ width:28px; height:28px; border-radius:7px; background:rgba(255,255,255,0.14); color:var(--gold); display:flex; align-items:center; justify-content:center; flex:none; }
+  .pillar .icon svg{ width:15px; height:15px; }
+  .pillar span{ font-size:11.5px; font-weight:700; color:#fff; line-height:1.25; }
+
+  .footer{ position:absolute; bottom:9px; right:20px; display:flex; align-items:center; gap:6px; }
+  .li-badge{ width:15px; height:15px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:9.5px; font-weight:800; font-family: Arial, sans-serif; }
+  .footer span{ font-size:9.5px; font-weight:600; color:var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="canvas-wrap">
+  <div class="canvas">
+
+    <div class="header">
+      <div class="eyebrow">Arquitectura de Datos</div>
+      <h1>Arquitectura Medallion: Datos Confiables en Cada Capa</h1>
+      <p>Transformar datos crudos en información valiosa, con trazabilidad, calidad y confianza en cada etapa del recorrido.</p>
+    </div>
+
+    <div class="layers">
+      <div class="layer bronze">
+        <div class="top"><div class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 3h9l5 5v13H6Z"/><path d="M15 3v5h5"/></svg></div><div><b>Bronze</b><div class="tag">Datos originales y sin modificar</div></div></div>
+        <ul>
+          <li>Datos de todas las fuentes</li>
+          <li>Sin modificaciones</li>
+          <li>Historial y versionado completo</li>
+          <li>Trazabilidad y auditoría</li>
+        </ul>
+        <div class="meter"><div class="lbl"><span>Nivel de confianza para el negocio</span></div><div class="track"><div class="fill"></div></div></div>
+      </div>
+      <div class="layer silver">
+        <div class="top"><div class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16v4l-6 7v5l-4 2v-7L4 8Z"/></svg></div><div><b>Silver</b><div class="tag">Datos confiables y estandarizados</div></div></div>
+        <ul>
+          <li>Limpieza y estandarización</li>
+          <li>Validación y reglas de calidad</li>
+          <li>Eliminación de duplicados</li>
+          <li>Datos consistentes y confiables</li>
+        </ul>
+        <div class="meter"><div class="lbl"><span>Nivel de confianza para el negocio</span></div><div class="track"><div class="fill"></div></div></div>
+      </div>
+      <div class="layer gold">
+        <div class="top"><div class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20V4M4 20h16"/><rect x="7" y="13" width="3" height="7"/><rect x="12" y="8" width="3" height="12"/><rect x="17" y="5" width="3" height="15"/></svg></div><div><b>Gold</b><div class="tag">Datos listos para el negocio</div></div></div>
+        <ul>
+          <li>Datos agregados y modelados</li>
+          <li>Listos para analítica, dashboards e IA</li>
+          <li>Alto valor de negocio</li>
+          <li>Consistencia y rendimiento</li>
+        </ul>
+        <div class="meter"><div class="lbl"><span>Nivel de confianza para el negocio</span></div><div class="track"><div class="fill"></div></div></div>
+      </div>
+    </div>
+
+    <div class="sources">
+      <span class="lbl">Conecta cualquier fuente</span>
+      <div class="src"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></div>Bases de Datos</div>
+      <div class="src"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h9l5 5v13H6Z"/><path d="M15 3v5h5"/></svg></div>Archivos</div>
+      <div class="src"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 3 20h18Z"/><path d="M9 15h6"/></svg></div>APIs</div>
+      <div class="src"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg></div>Aplicaciones</div>
+      <div class="src"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3.2"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M6 6l2 2M16 16l2 2M6 18l2-2M16 8l2-2"/></svg></div>ERP / SaaS</div>
+      <div class="src"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9a8 8 0 0 1 16 0M7 12a5 5 0 0 1 10 0M10 15a2 2 0 0 1 4 0"/><circle cx="12" cy="19" r="1"/></svg></div>Streaming</div>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6Z"/><path d="m9 12 2 2 4-4"/></svg></div><span>Confianza en tus datos</span></div>
+      <div class="pillar"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div><span>Eficiencia en tus procesos</span></div>
+      <div class="pillar"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V4M4 20h16"/><rect x="7" y="13" width="3" height="7"/><rect x="12" y="8" width="3" height="12"/><rect x="17" y="5" width="3" height="15"/></svg></div><span>Valor para el negocio</span></div>
+      <div class="pillar"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="10" rx="1.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div><span>Gobernanza y trazabilidad</span></div>
+    </div>
+
+    <div class="footer">
+      <div class="li-badge">in</div>
+      <span>cacm523</span>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
