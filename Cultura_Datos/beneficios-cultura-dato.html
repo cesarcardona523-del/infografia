@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Beneficios de una Cultura de Datos</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --amber:#C1620E; --amber-dark:#984C09; --amber-pale:#FCEADA; --amber-line:#F0CBA3;
+    --ink:#241D16; --muted:#6B6055; --line:#EAE0D3; --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    min-height:627px; display:flex; align-items:center; justify-content:center;
+    padding:32px 16px; background:#F0E9DE;
+    font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
+  .canvas{
+    position:relative; width:1200px; height:627px; margin:0 auto;
+    background:linear-gradient(160deg, #FFFDF9 0%, #FBF5EC 100%);
+    border-radius:16px; box-shadow:0 20px 50px rgba(36,29,22,0.16); overflow:hidden;
+    padding:24px 38px 16px; color:var(--ink);
+    display:flex; flex-direction:column;
+  }
+
+  .header{ text-align:center; margin-bottom:8px; }
+  .header h1{ font-size:21px; margin:0 0 4px; font-weight:800; letter-spacing:-0.2px; }
+  .header p{ margin:0 auto; font-size:11px; color:var(--muted); max-width:720px; }
+
+  .problem{ display:flex; gap:14px; margin:10px 0; }
+  .problem .p{ flex:1; background:var(--white); border:1px dashed var(--amber-line); border-radius:9px; padding:8px 14px; font-size:9.6px; color:var(--muted); display:flex; align-items:center; gap:8px; }
+  .problem .p b{ color:var(--amber-dark); }
+  .problem .icon{ width:22px; height:22px; border-radius:6px; background:var(--amber-pale); color:var(--amber-dark); display:flex; align-items:center; justify-content:center; flex:none; }
+  .problem .icon svg{ width:12px; height:12px; }
+
+  .grid{ flex:1; display:grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap:12px; }
+  .card{ background:var(--white); border:1px solid var(--line); border-radius:11px; padding:14px 18px; display:flex; gap:14px; align-items:center; box-shadow:0 4px 12px rgba(36,29,22,0.05); }
+  .card .n{ width:34px; height:34px; border-radius:9px; background:var(--amber); color:#fff; font-weight:800; font-size:15px; display:flex; align-items:center; justify-content:center; flex:none; }
+  .card .txt{ flex:1; }
+  .card h3{ margin:0 0 4px; font-size:13px; font-weight:800; }
+  .card p{ margin:0; font-size:10px; color:var(--muted); line-height:1.4; }
+  .card .bigicon{ width:64px; height:64px; border-radius:16px; background:var(--amber-pale); color:var(--amber-dark); display:flex; align-items:center; justify-content:center; flex:none; }
+  .card .bigicon svg{ width:32px; height:32px; }
+
+  .stat-inline{ display:inline-block; margin-top:6px; font-size:9px; font-weight:800; color:var(--amber-dark); background:var(--amber-pale); border-radius:12px; padding:2px 9px; }
+
+  .ribbon{
+    margin-top:10px; display:flex; align-items:center; gap:10px;
+    background:var(--ink); color:#F3EEE6; border-radius:10px; padding:9px 18px; font-size:10.3px;
+  }
+  .ribbon .icon{ width:22px; height:22px; flex:none; border-radius:6px; background:rgba(255,255,255,0.1); display:flex; align-items:center; justify-content:center; }
+  .ribbon .icon svg{ width:12px; height:12px; color:#F0B87A; }
+  .ribbon b{ color:#fff; }
+  .ribbon span{ color:#C7BEB2; }
+
+  .footer{ position:absolute; bottom:10px; right:20px; display:flex; align-items:center; gap:6px; }
+  .li-badge{ width:16px; height:16px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:800; font-family: Arial, sans-serif; }
+  .footer span{ font-size:10px; font-weight:600; color:var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="canvas-wrap">
+  <div class="canvas">
+
+    <div class="header">
+      <h1>Beneficios de una Cultura de Datos</h1>
+      <p>La falta de alfabetización de datos desequilibra el acceso — y una cultura de datos sólida es el antídoto.</p>
+    </div>
+
+    <div class="problem">
+      <div class="p"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="5" y="11" width="14" height="9" rx="1.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div><span><b>Demasiado restringido</b> — el acceso dificulta el uso de los datos.</span></div>
+      <div class="p"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg></div><span><b>Demasiado abierto</b> — amenaza la calidad y el cumplimiento.</span></div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="n">1</div>
+        <div class="txt"><h3>Percepciones Superiores</h3><p>Los datos sin procesar no hacen nada por el negocio por sí solos; con infraestructura establecida se transforman en inteligencia comercial real.</p></div>
+        <div class="bigicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 3v18M4 12h16"/><circle cx="12" cy="12" r="9"/></svg></div>
+      </div>
+      <div class="card">
+        <div class="n">2</div>
+        <div class="txt"><h3>Tiempo de Acción Más Rápido</h3><p>Algoritmos de IA y ML convierten datos en acción en tiempo real, en lugar de pasar días o semanas sopesando opciones.</p></div>
+        <div class="bigicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 3.5"/></svg></div>
+      </div>
+      <div class="card">
+        <div class="n">3</div>
+        <div class="txt"><h3>Ventaja Competitiva</h3><p>Una comprensión común del contexto y las mejores prácticas permite moverse más rápido que competidores que confían en el instinto.
+        <span class="stat-inline">~3x más probabilidad de crecimiento de 2 dígitos</span></p></div>
+        <div class="bigicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z"/></svg></div>
+      </div>
+      <div class="card">
+        <div class="n">4</div>
+        <div class="txt"><h3>Potenciación de los Empleados</h3><p>El acceso a los datos correctos da confianza total en las decisiones que cada persona toma, sin depender de aprobaciones externas.</p></div>
+        <div class="bigicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.4"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M15.5 14.5c2.6.3 4.5 2.6 4.5 5.5"/></svg></div>
+      </div>
+    </div>
+
+    <div class="ribbon">
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z"/></svg></div>
+      <div><b>El antídoto</b> <span>— con una comprensión común del significado, la importancia y las aplicaciones de los datos, toda la organización está posicionada para aprovechar al máximo su activo más valioso.</span></div>
+    </div>
+
+    <div class="footer">
+      <div class="li-badge">in</div>
+      <span>cacm523</span>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

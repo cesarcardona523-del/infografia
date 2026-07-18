@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Databricks: Datos en Conocimiento 12x Más Rápido</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --db-orange:#FF3621; --db-dark:#B0230F; --db-pale:#FDE8E4; --line:#F0DAD5;
+    --ink:#241C18; --muted:#6B5F58; --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    min-height:627px; display:flex; align-items:center; justify-content:center;
+    padding:32px 16px; background:#F3EDE9;
+    font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
+  .canvas{
+    position:relative; width:1200px; height:627px; margin:0 auto;
+    background:linear-gradient(160deg, #FFFFFF 0%, #FCF6F4 100%);
+    border-radius:16px; box-shadow:0 20px 50px rgba(176,35,15,0.16); overflow:hidden;
+    padding:22px 38px 16px; color:var(--ink);
+    display:flex; flex-direction:column;
+  }
+
+  .header{ text-align:center; margin-bottom:8px; }
+  .header .eyebrow{ font-size:10.5px; font-weight:700; letter-spacing:1.6px; color:var(--db-orange); text-transform:uppercase; margin-bottom:4px; }
+  .header h1{ font-size:20px; margin:0 0 4px; font-weight:800; letter-spacing:-0.2px; }
+  .header p{ margin:0 auto; font-size:11px; color:var(--muted); max-width:680px; }
+
+  .contrast{ display:grid; grid-template-columns: 1fr 1fr; gap:14px; margin:8px 0; }
+  .cbox{ border-radius:10px; padding:10px 14px; display:flex; align-items:center; gap:12px; }
+  .cbox.bad{ background:#F1EDEA; border:1px solid var(--line); }
+  .cbox.good{ background:var(--db-pale); border:1px solid #F5C4B8; }
+  .cbox svg{ width:44px; height:44px; flex:none; }
+  .cbox b{ display:block; font-size:11px; font-weight:800; }
+  .cbox span{ display:block; font-size:9px; color:var(--muted); }
+
+  .row{ flex:1; display:grid; grid-template-columns: repeat(4, 1fr); gap:12px; }
+  .card{ background:var(--white); border:1px solid var(--line); border-radius:11px; padding:12px 13px; display:flex; flex-direction:column; box-shadow:0 4px 12px rgba(176,35,15,0.05); }
+  .card .icon{ width:32px; height:32px; border-radius:9px; background:var(--db-pale); color:var(--db-orange); display:flex; align-items:center; justify-content:center; margin-bottom:8px; }
+  .card .icon svg{ width:17px; height:17px; }
+  .card b{ display:block; font-size:11px; font-weight:800; margin-bottom:5px; line-height:1.25; }
+  .card p{ margin:0; font-size:8.8px; color:var(--muted); line-height:1.4; }
+  .card .stat{ margin-top:auto; padding-top:8px; font-size:19px; font-weight:800; color:var(--db-orange); }
+  .card .mini{ margin-top:auto; padding-top:8px; }
+  .card .mini svg{ width:100%; height:44px; }
+
+  .ribbon{
+    margin-top:8px; display:flex; align-items:center; gap:10px;
+    background:var(--ink); color:#F3EDE6; border-radius:10px; padding:9px 18px; font-size:10.3px;
+  }
+  .ribbon .icon{ width:22px; height:22px; flex:none; border-radius:6px; background:rgba(255,54,33,0.2); display:flex; align-items:center; justify-content:center; }
+  .ribbon .icon svg{ width:12px; height:12px; color:var(--db-orange); }
+  .ribbon b{ color:#fff; }
+  .ribbon span{ color:#C9BFB8; }
+
+  .footer{ position:absolute; bottom:10px; right:20px; display:flex; align-items:center; gap:6px; }
+  .li-badge{ width:16px; height:16px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:800; font-family: Arial, sans-serif; }
+  .footer span{ font-size:10px; font-weight:600; color:var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="canvas-wrap">
+  <div class="canvas">
+
+    <div class="header">
+      <div class="eyebrow">Lakehouse Platform</div>
+      <h1>Databricks: Datos en Conocimiento 12x Más Rápido</h1>
+      <p>Elimina el cuello de botella de la limpieza de datos para acelerar la innovación y reducir costos drásticamente.</p>
+    </div>
+
+    <div class="contrast">
+      <div class="cbox bad">
+        <svg viewBox="0 0 60 60"><path d="M8 8h44l-14 22v20l-16 6V30Z" fill="#D8D2CC" stroke="#9A8F86" stroke-width="2"/></svg>
+        <div><b>Cuello de botella tradicional</b><span>Limpieza de datos: 80% del tiempo del equipo.</span></div>
+      </div>
+      <div class="cbox good">
+        <svg viewBox="0 0 60 60"><path d="M8 20h20l24-14v40l-24-14H8Z" fill="#FF3621" opacity="0.85"/></svg>
+        <div><b>Databricks: ciclo unificado</b><span>Ingesta, limpieza y análisis automatizados en una plataforma.</span></div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="7" cy="8" r="2.4"/><circle cx="17" cy="8" r="2.4"/><circle cx="12" cy="17" r="2.4"/><path d="M9 9.5 11 15M15 9.5 13 15"/></svg></div>
+        <b>Adiós a los Silos de Datos</b>
+        <p>Une científicos, ingenieros y líderes de negocio en una sola plataforma en la nube.</p>
+        <div class="mini"><svg viewBox="0 0 200 44">
+          <circle cx="30" cy="22" r="14" fill="#FDE8E4" stroke="#FF3621" stroke-width="1.6"/>
+          <circle cx="100" cy="22" r="14" fill="#FDE8E4" stroke="#FF3621" stroke-width="1.6"/>
+          <circle cx="170" cy="22" r="14" fill="#FF3621"/>
+          <path d="M44 22h42M114 22h42" stroke="#F0B0A2" stroke-width="1.6" stroke-dasharray="2 3"/>
+        </svg></div>
+      </div>
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18a4.5 4.5 0 0 1-3.3-7.6A4 4 0 0 1 9 4"/><path d="M15 18a4.5 4.5 0 0 0 3.3-7.6A4 4 0 0 0 15 4"/><path d="M9 4v14M15 4v14"/></svg></div>
+        <b>Optimización con IA</b>
+        <p>Gestión inteligente de estadísticas y almacenamiento automatiza el mantenimiento manual.</p>
+        <div class="stat">+22%</div>
+      </div>
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3l9 16H3Z"/><path d="M7 14h10M9 10.5h6"/></svg></div>
+        <b>Arquitectura Medallón</b>
+        <p>Estructura los datos en niveles Bronze, Silver y Oro para asegurar calidad y rapidez.</p>
+        <div class="mini"><svg viewBox="0 0 200 44">
+          <rect x="10" y="30" width="180" height="10" rx="2" fill="#B87333"/>
+          <rect x="30" y="17" width="140" height="10" rx="2" fill="#B8BEC4"/>
+          <rect x="55" y="4" width="90" height="10" rx="2" fill="#D4A82E"/>
+        </svg></div>
+      </div>
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div>
+        <b>Eficiencia y Ahorro Real</b>
+        <p>Empresas como Insulet lograron ingesta en tiempo real y reducción de costos (TCO).</p>
+        <div class="stat">-97%</div>
+      </div>
+    </div>
+
+    <div class="ribbon">
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z"/></svg></div>
+      <div><b>El resultado</b> <span>— al eliminar el cuello de botella de la limpieza manual, Databricks convierte datos en conocimiento hasta 12 veces más rápido que un pipeline tradicional fragmentado.</span></div>
+    </div>
+
+    <div class="footer">
+      <div class="li-badge">in</div>
+      <span>cacm523</span>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

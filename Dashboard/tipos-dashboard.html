@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Tipos de Dashboards</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --violet:#7C4FE0; --violet-dark:#5C33B8; --violet-pale:#F1EBFC; --violet-line:#DCC9F5;
+    --ink:#1D2129; --muted:#5C6470; --line:#E4E6EA; --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    min-height:627px; display:flex; align-items:center; justify-content:center;
+    padding:32px 16px; background:#EFEAF7;
+    font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
+  .canvas{
+    position:relative; width:1200px; height:627px; margin:0 auto;
+    background:var(--white);
+    border-radius:16px; box-shadow:0 20px 50px rgba(92,51,184,0.16); overflow:hidden;
+    padding:22px 36px 14px; color:var(--ink);
+    display:flex; flex-direction:column;
+  }
+
+  .header{ text-align:center; margin-bottom:8px; }
+  .header h1{ font-size:20px; margin:0 0 4px; font-weight:800; letter-spacing:-0.2px; }
+  .header p{ margin:0 auto; font-size:11px; color:var(--muted); max-width:760px; }
+
+  .grid{ flex:1; display:grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap:12px; }
+  .card{ background:var(--violet-pale); border:1px solid var(--violet-line); border-radius:11px; padding:12px 16px; display:grid; grid-template-columns: 1fr 130px; gap:10px; align-items:center; }
+  .card .txt h3{ display:flex; align-items:center; gap:7px; margin:0 0 5px; font-size:13px; font-weight:800; color:var(--violet-dark); }
+  .card .txt h3 .ic{ width:22px; height:22px; border-radius:6px; background:var(--violet); color:#fff; display:flex; align-items:center; justify-content:center; flex:none; }
+  .card .txt h3 .ic svg{ width:12px; height:12px; }
+  .card .txt ul{ margin:0; padding-left:14px; font-size:9.3px; color:var(--muted); line-height:1.5; }
+  .viz{ background:var(--white); border-radius:8px; padding:8px; display:flex; align-items:center; justify-content:center; height:90px; }
+  .viz svg{ width:100%; height:100%; }
+
+  .ribbon{
+    margin-top:8px; display:flex; align-items:center; gap:10px;
+    background:var(--ink); color:#EDEFF3; border-radius:9px; padding:8px 18px; font-size:10px;
+  }
+  .ribbon b{ color:#fff; }
+  .ribbon span{ color:#B7BCC6; }
+
+  .footer{ position:absolute; bottom:10px; right:20px; display:flex; align-items:center; gap:6px; }
+  .li-badge{ width:16px; height:16px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:800; font-family: Arial, sans-serif; }
+  .footer span{ font-size:10px; font-weight:600; color:var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="canvas-wrap">
+  <div class="canvas">
+
+    <div class="header">
+      <h1>Tipos de Dashboards</h1>
+      <p>Los dashboards no son intercambiables — cada tipo consolida y visualiza métricas para un usuario y un horizonte de decisión distintos.</p>
+    </div>
+
+    <div class="grid">
+
+      <div class="card">
+        <div class="txt">
+          <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 3v18h18"/><path d="M7 15l4-6 4 3 4-8"/></svg></span>Estratégicos</h3>
+          <ul>
+            <li>Orientados a gerencia y alta dirección.</li>
+            <li>Muestran métricas de alto nivel.</li>
+            <li>Se usan para decisiones a largo plazo.</li>
+          </ul>
+        </div>
+        <div class="viz"><svg viewBox="0 0 130 90">
+          <text x="8" y="30" font-size="20" font-weight="800" fill="#5C33B8">+18%</text>
+          <text x="8" y="45" font-size="7" fill="#8A7BA8">Crecimiento anual</text>
+          <path d="M8 75q20-30 40-10t40-15t28-8" fill="none" stroke="#7C4FE0" stroke-width="2.2"/>
+        </svg></div>
+      </div>
+
+      <div class="card">
+        <div class="txt">
+          <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 3.5"/></svg></span>Operacionales</h3>
+          <ul>
+            <li>Monitorean procesos diarios y actividades clave.</li>
+            <li>Suelen actualizarse en tiempo real.</li>
+            <li>Optimizan operaciones y detectan problemas al ocurrir.</li>
+          </ul>
+        </div>
+        <div class="viz"><svg viewBox="0 0 130 90">
+          <path d="M20 65a45 45 0 0 1 90 0" fill="none" stroke="#E4DAF7" stroke-width="10"/>
+          <path d="M20 65a45 45 0 0 1 63 -40" fill="none" stroke="#7C4FE0" stroke-width="10" stroke-linecap="round"/>
+          <text x="65" y="60" font-size="16" font-weight="800" fill="#5C33B8" text-anchor="middle">80%</text>
+          <circle cx="107" cy="20" r="4" fill="#1B9E6B"/><text x="115" y="24" font-size="7" fill="#8A7BA8">en vivo</text>
+        </svg></div>
+      </div>
+
+      <div class="card">
+        <div class="txt">
+          <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="6"/><path d="m20 20-4.3-4.3"/></svg></span>Analíticos</h3>
+          <ul>
+            <li>Analizan grandes volúmenes de datos y tendencias.</li>
+            <li>Usados por analistas para profundizar en detalles.</li>
+            <li>Habilitan análisis avanzados y exploratorios.</li>
+          </ul>
+        </div>
+        <div class="viz"><svg viewBox="0 0 130 90">
+          <g fill="#7C4FE0" opacity="0.8">
+            <circle cx="20" cy="60" r="4"/><circle cx="35" cy="45" r="5"/><circle cx="50" cy="55" r="3.5"/><circle cx="68" cy="30" r="6"/><circle cx="85" cy="42" r="4.5"/><circle cx="100" cy="22" r="5"/><circle cx="115" cy="35" r="4"/>
+          </g>
+          <path d="M15 68q50-45 105-45" fill="none" stroke="#B9A0E8" stroke-width="1.6" stroke-dasharray="3 3"/>
+        </svg></div>
+      </div>
+
+      <div class="card">
+        <div class="txt">
+          <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16l-6 8v6l-4 2v-8L4 4Z"/></svg></span>Tácticos</h3>
+          <ul>
+            <li>Seguimiento y decisiones a corto plazo.</li>
+            <li>Métricas de áreas específicas.</li>
+            <li>Ej: rendimiento de campañas, satisfacción del cliente.</li>
+          </ul>
+        </div>
+        <div class="viz"><svg viewBox="0 0 130 90">
+          <path d="M15 15h100l-35 35v25l-30 12v-37Z" fill="#E4DAF7" stroke="#7C4FE0" stroke-width="1.6"/>
+          <text x="65" y="82" font-size="7" fill="#5C33B8" text-anchor="middle" font-weight="700">Campaña → Conversión</text>
+        </svg></div>
+      </div>
+
+    </div>
+
+    <div class="ribbon"><b>Cómo elegir</b>&nbsp;<span>— el nivel del usuario y el horizonte de la decisión definen el tipo: dirección mira estratégico, operaciones mira en tiempo real, analistas profundizan, y las áreas específicas siguen lo táctico.</span></div>
+
+    <div class="footer">
+      <div class="li-badge">in</div>
+      <span>cacm523</span>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

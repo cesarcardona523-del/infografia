@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Hoja de Ruta de Estadística para Analistas de Datos</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --blue:#2360A8; --green:#3C8A5C; --amber:#C1780E; --purple:#6B4EA0;
+    --ink:#1D2129; --muted:#5C6470; --line:#E5E7EA; --white:#FFFFFF; --paper:#F7F8FA;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    min-height:627px; display:flex; align-items:center; justify-content:center;
+    padding:32px 16px; background:#EDEEF2;
+    font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
+  .canvas{
+    position:relative; width:1200px; height:627px; margin:0 auto;
+    background:var(--white);
+    border-radius:16px; box-shadow:0 20px 50px rgba(35,45,60,0.15); overflow:hidden;
+    padding:18px 32px 14px; color:var(--ink);
+    display:flex; flex-direction:column;
+  }
+
+  .header{ text-align:center; margin-bottom:6px; }
+  .header .eyebrow{ font-size:12.5px; font-weight:700; letter-spacing:2px; color:var(--purple); text-transform:uppercase; margin-bottom:5px; }
+  .header h1{ font-size:28px; margin:0 0 6px; font-weight:800; letter-spacing:-0.3px; }
+  .header p{ margin:0 auto; font-size:14px; color:var(--muted); max-width:760px; }
+
+  .road-wrap{ position:relative; flex:1.5; margin:10px 0 6px; }
+  .road-wrap svg{ position:absolute; inset:0; width:100%; height:100%; }
+  .stop{ position:absolute; transform:translate(-50%,-50%); display:flex; flex-direction:column; align-items:center; width:150px; }
+  .stop .dot{ width:52px; height:52px; border-radius:50%; color:#fff; font-size:20px; font-weight:800; display:flex; align-items:center; justify-content:center; border:4px solid #fff; box-shadow:0 3px 10px rgba(0,0,0,0.2); }
+  .stop b{ display:block; font-size:13.5px; font-weight:700; text-align:center; line-height:1.25; margin-top:7px; color:var(--ink); }
+  .stop.below b{ margin-top:7px; }
+  .stop.above{ flex-direction:column-reverse; }
+  .stop.above b{ margin-bottom:7px; margin-top:0; }
+
+  .d1,.d2,.d3{ background:var(--blue); }
+  .d4,.d5,.d6{ background:var(--green); }
+  .d7,.d8,.d9{ background:var(--amber); }
+  .d10{ background:var(--purple); }
+
+  .legend{ display:flex; justify-content:center; gap:26px; margin-bottom:12px; }
+  .legend span{ font-size:12px; font-weight:700; color:var(--muted); display:flex; align-items:center; gap:6px; }
+  .legend i{ width:11px; height:11px; border-radius:3px; display:inline-block; }
+
+  .apps{ flex:1; display:grid; grid-template-columns: repeat(7,1fr); gap:11px; }
+  .app{ background:var(--paper); border:1px solid var(--line); border-radius:10px; padding:10px 8px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; text-align:center; }
+  .app .icon{ width:36px; height:36px; border-radius:9px; background:var(--purple); color:#fff; display:flex; align-items:center; justify-content:center; }
+  .app .icon svg{ width:19px; height:19px; }
+  .app span{ font-size:10.8px; font-weight:700; color:var(--ink); line-height:1.25; }
+
+  .ribbon{
+    margin-top:11px; display:flex; align-items:center; gap:12px;
+    background:var(--ink); color:#EEF0F3; border-radius:11px; padding:13px 22px; font-size:13px;
+  }
+  .ribbon .icon{ width:26px; height:26px; flex:none; border-radius:7px; background:rgba(255,255,255,0.14); display:flex; align-items:center; justify-content:center; }
+  .ribbon .icon svg{ width:14px; height:14px; color:var(--amber); }
+  .ribbon b{ color:#fff; }
+  .ribbon span{ color:#BFC5CC; }
+
+  .footer{ position:absolute; bottom:9px; right:20px; display:flex; align-items:center; gap:6px; }
+  .li-badge{ width:15px; height:15px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:9.5px; font-weight:800; font-family: Arial, sans-serif; }
+  .footer span{ font-size:9.5px; font-weight:600; color:var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="canvas-wrap">
+  <div class="canvas">
+
+    <div class="header">
+      <div class="eyebrow">Ruta de Aprendizaje</div>
+      <h1>Hoja de Ruta de Estadística para Analistas de Datos</h1>
+      <p>10 pasos, organizados en 4 bloques, para pasar de tener datos a tomar decisiones con confianza.</p>
+    </div>
+
+    <div class="road-wrap">
+      <svg viewBox="0 0 1200 140" preserveAspectRatio="none">
+        <polyline points="100,30 211,100 322,30 433,100 544,30 656,100 767,30 878,100 989,30 1100,100"
+          fill="none" stroke="#D7DBE2" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+        <polyline points="100,30 211,100 322,30 433,100 544,30 656,100 767,30 878,100 989,30 1100,100"
+          fill="none" stroke="#fff" stroke-width="2.5" stroke-dasharray="7 7" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+
+      <div class="stop above" style="left:8.33%; top:21.4%;"><div class="dot d1">1</div><b>Tipos de Datos</b></div>
+      <div class="stop below" style="left:17.6%; top:71.4%;"><div class="dot d2">2</div><b>Estadística Descriptiva</b></div>
+      <div class="stop above" style="left:26.85%; top:21.4%;"><div class="dot d3">3</div><b>Medir la Variabilidad</b></div>
+      <div class="stop below" style="left:36.1%; top:71.4%;"><div class="dot d4">4</div><b>Distribuciones</b></div>
+      <div class="stop above" style="left:45.4%; top:21.4%;"><div class="dot d5">5</div><b>Probabilidad</b></div>
+      <div class="stop below" style="left:54.6%; top:71.4%;"><div class="dot d6">6</div><b>Muestreo y Sesgos</b></div>
+      <div class="stop above" style="left:63.9%; top:21.4%;"><div class="dot d7">7</div><b>Intervalos de Confianza</b></div>
+      <div class="stop below" style="left:73.15%; top:71.4%;"><div class="dot d8">8</div><b>Pruebas de Hipótesis</b></div>
+      <div class="stop above" style="left:82.4%; top:21.4%;"><div class="dot d9">9</div><b>Relaciones entre Variables</b></div>
+      <div class="stop below" style="left:91.7%; top:71.4%;"><div class="dot d10">10</div><b>Decisiones de Negocio</b></div>
+    </div>
+
+    <div class="legend">
+      <span><i style="background:var(--blue)"></i>Fundamentos</span>
+      <span><i style="background:var(--green)"></i>Distribución y Muestreo</span>
+      <span><i style="background:var(--amber)"></i>Inferencia</span>
+      <span><i style="background:var(--purple)"></i>Aplicación</span>
+    </div>
+
+    <div class="apps">
+      <div class="app"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4l13 13M17 4v13h-13"/></svg></div><span>Marketing</span></div>
+      <div class="app"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="8" r="2.4"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0M15 20a4.5 4.5 0 0 1 7-3.6"/></svg></div><span>Segmentación de Clientes</span></div>
+      <div class="app"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 18 10 12 14 16 20 6M14 6h6v6"/></svg></div><span>Ventas y Forecasting</span></div>
+      <div class="app"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="3.4"/><path d="M5.5 20a6.5 6.5 0 0 1 13 0"/></svg></div><span>Experiencia del Cliente</span></div>
+      <div class="app"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="6" width="8" height="12" rx="1.5"/><rect x="13" y="6" width="8" height="12" rx="1.5"/><path d="M7 12h0M17 12h0"/></svg></div><span>Experimentación (A/B)</span></div>
+      <div class="app"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M6 6l2 2M16 16l2 2M6 18l2-2M16 8l2-2"/><circle cx="12" cy="12" r="3.5"/></svg></div><span>Optimización de Procesos</span></div>
+      <div class="app"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="0.6" fill="currentColor"/></svg></div><span>Decisiones Estratégicas</span></div>
+    </div>
+
+    <div class="ribbon">
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z"/></svg></div>
+      <div><b>La idea central</b> <span>— la estadística es el puente entre los datos y las decisiones inteligentes: no se trata solo de datos, se trata de decisiones.</span></div>
+    </div>
+
+    <div class="footer">
+      <div class="li-badge">in</div>
+      <span>cacm523</span>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

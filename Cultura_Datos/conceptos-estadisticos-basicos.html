@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>8 Conceptos Estadísticos Esenciales para Ciencia de Datos</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --wine:#7A2E42; --wine-dark:#5A2130; --wine-pale:#F5E9EC; --line:#EDE0E3;
+    --sage:#5F7A5E; --sage-pale:#EAF0E9;
+    --ink:#241C20; --muted:#665B60; --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    min-height:627px; display:flex; align-items:center; justify-content:center;
+    padding:32px 16px; background:#F1E9EB;
+    font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
+  .canvas{
+    position:relative; width:1200px; height:627px; margin:0 auto;
+    background:var(--white);
+    border-radius:16px; box-shadow:0 20px 50px rgba(90,33,48,0.16); overflow:hidden;
+    padding:18px 32px 12px; color:var(--ink);
+    display:flex; flex-direction:column;
+  }
+
+  .header{ text-align:center; margin-bottom:9px; }
+  .header .eyebrow{ font-size:10.5px; font-weight:700; letter-spacing:1.8px; color:var(--wine); text-transform:uppercase; margin-bottom:3px; }
+  .header h1{ font-size:20px; margin:0 0 3px; font-weight:800; letter-spacing:-0.2px; }
+  .header p{ margin:0 auto; font-size:11px; color:var(--muted); max-width:680px; }
+
+  .grid{ flex:1; display:grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(2, 1fr); gap:12px; }
+  .card{ background:var(--wine-pale); border:1px solid var(--line); border-radius:11px; padding:13px 15px; display:flex; flex-direction:column; }
+  .card .num{ width:24px; height:24px; border-radius:7px; background:var(--wine); color:#fff; font-size:11.5px; font-weight:800; display:flex; align-items:center; justify-content:center; margin-bottom:8px; }
+  .card b{ display:block; font-size:13px; font-weight:800; margin-bottom:6px; line-height:1.22; }
+  .card p{ margin:0; font-size:10.3px; color:var(--muted); line-height:1.42; }
+  .card .viz{ flex:1; display:flex; align-items:flex-end; padding-top:8px; }
+  .card .viz svg{ width:100%; height:100%; max-height:82px; }
+
+  .footer{ position:absolute; bottom:10px; right:20px; display:flex; align-items:center; gap:6px; }
+  .li-badge{ width:16px; height:16px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:800; font-family: Arial, sans-serif; }
+  .footer span{ font-size:10px; font-weight:600; color:var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="canvas-wrap">
+  <div class="canvas">
+
+    <div class="header">
+      <div class="eyebrow">Fundamentos Cuantitativos</div>
+      <h1>8 Conceptos Estadísticos Esenciales para Ciencia de Datos</h1>
+      <p>El vocabulario matemático mínimo detrás de cualquier análisis, modelo o prueba de hipótesis en un proyecto de datos.</p>
+    </div>
+
+    <div class="grid">
+
+      <div class="card">
+        <div class="num">1</div>
+        <b>Distribuciones de Probabilidad</b>
+        <p>Modelos matemáticos que describen cómo se distribuyen los valores de una variable aleatoria. Ejemplo: Normal, Poisson, Binomial.</p>
+        <div class="viz"><svg viewBox="0 0 200 46">
+          <path d="M6 40 Q60 40 80 8 Q100 40 194 40" fill="none" stroke="var(--wine)" stroke-width="2"/>
+          <path d="M6 40 Q60 40 80 8 Q100 40 194 40 L194 40 Z" fill="var(--wine)" opacity="0.14"/>
+        </svg></div>
+      </div>
+
+      <div class="card">
+        <div class="num">2</div>
+        <b>Medidas de Tendencia Central</b>
+        <p>Media, mediana y moda resumen el "centro" de los datos, identificando el valor típico de una distribución.</p>
+        <div class="viz"><svg viewBox="0 0 200 46">
+          <path d="M6 40 Q60 40 90 6 Q120 40 194 40" fill="none" stroke="var(--wine)" stroke-width="2"/>
+          <path d="M6 40 Q60 40 90 6 Q120 40 194 40 Z" fill="var(--wine)" opacity="0.1"/>
+          <line x1="90" y1="8" x2="90" y2="40" stroke="var(--sage)" stroke-width="2" stroke-dasharray="2 2"/>
+          <circle cx="90" cy="8" r="2.6" fill="var(--sage)"/>
+        </svg></div>
+      </div>
+
+      <div class="card">
+        <div class="num">3</div>
+        <b>Medidas de Dispersión</b>
+        <p>Varianza, desviación estándar y rango cuantifican qué tan dispersos están los datos respecto a su media.</p>
+        <div class="viz"><svg viewBox="0 0 200 46">
+          <line x1="10" y1="23" x2="190" y2="23" stroke="var(--line)" stroke-width="2"/>
+          <circle cx="100" cy="23" r="3" fill="var(--wine)"/>
+          <path d="M60 23h-6M60 17v12M140 23h6M140 17v12" stroke="var(--sage)" stroke-width="2"/>
+          <line x1="60" y1="23" x2="140" y2="23" stroke="var(--sage)" stroke-width="2"/>
+        </svg></div>
+      </div>
+
+      <div class="card">
+        <div class="num">4</div>
+        <b>Intervalos de Confianza</b>
+        <p>Rangos calculados a partir de una muestra que estiman, con un nivel de confianza (ej. 95%), dónde está un parámetro poblacional.</p>
+        <div class="viz"><svg viewBox="0 0 200 46">
+          <line x1="20" y1="23" x2="180" y2="23" stroke="var(--line)" stroke-width="3"/>
+          <rect x="70" y="17" width="60" height="12" rx="6" fill="var(--wine)" opacity="0.85"/>
+          <circle cx="100" cy="23" r="3.4" fill="#fff"/>
+          <line x1="70" y1="10" x2="70" y2="36" stroke="var(--sage)" stroke-width="2"/>
+          <line x1="130" y1="10" x2="130" y2="36" stroke="var(--sage)" stroke-width="2"/>
+        </svg></div>
+      </div>
+
+      <div class="card">
+        <div class="num">5</div>
+        <b>Pruebas de Hipótesis</b>
+        <p>Evalúan afirmaciones sobre una población a partir de evidencia muestral: hipótesis nula (H₀), alternativa (H₁) y valor p.</p>
+        <div class="viz"><svg viewBox="0 0 200 46">
+          <path d="M6 40 Q50 40 70 10 Q90 40 130 40" fill="none" stroke="var(--wine)" stroke-width="2"/>
+          <path d="M60 40 Q100 40 120 14 Q140 40 194 40" fill="none" stroke="var(--sage)" stroke-width="2"/>
+          <path d="M112 40 Q120 22 140 40Z" fill="var(--sage)" opacity="0.3"/>
+        </svg></div>
+      </div>
+
+      <div class="card">
+        <div class="num">6</div>
+        <b>Regresión Lineal y No Lineal</b>
+        <p>Analizan y cuantifican la relación entre una variable dependiente y una o más independientes, permitiendo predicciones.</p>
+        <div class="viz"><svg viewBox="0 0 200 46">
+          <line x1="10" y1="40" x2="190" y2="40" stroke="var(--line)" stroke-width="1.4"/>
+          <circle cx="30" cy="34" r="2.4" fill="var(--wine)"/><circle cx="55" cy="30" r="2.4" fill="var(--wine)"/>
+          <circle cx="80" cy="24" r="2.4" fill="var(--wine)"/><circle cx="100" cy="20" r="2.4" fill="var(--wine)"/>
+          <circle cx="125" cy="15" r="2.4" fill="var(--wine)"/><circle cx="150" cy="12" r="2.4" fill="var(--wine)"/>
+          <circle cx="175" cy="8" r="2.4" fill="var(--wine)"/>
+          <line x1="20" y1="37" x2="185" y2="6" stroke="var(--sage)" stroke-width="2"/>
+        </svg></div>
+      </div>
+
+      <div class="card">
+        <div class="num">7</div>
+        <b>Análisis de Series de Tiempo</b>
+        <p>Analiza datos ordenados cronológicamente, identificando tendencias, estacionalidad y patrones cíclicos.</p>
+        <div class="viz"><svg viewBox="0 0 200 46">
+          <line x1="10" y1="40" x2="190" y2="40" stroke="var(--line)" stroke-width="1.4"/>
+          <path d="M10 32 L40 24 L70 30 L100 16 L130 22 L160 10 L190 14" fill="none" stroke="var(--wine)" stroke-width="2"/>
+          <circle cx="190" cy="14" r="3" fill="var(--sage)"/>
+        </svg></div>
+      </div>
+
+      <div class="card">
+        <div class="num">8</div>
+        <b>Análisis de Varianza (ANOVA)</b>
+        <p>Compara las medias de tres o más grupos para determinar si existen diferencias estadísticamente significativas.</p>
+        <div class="viz"><svg viewBox="0 0 200 46">
+          <line x1="10" y1="40" x2="190" y2="40" stroke="var(--line)" stroke-width="1.4"/>
+          <rect x="35" y="18" width="26" height="16" fill="var(--wine)" opacity="0.75"/><line x1="35" y1="26" x2="61" y2="26" stroke="#fff" stroke-width="1.6"/>
+          <rect x="87" y="10" width="26" height="16" fill="var(--sage)" opacity="0.85"/><line x1="87" y1="18" x2="113" y2="18" stroke="#fff" stroke-width="1.6"/>
+          <rect x="139" y="22" width="26" height="16" fill="var(--wine-dark)" opacity="0.7"/><line x1="139" y1="30" x2="165" y2="30" stroke="#fff" stroke-width="1.6"/>
+        </svg></div>
+      </div>
+
+    </div>
+
+    <div class="footer">
+      <div class="li-badge">in</div>
+      <span>cacm523</span>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

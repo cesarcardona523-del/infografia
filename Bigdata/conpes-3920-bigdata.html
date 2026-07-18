@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>CONPES 3920: la Política Nacional de Big Data en Colombia</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --navy:#1B3A6B; --navy-dark:#122544; --navy-pale:#E7ECF4; --navy-line:#C7D2E6;
+    --red:#C0392B; --red-pale:#F7E3E0; --red-line:#EBC3BC;
+    --paper:#FDFBF8; --ink:#241F1B; --muted:#6B6058; --line:#E3DCD3; --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    min-height:627px; display:flex; align-items:center; justify-content:center;
+    padding:32px 16px; background:#EAEDF2;
+    font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
+  .canvas{
+    position:relative; width:1200px; height:627px; margin:0 auto;
+    background:var(--paper);
+    border:1px solid #DDD3C6; border-radius:8px; box-shadow:0 20px 50px rgba(27,58,107,0.14); overflow:hidden;
+    padding:22px 36px 14px; color:var(--ink);
+  }
+
+  .header{ display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px; }
+  .title-block{ display:flex; gap:12px; align-items:flex-start; }
+  .badge{ width:48px; height:48px; border-radius:50%; border:2.5px solid var(--navy); display:flex; align-items:center; justify-content:center; flex:none; font-family: Georgia, "Times New Roman", serif; font-weight:700; font-size:14px; color:var(--navy); margin-top:2px; }
+  .header .eyebrow{ font-family: Georgia, "Times New Roman", serif; font-size:10.5px; font-weight:700; letter-spacing:1.2px; color:var(--red); text-transform:uppercase; margin-bottom:3px; }
+  .header h1{ font-size:19px; margin:0 0 4px; font-weight:800; letter-spacing:-0.2px; }
+  .header p{ margin:0; font-size:10.8px; color:var(--muted); max-width:560px; }
+  .doc-meta{ text-align:right; font-size:8.6px; color:var(--muted); line-height:1.5; flex:none; }
+  .doc-meta b{ color:var(--ink); }
+
+  .layout{ display:grid; grid-template-columns: 220px 1fr 240px; gap:14px; margin-top:6px; height:428px; }
+
+  .col{ display:flex; flex-direction:column; gap:9px; }
+  .panel{ background:var(--white); border:1px solid var(--line); border-radius:10px; padding:11px 12px; box-shadow:0 4px 12px rgba(27,58,107,0.05); }
+  .panel h4{ margin:0 0 8px; font-size:9.5px; font-weight:800; text-transform:uppercase; letter-spacing:0.4px; color:var(--navy); }
+
+  .oe{ display:flex; gap:8px; align-items:flex-start; margin-bottom:9px; }
+  .oe .n{ width:19px; height:19px; border-radius:5px; background:var(--navy); color:#fff; font-size:9px; font-weight:800; display:flex; align-items:center; justify-content:center; flex:none; }
+  .oe b{ display:block; font-size:9.6px; font-weight:700; line-height:1.3; }
+
+  .cycle{ background:var(--white); border:1px solid var(--line); border-radius:10px; padding:14px 16px; box-shadow:0 4px 12px rgba(27,58,107,0.05); display:flex; flex-direction:column; height:100%; }
+  .hflow{ position:relative; display:flex; align-items:center; gap:8px; background:linear-gradient(90deg, var(--red), #A83324); border-radius:8px; padding:9px 16px; }
+  .hflow span{ font-size:9.5px; font-weight:800; color:#fff; text-transform:uppercase; letter-spacing:0.5px; }
+  .hflow svg{ width:14px; height:14px; color:#fff; flex:none; }
+  .gov-frame{ flex:1; margin:10px 0; border:1.5px dashed var(--navy-line); border-radius:10px; padding:16px 12px 12px; position:relative; display:flex; flex-direction:column; justify-content:center; }
+  .gov-frame .gov-label{ position:absolute; top:-9px; left:14px; background:var(--paper); padding:0 8px; font-size:8.3px; font-weight:800; color:var(--navy); text-transform:uppercase; letter-spacing:0.4px; }
+  .cycle-flow{ display:flex; align-items:center; justify-content:center; gap:6px; }
+  .analytics-row{ margin-top:16px; padding-top:12px; border-top:1px dashed var(--line); display:flex; align-items:center; justify-content:center; gap:8px; }
+  .analytics-row .a-step{ display:flex; align-items:center; gap:5px; }
+  .analytics-row .a-dot{ width:7px; height:7px; border-radius:50%; }
+  .analytics-row span{ font-size:8.3px; font-weight:700; color:var(--muted); }
+  .analytics-row .arrow{ color:var(--navy-line); font-size:11px; }
+  .step{ flex:1; background:var(--navy-pale); border:1px solid var(--navy-line); border-radius:8px; padding:12px 8px; text-align:center; }
+  .step .icon{ width:28px; height:28px; border-radius:50%; background:var(--navy); color:#fff; display:flex; align-items:center; justify-content:center; margin:0 auto 7px; }
+  .step .icon svg{ width:14px; height:14px; }
+  .step b{ display:block; font-size:9.3px; font-weight:700; }
+  .chevron{ color:var(--navy-line); font-size:17px; font-weight:700; flex:none; }
+
+  .stat-box{ text-align:center; }
+  .stat-box b{ display:block; font-size:19px; font-weight:800; color:var(--navy); line-height:1.1; }
+  .stat-box span{ display:block; font-size:8px; color:var(--muted); margin-top:2px; }
+
+  .odb-row{ display:flex; align-items:flex-end; gap:6px; height:52px; margin-top:6px; }
+  .odb-bar{ flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%; }
+  .odb-bar .fill{ width:100%; border-radius:3px 3px 0 0; background:var(--navy); }
+  .odb-bar .val{ font-size:8px; font-weight:800; color:var(--navy); margin-bottom:2px; }
+  .odb-bar .lbl{ font-size:6.8px; color:var(--muted); margin-top:3px; text-align:center; }
+
+  .goal-row{ display:flex; align-items:center; gap:8px; margin-top:6px; }
+  .goal-track{ flex:1; height:8px; border-radius:4px; background:var(--navy-pale); overflow:hidden; position:relative; }
+  .goal-track .now{ position:absolute; left:0; top:0; bottom:0; width:9.3%; background:var(--muted); }
+  .goal-track .target{ position:absolute; left:0; top:0; bottom:0; width:90%; background:var(--red); opacity:0.35; }
+  .goal-lbl{ font-size:7.6px; color:var(--muted); }
+
+  .ribbon{
+    margin-top:10px; display:flex; align-items:center; gap:10px;
+    background:var(--navy-dark); color:#EAEEF6; border-radius:9px; padding:8px 16px; font-size:9.8px;
+  }
+  .ribbon .icon{ width:20px; height:20px; flex:none; border-radius:6px; background:rgba(255,255,255,0.1); display:flex; align-items:center; justify-content:center; }
+  .ribbon .icon svg{ width:11px; height:11px; color:#E8A79A; }
+  .ribbon b{ color:#fff; }
+  .ribbon span{ color:#AEBAD2; }
+
+  .footer{ position:absolute; bottom:10px; right:20px; display:flex; align-items:center; gap:6px; }
+  .li-badge{ width:16px; height:16px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:800; font-family: Arial, sans-serif; }
+  .footer span{ font-size:10px; font-weight:600; color:var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="canvas-wrap">
+  <div class="canvas">
+
+    <div class="header">
+      <div class="title-block">
+        <div class="badge">3920</div>
+        <div>
+          <div class="eyebrow">Documento CONPES</div>
+          <h1>Política Nacional de Explotación de Datos (Big Data) en Colombia</h1>
+          <p>DNP, MinTIC y Superintendencia de Industria y Comercio — 5 años de implementación para gestionar los datos como activo de valor social y económico.</p>
+        </div>
+      </div>
+      <div class="doc-meta">Bogotá, D.C.<br><b>17 de abril de 2018</b><br>Versión aprobada</div>
+    </div>
+
+    <div class="layout">
+
+      <div class="col">
+        <div class="panel" style="flex:1;">
+          <h4>Objetivos Específicos</h4>
+          <div class="oe"><div class="n">1</div><b>Masificar datos públicos digitales accesibles, usables y de calidad</b></div>
+          <div class="oe"><div class="n">2</div><b>Generar seguridad jurídica para la explotación de datos</b></div>
+          <div class="oe"><div class="n">3</div><b>Disponer de capital humano para generar valor con los datos</b></div>
+          <div class="oe"><div class="n">4</div><b>Generar cultura de datos en el país</b></div>
+        </div>
+      </div>
+
+      <div class="cycle">
+        <div class="hflow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v6M12 9 6 15M12 9l6 6M6 15v6M18 15v6"/><circle cx="12" cy="9" r="1.6"/><circle cx="6" cy="15" r="1.6"/><circle cx="18" cy="15" r="1.6"/></svg><span>Capital Humano — oferta</span></div>
+
+        <div class="gov-frame">
+          <div class="gov-label">Gobernanza</div>
+          <div class="cycle-flow">
+            <div class="step">
+              <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/></svg></div>
+              <b>Generación y Recolección</b>
+            </div>
+            <div class="chevron">›</div>
+            <div class="step">
+              <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="6" cy="6" r="2.4"/><circle cx="18" cy="6" r="2.4"/><circle cx="12" cy="18" r="2.4"/><path d="M7.7 7.4 10.6 16M16.3 7.4 13.4 16M8.4 6h7.2"/></svg></div>
+              <b>Compartición y Agregación</b>
+            </div>
+            <div class="chevron">›</div>
+            <div class="step">
+              <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="6"/><path d="m20 20-4.3-4.3"/></svg></div>
+              <b>Explotación</b>
+            </div>
+            <div class="chevron">›</div>
+            <div class="step">
+              <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z"/></svg></div>
+              <b>Innovación</b>
+            </div>
+          </div>
+          <div class="analytics-row">
+            <div class="a-step"><span class="a-dot" style="background:#8FAAD6;"></span><span>Descriptiva</span></div>
+            <span class="arrow">→</span>
+            <div class="a-step"><span class="a-dot" style="background:#6E8EC7;"></span><span>Diagnóstica</span></div>
+            <span class="arrow">→</span>
+            <div class="a-step"><span class="a-dot" style="background:var(--navy);"></span><span>Predictiva</span></div>
+            <span class="arrow">→</span>
+            <div class="a-step"><span class="a-dot" style="background:var(--red);"></span><span>Prescriptiva</span></div>
+          </div>
+        </div>
+
+        <div class="hflow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg><span>Cultura de Datos — demanda</span></div>
+      </div>
+
+      <div class="col">
+        <div class="panel">
+          <h4>Presupuesto de la Política</h4>
+          <div class="stat-box"><b>$16.728M</b><span>pesos colombianos — 5 años (2018-2022)</span></div>
+        </div>
+        <div class="panel" style="flex:1;">
+          <h4>Colombia en el Open Data Barometer</h4>
+          <div class="stat-box" style="margin-bottom:2px;"><b>4°</b><span>lugar en Latinoamérica</span></div>
+          <div class="odb-row">
+            <div class="odb-bar"><div class="val">72</div><div class="fill" style="height:72%;"></div><div class="lbl">Preparación</div></div>
+            <div class="odb-bar"><div class="val">42</div><div class="fill" style="height:42%; background:var(--red); opacity:0.75;"></div><div class="lbl">Implementación</div></div>
+            <div class="odb-bar"><div class="val">46</div><div class="fill" style="height:46%; background:var(--red); opacity:0.75;"></div><div class="lbl">Impacto</div></div>
+          </div>
+          <div class="goal-row" style="margin-top:12px;">
+            <span class="goal-lbl">9,3%</span>
+            <div class="goal-track"><div class="now"></div><div class="target"></div></div>
+            <span class="goal-lbl">meta 90%</span>
+          </div>
+          <div class="goal-lbl" style="margin-top:3px;">Entidades con al menos un proyecto de datos (2017 → meta 2022)</div>
+        </div>
+      </div>
+
+    </div><!-- /.layout -->
+
+    <div class="ribbon">
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l2.5 2.5"/></svg></div>
+      <div><b>La brecha real</b> <span>— Colombia se prepara bien (72/100) pero implementa poco (42/100) e impacta menos (46/100): tener una política de datos no basta sin ejecución sostenida en las entidades.</span></div>
+    </div>
+
+    <div class="footer">
+      <div class="li-badge">in</div>
+      <span>cacm523</span>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

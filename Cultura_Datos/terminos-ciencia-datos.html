@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>10 Términos Esenciales de Ciencia de Datos y Machine Learning</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --indigo:#4338CA; --indigo-dark:#332C99; --indigo-pale:#EBEAFB; --line:#DCDCF0;
+    --lime:#84A83A;
+    --ink:#1D2129; --muted:#5C6470; --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    min-height:627px; display:flex; align-items:center; justify-content:center;
+    padding:32px 16px; background:#EAEAF6;
+    font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
+  .canvas{
+    position:relative; width:1200px; height:627px; margin:0 auto;
+    background:var(--white);
+    border-radius:16px; box-shadow:0 20px 50px rgba(51,44,153,0.16); overflow:hidden;
+    padding:20px 34px 14px; color:var(--ink);
+    display:flex; flex-direction:column;
+  }
+
+  .header{ text-align:center; margin-bottom:8px; }
+  .header h1{ font-size:19px; margin:0 0 3px; font-weight:800; letter-spacing:-0.2px; }
+  .header p{ margin:0 auto; font-size:10.5px; color:var(--muted); max-width:720px; }
+
+  .grid{ flex:1; display:grid; grid-template-columns: repeat(5, 1fr); grid-template-rows: repeat(2, 1fr); gap:9px; }
+  .card{ background:var(--indigo-pale); border:1px solid var(--line); border-radius:9px; padding:10px 11px; display:flex; flex-direction:column; }
+  .card .icon{ width:26px; height:26px; border-radius:7px; background:var(--indigo); color:#fff; display:flex; align-items:center; justify-content:center; margin-bottom:7px; }
+  .card .icon svg{ width:14px; height:14px; }
+  .card b{ display:block; font-size:10px; font-weight:800; margin-bottom:4px; line-height:1.2; }
+  .card p{ margin:0; font-size:8px; color:var(--muted); line-height:1.32; }
+
+  .ribbon{
+    margin-top:8px; display:flex; align-items:center; gap:10px;
+    background:var(--indigo-dark); color:#EAEAF6; border-radius:9px; padding:8px 18px; font-size:9.8px;
+  }
+  .ribbon b{ color:#fff; }
+  .ribbon span{ color:#C2BEE8; }
+
+  .footer{ position:absolute; bottom:10px; right:20px; display:flex; align-items:center; gap:6px; }
+  .li-badge{ width:16px; height:16px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:800; font-family: Arial, sans-serif; }
+  .footer span{ font-size:10px; font-weight:600; color:var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="canvas-wrap">
+  <div class="canvas">
+
+    <div class="header">
+      <h1>10 Términos Esenciales de Ciencia de Datos y Machine Learning</h1>
+      <p>Un glosario de referencia rápida — el vocabulario mínimo para entender cualquier conversación técnica sobre modelos.</p>
+    </div>
+
+    <div class="grid">
+
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg></div>
+        <b>Dataset</b>
+        <p>Instancia particular de datos usada para análisis o modelado en un momento dado.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16l-6 8v6l-4 2v-8L4 4Z"/></svg></div>
+        <b>Data Wrangling</b>
+        <p>Convertir datos crudos en una forma ordenada, lista para el análisis.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="6" cy="18" r="2"/><circle cx="10" cy="15" r="2"/><circle cx="14" cy="17" r="2"/><circle cx="19" cy="7" r="3"/></svg></div>
+        <b>Outliers</b>
+        <p>Puntos muy distintos al resto del dataset; se detectan con boxplots.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="7" height="7" rx="1"/><path d="M14 7h7M14 17h7"/><circle cx="17.5" cy="7" r="0" /><path d="M10 7h1M6 14v3a2 2 0 0 0 2 2h9"/></svg></div>
+        <b>Supervised Learning</b>
+        <p>Aprende la relación entre variables y un target ya conocido.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="7" cy="8" r="2.4"/><circle cx="17" cy="8" r="2.4"/><circle cx="12" cy="16" r="2.4"/><path d="M9 9.5 11 14M15 9.5 13 14"/></svg></div>
+        <b>Unsupervised Learning</b>
+        <p>Explora la estructura de datos no etiquetados, sin variable objetivo.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v6M12 9 6 15M12 9l6 6M6 15v6M18 15v6"/></svg></div>
+        <b>Reinforcement Learning</b>
+        <p>Un agente aprende por prueba y error, usando recompensas y castigos.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="4" height="14" rx="1"/><rect x="10" y="5" width="4" height="14" rx="1"/><rect x="17" y="5" width="4" height="14" rx="1"/></svg></div>
+        <b>Cross-validation</b>
+        <p>Evalúa el modelo repitiendo el entrenamiento en k particiones distintas.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20q8-18 16 0" fill="none"/><path d="M4 4q8 18 16 0" stroke-dasharray="1 2.5"/></svg></div>
+        <b>Bias-Variance Tradeoff</b>
+        <p>El equilibrio entre subajuste (alto sesgo) y sobreajuste (alta varianza).</p>
+      </div>
+
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20V4M4 20h16"/><path d="M8 16 12 8l4 6 4-10" stroke-dasharray="1 2.5"/></svg></div>
+        <b>PCA</b>
+        <p>Reduce la dimensionalidad conservando la mayor varianza posible.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v18M4 12h16"/><circle cx="12" cy="12" r="9"/></svg></div>
+        <b>Regularización (L1/L2)</b>
+        <p>Penaliza coeficientes grandes para reducir el sobreajuste del modelo.</p>
+      </div>
+
+    </div>
+
+    <div class="ribbon"><b>Por qué importa</b>&nbsp;<span>— este vocabulario aparece en casi cualquier discusión técnica de un proyecto de machine learning; no dominarlo dificulta evaluar si un modelo está bien construido.</span></div>
+
+    <div class="footer">
+      <div class="li-badge">in</div>
+      <span>cacm523</span>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

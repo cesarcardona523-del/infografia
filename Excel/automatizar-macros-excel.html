@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Automatiza tus Excel con Macros VBA</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --vba:#1F4FD8; --vba-dark:#173CA8; --vba-pale:#EAEFFC; --line:#DCE3F5;
+    --excel:#217346; --excel-pale:#E8F3EC;
+    --ink:#1D2129; --muted:#5C6470; --white:#FFFFFF; --paper:#F7F8FA;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    min-height:627px; display:flex; align-items:center; justify-content:center;
+    padding:32px 16px; background:#EBEFF8;
+    font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
+  .canvas{
+    position:relative; width:1200px; height:627px; margin:0 auto;
+    background:var(--white);
+    border-radius:16px; box-shadow:0 20px 50px rgba(31,79,216,0.15); overflow:hidden;
+    padding:16px 32px 12px; color:var(--ink);
+    display:flex; flex-direction:column; min-height:0;
+  }
+
+  .header{ text-align:center; margin-bottom:7px; }
+  .header .eyebrow{ font-size:10.5px; font-weight:700; letter-spacing:1.8px; color:var(--vba); text-transform:uppercase; margin-bottom:3px; }
+  .header h1{ font-size:20px; margin:0 0 4px; font-weight:800; letter-spacing:-0.2px; }
+  .header p{ margin:0 auto; font-size:10.6px; color:var(--muted); max-width:800px; line-height:1.4; }
+
+  .adv{ display:grid; grid-template-columns: repeat(3,1fr); gap:10px; margin-bottom:8px; }
+  .a-card{ background:var(--vba-pale); border:1px solid var(--line); border-radius:10px; padding:8px 12px; display:flex; align-items:center; gap:9px; }
+  .a-card .icon{ width:26px; height:26px; border-radius:7px; background:var(--vba); color:#fff; display:flex; align-items:center; justify-content:center; flex:none; }
+  .a-card .icon svg{ width:14px; height:14px; }
+  .a-card b{ display:block; font-size:9.8px; font-weight:800; }
+  .a-card span{ display:block; font-size:8px; color:var(--muted); line-height:1.25; }
+
+  .section-title{ display:flex; align-items:center; gap:10px; margin:2px 0 6px; }
+  .section-title::before, .section-title::after{ content:""; flex:1; height:1px; background:var(--line); }
+  .section-title b{ font-size:11.5px; font-weight:800; white-space:nowrap; }
+
+  .flow{ display:flex; align-items:stretch; gap:6px; margin-bottom:9px; height:80px; }
+  .fbox{ flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; border-radius:10px; border:1px solid var(--line); background:var(--paper); padding:6px; text-align:center; }
+  .fbox .n{ width:17px; height:17px; border-radius:50%; background:var(--vba); color:#fff; font-size:9px; font-weight:800; display:flex; align-items:center; justify-content:center; }
+  .fbox span{ font-size:8.4px; font-weight:700; line-height:1.25; }
+  .arrow{ flex:none; color:var(--muted); align-self:center; }
+
+  .uses{ flex:1; min-height:0; display:grid; grid-template-columns: repeat(7,1fr); gap:8px; }
+  .use{ background:var(--excel-pale); border:1px solid #CFE6D8; border-radius:9px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:7px; padding:12px 10px; text-align:center; }
+  .use .icon{ width:38px; height:38px; border-radius:10px; background:var(--excel); color:#fff; display:flex; align-items:center; justify-content:center; }
+  .use .icon svg{ width:20px; height:20px; }
+  .use b{ font-size:10.8px; font-weight:800; line-height:1.28; }
+  .use span{ font-size:8.8px; font-weight:500; color:var(--muted); line-height:1.35; }
+
+  .ribbon{
+    margin-top:9px; display:flex; align-items:center; gap:10px;
+    background:var(--ink); color:#EAEFFA; border-radius:10px; padding:8px 18px; font-size:10.2px;
+  }
+  .ribbon .icon{ width:20px; height:20px; flex:none; border-radius:6px; background:rgba(255,255,255,0.14); display:flex; align-items:center; justify-content:center; }
+  .ribbon .icon svg{ width:11px; height:11px; color:#7FA0FF; }
+  .ribbon b{ color:#fff; }
+  .ribbon span{ color:#C2C8D6; }
+
+  .footer{ position:absolute; bottom:9px; right:20px; display:flex; align-items:center; gap:6px; }
+  .li-badge{ width:15px; height:15px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:9.5px; font-weight:800; font-family: Arial, sans-serif; }
+  .footer span{ font-size:9.5px; font-weight:600; color:var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="canvas-wrap">
+  <div class="canvas">
+
+    <div class="header">
+      <div class="eyebrow">Excel para Analistas</div>
+      <h1>Automatiza tus Excel con Macros VBA</h1>
+      <p>Las macros son secuencias de comandos que automatizan tareas en Excel. VBA (Visual Basic for Applications) te permite escribir tus propias instrucciones para ahorrar tiempo y minimizar errores.</p>
+    </div>
+
+    <div class="adv">
+      <div class="a-card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div><div><b>Ahorro de Tiempo</b><span>Tareas de horas, en segundos</span></div></div>
+      <div class="a-card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.6" fill="currentColor"/></svg></div><div><b>Precisión</b><span>Sin errores humanos</span></div></div>
+      <div class="a-card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18a4.5 4.5 0 0 1-3.3-7.6A4 4 0 0 1 9 4"/><path d="M15 18a4.5 4.5 0 0 0 3.3-7.6A4 4 0 0 0 15 4"/><path d="M9 4v14M15 4v14"/></svg></div><div><b>Automatización</b><span>Informes y gráficos completos</span></div></div>
+    </div>
+
+    <div class="section-title"><b>Cómo Empezar con Macros VBA</b></div>
+    <div class="flow">
+      <div class="fbox"><div class="n">1</div><span>Habilita la ficha "Programador"</span></div>
+      <svg class="arrow" width="16" height="12" viewBox="0 0 24 16"><path d="M2 8h18M14 2l8 6-8 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div class="fbox"><div class="n">2</div><span>Graba una Macro</span></div>
+      <svg class="arrow" width="16" height="12" viewBox="0 0 24 16"><path d="M2 8h18M14 2l8 6-8 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div class="fbox"><div class="n">3</div><span>Edita la Macro</span></div>
+      <svg class="arrow" width="16" height="12" viewBox="0 0 24 16"><path d="M2 8h18M14 2l8 6-8 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div class="fbox"><div class="n">4</div><span>Ejecuta la Macro</span></div>
+    </div>
+
+    <div class="section-title"><b>¿Cuándo Utilizar Macros?</b></div>
+    <div class="uses">
+      <div class="use"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17.6 6.4A8 8 0 1 1 6 6.3M17.6 6.4V3M17.6 6.4H14"/></svg></div><b>Tareas Repetitivas</b><span>Formatear, copiar o filtrar de forma regular</span></div>
+      <div class="use"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 3h9l5 5v13H6Z"/><path d="M15 3v5h5M9 13h6M9 17h6"/></svg></div><b>Generación de Informes</b><span>Extracción, formateo y gráficos automáticos</span></div>
+      <div class="use"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 21 15 11M8 6l10 10M3 3l7 1 1 7"/></svg></div><b>Limpieza de Datos</b><span>Duplicados, fechas y caracteres no deseados</span></div>
+      <div class="use"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 12.5l2 2 4-4.5"/><circle cx="12" cy="12" r="9"/></svg></div><b>Validación de Datos</b><span>Reglas y auditoría en hojas de cálculo</span></div>
+      <div class="use"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="6" width="8" height="12" rx="1.5"/><rect x="13" y="6" width="8" height="12" rx="1.5"/><path d="M11 12h2"/></svg></div><b>Interacción con Otras Apps</b><span>Transferencia automática entre sistemas</span></div>
+      <div class="use"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 17V7a2 2 0 0 1 2-2h5l2 2h7v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/><path d="M9 12h6"/></svg></div><b>Funciones Personalizadas</b><span>Funciones propias no disponibles por defecto</span></div>
+      <div class="use"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 9h16M9 9v11"/></svg></div><b>Apps Personalizadas</b><span>Herramientas a la medida dentro de Excel</span></div>
+    </div>
+
+    <div class="ribbon">
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z"/></svg></div>
+      <div><b>El resultado</b> <span>— automatizar tareas repetitivas aumenta tu productividad, reduce errores y libera tiempo para análisis más complejos.</span></div>
+    </div>
+
+    <div class="footer">
+      <div class="li-badge">in</div>
+      <span>cacm523</span>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

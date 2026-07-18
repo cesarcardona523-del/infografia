@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>4 Gráficos de Excel que Todo Analista de Costos Debería Usar</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --excel:#217346; --excel-dark:#185434; --excel-pale:#E8F3EC; --line:#DCEAE1;
+    --navy:#1B3A5C; --gold:#C9971E;
+    --ink:#1D2129; --muted:#5C6470; --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    min-height:627px; display:flex; align-items:center; justify-content:center;
+    padding:32px 16px; background:#E9F1EC;
+    font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
+  .canvas{
+    position:relative; width:1200px; height:627px; margin:0 auto;
+    background:var(--white);
+    border-radius:16px; box-shadow:0 20px 50px rgba(24,84,52,0.16); overflow:hidden;
+    padding:18px 32px 14px; color:var(--ink);
+    display:flex; flex-direction:column;
+  }
+
+  .header{ text-align:center; margin-bottom:9px; }
+  .header .eyebrow{ font-size:11px; font-weight:700; letter-spacing:1.8px; color:var(--excel); text-transform:uppercase; margin-bottom:4px; }
+  .header h1{ font-size:21px; margin:0 0 3px; font-weight:800; letter-spacing:-0.2px; }
+  .header p{ margin:0 auto; font-size:11.5px; color:var(--muted); max-width:700px; }
+
+  .grid{ flex:1; min-height:0; display:grid; grid-template-columns: 1fr 1fr; grid-template-rows: minmax(0,1fr) minmax(0,1fr); gap:12px; }
+  .card{ background:var(--excel-pale); border:1px solid var(--line); border-radius:11px; padding:11px 16px; display:flex; flex-direction:column; min-height:0; }
+  .card .top{ display:flex; align-items:baseline; justify-content:space-between; margin-bottom:2px; }
+  .card b{ font-size:12.5px; font-weight:800; }
+  .card .use{ font-size:8.6px; color:var(--muted); font-weight:600; }
+  .card .viz{ flex:1; min-height:0; display:flex; align-items:center; }
+  .card .viz svg{ width:100%; height:100%; }
+
+  .footer{ position:absolute; bottom:10px; right:20px; display:flex; align-items:center; gap:6px; }
+  .li-badge{ width:16px; height:16px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:800; font-family: Arial, sans-serif; }
+  .footer span{ font-size:10px; font-weight:600; color:var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="canvas-wrap">
+  <div class="canvas">
+
+    <div class="header">
+      <div class="eyebrow">Excel para Análisis de Costos</div>
+      <h1>4 Gráficos de Excel que Todo Analista de Costos Debería Usar</h1>
+      <p>Elegir el tipo de gráfico correcto según lo que se quiere comunicar — no solo lo que Excel sugiere por defecto.</p>
+    </div>
+
+    <div class="grid">
+
+      <div class="card">
+        <div class="top"><b>Columnas Apiladas</b><span class="use">Costos fijos vs. variables por producto</span></div>
+        <div class="viz"><svg viewBox="0 0 260 120">
+          <line x1="18" y1="100" x2="252" y2="100" stroke="#C7DACE" stroke-width="1"/>
+          <g font-size="7.5" fill="var(--ink)" font-weight="700" text-anchor="middle">
+            <rect x="30" y="82.7" width="34" height="17.3" fill="var(--navy)"/><rect x="30" y="39.5" width="34" height="43.2" fill="var(--excel)"/>
+            <text x="47" y="94">1000</text><text x="47" y="62">2500</text>
+            <rect x="82" y="86.2" width="34" height="13.8" fill="var(--navy)"/><rect x="82" y="37.8" width="34" height="48.4" fill="var(--excel)"/>
+            <text x="99" y="95">800</text><text x="99" y="63">2800</text>
+            <rect x="134" y="79.3" width="34" height="20.7" fill="var(--navy)"/><rect x="134" y="48.2" width="34" height="31.1" fill="var(--excel)"/>
+            <text x="151" y="92">1200</text><text x="151" y="66">1800</text>
+            <rect x="186" y="83.6" width="34" height="16.4" fill="var(--navy)"/><rect x="186" y="30" width="34" height="53.6" fill="var(--gold)"/>
+            <text x="203" y="94">950</text><text x="203" y="59">3100</text>
+          </g>
+          <g font-size="8" fill="var(--muted)" text-anchor="middle">
+            <text x="47" y="112">Prod. A</text><text x="99" y="112">Prod. B</text><text x="151" y="112">Prod. C</text><text x="203" y="112">Prod. D</text>
+          </g>
+        </svg></div>
+      </div>
+
+      <div class="card">
+        <div class="top"><b>Líneas</b><span class="use">Evolución de costos unitarios por mes</span></div>
+        <div class="viz"><svg viewBox="0 0 260 120">
+          <line x1="18" y1="100" x2="252" y2="100" stroke="#C7DACE" stroke-width="1"/>
+          <polyline points="35,64 90,44 145,52 200,20 245,40" fill="none" stroke="var(--excel)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="35" cy="64" r="3" fill="var(--excel)"/><circle cx="90" cy="44" r="3" fill="var(--excel)"/><circle cx="145" cy="52" r="3" fill="var(--excel)"/>
+          <circle cx="200" cy="20" r="3.4" fill="var(--gold)"/><circle cx="245" cy="40" r="3" fill="var(--excel)"/>
+          <g font-size="7.5" fill="var(--ink)" font-weight="700" text-anchor="middle">
+            <text x="35" y="56">4.80</text><text x="90" y="36">5.10</text><text x="145" y="66">4.95</text><text x="200" y="12">5.30</text><text x="245" y="32">5.00</text>
+          </g>
+          <g font-size="8" fill="var(--muted)" text-anchor="middle">
+            <text x="35" y="112">Ene</text><text x="90" y="112">Feb</text><text x="145" y="112">Mar</text><text x="200" y="112">Abr</text><text x="245" y="112">May</text>
+          </g>
+        </svg></div>
+      </div>
+
+      <div class="card">
+        <div class="top"><b>Áreas</b><span class="use">Costos acumulados por tipo</span></div>
+        <div class="viz"><svg viewBox="0 0 260 120">
+          <line x1="18" y1="100" x2="252" y2="100" stroke="#C7DACE" stroke-width="1"/>
+          <polygon points="40,100 140,100 240,100 240,88 140,84 40,88" fill="var(--navy)" opacity="0.85"/>
+          <polygon points="40,88 140,84 240,88 240,42 140,38 40,44" fill="var(--excel)" opacity="0.85"/>
+          <polygon points="40,44 140,38 240,42 240,32 140,26 40,30" fill="var(--gold)" opacity="0.9"/>
+          <g font-size="7.2" fill="#fff" font-weight="700" text-anchor="middle">
+            <text x="40" y="96">3000</text><text x="140" y="94">3200</text><text x="240" y="96">3100</text>
+            <text x="40" y="68">4000</text><text x="140" y="64">3900</text><text x="240" y="67">4200</text>
+            <text x="40" y="38">1000</text><text x="140" y="34">1100</text><text x="240" y="38">1050</text>
+          </g>
+          <g font-size="8" fill="var(--muted)" text-anchor="middle">
+            <text x="40" y="112">Ene</text><text x="140" y="112">Feb</text><text x="240" y="112">Mar</text>
+          </g>
+        </svg></div>
+      </div>
+
+      <div class="card">
+        <div class="top"><b>Barras Horizontales</b><span class="use">Costos por planta</span></div>
+        <div class="viz"><svg viewBox="0 0 260 120">
+          <line x1="70" y1="10" x2="70" y2="112" stroke="#C7DACE" stroke-width="1"/>
+          <g font-size="8" fill="var(--muted)" text-anchor="end">
+            <text x="64" y="24">Planta D</text><text x="64" y="50">Planta C</text><text x="64" y="76">Planta B</text><text x="64" y="102">Planta A</text>
+          </g>
+          <rect x="72" y="15" width="156" height="14" rx="2" fill="var(--gold)"/><text x="234" y="26" font-size="7.5" font-weight="700" fill="var(--ink)">30,000</text>
+          <rect x="72" y="41" width="93.6" height="14" rx="2" fill="var(--navy)" opacity="0.55"/><text x="171" y="52" font-size="7.5" font-weight="700" fill="var(--ink)">18,000</text>
+          <rect x="72" y="67" width="109.2" height="14" rx="2" fill="var(--navy)" opacity="0.75"/><text x="187" y="78" font-size="7.5" font-weight="700" fill="var(--ink)">21,000</text>
+          <rect x="72" y="93" width="130" height="14" rx="2" fill="var(--excel)"/><text x="208" y="104" font-size="7.5" font-weight="700" fill="var(--ink)">25,000</text>
+        </svg></div>
+      </div>
+
+    </div>
+
+    <div class="footer">
+      <div class="li-badge">in</div>
+      <span>cacm523</span>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

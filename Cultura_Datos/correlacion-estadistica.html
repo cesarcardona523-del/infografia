@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>¿Para Qué Sirve la Correlación?</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --pos:#2F7A4F; --pos-dark:#205A38; --pos-pale:#E6F1E9;
+    --neg:#B65C3B; --neg-dark:#8C4229; --neg-pale:#F7EAE4;
+    --neu:#6B7280; --neu-pale:#EEEFF1;
+    --ink:#1E2422; --muted:#5F6A66; --line:#E6E9E7; --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    min-height:627px; display:flex; align-items:center; justify-content:center;
+    padding:32px 16px; background:#EDF1EE;
+    font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
+  .canvas{
+    position:relative; width:1200px; height:627px; margin:0 auto;
+    background:var(--white);
+    border-radius:16px; box-shadow:0 20px 50px rgba(32,90,56,0.16); overflow:hidden;
+    padding:18px 32px 30px; color:var(--ink);
+    display:flex; flex-direction:column;
+  }
+
+  .header{ text-align:center; margin-bottom:8px; }
+  .header .eyebrow{ font-size:11px; font-weight:700; letter-spacing:1.8px; color:var(--pos); text-transform:uppercase; margin-bottom:4px; }
+  .header h1{ font-size:22px; margin:0 0 4px; font-weight:800; letter-spacing:-0.2px; }
+  .header p{ margin:0 auto; font-size:11.5px; color:var(--muted); max-width:700px; }
+
+  .scale{ display:flex; align-items:center; gap:12px; margin-bottom:10px; padding:8px 16px; background:var(--neu-pale); border-radius:10px; }
+  .scale .lbl{ font-size:10px; font-weight:800; width:112px; flex:none; }
+  .scale .lbl.l{ color:var(--neg-dark); text-align:left; }
+  .scale .lbl.r{ color:var(--pos-dark); text-align:right; }
+  .scale .bar{ flex:1; height:10px; border-radius:6px; background:linear-gradient(90deg, var(--neg) 0%, var(--neu-pale) 50%, var(--pos) 100%); position:relative; }
+  .scale .bar .mark{ position:absolute; top:-5px; width:2px; height:20px; background:var(--ink); opacity:0.5; }
+  .scale .tag{ position:absolute; top:14px; font-size:8.6px; font-weight:800; color:var(--muted); transform:translateX(-50%); }
+
+  .grid{ flex:1.3; display:grid; grid-template-columns: repeat(5,1fr); gap:10px; }
+  .card{ border:1px solid var(--line); border-radius:10px; padding:9px 10px; display:flex; flex-direction:column; }
+  .card.c1{ background:var(--pos-pale); }
+  .card.c2{ background:var(--pos-pale); opacity:0.72; }
+  .card.c3{ background:var(--neu-pale); }
+  .card.c4{ background:var(--neg-pale); opacity:0.72; }
+  .card.c5{ background:var(--neg-pale); }
+  .card b{ display:block; font-size:9.6px; font-weight:800; line-height:1.2; margin-bottom:2px; }
+  .card .r{ font-size:8.3px; font-weight:700; color:var(--muted); margin-bottom:5px; }
+  .card .viz{ flex:1; display:flex; align-items:center; }
+  .card .viz svg{ width:100%; height:100%; }
+  .card p{ margin:5px 0 0; font-size:7.8px; color:var(--muted); line-height:1.3; }
+
+  .uses{ display:grid; grid-template-columns: repeat(5,1fr); gap:9px; margin-top:9px; }
+  .use{ display:flex; align-items:center; gap:8px; background:var(--white); border:1px solid var(--line); border-radius:9px; padding:7px 9px; }
+  .use .icon{ width:24px; height:24px; border-radius:7px; background:var(--pos); color:#fff; display:flex; align-items:center; justify-content:center; flex:none; }
+  .use .icon svg{ width:13px; height:13px; }
+  .use span{ font-size:8.4px; font-weight:700; line-height:1.22; }
+
+  .ribbon{
+    margin-top:9px; display:flex; align-items:center; gap:10px;
+    background:var(--ink); color:#EAF1EC; border-radius:10px; padding:8px 18px; font-size:10px;
+  }
+  .ribbon .icon{ width:20px; height:20px; flex:none; border-radius:6px; background:rgba(255,255,255,0.14); display:flex; align-items:center; justify-content:center; }
+  .ribbon .icon svg{ width:11px; height:11px; color:var(--pos); }
+  .ribbon b{ color:#fff; }
+  .ribbon span{ color:#C3CBC6; }
+
+  .footer{ position:absolute; bottom:9px; right:20px; display:flex; align-items:center; gap:6px; }
+  .li-badge{ width:15px; height:15px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:9.5px; font-weight:800; font-family: Arial, sans-serif; }
+  .footer span{ font-size:9.5px; font-weight:600; color:var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="canvas-wrap">
+  <div class="canvas">
+
+    <div class="header">
+      <div class="eyebrow">Estadística Aplicada</div>
+      <h1>¿Para Qué Sirve la Correlación?</h1>
+      <p>Descubre relaciones, genera insights y toma mejores decisiones basadas en datos — sin confundir correlación con causalidad.</p>
+    </div>
+
+    <div class="scale">
+      <div class="lbl l">Relación negativa</div>
+      <div class="bar">
+        <div class="tag" style="left:0%;">−1</div>
+        <div class="tag" style="left:50%;">0</div>
+        <div class="tag" style="left:100%;">+1</div>
+      </div>
+      <div class="lbl r">Relación positiva</div>
+    </div>
+
+    <div class="grid">
+
+      <div class="card c1">
+        <b>Correlación Positiva Fuerte</b>
+        <div class="r">r cercano a +1</div>
+        <div class="viz"><svg viewBox="0 0 120 80">
+          <circle cx="14" cy="66" r="2.6" fill="var(--pos)"/><circle cx="24" cy="58" r="2.6" fill="var(--pos)"/><circle cx="30" cy="52" r="2.6" fill="var(--pos)"/>
+          <circle cx="42" cy="46" r="2.6" fill="var(--pos)"/><circle cx="50" cy="40" r="2.6" fill="var(--pos)"/><circle cx="60" cy="34" r="2.6" fill="var(--pos)"/>
+          <circle cx="70" cy="28" r="2.6" fill="var(--pos)"/><circle cx="80" cy="22" r="2.6" fill="var(--pos)"/><circle cx="92" cy="16" r="2.6" fill="var(--pos)"/>
+          <circle cx="104" cy="10" r="2.6" fill="var(--pos)"/>
+          <line x1="10" y1="70" x2="108" y2="8" stroke="var(--pos-dark)" stroke-width="1.6"/>
+        </svg></div>
+        <p>A mayor X, mayor Y.</p>
+      </div>
+
+      <div class="card c2">
+        <b>Correlación Positiva Débil</b>
+        <div class="r">r cercano a 0 (+)</div>
+        <div class="viz"><svg viewBox="0 0 120 80">
+          <circle cx="12" cy="50" r="2.6" fill="var(--pos)"/><circle cx="22" cy="66" r="2.6" fill="var(--pos)"/><circle cx="30" cy="34" r="2.6" fill="var(--pos)"/>
+          <circle cx="40" cy="56" r="2.6" fill="var(--pos)"/><circle cx="50" cy="30" r="2.6" fill="var(--pos)"/><circle cx="58" cy="48" r="2.6" fill="var(--pos)"/>
+          <circle cx="68" cy="20" r="2.6" fill="var(--pos)"/><circle cx="78" cy="42" r="2.6" fill="var(--pos)"/><circle cx="90" cy="16" r="2.6" fill="var(--pos)"/>
+          <circle cx="102" cy="32" r="2.6" fill="var(--pos)"/>
+          <line x1="10" y1="58" x2="108" y2="18" stroke="var(--pos-dark)" stroke-width="1.6" stroke-dasharray="3 2"/>
+        </svg></div>
+        <p>Tiende a subir, pero con ruido.</p>
+      </div>
+
+      <div class="card c3">
+        <b>Sin Correlación</b>
+        <div class="r">r cercano a 0</div>
+        <div class="viz"><svg viewBox="0 0 120 80">
+          <circle cx="14" cy="20" r="2.6" fill="var(--neu)"/><circle cx="28" cy="58" r="2.6" fill="var(--neu)"/><circle cx="36" cy="14" r="2.6" fill="var(--neu)"/>
+          <circle cx="46" cy="42" r="2.6" fill="var(--neu)"/><circle cx="56" cy="66" r="2.6" fill="var(--neu)"/><circle cx="64" cy="26" r="2.6" fill="var(--neu)"/>
+          <circle cx="74" cy="52" r="2.6" fill="var(--neu)"/><circle cx="84" cy="16" r="2.6" fill="var(--neu)"/><circle cx="96" cy="60" r="2.6" fill="var(--neu)"/>
+          <circle cx="106" cy="34" r="2.6" fill="var(--neu)"/>
+        </svg></div>
+        <p>No hay un patrón claro.</p>
+      </div>
+
+      <div class="card c4">
+        <b>Correlación Negativa Débil</b>
+        <div class="r">r cercano a 0 (−)</div>
+        <div class="viz"><svg viewBox="0 0 120 80">
+          <circle cx="12" cy="28" r="2.6" fill="var(--neg)"/><circle cx="22" cy="14" r="2.6" fill="var(--neg)"/><circle cx="30" cy="48" r="2.6" fill="var(--neg)"/>
+          <circle cx="40" cy="24" r="2.6" fill="var(--neg)"/><circle cx="50" cy="52" r="2.6" fill="var(--neg)"/><circle cx="58" cy="34" r="2.6" fill="var(--neg)"/>
+          <circle cx="68" cy="58" r="2.6" fill="var(--neg)"/><circle cx="78" cy="40" r="2.6" fill="var(--neg)"/><circle cx="90" cy="64" r="2.6" fill="var(--neg)"/>
+          <circle cx="102" cy="50" r="2.6" fill="var(--neg)"/>
+          <line x1="10" y1="20" x2="108" y2="60" stroke="var(--neg-dark)" stroke-width="1.6" stroke-dasharray="3 2"/>
+        </svg></div>
+        <p>Tiende a bajar, pero con ruido.</p>
+      </div>
+
+      <div class="card c5">
+        <b>Correlación Negativa Fuerte</b>
+        <div class="r">r cercano a −1</div>
+        <div class="viz"><svg viewBox="0 0 120 80">
+          <circle cx="14" cy="10" r="2.6" fill="var(--neg)"/><circle cx="24" cy="16" r="2.6" fill="var(--neg)"/><circle cx="30" cy="22" r="2.6" fill="var(--neg)"/>
+          <circle cx="42" cy="28" r="2.6" fill="var(--neg)"/><circle cx="50" cy="34" r="2.6" fill="var(--neg)"/><circle cx="60" cy="40" r="2.6" fill="var(--neg)"/>
+          <circle cx="70" cy="46" r="2.6" fill="var(--neg)"/><circle cx="80" cy="52" r="2.6" fill="var(--neg)"/><circle cx="92" cy="58" r="2.6" fill="var(--neg)"/>
+          <circle cx="104" cy="66" r="2.6" fill="var(--neg)"/>
+          <line x1="10" y1="8" x2="108" y2="70" stroke="var(--neg-dark)" stroke-width="1.6"/>
+        </svg></div>
+        <p>A mayor X, menor Y.</p>
+      </div>
+
+    </div>
+
+    <div class="uses">
+      <div class="use"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="6"/><path d="M15 15 20 20"/></svg></div><span>Explorar y descubrir relaciones</span></div>
+      <div class="use"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/></svg></div><span>Priorizar lo que importa</span></div>
+      <div class="use"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="7" cy="17" r="2"/><circle cx="12" cy="10" r="2"/><circle cx="17" cy="14" r="2"/><path d="M8.5 15.5 10.5 11.5M13.5 11 15.5 13"/></svg></div><span>Generar hipótesis</span></div>
+      <div class="use"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20V4M4 20h16"/><rect x="7" y="13" width="3" height="7"/><rect x="12" y="9" width="3" height="11"/><rect x="17" y="5" width="3" height="15"/></svg></div><span>Apoyar decisiones</span></div>
+      <div class="use"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3 3 20h18Z"/><path d="M12 9v5"/><circle cx="12" cy="17" r="0.6" fill="currentColor"/></svg></div><span>Detectar riesgos y anomalías</span></div>
+    </div>
+
+    <div class="ribbon">
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z"/></svg></div>
+      <div><b>Idea clave</b> <span>— la correlación no prueba causa y efecto, pero muestra qué variables se mueven juntas. Recuerda siempre: correlación ≠ causalidad.</span></div>
+    </div>
+
+    <div class="footer">
+      <div class="li-badge">in</div>
+      <span>cacm523</span>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

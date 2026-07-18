@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Modernizando la Integración de Datos</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --graphite-0:#1B1D21; --graphite-1:#24272C; --panel:#2A2E34; --panel-line:#3A3F46;
+    --orange:#E8611C; --orange-pale:#3A2A1E;
+    --ink:#EDEFF3; --muted:#9BA1AB; --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    min-height:627px; display:flex; align-items:center; justify-content:center;
+    padding:32px 16px; background:#141518;
+    font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
+  .canvas{
+    position:relative; width:1200px; height:627px; margin:0 auto;
+    background:radial-gradient(circle at 90% 0%, var(--graphite-1) 0%, var(--graphite-0) 60%);
+    border-radius:16px; box-shadow:0 24px 60px rgba(0,0,0,0.5); overflow:hidden;
+    padding:22px 36px 14px; color:var(--ink);
+    display:flex; flex-direction:column;
+  }
+
+  .header{ text-align:center; margin-bottom:8px; }
+  .header .eyebrow{ font-size:10px; font-weight:700; letter-spacing:1.6px; color:var(--orange); text-transform:uppercase; margin-bottom:5px; }
+  .header h1{ font-size:20px; margin:0 0 4px; font-weight:800; letter-spacing:-0.2px; }
+  .header p{ margin:0 auto; font-size:11px; color:var(--muted); max-width:700px; }
+
+  .checklist{ flex:1; display:grid; grid-template-columns: 1fr 1fr; grid-template-rows: repeat(4,1fr); gap:8px; margin-top:8px; }
+  .item{ background:var(--panel); border:1px solid var(--panel-line); border-radius:9px; padding:9px 13px; display:flex; gap:10px; align-items:center; }
+  .item .n{ width:24px; height:24px; border-radius:6px; background:var(--orange); color:#fff; font-weight:800; font-size:11px; display:flex; align-items:center; justify-content:center; flex:none; }
+  .item b{ display:block; font-size:10.3px; font-weight:700; margin-bottom:1px; }
+  .item span{ display:block; font-size:8.6px; color:var(--muted); line-height:1.3; }
+  .item.wide{ grid-column: span 2; }
+
+  .ribbon{
+    margin-top:8px; display:flex; align-items:center; gap:10px;
+    background:var(--panel); border:1px solid var(--panel-line); color:#EDEFF3; border-radius:9px; padding:9px 18px; font-size:10px;
+  }
+  .ribbon .icon{ width:20px; height:20px; flex:none; border-radius:6px; background:var(--orange-pale); display:flex; align-items:center; justify-content:center; }
+  .ribbon .icon svg{ width:11px; height:11px; color:var(--orange); }
+  .ribbon b{ color:#fff; }
+  .ribbon span{ color:var(--muted); }
+
+  .footer{ position:absolute; bottom:10px; right:20px; display:flex; align-items:center; gap:6px; }
+  .li-badge{ width:16px; height:16px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:800; font-family: Arial, sans-serif; }
+  .footer span{ font-size:10px; font-weight:600; color:var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="canvas-wrap">
+  <div class="canvas">
+
+    <div class="header">
+      <div class="eyebrow">Checklist de Modernización</div>
+      <h1>Modernizando la Integración de Datos</h1>
+      <p>Siete recomendaciones para dar cabida al Big Data y a los nuevos requerimientos del negocio.</p>
+    </div>
+
+    <div class="checklist">
+      <div class="item"><div class="n">1</div><div><b>Amplía la ingestión de datos</b><span>Complementa el ETL nocturno tradicional con ingestión continua y streaming.</span></div></div>
+      <div class="item"><div class="n">2</div><div><b>Adopta preparación ágil</b><span>Nuevas herramientas de data prep para exploración, sin la rigidez del modelado tradicional.</span></div></div>
+      <div class="item"><div class="n">3</div><div><b>Habilita el autoservicio</b><span>Acceso a datos para una amplia variedad de usuarios técnicos y de negocio.</span></div></div>
+      <div class="item"><div class="n">4</div><div><b>Moderniza la infraestructura</b><span>Aprovecha nuevas plataformas: Hadoop, NoSQL, bases columnares.</span></div></div>
+      <div class="item"><div class="n">5</div><div><b>Suma funciones de tiempo oportuno</b><span>Desde el lote nocturno hasta el streaming en tiempo real.</span></div></div>
+      <div class="item"><div class="n">6</div><div><b>Da valor a datos no tradicionales</b><span>Texto, IoT y redes sociales, no solo datos estructurados.</span></div></div>
+      <div class="item wide"><div class="n">7</div><div><b>Considera una plataforma integrada</b><span>Múltiples herramientas de gestión de datos unificadas, en vez de un portafolio fragmentado que exige integrar cada pieza por separado.</span></div></div>
+    </div>
+
+    <div class="ribbon">
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l2.5 2.5"/></svg></div>
+      <div><b>Por qué importa</b> <span>— sin una integración de datos modernizada, ninguna organización puede satisfacer los requerimientos de Big Data, analítica avanzada y operación en tiempo real que ya se esperan como estándar.</span></div>
+    </div>
+
+    <div class="footer">
+      <div class="li-badge">in</div>
+      <span>cacm523</span>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

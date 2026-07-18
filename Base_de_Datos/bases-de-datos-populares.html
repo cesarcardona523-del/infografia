@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Bases de Datos Populares: un Mapa por Familias</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --bg-0:#12151A;
+    --bg-1:#181D24;
+    --panel:#1E252D;
+    --panel-line:#2C3540;
+    --ink:#E8EDF2;
+    --muted:#8B98A5;
+    --muted-2:#5B6772;
+
+    --rel:#4C8DFF;   --rel-pale:#1B2B4A;
+    --nosql:#22C55E; --nosql-pale:#12301F;
+    --cloud:#F59E0B; --cloud-pale:#3A2A0E;
+    --esp:#A855F7;   --esp-pale:#2E1F42;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    min-height:627px; display:flex; align-items:center; justify-content:center;
+    padding:32px 16px; background:#0A0C0F;
+    font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
+  .canvas{
+    position:relative; width:1200px; height:627px; margin:0 auto;
+    background:radial-gradient(circle at 85% 0%, var(--bg-1) 0%, var(--bg-0) 60%);
+    border-radius:14px; box-shadow:0 24px 60px rgba(0,0,0,0.5); overflow:hidden;
+    padding:26px 38px 16px; color:var(--ink);
+  }
+
+  .header{ margin-bottom:10px; }
+  .header .eyebrow{ font-size:10.5px; font-weight:700; letter-spacing:1.8px; color:var(--muted); text-transform:uppercase; margin-bottom:5px; }
+  .header h1{ font-size:22px; margin:0 0 5px; font-weight:800; letter-spacing:-0.2px; }
+  .header p{ margin:0; font-size:11.8px; color:var(--muted); max-width:760px; }
+
+  .racks{ display:grid; grid-template-columns: repeat(4, 1fr); gap:14px; margin-top:10px; height:392px; }
+
+  .rack{
+    background:var(--panel); border:1px solid var(--panel-line); border-radius:10px;
+    padding:12px 13px; display:flex; flex-direction:column; position:relative;
+    border-top:3px solid var(--accent);
+  }
+  .rack::before, .rack::after{ content:""; position:absolute; top:7px; width:5px; height:5px; border-radius:50%; background:var(--panel-line); }
+  .rack::before{ left:8px; } .rack::after{ right:8px; }
+
+  .rack.rel{ --accent:var(--rel); }
+  .rack.nosql{ --accent:var(--nosql); }
+  .rack.cloud{ --accent:var(--cloud); }
+  .rack.esp{ --accent:var(--esp); }
+
+  .rack-head{ display:flex; align-items:center; gap:7px; margin-bottom:10px; margin-top:4px; }
+  .rack-head .icon{ width:22px; height:22px; border-radius:6px; flex:none; display:flex; align-items:center; justify-content:center; background:var(--accent-pale); color:var(--accent); }
+  .rack-head .icon svg{ width:13px; height:13px; }
+  .rack.rel .icon{ background:var(--rel-pale); }
+  .rack.nosql .icon{ background:var(--nosql-pale); }
+  .rack.cloud .icon{ background:var(--cloud-pale); }
+  .rack.esp .icon{ background:var(--esp-pale); }
+  .rack-head h3{ margin:0; font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:0.4px; color:var(--accent); }
+
+  .db-item{ display:flex; gap:7px; align-items:flex-start; margin-bottom:8px; }
+  .db-item .dot{ width:8px; height:8px; border-radius:50%; margin-top:4px; flex:none; }
+  .db-item b{ display:block; font-size:10.3px; font-weight:700; color:var(--ink); line-height:1.25; }
+  .db-item span{ display:block; font-size:8.5px; color:var(--muted); line-height:1.3; margin-top:1px; }
+
+  .rack-note{ margin-top:auto; padding-top:9px; border-top:1px dashed var(--panel-line); font-size:8.6px; color:var(--muted); line-height:1.35; }
+  .rack-note b{ color:var(--accent); }
+
+  .ribbon{
+    margin-top:11px; display:flex; align-items:center; gap:10px;
+    background:var(--bg-1); border:1px solid var(--panel-line); border-radius:10px; padding:9px 16px; font-size:10.3px;
+  }
+  .ribbon .icon{ width:22px; height:22px; flex:none; border-radius:6px; background:rgba(255,255,255,0.06); display:flex; align-items:center; justify-content:center; }
+  .ribbon .icon svg{ width:12px; height:12px; color:#F5C451; }
+  .ribbon b{ color:#fff; }
+  .ribbon span{ color:var(--muted); }
+
+  .footer{ position:absolute; bottom:12px; right:22px; display:flex; align-items:center; gap:6px; }
+  .li-badge{ width:18px; height:18px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; font-family: Arial, sans-serif; }
+  .footer span{ font-size:11px; font-weight:600; color:var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="canvas-wrap">
+  <div class="canvas">
+
+    <div class="header">
+      <div class="eyebrow">Panorama de Plataformas de Datos</div>
+      <h1>Bases de Datos Populares: un Mapa por Familias</h1>
+      <p>16 plataformas agrupadas por lo que realmente las diferencia — no por marca, sino por el problema que resuelven.</p>
+    </div>
+
+    <div class="racks">
+
+      <div class="rack rel">
+        <div class="rack-head">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 10v10"/></svg></div>
+          <h3>Relacionales (SQL)</h3>
+        </div>
+        <div class="db-item"><span class="dot" style="background:#4479A1"></span><div><b>MySQL</b><span>Código abierto, la más usada en apps web</span></div></div>
+        <div class="db-item"><span class="dot" style="background:#336791"></span><div><b>PostgreSQL</b><span>Extensible, soporte geoespacial y texto completo</span></div></div>
+        <div class="db-item"><span class="dot" style="background:#CC2927"></span><div><b>SQL Server</b><span>Microsoft, integrado al ecosistema Windows</span></div></div>
+        <div class="db-item"><span class="dot" style="background:#F80000"></span><div><b>Oracle Database</b><span>Alto rendimiento, entornos empresariales</span></div></div>
+        <div class="db-item"><span class="dot" style="background:#7DD4FC"></span><div><b>SQLite</b><span>Sin servidor, embebida en apps y navegadores</span></div></div>
+        <div class="db-item"><span class="dot" style="background:#C0765A"></span><div><b>MariaDB</b><span>Fork de MySQL, foco en comunidad y seguridad</span></div></div>
+        <div class="rack-note">Ideal para: <b>transacciones, ERPs, sistemas financieros</b> — donde el esquema fijo y las relaciones entre tablas son la regla, no la excepción.</div>
+      </div>
+
+      <div class="rack nosql">
+        <div class="rack-head">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 4h12l2 16H4L6 4Z"/><path d="M8 10h8M8 14h8"/></svg></div>
+          <h3>NoSQL</h3>
+        </div>
+        <div class="db-item"><span class="dot" style="background:#47A248"></span><div><b>MongoDB</b><span>Documentos, flexible y escalable</span></div></div>
+        <div class="db-item"><span class="dot" style="background:#DC382D"></span><div><b>Redis</b><span>En memoria — caché, colas, tiempo real</span></div></div>
+        <div class="db-item"><span class="dot" style="background:#1287B1"></span><div><b>Cassandra</b><span>Distribuida, escrita para alta disponibilidad</span></div></div>
+        <div class="db-item"><span class="dot" style="background:#EA2328"></span><div><b>Couchbase</b><span>Documentos + memoria en un mismo motor</span></div></div>
+        <div class="rack-note">Ideal para: <b>catálogos de producto, IoT, datos que cambian de forma</b> — volumen y escala horizontal antes que esquema rígido.</div>
+      </div>
+
+      <div class="rack cloud">
+        <div class="rack-head">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 18a4 4 0 0 1-1-7.9A5.5 5.5 0 0 1 15.5 8a4.5 4.5 0 0 1 1.5 8.75"/><path d="M8 18h9"/></svg></div>
+          <h3>Cloud-managed</h3>
+        </div>
+        <div class="db-item"><span class="dot" style="background:#FF9900"></span><div><b>Amazon Aurora</b><span>Compatible MySQL/PostgreSQL, AWS</span></div></div>
+        <div class="db-item"><span class="dot" style="background:#4285F4"></span><div><b>Cloud Spanner</b><span>Relacional distribuida, consistencia global</span></div></div>
+        <div class="db-item"><span class="dot" style="background:#0078D4"></span><div><b>Azure SQL Database</b><span>Relacional administrada, alta disponibilidad</span></div></div>
+        <div class="db-item"><span class="dot" style="background:#FFCA28"></span><div><b>Firebase Realtime DB</b><span>Sincronización en tiempo real, móvil/web</span></div></div>
+        <div class="rack-note">Ideal para: <b>equipos sin DBA dedicado</b> — el proveedor gestiona parcheo, backups y escalado.</div>
+      </div>
+
+      <div class="rack esp">
+        <div class="rack-head">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="6" cy="6" r="2.2"/><circle cx="18" cy="6" r="2.2"/><circle cx="12" cy="18" r="2.2"/><path d="M7.7 7.3 10.6 16M16.3 7.3 13.4 16M8.2 6h7.6"/></svg></div>
+          <h3>Especializadas</h3>
+        </div>
+        <div class="db-item"><span class="dot" style="background:#018BFF"></span><div><b>Neo4j</b><span>Grafos — datos y relaciones complejas</span></div></div>
+        <div class="db-item"><span class="dot" style="background:#FEC514"></span><div><b>Elasticsearch</b><span>Búsqueda y análisis en tiempo real</span></div></div>
+        <div class="db-item"><span class="dot" style="background:#D22128"></span><div><b>Apache HBase</b><span>NoSQL sobre Hadoop, grandes volúmenes</span></div></div>
+        <div class="rack-note">Ideal para: <b>recomendaciones, redes sociales, búsqueda de logs</b> — un caso de uso puntual, no un motor de propósito general.</div>
+      </div>
+
+    </div><!-- /.racks -->
+
+    <div class="ribbon">
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l2.5 2.5"/></svg></div>
+      <div><b>Cómo elegir</b> <span>— relacional cuando la integridad y las relaciones entre tablas importan (ACID, joins); NoSQL cuando el volumen y la escala horizontal pesan más que el esquema fijo; cloud-managed cuando prefieres ceder la operación de infraestructura; especializada cuando el caso de uso es puntual (grafos, búsqueda, big data) y no genérico.</span></div>
+    </div>
+
+    <div class="footer">
+      <div class="li-badge">in</div>
+      <span>cacm523</span>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Tablas Dinámicas en Excel: Qué Son y Cuándo Usarlas</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --teal:#0C7B87; --teal-dark:#095D66; --teal-pale:#E4F2F3; --line:#D3E7E9;
+    --amber:#C9791E; --amber-pale:#FBEBD9;
+    --ink:#1D2129; --muted:#5C6470; --white:#FFFFFF; --paper:#F7F8FA;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    min-height:627px; display:flex; align-items:center; justify-content:center;
+    padding:32px 16px; background:#E7F0F1;
+    font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
+  .canvas{
+    position:relative; width:1200px; height:627px; margin:0 auto;
+    background:var(--white);
+    border-radius:16px; box-shadow:0 20px 50px rgba(9,93,102,0.16); overflow:hidden;
+    padding:18px 32px 12px; color:var(--ink);
+    display:flex; flex-direction:column; min-height:0;
+  }
+
+  .header{ text-align:center; margin-bottom:9px; }
+  .header .eyebrow{ font-size:11px; font-weight:700; letter-spacing:1.8px; color:var(--teal); text-transform:uppercase; margin-bottom:4px; }
+  .header h1{ font-size:21px; margin:0 0 5px; font-weight:800; letter-spacing:-0.2px; }
+  .header p{ margin:0 auto; font-size:11.5px; color:var(--muted); max-width:820px; line-height:1.4; }
+
+  .row{ flex:0 0 auto; height:172px; display:grid; grid-template-columns: repeat(5,1fr); gap:11px; margin-bottom:10px; }
+  .card{ background:var(--teal-pale); border:1px solid var(--line); border-radius:11px; padding:13px 14px; display:flex; flex-direction:column; }
+  .card .icon{ width:34px; height:34px; border-radius:9px; background:var(--teal); color:#fff; display:flex; align-items:center; justify-content:center; margin-bottom:9px; }
+  .card .icon svg{ width:18px; height:18px; }
+  .card b{ display:block; font-size:12px; font-weight:800; margin-bottom:6px; line-height:1.28; }
+  .card p{ margin:0; font-size:10.2px; color:var(--muted); line-height:1.48; }
+  .card .step{ margin-top:auto; padding-top:8px; font-size:8.6px; font-weight:700; color:var(--teal-dark); border-top:1px dashed var(--line); }
+
+  .example{ flex:1; min-height:0; display:flex; align-items:center; gap:20px; background:var(--amber-pale); border:1px solid #EFD3A8; border-radius:12px; padding:14px 24px; }
+  .example .donut{ flex:none; width:110px; height:110px; }
+  .example .txt{ flex:1; }
+  .example .txt .tag{ font-size:10px; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:var(--amber); margin-bottom:4px; }
+  .example .txt b{ font-size:13.5px; font-weight:800; display:block; margin-bottom:4px; }
+  .example .txt p{ margin:0; font-size:10.8px; color:var(--muted); line-height:1.5; max-width:640px; }
+  .example .stat{ flex:none; text-align:center; padding:0 18px; border-left:1px solid #EFD3A8; }
+  .example .stat b{ display:block; font-size:26px; font-weight:800; color:var(--amber); }
+  .example .stat span{ font-size:9px; color:var(--muted); font-weight:700; }
+
+  .ribbon{
+    margin-top:9px; display:flex; align-items:center; gap:10px;
+    background:var(--ink); color:#EAF4F4; border-radius:10px; padding:8px 18px; font-size:10.3px;
+  }
+  .ribbon .icon{ width:20px; height:20px; flex:none; border-radius:6px; background:rgba(255,255,255,0.14); display:flex; align-items:center; justify-content:center; }
+  .ribbon .icon svg{ width:11px; height:11px; color:#5FD3DA; }
+  .ribbon b{ color:#fff; }
+  .ribbon span{ color:#BFC9CA; }
+
+  .footer{ position:absolute; bottom:9px; right:20px; display:flex; align-items:center; gap:6px; }
+  .li-badge{ width:15px; height:15px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:9.5px; font-weight:800; font-family: Arial, sans-serif; }
+  .footer span{ font-size:9.5px; font-weight:600; color:var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="canvas-wrap">
+  <div class="canvas">
+
+    <div class="header">
+      <div class="eyebrow">Excel para Analistas</div>
+      <h1>Tablas Dinámicas en Excel: Qué Son y Cuándo Usarlas</h1>
+      <p>Una tabla dinámica resume y reorganiza tus datos para revelar información útil — sin alterarlos, sin fórmulas avanzadas.</p>
+    </div>
+
+    <div class="row">
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20V4M4 20h16"/><rect x="7" y="13" width="3" height="7"/><rect x="12" y="8" width="3" height="12"/><rect x="17" y="5" width="3" height="15"/></svg></div>
+        <b>Comparar Totales de Ventas</b>
+        <p>Suma automáticamente miles de filas por producto en segundos, sin acumular manualmente.</p>
+        <div class="step">Miles de filas → totales por categoría</div>
+      </div>
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 5 5 19M8 5a3 3 0 1 1 0 6 3 3 0 0 1 0-6ZM16 13a3 3 0 1 1 0 6 3 3 0 0 1 0-6Z"/></svg></div>
+        <b>Ventas como % del Total</b>
+        <p>Configura la columna para mostrar el porcentaje sobre el total, no solo la suma.</p>
+        <div class="step">Clic derecho → % del total general</div>
+      </div>
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="8" cy="8" r="4"/><circle cx="16" cy="16" r="4"/><path d="M8 12v0a4 4 0 0 0 4 4h0"/></svg></div>
+        <b>Combinar Datos Duplicados</b>
+        <p>Agrupa y suma automáticamente instancias duplicadas de un mismo elemento.</p>
+        <div class="step">Sin buscar ni combinar manualmente</div>
+      </div>
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="7" cy="8" r="2.4"/><circle cx="17" cy="8" r="2.4"/><circle cx="12" cy="17" r="2.4"/><path d="M9 9.5 11 15M15 9.5 13 15"/></svg></div>
+        <b>Recuento por Elementos</b>
+        <p>Cuenta filas agrupadas por categoría, como empleados por departamento.</p>
+        <div class="step">Sin ordenar y contar fila por fila</div>
+      </div>
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v16"/><path d="M13 14h4"/></svg></div>
+        <b>Valores en Celdas Vacías</b>
+        <p>Reemplaza celdas vacías por un valor predeterminado como $0 o N/A.</p>
+        <div class="step">Opciones de tabla dinámica → celdas vacías</div>
+      </div>
+    </div>
+
+    <div class="example">
+      <svg class="donut" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="40" fill="none" stroke="#F0DBB6" stroke-width="12"/>
+        <circle cx="50" cy="50" r="40" fill="none" stroke="var(--amber)" stroke-width="12"
+          stroke-dasharray="56.5 194.7" stroke-linecap="round" transform="rotate(-90 50 50)"/>
+        <text x="50" y="55" text-anchor="middle" font-size="18" font-weight="800" fill="var(--ink)">22.5%</text>
+      </svg>
+      <div class="txt">
+        <div class="tag">Ejemplo Real</div>
+        <b>"% del Total General" en acción</b>
+        <p>Ventas totales de 3 productos: $200,000. El Producto 1 generó $45,000 — la tabla dinámica calcula automáticamente que representa el 22.5% de las ventas de la compañía, sin fórmulas manuales.</p>
+      </div>
+      <div class="stat"><b>$200K</b><span>VENTAS TOTALES</span></div>
+      <div class="stat"><b>$45K</b><span>PRODUCTO 1</span></div>
+    </div>
+
+    <div class="ribbon">
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z"/></svg></div>
+      <div><b>Por qué importa</b> <span>— aprender a crear una tabla dinámica es más fácil de lo que parece: no necesitas fórmulas avanzadas, ella calcula por ti.</span></div>
+    </div>
+
+    <div class="footer">
+      <div class="li-badge">in</div>
+      <span>cacm523</span>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

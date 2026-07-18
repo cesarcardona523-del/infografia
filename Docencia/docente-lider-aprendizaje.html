@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>¿Docente o Líder de Aprendizaje?</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --emerald:#1F7A5C; --emerald-dark:#145940; --emerald-pale:#E3F3EC;
+    --slate:#5B6472; --slate-pale:#EEF0F2;
+    --gold:#B5872E; --gold-pale:#FBF1DD;
+    --ink:#1E2422; --muted:#616B67; --line:#E3E7E5; --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    min-height:627px; display:flex; align-items:center; justify-content:center;
+    padding:32px 16px; background:#EAEEEC;
+    font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
+  .canvas{
+    position:relative; width:1200px; height:627px; margin:0 auto;
+    background:var(--white);
+    border-radius:16px; box-shadow:0 20px 50px rgba(20,89,64,0.16); overflow:hidden;
+    padding:20px 34px 14px; color:var(--ink);
+    display:flex; flex-direction:column;
+  }
+
+  .header{ text-align:center; margin-bottom:14px; }
+  .header .eyebrow{ font-size:11.5px; font-weight:700; letter-spacing:2px; color:var(--emerald); text-transform:uppercase; margin-bottom:6px; }
+  .header h1{ font-size:29px; margin:0 0 6px; font-weight:800; letter-spacing:-0.3px; }
+  .header h1 em{ font-style:normal; color:var(--emerald); }
+  .header p{ margin:0 auto; font-size:13.5px; color:var(--muted); max-width:720px; }
+
+  .table{ flex:1; display:flex; flex-direction:column; border:1px solid var(--line); border-radius:12px; overflow:hidden; }
+  .thead{ display:grid; grid-template-columns: 1fr 1fr; }
+  .thead div{ padding:12px 26px; font-size:14px; font-weight:800; color:#fff; text-align:center; }
+  .thead .a{ background:var(--slate); }
+  .thead .b{ background:var(--emerald); }
+
+  .tbody{ flex:1; display:flex; flex-direction:column; }
+  .trow{ flex:1; display:grid; grid-template-columns: 1fr 1fr; }
+  .trow:nth-child(odd){ background:#FAFBFA; }
+  .trow div{ padding:0 26px; font-size:13.3px; line-height:1.3; border-top:1px solid var(--line); display:flex; align-items:center; }
+  .trow .a{ color:var(--ink); border-right:1px solid var(--line); }
+  .trow .b{ color:var(--emerald-dark); font-weight:600; }
+
+  .shift{ margin-top:14px; display:grid; grid-template-columns: auto repeat(3, 1fr); gap:14px; align-items:stretch; }
+  .shift-label{ display:flex; flex-direction:column; justify-content:center; padding-right:16px; border-right:3px solid var(--gold); }
+  .shift-label b{ font-size:15px; font-weight:800; }
+  .shift-label span{ font-size:11px; color:var(--muted); }
+  .spill{ background:var(--gold-pale); border:1px solid #EDDBAF; border-radius:11px; padding:12px 16px; display:flex; align-items:center; gap:12px; }
+  .spill .icon{ width:36px; height:36px; border-radius:9px; background:var(--gold); color:#fff; display:flex; align-items:center; justify-content:center; flex:none; }
+  .spill .icon svg{ width:19px; height:19px; }
+  .spill b{ display:block; font-size:13px; font-weight:800; margin-bottom:2px; }
+  .spill span{ display:block; font-size:10.8px; color:var(--muted); line-height:1.3; }
+
+  .footer{ position:absolute; bottom:10px; right:20px; display:flex; align-items:center; gap:6px; }
+  .li-badge{ width:16px; height:16px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:800; font-family: Arial, sans-serif; }
+  .footer span{ font-size:10px; font-weight:600; color:var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="canvas-wrap">
+  <div class="canvas">
+
+    <div class="header">
+      <div class="eyebrow">Educación Siglo XXI</div>
+      <h1>¿Docente o <em>Líder de Aprendizaje</em>?</h1>
+      <p>La educación del siglo XXI no necesita más docentes. Necesita líderes que transformen la manera de enseñar.</p>
+    </div>
+
+    <div class="table">
+      <div class="thead"><div class="a">Docente Tradicional</div><div class="b">Líder del Aprendizaje</div></div>
+
+      <div class="tbody">
+      <div class="trow"><div class="a">Se enfoca en explicar con claridad los contenidos</div><div class="b">Se enfoca en que el estudiante entienda, relacione y aplique</div></div>
+      <div class="trow"><div class="a">Usa presentaciones como principal recurso didáctico</div><div class="b">Integra videos, simulaciones, IA, debates y otras formas de interacción</div></div>
+      <div class="trow"><div class="a">Evalúa solo con pruebas finales</div><div class="b">Evalúa con proyectos, feedback continuo y desafíos reales</div></div>
+      <div class="trow"><div class="a">Habla más de lo que escucha</div><div class="b">Escucha activamente y abre espacios de participación</div></div>
+      <div class="trow"><div class="a">Mantiene una estructura fija y predecible</div><div class="b">Diseña clases dinámicas, flexibles y adaptables</div></div>
+      <div class="trow"><div class="a">Enseña para aprobar</div><div class="b">Guía, desafía y despierta pensamiento crítico</div></div>
+      <div class="trow"><div class="a">Prioriza cubrir todos los temas</div><div class="b">Prioriza que los estudiantes comprendan y apliquen lo aprendido</div></div>
+      <div class="trow"><div class="a">Se forma solo en su área</div><div class="b">Se forma en pedagogía, diseño instruccional y tecnologías emergentes</div></div>
+      <div class="trow"><div class="a">Ve al estudiante como receptor de contenido</div><div class="b">Lo ve como protagonista del proceso</div></div>
+      </div>
+    </div>
+
+    <div class="shift">
+      <div class="shift-label"><b>3 cambios</b><span>que agrupan las 9 filas anteriores</span></div>
+      <div class="spill">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <div><b>Tecnología integrada</b><span>De un recurso único a un ecosistema con IA</span></div>
+      </div>
+      <div class="spill">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4v13a2 2 0 0 0 2 2h14"/><path d="M8 14l3-3 3 3 5-6"/></svg></div>
+        <div><b>Evaluación y diálogo continuos</b><span>De la prueba final al feedback constante</span></div>
+      </div>
+      <div class="spill">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="3.4"/><path d="M5.5 20a6.5 6.5 0 0 1 13 0"/></svg></div>
+        <div><b>Protagonismo del estudiante</b><span>El centro deja de ser el contenido</span></div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="li-badge">in</div>
+      <span>cacm523</span>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

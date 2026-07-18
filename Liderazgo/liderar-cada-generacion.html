@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>¿Cómo Liderar a Cada Generación?</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --boomer:#2F6F4E; --boomer-pale:#E7F1EA;
+    --genx:#6D5BA6; --genx-pale:#ECE8F5;
+    --mill:#C1483A; --mill-pale:#FAE9E7;
+    --genz:#D6952B; --genz-pale:#FBF0DE;
+    --ink:#1E2422; --muted:#616B67; --line:#E5E7E6; --white:#FFFFFF; --label:#39433F;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    min-height:627px; display:flex; align-items:center; justify-content:center;
+    padding:32px 16px; background:#EEF0EE;
+    font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
+  .canvas{
+    position:relative; width:1200px; height:627px; margin:0 auto;
+    background:var(--white);
+    border-radius:16px; box-shadow:0 20px 50px rgba(30,36,34,0.14); overflow:hidden;
+    padding:16px 30px 12px; color:var(--ink);
+    display:flex; flex-direction:column;
+  }
+
+  .header{ text-align:center; margin-bottom:8px; }
+  .header .eyebrow{ font-size:10px; font-weight:700; letter-spacing:1.8px; color:var(--genx); text-transform:uppercase; margin-bottom:3px; }
+  .header h1{ font-size:21px; margin:0 0 3px; font-weight:800; letter-spacing:-0.2px; }
+  .header p{ margin:0 auto; font-size:10.8px; color:var(--muted); max-width:680px; }
+
+  .table{ flex:1; display:flex; flex-direction:column; border:1px solid var(--line); border-radius:10px; overflow:hidden; }
+
+  .thead{ display:grid; grid-template-columns: 128px repeat(4,1fr); }
+  .thead > div{ display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px; padding:6px 4px; }
+  .thead .rowcol{ background:#F4F5F4; }
+  .thead .gen{ color:#fff; }
+  .thead .gen b{ font-size:10.3px; font-weight:800; letter-spacing:0.2px; }
+  .thead .gen svg{ width:19px; height:19px; }
+  .thead .g1{ background:var(--boomer); }
+  .thead .g2{ background:var(--genx); }
+  .thead .g3{ background:var(--mill); }
+  .thead .g4{ background:var(--genz); }
+
+  .tbody{ flex:1; display:flex; flex-direction:column; }
+  .trow{ flex:1; display:grid; grid-template-columns: 128px repeat(4,1fr); }
+  .trow:nth-child(odd){ background:#FCFCFB; }
+  .trow > div{ padding:3px 9px; font-size:9px; line-height:1.24; border-top:1px solid var(--line); display:flex; align-items:center; }
+  .trow .rowlabel{ font-size:9.3px; font-weight:800; color:var(--label); border-right:1px solid var(--line); text-transform:uppercase; letter-spacing:0.1px; }
+  .trow .c1{ background:var(--boomer-pale); }
+  .trow .c2{ background:var(--genx-pale); }
+  .trow .c3{ background:var(--mill-pale); }
+  .trow .c4{ background:var(--genz-pale); }
+
+  .ribbon{
+    margin-top:8px; display:flex; align-items:center; gap:9px;
+    background:var(--ink); color:#EEF2F0; border-radius:9px; padding:7px 18px; font-size:9.6px;
+  }
+  .ribbon .icon{ width:20px; height:20px; flex:none; border-radius:6px; background:rgba(255,255,255,0.14); display:flex; align-items:center; justify-content:center; }
+  .ribbon .icon svg{ width:11px; height:11px; color:var(--genz); }
+  .ribbon b{ color:#fff; }
+  .ribbon span{ color:#B9C2BE; }
+
+  .footer{ position:absolute; bottom:9px; right:20px; display:flex; align-items:center; gap:6px; }
+  .li-badge{ width:15px; height:15px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:9.5px; font-weight:800; font-family: Arial, sans-serif; }
+  .footer span{ font-size:9.5px; font-weight:600; color:var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="canvas-wrap">
+  <div class="canvas">
+
+    <div class="header">
+      <div class="eyebrow">Liderazgo Intergeneracional</div>
+      <h1>¿Cómo Liderar a Cada Generación?</h1>
+      <p>Boomers, Generación X, Millennials y Generación Z no responden al mismo estilo de liderazgo — 8 dimensiones que marcan la diferencia.</p>
+    </div>
+
+    <div class="table">
+      <div class="thead">
+        <div class="rowcol"></div>
+        <div class="gen g1">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="3.4"/><path d="M5.5 20a6.5 6.5 0 0 1 13 0"/></svg>
+          <b>BOOMERS</b>
+        </div>
+        <div class="gen g2">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="4" width="16" height="12" rx="2"/><path d="M9 20h6M12 16v4"/></svg>
+          <b>GENERACIÓN X</b>
+        </div>
+        <div class="gen g3">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3 4 7v5c0 5 3.5 8 8 9 4.5-1 8-4 8-9V7Z"/></svg>
+          <b>MILLENNIALS</b>
+        </div>
+        <div class="gen g4">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 21V9M8 9l-4 4M8 9l4 4M16 3v12M16 15l-4-4M16 15l4-4"/></svg>
+          <b>GEN Z</b>
+        </div>
+      </div>
+
+      <div class="tbody">
+        <div class="trow">
+          <div class="rowlabel">Qué valoran</div>
+          <div class="c1">Estabilidad, respeto y un legado significativo</div>
+          <div class="c2">Libertad para trabajar de forma independiente y eficiente</div>
+          <div class="c3">Crecimiento, flexibilidad y trabajo con propósito</div>
+          <div class="c4">Sentirse incluido, escuchado y con impacto</div>
+        </div>
+        <div class="trow">
+          <div class="rowlabel">Cómo les gusta trabajar</div>
+          <div class="c1">Estructura clara, ritmo constante, sistemas probados</div>
+          <div class="c2">Autogestión, enfoque en resultados, sin microgestión</div>
+          <div class="c3">Colaborativo, dinámico, remoto y presencial</div>
+          <div class="c4">Flexible, asíncrono y con tecnología</div>
+        </div>
+        <div class="trow">
+          <div class="rowlabel">Cómo prefieren conectar</div>
+          <div class="c1">Llamadas con instrucciones claras y tono formal</div>
+          <div class="c2">Correo electrónico directo y eficiente</div>
+          <div class="c3">Chat informal y videollamadas rápidas</div>
+          <div class="c4">Formato breve, digital, respuestas rápidas</div>
+        </div>
+        <div class="trow">
+          <div class="rowlabel">Lo que más aprecian</div>
+          <div class="c1">Reconocimiento, jubilación, atención médica</div>
+          <div class="c2">Autonomía, expectativas claras, espacio para cumplir</div>
+          <div class="c3">Crecimiento profesional, bienestar, libertad híbrida</div>
+          <div class="c4">Salud mental, diversidad, equidad, horarios flexibles</div>
+        </div>
+        <div class="trow">
+          <div class="rowlabel">Cómo buscan feedback</div>
+          <div class="c1">Revisiones programadas y tono respetuoso</div>
+          <div class="c2">Directo y enfocado en los resultados</div>
+          <div class="c3">Frecuente, estilo coaching</div>
+          <div class="c4">Rápido, claro e informal, sin exagerar</div>
+        </div>
+        <div class="trow">
+          <div class="rowlabel">Qué los motiva a quedarse</div>
+          <div class="c1">Respeto, estabilidad laboral, experiencia valiosa</div>
+          <div class="c2">Confianza en que resolverá sus problemas</div>
+          <div class="c3">Propósito, progreso, retos significativos</div>
+          <div class="c4">Sentirse visto, seguro y libre para aportar ideas</div>
+        </div>
+        <div class="trow">
+          <div class="rowlabel">Qué les quita confianza</div>
+          <div class="c1">Ser microgestionado o marginado</div>
+          <div class="c2">Procesos lentos, demasiadas reglas</div>
+          <div class="c3">Sin retroalimentación ni camino de crecimiento</div>
+          <div class="c4">Reglas rígidas, sin voz, sentirse ignorado</div>
+        </div>
+        <div class="trow">
+          <div class="rowlabel">Cómo apoyarlos mejor</div>
+          <div class="c1">Reconocer su experiencia, instrucciones claras</div>
+          <div class="c2">Dales espacio, confía en su forma de trabajar</div>
+          <div class="c3">Sé realista, coachea con frecuencia</div>
+          <div class="c4">Claridad y espacio seguro para expresarse</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ribbon">
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z"/></svg></div>
+      <div><b>La clave</b> <span>— liderar equipos intergeneracionales no es un estilo único: es traducir el mismo mensaje de reconocimiento, claridad y propósito al lenguaje de cada generación.</span></div>
+    </div>
+
+    <div class="footer">
+      <div class="li-badge">in</div>
+      <span>cacm523</span>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
