@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Comandos y Tipos de Datos en SQL Server</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --bg:#1E1E2E; --bg2:#181825; --editor:#14141F;
+    --keyword:#7AA2F7; --type:#BB9AF7; --string:#9ECE6A; --comment:#565F89; --func:#E0AF68; --text:#C0CAF5;
+    --ink:#1D2129; --muted:#5C6470; --line:#E5E7EA; --white:#FFFFFF; --paper:#F7F8FA;
+    --dml:#7AA2F7; --ddl:#BB9AF7; --dcl:#E0AF68; --util:#9ECE6A;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    min-height:627px; display:flex; align-items:center; justify-content:center;
+    padding:32px 16px; background:#111018;
+    font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
+  .canvas{
+    position:relative; width:1200px; height:627px; margin:0 auto;
+    background:linear-gradient(165deg, var(--bg) 0%, var(--bg2) 100%);
+    border-radius:16px; box-shadow:0 24px 60px rgba(0,0,0,0.5); overflow:hidden;
+    padding:16px 28px 12px; color:var(--text);
+    display:flex; flex-direction:column; min-height:0;
+  }
+
+  .header{ text-align:center; margin-bottom:8px; }
+  .header .eyebrow{ font-size:10px; font-weight:700; letter-spacing:1.8px; color:var(--func); text-transform:uppercase; margin-bottom:3px; }
+  .header h1{ font-size:19px; margin:0 0 3px; font-weight:800; letter-spacing:-0.2px; color:#fff; }
+  .header p{ margin:0 auto; font-size:10.3px; color:#8B93B8; max-width:760px; }
+
+  .main{ flex:1.65; min-height:0; display:flex; gap:14px; }
+  .editor{ flex:1.55; background:var(--editor); border-radius:10px; border:1px solid #2A2A3D; display:flex; flex-direction:column; overflow:hidden; }
+  .editor .titlebar{ display:flex; align-items:center; gap:6px; padding:7px 12px; background:#232332; border-bottom:1px solid #2A2A3D; }
+  .titlebar .dot{ width:8px; height:8px; border-radius:50%; }
+  .titlebar .d1{ background:#F1595A; } .titlebar .d2{ background:#F2C744; } .titlebar .d3{ background:#5CC26A; }
+  .titlebar span{ margin-left:8px; font-size:9.5px; color:#8B93B8; font-family: "SF Mono", Menlo, Consolas, monospace; }
+  .code{ flex:1; padding:12px 16px; font-family: "SF Mono", Menlo, Consolas, monospace; font-size:11px; line-height:1.68; overflow:hidden; }
+  .code .ln{ color:#565F89; display:inline-block; width:16px; }
+  .kw{ color:var(--keyword); font-weight:700; } .tp{ color:var(--type); } .st{ color:var(--string); } .cm{ color:var(--comment); font-style:italic; } .fn{ color:var(--func); }
+
+  .legend{ flex:1; display:flex; flex-direction:column; gap:8px; }
+  .cat{ flex:1; background:rgba(255,255,255,0.04); border:1px solid #2A2A3D; border-radius:9px; padding:9px 12px; display:flex; flex-direction:column; justify-content:center; }
+  .cat .top{ display:flex; align-items:center; gap:7px; margin-bottom:5px; }
+  .cat .dotc{ width:9px; height:9px; border-radius:3px; flex:none; }
+  .cat b{ font-size:11px; font-weight:800; color:#fff; }
+  .cat span{ font-size:9px; color:#8B93B8; font-family: "SF Mono", Menlo, Consolas, monospace; line-height:1.5; }
+
+  .types-label{ margin-top:16px; margin-bottom:6px; font-size:10px; font-weight:800; letter-spacing:1.2px; text-transform:uppercase; color:#8B93B8; text-align:center; }
+  .types{ flex:0.85; min-height:0; display:grid; grid-template-columns: repeat(4,1fr); gap:9px; }
+  .tcat{ background:rgba(255,255,255,0.04); border:1px solid #2A2A3D; border-radius:9px; padding:11px 14px; display:flex; flex-direction:column; justify-content:center; gap:7px; }
+  .tcat b{ font-size:11.5px; font-weight:800; color:#fff; display:block; margin-bottom:2px; }
+  .tcat .row{ display:flex; flex-direction:column; gap:1px; font-size:10px; font-family: "SF Mono", Menlo, Consolas, monospace; }
+  .tcat .row code{ color:var(--type); font-weight:700; }
+  .tcat .row span{ color:#8B93B8; }
+
+  .footer{ position:absolute; bottom:9px; right:20px; display:flex; align-items:center; gap:6px; }
+  .li-badge{ width:15px; height:15px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:9.5px; font-weight:800; font-family: Arial, sans-serif; }
+  .footer span{ font-size:9.5px; font-weight:600; color:#8B93B8; }
+</style>
+</head>
+<body>
+
+<div class="canvas-wrap">
+  <div class="canvas">
+
+    <div class="header">
+      <div class="eyebrow">SQL Server</div>
+      <h1>Comandos y Tipos de Datos en SQL Server</h1>
+      <p>Un mismo script real recorre las 4 familias de comandos — DML, DDL, DCL y TCL — más los tipos de datos que los sostienen.</p>
+    </div>
+
+    <div class="main">
+      <div class="editor">
+        <div class="titlebar"><div class="dot d1"></div><div class="dot d2"></div><div class="dot d3"></div><span>gestion_clientes.sql</span></div>
+        <div class="code"><span class="cm">-- DDL: crear la estructura</span><br>
+<span class="kw">CREATE TABLE</span> Clientes (<br>
+&nbsp;&nbsp;Id <span class="tp">INT</span> <span class="kw">PRIMARY KEY</span>, Nombre <span class="tp">NVARCHAR</span>(100),<br>
+&nbsp;&nbsp;FechaAlta <span class="tp">DATETIME2</span>, Saldo <span class="tp">DECIMAL</span>(10,2)<br>
+);<br>
+<span class="cm">-- DML: manipular los datos</span><br>
+<span class="kw">INSERT INTO</span> Clientes <span class="kw">VALUES</span><br>
+&nbsp;&nbsp;(1, <span class="st">'Ana Ruiz'</span>, <span class="fn">GETDATE()</span>, 1500.00);<br>
+<span class="kw">SELECT</span> Nombre, Saldo <span class="kw">FROM</span> Clientes <span class="kw">WHERE</span> Saldo &gt; 1000;<br>
+<span class="cm">-- DCL: controlar el acceso</span><br>
+<span class="kw">GRANT SELECT</span> <span class="kw">ON</span> Clientes <span class="kw">TO</span> Analista;<br>
+<span class="cm">-- TCL: confirmar la transacción</span><br>
+<span class="kw">BEGIN TRANSACTION</span>;<br>
+&nbsp;&nbsp;<span class="kw">UPDATE</span> Clientes <span class="kw">SET</span> Saldo = Saldo - 200 <span class="kw">WHERE</span> Id = 1;<br>
+<span class="kw">COMMIT</span>;</div>
+      </div>
+
+      <div class="legend">
+        <div class="cat"><div class="top"><div class="dotc" style="background:var(--dml)"></div><b>DML — Manipulación</b></div><span>SELECT · INSERT · UPDATE · DELETE · TRUNCATE · BULK INSERT</span></div>
+        <div class="cat"><div class="top"><div class="dotc" style="background:var(--ddl)"></div><b>DDL — Definición</b></div><span>CREATE TABLE · ALTER TABLE · DROP TABLE · CREATE INDEX/VIEW/PROCEDURE</span></div>
+        <div class="cat"><div class="top"><div class="dotc" style="background:var(--dcl)"></div><b>DCL &amp; TCL — Control</b></div><span>GRANT · REVOKE · DENY · COMMIT · ROLLBACK · SAVEPOINT</span></div>
+        <div class="cat"><div class="top"><div class="dotc" style="background:var(--util)"></div><b>Utilidades</b></div><span>BACKUP · RESTORE · EXEC</span></div>
+      </div>
+    </div>
+
+    <div class="types-label">Tipos de Datos Más Utilizados</div>
+    <div class="types">
+      <div class="tcat"><b>Numéricos</b>
+        <div class="row"><code>int</code><span>entero 4 bytes</span></div>
+        <div class="row"><code>bigint</code><span>entero 8 bytes</span></div>
+        <div class="row"><code>decimal(p,s)</code><span>decimal preciso</span></div>
+        <div class="row"><code>money</code><span>valores monetarios</span></div>
+      </div>
+      <div class="tcat"><b>Cadenas</b>
+        <div class="row"><code>varchar(n)</code><span>longitud variable</span></div>
+        <div class="row"><code>nvarchar(n)</code><span>Unicode variable</span></div>
+        <div class="row"><code>char(n)</code><span>longitud fija</span></div>
+        <div class="row"><code>text</code><span>texto largo (obsoleto)</span></div>
+      </div>
+      <div class="tcat"><b>Fecha y Hora</b>
+        <div class="row"><code>datetime</code><span>fecha y hora</span></div>
+        <div class="row"><code>datetime2</code><span>mayor precisión</span></div>
+        <div class="row"><code>date</code><span>solo fecha</span></div>
+        <div class="row"><code>time</code><span>solo hora</span></div>
+      </div>
+      <div class="tcat"><b>Binarios y Otros</b>
+        <div class="row"><code>varbinary(n)</code><span>datos binarios</span></div>
+        <div class="row"><code>uniqueidentifier</code><span>GUID único</span></div>
+        <div class="row"><code>xml</code><span>estructura XML</span></div>
+        <div class="row"><code>bit</code><span>valor lógico (0/1)</span></div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="li-badge">in</div>
+      <span>cacm523</span>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

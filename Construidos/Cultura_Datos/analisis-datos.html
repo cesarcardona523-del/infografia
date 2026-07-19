@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Análisis de Datos: Convertir Información en Mejores Decisiones</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --blue:#1B4E7A; --blue-dark:#123A5C; --blue-pale:#E7F0F7;
+    --amber:#D9711E; --amber-pale:#FCEDDF;
+    --ink:#1D2129; --muted:#5C6470; --line:#E1E7EC; --white:#FFFFFF; --paper:#F6F9FB;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    min-height:627px; display:flex; align-items:center; justify-content:center;
+    padding:32px 16px; background:#EAF0F5;
+    font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
+  .canvas{
+    position:relative; width:1200px; height:627px; margin:0 auto;
+    background:var(--white);
+    border-radius:16px; box-shadow:0 20px 50px rgba(18,58,92,0.18); overflow:hidden;
+    padding:16px 30px 12px; color:var(--ink);
+    display:flex; flex-direction:column; min-height:0;
+  }
+
+  .header{ text-align:center; margin-bottom:8px; }
+  .header .eyebrow{ font-size:10.5px; font-weight:700; letter-spacing:1.8px; color:var(--blue); text-transform:uppercase; margin-bottom:3px; }
+  .header h1{ font-size:20px; margin:0 0 4px; font-weight:800; letter-spacing:-0.2px; }
+  .header p{ margin:0 auto; font-size:11px; color:var(--muted); max-width:820px; }
+
+  .main{ flex:1; min-height:0; display:flex; gap:22px; }
+  .lens-wrap{ flex:none; width:280px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; }
+  .lens-wrap svg{ width:250px; height:250px; }
+  .lens-wrap .cap{ text-align:center; font-size:15px; font-weight:800; color:var(--blue-dark); }
+  .lens-wrap .cap span{ display:block; font-size:11.5px; color:var(--muted); font-weight:600; margin-top:5px; line-height:1.4; }
+
+  .right{ flex:1; min-height:0; display:flex; flex-direction:column; gap:16px; }
+  .section-title{ font-size:13.5px; font-weight:800; color:var(--blue-dark); margin-bottom:4px; }
+
+  .process{ flex:1; display:flex; align-items:stretch; gap:8px; }
+  .pstep{ flex:1; background:var(--blue-pale); border:1px solid var(--line); border-radius:10px; padding:14px 12px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:9px; }
+  .pstep .icon{ width:42px; height:42px; border-radius:11px; background:var(--blue); color:#fff; display:flex; align-items:center; justify-content:center; }
+  .pstep .icon svg{ width:22px; height:22px; }
+  .pstep b{ font-size:13px; font-weight:800; }
+  .pstep span{ font-size:10.5px; color:var(--muted); line-height:1.35; }
+  .parrow{ display:flex; align-items:center; color:var(--muted); flex:none; font-size:16px; }
+
+  .reasons{ flex:1; display:grid; grid-template-columns: repeat(5,1fr); gap:9px; }
+  .reason{ background:var(--paper); border:1px solid var(--line); border-radius:9px; padding:12px 12px; display:flex; flex-direction:column; justify-content:center; gap:8px; }
+  .reason .icon{ width:28px; height:28px; border-radius:8px; background:var(--amber); color:#fff; display:flex; align-items:center; justify-content:center; }
+  .reason .icon svg{ width:15px; height:15px; }
+  .reason span{ font-size:10.5px; font-weight:700; color:var(--ink); line-height:1.4; }
+
+  .tools{ display:flex; align-items:center; gap:16px; background:var(--paper); border:1px solid var(--line); border-radius:10px; padding:14px 18px; }
+  .tools .lbl{ font-size:11px; font-weight:800; color:var(--blue); text-transform:uppercase; letter-spacing:0.5px; }
+  .tool{ display:flex; align-items:center; gap:7px; font-size:13px; font-weight:700; }
+  .tool .icon{ width:26px; height:26px; border-radius:7px; background:var(--blue-pale); color:var(--blue); display:flex; align-items:center; justify-content:center; }
+  .tool .icon svg{ width:14px; height:14px; }
+
+  .quote{ background:var(--ink); color:#fff; border-radius:11px; padding:15px 20px; font-size:13.5px; line-height:1.55; }
+  .quote b{ color:var(--amber); }
+
+  .footer{ position:absolute; bottom:9px; right:20px; display:flex; align-items:center; gap:6px; }
+  .li-badge{ width:15px; height:15px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:9.5px; font-weight:800; font-family: Arial, sans-serif; }
+  .footer span{ font-size:9.5px; font-weight:600; color:var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="canvas-wrap">
+  <div class="canvas">
+
+    <div class="header">
+      <div class="eyebrow">Cultura de Datos</div>
+      <h1>Análisis de Datos: Convertir Información en Mejores Decisiones</h1>
+      <p>Los datos por sí solos no bastan — el verdadero valor está en analizarlos para obtener información que genere impacto.</p>
+    </div>
+
+    <div class="main">
+      <div class="lens-wrap">
+        <svg viewBox="0 0 200 200">
+          <circle cx="82" cy="82" r="62" fill="var(--blue-pale)" stroke="var(--blue)" stroke-width="9"/>
+          <line x1="126" y1="126" x2="176" y2="176" stroke="var(--blue-dark)" stroke-width="16" stroke-linecap="round"/>
+          <g stroke="var(--amber)" stroke-width="2.6" fill="none" stroke-linecap="round">
+            <path d="M50 95 L60 70 L70 88 L80 55 L90 95"/>
+          </g>
+          <circle cx="82" cy="82" r="62" fill="none" stroke="#fff" stroke-width="2" opacity="0.5"/>
+        </svg>
+        <div class="cap">Datos → Decisiones<span>Inspeccionar, limpiar, transformar y modelar para descubrir información útil.</span></div>
+      </div>
+
+      <div class="right">
+        <div class="section-title">Proceso de Análisis de Datos</div>
+        <div class="process">
+          <div class="pstep"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/></svg></div><b>Recolectar</b><span>Datos de distintas fuentes</span></div>
+          <div class="parrow">→</div>
+          <div class="pstep"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 21 15 11M8 6l10 10M3 3l7 1 1 7"/></svg></div><b>Limpiar</b><span>Corrige errores y duplicados</span></div>
+          <div class="parrow">→</div>
+          <div class="pstep"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg></div><b>Analizar</b><span>Explora patrones y tendencias</span></div>
+          <div class="parrow">→</div>
+          <div class="pstep"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20V4M4 20h16"/><rect x="7" y="13" width="3" height="7"/><rect x="12" y="8" width="3" height="12"/><rect x="17" y="5" width="3" height="15"/></svg></div><b>Visualizar</b><span>Gráficos y dashboards</span></div>
+          <div class="parrow">→</div>
+          <div class="pstep"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 11.5a8.4 8.4 0 0 1-1.8 5.3L21 21l-4.2-1.2a8.4 8.4 0 1 1 4.2-8.3Z"/></svg></div><b>Comunicar</b><span>Resultados claros</span></div>
+        </div>
+
+        <div class="section-title">Por Qué Importa</div>
+        <div class="reasons">
+          <div class="reason"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20V4M4 20h16"/><path d="M8 16 12 8l4 6 4-10"/></svg></div><span>Decisiones basadas en evidencia</span></div>
+          <div class="reason"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><span>Reduce costos y detecta mejoras</span></div>
+          <div class="reason"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="9" cy="8" r="3"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><circle cx="17" cy="8" r="2.4"/><path d="M15 20a4.5 4.5 0 0 1 7-3.6"/></svg></div><span>Entiende clientes y procesos</span></div>
+          <div class="reason"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div><span>Optimiza el rendimiento</span></div>
+          <div class="reason"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z"/></svg></div><span>Genera ventaja competitiva</span></div>
+        </div>
+
+        <div class="tools">
+          <span class="lbl">Herramientas</span>
+          <div class="tool"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 4v16M3 10h5M3 15h5"/></svg></div>Excel</div>
+          <div class="tool"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></div>SQL</div>
+          <div class="tool"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V4M4 20h16"/><rect x="7" y="13" width="3" height="7"/><rect x="12" y="8" width="3" height="12"/><rect x="17" y="5" width="3" height="15"/></svg></div>Power BI</div>
+          <div class="tool"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2c-2 0-4 .5-4 2v3h6v1H6c-2 0-3 2-3 5s1 5 3 5h2v-3c0-2 1.5-3 3-3h4c1.5 0 3-1 3-3V4c0-1.5-3-2-5-2h-1Z"/></svg></div>Python</div>
+          <div class="tool"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg></div>Tableau</div>
+          <span style="font-size:9.5px; color:var(--muted); font-weight:600;">y muchas más...</span>
+        </div>
+
+        <div class="quote"><b>La idea clave —</b> el análisis de datos no consiste solo en trabajar con números; consiste en transformar información en conocimiento que genere valor. Los datos cuentan historias: nuestro trabajo es darles significado.</div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="li-badge">in</div>
+      <span>cacm523</span>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

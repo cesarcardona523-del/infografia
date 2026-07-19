@@ -109,6 +109,14 @@ Como último paso, el PNG final y esa misma entrada se publican también en el s
 - ✅ La Pelea Diaria de un Analista de Datos con los KPIs — tema `Roles` — [HTML](Construidos/Roles/kpi-analista-datos.html) · [PNG](Construidos/Roles/kpi-analista-datos.png)
 - ✅ Arquitectura Medallion: Datos Confiables en Cada Capa — tema `Arquitectura` — [HTML](Construidos/Arquitectura/arquitectura-medallon-datos-confiables.html) · [PNG](Construidos/Arquitectura/arquitectura-medallon-datos-confiables.png)
 - ✅ Relación de Dependencia e Integración: Python, Estadística, ML e IA — tema `Cultura_Datos` — [HTML](Construidos/Cultura_Datos/integracion-python-estadistica-ml-ia.html) · [PNG](Construidos/Cultura_Datos/integracion-python-estadistica-ml-ia.png)
+- ✅ Stack de Claude 2026 para Líderes Empresariales — tema `Claude` — [HTML](Construidos/Claude/stack-claude.html) · [PNG](Construidos/Claude/stack-claude.png)
+- ✅ La Realidad de la Transformación con IA — tema `IA` — [HTML](Construidos/IA/transformacion-ia.html) · [PNG](Construidos/IA/transformacion-ia.png)
+- ✅ Evolución de las Herramientas que Debe Dominar un Analista de Datos — tema `Roles` — [HTML](Construidos/Roles/evolucion-herramientas-analistas-datos.html) · [PNG](Construidos/Roles/evolucion-herramientas-analistas-datos.png)
+- ✅ Comandos y Tipos de Datos en SQL Server — tema `SQL` — [HTML](Construidos/SQL/comandos-tipos-datos-sql.html) · [PNG](Construidos/SQL/comandos-tipos-datos-sql.png)
+- ✅ Modelo de Excelencia Operacional en Hospitales Privados — tema `Modelos` — [HTML](Construidos/Modelos/modelos-salud-hospitales-privados.html) · [PNG](Construidos/Modelos/modelos-salud-hospitales-privados.png)
+- ✅ Árbol de Modelos de Claude: Cómo Elegir el Correcto — tema `Claude` — [HTML](Construidos/Claude/arbol-modelos-claude.html) · [PNG](Construidos/Claude/arbol-modelos-claude.png)
+- ✅ Análisis de Datos: Convertir Información en Mejores Decisiones — tema `Cultura_Datos` — [HTML](Construidos/Cultura_Datos/analisis-datos.html) · [PNG](Construidos/Cultura_Datos/analisis-datos.png)
+- ✅ ¿Quién Hace Qué en Datos? Ingeniería, Análisis, Ciencia y BI — tema `Roles` — [HTML](Construidos/Roles/quien-hace-que-en-datos.html) · [PNG](Construidos/Roles/quien-hace-que-en-datos.png)
 
 Este README se irá actualizando con un enlace por cada infografía nueva.
 

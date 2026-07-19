@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Árbol de Modelos de Claude</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --clay:#D97757; --clay-dark:#B35A3D; --cream:#F5F1E7; --cream-2:#EAE3D2;
+    --yes:#2E9E6B; --no:#C1453A;
+    --ink:#26211B; --muted:#6B6357; --line:#DDD6C7; --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    min-height:627px; display:flex; align-items:center; justify-content:center;
+    padding:32px 16px; background:#EFEBE0;
+    font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
+  .canvas{
+    position:relative; width:1200px; height:627px; margin:0 auto;
+    background:var(--white);
+    border-radius:16px; box-shadow:0 20px 50px rgba(179,90,61,0.18); overflow:hidden;
+    padding:14px 30px 10px; color:var(--ink);
+    display:flex; flex-direction:column; min-height:0;
+  }
+
+  .header{ text-align:center; margin-bottom:4px; }
+  .header .eyebrow{ font-size:10px; font-weight:700; letter-spacing:1.8px; color:var(--clay); text-transform:uppercase; margin-bottom:2px; }
+  .header h1{ font-size:18px; margin:0; font-weight:800; letter-spacing:-0.2px; }
+
+  .tree{ position:relative; height:210px; flex:none; }
+  .tree svg{ position:absolute; inset:0; width:100%; height:100%; }
+  .qbox{ position:absolute; transform:translate(-50%,-50%); background:var(--cream-2); border:1.5px solid var(--line); border-radius:10px; padding:9px 16px; text-align:center; font-size:14.5px; font-weight:700; line-height:1.3; }
+  .badge{ position:absolute; transform:translate(-50%,-50%); font-size:10.5px; font-weight:800; padding:3px 10px; border-radius:10px; color:#fff; background:var(--white); z-index:2; }
+  .b-yes{ background:var(--yes); } .b-no{ background:var(--no); }
+
+  .leaves{ flex:1; min-height:0; display:grid; grid-template-columns: repeat(4,1fr); gap:14px; }
+  .leaf{ background:var(--cream); border:1px solid var(--line); border-radius:12px; padding:11px 14px; display:flex; flex-direction:column; gap:7px; }
+  .leaf .name{ font-size:16px; font-weight:800; color:var(--clay-dark); }
+  .leaf .tag{ font-size:10px; color:var(--muted); font-weight:700; margin-top:-4px; }
+  .leaf ul{ margin:0; padding-left:15px; }
+  .leaf li{ font-size:10.3px; line-height:1.45; color:var(--ink); }
+  .leaf .promptbox{ background:rgba(0,0,0,0.04); border-left:3px solid var(--clay); border-radius:7px; padding:7px 9px; font-size:9.3px; color:var(--muted); line-height:1.42; font-family: "SF Mono", Menlo, Consolas, monospace; }
+  .leaf .note{ font-size:8.8px; color:var(--muted); line-height:1.4; font-style:italic; }
+  .gauge{ margin-top:auto; display:flex; flex-direction:column; gap:4px; }
+  .gauge .grow{ display:flex; align-items:center; gap:6px; }
+  .gauge .glabel{ font-size:8.3px; font-weight:700; color:var(--muted); width:54px; flex:none; }
+  .gauge .gtrack{ flex:1; height:5px; border-radius:4px; background:var(--line); overflow:hidden; }
+  .gauge .gfill{ height:100%; background:var(--clay); border-radius:4px; }
+  .leaf .promptbox b{ display:block; color:var(--ink); font-family:inherit; font-size:8.6px; font-weight:800; text-transform:uppercase; letter-spacing:0.4px; margin-bottom:4px; }
+
+  .footer{ position:absolute; bottom:8px; right:20px; display:flex; align-items:center; gap:6px; }
+  .li-badge{ width:14px; height:14px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:9px; font-weight:800; font-family: Arial, sans-serif; }
+  .footer span{ font-size:9px; font-weight:600; color:var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="canvas-wrap">
+  <div class="canvas">
+
+    <div class="header">
+      <div class="eyebrow">Guía de Elección</div>
+      <h1>Árbol de Modelos de <span style="color:var(--clay);">Claude</span></h1>
+    </div>
+
+    <div class="tree">
+      <svg viewBox="0 0 1140 210" preserveAspectRatio="none">
+        <g fill="none" stroke="#C7BCA6" stroke-width="1.6">
+          <path d="M570,49 V74 H285 V97"/>
+          <path d="M570,74 H855 V97"/>
+          <path d="M285,138 V166 H142.5 V210"/>
+          <path d="M285,138 V166 H427.5 V210"/>
+          <path d="M855,138 V166 H712.5 V210"/>
+          <path d="M855,138 V166 H997.5 V210"/>
+        </g>
+      </svg>
+      <div class="qbox" style="left:570px; top:29px; width:300px;">¿Tu tarea necesita algo más que una respuesta rápida?</div>
+      <div class="qbox" style="left:285px; top:117px; width:250px;">¿Necesitas máxima velocidad y el menor gasto de tokens?</div>
+      <div class="qbox" style="left:855px; top:117px; width:250px;">¿Es este tu trabajo más difícil y más ambicioso?</div>
+
+      <div class="badge b-no" style="left:427px; top:74px;">NO</div>
+      <div class="badge b-yes" style="left:713px; top:74px;">SÍ</div>
+      <div class="badge b-yes" style="left:142.5px; top:188px;">SÍ</div>
+      <div class="badge b-no" style="left:427.5px; top:188px;">NO</div>
+      <div class="badge b-no" style="left:712.5px; top:188px;">NO</div>
+      <div class="badge b-yes" style="left:997.5px; top:188px;">SÍ</div>
+    </div>
+
+    <div class="leaves">
+      <div class="leaf">
+        <div class="name">Haiku 4.5</div>
+        <div class="tag">Ligero, ahorra tokens</div>
+        <ul><li>Chat sin archivos</li><li>Activa búsqueda web</li></ul>
+        <div class="promptbox"><b>Ejemplo de prompt</b>"Quiero [resultado] con [condiciones]. Hazme preguntas antes de empezar."</div>
+        <div class="gauge">
+          <div class="grow"><div class="glabel">Velocidad</div><div class="gtrack"><div class="gfill" style="width:95%"></div></div></div>
+          <div class="grow"><div class="glabel">Profundidad</div><div class="gtrack"><div class="gfill" style="width:20%"></div></div></div>
+        </div>
+      </div>
+      <div class="leaf">
+        <div class="name">Sonnet 5</div>
+        <div class="tag">Rápido, modelo del día a día</div>
+        <ul><li>Tareas simples</li><li>Conecta con Slack, Drive, Notion, Figma y 50+ más</li></ul>
+        <div class="promptbox"><b>Ejemplo de prompt</b>"Eres [rol]. [Tarea] con [input]. Tono [casual/formal]. Sin preámbulos, solo el resultado."</div>
+        <div class="gauge">
+          <div class="grow"><div class="glabel">Velocidad</div><div class="gtrack"><div class="gfill" style="width:75%"></div></div></div>
+          <div class="grow"><div class="glabel">Profundidad</div><div class="gtrack"><div class="gfill" style="width:45%"></div></div></div>
+        </div>
+      </div>
+      <div class="leaf">
+        <div class="name">Opus 4.8</div>
+        <div class="tag">Modelo para trabajo profundo</div>
+        <ul><li>Cowork + esfuerzo en High. Siempre.</li><li>Usa Skills en Projects</li></ul>
+        <div class="promptbox"><b>Ejemplo de prompt</b>"8 herramientas de IA que uso cada día. NO empieces aún — hazme preguntas de aclaración."</div>
+        <div class="gauge">
+          <div class="grow"><div class="glabel">Velocidad</div><div class="gtrack"><div class="gfill" style="width:45%"></div></div></div>
+          <div class="grow"><div class="glabel">Profundidad</div><div class="gtrack"><div class="gfill" style="width:80%"></div></div></div>
+        </div>
+      </div>
+      <div class="leaf">
+        <div class="name">Fable 5</div>
+        <div class="tag">El modelo más inteligente</div>
+        <ul><li>Tareas complejas de extremo a extremo</li><li>Investigación profunda y razonamiento duro</li></ul>
+        <div class="promptbox"><b>Ejemplo de prompt</b>"Mi objetivo: [objetivo]. Mis restricciones: [restricciones]. Propón 2-3 enfoques y recomienda uno."</div>
+        <div class="note">Cuando Opus se atasque, escala aquí — resérvalo para el 10% de tareas que de verdad lo necesitan (consume más tokens).</div>
+        <div class="gauge">
+          <div class="grow"><div class="glabel">Velocidad</div><div class="gtrack"><div class="gfill" style="width:25%"></div></div></div>
+          <div class="grow"><div class="glabel">Profundidad</div><div class="gtrack"><div class="gfill" style="width:98%"></div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="li-badge">in</div>
+      <span>cacm523</span>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

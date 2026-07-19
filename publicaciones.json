@@ -1078,5 +1078,125 @@
       "likes": 0,
       "shares": 0
     }
+  },
+  {
+    "id": "evolucion-herramientas-analistas-datos",
+    "imagen": "Construidos/Roles/evolucion-herramientas-analistas-datos.png",
+    "fechaPublicacion": "2026-10-14T09:10:00",
+    "es": {
+      "tema": "Roles",
+      "topico": "Evolución de las Herramientas que Debe Dominar un Analista de Datos",
+      "descripcion": "Las herramientas que definen el trabajo de un analista de datos no desaparecen con el tiempo: se potencian con inteligencia artificial generativa, mientras el fundamento que representan se mantiene como requisito de entrada. Excel pasó de ser una hoja de cálculo básica a incorporar Power Query y Power Pivot, y hoy avanza hacia Excel con Copilot integrado. SQL Server evolucionó hacia un ecosistema más amplio de motores —PostgreSQL, MySQL, Oracle— y su siguiente etapa incorpora IA generativa directamente sobre las consultas. Power BI y Tableau se mantienen como los mismos productos centrales, pero se integran ahora con Microsoft Fabric y con capacidades de IA como Tableau Pulse respectivamente. Los dashboards, que hace cinco años eran estáticos, hoy son interactivos y avanzan hacia la analítica aumentada.\n\nDos líneas de evolución no existían como herramienta dominante hace cinco años y emergieron directamente en el presente: Python, que hoy es indispensable para el análisis de datos y avanza hacia flujos con agentes de IA, y las APIs REST, que están evolucionando hacia el Model Context Protocol (MCP) como estándar para conectar modelos con herramientas y datos.\n\nEsta evolución deja una conclusión práctica: un analista de datos que domina hoy los fundamentos —SQL, Excel, un lenguaje de programación, visualización— no pierde esas competencias con la llegada de la IA generativa; las ve potenciadas. El riesgo no es que las herramientas cambien, sino no adaptarse a su versión potenciada por IA."
+    },
+    "en": {
+      "tema": "Roles",
+      "topico": "The Evolution of Tools Every Data Analyst Must Master",
+      "descripcion": "The tools that define a data analyst's work don't disappear over time: they get enhanced by generative AI, while the foundation they represent remains a baseline requirement. Excel went from a basic spreadsheet to incorporating Power Query and Power Pivot, and today is moving toward Excel with built-in Copilot. SQL Server evolved into a broader ecosystem of engines —PostgreSQL, MySQL, Oracle— and its next stage brings generative AI directly into queries. Power BI and Tableau remain the same core products, but now integrate with Microsoft Fabric and AI capabilities like Tableau Pulse, respectively. Dashboards, which were static five years ago, are interactive today and are moving toward augmented analytics.\n\nTwo evolution lines didn't exist as dominant tools five years ago and emerged directly in the present: Python, now indispensable for data analysis and moving toward AI-agent-driven workflows, and REST APIs, which are evolving toward the Model Context Protocol (MCP) as the standard for connecting models with tools and data.\n\nThis evolution leaves a practical conclusion: a data analyst who masters the fundamentals today —SQL, Excel, a programming language, visualization— doesn't lose those skills with the arrival of generative AI; they see them enhanced. The risk isn't that the tools change, it's failing to adapt to their AI-enhanced version."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "comandos-tipos-datos-sql",
+    "imagen": "Construidos/SQL/comandos-tipos-datos-sql.png",
+    "fechaPublicacion": "2026-10-16T09:10:00",
+    "es": {
+      "tema": "SQL",
+      "topico": "Comandos y Tipos de Datos en SQL Server",
+      "descripcion": "Los comandos de SQL Server se agrupan en cuatro familias que aparecen juntas en cualquier script de gestión de datos real. El lenguaje de definición de datos (DDL) crea y modifica la estructura —CREATE TABLE, ALTER TABLE, DROP TABLE, CREATE INDEX, CREATE VIEW, CREATE PROCEDURE—, mientras que el lenguaje de manipulación (DML) opera sobre los datos ya almacenados con SELECT, INSERT, UPDATE, DELETE, TRUNCATE y BULK INSERT. El control de acceso (DCL) decide quién puede hacer qué mediante GRANT, REVOKE y DENY, y el control de transacciones (TCL) garantiza que un conjunto de operaciones se confirme o se revierta como una unidad atómica con COMMIT, ROLLBACK y SAVEPOINT. Un mismo script —crear una tabla de clientes, insertar y consultar registros, otorgar permisos de lectura, y confirmar una actualización dentro de una transacción— recorre las cuatro familias en secuencia natural.\n\nEsos comandos operan sobre tipos de datos concretos, y elegir el tipo correcto afecta tanto el espacio de almacenamiento como la validez de las operaciones permitidas. Los tipos numéricos van de int y bigint para enteros de distinto rango hasta decimal con precisión exacta y money para valores monetarios. Los tipos de cadena distinguen entre longitud fija (char) y variable (varchar, nvarchar para Unicode), mientras que los de fecha y hora ofrecen distintos niveles de precisión: datetime2 mejora a datetime, y date/time separan la fecha de la hora cuando solo se necesita una de las dos. Los tipos binarios y especiales —varbinary, uniqueidentifier, xml, bit— cubren casos donde el dato no es ni numérico ni texto convencional.\n\nDominar estas dos dimensiones —comandos y tipos de datos— es la base mínima para diseñar, consultar y proteger cualquier base de datos relacional en SQL Server."
+    },
+    "en": {
+      "tema": "SQL",
+      "topico": "Commands and Data Types in SQL Server",
+      "descripcion": "SQL Server commands fall into four families that show up together in any real data management script. Data Definition Language (DDL) creates and modifies structure —CREATE TABLE, ALTER TABLE, DROP TABLE, CREATE INDEX, CREATE VIEW, CREATE PROCEDURE— while Data Manipulation Language (DML) operates on already-stored data with SELECT, INSERT, UPDATE, DELETE, TRUNCATE, and BULK INSERT. Access control (DCL) decides who can do what through GRANT, REVOKE, and DENY, and transaction control (TCL) guarantees that a set of operations commits or rolls back as an atomic unit with COMMIT, ROLLBACK, and SAVEPOINT. A single script —creating a customer table, inserting and querying records, granting read permissions, and confirming an update inside a transaction— runs through all four families in natural sequence.\n\nThose commands operate on concrete data types, and choosing the right one affects both storage space and which operations are valid. Numeric types range from int and bigint for integers of different ranges to decimal with exact precision and money for monetary values. String types distinguish between fixed length (char) and variable length (varchar, nvarchar for Unicode), while date and time types offer different precision levels: datetime2 improves on datetime, and date/time separate the date from the time when only one is needed. Binary and special types —varbinary, uniqueidentifier, xml, bit— cover cases where the data is neither numeric nor conventional text.\n\nMastering these two dimensions —commands and data types— is the minimum foundation for designing, querying, and protecting any relational database in SQL Server."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "modelos-salud-hospitales-privados",
+    "imagen": "Construidos/Modelos/modelos-salud-hospitales-privados.png",
+    "fechaPublicacion": "2026-10-18T09:10:00",
+    "es": {
+      "tema": "Modelos",
+      "topico": "Modelo de Excelencia Operacional en Hospitales Privados",
+      "descripcion": "La excelencia operacional en un hospital privado no depende de una sola área, sino de ocho dimensiones que giran alrededor de un mismo centro: el paciente. La estrategia y gobierno define la visión, las prioridades y los KPIs que orientan al resto de la organización, mientras que la calidad clínica y seguridad del paciente se sostiene en protocolos estandarizados y en la prevención activa de eventos adversos. La experiencia del paciente depende del acceso oportuno, los tiempos de atención y un trato genuinamente humanizado, y el flujo operativo y de capacidad determina qué tan bien se gestionan las camas, las altas y la productividad de los quirófanos.\n\nNinguna de estas dimensiones funciona de forma aislada: el talento, liderazgo y cultura sostienen todo lo anterior mediante un liderazgo visible y una cultura de seguridad real, la cadena de suministro y farmacia garantiza abasto oportuno con trazabilidad de inventarios, la digitalización y analítica conecta los sistemas clínicos (HIS/EMR) para habilitar decisiones en tiempo real, y las finanzas y sostenibilidad traducen todo el modelo en costeo por servicio y decisiones de inversión sostenibles.\n\nEste modelo integral se traduce en resultados medibles: mayor seguridad y mejor experiencia del paciente, menores tiempos de espera, mayor productividad hospitalaria, optimización de costos y crecimiento rentable y sostenible, monitoreados a través de indicadores clave como ocupación hospitalaria, estancia promedio, tiempo de espera en urgencias, rotación de camas, tasa de infecciones y EBITDA operativo."
+    },
+    "en": {
+      "tema": "Health Models",
+      "topico": "Operational Excellence Model for Private Hospitals",
+      "descripcion": "Operational excellence in a private hospital doesn't depend on a single area, but on eight dimensions that revolve around the same center: the patient. Strategy and governance defines the vision, priorities, and KPIs that guide the rest of the organization, while clinical quality and patient safety rests on standardized protocols and the active prevention of adverse events. Patient experience depends on timely access, wait times, and genuinely humanized care, and operational flow and capacity determines how well beds, discharges, and operating room productivity are managed.\n\nNone of these dimensions works in isolation: talent, leadership, and culture sustain everything above through visible leadership and a real safety culture, supply chain and pharmacy guarantee timely supply with inventory traceability, digitalization and analytics connect clinical systems (HIS/EMR) to enable real-time decisions, and finance and sustainability translate the entire model into per-service costing and sustainable investment decisions.\n\nThis integrated model translates into measurable results: greater patient safety and better patient experience, shorter wait times, higher hospital productivity, cost optimization, and profitable, sustainable growth, monitored through key indicators such as hospital occupancy, average length of stay, emergency room wait time, bed turnover, infection rate, and operating EBITDA."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "arbol-modelos-claude",
+    "imagen": "Construidos/Claude/arbol-modelos-claude.png",
+    "fechaPublicacion": "2026-10-20T09:10:00",
+    "es": {
+      "tema": "Claude",
+      "topico": "Árbol de Modelos de Claude: Cómo Elegir el Correcto",
+      "descripcion": "Elegir el modelo de Claude correcto para una tarea se resuelve con tres preguntas binarias en cadena, no con una tabla de comparación. La primera pregunta es si la tarea necesita algo más que una respuesta rápida: si la respuesta es no, la siguiente pregunta es si se necesita máxima velocidad y el menor gasto de tokens posible. Cuando la respuesta a esa segunda pregunta es sí, Haiku 4.5 es la opción correcta: un modelo ligero pensado para chat sin archivos adjuntos y búsquedas web rápidas, con la mayor velocidad y la menor profundidad de razonamiento del conjunto. Cuando esa segunda respuesta es no, Sonnet 5 cubre las tareas simples del día a día, con capacidad de conectarse a más de cincuenta herramientas —Slack, Drive, Notion, Figma— manteniendo un balance entre velocidad y profundidad.\n\nSi la respuesta a la primera pregunta es sí —la tarea sí necesita algo más que una respuesta rápida— la pregunta que sigue es si ese trabajo es el más difícil y ambicioso del conjunto. Cuando la respuesta es no, Opus 4.8 es el modelo para trabajo profundo: se usa en modo Cowork con el esfuerzo configurado en 'High' de forma constante, aprovechando Skills dentro de Projects. Cuando la respuesta es sí, Fable 5 es el modelo más inteligente disponible, reservado para tareas complejas de extremo a extremo que requieren investigación profunda y razonamiento duro —consume más tokens, por lo que conviene reservarlo para el 10% de tareas que de verdad lo necesitan, escalando desde Opus solo cuando ese modelo se atasca.\n\nEste árbol de decisión evita el error más común al usar un asistente de IA: usar siempre el mismo modelo sin considerar que la tarea define la herramienta correcta."
+    },
+    "en": {
+      "tema": "Claude",
+      "topico": "The Claude Model Decision Tree: How to Choose the Right One",
+      "descripcion": "Choosing the right Claude model for a task comes down to three chained binary questions, not a comparison table. The first question is whether the task needs more than a quick answer: if the answer is no, the next question is whether maximum speed and the lowest possible token cost are needed. When the answer to that second question is yes, Haiku 4.5 is the right choice: a lightweight model built for chat without attached files and fast web searches, with the highest speed and lowest reasoning depth in the set. When that second answer is no, Sonnet 5 covers everyday simple tasks, with the ability to connect to more than fifty tools —Slack, Drive, Notion, Figma— balancing speed and depth.\n\nIf the answer to the first question is yes —the task does need more than a quick answer— the next question is whether that work is the hardest and most ambitious in the set. When the answer is no, Opus 4.8 is the model for deep work: used in Cowork mode with effort consistently set to 'High,' leveraging Skills within Projects. When the answer is yes, Fable 5 is the most intelligent model available, reserved for complex end-to-end tasks that require deep research and hard reasoning —it consumes more tokens, so it's best reserved for the 10% of tasks that truly need it, escalating from Opus only when that model gets stuck.\n\nThis decision tree avoids the most common mistake when using an AI assistant: always using the same model without considering that the task defines the right tool."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "analisis-datos",
+    "imagen": "Construidos/Cultura_Datos/analisis-datos.png",
+    "fechaPublicacion": "2026-10-22T09:10:00",
+    "es": {
+      "tema": "Cultura_Datos",
+      "topico": "Análisis de Datos: Convertir Información en Mejores Decisiones",
+      "descripcion": "Los datos por sí solos no bastan: el verdadero valor está en analizarlos para obtener información que genere impacto real en el negocio. El análisis de datos es el proceso de inspeccionar, limpiar, transformar y modelar datos para descubrir información útil, sacar conclusiones y apoyar la toma de decisiones, y ese proceso sigue un flujo de cinco pasos reconocibles: recolectar datos de distintas fuentes y sistemas, limpiarlos detectando y corrigiendo errores, duplicados y datos incompletos, analizarlos para explorar patrones, tendencias y relaciones importantes, visualizarlos mediante gráficos y dashboards que comuniquen los hallazgos, y finalmente comunicar resultados claros que impulsen decisiones concretas.\n\nEste proceso importa por razones concretas y medibles: permite tomar decisiones basadas en evidencia en lugar de intuición, ayuda a reducir costos e identificar oportunidades de mejora, facilita comprender el comportamiento real de clientes y procesos, optimiza el rendimiento de equipos y organizaciones completas, y genera una ventaja competitiva cada vez más determinante en un mercado que se digitaliza aceleradamente. Ese análisis se apoya en un conjunto de herramientas ya consolidado —Excel, SQL, Power BI, Python, Tableau, entre muchas otras— cada una cubriendo una parte distinta del flujo, desde la consulta y limpieza hasta la visualización final.\n\nLa idea que resume todo esto es que el análisis de datos no consiste solo en trabajar con números: consiste en transformar información en conocimiento que genere valor. Los datos cuentan historias, y el trabajo de un analista es dárselas a entender."
+    },
+    "en": {
+      "tema": "Data Culture",
+      "topico": "Data Analysis: Turning Information Into Better Decisions",
+      "descripcion": "Data alone isn't enough: the real value lies in analyzing it to obtain information that generates real business impact. Data analysis is the process of inspecting, cleaning, transforming, and modeling data to discover useful information, draw conclusions, and support decision-making, and that process follows a recognizable five-step flow: collecting data from different sources and systems, cleaning it by detecting and correcting errors, duplicates, and incomplete data, analyzing it to explore patterns, trends, and important relationships, visualizing it through charts and dashboards that communicate findings, and finally communicating clear results that drive concrete decisions.\n\nThis process matters for concrete, measurable reasons: it enables decisions based on evidence rather than intuition, helps reduce costs and identify improvement opportunities, makes it easier to understand the real behavior of customers and processes, optimizes the performance of entire teams and organizations, and generates a competitive advantage that matters more and more in an increasingly digital market. That analysis relies on an already well-established set of tools —Excel, SQL, Power BI, Python, Tableau, among many others— each covering a different part of the flow, from querying and cleaning to final visualization.\n\nThe idea that sums all of this up is that data analysis isn't just about working with numbers: it's about transforming information into knowledge that generates value. Data tells stories, and an analyst's job is to make them understood."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "quien-hace-que-en-datos",
+    "imagen": "Construidos/Roles/quien-hace-que-en-datos.png",
+    "fechaPublicacion": "2026-10-24T09:10:00",
+    "es": {
+      "tema": "Roles",
+      "topico": "¿Quién Hace Qué en Datos? Ingeniería, Análisis, Ciencia y BI",
+      "descripcion": "Cuatro roles trabajan con datos dentro de una misma organización, pero cada uno responde una pregunta distinta y entrega un resultado distinto, siguiendo una línea de valor secuencial. El ingeniero de datos se enfoca en la infraestructura y el flujo de datos: construye pipelines, integra fuentes dispersas y prepara datos confiables, entregando data warehouses y datos limpios para responder la pregunta de cómo se mueven y organizan los datos dentro de la organización. Sobre esa base, el analista de datos se enfoca en la interpretación y los hallazgos: explora los datos ya disponibles, crea reportes y detecta patrones de negocio, entregando dashboards y recomendaciones que responden qué está pasando realmente en el negocio.\n\nEl científico de datos avanza un paso más allá de describir el presente: se enfoca en el modelado y la predicción, desarrollando modelos, experimentando y generando predicciones que se traducen en modelos predictivos e insights avanzados, respondiendo qué podría pasar y por qué. Finalmente, business intelligence (BI) se enfoca en la visualización y la toma de decisiones: transforma todo ese trabajo previo en tableros ejecutivos y métricas accionables —KPIs, dashboards ejecutivos, seguimiento— para responder cómo decidir mejor con los datos disponibles.\n\nEstos cuatro roles no compiten entre sí ni se superponen: cada uno aporta valor en una etapa distinta de la misma línea, desde mover los datos correctamente hasta convertirlos en la decisión final. Confundir estos roles —o esperar que uno solo cubra las cuatro etapas— es una causa común de fricción en los equipos de datos."
+    },
+    "en": {
+      "tema": "Roles",
+      "topico": "Who Does What in Data? Engineering, Analysis, Science, and BI",
+      "descripcion": "Four roles work with data within the same organization, but each answers a different question and delivers a different output, following a sequential value chain. The data engineer focuses on infrastructure and data flow: building pipelines, integrating scattered sources, and preparing reliable data, delivering data warehouses and clean data to answer how data moves and gets organized within the organization. Building on that foundation, the data analyst focuses on interpretation and findings: exploring already-available data, creating reports, and detecting business patterns, delivering dashboards and recommendations that answer what is actually happening in the business.\n\nThe data scientist goes one step beyond describing the present: focusing on modeling and prediction, developing models, experimenting, and generating predictions that translate into predictive models and advanced insights, answering what could happen and why. Finally, business intelligence (BI) focuses on visualization and decision-making: transforming all that previous work into executive dashboards and actionable metrics —KPIs, executive dashboards, tracking— to answer how to decide better with the data available.\n\nThese four roles don't compete with or overlap each other: each adds value at a different stage of the same chain, from moving data correctly to turning it into the final decision. Confusing these roles —or expecting one to cover all four stages— is a common source of friction in data teams."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
   }
 ]
