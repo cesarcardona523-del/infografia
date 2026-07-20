@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Los 3 Niveles de Adopción de IA</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { width:1264px; height:691px; padding:32px; background:#EDEFF3; font-family:-apple-system,"SF Pro Display","Segoe UI",Inter,Helvetica,Arial,sans-serif; }
+  .canvas { position:relative; width:1200px; height:627px; background:#FAFAF8; overflow:hidden; }
+
+  .eyebrow { position:absolute; top:32px; left:44px; font-size:11px; font-weight:700; letter-spacing:2.2px; color:#0F9D82; text-transform:uppercase; }
+  .title { position:absolute; top:47px; left:44px; font-size:24px; font-weight:800; color:#14161C; letter-spacing:-0.2px; }
+  .subtitle { position:absolute; top:79px; left:44px; width:1112px; font-size:12px; color:#5B6472; }
+
+  .stairs { position:absolute; top:118px; left:44px; width:1112px; height:342px; }
+  .step { position:absolute; width:352px; border-radius:14px 14px 0 0; color:#fff; padding:16px 20px; display:flex; flex-direction:column; }
+  .s1 { left:0px; width:352px; top:82px; height:260px; background:linear-gradient(160deg,#12A88C,#0B7A65); }
+  .s2 { left:380px; width:352px; top:42px; height:300px; background:linear-gradient(160deg,#9B5CF2,#6D28D9); }
+  .s3 { left:760px; width:352px; top:2px; height:340px; background:linear-gradient(160deg,#F0803D,#C6491A); }
+
+  .step .lvl { font-size:10.5px; font-weight:800; letter-spacing:1.4px; text-transform:uppercase; opacity:0.85; }
+  .step .name { margin-top:4px; font-size:19px; font-weight:800; }
+  .step .def { margin-top:6px; font-size:11.6px; line-height:1.42; opacity:0.95; }
+  .step .row { margin-top:7px; }
+  .step .lbl { font-size:9.5px; font-weight:800; text-transform:uppercase; letter-spacing:0.6px; opacity:0.75; }
+  .step .val { margin-top:2px; font-size:11px; line-height:1.35; }
+  .step .example { margin-top:7px; background:rgba(255,255,255,0.14); border-radius:9px; padding:7px 11px; }
+  .step .example b { display:block; font-size:9.5px; text-transform:uppercase; letter-spacing:0.5px; opacity:0.85; margin-bottom:3px; }
+  .step .example span { font-size:10.8px; line-height:1.35; }
+
+  .dims { position:absolute; top:478px; left:44px; width:1112px; height:44px; display:flex; gap:10px; }
+  .dim { flex:1; background:#fff; border:1px solid rgba(0,0,0,0.08); border-radius:9px; display:flex; align-items:center; justify-content:center; gap:7px; font-size:10.8px; font-weight:700; color:#3A3F48; }
+  .dim .dot { width:7px; height:7px; border-radius:50%; background:#14161C; flex-shrink:0; }
+
+  .closing { position:absolute; left:44px; right:44px; bottom:28px; background:#14161C; border-radius:10px; padding:11px 20px; display:flex; align-items:center; gap:10px; }
+  .closing svg { width:16px; height:16px; flex-shrink:0; }
+  .closing p { color:#F2F3F5; font-size:12.3px; font-weight:600; }
+
+  .signature { position:absolute; right:14px; bottom:82px; display:flex; align-items:center; gap:6px; opacity:0.85; }
+  .signature .li { width:18px; height:18px; border-radius:4px; background:#0A66C2; display:flex; align-items:center; justify-content:center; }
+  .signature .li svg { width:11px; height:11px; }
+  .signature span { font-size:11.5px; color:#5B6472; font-weight:600; }
+</style>
+</head>
+<body>
+<div class="canvas">
+
+  <div class="eyebrow">Adopción de IA</div>
+  <div class="title">Los 3 Niveles de Adopción de IA</div>
+  <div class="subtitle">No toda adopción de IA exige "ir a lo grande" desde el día uno — el punto de partida depende de tus objetivos, madurez analítica y capacidad de ejecución.</div>
+
+  <div class="stairs">
+
+    <div class="step s1">
+      <div class="lvl">Nivel 1</div>
+      <div class="name">Refactorizar</div>
+      <div class="def">Mejora el desempeño de procesos existentes sin cambiar su comportamiento externo.</div>
+      <div class="row"><div class="lbl">Cambia</div><div class="val">Solo lo interno — el cliente no nota diferencia.</div></div>
+      <div class="row"><div class="lbl">Riesgo / ROI</div><div class="val">Bajo riesgo, mejora incremental.</div></div>
+      <div class="example"><b>Ejemplo real</b><span>Detección de defectos en manufactura con analítica de texto sobre notas de call center.</span></div>
+    </div>
+
+    <div class="step s2">
+      <div class="lvl">Nivel 2</div>
+      <div class="name">Reinventar</div>
+      <div class="def">Cambia cómo y cuándo se entregan procesos y servicios. La IA se vuelve un actor visible.</div>
+      <div class="row"><div class="lbl">Cambia</div><div class="val">El comportamiento externo — el cliente lo nota.</div></div>
+      <div class="row"><div class="lbl">Riesgo / ROI</div><div class="val">Medio — puede abrir nuevas fuentes de ingreso.</div></div>
+      <div class="example"><b>Ejemplo real</b><span>Chatbot de servicio al cliente en banca para autoservicio (estados, transferencias, tarjetas).</span></div>
+    </div>
+
+    <div class="step s3">
+      <div class="lvl">Nivel 3</div>
+      <div class="name">Reimaginar</div>
+      <div class="def">Aplica IA de forma disruptiva: nuevos productos, servicios y modelos de relación.</div>
+      <div class="row"><div class="lbl">Cambia</div><div class="val">Todo — el producto no podría existir sin la IA.</div></div>
+      <div class="row"><div class="lbl">Riesgo / ROI</div><div class="val">Alto riesgo, mayor potencial de ROI a largo plazo.</div></div>
+      <div class="example"><b>Ejemplo real</b><span>El vehículo autónomo: navega de punto A a B sin intervención humana.</span></div>
+    </div>
+
+  </div>
+
+  <div class="dims">
+    <div class="dim"><div class="dot"></div>Proceso de Negocio</div>
+    <div class="dim"><div class="dot"></div>Madurez Analítica</div>
+    <div class="dim"><div class="dot"></div>Habilitación de Datos</div>
+    <div class="dim"><div class="dot"></div>DevOps</div>
+    <div class="dim"><div class="dot"></div>Riesgo</div>
+    <div class="dim"><div class="dot"></div>Valor / ROI</div>
+  </div>
+
+  <div class="closing">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M4 20V13M10 20V8M16 20V4M4 13l6-5 6-4" stroke="#0F9D82" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <p>Las organizaciones analíticamente maduras terminan aplicando IA en los tres niveles a la vez.</p>
+  </div>
+
+  <div class="signature">
+    <div class="li"><svg viewBox="0 0 24 24" fill="white"><path d="M4.98 3.5C4.98 4.88 3.94 6 2.5 6S0 4.88 0 3.5 1.04 1 2.48 1s2.5 1.12 2.5 2.5zM.24 8.25h4.5V23H.24V8.25zM8.5 8.25h4.31v2.02h.06c.6-1.14 2.07-2.34 4.26-2.34 4.56 0 5.4 3 5.4 6.9V23h-4.5v-6.75c0-1.61-.03-3.68-2.24-3.68-2.25 0-2.6 1.75-2.6 3.56V23H8.5V8.25z"/></svg></div>
+    <span>cacm523</span>
+  </div>
+
+</div>
+</body>
+</html>

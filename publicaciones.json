@@ -1318,5 +1318,65 @@
       "likes": 0,
       "shares": 0
     }
+  },
+  {
+    "id": "metricas-modelos-ia",
+    "imagen": "Construidos/Metricas_Modelos_IA/metricas-modelos-ia.png",
+    "fechaPublicacion": "2026-11-07T09:10:00",
+    "es": {
+      "tema": "Metricas de Modelos IA",
+      "topico": "Métricas para Evaluar Modelos de IA: Regresión vs. Clasificación",
+      "descripcion": "Evaluar un modelo de inteligencia artificial no se reduce a una sola cifra: la métrica correcta depende de si el modelo predice un valor continuo o una categoría, y de qué tipo de error resulta más costoso para el negocio. En los modelos de regresión, el error absoluto medio (MAE) promedia la diferencia entre predicción y valor real en unidades interpretables directamente, mientras que el error cuadrático medio (MSE) penaliza con más fuerza los errores grandes, útil para optimización. La raíz del error cuadrático medio (RMSE) devuelve ese error a la unidad original, facilitando la comparación entre modelos. R² mide qué proporción de la variabilidad explica el modelo, y su versión ajustada penaliza el uso de variables innecesarias al comparar alternativas. El error porcentual absoluto medio (MAPE) es especialmente útil en pronósticos de ventas y demanda, al expresarse en términos porcentuales. En los modelos de clasificación, accuracy mide el porcentaje total de predicciones correctas, pero puede resultar engañosa cuando las clases están desbalanceadas. Precision indica cuántos de los positivos predichos fueron realmente correctos —clave cuando un falso positivo es costoso, como en detección de fraude—, mientras que recall mide cuántos positivos reales logró detectar el modelo, relevante en diagnóstico o gestión de riesgo. El F1-score combina ambas en una media armónica, y ROC-AUC evalúa la capacidad del modelo para separar clases a distintos umbrales de decisión. Ninguna métrica es universalmente superior: la elección correcta depende del tipo de error que la organización menos puede permitirse."
+    },
+    "en": {
+      "tema": "AI Model Metrics",
+      "topico": "Metrics for Evaluating AI Models: Regression vs. Classification",
+      "descripcion": "Evaluating an AI model doesn't come down to a single number: the right metric depends on whether the model predicts a continuous value or a category, and on which type of error is more costly for the business. In regression models, mean absolute error (MAE) averages the difference between prediction and actual value in directly interpretable units, while mean squared error (MSE) penalizes large errors more heavily, useful for optimization. Root mean squared error (RMSE) returns that error to the original unit, making it easier to compare models. R² measures the proportion of variability explained by the model, and its adjusted version penalizes the use of unnecessary variables when comparing alternatives. Mean absolute percentage error (MAPE) is especially useful in sales and demand forecasting, since it's expressed in percentage terms. In classification models, accuracy measures the overall percentage of correct predictions, but it can be misleading when classes are imbalanced. Precision indicates how many of the predicted positives were actually correct — key when a false positive is costly, such as in fraud detection — while recall measures how many actual positives the model managed to detect, relevant in diagnostics or risk management. F1-score combines both into a harmonic mean, and ROC-AUC evaluates the model's ability to separate classes across different decision thresholds. No metric is universally superior: the right choice depends on which type of error the organization can least afford."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "herramientas-desarrollo-ia",
+    "imagen": "Construidos/Comparacion_Herramientas_IA_Desarrollo/herramientas-desarrollo-ia.png",
+    "fechaPublicacion": "2026-11-09T09:10:00",
+    "es": {
+      "tema": "Comparación de Herramientas de IA para Desarrollo",
+      "topico": "Comparación de Herramientas de IA para Desarrollo: Codex, Claude Code y OpenCode",
+      "descripcion": "Elegir un agente de IA para desarrollo de software no es una decisión de cuál es mejor, sino de cuál encaja con el contexto, la etapa del proyecto y el tipo de tarea. Codex, de OpenAI, es un agente que trabaja desde la terminal: lee, modifica y ejecuta código directamente sobre el proyecto, con integración simple y ejecución rápida, ideal para el desarrollo diario, nuevas funcionalidades y corrección de errores. Requiere cuenta OpenAI (ChatGPT Plus o Pro) y es muy fácil de instalar, pensado para avanzar rápido en tareas concretas. Claude Code, de Anthropic, está orientado al análisis profundo y la comprensión de proyectos grandes: destaca en refactorización, revisión de arquitectura y explicaciones detalladas, por lo que es más adecuado para diseñar arquitectura, revisar seguridad o tomar decisiones técnicas importantes. Requiere cuenta Claude (Pro, Team o Enterprise) y aprovecha mejor su potencial cuando recibe contexto claro. OpenCode, de código abierto, es una plataforma flexible que permite usar distintos modelos propios y configuraciones, ideal para equipos que buscan personalización y control total, a cambio de una configuración inicial más exigente. La recomendación práctica no es usar las tres herramientas a la vez, sino construir sobre una base sólida (un buen IDE), elegir un agente principal según el flujo de trabajo, y sumar OpenCode como complemento flexible cuando se necesite personalización o trabajar con varios modelos."
+    },
+    "en": {
+      "tema": "Comparison of AI Development Tools",
+      "topico": "Comparing AI Tools for Development: Codex, Claude Code, and OpenCode",
+      "descripcion": "Choosing an AI coding agent isn't about picking \"the best one\" — it's about matching the tool to the context, the project stage, and the type of task. Codex, from OpenAI, is a terminal-based development agent: it reads, modifies, and runs code directly in the project, with simple integration and fast task execution, making it ideal for daily development, new features, and bug fixes. It requires an OpenAI account (ChatGPT Plus or Pro) and is very easy to install, built for moving fast on concrete tasks. Claude Code, from Anthropic, is geared toward deep analysis and understanding large projects: it excels at refactoring, architecture review, and detailed explanations, making it better suited for designing architecture, reviewing security, or making important technical decisions. It requires a Claude account (Pro, Team, or Enterprise) and delivers more value when given clear context. OpenCode, an open-source platform, offers flexibility to use different models and configurations of your own choosing, ideal for teams seeking customization and full control, in exchange for more upfront setup. The practical recommendation isn't to use all three at once, but to build on a solid foundation (a good IDE), pick a primary agent based on your workflow, and add OpenCode as a flexible complement when you need customization or want to work across multiple models."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "adopcion-ia",
+    "imagen": "Construidos/Adopcion_IA/adopcion-ia.png",
+    "fechaPublicacion": "2026-11-11T09:10:00",
+    "es": {
+      "tema": "Adopción de las IA",
+      "topico": "Los 3 Niveles de Adopción de IA: Refactorizar, Reinventar, Reimaginar",
+      "descripcion": "No toda adopción de inteligencia artificial exige rediseñar la organización desde cero: existen tres niveles distintos de adopción, cada uno con su propio riesgo, alcance y retorno, y el punto de partida adecuado depende de los objetivos, la madurez analítica y la capacidad de ejecución de cada organización. Refactorizar es el primer nivel: aplicar IA para mejorar el desempeño de procesos existentes sin alterar su comportamiento externo, automatizando tareas repetitivas de alto volumen. El cliente no percibe cambios directos, el riesgo es bajo y la mejora es incremental —un ejemplo real es usar analítica de texto sobre notas de call center para detectar defectos de manufactura antes en el ciclo de producción—. Reinventar es el segundo nivel: aplicar IA para cambiar cómo y cuándo se entregan procesos y servicios, de forma que el cliente sí nota la diferencia. La IA se convierte en un actor visible, funcionando como asesor que aumenta las capacidades humanas, con riesgo y retorno medios y la posibilidad de abrir nuevas fuentes de ingreso —como un chatbot de servicio al cliente en banca que gestiona consultas rutinarias de autoservicio—. Reimaginar es el nivel más ambicioso: aplicar IA de forma disruptiva para crear productos, servicios y modelos de relación que no existían antes, donde la IA es parte integral de la oferta y no podría eliminarse sin que el producto dejara de funcionar —como el vehículo autónomo—. El riesgo es más alto, pero también lo es el potencial de retorno a largo plazo. Las organizaciones analíticamente maduras no eligen un solo nivel: terminan aplicando los tres de forma simultánea."
+    },
+    "en": {
+      "tema": "AI Adoption",
+      "topico": "The 3 Levels of AI Adoption: Refactor, Reinvent, Reimagine",
+      "descripcion": "Adopting artificial intelligence doesn't always require redesigning the organization from scratch: there are three distinct levels of AI adoption, each with its own risk, scope, and return, and the right starting point depends on an organization's goals, analytics maturity, and ability to execute. Refactor is the first level: applying AI to improve the performance of existing processes without changing their external behavior, automating high-volume repetitive tasks. Customers don't notice a direct change, risk is low, and improvement is incremental — a real example is using text analytics on call center notes to detect manufacturing defects earlier in the production cycle. Reinvent is the second level: applying AI to change how and when processes and services are delivered, in ways customers do notice. AI becomes a visible actor, functioning as an advisor that augments human capabilities, with medium risk and return and the potential to open new revenue streams — such as a banking customer-service chatbot that handles routine self-service inquiries. Reimagine is the most ambitious level: applying AI disruptively to create products, services, and engagement models that didn't exist before, where AI is integral to the offering and couldn't be removed without the product ceasing to function — such as the self-driving car. The risk is higher, but so is the long-term return potential. Analytically mature organizations don't pick a single level: they end up applying all three at once."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
   }
 ]

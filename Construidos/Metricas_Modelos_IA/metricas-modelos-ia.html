@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Métricas para Evaluar Modelos de IA</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { width:1264px; height:691px; padding:32px; background:#EDEFF3; font-family:-apple-system,"SF Pro Display","Segoe UI",Inter,Helvetica,Arial,sans-serif; }
+  .canvas { position:relative; width:1200px; height:627px; background:#FAFAF8; overflow:hidden; }
+
+  .eyebrow { position:absolute; top:28px; left:42px; font-size:10.5px; font-weight:700; letter-spacing:2.1px; color:#2B4C9E; text-transform:uppercase; }
+  .title { position:absolute; top:42px; left:42px; font-size:21px; font-weight:800; color:#14161C; letter-spacing:-0.2px; }
+  .subtitle { position:absolute; top:68px; left:42px; width:1116px; font-size:11.2px; color:#5B6472; }
+
+  .tables { position:absolute; top:96px; left:42px; width:1116px; height:374px; display:flex; gap:20px; }
+  .tcol { width:548px; display:flex; flex-direction:column; }
+  .thead { display:flex; align-items:center; gap:8px; height:28px; }
+  .thead .dot { width:9px; height:9px; border-radius:3px; }
+  .thead span { font-size:12.5px; font-weight:800; }
+  .thead small { font-size:9.5px; color:#6B7280; font-weight:600; margin-left:2px; }
+
+  .trow { flex:1; display:flex; align-items:center; gap:10px; border-top:1px solid rgba(0,0,0,0.07); padding:4px 0; }
+  .trow .badge { width:22px; height:22px; border-radius:6px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .trow .badge span { color:#fff; font-size:9px; font-weight:800; }
+  .trow .name { font-size:12px; font-weight:800; width:78px; flex-shrink:0; }
+  .trow .desc { font-size:10.3px; line-height:1.3; color:#33363E; flex:1; }
+  .trow .desc b { font-weight:700; color:#14161C; }
+
+  .concepts { position:absolute; top:480px; left:42px; width:1116px; height:46px; display:flex; gap:8px; }
+  .cchip { flex:1; background:#fff; border:1px solid rgba(0,0,0,0.08); border-radius:9px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:0 6px; }
+  .cchip .ct { font-size:10.3px; font-weight:800; color:#14161C; }
+  .cchip .cd { font-size:8.6px; color:#6B7280; margin-top:1px; line-height:1.2; }
+
+  .closing { position:absolute; left:42px; right:42px; bottom:26px; background:#14161C; border-radius:10px; padding:10px 20px; display:flex; align-items:center; gap:10px; }
+  .closing svg { width:15px; height:15px; flex-shrink:0; }
+  .closing p { color:#F2F3F5; font-size:11.8px; font-weight:600; }
+
+  .signature { position:absolute; right:12px; bottom:78px; display:flex; align-items:center; gap:5px; opacity:0.85; }
+  .signature .li { width:17px; height:17px; border-radius:4px; background:#0A66C2; display:flex; align-items:center; justify-content:center; }
+  .signature .li svg { width:10px; height:10px; }
+  .signature span { font-size:10.8px; color:#5B6472; font-weight:600; }
+</style>
+</head>
+<body>
+<div class="canvas">
+
+  <div class="eyebrow">Inteligencia Artificial</div>
+  <div class="title">Métricas para Evaluar Modelos de IA</div>
+  <div class="subtitle">11 métricas de referencia rápida, agrupadas por lo que realmente miden: error de regresión o acierto de clasificación.</div>
+
+  <div class="tables">
+
+    <div class="tcol">
+      <div class="thead"><div class="dot" style="background:#2B4C9E;"></div><span style="color:#2B4C9E;">Métricas de Regresión</span><small>predicen un valor continuo</small></div>
+      <div class="trow"><div class="badge" style="background:#2B4C9E;"><span>1</span></div><div class="name">MAE</div><div class="desc"><b>Error absoluto promedio</b> entre predicción y valor real. Uso: interpretación directa, error en unidades reales.</div></div>
+      <div class="trow"><div class="badge" style="background:#3358B0;"><span>2</span></div><div class="name">MSE</div><div class="desc"><b>Error cuadrático promedio</b>; penaliza más los errores grandes. Uso: optimización de modelos.</div></div>
+      <div class="trow"><div class="badge" style="background:#3B64C2;"><span>3</span></div><div class="name">RMSE</div><div class="desc"><b>Raíz del MSE</b>, en la unidad original. Uso: comparar modelos entre sí.</div></div>
+      <div class="trow"><div class="badge" style="background:#4470D4;"><span>4</span></div><div class="name">R²</div><div class="desc"><b>Proporción de variabilidad</b> explicada por el modelo. Uso: ajuste global, varianza explicada.</div></div>
+      <div class="trow"><div class="badge" style="background:#4D7CE6;"><span>5</span></div><div class="name">R² ajustado</div><div class="desc">Versión de R² que <b>penaliza variables innecesarias</b>. Uso: comparar modelos, elegir variables.</div></div>
+      <div class="trow"><div class="badge" style="background:#5A89F0;"><span>6</span></div><div class="name">MAPE</div><div class="desc"><b>Error porcentual</b> absoluto medio. Uso: forecasting, ventas y demanda.</div></div>
+    </div>
+
+    <div class="tcol">
+      <div class="thead"><div class="dot" style="background:#0F9D82;"></div><span style="color:#0B7A65;">Métricas de Clasificación</span><small>predicen una categoría</small></div>
+      <div class="trow"><div class="badge" style="background:#0B7A65;"><span>7</span></div><div class="name">Accuracy</div><div class="desc"><b>% total de predicciones correctas.</b> Uso: escenarios balanceados, visión general.</div></div>
+      <div class="trow"><div class="badge" style="background:#0F9D82;"><span>8</span></div><div class="name">Precision</div><div class="desc">De los positivos predichos, <b>cuántos fueron correctos.</b> Uso: costo de falsos positivos, fraude.</div></div>
+      <div class="trow"><div class="badge" style="background:#17AF92;"><span>9</span></div><div class="name">Recall</div><div class="desc">De los positivos reales, <b>cuántos detectó el modelo.</b> Uso: costo de falsos negativos, diagnóstico.</div></div>
+      <div class="trow"><div class="badge" style="background:#22C7A0;"><span>10</span></div><div class="name">F1-score</div><div class="desc"><b>Media armónica</b> entre precision y recall. Uso: clases desbalanceadas.</div></div>
+      <div class="trow"><div class="badge" style="background:#4FD9B8;"><span>11</span></div><div class="name">ROC-AUC</div><div class="desc">Capacidad de <b>separar clases</b> a distintos umbrales. Uso: clasificación binaria, ranking de riesgo.</div></div>
+    </div>
+
+  </div>
+
+  <div class="concepts">
+    <div class="cchip"><div class="ct">Residual</div><div class="cd">Diferencia entre predicción y valor real.</div></div>
+    <div class="cchip"><div class="ct">Matriz de confusión</div><div class="cd">Resume TP, TN, FP y FN.</div></div>
+    <div class="cchip"><div class="ct">Umbral</div><div class="cd">Cambia la decisión en clasificación.</div></div>
+    <div class="cchip"><div class="ct">Desbalance</div><div class="cd">Puede volver engañosa la accuracy.</div></div>
+    <div class="cchip"><div class="ct">Overfitting</div><div class="cd">Memoriza en vez de generalizar.</div></div>
+  </div>
+
+  <div class="closing">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M4 19V9M9 19V5M14 19v-7M19 19v-4" stroke="#0F9D82" stroke-width="2" stroke-linecap="round"/></svg>
+    <p>Ninguna métrica es universal: la correcta depende de qué tipo de error te cuesta más caro.</p>
+  </div>
+
+  <div class="signature">
+    <div class="li"><svg viewBox="0 0 24 24" fill="white"><path d="M4.98 3.5C4.98 4.88 3.94 6 2.5 6S0 4.88 0 3.5 1.04 1 2.48 1s2.5 1.12 2.5 2.5zM.24 8.25h4.5V23H.24V8.25zM8.5 8.25h4.31v2.02h.06c.6-1.14 2.07-2.34 4.26-2.34 4.56 0 5.4 3 5.4 6.9V23h-4.5v-6.75c0-1.61-.03-3.68-2.24-3.68-2.25 0-2.6 1.75-2.6 3.56V23H8.5V8.25z"/></svg></div>
+    <span>cacm523</span>
+  </div>
+
+</div>
+</body>
+</html>

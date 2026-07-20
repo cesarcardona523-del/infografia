@@ -127,6 +127,9 @@ Antes de crear una entrada nueva, el proyecto analiza si el contenido amplía o 
 - ✅ Gobernanza de Datos en Tableros de BI: Confianza en los Datos, Decisiones con Impacto — tema `Gobernanza_Tableros_BI` — [HTML](Construidos/Gobernanza_Tableros_BI/gobernanza-tableros-bi.html) · [PNG](Construidos/Gobernanza_Tableros_BI/gobernanza-tableros-bi.png)
 - ✅ Calidad de Datos en Gobierno de Datos: 6 Dimensiones con Caso Aplicado en Banca — tema `Calidad_Datos_Gobierno` — [HTML](Construidos/Calidad_Datos_Gobierno/calidad-datos-gobierno.html) · [PNG](Construidos/Calidad_Datos_Gobierno/calidad-datos-gobierno.png)
 - ✅ Data Governance for Master Data Management: Roles, Políticas y Rendición de Cuentas — tema `Data_Governance_MDM` — [HTML](Construidos/Data_Governance_MDM/data-governance-mdm.html) · [PNG](Construidos/Data_Governance_MDM/data-governance-mdm.png)
+- ✅ Métricas para Evaluar Modelos de IA: Regresión vs. Clasificación — tema `Metricas_Modelos_IA` — [HTML](Construidos/Metricas_Modelos_IA/metricas-modelos-ia.html) · [PNG](Construidos/Metricas_Modelos_IA/metricas-modelos-ia.png)
+- ✅ Comparación de Herramientas de IA para Desarrollo: Codex, Claude Code y OpenCode — tema `Comparacion_Herramientas_IA_Desarrollo` — [HTML](Construidos/Comparacion_Herramientas_IA_Desarrollo/herramientas-desarrollo-ia.html) · [PNG](Construidos/Comparacion_Herramientas_IA_Desarrollo/herramientas-desarrollo-ia.png)
+- ✅ Los 3 Niveles de Adopción de IA: Refactorizar, Reinventar, Reimaginar — tema `Adopcion_IA` — [HTML](Construidos/Adopcion_IA/adopcion-ia.html) · [PNG](Construidos/Adopcion_IA/adopcion-ia.png)
 
 Este README se irá actualizando con un enlace por cada infografía nueva.
 

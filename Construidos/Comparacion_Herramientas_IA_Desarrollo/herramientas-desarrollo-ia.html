@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Comparación de Herramientas de IA para Desarrollo</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { width:1264px; height:691px; padding:32px; background:#05070A; font-family:-apple-system,"SF Pro Display","Segoe UI",Inter,Helvetica,Arial,sans-serif; }
+  .canvas { position:relative; width:1200px; height:627px; background:#0D1117; overflow:hidden; }
+
+  .eyebrow { position:absolute; top:30px; left:44px; font-size:11px; font-weight:700; letter-spacing:2.2px; color:#3FB950; text-transform:uppercase; }
+  .title { position:absolute; top:45px; left:44px; font-size:23px; font-weight:800; color:#E6EDF3; letter-spacing:-0.2px; }
+  .subtitle { position:absolute; top:76px; left:44px; width:1112px; font-size:12px; color:#8B949E; }
+
+  .cards { position:absolute; top:104px; left:44px; width:1112px; height:334px; display:flex; gap:16px; }
+  .card { flex:1; border-radius:13px; background:#161B22; border:1px solid #262C36; padding:16px 18px; display:flex; flex-direction:column; }
+  .chead { display:flex; align-items:center; gap:10px; }
+  .badge { width:32px; height:32px; border-radius:9px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .badge svg { width:17px; height:17px; }
+  .cname { font-size:15px; font-weight:800; color:#E6EDF3; }
+  .cvendor { font-size:10px; color:#8B949E; font-weight:600; }
+
+  .rows { margin-top:12px; display:flex; flex-direction:column; gap:9px; }
+  .r .lbl { font-size:9.3px; font-weight:800; text-transform:uppercase; letter-spacing:0.6px; }
+  .r .val { margin-top:2px; font-size:10.9px; line-height:1.38; color:#C9D1D9; }
+
+  .reco { position:absolute; top:452px; left:44px; width:1112px; height:66px; border-radius:12px; background:#161B22; border:1px solid #262C36; display:flex; align-items:center; padding:0 18px; gap:16px; }
+  .reco-lead { width:230px; flex-shrink:0; font-size:11px; color:#8B949E; line-height:1.35; }
+  .reco-lead b { color:#E6EDF3; }
+  .reco-step { flex:1; display:flex; align-items:center; gap:9px; }
+  .reco-step .n { width:22px; height:22px; border-radius:50%; background:#21262D; color:#E6EDF3; font-size:11px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .reco-step .t { font-size:11px; line-height:1.3; }
+  .reco-step .t b { display:block; color:#E6EDF3; font-size:11.3px; }
+  .reco-step .t span { color:#8B949E; }
+
+  .closing { position:absolute; left:44px; right:44px; bottom:28px; background:#3FB950; border-radius:10px; padding:11px 20px; display:flex; align-items:center; gap:10px; }
+  .closing svg { width:16px; height:16px; flex-shrink:0; }
+  .closing p { color:#04150A; font-size:12.5px; font-weight:700; }
+
+  .signature { position:absolute; right:14px; bottom:82px; display:flex; align-items:center; gap:6px; opacity:0.85; }
+  .signature .li { width:18px; height:18px; border-radius:4px; background:#0A66C2; display:flex; align-items:center; justify-content:center; }
+  .signature .li svg { width:11px; height:11px; }
+  .signature span { font-size:11.5px; color:#8B949E; font-weight:600; }
+</style>
+</head>
+<body>
+<div class="canvas">
+
+  <div class="eyebrow">Herramientas de IA para Desarrollo</div>
+  <div class="title">Comparación de Herramientas de IA para Desarrollo</div>
+  <div class="subtitle">Elegir la herramienta correcta depende del contexto, la etapa del proyecto y el tipo de tarea.</div>
+
+  <div class="cards">
+
+    <div class="card">
+      <div class="chead">
+        <div class="badge" style="background:#1F5FD1;"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="14" rx="2" stroke="white" stroke-width="1.7"/><path d="M7 9l3 2.5L7 14M12 14h5" stroke="white" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><div class="cname">Codex</div><div class="cvendor">OpenAI</div></div>
+      </div>
+      <div class="rows">
+        <div class="r"><div class="lbl" style="color:#6FA3FF;">Enfoque</div><div class="val">Agente de terminal que lee, modifica y ejecuta código en tu proyecto.</div></div>
+        <div class="r"><div class="lbl" style="color:#6FA3FF;">Fortalezas</div><div class="val">Integración simple, ejecución rápida de tareas, ideal para debugging.</div></div>
+        <div class="r"><div class="lbl" style="color:#6FA3FF;">Mejor para</div><div class="val">Desarrollo diario, nuevas funcionalidades, pruebas y corrección de errores.</div></div>
+        <div class="r"><div class="lbl" style="color:#6FA3FF;">Acceso</div><div class="val">Requiere cuenta OpenAI (ChatGPT Plus/Pro).</div></div>
+        <div class="r"><div class="lbl" style="color:#6FA3FF;">Úsalo cuando</div><div class="val">Necesitas avanzar rápido y ejecutar tareas concretas.</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="chead">
+        <div class="badge" style="background:#D97757;"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l2.6 5.6 6 .7-4.4 4.1 1.2 6-5.4-3-5.4 3 1.2-6L3.4 9.3l6-.7L12 3z" stroke="white" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+        <div><div class="cname">Claude Code</div><div class="cvendor">Anthropic</div></div>
+      </div>
+      <div class="rows">
+        <div class="r"><div class="lbl" style="color:#E8A386;">Enfoque</div><div class="val">Agente de análisis profundo, razonamiento y comprensión de proyectos grandes.</div></div>
+        <div class="r"><div class="lbl" style="color:#E8A386;">Fortalezas</div><div class="val">Refactorización, revisión de arquitectura, explicaciones detalladas.</div></div>
+        <div class="r"><div class="lbl" style="color:#E8A386;">Mejor para</div><div class="val">Diseño de arquitectura, revisión de seguridad, documentación.</div></div>
+        <div class="r"><div class="lbl" style="color:#E8A386;">Acceso</div><div class="val">Requiere cuenta Claude (Pro, Team o Enterprise).</div></div>
+        <div class="r"><div class="lbl" style="color:#E8A386;">Úsalo cuando</div><div class="val">Necesitas entender a fondo un proyecto o decidir técnicamente.</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="chead">
+        <div class="badge" style="background:#238636;"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="white" stroke-width="1.7"/><path d="M8 12h8M12 8v8" stroke="white" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+        <div><div class="cname">OpenCode</div><div class="cvendor">Open Source</div></div>
+      </div>
+      <div class="rows">
+        <div class="r"><div class="lbl" style="color:#7EE083;">Enfoque</div><div class="val">Plataforma flexible que permite usar distintos modelos y configuraciones.</div></div>
+        <div class="r"><div class="lbl" style="color:#7EE083;">Fortalezas</div><div class="val">Personalizable, extensible, soporte multi-modelo, comunidad activa.</div></div>
+        <div class="r"><div class="lbl" style="color:#7EE083;">Mejor para</div><div class="val">Equipos que buscan flexibilidad, control total y adaptar la herramienta.</div></div>
+        <div class="r"><div class="lbl" style="color:#7EE083;">Acceso</div><div class="val">Open source — usa tus propios modelos (OpenAI, Claude, Gemini, locales).</div></div>
+        <div class="r"><div class="lbl" style="color:#7EE083;">Úsalo cuando</div><div class="val">Quieres flexibilidad total y experimentar con distintos flujos.</div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="reco">
+    <div class="reco-lead"><b>Recomendación general</b> — no se trata de usarlas todas, sino de elegir la adecuada para cada etapa.</div>
+    <div class="reco-step"><div class="n">1</div><div class="t"><b>Base sólida</b><span>Un buen IDE como VS Code.</span></div></div>
+    <div class="reco-step"><div class="n">2</div><div class="t"><b>Agente principal</b><span>Codex o Claude Code, según tu flujo.</span></div></div>
+    <div class="reco-step"><div class="n">3</div><div class="t"><b>Complemento flexible</b><span>OpenCode para personalizar o usar varios modelos.</span></div></div>
+  </div>
+
+  <div class="closing">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M12 3v18M3 12h18" stroke="#04150A" stroke-width="2" stroke-linecap="round"/></svg>
+    <p>La IA no reemplaza al desarrollador. Lo potencia. La clave está en combinar criterio técnico + buenas herramientas + intención.</p>
+  </div>
+
+  <div class="signature">
+    <div class="li"><svg viewBox="0 0 24 24" fill="white"><path d="M4.98 3.5C4.98 4.88 3.94 6 2.5 6S0 4.88 0 3.5 1.04 1 2.48 1s2.5 1.12 2.5 2.5zM.24 8.25h4.5V23H.24V8.25zM8.5 8.25h4.31v2.02h.06c.6-1.14 2.07-2.34 4.26-2.34 4.56 0 5.4 3 5.4 6.9V23h-4.5v-6.75c0-1.61-.03-3.68-2.24-3.68-2.25 0-2.6 1.75-2.6 3.56V23H8.5V8.25z"/></svg></div>
+    <span>cacm523</span>
+  </div>
+
+</div>
+</body>
+</html>
