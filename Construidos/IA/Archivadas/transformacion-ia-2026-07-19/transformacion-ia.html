@@ -28,32 +28,32 @@
   }
 
   .top-panel{
-    position:absolute; top:0; left:0; right:0; height:37%;
+    position:absolute; top:0; left:0; right:0; height:53%;
     background:linear-gradient(160deg, #FBF8F1 0%, var(--paper) 100%);
     clip-path: polygon(0% 0%, 100% 0%, 100% 83%, 96% 91%, 91% 82%, 86% 94%, 81% 84%, 76% 92%, 71% 81%, 66% 95%, 61% 83%, 56% 90%, 51% 82%, 46% 93%, 41% 85%, 36% 91%, 31% 81%, 26% 94%, 21% 84%, 16% 90%, 11% 82%, 6% 93%, 0% 87%);
-    padding:16px 30px 34px; color:var(--navy);
+    padding:16px 30px 30px; color:var(--navy);
     display:flex; flex-direction:column;
   }
   .top-panel .eyebrow{ font-size:10px; font-weight:700; letter-spacing:1.8px; color:var(--ember-dark); text-transform:uppercase; text-align:center; margin-bottom:3px; }
-  .top-panel h1{ font-size:19px; margin:0 0 3px; font-weight:800; text-align:center; letter-spacing:-0.2px; }
+  .top-panel h1{ font-size:20px; margin:0 0 3px; font-weight:800; text-align:center; letter-spacing:-0.2px; }
   .top-panel h1 em{ font-style:normal; color:var(--ember-dark); }
-  .top-panel .sub{ text-align:center; font-size:10.5px; font-weight:700; color:var(--muted-l); margin-bottom:9px; }
-  .top-grid{ flex:1; display:grid; grid-template-columns: repeat(3,1fr); grid-template-rows:repeat(2,1fr); gap:7px; }
-  .belief{ background:rgba(232,112,58,0.07); border:1px dashed var(--paper-line); border-radius:8px; padding:0 11px; display:flex; align-items:center; gap:8px; }
-  .belief .icon{ width:19px; height:19px; border-radius:50%; background:transparent; border:1.5px solid #C9B98F; color:#C9B98F; display:flex; align-items:center; justify-content:center; flex:none; }
-  .belief .icon svg{ width:10px; height:10px; }
-  .belief span{ font-size:10.3px; font-weight:700; line-height:1.22; color:#6B7286; }
+  .top-panel .sub{ text-align:center; font-size:11px; font-weight:700; color:var(--muted-l); margin-bottom:8px; }
+  .top-grid{ flex:1; display:grid; grid-template-columns: repeat(3,1fr); gap:8px; }
+  .belief{ background:rgba(232,112,58,0.08); border:1px solid var(--paper-line); border-radius:8px; padding:8px 11px; display:flex; align-items:center; gap:8px; }
+  .belief .icon{ width:22px; height:22px; border-radius:6px; background:var(--paper-line); color:var(--muted-l); display:flex; align-items:center; justify-content:center; flex:none; }
+  .belief .icon svg{ width:12px; height:12px; }
+  .belief span{ font-size:10px; font-weight:700; line-height:1.25; }
 
-  .bottom-panel{ position:absolute; left:0; right:0; bottom:0; top:30%; padding:66px 30px 16px; display:flex; flex-direction:column; }
-  .bottom-panel .label{ text-align:center; font-size:13.5px; font-weight:800; color:var(--ember); margin-bottom:12px; }
+  .bottom-panel{ position:absolute; left:0; right:0; bottom:0; top:44%; padding:60px 30px 14px; display:flex; flex-direction:column; }
+  .bottom-panel .label{ text-align:center; font-size:12.5px; font-weight:800; color:var(--ember); margin-bottom:8px; }
   .bottom-panel .label b{ color:#fff; }
-  .bottom-grid{ flex:1; display:grid; grid-template-columns: repeat(4,1fr); grid-template-rows: 1fr 1fr; gap:11px; }
-  .real{ background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.12); border-radius:10px; padding:13px 14px; display:flex; flex-direction:column; justify-content:center; gap:9px; }
-  .real .icon{ width:28px; height:28px; border-radius:8px; background:var(--ember); color:#1B1712; display:flex; align-items:center; justify-content:center; }
-  .real .icon svg{ width:15px; height:15px; }
-  .real span{ font-size:11px; font-weight:700; line-height:1.36; color:var(--cream); }
+  .bottom-grid{ flex:1; display:grid; grid-template-columns: repeat(4,1fr); grid-template-rows: 1fr 1fr; gap:9px; }
+  .real{ background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:9px; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; gap:6px; }
+  .real .icon{ width:24px; height:24px; border-radius:7px; background:var(--ember); color:#1B1712; display:flex; align-items:center; justify-content:center; }
+  .real .icon svg{ width:13px; height:13px; }
+  .real span{ font-size:9.6px; font-weight:700; line-height:1.32; color:var(--cream); }
 
-  .tear-label{ position:absolute; left:50%; top:33%; transform:translate(-50%,-50%); background:var(--ember); color:#1B1712; font-size:10px; font-weight:800; padding:5px 16px; border-radius:20px; box-shadow:0 6px 16px rgba(0,0,0,0.35); z-index:5; text-transform:uppercase; letter-spacing:0.5px; }
+  .tear-label{ position:absolute; left:50%; top:44%; transform:translate(-50%,-50%); background:var(--ember); color:#1B1712; font-size:10px; font-weight:800; padding:5px 16px; border-radius:20px; box-shadow:0 6px 16px rgba(0,0,0,0.35); z-index:5; text-transform:uppercase; letter-spacing:0.5px; }
 
   .footer{ position:absolute; bottom:9px; right:20px; display:flex; align-items:center; gap:6px; z-index:5; }
   .li-badge{ width:15px; height:15px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:9.5px; font-weight:800; font-family: Arial, sans-serif; }
