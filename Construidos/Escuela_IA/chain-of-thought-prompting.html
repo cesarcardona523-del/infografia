@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Chain of Thought</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { width:1264px; height:691px; padding:32px; background:#EDEFF3; font-family:-apple-system,"SF Pro Display","Segoe UI",Inter,Helvetica,Arial,sans-serif; }
+  .canvas { position:relative; width:1200px; height:627px; background:#FAFAF8; overflow:hidden; }
+
+  .eyebrow { position:absolute; top:26px; left:44px; font-size:10.5px; font-weight:700; letter-spacing:2px; color:#00467F; text-transform:uppercase; }
+  .title { position:absolute; top:41px; left:44px; font-size:22px; font-weight:800; color:#14161C; letter-spacing:-0.2px; }
+  .subtitle { position:absolute; top:68px; left:44px; width:760px; font-size:11.3px; color:#5B6472; }
+
+  .event-badge { position:absolute; top:24px; right:44px; display:flex; align-items:center; gap:8px; background:#F0F3F7; border:1px solid #D7E0EA; border-radius:10px; padding:6px 12px; }
+  .event-badge img { height:26px; }
+  .event-badge .et { font-size:9.5px; font-weight:800; color:#00467F; line-height:1.25; text-transform:uppercase; }
+  .event-badge .er { font-size:9px; color:#5B6472; line-height:1.25; }
+  .event-badge .er b { color:#EE3124; }
+
+  .compare { position:absolute; top:100px; left:44px; width:1112px; height:264px; display:flex; gap:16px; }
+  .ccol { flex:1; border-radius:13px; padding:14px 18px; display:flex; flex-direction:column; }
+  .ccol.no { background:#F1F2F4; border:1px solid #DADFE5; }
+  .ccol.yes { background:rgba(15,157,130,0.055); border:1px solid rgba(15,157,130,0.28); }
+  .clabel { font-size:12.5px; font-weight:800; display:flex; align-items:center; gap:6px; }
+  .no .clabel { color:#5B6472; }
+  .yes .clabel { color:#0B7A65; }
+  .box { margin-top:9px; border-radius:9px; padding:9px 12px; }
+  .box.prompt { background:#fff; border:1px solid rgba(0,0,0,0.08); }
+  .box .blabel { font-size:8.5px; font-weight:800; text-transform:uppercase; letter-spacing:0.5px; color:#8A97A6; }
+  .box .btext { margin-top:3px; font-size:10.6px; font-style:italic; color:#2A2E36; line-height:1.35; }
+  .box.resp { margin-top:8px; }
+  .no .box.resp { background:#E4E6E9; }
+  .yes .box.resp { background:rgba(15,157,130,0.1); }
+  .no .box.resp .btext { font-style:normal; color:#4A525C; }
+  .yes .box.resp .btext { font-style:normal; color:#0B5C4C; }
+
+  .mechanisms { position:absolute; top:380px; left:44px; width:1112px; height:172px; display:flex; gap:14px; }
+  .mcard { flex:1; border-radius:12px; background:#fff; border:1px solid rgba(0,0,0,0.07); padding:14px 16px; display:flex; flex-direction:column; }
+  .mnum { font-size:22px; font-weight:800; color:#00467F; opacity:0.85; }
+  .mtitle { margin-top:2px; font-size:13px; font-weight:800; color:#14161C; }
+  .mdesc { margin-top:6px; font-size:10.8px; line-height:1.4; color:#4A525C; }
+
+  .closing { position:absolute; left:44px; right:44px; bottom:26px; background:#14161C; border-radius:10px; padding:10px 20px; display:flex; align-items:center; gap:10px; }
+  .closing svg.cic { width:15px; height:15px; flex-shrink:0; }
+  .closing p { color:#F2F3F5; font-size:12px; font-weight:600; }
+
+  .signature { position:absolute; right:12px; bottom:80px; display:flex; align-items:center; gap:5px; opacity:0.85; }
+  .signature .li { width:17px; height:17px; border-radius:4px; background:#0A66C2; display:flex; align-items:center; justify-content:center; }
+  .signature .li svg { width:10px; height:10px; }
+  .signature span { font-size:10.8px; color:#5B6472; font-weight:600; }
+</style>
+</head>
+<body>
+<div class="canvas">
+
+  <div class="eyebrow">Escuela de Inteligencia Artificial — Sesión 2: Prompt Engineering</div>
+  <div class="title">Chain of Thought</div>
+  <div class="subtitle">Pedirle a la IA que "piense paso a paso" mejora dramáticamente la calidad de sus respuestas. No es un truco — es cómo funciona mejor la arquitectura.</div>
+
+  <div class="event-badge">
+    <img src="uniremington-logo.png" alt="Uniremington">
+    <div>
+      <div class="et">Escuela de IA</div>
+      <div class="er">Realizado por <b>Uniremington</b></div>
+    </div>
+  </div>
+
+  <div class="compare">
+    <div class="ccol no">
+      <div class="clabel">✕ Sin Chain of Thought</div>
+      <div class="box prompt"><div class="blabel">Prompt</div><div class="btext">"Hazme una página web para venta de boletería"</div></div>
+      <div class="box resp"><div class="blabel">Respuesta</div><div class="btext">Genera un HTML genérico con formulario básico, sin considerar pagos, asientos ni validaciones.</div></div>
+    </div>
+    <div class="ccol yes">
+      <div class="clabel">✓ Con Chain of Thought</div>
+      <div class="box prompt"><div class="blabel">Prompt</div><div class="btext">"Piensa paso a paso: ¿qué necesita una página de venta de boletería? Primero lista los requisitos, luego diseña la estructura, y finalmente genera el código."</div></div>
+      <div class="box resp"><div class="blabel">Respuesta</div><div class="btext">Analiza requisitos (catálogo, asientos, pasarela de pago, confirmación por email), propone arquitectura y genera código completo y funcional.</div></div>
+    </div>
+  </div>
+
+  <div class="mechanisms">
+    <div class="mcard">
+      <div class="mnum">01</div>
+      <div class="mtitle">Descompone el problema</div>
+      <div class="mdesc">En vez de saltar a la respuesta, identifica sub-problemas primero.</div>
+    </div>
+    <div class="mcard">
+      <div class="mnum">02</div>
+      <div class="mtitle">Genera contexto intermedio</div>
+      <div class="mdesc">Cada paso que escribe se vuelve parte del input para el siguiente.</div>
+    </div>
+    <div class="mcard">
+      <div class="mnum">03</div>
+      <div class="mtitle">Reduce errores acumulados</div>
+      <div class="mdesc">Los pasos visibles permiten "corregir el rumbo" antes de la conclusión.</div>
+    </div>
+  </div>
+
+  <div class="closing">
+    <svg class="cic" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h10M4 18h13" stroke="#0F9D82" stroke-width="2" stroke-linecap="round"/></svg>
+    <p>El modelo genera un token a la vez — pedirle razonar paso a paso es darle más espacio para pensar.</p>
+  </div>
+
+  <div class="signature">
+    <div class="li"><svg viewBox="0 0 24 24" fill="white"><path d="M4.98 3.5C4.98 4.88 3.94 6 2.5 6S0 4.88 0 3.5 1.04 1 2.48 1s2.5 1.12 2.5 2.5zM.24 8.25h4.5V23H.24V8.25zM8.5 8.25h4.31v2.02h.06c.6-1.14 2.07-2.34 4.26-2.34 4.56 0 5.4 3 5.4 6.9V23h-4.5v-6.75c0-1.61-.03-3.68-2.24-3.68-2.25 0-2.6 1.75-2.6 3.56V23H8.5V8.25z"/></svg></div>
+    <span>cacm523</span>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>El Ciclo del Hype de la IA</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { width:1264px; height:691px; padding:32px; background:#EDEFF3; font-family:-apple-system,"SF Pro Display","Segoe UI",Inter,Helvetica,Arial,sans-serif; }
+  .canvas { position:relative; width:1200px; height:627px; background:#FAFAF8; overflow:hidden; }
+
+  .eyebrow { position:absolute; top:26px; left:44px; font-size:10.5px; font-weight:700; letter-spacing:2px; color:#00467F; text-transform:uppercase; }
+  .title { position:absolute; top:41px; left:44px; font-size:21px; font-weight:800; color:#14161C; letter-spacing:-0.2px; }
+  .subtitle { position:absolute; top:67px; left:44px; width:760px; font-size:11.3px; color:#5B6472; }
+
+  .event-badge { position:absolute; top:24px; right:44px; display:flex; align-items:center; gap:8px; background:#F0F3F7; border:1px solid #D7E0EA; border-radius:10px; padding:6px 12px; }
+  .event-badge img { height:26px; }
+  .event-badge .et { font-size:9.5px; font-weight:800; color:#00467F; line-height:1.25; text-transform:uppercase; }
+  .event-badge .er { font-size:9px; color:#5B6472; line-height:1.25; }
+  .event-badge .er b { color:#EE3124; }
+
+  .board { position:absolute; top:100px; left:44px; width:1112px; height:452px; display:flex; gap:16px; }
+  .panel { flex:1; border-radius:14px; background:#fff; border:1px solid rgba(0,0,0,0.07); padding:16px 20px; display:flex; flex-direction:column; }
+  .ptitle { font-size:14px; font-weight:800; color:#14161C; }
+  .psub { margin-top:3px; font-size:10.3px; color:#6B7280; }
+
+  .chart { flex:1; display:flex; align-items:flex-end; gap:10px; margin-top:16px; padding-bottom:4px; border-bottom:1.5px solid #E3E7EC; }
+  .bar-col { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%; }
+  .bar { width:100%; border-radius:5px 5px 0 0; background:#00467F; }
+  .bar.q { background-image:repeating-linear-gradient(135deg,#B7C2CF,#B7C2CF 4px,transparent 4px,transparent 8px); border:1.5px dashed #8A97A6; }
+  .bar-col .blabel { margin-top:6px; font-size:9.5px; font-weight:700; color:#4A525C; }
+
+  .qchip { margin-top:14px; background:rgba(238,49,36,0.06); border:1px dashed rgba(238,49,36,0.35); border-radius:10px; padding:9px 13px; font-size:10.8px; color:#8C2018; font-weight:600; line-height:1.4; }
+
+  .curve-wrap { flex:1; margin-top:10px; position:relative; }
+  .curve-wrap svg { width:100%; height:100%; }
+  .phase-label { position:absolute; font-size:9.3px; font-weight:800; color:#00467F; text-align:center; line-height:1.2; width:100px; }
+
+  .closing { position:absolute; left:44px; right:44px; bottom:26px; background:#14161C; border-radius:10px; padding:10px 20px; display:flex; align-items:center; gap:10px; }
+  .closing svg.cic { width:15px; height:15px; flex-shrink:0; }
+  .closing p { color:#F2F3F5; font-size:12px; font-weight:600; }
+
+  .signature { position:absolute; right:12px; bottom:80px; display:flex; align-items:center; gap:5px; opacity:0.85; }
+  .signature .li { width:17px; height:17px; border-radius:4px; background:#0A66C2; display:flex; align-items:center; justify-content:center; }
+  .signature .li svg { width:10px; height:10px; }
+  .signature span { font-size:10.8px; color:#5B6472; font-weight:600; }
+</style>
+</head>
+<body>
+<div class="canvas">
+
+  <div class="eyebrow">Escuela de Inteligencia Artificial — Sesión 1</div>
+  <div class="title">El Ciclo del Hype de la IA</div>
+  <div class="subtitle">Cada avance importante fue seguido de decepción cuando las expectativas superaron las capacidades.</div>
+
+  <div class="event-badge">
+    <img src="uniremington-logo.png" alt="Uniremington">
+    <div>
+      <div class="et">Escuela de IA</div>
+      <div class="er">Realizado por <b>Uniremington</b></div>
+    </div>
+  </div>
+
+  <div class="board">
+
+    <div class="panel">
+      <div class="ptitle">Ciclos de Hype por Década</div>
+      <div class="psub">Nivel relativo de entusiasmo e inversión en IA, por época (lectura cualitativa).</div>
+      <div class="chart">
+        <div class="bar-col"><div class="bar" style="height:42%; background:#5A89F0;"></div><div class="blabel">60s</div></div>
+        <div class="bar-col"><div class="bar" style="height:18%; background:#AFC4DE;"></div><div class="blabel">70s</div></div>
+        <div class="bar-col"><div class="bar" style="height:22%; background:#AFC4DE;"></div><div class="blabel">80s</div></div>
+        <div class="bar-col"><div class="bar" style="height:38%; background:#5A89F0;"></div><div class="blabel">90s</div></div>
+        <div class="bar-col"><div class="bar" style="height:68%; background:#00467F;"></div><div class="blabel">2012</div></div>
+        <div class="bar-col"><div class="bar" style="height:96%; background:#0F9D82;"></div><div class="blabel">2023</div></div>
+        <div class="bar-col"><div class="bar q" style="height:50%;"></div><div class="blabel">???</div></div>
+      </div>
+      <div class="qchip">💬 Escriban en el chat — 30 segundos: ¿Estamos en un ciclo de hype o en una revolución real? ¿Por qué?</div>
+    </div>
+
+    <div class="panel">
+      <div class="ptitle">El Ciclo del Hype (Gartner)</div>
+      <div class="psub">Las tecnologías pasan por fases predecibles: entusiasmo excesivo, decepción, adopción real.</div>
+      <div class="curve-wrap">
+        <svg viewBox="0 0 520 260" fill="none">
+          <line x1="30" y1="230" x2="30" y2="20" stroke="#C7CFD8" stroke-width="1.5"/>
+          <line x1="30" y1="230" x2="500" y2="230" stroke="#C7CFD8" stroke-width="1.5"/>
+          <path d="M35,225 C60,225 65,50 130,35 C175,25 190,110 240,190 C270,230 300,225 340,205 C390,180 430,168 495,163" stroke="#00467F" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="35" cy="225" r="5" fill="#EE3124"/>
+          <circle cx="130" cy="35" r="5" fill="#EE3124"/>
+          <circle cx="240" cy="190" r="5" fill="#EE3124"/>
+          <circle cx="340" cy="205" r="5" fill="#EE3124"/>
+          <circle cx="495" cy="163" r="5" fill="#EE3124"/>
+          <text x="8" y="130" font-size="11" font-weight="700" fill="#8A97A6" transform="rotate(-90 8 130)">Expectativas</text>
+          <text x="480" y="252" font-size="11" font-weight="700" fill="#8A97A6" text-anchor="end">Tiempo</text>
+        </svg>
+        <div class="phase-label" style="left:-6px; top:66%;">Lanzamiento</div>
+        <div class="phase-label" style="left:16%; top:2%;">Pico de expectativas sobredimensionadas</div>
+        <div class="phase-label" style="left:36%; top:68%;">Abismo de desilusión</div>
+        <div class="phase-label" style="left:56%; top:60%;">Rampa de consolidación</div>
+        <div class="phase-label" style="left:74%; top:42%;">Meseta de productividad</div>
+      </div>
+      <div class="qchip">💬 La pregunta es: ¿dónde está la IA generativa en este ciclo hoy?</div>
+    </div>
+
+  </div>
+
+  <div class="closing">
+    <svg class="cic" viewBox="0 0 24 24" fill="none"><path d="M3 17l6-6 4 4 8-8" stroke="#0F9D82" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <p>El patrón se repite hace 70 años. La pregunta no es si hay hype — es qué queda cuando el hype se disipa.</p>
+  </div>
+
+  <div class="signature">
+    <div class="li"><svg viewBox="0 0 24 24" fill="white"><path d="M4.98 3.5C4.98 4.88 3.94 6 2.5 6S0 4.88 0 3.5 1.04 1 2.48 1s2.5 1.12 2.5 2.5zM.24 8.25h4.5V23H.24V8.25zM8.5 8.25h4.31v2.02h.06c.6-1.14 2.07-2.34 4.26-2.34 4.56 0 5.4 3 5.4 6.9V23h-4.5v-6.75c0-1.61-.03-3.68-2.24-3.68-2.25 0-2.6 1.75-2.6 3.56V23H8.5V8.25z"/></svg></div>
+    <span>cacm523</span>
+  </div>
+
+</div>
+</body>
+</html>

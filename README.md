@@ -130,6 +130,12 @@ Antes de crear una entrada nueva, el proyecto analiza si el contenido amplía o 
 - ✅ Métricas para Evaluar Modelos de IA: Regresión vs. Clasificación — tema `Metricas_Modelos_IA` — [HTML](Construidos/Metricas_Modelos_IA/metricas-modelos-ia.html) · [PNG](Construidos/Metricas_Modelos_IA/metricas-modelos-ia.png)
 - ✅ Comparación de Herramientas de IA para Desarrollo: Codex, Claude Code y OpenCode — tema `Comparacion_Herramientas_IA_Desarrollo` — [HTML](Construidos/Comparacion_Herramientas_IA_Desarrollo/herramientas-desarrollo-ia.html) · [PNG](Construidos/Comparacion_Herramientas_IA_Desarrollo/herramientas-desarrollo-ia.png)
 - ✅ Los 3 Niveles de Adopción de IA: Refactorizar, Reinventar, Reimaginar — tema `Adopcion_IA` — [HTML](Construidos/Adopcion_IA/adopcion-ia.html) · [PNG](Construidos/Adopcion_IA/adopcion-ia.png)
+- ✅ De Turing a GPT: la Historia de la IA en 6 Hitos — tema `Escuela_IA` (evento: Escuela de Inteligencia Artificial · Uniremington) — [HTML](Construidos/Escuela_IA/historia-ia-de-turing-a-gpt.html) · [PNG](Construidos/Escuela_IA/historia-ia-de-turing-a-gpt.png)
+- ✅ Cómo Funciona un LLM — tema `Escuela_IA` (evento: Escuela de Inteligencia Artificial · Uniremington) — [HTML](Construidos/Escuela_IA/como-funciona-un-llm.html) · [PNG](Construidos/Escuela_IA/como-funciona-un-llm.png)
+- ✅ Capacidades y Límites de los LLM — tema `Escuela_IA` (evento: Escuela de Inteligencia Artificial · Uniremington) — [HTML](Construidos/Escuela_IA/capacidades-y-limites-llm.html) · [PNG](Construidos/Escuela_IA/capacidades-y-limites-llm.png)
+- ✅ El Ciclo del Hype de la IA — tema `Escuela_IA` (evento: Escuela de Inteligencia Artificial · Uniremington) — [HTML](Construidos/Escuela_IA/ciclo-del-hype-ia.html) · [PNG](Construidos/Escuela_IA/ciclo-del-hype-ia.png)
+- ✅ Chain of Thought — tema `Escuela_IA` (evento: Escuela de Inteligencia Artificial · Uniremington) — [HTML](Construidos/Escuela_IA/chain-of-thought-prompting.html) · [PNG](Construidos/Escuela_IA/chain-of-thought-prompting.png)
+- ✅ Cuando la IA Alucina: 3 Casos Reales — tema `Escuela_IA` (evento: Escuela de Inteligencia Artificial · Uniremington) — [HTML](Construidos/Escuela_IA/cuando-la-ia-alucina.html) · [PNG](Construidos/Escuela_IA/cuando-la-ia-alucina.png)
 
 Este README se irá actualizando con un enlace por cada infografía nueva.
 

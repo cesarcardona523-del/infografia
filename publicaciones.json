@@ -1378,5 +1378,125 @@
       "likes": 0,
       "shares": 0
     }
+  },
+  {
+    "id": "historia-ia-de-turing-a-gpt",
+    "imagen": "Construidos/Escuela_IA/historia-ia-de-turing-a-gpt.png",
+    "fechaPublicacion": "2026-07-20T10:00:00",
+    "es": {
+      "tema": "Escuela de Inteligencia Artificial",
+      "topico": "De Turing a GPT: la Historia de la Inteligencia Artificial en 6 Hitos",
+      "descripcion": "La inteligencia artificial generativa que se usa hoy no apareció de un día para otro: es el resultado de 27 años de hitos técnicos concretos. En 1997, Deep Blue venció a Kasparov en ajedrez evaluando 200 millones de posiciones por segundo — no pensaba, calculaba por fuerza bruta. En 2016, AlphaGo venció a Lee Sedol en Go, un juego que no se puede resolver por fuerza bruta porque tiene más posiciones posibles que átomos en el universo; la máquina aprendió estrategia jugando millones de partidas contra sí misma. El verdadero punto de inflexión llegó en 2017, cuando ocho investigadores de Google publicaron \"Attention Is All You Need\", el paper que introdujo la arquitectura Transformer — originalmente diseñada solo para traducción, terminó siendo la base de GPT, BERT, Claude, LLaMA y Gemini. Entre 2020 y 2022 llegó la explosión: GPT-3 con 175 mil millones de parámetros, DALL-E generando imágenes desde texto, y ChatGPT alcanzando 100 millones de usuarios en dos meses, la adopción más rápida de una tecnología en la historia. En 2023 llegaron los modelos multimodales (GPT-4, Claude, Gemini) capaces de procesar texto, imagen, código y voz. Hoy, entre 2024 y 2026, la conversación gira en torno a agentes que toman acciones, modelos open source que compiten con los propietarios, y la regulación que apenas empieza a definirse."
+    },
+    "en": {
+      "tema": "AI School",
+      "topico": "From Turing to GPT: the History of Artificial Intelligence in 6 Milestones",
+      "descripcion": "The generative AI in use today didn't appear overnight: it's the result of 27 years of concrete technical milestones. In 1997, Deep Blue defeated Kasparov at chess by evaluating 200 million positions per second — it wasn't thinking, it was brute-force calculating. In 2016, AlphaGo defeated Lee Sedol at Go, a game that can't be solved by brute force because it has more possible positions than atoms in the universe; the machine learned strategy by playing millions of games against itself. The real turning point came in 2017, when eight Google researchers published \"Attention Is All You Need,\" the paper that introduced the Transformer architecture — originally designed only for translation, it became the foundation for GPT, BERT, Claude, LLaMA, and Gemini. Between 2020 and 2022 came the explosion: GPT-3 with 175 billion parameters, DALL-E generating images from text, and ChatGPT reaching 100 million users in two months, the fastest technology adoption in history. In 2023 came multimodal models (GPT-4, Claude, Gemini) capable of processing text, images, code, and voice. Today, from 2024 to 2026, the conversation centers on agents that take actions, open-source models competing with proprietary ones, and regulation that is only beginning to take shape."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "como-funciona-un-llm",
+    "imagen": "Construidos/Escuela_IA/como-funciona-un-llm.png",
+    "fechaPublicacion": "2026-07-20T10:05:00",
+    "es": {
+      "tema": "Escuela de Inteligencia Artificial",
+      "topico": "Cómo Funciona un LLM: de los Datos a la Predicción del Siguiente Token",
+      "descripcion": "Entender un modelo de lenguaje grande (LLM) requiere separar cuatro mecanismos concretos que, juntos, explican por qué genera texto que parece razonado sin realmente \"entender\" nada. Primero, el modelo aprende de datos, no de reglas escritas a mano: en vez de programar qué es un gato, se le muestran miles de fotos etiquetadas y el sistema encuentra el patrón por sí mismo, con capas internas que detectan primero bordes y formas, luego conceptos cada vez más complejos. Segundo, cada palabra se convierte en una lista de números que captura su significado — \"rey\" y \"reina\" terminan con números parecidos porque significan cosas similares, lo que permite operar matemáticamente sobre el lenguaje. Tercero, el mecanismo de atención permite que el modelo mire toda una oración a la vez en vez de leerla palabra por palabra: en \"el banco estaba lleno de peces\", la atención conecta \"banco\" con \"peces\" para entender que se trata de un banco de peces y no uno financiero. Cuarto, el modelo predice el siguiente token calculando una distribución de probabilidad: ante \"el gato se\", puede asignar 72% de probabilidad a \"sentó\", 15% a \"subió\" y 8% a \"durmió\". El resultado no es comprensión: es cálculo estadístico sobre patrones aprendidos de billones de textos, razón por la cual el contexto que se le da cambia radicalmente la calidad de la respuesta."
+    },
+    "en": {
+      "tema": "AI School",
+      "topico": "How an LLM Works: from Data to Next-Token Prediction",
+      "descripcion": "Understanding a large language model (LLM) requires separating four concrete mechanisms that, together, explain why it generates text that sounds reasoned without actually \"understanding\" anything. First, the model learns from data, not hand-written rules: instead of programming what a cat is, it's shown thousands of labeled photos and the system finds the pattern on its own, with internal layers that first detect edges and shapes, then increasingly complex concepts. Second, each word is converted into a list of numbers that captures its meaning — \"king\" and \"queen\" end up with similar numbers because they mean similar things, which allows mathematical operations over language. Third, the attention mechanism lets the model look at an entire sentence at once instead of reading it word by word: in \"the bank was full of fish,\" attention connects \"bank\" to \"fish\" to understand it's a riverbank, not a financial institution. Fourth, the model predicts the next token by calculating a probability distribution: given \"the cat sat,\" it might assign 72% probability to \"down,\" 15% to \"there,\" and 8% to \"quietly.\" The result isn't comprehension — it's statistical calculation over patterns learned from trillions of texts, which is why the context you provide radically changes the quality of the response."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "capacidades-y-limites-llm",
+    "imagen": "Construidos/Escuela_IA/capacidades-y-limites-llm.png",
+    "fechaPublicacion": "2026-07-20T10:10:00",
+    "es": {
+      "tema": "Escuela de Inteligencia Artificial",
+      "topico": "Capacidades y Límites de los LLM: Qué Pueden y Qué No Pueden Hacer",
+      "descripcion": "Los modelos de lenguaje grande fueron entrenados con un único objetivo: predecir la siguiente palabra. Sin embargo, al hacerlo con suficientes datos, desarrollaron capacidades que nadie programó explícitamente. Razonan paso a paso porque leyeron millones de problemas ya resueltos en libros y foros. Traducen entre docenas de idiomas porque leyeron Wikipedia en 100 idiomas, documentos de la ONU y subtítulos de películas. Programan y corrigen código funcional porque leyeron millones de repositorios de GitHub con código y sus explicaciones. Y son sorprendentemente creativos generando analogías e ideas que parecen originales. Estas capacidades emergentes no cambian una distinción fundamental: un LLM sigue siendo un sistema de predicción de texto, no una mente. Puede generar texto coherente a partir de instrucciones claras, transformar y resumir información, y explicar conceptos complejos — pero no puede garantizar que algo sea verdadero (predice, no verifica), no puede acceder a información en tiempo real, no recuerda conversaciones anteriores sin memoria explícita, y no reemplaza el juicio humano. Esta distinción se vuelve práctica al diferenciar un LLM de un agente: un LLM es \"cerebro solo\" — genera texto desde un prompt sin poder actuar; un agente es \"cerebro más herramientas\" — está conectado a sistemas externos, puede buscar información, ejecutar código y tomar acciones reales, no solo producir texto sobre ellas."
+    },
+    "en": {
+      "tema": "AI School",
+      "topico": "LLM Capabilities and Limits: What They Can and Cannot Do",
+      "descripcion": "Large language models were trained with a single objective: predict the next word. Yet in doing so with enough data, they developed capabilities no one explicitly programmed. They reason step by step because they read millions of already-solved problems in books and forums. They translate across dozens of languages because they read Wikipedia in 100 languages, UN documents, and movie subtitles. They write and fix functional code because they read millions of GitHub repositories along with their explanations. And they're surprisingly creative, generating analogies and ideas that seem original. These emergent capabilities don't change a fundamental distinction: an LLM is still a text-prediction system, not a mind. It can generate coherent text from clear instructions, transform and summarize information, and explain complex concepts — but it can't guarantee something is true (it predicts, it doesn't verify), can't access real-time information, doesn't remember previous conversations without explicit memory, and doesn't replace human judgment. This distinction becomes practical when telling an LLM apart from an agent: an LLM is \"brain only\" — it generates text from a prompt without being able to act; an agent is \"brain plus tools\" — connected to external systems, able to search for information, execute code, and take real actions instead of just producing text about them."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "ciclo-del-hype-ia",
+    "imagen": "Construidos/Escuela_IA/ciclo-del-hype-ia.png",
+    "fechaPublicacion": "2026-07-20T10:15:00",
+    "es": {
+      "tema": "Escuela de Inteligencia Artificial",
+      "topico": "El Ciclo del Hype de la IA: ¿Revolución Real o Otro Ciclo de Expectativas?",
+      "descripcion": "Cada avance importante de inteligencia artificial en las últimas siete décadas fue seguido por un período de decepción, cuando las expectativas superaron lo que la tecnología realmente podía entregar — un patrón que se repite desde los años 60 hasta hoy, incluyendo los llamados \"inviernos de la IA\". El modelo del ciclo del hype, popularizado por Gartner, describe cómo cualquier tecnología emergente atraviesa fases predecibles: un lanzamiento inicial, un pico de expectativas sobredimensionadas donde el entusiasmo supera la realidad, un abismo de desilusión cuando esas expectativas no se cumplen a corto plazo, una rampa de consolidación donde la tecnología madura fuera del foco mediático, y finalmente una meseta de productividad donde su valor real se estabiliza. Reconocer este patrón importa porque no es exclusivo de la IA generativa actual: ya ocurrió con los sistemas expertos de los años 80 y con el aprendizaje automático de la década de 2010, y en ambos casos la tecnología sobrevivió al abismo de desilusión y terminó generando valor real, solo que a un ritmo distinto al que prometía el hype inicial. La pregunta relevante para cualquier organización no es si existe exageración alrededor de la IA generativa actual — la hay — sino en qué punto del ciclo se encuentra hoy, y qué valor concreto queda una vez que las expectativas se ajustan a la realidad."
+    },
+    "en": {
+      "tema": "AI School",
+      "topico": "The AI Hype Cycle: Real Revolution or Another Cycle of Expectations?",
+      "descripcion": "Every major artificial intelligence breakthrough over the past seven decades has been followed by a period of disappointment, when expectations outpaced what the technology could actually deliver — a pattern that repeats from the 1960s to today, including the so-called \"AI winters.\" The hype cycle model, popularized by Gartner, describes how any emerging technology moves through predictable phases: an initial launch, a peak of inflated expectations where enthusiasm outruns reality, a trough of disillusionment when those expectations aren't met in the short term, a slope of enlightenment where the technology matures outside the media spotlight, and finally a plateau of productivity where its real value stabilizes. Recognizing this pattern matters because it isn't unique to today's generative AI: it already happened with expert systems in the 1980s and machine learning in the 2010s, and in both cases the technology survived the trough of disillusionment and ended up generating real value, just at a different pace than the initial hype promised. The relevant question for any organization isn't whether there's exaggeration around today's generative AI — there is — but where it currently sits on the cycle, and what concrete value remains once expectations adjust to reality."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "chain-of-thought-prompting",
+    "imagen": "Construidos/Escuela_IA/chain-of-thought-prompting.png",
+    "fechaPublicacion": "2026-07-20T10:20:00",
+    "es": {
+      "tema": "Escuela de Inteligencia Artificial",
+      "topico": "Chain of Thought: la Técnica de Prompting que Multiplica la Calidad",
+      "descripcion": "Pedirle a un modelo de lenguaje que \"piense paso a paso\" antes de responder no es un truco cosmético: mejora dramáticamente la calidad de sus respuestas porque aprovecha cómo funciona realmente su arquitectura. La diferencia se observa con claridad al comparar dos formas de pedir lo mismo. Un prompt directo como \"hazme una página web para venta de boletería\" produce un HTML genérico con un formulario básico, sin considerar pagos, selección de asientos ni validaciones. El mismo objetivo planteado con Chain of Thought — \"piensa paso a paso: primero lista los requisitos, luego diseña la estructura, y finalmente genera el código\" — obtiene una respuesta que analiza los requisitos reales (catálogo de eventos, selección de asientos, pasarela de pago, confirmación por email), propone una arquitectura y genera código completo y funcional. La técnica funciona por una razón estructural: el modelo genera un token a la vez, y cuando se le pide razonar paso a paso, cada paso intermedio que escribe se convierte en contexto disponible para el siguiente, como si se le diera más espacio para pensar. Esto ocurre por tres mecanismos concretos: descompone el problema en sub-problemas en vez de saltar directo a una respuesta, genera contexto intermedio que enriquece cada paso siguiente, y reduce errores acumulados porque los pasos visibles permiten corregir el rumbo antes de llegar a la conclusión final."
+    },
+    "en": {
+      "tema": "AI School",
+      "topico": "Chain of Thought: the Prompting Technique That Multiplies Quality",
+      "descripcion": "Asking a language model to \"think step by step\" before answering isn't a cosmetic trick: it dramatically improves response quality because it leverages how the model's architecture actually works. The difference is clear when comparing two ways of asking for the same thing. A direct prompt like \"build me a ticket sales website\" produces generic HTML with a basic form, without considering payments, seat selection, or validations. The same goal framed with Chain of Thought — \"think step by step: first list the requirements, then design the structure, and finally generate the code\" — gets a response that analyzes the real requirements (event catalog, seat selection, payment gateway, email confirmation), proposes an architecture, and generates complete, functional code. The technique works for a structural reason: the model generates one token at a time, and when asked to reason step by step, each intermediate step it writes becomes available context for the next one, as if giving it more room to think. This happens through three concrete mechanisms: it breaks the problem down into sub-problems instead of jumping straight to an answer, it generates intermediate context that enriches each following step, and it reduces accumulated errors because the visible steps allow course-correcting before reaching the final conclusion."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "cuando-la-ia-alucina",
+    "imagen": "Construidos/Escuela_IA/cuando-la-ia-alucina.png",
+    "fechaPublicacion": "2026-07-20T10:25:00",
+    "es": {
+      "tema": "Escuela de Inteligencia Artificial",
+      "topico": "Cuando la IA Alucina: 3 Casos Reales con Consecuencias Profesionales",
+      "descripcion": "Las alucinaciones de los modelos de lenguaje dejaron de ser un riesgo teórico hace tiempo: existen casos judiciales y editoriales documentados con consecuencias profesionales reales. En junio de 2023, un abogado presentó ante un tribunal federal de Nueva York un escrito legal citando seis casos judiciales que ChatGPT había inventado por completo, combinando nombres de jueces reales con hechos falsos; el modelo incluso \"confirmó\" que los casos eran reales cuando se le preguntó directamente, y el juez impuso una multa de 5,000 dólares al abogado y su firma (caso Mata v. Avianca, Inc., S.D.N.Y.). En 2024, editoriales científicas como Springer Nature y Wiley retractaron decenas de papers con texto generado por IA que había pasado revisión por pares —algunos conservando literalmente la frase \"as an AI language model\" en el cuerpo del artículo—, con autores, datos experimentales y resultados completamente inventados; Springer Nature retractó más de 50 papers y Wiley cerró 19 revistas. Ese mismo año, un profesor de la Universidad George Washington descubrió que ChatGPT lo acusaba de acoso sexual citando un artículo de The Washington Post que nunca existió, un patrón que se repitió cuando un alcalde australiano amenazó con demandar a OpenAI por una biografía falsa que lo vinculaba a un escándalo de sobornos. El denominador común: el modelo no verifica información, predice texto que suena plausible — razón por la cual cualquier dato generado por IA que pueda tener consecuencias reales debe verificarse en una fuente independiente antes de usarse."
+    },
+    "en": {
+      "tema": "AI School",
+      "topico": "When AI Hallucinates: 3 Real Cases with Professional Consequences",
+      "descripcion": "Language model hallucinations stopped being a theoretical risk a while ago: there are documented legal and publishing cases with real professional consequences. In June 2023, a lawyer filed a legal brief in a New York federal court citing six court cases that ChatGPT had entirely fabricated, combining real judges' names with false facts; the model even \"confirmed\" the cases were real when asked directly, and the judge fined the lawyer and his firm $5,000 (Mata v. Avianca, Inc., S.D.N.Y.). In 2024, scientific publishers including Springer Nature and Wiley retracted dozens of AI-generated papers that had passed peer review — some literally retaining the phrase \"as an AI language model\" in the body text — with authors, experimental data, and results entirely invented; Springer Nature retracted more than 50 papers and Wiley shut down 19 journals. That same year, a professor at George Washington University discovered that ChatGPT was accusing him of sexual harassment, citing a Washington Post article that never existed — a pattern repeated when an Australian mayor threatened to sue OpenAI over a false biography linking him to a bribery scandal. The common thread: the model doesn't verify information, it predicts text that sounds plausible — which is why any AI-generated data with real-world consequences must be verified against an independent source before use."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
   }
 ]
