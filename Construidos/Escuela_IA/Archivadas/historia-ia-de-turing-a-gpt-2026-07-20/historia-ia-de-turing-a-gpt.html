@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Historia de la IA: de Turing a GPT</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { width:1264px; height:691px; padding:32px; background:#EDEFF3; font-family:-apple-system,"SF Pro Display","Segoe UI",Inter,Helvetica,Arial,sans-serif; }
+  .canvas { position:relative; width:1200px; height:627px; background:#FAFAF8; overflow:hidden; }
+
+  .eyebrow { position:absolute; top:26px; left:44px; font-size:10.5px; font-weight:700; letter-spacing:2px; color:#00467F; text-transform:uppercase; }
+  .title { position:absolute; top:41px; left:44px; font-size:21px; font-weight:800; color:#14161C; letter-spacing:-0.2px; }
+  .subtitle { position:absolute; top:67px; left:44px; width:760px; font-size:11.3px; color:#5B6472; }
+
+  .event-badge { position:absolute; top:24px; right:44px; display:flex; align-items:center; gap:8px; background:#F0F3F7; border:1px solid #D7E0EA; border-radius:10px; padding:6px 12px; }
+  .event-badge img { height:26px; }
+  .event-badge .et { font-size:9.5px; font-weight:800; color:#00467F; line-height:1.25; text-transform:uppercase; }
+  .event-badge .er { font-size:9px; color:#5B6472; line-height:1.25; }
+  .event-badge .er b { color:#EE3124; }
+
+  .timeline { position:absolute; top:100px; left:0; width:1200px; height:452px; }
+  .line { position:absolute; top:236px; left:44px; right:44px; height:2.5px; background:#00467F; opacity:0.35; }
+
+  .node { position:absolute; width:176px; }
+  .node .dot { position:absolute; left:50%; transform:translateX(-50%); width:13px; height:13px; border-radius:50%; border:3px solid #FAFAF8; }
+  .node .stem { position:absolute; left:50%; width:2px; transform:translateX(-50%); }
+  .node .card { position:absolute; left:50%; transform:translateX(-50%); width:176px; border-radius:11px; padding:10px 12px; background:#fff; border-top:3px solid; box-shadow:0 3px 10px rgba(20,30,60,0.06); }
+  .node .yr { font-size:9.5px; font-weight:800; letter-spacing:0.4px; }
+  .node .tt { margin-top:2px; font-size:11.8px; font-weight:800; color:#14161C; line-height:1.22; }
+  .node .dd { margin-top:5px; font-size:9.6px; line-height:1.34; color:#4A525C; }
+
+  /* positions: 6 nodes evenly spaced (left = intended center minus half card width) */
+  .n1 { left:49px; } .n2 { left:234px; } .n3 { left:419px; } .n4 { left:605px; } .n5 { left:790px; } .n6 { left:975px; }
+
+  .top .dot { top:230px; }
+  .top .stem { top:200px; height:30px; }
+  .top .card { top:36px; }
+  .bottom .dot { top:230px; }
+  .bottom .stem { top:243px; height:30px; }
+  .bottom .card { top:273px; }
+
+  .navy .dot,.navy .stem,.navy .card{border-color:#00467F;} .navy .dot{background:#00467F;} .navy .stem{background:#00467F;} .navy .yr{color:#00467F;}
+  .red .dot,.red .stem,.red .card{border-color:#EE3124;} .red .dot{background:#EE3124;} .red .stem{background:#EE3124;} .red .yr{color:#EE3124;}
+
+  .closing { position:absolute; left:44px; right:44px; bottom:28px; background:#14161C; border-radius:10px; padding:11px 20px; display:flex; align-items:center; gap:10px; }
+  .closing svg { width:16px; height:16px; flex-shrink:0; }
+  .closing p { color:#F2F3F5; font-size:12.3px; font-weight:600; }
+
+  .signature { position:absolute; right:14px; bottom:82px; display:flex; align-items:center; gap:6px; opacity:0.85; }
+  .signature .li { width:18px; height:18px; border-radius:4px; background:#0A66C2; display:flex; align-items:center; justify-content:center; }
+  .signature .li svg { width:11px; height:11px; }
+  .signature span { font-size:11.5px; color:#5B6472; font-weight:600; }
+</style>
+</head>
+<body>
+<div class="canvas">
+
+  <div class="eyebrow">Escuela de Inteligencia Artificial — Sesión 1</div>
+  <div class="title">De Turing a GPT: la Historia de la IA en 6 Hitos</div>
+  <div class="subtitle">27 años de historia que explican por qué la IA generativa existe hoy.</div>
+
+  <div class="event-badge">
+    <img src="uniremington-logo.png" alt="Uniremington">
+    <div>
+      <div class="et">Escuela de IA</div>
+      <div class="er">Realizado por <b>Uniremington</b></div>
+    </div>
+  </div>
+
+  <div class="timeline">
+    <div class="line"></div>
+
+    <div class="node n1 top navy">
+      <div class="card"><div class="yr">1997</div><div class="tt">Deep Blue vence a Kasparov</div><div class="dd">IBM evaluaba 200M posiciones/seg. No pensaba: calculaba por fuerza bruta.</div></div>
+      <div class="stem"></div><div class="dot"></div>
+    </div>
+
+    <div class="node n2 bottom navy">
+      <div class="stem"></div><div class="dot"></div>
+      <div class="card"><div class="yr">2016</div><div class="tt">AlphaGo vence a Lee Sedol (4-1)</div><div class="dd">Go no se resuelve por fuerza bruta. Aprendió estrategia jugando contra sí misma.</div></div>
+    </div>
+
+    <div class="node n3 top red">
+      <div class="card"><div class="yr">2017</div><div class="tt">"Attention Is All You Need"</div><div class="dd">Google publica el Transformer. Base de GPT, BERT, Claude, LLaMA y Gemini.</div></div>
+      <div class="stem"></div><div class="dot"></div>
+    </div>
+
+    <div class="node n4 bottom navy">
+      <div class="stem"></div><div class="dot"></div>
+      <div class="card"><div class="yr">2020–2022</div><div class="tt">La Explosión</div><div class="dd">GPT-3 → DALL-E → ChatGPT: 100M usuarios en 2 meses, la adopción más rápida de la historia.</div></div>
+    </div>
+
+    <div class="node n5 top navy">
+      <div class="card"><div class="yr">2023</div><div class="tt">Modelos Multimodales</div><div class="dd">GPT-4, Claude y Gemini procesan texto, imagen, código y voz.</div></div>
+      <div class="stem"></div><div class="dot"></div>
+    </div>
+
+    <div class="node n6 bottom navy">
+      <div class="stem"></div><div class="dot"></div>
+      <div class="card"><div class="yr">2024–2026</div><div class="tt">Hoy</div><div class="dd">Multimodal, agentes, open source (LLaMA, Mistral, Gemma) y regulación (EU AI Act).</div></div>
+    </div>
+
+  </div>
+
+  <div class="closing">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M4 19V9M9 19V5M14 19v-7M19 19v-4" stroke="#0F9D82" stroke-width="2" stroke-linecap="round"/></svg>
+    <p>Del cálculo por fuerza bruta a los modelos que razonan: así llegamos hasta aquí.</p>
+  </div>
+
+  <div class="signature">
+    <div class="li"><svg viewBox="0 0 24 24" fill="white"><path d="M4.98 3.5C4.98 4.88 3.94 6 2.5 6S0 4.88 0 3.5 1.04 1 2.48 1s2.5 1.12 2.5 2.5zM.24 8.25h4.5V23H.24V8.25zM8.5 8.25h4.31v2.02h.06c.6-1.14 2.07-2.34 4.26-2.34 4.56 0 5.4 3 5.4 6.9V23h-4.5v-6.75c0-1.61-.03-3.68-2.24-3.68-2.25 0-2.6 1.75-2.6 3.56V23H8.5V8.25z"/></svg></div>
+    <span>cacm523</span>
+  </div>
+
+</div>
+</body>
+</html>

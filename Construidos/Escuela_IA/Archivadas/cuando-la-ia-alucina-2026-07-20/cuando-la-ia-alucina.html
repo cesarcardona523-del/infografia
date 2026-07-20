@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Cuando la IA Alucina</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { width:1264px; height:691px; padding:32px; background:#EDEFF3; font-family:-apple-system,"SF Pro Display","Segoe UI",Inter,Helvetica,Arial,sans-serif; }
+  .canvas { position:relative; width:1200px; height:627px; background:#FAFAF8; overflow:hidden; }
+
+  .eyebrow { position:absolute; top:26px; left:44px; font-size:10.5px; font-weight:700; letter-spacing:2px; color:#00467F; text-transform:uppercase; }
+  .title { position:absolute; top:41px; left:44px; font-size:22px; font-weight:800; color:#14161C; letter-spacing:-0.2px; }
+  .subtitle { position:absolute; top:68px; left:44px; width:760px; font-size:11.3px; color:#5B6472; }
+
+  .event-badge { position:absolute; top:24px; right:44px; display:flex; align-items:center; gap:8px; background:#F0F3F7; border:1px solid #D7E0EA; border-radius:10px; padding:6px 12px; }
+  .event-badge img { height:26px; }
+  .event-badge .et { font-size:9.5px; font-weight:800; color:#00467F; line-height:1.25; text-transform:uppercase; }
+  .event-badge .er { font-size:9px; color:#5B6472; line-height:1.25; }
+  .event-badge .er b { color:#EE3124; }
+
+  .cases { position:absolute; top:100px; left:44px; width:1112px; height:320px; display:flex; gap:14px; }
+  .case { flex:1; border-radius:13px; background:#fff; border-top:3px solid #EE3124; border-left:1px solid rgba(0,0,0,0.06); border-right:1px solid rgba(0,0,0,0.06); border-bottom:1px solid rgba(0,0,0,0.06); padding:14px 16px; display:flex; flex-direction:column; }
+  .case .tag { font-size:9px; font-weight:800; color:#EE3124; text-transform:uppercase; letter-spacing:0.5px; }
+  .case .ct { margin-top:3px; font-size:14px; font-weight:800; color:#14161C; line-height:1.25; }
+  .case .cy { margin-top:2px; font-size:9.5px; color:#8A97A6; font-weight:700; }
+  .case .cd { margin-top:8px; font-size:10.3px; line-height:1.4; color:#3A3F48; }
+  .case .cons { margin-top:auto; background:rgba(238,49,36,0.055); border-radius:8px; padding:9px 11px; font-size:10.2px; line-height:1.4; color:#8C2018; }
+  .case .src { margin-top:auto; padding-top:8px; font-size:8.3px; color:#9AA5B1; font-style:italic; border-top:1px dashed #E3E7EC; }
+
+  .demo { position:absolute; top:436px; left:44px; width:1112px; height:112px; background:#0E1A2E; border-radius:12px; padding:14px 18px; display:flex; align-items:center; gap:18px; }
+  .demo .dtag { flex-shrink:0; width:110px; }
+  .demo .dtag b { display:block; font-size:9px; font-weight:800; color:#EE3124; text-transform:uppercase; letter-spacing:0.5px; }
+  .demo .dtag span { font-size:10px; color:#AEB8C4; }
+  .demo .dprompt { flex:1; background:rgba(255,255,255,0.06); border-radius:8px; padding:9px 12px; font-size:10.6px; font-style:italic; color:#DCE2E8; line-height:1.4; }
+  .demo .dlesson { flex-shrink:0; width:230px; font-size:10.6px; color:#fff; font-weight:700; line-height:1.4; }
+
+  .signature { position:absolute; right:14px; bottom:8px; display:flex; align-items:center; gap:6px; opacity:0.85; }
+  .signature .li { width:18px; height:18px; border-radius:4px; background:#0A66C2; display:flex; align-items:center; justify-content:center; }
+  .signature .li svg { width:11px; height:11px; }
+  .signature span { font-size:11px; color:#5B6472; font-weight:600; }
+</style>
+</head>
+<body>
+<div class="canvas">
+
+  <div class="eyebrow">Escuela de Inteligencia Artificial — Sesión 4: IA en el Mundo Real</div>
+  <div class="title">Cuando la IA Alucina</div>
+  <div class="subtitle">3 casos reales y documentados de consecuencias profesionales por confiar en la IA sin verificar.</div>
+
+  <div class="event-badge">
+    <img src="uniremington-logo.png" alt="Uniremington">
+    <div>
+      <div class="et">Escuela de IA</div>
+      <div class="er">Realizado por <b>Uniremington</b></div>
+    </div>
+  </div>
+
+  <div class="cases">
+    <div class="case">
+      <div class="tag">Caso Real 1</div>
+      <div class="ct">Abogados Sancionados</div>
+      <div class="cy">Junio 2023 · Nueva York</div>
+      <div class="cd">Un abogado presentó un escrito legal citando 6 casos judiciales inventados por ChatGPT, con nombres de jueces reales combinados con hechos falsos. El modelo incluso "confirmó" que eran reales al preguntársele.</div>
+      <div class="cons">Consecuencia: multa de $5,000 USD al abogado y su firma, impuesta por el juez.</div>
+      <div class="src">Fuente: Mata v. Avianca, Inc. (22-cv-01461), S.D.N.Y., junio 2023.</div>
+    </div>
+    <div class="case">
+      <div class="tag">Caso Real 2</div>
+      <div class="ct">Papers Fabricados</div>
+      <div class="cy">2024 · Editoriales científicas</div>
+      <div class="cd">Papers con texto generado por IA pasaron revisión por pares — algunos con la frase "As an AI language model..." olvidada en el texto. Autores, datos experimentales y resultados completamente inventados.</div>
+      <div class="cons">Consecuencia: Springer Nature retractó 50+ papers; Wiley cerró 19 revistas por fabricación con IA.</div>
+      <div class="src">Fuentes: Nature (2024), Retraction Watch, Wiley Communications (2024).</div>
+    </div>
+    <div class="case">
+      <div class="tag">Caso Real 3</div>
+      <div class="ct">Biografías Inventadas</div>
+      <div class="cy">2023 · George Washington University</div>
+      <div class="cd">ChatGPT acusó al profesor Jonathan Turley de acoso sexual citando un artículo de The Washington Post que nunca existió — con fechas, lugares y eventos precisos, pero falsos.</div>
+      <div class="cons">Patrón repetido: un alcalde australiano amenazó con demandar a OpenAI por una biografía falsa sobre sobornos.</div>
+      <div class="src">Fuente: reportado por Jonathan Turley (2023); caso Hepburn Shire, Australia.</div>
+    </div>
+  </div>
+
+  <div class="demo">
+    <div class="dtag"><b>Demo en vivo</b><span>ChatGPT sin búsqueda web</span></div>
+    <div class="dprompt">"Dame 5 artículos científicos sobre IA en cadenas de suministro (2020-2024). Incluye autor, título, revista, año y DOI."</div>
+    <div class="dlesson">El modelo no buscó esto. Lo inventó — y sonaba perfecto.</div>
+  </div>
+
+  <div class="signature">
+    <div class="li"><svg viewBox="0 0 24 24" fill="white"><path d="M4.98 3.5C4.98 4.88 3.94 6 2.5 6S0 4.88 0 3.5 1.04 1 2.48 1s2.5 1.12 2.5 2.5zM.24 8.25h4.5V23H.24V8.25zM8.5 8.25h4.31v2.02h.06c.6-1.14 2.07-2.34 4.26-2.34 4.56 0 5.4 3 5.4 6.9V23h-4.5v-6.75c0-1.61-.03-3.68-2.24-3.68-2.25 0-2.6 1.75-2.6 3.56V23H8.5V8.25z"/></svg></div>
+    <span>cacm523</span>
+  </div>
+
+</div>
+</body>
+</html>
