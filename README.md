@@ -53,7 +53,9 @@ El proyecto mantiene un rol permanente de mejora continua: cada vez que se traba
 
 ## 📄 Catálogo de publicaciones
 
-Cada infografía agrega una entrada a [publicaciones.json](publicaciones.json), generada con el prompt de análisis de [INFOGRAFIA-INVESTIGAR.md](INFOGRAFIA-INVESTIGAR.md): tema, tópico y descripción en español e inglés, listos para programar la publicación. Las fechas se espacian +2 días entre entradas sucesivas, sin más de dos publicaciones el mismo día.
+Cada infografía agrega una entrada a [publicaciones.json](publicaciones.json), generada con el prompt de análisis de [INFOGRAFIA-INVESTIGAR.md](INFOGRAFIA-INVESTIGAR.md): categoría principal, temas, tipo de contenido, tópico y descripción en español e inglés, listos para programar la publicación. Las fechas se espacian +2 días entre entradas sucesivas, sin más de dos publicaciones el mismo día.
+
+Desde el 2026-07-20, la clasificación usa una taxonomía cerrada de 10 categorías principales, ~45 temas reutilizables y 13 tipos de contenido — ver [`taxonomia.json`](taxonomia.json) y "Gobernanza de la taxonomía" en [CLAUDE.md](CLAUDE.md). Reemplaza el antiguo campo `tema` de texto libre.
 
 Como último paso, el PNG final y esa misma entrada se publican también en el sitio real: `paginaweb/publications/` (imagen) y `paginaweb/publications/publicaciones.js` (catálogo consumido por el sitio).
 

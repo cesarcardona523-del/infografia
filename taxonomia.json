@@ -1,0 +1,300 @@
+{
+  "categorias": {
+    "inteligencia-artificial": {
+      "es": "Inteligencia Artificial",
+      "en": "Artificial Intelligence",
+      "emoji": "🤖",
+      "color": "#7B3FE4"
+    },
+    "analisis-de-datos": {
+      "es": "Análisis de Datos",
+      "en": "Data Analytics",
+      "emoji": "📊",
+      "color": "#0E8074"
+    },
+    "gobierno-de-datos": {
+      "es": "Gobierno de Datos",
+      "en": "Data Governance",
+      "emoji": "🏛️",
+      "color": "#2F7D4F"
+    },
+    "ingenieria-de-datos": {
+      "es": "Ingeniería de Datos",
+      "en": "Data Engineering",
+      "emoji": "🗄️",
+      "color": "#4C4FCB"
+    },
+    "profesion-y-negocio": {
+      "es": "Profesión y Negocio",
+      "en": "Profession & Business",
+      "emoji": "💼",
+      "color": "#7A5C3E"
+    },
+    "bases-de-datos": {
+      "es": "Bases de Datos",
+      "en": "Databases",
+      "emoji": "💾",
+      "color": "#2C63C9"
+    },
+    "cloud-y-plataformas": {
+      "es": "Cloud y Plataformas",
+      "en": "Cloud & Platforms",
+      "emoji": "☁️",
+      "color": "#1E8FB0"
+    },
+    "programacion": {
+      "es": "Programación",
+      "en": "Programming",
+      "emoji": "🐍",
+      "color": "#A6790A"
+    },
+    "powerbi-y-visualizacion": {
+      "es": "Power BI y Visualización",
+      "en": "Power BI & Visualization",
+      "emoji": "📈",
+      "color": "#B23A72"
+    },
+    "aprendizaje-y-recursos": {
+      "es": "Aprendizaje y Recursos",
+      "en": "Learning & Resources",
+      "emoji": "🎓",
+      "color": "#C1591F"
+    }
+  },
+  "temas": {
+    "agentes-ia": {
+      "es": "Agentes de IA",
+      "en": "AI Agents"
+    },
+    "ia": {
+      "es": "IA",
+      "en": "AI"
+    },
+    "python": {
+      "es": "Python",
+      "en": "Python"
+    },
+    "automatizacion": {
+      "es": "Automatización",
+      "en": "Automation"
+    },
+    "aws": {
+      "es": "AWS",
+      "en": "AWS"
+    },
+    "arquitectura-datos": {
+      "es": "Arquitectura de Datos",
+      "en": "Data Architecture"
+    },
+    "azure": {
+      "es": "Azure",
+      "en": "Azure"
+    },
+    "gcp": {
+      "es": "GCP",
+      "en": "GCP"
+    },
+    "oracle-cloud": {
+      "es": "Oracle Cloud",
+      "en": "Oracle Cloud"
+    },
+    "bases-de-datos": {
+      "es": "Bases de Datos",
+      "en": "Databases"
+    },
+    "bi": {
+      "es": "BI",
+      "en": "BI"
+    },
+    "big-data": {
+      "es": "Big Data",
+      "en": "Big Data"
+    },
+    "chatgpt": {
+      "es": "ChatGPT",
+      "en": "ChatGPT"
+    },
+    "prompt-engineering": {
+      "es": "Prompt Engineering",
+      "en": "Prompt Engineering"
+    },
+    "claude": {
+      "es": "Claude",
+      "en": "Claude"
+    },
+    "excel": {
+      "es": "Excel",
+      "en": "Excel"
+    },
+    "ciencia-datos": {
+      "es": "Ciencia de Datos",
+      "en": "Data Science"
+    },
+    "estadistica": {
+      "es": "Estadística",
+      "en": "Statistics"
+    },
+    "modelado-datos": {
+      "es": "Modelado de Datos",
+      "en": "Data Modeling"
+    },
+    "cultura-dato": {
+      "es": "Cultura del Dato",
+      "en": "Data Culture"
+    },
+    "data-engineering": {
+      "es": "Data Engineering",
+      "en": "Data Engineering"
+    },
+    "dashboard": {
+      "es": "Dashboard",
+      "en": "Dashboard"
+    },
+    "visualizacion": {
+      "es": "Visualización",
+      "en": "Visualization"
+    },
+    "machine-learning": {
+      "es": "Machine Learning",
+      "en": "Machine Learning"
+    },
+    "databricks": {
+      "es": "Databricks",
+      "en": "Databricks"
+    },
+    "docencia": {
+      "es": "Docencia",
+      "en": "Teaching"
+    },
+    "liderazgo": {
+      "es": "Liderazgo",
+      "en": "Leadership"
+    },
+    "roadmaps": {
+      "es": "Roadmaps",
+      "en": "Roadmaps"
+    },
+    "vba-macros": {
+      "es": "VBA/Macros",
+      "en": "VBA/Macros"
+    },
+    "power-bi": {
+      "es": "Power BI",
+      "en": "Power BI"
+    },
+    "iso-9001": {
+      "es": "ISO 9001",
+      "en": "ISO 9001"
+    },
+    "roles-datos": {
+      "es": "Roles en Datos",
+      "en": "Data Roles"
+    },
+    "kpis": {
+      "es": "KPIs",
+      "en": "KPIs"
+    },
+    "calidad-datos": {
+      "es": "Calidad de Datos",
+      "en": "Data Quality"
+    },
+    "sql": {
+      "es": "SQL",
+      "en": "SQL"
+    },
+    "sql-server": {
+      "es": "SQL Server",
+      "en": "SQL Server"
+    },
+    "transformacion-digital": {
+      "es": "Transformación Digital",
+      "en": "Digital Transformation"
+    },
+    "gestion-proyectos": {
+      "es": "Gestión de Proyectos",
+      "en": "Project Management"
+    },
+    "gobierno-datos": {
+      "es": "Gobierno de Datos",
+      "en": "Data Governance"
+    },
+    "dashboards-ejecutivos": {
+      "es": "Dashboards Ejecutivos",
+      "en": "Executive Dashboards"
+    },
+    "mdm": {
+      "es": "MDM",
+      "en": "MDM"
+    },
+    "metricas-modelos": {
+      "es": "Métricas de Modelos",
+      "en": "Model Metrics"
+    },
+    "estrategia-datos": {
+      "es": "Estrategia de Datos",
+      "en": "Data Strategy"
+    },
+    "deep-learning": {
+      "es": "Deep Learning",
+      "en": "Deep Learning"
+    },
+    "analitica": {
+      "es": "Analítica",
+      "en": "Analytics"
+    }
+  },
+  "tiposContenido": {
+    "articulo": {
+      "es": "Artículo",
+      "en": "Article"
+    },
+    "tutorial": {
+      "es": "Tutorial",
+      "en": "Tutorial"
+    },
+    "curso": {
+      "es": "Curso",
+      "en": "Course"
+    },
+    "caso-estudio": {
+      "es": "Caso de Estudio",
+      "en": "Case Study"
+    },
+    "investigacion": {
+      "es": "Investigación",
+      "en": "Research"
+    },
+    "evento": {
+      "es": "Evento",
+      "en": "Event"
+    },
+    "webinar": {
+      "es": "Webinar",
+      "en": "Webinar"
+    },
+    "video": {
+      "es": "Video",
+      "en": "Video"
+    },
+    "podcast": {
+      "es": "Podcast",
+      "en": "Podcast"
+    },
+    "libro": {
+      "es": "Libro",
+      "en": "Book"
+    },
+    "infografia": {
+      "es": "Infografía",
+      "en": "Infographic"
+    },
+    "plantilla": {
+      "es": "Plantilla",
+      "en": "Template"
+    },
+    "herramienta": {
+      "es": "Herramienta",
+      "en": "Tool"
+    }
+  }
+}

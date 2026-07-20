@@ -3,6 +3,8 @@
 > Fuente de verdad del análisis. **No se modifica al crear una infografía nueva.** Este prompt se ejecuta sobre la(s) imagen(es) de referencia de un tema para generar el objeto de metadata que se agrega al catálogo incremental `publicaciones.json` (ver [CLAUDE.md](CLAUDE.md)).
 >
 > La salida de este prompt es **únicamente** el objeto JSON descrito abajo — sin explicaciones, sin markdown, sin texto antes o después.
+>
+> **Taxonomía cerrada**: `categoriaPrincipal`, `temas` y `tipoContenido` solo pueden usar las claves ya definidas en [`taxonomia.json`](taxonomia.json). Está prohibido crear, renombrar, fusionar o eliminar una categoría, tema o tipo de contenido sin autorización explícita del usuario — ver "Gobernanza de la taxonomía" en [CLAUDE.md](CLAUDE.md).
 
 ## Rol
 
@@ -35,13 +37,14 @@ La salida debe contener exactamente la siguiente estructura:
   "id": "",
   "imagen": "",
   "fechaPublicacion": "",
+  "categoriaPrincipal": "",
+  "temas": [],
+  "tipoContenido": "",
   "es": {
-    "tema": "",
     "topico": "",
     "descripcion": ""
   },
   "en": {
-    "tema": "",
     "topico": "",
     "descripcion": ""
   },
@@ -73,9 +76,19 @@ Generar en formato ISO 8601. Ejemplo: `2026-07-10T10:10:11`.
 
 Regla de programación (ver también [CLAUDE.md](CLAUDE.md)): nunca más de dos publicaciones el mismo día en el catálogo completo; cada `fechaPublicacion` nueva = última fecha existente en `publicaciones.json` + 2 días.
 
-### Español (`es`)
+### `categoriaPrincipal`
 
-**`tema`** — categoría tecnológica principal. Ejemplos: Python, SQL, Azure, AWS, Docker, Kubernetes, DevOps, Data Engineering, Machine Learning, Inteligencia Artificial, Arquitectura, Power BI, Business Intelligence.
+Una única clave (nunca dos) de las 10 definidas en `taxonomia.json` → `categorias` (ej. `inteligencia-artificial`, `analisis-de-datos`, `gobierno-de-datos`, `ingenieria-de-datos`, `profesion-y-negocio`, `bases-de-datos`, `cloud-y-plataformas`, `programacion`, `powerbi-y-visualizacion`, `aprendizaje-y-recursos`). Si el contenido no encaja claramente en ninguna, no forzar una — preguntar al usuario.
+
+### `temas`
+
+Array de una o más claves ya definidas en `taxonomia.json` → `temas`. Un mismo tema puede reutilizarse en distintas categorías. Si el contenido sugiere un tema que no existe todavía, no crearlo — proponerlo (nombre sugerido, justificación, impacto, alternativas con la taxonomía actual) y esperar autorización antes de agregarlo a `taxonomia.json`.
+
+### `tipoContenido`
+
+Una única clave de `taxonomia.json` → `tiposContenido` (ej. `articulo`, `tutorial`, `curso`, `caso-estudio`, `investigacion`, `evento`, `webinar`, `video`, `podcast`, `libro`, `infografia`, `plantilla`, `herramienta`). Para el flujo normal de este proyecto (infografía HTML → PNG) el valor es `"infografia"`; las piezas de evento usan `"evento"` (ver "Branding de Evento" en CLAUDE.md).
+
+### Español (`es`)
 
 **`topico`** — título profesional, entre 40 y 90 caracteres, que despierte interés técnico, con apariencia de título de artículo especializado. No clickbait. No escribir completamente en mayúsculas.
 
@@ -121,7 +134,7 @@ Si la imagen contiene cifras verificables, utilizarlas. Si no existen cifras vis
 
 ## Validaciones obligatorias
 
-Antes de devolver la respuesta, verificar que: el JSON sea completamente válido; no existan comas sobrantes; los caracteres especiales estén correctamente escapados; los saltos de línea usen `\n`; el contenido en inglés conserve exactamente el mismo significado que el español; el tema, el tópico y la descripción sean coherentes entre sí; no exista ninguna referencia a la imagen ni frases prohibidas; no se inventen métricas, porcentajes o resultados no respaldados; la descripción tenga calidad suficiente para publicarse directamente en LinkedIn, un blog técnico o un portal especializado.
+Antes de devolver la respuesta, verificar que: el JSON sea completamente válido; no existan comas sobrantes; los caracteres especiales estén correctamente escapados; los saltos de línea usen `\n`; el contenido en inglés conserve exactamente el mismo significado que el español; `categoriaPrincipal`, `temas` y `tipoContenido` sean claves existentes en `taxonomia.json` (nunca inventadas) y sean coherentes con el tópico y la descripción; no exista ninguna referencia a la imagen ni frases prohibidas; no se inventen métricas, porcentajes o resultados no respaldados; la descripción tenga calidad suficiente para publicarse directamente en LinkedIn, un blog técnico o un portal especializado.
 
 ## Reglas inmutables
 

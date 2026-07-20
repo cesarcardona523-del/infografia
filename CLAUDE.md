@@ -114,13 +114,25 @@ Si se especifican, aplican las reglas de la sección "Branding de Evento" de INF
 
 ## Reglas del catálogo `publicaciones.json`
 
-- Un único archivo JSON en la raíz: un arreglo `[ ... ]` de objetos, cada uno con exactamente el schema de INFOGRAFIA-INVESTIGAR.md (`id`, `imagen`, `fechaPublicacion`, `es{tema,topico,descripcion}`, `en{tema,topico,descripcion}`, `baseStats{views,likes,shares}`).
+- Un único archivo JSON en la raíz: un arreglo `[ ... ]` de objetos, cada uno con exactamente el schema de INFOGRAFIA-INVESTIGAR.md (`id`, `imagen`, `fechaPublicacion`, `categoriaPrincipal`, `temas[]`, `tipoContenido`, `es{topico,descripcion}`, `en{topico,descripcion}`, `baseStats{views,likes,shares}`).
+- `categoriaPrincipal`/`temas`/`tipoContenido` usan las claves fijas de [`taxonomia.json`](taxonomia.json) — ver "Gobernanza de la taxonomía" abajo. **No confundir con el `<Tema>` de carpeta** (`Construidos/<Tema>/`, `referencias/<Tema>/`): esa es la organización física de archivos construidos (libre, la decide quien crea la infografía); `categoriaPrincipal`/`temas` es la clasificación del catálogo público del sitio (cerrada, requiere autorización para crecer). Una misma carpeta `<Tema>` no tiene que coincidir con una `categoriaPrincipal` — por ejemplo, `Construidos/Escuela_IA/` clasifica sus piezas bajo `categoriaPrincipal: inteligencia-artificial`.
 - `imagen` apunta al asset final publicable, ruta relativa a la raíz del repo: `Construidos/<Tema>/<topico-slug>.png` (no al archivo de referencia de `referencias/`).
 - Cada infografía nueva agrega un objeto **al final** del arreglo — nunca se reescribe ni se borra una entrada existente, salvo consolidación de contenido relacionado (ver "Gestión inteligente de publicaciones e infografías"), donde se edita in-place por `id` conservando su posición, y la versión anterior de los archivos se archiva en vez de perderse.
 - `fechaPublicacion` de la entrada nueva = fecha de la última entrada existente en el arreglo + 2 días (ISO 8601). Si el catálogo está vacío, usar la fecha/hora actual. **Esta suma es siempre relativa a la última fecha ya guardada en el catálogo, nunca a la fecha real de hoy** — si la última entrada quedó con una fecha de hace un mes (porque el catálogo va "adelantado" respecto al calendario real), la siguiente sigue siendo esa fecha + 2 días, no la fecha de hoy + 2 días. Esta regla es para publicaciones normales; **las infografías de evento son la única excepción** y siempre usan la fecha/hora actual (ver "Branding de evento" arriba).
 - Nunca debe haber más de dos entradas con la misma fecha en el catálogo completo — verificarlo antes de agregar (el espaciado de +2 días ya lo garantiza en el flujo normal).
 - `baseStats` siempre inicia en `{ "views": 0, "likes": 0, "shares": 0 }` — nunca inventar valores.
 - No agregar propiedades fuera del schema fijo.
+
+## Gobernanza de la taxonomía (`taxonomia.json`)
+
+[`taxonomia.json`](taxonomia.json) es la fuente de verdad de tres listas cerradas — `categorias` (10), `temas` (45+) y `tiposContenido` (13) — que también vive espejada en `paginaweb/publications/taxonomia.js` (`window.TAXONOMIA_DATA`), igual que `publicaciones.json`/`publicaciones.js`. Reemplazó por completo el antiguo `es.tema`/`en.tema` de texto libre (migración 2026-07-20).
+
+**La taxonomía la administra exclusivamente el usuario.** Queda prohibido crear, renombrar, fusionar, dividir, reorganizar o eliminar cualquier `categoriaPrincipal`, `tema` o `tipoContenido` sin autorización explícita — para cada infografía nueva, usar únicamente claves ya existentes en `taxonomia.json`.
+
+- Cada publicación tiene **una única** `categoriaPrincipal` (nunca dos) y **uno o más** `temas` (un mismo tema puede repetirse en categorías distintas).
+- Si el contenido de una infografía nueva no encaja claramente en ninguna categoría/tema/tipo existente, **no forzar la clasificación ni crear uno nuevo** — presentar una propuesta (nombre sugerido, justificación, impacto en la estructura, beneficios, alternativas con la taxonomía actual) y esperar aprobación antes de tocar `taxonomia.json`.
+- Los eventos no son una categoría ni un tema — se clasifican con `tipoContenido: "evento"` dentro de la `categoriaPrincipal`/`temas` que ya les correspondan por contenido (ver "Branding de evento" arriba).
+- Las "Escuelas" (ej. Escuela de IA, Escuela de Python) no son parte de la taxonomía — son vistas del sitio que agrupan publicaciones por filtro dinámico sobre `temas` ya existentes, nunca una `categoriaPrincipal` ni un `tema` nuevos.
 
 ## Reglas generales
 
