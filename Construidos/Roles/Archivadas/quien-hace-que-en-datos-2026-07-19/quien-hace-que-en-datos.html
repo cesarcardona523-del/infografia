@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>¿Quién Hace Qué en Datos?</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --ing:#2360A8; --ing-pale:#E7EFF9;
+    --ana:#0E8A7D; --ana-pale:#E3F4F2;
+    --cie:#6B4EA0; --cie-pale:#EEE9F6;
+    --bi:#1B3A5C; --bi-pale:#E7ECF2;
+    --ink:#1D2129; --muted:#5C6470; --line:#E5E7EA; --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    min-height:627px; display:flex; align-items:center; justify-content:center;
+    padding:32px 16px; background:#EEF1F5;
+    font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
+  .canvas{
+    position:relative; width:1200px; height:627px; margin:0 auto;
+    background:var(--white);
+    border-radius:16px; box-shadow:0 20px 50px rgba(27,58,92,0.16); overflow:hidden;
+    padding:16px 30px 12px; color:var(--ink);
+    display:flex; flex-direction:column; min-height:0;
+  }
+
+  .header{ text-align:center; margin-bottom:9px; }
+  .header .eyebrow{ font-size:10.5px; font-weight:700; letter-spacing:1.8px; color:var(--bi); text-transform:uppercase; margin-bottom:3px; }
+  .header h1{ font-size:21px; margin:0 0 4px; font-weight:800; letter-spacing:-0.2px; }
+  .header p{ margin:0 auto; font-size:11.5px; color:var(--muted); max-width:780px; }
+
+  .pipeline{ flex:1; min-height:0; display:flex; align-items:stretch; gap:6px; }
+  .station{ flex:1; border-radius:12px; padding:22px 22px; display:flex; flex-direction:column; gap:16px; justify-content:center; }
+  .st1{ background:var(--ing-pale); border:1.5px solid var(--ing); }
+  .st2{ background:var(--ana-pale); border:1.5px solid var(--ana); }
+  .st3{ background:var(--cie-pale); border:1.5px solid var(--cie); }
+  .st4{ background:var(--bi-pale); border:1.5px solid var(--bi); }
+
+  .station .top{ display:flex; align-items:center; gap:12px; }
+  .station .icon{ width:50px; height:50px; border-radius:12px; color:#fff; display:flex; align-items:center; justify-content:center; flex:none; }
+  .st1 .icon{ background:var(--ing); } .st2 .icon{ background:var(--ana); } .st3 .icon{ background:var(--cie); } .st4 .icon{ background:var(--bi); }
+  .station .icon svg{ width:26px; height:26px; }
+  .station .rolename{ font-size:18px; font-weight:800; line-height:1.2; }
+  .st1 .rolename{ color:var(--ing); } .st2 .rolename{ color:var(--ana); } .st3 .rolename{ color:var(--cie); } .st4 .rolename{ color:var(--bi); }
+  .station .enfoque{ font-size:12px; color:var(--muted); font-weight:700; }
+
+  .field{ display:flex; flex-direction:column; gap:4px; }
+  .field .flabel{ font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:0.4px; color:var(--muted); }
+  .field .fvalue{ font-size:13.5px; line-height:1.45; color:var(--ink); font-weight:600; }
+
+  .qfield{ background:rgba(255,255,255,0.65); border-radius:9px; padding:12px 14px; }
+  .qfield .flabel{ color:var(--muted); }
+  .qfield .fvalue{ font-style:italic; font-weight:700; font-size:15px; }
+
+  .arrow-col{ flex:none; width:26px; display:flex; align-items:center; justify-content:center; color:var(--muted); }
+
+  .tagline{
+    margin-top:9px; display:flex; align-items:center; justify-content:center; gap:10px;
+    background:var(--ink); color:#fff; border-radius:10px; padding:10px 18px; font-size:12.5px; text-align:center;
+  }
+
+  .footer{ position:absolute; bottom:9px; right:20px; display:flex; align-items:center; gap:6px; }
+  .li-badge{ width:15px; height:15px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:9.5px; font-weight:800; font-family: Arial, sans-serif; }
+  .footer span{ font-size:9.5px; font-weight:600; color:var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="canvas-wrap">
+  <div class="canvas">
+
+    <div class="header">
+      <div class="eyebrow">Roles de Datos</div>
+      <h1>¿Quién Hace Qué en Datos?</h1>
+      <p>Ingeniería de Datos, Análisis de Datos, Ciencia de Datos y Business Intelligence — cuatro roles, una misma línea de valor.</p>
+    </div>
+
+    <div class="pipeline">
+      <div class="station st1">
+        <div class="top"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></div><div class="rolename">Ingeniero de Datos</div></div>
+        <div class="enfoque">Infraestructura y flujo de datos</div>
+        <div class="field"><div class="flabel">Qué hace</div><div class="fvalue">Construye pipelines, integra fuentes y prepara datos confiables</div></div>
+        <div class="field"><div class="flabel">Entregable</div><div class="fvalue">Data pipelines, data warehouse, datos limpios</div></div>
+        <div class="qfield"><div class="flabel">Responde</div><div class="fvalue">¿Cómo movemos y organizamos los datos?</div></div>
+      </div>
+
+      <div class="arrow-col"><svg width="20" height="16" viewBox="0 0 24 16"><path d="M2 8h18M14 2l8 6-8 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+
+      <div class="station st2">
+        <div class="top"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg></div><div class="rolename">Analista de Datos</div></div>
+        <div class="enfoque">Interpretación y hallazgos</div>
+        <div class="field"><div class="flabel">Qué hace</div><div class="fvalue">Explora datos, crea reportes y detecta patrones de negocio</div></div>
+        <div class="field"><div class="flabel">Entregable</div><div class="fvalue">Reportes, dashboards y recomendaciones</div></div>
+        <div class="qfield"><div class="flabel">Responde</div><div class="fvalue">¿Qué está pasando en el negocio?</div></div>
+      </div>
+
+      <div class="arrow-col"><svg width="20" height="16" viewBox="0 0 24 16"><path d="M2 8h18M14 2l8 6-8 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+
+      <div class="station st3">
+        <div class="top"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="7" cy="8" r="2.4"/><circle cx="17" cy="8" r="2.4"/><circle cx="12" cy="17" r="2.4"/><path d="M9 9.5 11 15M15 9.5 13 15"/></svg></div><div class="rolename">Científico de Datos</div></div>
+        <div class="enfoque">Modelado y predicción</div>
+        <div class="field"><div class="flabel">Qué hace</div><div class="fvalue">Desarrolla modelos, experimenta y genera predicciones</div></div>
+        <div class="field"><div class="flabel">Entregable</div><div class="fvalue">Modelos predictivos e insights avanzados</div></div>
+        <div class="qfield"><div class="flabel">Responde</div><div class="fvalue">¿Qué podría pasar y por qué?</div></div>
+      </div>
+
+      <div class="arrow-col"><svg width="20" height="16" viewBox="0 0 24 16"><path d="M2 8h18M14 2l8 6-8 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+
+      <div class="station st4">
+        <div class="top"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20V4M4 20h16"/><rect x="7" y="13" width="3" height="7"/><rect x="12" y="8" width="3" height="12"/><rect x="17" y="5" width="3" height="15"/></svg></div><div class="rolename">Business Intelligence</div></div>
+        <div class="enfoque">Visualización y decisión</div>
+        <div class="field"><div class="flabel">Qué hace</div><div class="fvalue">Transforma datos en tableros ejecutivos y métricas accionables</div></div>
+        <div class="field"><div class="flabel">Entregable</div><div class="fvalue">KPIs, dashboards ejecutivos y seguimiento</div></div>
+        <div class="qfield"><div class="flabel">Responde</div><div class="fvalue">¿Cómo decidimos mejor con los datos?</div></div>
+      </div>
+    </div>
+
+    <div class="tagline">Todos trabajan con datos, pero cada rol aporta valor en una etapa distinta.</div>
+
+    <div class="footer">
+      <div class="li-badge">in</div>
+      <span>cacm523</span>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
