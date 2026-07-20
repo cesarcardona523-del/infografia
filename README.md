@@ -121,6 +121,7 @@ Antes de crear una entrada nueva, el proyecto analiza si el contenido amplía o 
 - ✅ Árbol de Modelos de Claude: Cómo Elegir el Correcto — tema `Claude` — [HTML](Construidos/Claude/arbol-modelos-claude.html) · [PNG](Construidos/Claude/arbol-modelos-claude.png)
 - ✅ Análisis de Datos: Convertir Información en Mejores Decisiones — tema `Cultura_Datos` — [HTML](Construidos/Cultura_Datos/analisis-datos.html) · [PNG](Construidos/Cultura_Datos/analisis-datos.png)
 - ✅ ¿Quién Hace Qué en Datos? Ingeniería, Análisis, Ciencia y BI — tema `Roles` — [HTML](Construidos/Roles/quien-hace-que-en-datos.html) · [PNG](Construidos/Roles/quien-hace-que-en-datos.png)
+- ✅ 9 Tipos de Gestión de Proyectos: Marcos Predictivos, Ágiles y Técnicas de Optimización — tema `Proyectos` — [HTML](Construidos/Proyectos/tipos-gestion-proyectos.html) · [PNG](Construidos/Proyectos/tipos-gestion-proyectos.png)
 
 Este README se irá actualizando con un enlace por cada infografía nueva.
 
@@ -131,11 +132,11 @@ Este README se irá actualizando con un enlace por cada infografía nueva.
 Cifras reales de este repositorio (calculadas con `git log`/`git shortlog` sobre este mismo git — sin servicios externos ni redirecciones a otros sitios, instantánea al 2026-07-19):
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Commits-15-00C9A7?style=for-the-badge&logo=git&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Commits-17-00C9A7?style=for-the-badge&logo=git&logoColor=white"/>
   &nbsp;
-  <img src="https://img.shields.io/badge/Archivos-268-1A56E8?style=for-the-badge&logo=files&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Archivos-272-1A56E8?style=for-the-badge&logo=files&logoColor=white"/>
   &nbsp;
-  <img src="https://img.shields.io/badge/Líneas%20%2B%2F%E2%88%92-32%2C207%20%2F%20832-0B1426?style=for-the-badge&logo=git&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Líneas%20%2B%2F%E2%88%92-32%2C520%20%2F%20837-0B1426?style=for-the-badge&logo=git&logoColor=white"/>
 </p>
 
 <p align="center">
@@ -147,7 +148,7 @@ Cifras reales de este repositorio (calculadas con `git log`/`git shortlog` sobre
 **Commits por autor:**
 
 <p align="center">
-  <img src="https://img.shields.io/badge/caesar523__dev-15%20commits-00C9A7?style=flat&logo=github&logoColor=white"/>
+  <img src="https://img.shields.io/badge/caesar523__dev-17%20commits-00C9A7?style=flat&logo=github&logoColor=white"/>
 </p>
 
 > Esta sección se debe recalcular y actualizar cada vez que se agregue o modifique contenido en este repositorio — ver la regla correspondiente en [CLAUDE.md](CLAUDE.md).
