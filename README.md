@@ -49,6 +49,8 @@ Todas las infografías siguen el mismo sistema de diseño, definido en [INFOGRAF
 
 Para crear una infografía nueva: se listan imágenes de referencia en `referencias/<Tema>/`, y ese contexto se combina con el spec de diseño en `Construidos/<Tema>/<topico>.prompt.md` — ver [CLAUDE.md](CLAUDE.md) para el flujo completo.
 
+El proyecto mantiene un rol permanente de mejora continua: cada vez que se trabaja un tema, las piezas ya construidas de ese tema se revisan y, si hay una mejora objetiva real, se regeneran conservando el mismo nombre de archivo — sin tocar las que ya son consistentes con el estándar actual. INFOGRAFIA-SPEC.md evoluciona como design system vivo bajo el mismo criterio (ver "Rol permanente y mejora continua" en [CLAUDE.md](CLAUDE.md)).
+
 ## 📄 Catálogo de publicaciones
 
 Cada infografía agrega una entrada a [publicaciones.json](publicaciones.json), generada con el prompt de análisis de [INFOGRAFIA-INVESTIGAR.md](INFOGRAFIA-INVESTIGAR.md): tema, tópico y descripción en español e inglés, listos para programar la publicación. Las fechas se espacian +2 días entre entradas sucesivas, sin más de dos publicaciones el mismo día.
@@ -124,26 +126,26 @@ Este README se irá actualizando con un enlace por cada infografía nueva.
 
 ## 📈 Estadísticas del Repositorio
 
-Cifras reales de este repositorio (calculadas con `git log`/`git shortlog` sobre este mismo git — sin servicios externos ni redirecciones a otros sitios, instantánea al 2026-07-16):
+Cifras reales de este repositorio (calculadas con `git log`/`git shortlog` sobre este mismo git — sin servicios externos ni redirecciones a otros sitios, instantánea al 2026-07-19):
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Commits-6-00C9A7?style=for-the-badge&logo=git&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Commits-11-00C9A7?style=for-the-badge&logo=git&logoColor=white"/>
   &nbsp;
-  <img src="https://img.shields.io/badge/Archivos-65-1A56E8?style=for-the-badge&logo=files&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Archivos-264-1A56E8?style=for-the-badge&logo=files&logoColor=white"/>
   &nbsp;
-  <img src="https://img.shields.io/badge/Líneas%20%2B%2F%E2%88%92-5%2C590%20%2F%20571-0B1426?style=for-the-badge&logo=git&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Líneas%20%2B%2F%E2%88%92-31%2C778%20%2F%20711-0B1426?style=for-the-badge&logo=git&logoColor=white"/>
 </p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Primer%20commit-2026--07--16-00C9A7?style=flat&logo=git&logoColor=white"/>
   &nbsp;
-  <img src="https://img.shields.io/badge/Último%20commit-2026--07--16-1A56E8?style=flat&logo=git&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Último%20commit-2026--07--19-1A56E8?style=flat&logo=git&logoColor=white"/>
 </p>
 
 **Commits por autor:**
 
 <p align="center">
-  <img src="https://img.shields.io/badge/caesar523__dev-6%20commits-00C9A7?style=flat&logo=github&logoColor=white"/>
+  <img src="https://img.shields.io/badge/caesar523__dev-11%20commits-00C9A7?style=flat&logo=github&logoColor=white"/>
 </p>
 
 > Esta sección se debe recalcular y actualizar cada vez que se agregue o modifique contenido en este repositorio — ver la regla correspondiente en [CLAUDE.md](CLAUDE.md).
