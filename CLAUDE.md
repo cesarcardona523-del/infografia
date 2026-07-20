@@ -47,6 +47,28 @@ publicaciones.json                   → catálogo único e incremental de metad
 - Tratar el número más bajo (`_1`) como imagen principal y el resto como secundarias, salvo que el usuario indique otra cosa explícitamente.
 - La extensión no importa para el agrupamiento (jpg/png/gif/webp... todas cuentan si comparten el prefijo).
 
+**`Construidos/<Tema>/Archivadas/`** guarda versiones anteriores de una infografía que fue consolidada/actualizada en el mismo lugar (ver "Gestión inteligente de publicaciones e infografías" abajo) — nunca se borra una versión previa, se archiva.
+
+## Gestión inteligente de publicaciones e infografías (consolidación)
+
+Antes de arrancar el flujo de creación de abajo, si llega información nueva (un documento, una investigación, una noticia, un artículo, una explicación), analizar `publicaciones.json` (que `paginaweb/publications/publicaciones.js` siempre debe reflejar) para decidir si esa información amplía, corrige, actualiza o complementa una publicación ya existente, o si es un tema genuinamente nuevo.
+
+**Criterio de coincidencia — conservador.** Comparar por tema, tópico, conceptos principales y palabras clave, no solo por título literal. Pero solo se considera "la misma publicación" cuando es el mismo tópico exacto: una corrección, una ampliación directa del mismo asunto, datos actualizados del mismo tema, o el mismo contenido retocado. Ante la duda de si son temas relacionados pero distintos, **crear una publicación nueva**, no fusionar — evita perder cobertura de temas por sobre-consolidar.
+
+Esta regla reemplaza la anterior de "nunca reemplazar una entrada similar, siempre agregar una nueva" — la preservación de historial ahora se logra archivando los archivos (paso 1 abajo), no duplicando entradas de catálogo.
+
+**Si es la misma publicación → actualizar en el mismo lugar, nunca crear una entrada nueva:**
+
+1. **Archivar la versión anterior antes de tocar nada.** Mover `Construidos/<Tema>/<topico-slug>.html`, `.png` y `.prompt.md` a `Construidos/<Tema>/Archivadas/<topico-slug>-<fecha-de-hoy>/` (fecha ISO corta, ej. `2026-07-19`, para no perder historial si se archiva más de una vez). Si la imagen ya estaba copiada en `paginaweb/publications/`, archivar también esa copia en `paginaweb/publications/Archivadas/` con el mismo sufijo de fecha antes de reemplazarla.
+2. **Contenido**: complementar sin perder información válida ya construida; integrar solo lo nuevo relevante; eliminar redundancia; reorganizar para mejorar claridad; enriquecer la explicación cuando aporte. Nunca inventar cifras o contexto no respaldado.
+3. **Traducciones sincronizadas**: si se actualiza `es`, actualizar `en` en la misma pasada, con el mismo significado técnico y nivel de detalle.
+4. **Regenerar la infografía**: mismo estilo del proyecto (INFOGRAFIA-SPEC.md), mismo nombre de archivo cuando sea posible, reemplazando el asset activo en `Construidos/<Tema>/` y en `paginaweb/publications/` si ya existía ahí.
+5. **Catálogo — editar in-place en ambos archivos** (`publicaciones.json` y `paginaweb/publications/publicaciones.js`): mismo `id`, misma ruta de imagen, misma posición en el arreglo. Nunca tocar `baseStats`.
+6. **`fechaPublicacion`**: actualizar a la fecha/hora actual **solo si hay aporte real de contenido** (amplía, corrige, actualiza datos, agrega ejemplos o buenas prácticas, mejora la explicación) — mismo tratamiento que una infografía de evento (fecha/hora actual, no la regla de +2 días). No tocar la fecha ante correcciones menores: ortografía, formato, CSS, estilo, redacción menor. Verificar después que no queden más de dos entradas con esa misma fecha en el catálogo.
+7. Si el aporte nuevo trae material de referencia propio (documento, PDF, artículo, captura), guardarlo como referencia secundaria adicional en `referencias/<Tema>/<topico-slug>/` — no crear un subfolder de tópico nuevo.
+
+**Si es un tema genuinamente distinto** que no puede integrarse razonablemente en ninguna publicación existente: seguir el flujo normal de creación de abajo.
+
 ## Flujo para crear una infografía nueva
 
 El usuario da el tema y el `<topico-slug>`, y adjunta o lista una o varias imágenes de referencia. Si no da un topico-slug explícito, se deriva del tema/contexto de las imágenes. Opcionalmente puede indicar **Evento** y **Realizado por** (ver sección "Branding de evento" más abajo). A partir de ahí:
@@ -72,7 +94,7 @@ El usuario da el tema y el `<topico-slug>`, y adjunta o lista una o varias imág
      - `imagen` siempre con el prefijo `publications/`, ej. `"publications/Arquitectura_AWS_Big_Data_Pipeline.png"`.
      - `fechaPublicacion` = fecha de la última entrada existente **en ese archivo** (no en `publicaciones.json`) + 2 días — son dos catálogos independientes, cada uno con su propia secuencia de fechas. Seguir el formato de offset que use la entrada más reciente de ese archivo (a la fecha de este documento: `-05:00`, no `Z`).
    - Validar el JS antes de darlo por terminado: extraer el objeto tras `window.PUBLICACIONES_DATA = ` y parsearlo como JSON para confirmar que sigue siendo válido.
-   - Si ya existe una entrada de tema/tópico muy similar en `publicaciones.js` (mismo asunto, otra imagen), **no reemplazarla ni borrarla** — agregar la nueva de todas formas (regla explícita del usuario: siempre incremental) y avisar al usuario que ambas quedaron.
+   - Si en este punto se descubre que el tema ya tenía una entrada muy similar que se pasó por alto en el análisis inicial, no seguir agregando — volver al flujo de consolidación de "Gestión inteligente de publicaciones e infografías".
 
 ## Branding de evento (opcional)
 
@@ -94,7 +116,7 @@ Si se especifican, aplican las reglas de la sección "Branding de Evento" de INF
 
 - Un único archivo JSON en la raíz: un arreglo `[ ... ]` de objetos, cada uno con exactamente el schema de INFOGRAFIA-INVESTIGAR.md (`id`, `imagen`, `fechaPublicacion`, `es{tema,topico,descripcion}`, `en{tema,topico,descripcion}`, `baseStats{views,likes,shares}`).
 - `imagen` apunta al asset final publicable, ruta relativa a la raíz del repo: `Construidos/<Tema>/<topico-slug>.png` (no al archivo de referencia de `referencias/`).
-- Cada infografía nueva agrega un objeto **al final** del arreglo — nunca se reescribe ni se borra una entrada existente.
+- Cada infografía nueva agrega un objeto **al final** del arreglo — nunca se reescribe ni se borra una entrada existente, salvo consolidación de contenido relacionado (ver "Gestión inteligente de publicaciones e infografías"), donde se edita in-place por `id` conservando su posición, y la versión anterior de los archivos se archiva en vez de perderse.
 - `fechaPublicacion` de la entrada nueva = fecha de la última entrada existente en el arreglo + 2 días (ISO 8601). Si el catálogo está vacío, usar la fecha/hora actual. **Esta suma es siempre relativa a la última fecha ya guardada en el catálogo, nunca a la fecha real de hoy** — si la última entrada quedó con una fecha de hace un mes (porque el catálogo va "adelantado" respecto al calendario real), la siguiente sigue siendo esa fecha + 2 días, no la fecha de hoy + 2 días. Esta regla es para publicaciones normales; **las infografías de evento son la única excepción** y siempre usan la fecha/hora actual (ver "Branding de evento" arriba).
 - Nunca debe haber más de dos entradas con la misma fecha en el catálogo completo — verificarlo antes de agregar (el espaciado de +2 días ya lo garantiza en el flujo normal).
 - `baseStats` siempre inicia en `{ "views": 0, "likes": 0, "shares": 0 }` — nunca inventar valores.
