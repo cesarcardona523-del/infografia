@@ -1198,5 +1198,25 @@
       "likes": 0,
       "shares": 0
     }
+  },
+  {
+    "id": "tipos-gestion-proyectos",
+    "imagen": "Construidos/Proyectos/tipos-gestion-proyectos.png",
+    "fechaPublicacion": "2026-10-26T09:10:00",
+    "es": {
+      "tema": "Proyectos",
+      "topico": "9 Tipos de Gestión de Proyectos: Marcos Predictivos, Ágiles y Técnicas de Optimización",
+      "descripcion": "La elección de una metodología de gestión de proyectos determina directamente la forma en que un equipo planifica, ejecuta y controla el trabajo, y no existe un enfoque universalmente superior: la decisión depende del nivel de incertidumbre del proyecto, la rigidez de los requisitos y la necesidad de adaptación durante la ejecución. Los marcos predictivos, como Cascada y PRINCE2, organizan el trabajo en fases secuenciales con alcance, cronograma y entregables definidos desde el inicio, lo que favorece proyectos con requisitos estables y necesidades regulatorias o de gobernanza estrictas. Los marcos ágiles, como Ágil, Scrum y Kanban, priorizan la entrega incremental, la colaboración continua con el negocio y la capacidad de reaccionar a cambios de alcance, siendo especialmente adecuados para productos digitales y entornos con requisitos que evolucionan. Junto a estos ciclos de vida, existen técnicas de optimización y análisis —Lean, Seis Sigma, el Método del Camino Crítico y PERT— que no reemplazan un marco de gestión completo, sino que se integran dentro de cualquiera de ellos para reducir desperdicio, controlar la calidad de los procesos y programar tareas según sus dependencias reales. Comprender esta distinción entre marcos de ciclo de vida y técnicas de apoyo evita errores comunes, como intentar aplicar Scrum a un proyecto de cumplimiento regulatorio o Cascada a un producto con requisitos altamente inciertos. La combinación correcta de metodología y técnicas de soporte es, en la práctica, uno de los factores que más influye en el éxito de un proyecto."
+    },
+    "en": {
+      "tema": "Project Management",
+      "topico": "9 Types of Project Management: Predictive Frameworks, Agile, and Optimization Techniques",
+      "descripcion": "Choosing a project management methodology directly shapes how a team plans, executes, and controls its work, and no single approach is universally superior — the right choice depends on the project's level of uncertainty, how fixed its requirements are, and how much adaptation is needed during execution. Predictive frameworks, such as Waterfall and PRINCE2, organize work into sequential phases with scope, schedule, and deliverables defined upfront, making them well suited to projects with stable requirements and strict regulatory or governance needs. Agile frameworks, such as Agile, Scrum, and Kanban, prioritize incremental delivery, continuous collaboration with the business, and the ability to respond to changing scope, making them especially suitable for digital products and environments where requirements evolve. Alongside these lifecycle frameworks, optimization and analysis techniques — Lean, Six Sigma, the Critical Path Method, and PERT — don't replace a full management framework; instead, they integrate into any of them to reduce waste, control process quality, and schedule tasks based on their real dependencies. Understanding this distinction between lifecycle frameworks and supporting techniques avoids common mistakes, such as applying Scrum to a regulatory-compliance project or Waterfall to a product with highly uncertain requirements. In practice, the right combination of methodology and supporting techniques is one of the factors that most influences a project's success."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
   }
 ]
