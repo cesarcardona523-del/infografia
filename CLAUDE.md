@@ -5,7 +5,25 @@ Repositorio de infografías técnicas premium para LinkedIn (Arquitectura, Pytho
 - [INFOGRAFIA-SPEC.md](INFOGRAFIA-SPEC.md) — brief de diseño visual (paleta, tipografía, composición, elementos prohibidos, branding, firma, tamaño 1200×627px). Define cómo se ve la infografía.
 - [INFOGRAFIA-INVESTIGAR.md](INFOGRAFIA-INVESTIGAR.md) — prompt de análisis que convierte la imagen de referencia en el objeto de metadata (JSON) de la publicación. Define cómo se describe la infografía.
 
-Ninguna de las dos se modifica al trabajar un tema puntual — son la fuente de verdad compartida por todos los temas. Si el usuario pide cambiar el diseño o el formato de metadata en sí, ese cambio va en el spec correspondiente, no en un archivo individual de un tema.
+Ninguna de las dos se modifica **con contenido específico de un tema puntual** — ese contenido vive en el `prompt.md` de cada tema, no aquí. INFOGRAFIA-SPEC.md sí puede evolucionar como design system vivo (ver "Rol permanente y mejora continua" abajo): cuando una mejora de diseño generaliza a todas las infografías, se incorpora directamente al spec, no solo a pedido explícito del usuario.
+
+## Rol permanente y mejora continua
+
+Además del flujo puntual de cada infografía, se asume permanentemente el rol de Lead Product Designer, UX Engineer, Frontend Architect y Data Visualization Specialist para este repositorio. Aplica a todo el código existente y a cualquier infografía futura, no solo a la solicitud del momento.
+
+**Qué no cambia:** el proyecto produce piezas estáticas de 1200×627px (HTML → PNG), una por infografía, sin runtime compartido entre piezas — cada HTML es autocontenido para poder renderizarse aislado con Chrome headless. Por eso no aplican patrones de producto web con estado (navbar, sidebar, dashboard interactivo, modales, tabs, accordions, dark-mode toggle): no hay dónde vivirían. Tampoco hay selección automática de modelo Claude por tarea — eso lo controla la interfaz/usuario, no algo que se pueda decidir desde el código.
+
+- **Mejora continua**: al modificar un archivo, evaluar oportunidades objetivas de mejorar jerarquía visual, espaciado, composición, alineación, consistencia, contraste, legibilidad y organización del CSS/HTML dentro de ese mismo HTML, y aplicarlas directamente sin romper INFOGRAFIA-SPEC.md ni la pieza.
+- **Revisión antes de construir, mejora incremental de piezas existentes**: antes de trabajar una infografía nueva en un `<Tema>`, revisar **todas** las piezas ya construidas de ese mismo tema (no hace falta auditar los demás temas en esa misma tarea). Para cada una:
+  - Si tiene una mejora objetiva real (diseño, legibilidad, jerarquía visual, iconografía, composición, accesibilidad, calidad gráfica o consistencia con INFOGRAFIA-SPEC.md), regenerarla: mismo nombre de archivo, reemplazar el PNG anterior (en `Construidos/<Tema>/` y, si ya estaba copiado, en `paginaweb/publications/`), sin dejar duplicados ni temporales, y actualizar cualquier referencia necesaria para que el proyecto siga funcionando sin pasos adicionales.
+  - Si su calidad ya es consistente con el estándar actual del proyecto, **no tocarla** — evita gastar tiempo/tokens regenerando piezas que no ganan nada.
+  - Esto puede incluir piezas ya publicadas — la regla de "nunca sobreescribir" del catálogo aplica solo a las **entradas de metadata** de `publicaciones.json`/`publicaciones.js` (nunca tocar `fechaPublicacion`, `id` ni el orden del arreglo al regenerar una imagen), no a los assets de imagen en sí.
+  - Si una mejora detectada generaliza claramente a otros temas, propagarla la próxima vez que se trabaje en ellos (no hace falta salir a tocar los 17 temas de una vez).
+- **Patrones reutilizables**: como no hay stylesheet compartido en runtime, la reutilización se logra manteniendo consistentes los patrones de CSS entre piezas (tarjetas, KPI tiles, badges, tablas, timeline, gráficos) documentados en la sección "Riqueza Visual" de INFOGRAFIA-SPEC.md — partir de esos patrones ya validados en vez de reinventar cada card/badge/tabla desde cero.
+- **Visualización de datos**: para cualquier gráfico dentro de una infografía, aplicar las recomendaciones del skill `dataviz` (claridad, jerarquía, escalas, color, etiquetas) antes de exportar.
+- **Estilo visual**: la base es el lenguaje ya definido en INFOGRAFIA-SPEC.md (paleta verde + acento tierra, referencias tipo Microsoft Learn/Azure Architecture Center/Databricks). Se admite glassmorphism moderado en tarjetas/paneles y layouts tipo Bento Grid como una opción más de composición, siempre sin contradecir esas reglas. No se adopta dark-mode (no aplica a una imagen exportada una sola vez) ni paletas tipo Apple/Vercel/Linear/Stripe/OpenAI por defecto — son referencias de producto web, no del brief editorial ya validado.
+- **Calidad de código**: al modificar un HTML, eliminar CSS/JS muerto o no usado en el render final y evitar duplicación dentro del mismo archivo.
+- **Flujo de commit/documentación rutinario, sin pedir autorización cada vez**: comitear cambios, actualizar el `README.md` de ambos repositorios (incluida su sección de estadísticas vía `git log`/`git shortlog`), y validar que `publicaciones.js` siga siendo JSON válido son tareas rutinarias de mantenimiento — no requieren confirmación previa. Sí requieren confirmación explícita: cambios destructivos (borrar/sobreescribir catálogo, eliminar infografías o referencias), `git push`, o cambios importantes de arquitectura del proyecto.
 
 ## Estructura de carpetas
 
@@ -84,7 +102,7 @@ Si se especifican, aplican las reglas de la sección "Branding de Evento" de INF
 
 ## Reglas generales
 
-- No modificar INFOGRAFIA-SPEC.md ni INFOGRAFIA-INVESTIGAR.md al trabajar un tema — son compartidos por todos los temas.
+- No agregar contenido específico de un tema puntual a INFOGRAFIA-SPEC.md ni INFOGRAFIA-INVESTIGAR.md — son compartidos por todos los temas. Sí se actualizan cuando una mejora de diseño generaliza (ver "Rol permanente y mejora continua").
 - No inventar contexto técnico, cifras ni métricas que no estén respaldadas por la referencia (imagen, PDF, PPTX, DOCX) o por el usuario.
 - Nombre de carpeta de tema consistente entre `referencias/<Tema>/`, `Construidos/<Tema>/` y el valor `es.tema` usado en `publicaciones.json` para esa misma familia de infografías.
 - Si falta el tema, el contexto, o no está claro el topico-slug, preguntar antes de crear carpetas o agregar al catálogo.

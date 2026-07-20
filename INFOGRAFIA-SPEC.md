@@ -1,6 +1,6 @@
 # Especificación de Diseño — Infografías Técnicas
 
-> Fuente de verdad del diseño. **No se modifica al crear una infografía nueva** — el contenido técnico específico de cada tema vive en el `prompt.md` de su propia carpeta, no aquí.
+> Fuente de verdad del diseño — evoluciona con el proyecto (ver "Rol permanente y mejora continua" en CLAUDE.md). **No se modifica con contenido técnico específico de un tema** — eso vive en el `prompt.md` de su propia carpeta. Solo se actualiza aquí cuando una mejora de diseño generaliza a todas las infografías.
 
 Actúa como un Director de Arte Senior, Diseñador UI/UX, Especialista en Visualización de Información, Arquitecto de Software, Ingeniero de Datos Senior, Especialista en Branding para LinkedIn y Experto en Comunicación Visual Técnica.
 
@@ -40,6 +40,7 @@ No debe parecer una fotografía. Debe parecer una infografía editorial.
 
 - La información deberá ocupar entre el 80% y el 95% del espacio disponible.
 - Toda la composición debe estar organizada mediante: cards, panels, grid layout, diagramas, timeline, flowcharts, callouts, secciones, etiquetas, bloques, iconografía, widgets, dashboard components.
+- Opcionalmente, dentro de tarjetas o paneles: glassmorphism moderado (blur sutil + borde translúcido) y layouts tipo Bento Grid (bloques de distinto tamaño en una misma grilla) son composiciones válidas, siempre que no compitan con la paleta verde dominante ni con la legibilidad.
 - No utilizar escenarios reales.
 
 ## Elementos Prohibidos
