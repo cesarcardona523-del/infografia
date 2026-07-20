@@ -1218,5 +1218,105 @@
       "likes": 0,
       "shares": 0
     }
+  },
+  {
+    "id": "gobierno-de-datos",
+    "imagen": "Construidos/Gobierno_de_Datos/gobierno-de-datos.png",
+    "fechaPublicacion": "2026-10-28T09:10:00",
+    "es": {
+      "tema": "Gobierno de Datos",
+      "topico": "El Gobierno de Datos no es Solo Tecnología: Reglas, Responsables y Confianza",
+      "descripcion": "El gobierno de datos es el marco que une negocio, procesos y cumplimiento para asegurar que la información de una organización sea confiable, esté protegida y realmente sirva para decidir. No se trata de una herramienta ni de una plataforma tecnológica: es un conjunto de reglas, responsables y mecanismos de confianza que determinan quién puede usar cada dato, bajo qué condiciones y con qué nivel de calidad. Sin gobierno, los reportes pueden verse impecables mientras las decisiones que se apoyan en ellos siguen siendo débiles, porque nadie garantiza que los números detrás de esos reportes sean correctos o estén actualizados. Un programa de gobierno bien implementado mejora las decisiones al aumentar la confiabilidad de la información, reduce riesgos al controlar accesos, errores y usos indebidos, y fortalece el cumplimiento normativo mediante trazabilidad y evidencia verificable. En la práctica, esto se traduce en cuatro elementos concretos: dueños del dato que asumen responsabilidad sobre su uso, reglas de calidad que garantizan exactitud y consistencia, controles de acceso alineados con roles y niveles de riesgo, y mecanismos de trazabilidad que documentan el origen y los cambios de cada dato crítico. Cuando estos elementos existen, un dato deja de ser un simple registro almacenado y se convierte en un activo de la organización, con el mismo nivel de cuidado y control que cualquier otro recurso estratégico."
+    },
+    "en": {
+      "tema": "Data Governance",
+      "topico": "Data Governance Is Not Just Technology: Rules, Owners, and Trust",
+      "descripcion": "Data governance is the framework that ties business, processes, and compliance together to ensure an organization's information is trustworthy, protected, and actually useful for decision-making. It isn't a tool or a technology platform: it's a set of rules, accountable owners, and trust mechanisms that determine who can use each piece of data, under what conditions, and at what quality level. Without governance, reports can look flawless while the decisions built on them remain weak, because nothing guarantees the numbers behind those reports are correct or current. A well-implemented governance program improves decision-making by increasing the reliability of information, reduces risk by controlling access, errors, and misuse, and strengthens regulatory compliance through traceability and verifiable evidence. In practice, this translates into four concrete elements: data owners who take responsibility for how data is used, quality rules that ensure accuracy and consistency, access controls aligned with roles and risk levels, and traceability mechanisms that document the origin and changes of each critical data element. When these elements are in place, a data point stops being a simple stored record and becomes an organizational asset, deserving the same level of care and control as any other strategic resource."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "estrategia-de-datos",
+    "imagen": "Construidos/Estrategia_de_Datos/estrategia-de-datos.png",
+    "fechaPublicacion": "2026-10-30T09:10:00",
+    "es": {
+      "tema": "Estrategia de Datos",
+      "topico": "Estrategia de Datos: el Equilibrio entre Capacidades Ofensivas y Defensivas",
+      "descripcion": "Una estrategia de datos madura no elige entre atacar o defender: equilibra ambas fuerzas sobre una misma base de capacidades fundamentales. La estrategia ofensiva persigue crecimiento, innovación y ventaja competitiva a través de capacidades como el crecimiento de ingresos, la monetización de datos, la analítica avanzada, la inteligencia artificial, la automatización de insights y la democratización de datos dentro de la organización. La estrategia defensiva, en cambio, busca reducir riesgos, garantizar control y generar confianza mediante el gobierno de la inteligencia artificial, el linaje de datos, el cumplimiento regulatorio, la seguridad de la información, la privacidad de los datos y la gestión de riesgos. Ninguna de las dos funciona de forma aislada: ambas dependen de un conjunto de capacidades fundamentales compartidas —arquitectura de datos, inteligencia de negocios, calidad de datos, gestión de metadatos y alfabetización y cultura de datos— que actúan como la base que las sostiene. Esta base, sumada a una dirección de negocio clara, patrocinio de liderazgo y una ejecución disciplinada, es lo que permite que ambas estrategias avancen juntas en vez de competir por recursos. Priorizar solo el crecimiento sin controles adecuados expone a la organización a riesgos regulatorios y reputacionales; priorizar solo el control sin capacidades de innovación limita la competitividad. El verdadero desafío no es elegir un lado, sino diseñar un programa de datos donde ambas fuerzas avancen de forma coordinada."
+    },
+    "en": {
+      "tema": "Data Strategy",
+      "topico": "Data Strategy: Balancing Offensive and Defensive Capabilities",
+      "descripcion": "A mature data strategy doesn't choose between offense and defense: it balances both forces on the same foundation of core capabilities. The offensive strategy pursues growth, innovation, and competitive advantage through capabilities such as revenue growth, data monetization, advanced analytics, artificial intelligence, insight automation, and data democratization across the organization. The defensive strategy, by contrast, seeks to reduce risk, ensure control, and build trust through AI governance, data lineage, regulatory compliance, data security, data privacy, and risk management. Neither works in isolation: both depend on a shared set of foundational capabilities — data architecture, business intelligence, data quality, metadata management, and data literacy and culture — that act as the base sustaining them. That foundation, combined with clear business direction, leadership sponsorship, and disciplined execution, is what allows both strategies to advance together instead of competing for resources. Prioritizing growth alone without adequate controls exposes the organization to regulatory and reputational risk; prioritizing control alone without innovation capabilities limits competitiveness. The real challenge isn't choosing a side — it's designing a data program where both forces move forward in a coordinated way."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "gobernanza-tableros-bi",
+    "imagen": "Construidos/Gobernanza_Tableros_BI/gobernanza-tableros-bi.png",
+    "fechaPublicacion": "2026-11-01T09:10:00",
+    "es": {
+      "tema": "Gobernanza en Tableros de BI",
+      "topico": "Gobernanza de Datos en Tableros de BI: Confianza en los Datos, Decisiones con Impacto",
+      "descripcion": "Un tablero de Business Intelligence no es solo una visualización bien diseñada: es un activo de información que influye directamente en decisiones de negocio, y como cualquier activo, requiere gobierno para ser confiable. Sin gobernanza, tarde o temprano aparecen preguntas incómodas: cuál es el tablero oficial cuando existen varias versiones, por qué un mismo indicador muestra valores distintos en reportes diferentes, quién es responsable de cada KPI, cada cuánto se actualiza la información, o si la definición de un indicador cambió sin que nadie lo comunicara. Estas preguntas no son un problema técnico menor: erosionan la confianza en los datos y, con ella, la calidad de las decisiones que se toman sobre ellos. Un tablero confiable se sostiene sobre siete componentes de gobernanza que trabajan de forma conjunta: definiciones claras de cada métrica, responsables asignados por tablero, trazabilidad desde el dato origen hasta la visualización final, controles de calidad de la información, control y acceso alineado con la sensibilidad de los datos, gestión de cambios y versionamiento del contenido, y monitoreo del uso para detectar tableros obsoletos o duplicados. La conclusión central es que la confianza en un tablero no se construye con mejores gráficas, sino con mejores procesos de gobierno: cuando los usuarios saben de dónde vienen los datos, quién los administra y bajo qué reglas fueron construidos, las decisiones dejan de basarse en suposiciones."
+    },
+    "en": {
+      "tema": "BI Dashboard Governance",
+      "topico": "Data Governance in BI Dashboards: Trusted Data, Decisions with Impact",
+      "descripcion": "A BI dashboard isn't just a well-designed visualization: it's an information asset that directly influences business decisions, and like any asset, it requires governance to be trustworthy. Without governance, uncomfortable questions eventually surface: which dashboard is the official one when several versions exist, why the same metric shows different values across reports, who is accountable for each KPI, how often the underlying data refreshes, or whether a metric's definition changed without anyone communicating it. These aren't minor technical issues — they erode trust in the data and, with it, the quality of the decisions made from it. A trustworthy dashboard rests on seven governance components working together: clear definitions for each metric, assigned owners per dashboard, traceability from the source data to the final visualization, information quality controls, access control aligned with data sensitivity, change and version management for dashboard content, and usage monitoring to flag obsolete or duplicate dashboards. The central takeaway is that trust in a dashboard isn't built with better charts, but with better governance processes: when users know where the data comes from, who manages it, and under what rules it was built, decisions stop being based on assumptions."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "calidad-datos-gobierno",
+    "imagen": "Construidos/Calidad_Datos_Gobierno/calidad-datos-gobierno.png",
+    "fechaPublicacion": "2026-11-03T09:10:00",
+    "es": {
+      "tema": "Calidad de Datos en Gobierno de Datos",
+      "topico": "Calidad de Datos en Gobierno de Datos: 6 Dimensiones con Caso Aplicado en Banca",
+      "descripcion": "La calidad de datos es el componente operativo que convierte un programa de gobierno de datos en algo medible: sin dimensiones claras de calidad, gobernar los datos se reduce a una declaración de intenciones. Un caso aplicado en el sector de banca y microfinanzas ilustra este punto: una entidad financiera identificó inconsistencias en su información de clientes que generaban riesgos tanto en la evaluación crediticia como en el cumplimiento regulatorio, y evaluó la calidad de sus datos a través de seis dimensiones estándar. La exactitud verifica que los datos representen correctamente la realidad, como ingresos declarados fuera de rangos normales. La completitud identifica valores faltantes que son requeridos para operar, como clientes sin teléfono o dirección registrada. La consistencia detecta cuando un mismo dato difiere entre sistemas, como el estado de un cliente registrado de forma distinta en el sistema Core y en el CRM. La validez confirma que los valores cumplan el formato y las reglas de negocio esperadas, como fechas de nacimiento imposibles. La unicidad identifica registros duplicados de una misma entidad, como clientes repetidos por número de documento. La oportunidad mide si los datos están disponibles y actualizados a tiempo, como registros sin actualización en más de un año. Cada dimensión se implementa mediante consultas SQL concretas sobre la base de datos, no mediante inspecciones manuales. En este caso aplicado, evaluar sistemáticamente las seis dimensiones mejoró la calidad de los datos en un 32%, reduciendo el riesgo crediticio y fortaleciendo el cumplimiento normativo."
+    },
+    "en": {
+      "tema": "Data Quality in Data Governance",
+      "topico": "Data Quality in Data Governance: 6 Dimensions with a Banking Case Study",
+      "descripcion": "Data quality is the operational component that turns a data governance program into something measurable: without clear quality dimensions, governing data becomes little more than a statement of intent. An applied case from the banking and microfinance sector illustrates this: a financial institution identified inconsistencies in its customer information that created risk in both credit assessment and regulatory compliance, and evaluated its data quality across six standard dimensions. Accuracy verifies that data correctly represents reality, such as reported income falling outside normal ranges. Completeness identifies missing values required for operations, such as customers without a registered phone number or address. Consistency detects when the same data differs across systems, such as a customer's status recorded differently in the core system versus the CRM. Validity confirms that values meet the expected format and business rules, such as impossible birth dates. Uniqueness identifies duplicate records for the same entity, such as customers duplicated by ID number. Timeliness measures whether data is available and updated on time, such as records left unupdated for more than a year. Each dimension is implemented through concrete SQL queries against the database, not manual inspection. In this applied case, systematically evaluating all six dimensions improved data quality by 32%, reducing credit risk and strengthening regulatory compliance."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "data-governance-mdm",
+    "imagen": "Construidos/Data_Governance_MDM/data-governance-mdm.png",
+    "fechaPublicacion": "2026-11-05T09:10:00",
+    "es": {
+      "tema": "Data Governance for Master Data Management",
+      "topico": "Data Governance for Master Data Management: Roles, Políticas y Rendición de Cuentas",
+      "descripcion": "Un programa de Master Data Management (MDM) exitoso depende de que el gobierno de datos esté integrado desde su diseño: sin gobierno, un repositorio maestro centralizado es solo una copia consolidada del caos existente, no una fuente de verdad confiable. La gobernanza para MDM se sostiene sobre una estructura de responsabilidad de cuatro niveles. En la cúspide, un director de gobierno de datos gestiona el programa día a día, preside el comité de supervisión y consigue respaldo a nivel ejecutivo. Debajo, un comité de supervisión de gobierno aprueba políticas y prioridades, y delimita la rendición de cuentas del programa completo. Un consejo de coordinación de datos actúa como equipo táctico, definiendo métricas y umbrales de aceptación, y gestionando el gobierno entre las distintas líneas de negocio. En la base operativa, los data stewards de cada línea de negocio definen criterios de calidad y reportan problemas de forma ascendente. Sobre esta estructura se apoyan tres pilares prácticos: identificar y consensuar los elementos críticos de datos junto con su fuente autoritativa, traducir las políticas de negocio en reglas de datos medibles y reportables, y empoderar a las personas correctas con una estructura de gobierno que tenga incentivos reales, no solo políticas documentadas sin seguimiento. La tendencia hacia una gestión de datos más automatizada y de autoservicio no reemplaza esta estructura: solo es confiable cuando se construye sobre una base de gobierno ya establecida."
+    },
+    "en": {
+      "tema": "Data Governance for Master Data Management",
+      "topico": "Data Governance for Master Data Management: Roles, Policies, and Accountability",
+      "descripcion": "A successful Master Data Management (MDM) program depends on data governance being built in from the start: without governance, a centralized master repository is just a consolidated copy of existing chaos, not a trustworthy source of truth. Governance for MDM rests on a four-tier accountability structure. At the top, a data governance director manages the program day to day, chairs the oversight board, and secures executive-level sponsorship. Below that, a data governance oversight board approves policies and priorities and delineates accountability for the whole program. A data coordination council acts as the tactical team, defining metrics and acceptance thresholds and managing governance across business lines. At the operational base, data stewards within each business line define quality criteria and escalate issues upward. This structure rests on three practical pillars: identifying and reaching consensus on critical data elements along with their authoritative source, translating business policies into measurable, reportable data rules, and empowering the right people with a governance structure backed by real incentives, not just documented policies with no follow-through. The trend toward more automated, self-service data management doesn't replace this structure — it's only trustworthy when built on a governance foundation that's already in place."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
   }
 ]

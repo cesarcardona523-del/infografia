@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Gobierno de Datos no es solo Tecnología</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { width:1264px; height:691px; padding:32px; background:#EDEFF3; font-family:-apple-system,"SF Pro Display","Segoe UI",Inter,Helvetica,Arial,sans-serif; }
+  .canvas { position:relative; width:1200px; height:627px; background:#FAFAF8; overflow:hidden; }
+
+  .eyebrow { position:absolute; top:34px; left:46px; font-size:11px; font-weight:700; letter-spacing:2.4px; color:#2B4C9E; text-transform:uppercase; }
+  .title { position:absolute; top:49px; left:46px; font-size:26px; font-weight:800; color:#14161C; letter-spacing:-0.3px; }
+  .subtitle { position:absolute; top:84px; left:46px; width:1050px; font-size:13px; color:#5B6472; }
+
+  .pillars { position:absolute; top:120px; left:46px; width:1108px; height:115px; display:flex; gap:16px; }
+  .pillar { flex:1; border-radius:14px; padding:14px 16px; background:rgba(43,76,158,0.045); border:1px solid rgba(43,76,158,0.14); display:flex; flex-direction:column; }
+  .pillar .ic { width:30px; height:30px; border-radius:8px; background:#2B4C9E; display:flex; align-items:center; justify-content:center; }
+  .pillar .ic svg { width:16px; height:16px; }
+  .pillar .t { margin-top:8px; font-size:14.5px; font-weight:800; color:#1E3579; }
+  .pillar .d { margin-top:4px; font-size:11.5px; line-height:1.4; color:#4A525C; }
+
+  .benefits { position:absolute; top:247px; left:46px; width:1108px; height:78px; display:flex; gap:16px; }
+  .benefit { flex:1; border-radius:12px; padding:11px 15px; background:rgba(15,157,130,0.055); border:1px solid rgba(15,157,130,0.16); display:flex; align-items:center; gap:11px; }
+  .benefit .ic { width:30px; height:30px; border-radius:8px; background:#0F9D82; flex-shrink:0; display:flex; align-items:center; justify-content:center; }
+  .benefit .ic svg { width:16px; height:16px; }
+  .benefit .txt .t { font-size:12.5px; font-weight:800; color:#0B6E5C; }
+  .benefit .txt .d { margin-top:2px; font-size:10.8px; color:#4A525C; line-height:1.3; }
+
+  .practice { position:absolute; top:337px; left:46px; width:1108px; height:200px; display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr; gap:12px; }
+  .pcard { border-radius:12px; padding:12px 16px; background:#fff; border:1px solid rgba(0,0,0,0.07); display:flex; align-items:flex-start; gap:12px; }
+  .pcard .num { width:26px; height:26px; border-radius:50%; background:#14161C; color:#fff; font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .pcard .txt .t { font-size:13.5px; font-weight:800; color:#14161C; }
+  .pcard .txt .d { margin-top:3px; font-size:11.2px; line-height:1.4; color:#4A525C; }
+
+  .closing { position:absolute; left:46px; right:46px; bottom:30px; background:#14161C; border-radius:10px; padding:12px 20px; display:flex; align-items:center; gap:10px; }
+  .closing svg { width:16px; height:16px; flex-shrink:0; }
+  .closing p { color:#F2F3F5; font-size:13px; font-weight:600; }
+
+  .signature { position:absolute; right:14px; bottom:90px; display:flex; align-items:center; gap:6px; opacity:0.85; }
+  .signature .li { width:18px; height:18px; border-radius:4px; background:#0A66C2; display:flex; align-items:center; justify-content:center; }
+  .signature .li svg { width:11px; height:11px; }
+  .signature span { font-size:11.5px; color:#5B6472; font-weight:600; }
+</style>
+</head>
+<body>
+<div class="canvas">
+
+  <div class="eyebrow">Gobierno de Datos</div>
+  <div class="title">El Gobierno de Datos no es solo Tecnología</div>
+  <div class="subtitle">Es un marco que une negocio, procesos y cumplimiento para asegurar datos confiables, protegidos y útiles para decidir.</div>
+
+  <div class="pillars">
+    <div class="pillar">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="7.5" width="17" height="12" rx="2" stroke="white" stroke-width="1.8"/><path d="M8 7.5V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1.5" stroke="white" stroke-width="1.8"/></svg></div>
+      <div class="t">Negocio</div>
+      <div class="d">Define objetivos y decisiones sobre cómo se usan los datos.</div>
+    </div>
+    <div class="pillar">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="white" stroke-width="1.7"/><path d="M12 3v2.2M12 18.8V21M21 12h-2.2M5.2 12H3M18.4 5.6l-1.6 1.6M7.2 16.8l-1.6 1.6M18.4 18.4l-1.6-1.6M7.2 7.2 5.6 5.6" stroke="white" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+      <div class="t">Procesos</div>
+      <div class="d">Reglas y flujos consistentes para crear, modificar y usar los datos.</div>
+    </div>
+    <div class="pillar">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5.5c0 4.5-3 7.5-7 9.5-4-2-7-5-7-9.5V6l7-3z" stroke="white" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="white" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="t">Cumplimiento</div>
+      <div class="d">Evidencia y control frente a normas y políticas internas.</div>
+    </div>
+  </div>
+
+  <div class="benefits">
+    <div class="benefit">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M3 18l6-6 4 4 8-8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="txt"><div class="t">Mejora decisiones</div><div class="d">La información es más confiable.</div></div>
+    </div>
+    <div class="benefit">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5.5c0 4.5-3 7.5-7 9.5-4-2-7-5-7-9.5V6l7-3z" stroke="white" stroke-width="1.7" stroke-linejoin="round"/><line x1="12" y1="9" x2="12" y2="13.5" stroke="white" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="16" r="0.9" fill="white"/></svg></div>
+      <div class="txt"><div class="t">Reduce riesgos</div><div class="d">Controla accesos, errores y uso indebido.</div></div>
+    </div>
+    <div class="benefit">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M5 5h10l4 4v10H5z" stroke="white" stroke-width="1.7" stroke-linejoin="round"/><path d="M8.5 12.5l2 2 4.5-4.5" stroke="white" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="txt"><div class="t">Fortalece cumplimiento</div><div class="d">Con trazabilidad y evidencia del dato.</div></div>
+    </div>
+  </div>
+
+  <div class="practice">
+    <div class="pcard">
+      <div class="num">1</div>
+      <div class="txt"><div class="t">Dueños del dato</div><div class="d">Definen responsables y toman decisiones sobre su uso.</div></div>
+    </div>
+    <div class="pcard">
+      <div class="num">2</div>
+      <div class="txt"><div class="t">Reglas de calidad</div><div class="d">Aseguran exactitud, consistencia y oportunidad.</div></div>
+    </div>
+    <div class="pcard">
+      <div class="num">3</div>
+      <div class="txt"><div class="t">Accesos controlados</div><div class="d">Protegen la información según roles y riesgos.</div></div>
+    </div>
+    <div class="pcard">
+      <div class="num">4</div>
+      <div class="txt"><div class="t">Trazabilidad y cumplimiento</div><div class="d">Dejan evidencia, control y alineación normativa.</div></div>
+    </div>
+  </div>
+
+  <div class="closing">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5.5c0 4.5-3 7.5-7 9.5-4-2-7-5-7-9.5V6l7-3z" stroke="#0F9D82" stroke-width="2" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="#0F9D82" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <p>Cuando esto existe, el dato deja de ser solo un archivo y se convierte en un activo.</p>
+  </div>
+
+  <div class="signature">
+    <div class="li"><svg viewBox="0 0 24 24" fill="white"><path d="M4.98 3.5C4.98 4.88 3.94 6 2.5 6S0 4.88 0 3.5 1.04 1 2.48 1s2.5 1.12 2.5 2.5zM.24 8.25h4.5V23H.24V8.25zM8.5 8.25h4.31v2.02h.06c.6-1.14 2.07-2.34 4.26-2.34 4.56 0 5.4 3 5.4 6.9V23h-4.5v-6.75c0-1.61-.03-3.68-2.24-3.68-2.25 0-2.6 1.75-2.6 3.56V23H8.5V8.25z"/></svg></div>
+    <span>cacm523</span>
+  </div>
+
+</div>
+</body>
+</html>

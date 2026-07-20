@@ -122,6 +122,11 @@ Antes de crear una entrada nueva, el proyecto analiza si el contenido amplía o 
 - ✅ Análisis de Datos: Convertir Información en Mejores Decisiones — tema `Cultura_Datos` — [HTML](Construidos/Cultura_Datos/analisis-datos.html) · [PNG](Construidos/Cultura_Datos/analisis-datos.png)
 - ✅ ¿Quién Hace Qué en Datos? Ingeniería, Análisis, Ciencia y BI — tema `Roles` — [HTML](Construidos/Roles/quien-hace-que-en-datos.html) · [PNG](Construidos/Roles/quien-hace-que-en-datos.png)
 - ✅ 9 Tipos de Gestión de Proyectos: Marcos Predictivos, Ágiles y Técnicas de Optimización — tema `Proyectos` — [HTML](Construidos/Proyectos/tipos-gestion-proyectos.html) · [PNG](Construidos/Proyectos/tipos-gestion-proyectos.png)
+- ✅ El Gobierno de Datos no es Solo Tecnología: Reglas, Responsables y Confianza — tema `Gobierno_de_Datos` — [HTML](Construidos/Gobierno_de_Datos/gobierno-de-datos.html) · [PNG](Construidos/Gobierno_de_Datos/gobierno-de-datos.png)
+- ✅ Estrategia de Datos: el Equilibrio entre Capacidades Ofensivas y Defensivas — tema `Estrategia_de_Datos` — [HTML](Construidos/Estrategia_de_Datos/estrategia-de-datos.html) · [PNG](Construidos/Estrategia_de_Datos/estrategia-de-datos.png)
+- ✅ Gobernanza de Datos en Tableros de BI: Confianza en los Datos, Decisiones con Impacto — tema `Gobernanza_Tableros_BI` — [HTML](Construidos/Gobernanza_Tableros_BI/gobernanza-tableros-bi.html) · [PNG](Construidos/Gobernanza_Tableros_BI/gobernanza-tableros-bi.png)
+- ✅ Calidad de Datos en Gobierno de Datos: 6 Dimensiones con Caso Aplicado en Banca — tema `Calidad_Datos_Gobierno` — [HTML](Construidos/Calidad_Datos_Gobierno/calidad-datos-gobierno.html) · [PNG](Construidos/Calidad_Datos_Gobierno/calidad-datos-gobierno.png)
+- ✅ Data Governance for Master Data Management: Roles, Políticas y Rendición de Cuentas — tema `Data_Governance_MDM` — [HTML](Construidos/Data_Governance_MDM/data-governance-mdm.html) · [PNG](Construidos/Data_Governance_MDM/data-governance-mdm.png)
 
 Este README se irá actualizando con un enlace por cada infografía nueva.
 
