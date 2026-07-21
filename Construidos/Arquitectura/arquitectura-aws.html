@@ -5,12 +5,15 @@
 <title>Arquitectura de Pipelines de Big Data en AWS</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap');
   :root{
-    --bg-0:#0F1621;
-    --bg-1:#16202C;
-    --panel:#182430;
-    --panel-line:#2A3947;
+    --bg-0:#0B101A;
+    --bg-1:#121A25;
+    --panel: rgba(22, 32, 44, 0.65);
+    --panel-border: rgba(255, 153, 0, 0.2);
+    --panel-line: rgba(255, 255, 255, 0.08);
     --orange:#FF9900;
+    --orange-glow: rgba(255, 153, 0, 0.4);
     --orange-dim:#C97A1A;
     --ink:#E9EDF1;
     --muted:#93A3B0;
@@ -21,96 +24,123 @@
   html,body{margin:0;padding:0;}
   body{
     min-height:627px; display:flex; align-items:center; justify-content:center;
-    padding:32px 16px; background:#080c11;
-    font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    padding:32px 16px; background:#000;
+    font-family: 'Outfit', -apple-system, sans-serif;
   }
   .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
   .canvas{
     position:relative; width:1200px; height:627px; margin:0 auto;
-    background:radial-gradient(140% 100% at 100% 0%, #1c2b3a 0%, var(--bg-1) 45%, var(--bg-0) 100%);
-    border-radius:14px; box-shadow:0 24px 60px rgba(0,0,0,0.55); overflow:hidden;
-    padding:26px 38px 18px; color:var(--ink);
+    background: radial-gradient(circle at 80% 20%, rgba(255, 153, 0, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 20% 80%, rgba(18, 26, 37, 0.9) 0%, transparent 50%),
+                linear-gradient(140deg, var(--bg-1) 0%, var(--bg-0) 100%);
+    border-radius:18px; box-shadow: 0 30px 80px rgba(0,0,0,0.8), inset 0 1px 1px rgba(255,255,255,0.1);
+    overflow:hidden;
+    padding:30px 42px 22px; color:var(--ink);
   }
 
-  .header{ display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px; }
-  .title-block .eyebrow{ font-size:10.5px; font-weight:800; letter-spacing:2px; color:var(--orange); text-transform:uppercase; margin-bottom:5px; }
-  .title-block h1{ font-size:23px; margin:0 0 5px; font-weight:800; letter-spacing:-0.2px; color:#fff; }
-  .title-block p{ margin:0; font-size:12px; color:var(--muted); max-width:620px; }
+  /* Grid decorativo de fondo tipo blueprint */
+  .canvas::before {
+    content:""; position:absolute; inset:0;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 30px 30px;
+    z-index: 0; pointer-events: none;
+  }
+  .header, .stages, .ribbon, .footer { position: relative; z-index: 1; }
+
+  .header{ display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:14px; }
+  .title-block .eyebrow{ font-size:11px; font-weight:800; letter-spacing:2.5px; color:var(--orange); text-transform:uppercase; margin-bottom:6px; text-shadow: 0 0 15px var(--orange-glow); }
+  .title-block h1{ font-size:26px; margin:0 0 6px; font-weight:800; letter-spacing:-0.5px; color:#fff; }
+  .title-block p{ margin:0; font-size:13px; color:var(--muted); font-weight:300; max-width:640px; line-height:1.4; }
 
   .coverage{ text-align:right; }
-  .cov-title{ font-size:9px; color:var(--muted-2); font-weight:700; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:4px; }
-  .cov-table{ border-collapse:collapse; }
-  .cov-table td{ font-size:7.6px; color:var(--muted); padding:2px 5px; text-align:center; }
-  .cov-table tr:first-child td{ font-weight:700; color:var(--ink); }
-  .cov-table td.on::after, .cov-table td.off::after{ content:""; display:inline-block; width:9px; height:9px; border-radius:50%; }
-  .cov-table td.on::after{ background:var(--orange); }
-  .cov-table td.off::after{ background:#2A3947; }
+  .cov-title{ font-size:9.5px; color:var(--muted-2); font-weight:800; text-transform:uppercase; letter-spacing:1px; margin-bottom:6px; }
+  .cov-table{ border-collapse:collapse; background: rgba(0,0,0,0.2); border-radius:8px; overflow:hidden; border: 1px solid var(--panel-line); box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+  .cov-table td{ font-size:8.5px; color:var(--muted); padding:4px 8px; text-align:center; font-weight:400; border: 1px solid rgba(255,255,255,0.03); }
+  .cov-table tr:first-child td{ font-weight:800; color:var(--ink); background: rgba(255,255,255,0.02); }
+  .cov-table td.on::after, .cov-table td.off::after{ content:""; display:inline-block; width:10px; height:10px; border-radius:50%; box-shadow: inset 0 1px 2px rgba(0,0,0,0.5); }
+  .cov-table td.on::after{ background:var(--orange); box-shadow: 0 0 8px var(--orange-glow), inset 0 1px 2px rgba(255,255,255,0.3); }
+  .cov-table td.off::after{ background:#1f2a36; }
 
   .stages{
     position:relative; display:grid; grid-template-columns: 1fr 20px 1fr 20px 1fr 20px 1fr 20px 1fr;
-    align-items:stretch; margin-top:6px; height:426px;
+    align-items:stretch; margin-top:8px; height:416px;
   }
   .connector{ display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; }
-  .connector .chevron{ color:var(--orange-dim); font-size:14px; font-weight:700; line-height:1; }
+  .connector .chevron{ color:var(--orange); font-size:16px; font-weight:800; line-height:1; opacity:0.6; text-shadow: 0 0 10px var(--orange-glow); }
 
   .card{
-    background:var(--panel); border:1px solid var(--panel-line); border-top:2px solid var(--orange);
-    border-radius:6px; padding:11px 11px 12px; display:flex; flex-direction:column; min-width:0;
+    background: var(--panel); border:1px solid var(--panel-border);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border-radius:12px; padding:12px 14px 14px; display:flex; flex-direction:column; min-width:0;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.4), inset 0 1px 1px rgba(255,255,255,0.05);
+    position: relative;
+  }
+  /* Borde brillante superior en cards */
+  .card::after {
+    content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--orange), transparent);
+    opacity: 0.8; border-radius: 12px 12px 0 0;
   }
   .card-header{
-    font-weight:800; font-size:10px; text-transform:uppercase; letter-spacing:0.6px; color:var(--orange);
-    margin-bottom:9px; padding-bottom:7px; border-bottom:1px solid var(--panel-line);
+    font-weight:800; font-size:11px; text-transform:uppercase; letter-spacing:1px; color:var(--orange);
+    margin-bottom:12px; padding-bottom:8px; border-bottom:1px solid var(--panel-line); text-shadow: 0 0 10px var(--orange-glow);
   }
-  .service{ display:flex; gap:7px; align-items:flex-start; margin-bottom:8px; }
+  .service{ display:flex; gap:9px; align-items:flex-start; margin-bottom:10px; }
   .service .icon{
-    width:22px; height:22px; border-radius:5px; flex:none; display:flex; align-items:center; justify-content:center;
-    background:rgba(255,153,0,0.1); color:var(--orange);
+    width:26px; height:26px; border-radius:6px; flex:none; display:flex; align-items:center; justify-content:center;
+    background: linear-gradient(135deg, rgba(255,153,0,0.2), rgba(255,153,0,0.05)); color:var(--orange);
+    border: 1px solid rgba(255,153,0,0.3); box-shadow: 0 4px 10px rgba(255,153,0,0.15);
   }
-  .service.dim .icon{ background:rgba(255,255,255,0.06); color:var(--muted); }
-  .service .icon svg{ width:12px; height:12px; }
-  .service .label b{ display:block; font-size:10px; line-height:1.25; font-weight:700; color:var(--ink); }
-  .service .label span{ display:block; font-size:8.6px; color:var(--muted); line-height:1.25; }
+  .service.dim .icon{ background:rgba(255,255,255,0.04); color:var(--muted); border: 1px solid rgba(255,255,255,0.05); box-shadow: none; }
+  .service .icon svg{ width:13px; height:13px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)); }
+  .service .label b{ display:block; font-size:11.5px; line-height:1.2; font-weight:600; color:#fff; letter-spacing:0.2px; }
+  .service .label span{ display:block; font-size:9.5px; color:var(--muted); line-height:1.3; margin-top:2px; font-weight:300; }
 
-  .divider{ height:1px; background:var(--panel-line); margin:2px 0 8px; }
+  .divider{ height:1px; background:var(--panel-line); margin:4px 0 10px; }
 
   .code-window{
-    background:#0a0f14; border:1px solid var(--panel-line); border-radius:6px; padding:7px 9px 8px; margin-top:2px;
-    font-family:"SF Mono","Menlo","Consolas",monospace; font-size:7.6px; line-height:1.6; color:#c9d1d9; white-space:pre-wrap;
+    background:#070a0e; border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:9px 11px 10px; margin-top:4px;
+    font-family:"SF Mono","Menlo","Consolas",monospace; font-size:8.5px; line-height:1.6; color:#c9d1d9; white-space:pre-wrap; overflow-wrap:anywhere;
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
   }
-  .code-window .dots{ display:flex; gap:3px; margin-bottom:5px; }
-  .code-window .dots span{ width:5px; height:5px; border-radius:50%; display:inline-block; }
-  .code-window .dots span:nth-child(1){ background:#ff5f56; }
-  .code-window .dots span:nth-child(2){ background:#ffbd2e; }
-  .code-window .dots span:nth-child(3){ background:#27c93f; }
-  .kw{ color:#ff9d6c; } .str{ color:#8ec9ff; } .fn{ color:#d2a8ff; } .cm{ color:#6e7c88; } .pl{ color:#c9d1d9; }
+  .code-window .dots{ display:flex; gap:4px; margin-bottom:8px; }
+  .code-window .dots span{ width:6px; height:6px; border-radius:50%; display:inline-block; }
+  .code-window .dots span:nth-child(1){ background:#ff5f56; box-shadow: 0 0 5px rgba(255,95,86,0.5); }
+  .code-window .dots span:nth-child(2){ background:#ffbd2e; box-shadow: 0 0 5px rgba(255,189,46,0.5); }
+  .code-window .dots span:nth-child(3){ background:#27c93f; box-shadow: 0 0 5px rgba(39,201,63,0.5); }
+  .kw{ color:#ff9d6c; font-weight:600;} .str{ color:#8ec9ff; } .fn{ color:#d2a8ff; } .cm{ color:#6e7c88; font-style:italic;} .pl{ color:#e9edf1; }
 
   .catalog-chip{
-    margin-top:8px; display:flex; align-items:flex-start; gap:7px; background:rgba(255,153,0,0.08);
-    border:1px solid rgba(255,153,0,0.25); border-radius:6px; padding:7px 8px;
+    margin-top:10px; display:flex; align-items:flex-start; gap:8px; background:rgba(255,153,0,0.05);
+    border:1px solid rgba(255,153,0,0.3); border-radius:8px; padding:9px 10px;
+    box-shadow: 0 4px 15px rgba(255,153,0,0.05);
   }
   .catalog-chip .icon{
-    width:20px; height:20px; border-radius:5px; flex:none; display:flex; align-items:center; justify-content:center;
-    background:var(--orange); color:#1a1200;
+    width:22px; height:22px; border-radius:5px; flex:none; display:flex; align-items:center; justify-content:center;
+    background:var(--orange); color:#1a1200; box-shadow: 0 2px 8px var(--orange-glow);
   }
-  .catalog-chip .icon svg{ width:11px; height:11px; }
-  .catalog-chip b{ display:block; font-size:9.3px; color:var(--ink); }
-  .catalog-chip span{ display:block; font-size:8.2px; color:var(--muted); line-height:1.25; }
+  .catalog-chip .icon svg{ width:12px; height:12px; }
+  .catalog-chip b{ display:block; font-size:10px; color:#fff; font-weight:600;}
+  .catalog-chip span{ display:block; font-size:8.5px; color:var(--muted); line-height:1.3; margin-top:2px; font-weight:300;}
 
-  .note{ margin-top:auto; padding-top:7px; font-size:8.3px; color:var(--muted); line-height:1.3; border-top:1px dashed var(--panel-line); }
-  .note b{ color:var(--ink); }
+  .note{ margin-top:auto; padding-top:10px; font-size:9.5px; color:var(--muted); line-height:1.4; border-top:1px dashed var(--panel-line); font-weight:300; }
+  .note b{ color:#fff; font-weight:600;}
 
   .ribbon{
-    margin-top:12px; display:flex; align-items:center; gap:10px;
-    background:rgba(255,153,0,0.07); border:1px solid rgba(255,153,0,0.25); border-radius:8px; padding:9px 16px; font-size:10.3px;
+    margin-top:14px; display:flex; align-items:center; gap:12px;
+    background: linear-gradient(90deg, rgba(255,153,0,0.1), rgba(20, 28, 40, 0.8));
+    border:1px solid rgba(255,153,0,0.25); border-radius:10px; padding:12px 18px; font-size:11px;
+    backdrop-filter: blur(8px); box-shadow: 0 8px 20px rgba(0,0,0,0.3);
   }
-  .ribbon .icon{ width:22px; height:22px; flex:none; border-radius:5px; background:rgba(255,153,0,0.15); display:flex; align-items:center; justify-content:center; }
-  .ribbon .icon svg{ width:12px; height:12px; color:var(--orange); }
-  .ribbon b{ color:#fff; }
-  .ribbon span{ color:var(--muted); }
+  .ribbon .icon{ width:26px; height:26px; flex:none; border-radius:6px; background:rgba(255,153,0,0.15); display:flex; align-items:center; justify-content:center; border: 1px solid rgba(255,153,0,0.3); }
+  .ribbon .icon svg{ width:14px; height:14px; color:var(--orange); filter: drop-shadow(0 0 4px var(--orange-glow));}
+  .ribbon b{ color:#fff; font-weight:600; letter-spacing:0.5px;}
+  .ribbon span{ color:var(--muted); font-weight:300;}
 
-  .footer{ position:absolute; bottom:14px; right:22px; display:flex; align-items:center; gap:6px; }
-  .li-badge{ width:18px; height:18px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; font-family: Arial, sans-serif; }
-  .footer span{ font-size:11px; font-weight:600; color:var(--muted); }
+  .footer{ position:absolute; bottom:18px; right:26px; display:flex; align-items:center; gap:8px; }
+  .li-badge{ width:20px; height:20px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800; font-family: Arial, sans-serif; box-shadow: 0 4px 10px rgba(10,102,194,0.4); }
+  .footer span{ font-size:12px; font-weight:600; color:var(--muted); letter-spacing:0.5px;}
 </style>
 </head>
 <body>
@@ -193,16 +223,11 @@
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12c2-4 4-4 6 0s4 4 6 0 4-4 6 0"/></svg></div>
           <div class="label"><b>Kinesis Data Analytics</b><span>Procesamiento de eventos en tránsito</span></div>
         </div>
-        <div class="code-window">
-          <div class="dots"><span></span><span></span><span></span></div>
-<span class="kw">import</span> <span class="pl">sys</span>
-<span class="kw">from</span> <span class="pl">awsglue.context</span> <span class="kw">import</span> <span class="fn">GlueContext</span>
-
-<span class="pl">glue</span> = <span class="fn">GlueContext</span>(<span class="fn">SparkContext</span>())
-<span class="pl">raw</span> = <span class="pl">glue</span>.<span class="fn">create_dynamic_frame</span>.<span class="fn">from_catalog</span>(
-  <span class="pl">database</span>=<span class="str">"raw_zone"</span>, <span class="pl">table_name</span>=<span class="str">"events"</span>)
-<span class="cm"># normaliza esquema + escribe en curated</span>
-        </div>
+        <div class="code-window"><div class="dots"><span></span><span></span><span></span></div><span class="pl">sc</span> = <span class="fn">SparkContext</span>()
+<span class="pl">glue</span> = <span class="fn">GlueContext</span>(<span class="pl">sc</span>)
+<span class="pl">raw</span> = <span class="pl">glue</span>.<span class="fn">create_dynamic_frame</span> \
+  .<span class="fn">from_catalog</span>(<span class="str">"raw_zone"</span>, <span class="str">"events"</span>)
+<span class="cm"># limpia y escribe en curated</span></div>
         <div class="catalog-chip">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6a2 2 0 0 1 2-2h11v16H6a2 2 0 0 1-2-2V6Z"/><path d="M17 4v16"/></svg></div>
           <div><b>AWS Glue Data Catalog</b><span>Metadata centralizada — fuente para Athena y Redshift Spectrum</span></div>
