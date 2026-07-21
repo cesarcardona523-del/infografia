@@ -138,6 +138,7 @@ Antes de crear una entrada nueva, el proyecto analiza si el contenido amplía o 
 - ✅ El Ciclo del Hype de la IA — tema `Escuela_IA` (evento: Escuela de Inteligencia Artificial · Uniremington) — [HTML](Construidos/Escuela_IA/ciclo-del-hype-ia.html) · [PNG](Construidos/Escuela_IA/ciclo-del-hype-ia.png)
 - ✅ Chain of Thought — tema `Escuela_IA` (evento: Escuela de Inteligencia Artificial · Uniremington) — [HTML](Construidos/Escuela_IA/chain-of-thought-prompting.html) · [PNG](Construidos/Escuela_IA/chain-of-thought-prompting.png)
 - ✅ Cuando la IA Alucina: 3 Casos Reales — tema `Escuela_IA` (evento: Escuela de Inteligencia Artificial · Uniremington) — [HTML](Construidos/Escuela_IA/cuando-la-ia-alucina.html) · [PNG](Construidos/Escuela_IA/cuando-la-ia-alucina.png)
+- ✅ SQL Joins: Cómo Elegir Entre INNER, LEFT, RIGHT y FULL OUTER JOIN — tema `SQL` — [HTML](Construidos/SQL/sql-joins.html) · [PNG](Construidos/SQL/sql-joins.png)
 
 Este README se irá actualizando con un enlace por cada infografía nueva.
 

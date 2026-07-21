@@ -1755,5 +1755,29 @@
       "likes": 0,
       "shares": 0
     }
+  },
+  {
+    "id": "sql-joins",
+    "imagen": "Construidos/SQL/sql-joins.png",
+    "fechaPublicacion": "2026-07-22T10:25:00",
+    "categoriaPrincipal": "bases-de-datos",
+    "temas": [
+      "sql",
+      "bases-de-datos"
+    ],
+    "tipoContenido": "infografia",
+    "es": {
+      "topico": "SQL Joins: Cómo Elegir Entre INNER, LEFT, RIGHT y FULL OUTER JOIN",
+      "descripcion": "La combinación de tablas mediante JOIN es la operación más fundamental del álgebra relacional en cualquier motor SQL, y elegir el tipo correcto determina qué filas produce una consulta cuando dos conjuntos de datos se relacionan por una clave común. INNER JOIN devuelve únicamente las filas con coincidencia en ambas tablas, la variante más utilizada en consultas analíticas y transaccionales porque descarta por diseño cualquier registro huérfano. LEFT JOIN y RIGHT JOIN preservan todas las filas de una de las dos tablas —izquierda o derecha— aunque no exista coincidencia en la otra, rellenando con NULL los campos ausentes; esta lógica sostiene las auditorías de integridad referencial, como detectar pedidos sin usuario asociado o usuarios sin pedido registrado. FULL OUTER JOIN combina ambos comportamientos y devuelve la unión completa de las dos tablas, coincidan o no sus claves. De estos cuatro joins base se derivan los antijoins: agregar WHERE ... IS NULL sobre la clave de la tabla opuesta convierte un LEFT o RIGHT JOIN en una consulta que devuelve solo los registros sin correspondencia, y la misma lógica sobre un FULL OUTER JOIN aísla los registros que no existen en ninguna de las dos tablas. Esta distinción entre joins inclusivos y antijoins es central en calidad de datos, reconciliación de sistemas y limpieza de bases relacionales, donde detectar la ausencia de una relación es tan relevante como confirmar su existencia. Dominar las siete combinaciones, no solo su sintaxis, es indispensable para diseñar consultas correctas sobre modelos con múltiples tablas relacionadas."
+    },
+    "en": {
+      "topico": "SQL Joins: How to Choose Between INNER, LEFT, RIGHT, and FULL OUTER JOIN",
+      "descripcion": "Combining tables through the JOIN clause is the most fundamental operation of relational algebra in any SQL engine, and choosing the right type determines which rows a query produces when two datasets relate by a common key. INNER JOIN returns only rows with a match in both tables, the most widely used variant in analytical and transactional queries because it discards any orphaned record by design. LEFT JOIN and RIGHT JOIN preserve every row from one of the two tables — left or right — even when no match exists on the other side, filling missing fields with NULL; this logic underlies referential integrity audits, such as detecting orders without an associated user or users without any recorded order. FULL OUTER JOIN combines both behaviors and returns the complete union of the two tables, whether their keys match or not. From these four base joins, anti-joins are derived: adding a WHERE ... IS NULL clause on the opposite table's key turns a LEFT or RIGHT JOIN into a query that returns only the unmatched records, and applying the same logic to a FULL OUTER JOIN isolates the records that exist in neither table. This distinction between inclusive joins and anti-joins is central to data quality work, system reconciliation, and cleaning relational databases, where detecting the absence of a relationship matters as much as confirming its existence. Mastering all seven combinations, not just their syntax, is essential for designing correct queries over data models with multiple related tables."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
   }
 ]
