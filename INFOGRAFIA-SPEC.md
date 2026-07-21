@@ -120,6 +120,16 @@ Aplica únicamente si el usuario especifica, al crear la infografía, un **Event
 - Esta información es adicional a la firma profesional (LinkedIn + `cacm523`) — se mantiene sin cambios; el branding de evento no la reemplaza.
 - Ubicación sugerida: encabezado o pie de la infografía, en un bloque discreto pero legible, sin competir visualmente con el título principal.
 
+## Insignia de Actualización (opcional)
+
+Aplica únicamente cuando una infografía **ya existente** se regenera con aporte real de contenido nuevo, dentro del flujo de consolidación (ver "Gestión inteligente de publicaciones e infografías" en CLAUDE.md) — la misma condición que activa la actualización de `fechaPublicacion`. No aplica a correcciones menores de estilo, ortografía, formato o CSS.
+
+- Mostrar una insignia pequeña con el texto `Actualizada` (opcionalmente con fecha corta, ej. `Actualizada · Jul 2026`) en la parte superior de la infografía, cerca del encabezado.
+- Estilo: badge tipo pill, consistente con los demás badges/etiquetas de la pieza (paleta verde o acento tierra), discreto y legible — nunca un sello dramático ni una marca de agua.
+- Ubicación sugerida: esquina superior derecha o izquierda del canvas, junto al eyebrow o al título — nunca superpuesta al título principal ni compitiendo con él.
+- Es independiente de la firma profesional y del branding de evento — las tres pueden convivir en la misma pieza si corresponde.
+- Al archivar una versión previa (paso 1 de la consolidación), la insignia no se agrega retroactivamente a la copia archivada — solo aparece en el asset activo regenerado.
+
 ## Calidad
 
 Ultra HD, muy alta resolución, excelente nitidez, sin ruido, sin artefactos, sin píxeles, bordes limpios, iconografía vectorial.
