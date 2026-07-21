@@ -10,11 +10,6 @@
     --earth:#C1620E; --earth-dark:#8C480A; --earth-pale:#FBEADD; --earth-line:#F0CBA0;
     --ink:#1D2129; --muted:#5C6470; --line:#E4E9E6; --white:#FFFFFF; --paper:#F5F8F6;
   }
-  .updated-badge{
-    position:absolute; top:14px; right:20px; background:var(--green-dark); color:#fff;
-    font-size:9px; font-weight:800; letter-spacing:.4px; text-transform:uppercase;
-    padding:4px 11px; border-radius:20px; box-shadow:0 3px 8px rgba(18,92,57,0.25);
-  }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
   body{
@@ -56,7 +51,7 @@
   .badge.green{ background:var(--green-pale); color:var(--green-dark); }
   .badge.earth{ background:var(--earth-pale); color:var(--earth-dark); }
 
-  .jcard svg{ width:100%; max-width:98px; height:auto; margin:1px 0; }
+  .jcard svg{ width:100%; max-width:118px; height:auto; margin:1px 0; }
   .venn-outline{ fill:none; stroke:var(--ink); stroke-width:2; opacity:.32; }
   .venn-lbl{ font-size:11px; fill:var(--muted); font-weight:700; font-family:Inter,sans-serif; }
 
@@ -65,15 +60,7 @@
     background:var(--paper); padding:2.5px 7px; border-radius:5px; white-space:nowrap; letter-spacing:-0.1px;
   }
   .grid-bottom .jcard code{ font-size:9.8px; white-space:normal; text-align:center; line-height:1.45; }
-
-  .ref-table{ display:grid; grid-template-columns: 74px repeat(7,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:10px; overflow:hidden; margin-top:10px; }
-  .ref-table > div{ background:var(--white); padding:5px 5px; font-size:8.4px; color:var(--ink); text-align:center; display:flex; align-items:center; justify-content:center; line-height:1.22; }
-  .ref-table .rt-label{ background:var(--paper); font-weight:800; text-transform:uppercase; font-size:7.6px; letter-spacing:.3px; color:var(--muted); justify-content:flex-start; padding-left:8px; }
-  .ref-table .rt-h{ font-weight:800; font-size:9px; }
-  .ref-table .rt-h.green{ color:var(--green-dark); background:var(--green-pale); }
-  .ref-table .rt-h.earth{ color:var(--earth-dark); background:var(--earth-pale); }
-  .ref-caption{ margin-top:6px; font-size:9px; color:var(--muted); text-align:center; }
-  .ref-caption b{ color:var(--ink); }
+  .jcard .desc{ font-size:9.6px; color:var(--muted); text-align:center; line-height:1.25; font-weight:600; }
 
   .footer{ position:absolute; bottom:9px; right:22px; display:flex; align-items:center; gap:6px; }
   .li-badge{ width:15px; height:15px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:9.5px; font-weight:800; font-family: Arial, sans-serif; }
@@ -84,8 +71,6 @@
 
 <div class="canvas-wrap">
   <div class="canvas">
-
-    <span class="updated-badge">Actualizada</span>
 
     <div class="header">
       <div class="eyebrow">SQL · Relaciones entre Tablas</div>
@@ -106,6 +91,7 @@
           <text x="90" y="13" text-anchor="middle" class="venn-lbl">B</text>
         </svg>
         <code>FROM A LEFT JOIN B<br>ON A.id = B.id</code>
+        <span class="desc">Todo A + coincidencias en B</span>
       </div>
 
       <div class="jcard star">
@@ -120,6 +106,7 @@
           <text x="90" y="13" text-anchor="middle" class="venn-lbl">B</text>
         </svg>
         <code>FROM A INNER JOIN B<br>ON A.id = B.id</code>
+        <span class="desc">Solo filas con coincidencia</span>
       </div>
 
       <div class="jcard">
@@ -132,6 +119,7 @@
           <text x="90" y="13" text-anchor="middle" class="venn-lbl">B</text>
         </svg>
         <code>FROM A RIGHT JOIN B<br>ON A.id = B.id</code>
+        <span class="desc">Todo B + coincidencias en A</span>
       </div>
 
       <div class="jcard">
@@ -145,6 +133,7 @@
           <text x="90" y="13" text-anchor="middle" class="venn-lbl">B</text>
         </svg>
         <code>FROM A FULL OUTER<br>JOIN B ON A.id = B.id</code>
+        <span class="desc">Todo A y todo B, sin duplicar</span>
       </div>
 
     </div>
@@ -169,6 +158,7 @@
           <text x="90" y="13" text-anchor="middle" class="venn-lbl">B</text>
         </svg>
         <code>FROM A LEFT JOIN B ON A.id = B.id WHERE B.id IS NULL</code>
+        <span class="desc">Filas de A sin match en B</span>
       </div>
 
       <div class="jcard">
@@ -183,6 +173,7 @@
           <text x="90" y="13" text-anchor="middle" class="venn-lbl">B</text>
         </svg>
         <code>FROM A RIGHT JOIN B ON A.id = B.id WHERE A.id IS NULL</code>
+        <span class="desc">Filas de B sin match en A</span>
       </div>
 
       <div class="jcard">
@@ -198,39 +189,10 @@
           <text x="90" y="13" text-anchor="middle" class="venn-lbl">B</text>
         </svg>
         <code>FULL OUTER JOIN B ON A.id=B.id WHERE A.id IS NULL OR B.id IS NULL</code>
+        <span class="desc">Ni A ni B tienen coincidencia</span>
       </div>
 
     </div>
-
-    <div class="ref-table">
-      <div class="rt-label"></div>
-      <div class="rt-h green">LEFT</div>
-      <div class="rt-h green">INNER</div>
-      <div class="rt-h green">RIGHT</div>
-      <div class="rt-h green">FULL OUTER</div>
-      <div class="rt-h earth">Solo A</div>
-      <div class="rt-h earth">Solo B</div>
-      <div class="rt-h earth">Ninguno</div>
-
-      <div class="rt-label">Resultado</div>
-      <div>Todo A + match</div>
-      <div>Solo intersección</div>
-      <div>Todo B + match</div>
-      <div>Unión completa</div>
-      <div>A sin match en B</div>
-      <div>B sin match en A</div>
-      <div>Sin match en ningún lado</div>
-
-      <div class="rt-label">Se usa para</div>
-      <div>Datos opcionales</div>
-      <div>Consultas base</div>
-      <div>Poco frecuente</div>
-      <div>Reconciliar fuentes</div>
-      <div>Huérfanos en A</div>
-      <div>Huérfanos en B</div>
-      <div>Auditoría total</div>
-    </div>
-    <div class="ref-caption">Los <b>antijoins</b> (WHERE ... IS NULL) son la técnica estándar para auditar integridad referencial y encontrar registros huérfanos entre dos tablas.</div>
 
     <div class="footer">
       <div class="li-badge">in</div>
