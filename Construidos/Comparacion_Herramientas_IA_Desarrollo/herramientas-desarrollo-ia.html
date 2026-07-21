@@ -8,21 +8,24 @@
   body { width:1264px; height:691px; padding:32px; background:#05070A; font-family:-apple-system,"SF Pro Display","Segoe UI",Inter,Helvetica,Arial,sans-serif; }
   .canvas { position:relative; width:1200px; height:627px; background:#0D1117; overflow:hidden; }
 
+  .updated-badge { position:absolute; top:28px; right:44px; background:#3FB950; color:#04150A; font-size:10px; font-weight:800; letter-spacing:.4px; text-transform:uppercase; padding:5px 12px; border-radius:20px; box-shadow:0 3px 10px rgba(63,185,80,0.35); }
   .eyebrow { position:absolute; top:30px; left:44px; font-size:11px; font-weight:700; letter-spacing:2.2px; color:#3FB950; text-transform:uppercase; }
   .title { position:absolute; top:45px; left:44px; font-size:23px; font-weight:800; color:#E6EDF3; letter-spacing:-0.2px; }
   .subtitle { position:absolute; top:76px; left:44px; width:1112px; font-size:12px; color:#8B949E; }
 
-  .cards { position:absolute; top:104px; left:44px; width:1112px; height:334px; display:flex; gap:16px; }
-  .card { flex:1; border-radius:13px; background:#161B22; border:1px solid #262C36; padding:16px 18px; display:flex; flex-direction:column; }
-  .chead { display:flex; align-items:center; gap:10px; }
-  .badge { width:32px; height:32px; border-radius:9px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-  .badge svg { width:17px; height:17px; }
-  .cname { font-size:15px; font-weight:800; color:#E6EDF3; }
-  .cvendor { font-size:10px; color:#8B949E; font-weight:600; }
-
-  .rows { margin-top:12px; display:flex; flex-direction:column; gap:9px; }
-  .r .lbl { font-size:9.3px; font-weight:800; text-transform:uppercase; letter-spacing:0.6px; }
-  .r .val { margin-top:2px; font-size:10.9px; line-height:1.38; color:#C9D1D9; }
+  .matrix { position:absolute; top:104px; left:44px; width:1112px; border-radius:13px; background:#161B22; border:1px solid #262C36; overflow:hidden; }
+  .mrow { display:grid; grid-template-columns: 126px repeat(3,1fr); }
+  .mrow + .mrow { border-top:1px solid #262C36; }
+  .mrow.mhead { background:#12161D; }
+  .mlabel { padding:8px 14px; display:flex; align-items:center; font-size:9.3px; font-weight:800; text-transform:uppercase; letter-spacing:0.5px; color:#6E7681; border-right:1px solid #262C36; }
+  .mcell { padding:8px 16px; display:flex; align-items:center; font-size:10.6px; line-height:1.35; color:#C9D1D9; border-right:1px solid #1c212b; }
+  .mcell:last-child { border-right:none; }
+  .mhead-cell { padding:13px 14px 11px; display:flex; align-items:center; gap:9px; border-right:1px solid #262C36; }
+  .mhead-cell:last-child { border-right:none; }
+  .micon { width:28px; height:28px; border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .micon svg { width:15px; height:15px; }
+  .mname { font-size:13.5px; font-weight:800; color:#E6EDF3; }
+  .mvendor { font-size:9px; color:#8B949E; font-weight:600; }
 
   .reco { position:absolute; top:452px; left:44px; width:1112px; height:66px; border-radius:12px; background:#161B22; border:1px solid #262C36; display:flex; align-items:center; padding:0 18px; gap:16px; }
   .reco-lead { width:230px; flex-shrink:0; font-size:11px; color:#8B949E; line-height:1.35; }
@@ -46,52 +49,69 @@
 <body>
 <div class="canvas">
 
+  <span class="updated-badge">Actualizada</span>
   <div class="eyebrow">Herramientas de IA para Desarrollo</div>
   <div class="title">Comparación de Herramientas de IA para Desarrollo</div>
   <div class="subtitle">Elegir la herramienta correcta depende del contexto, la etapa del proyecto y el tipo de tarea.</div>
 
-  <div class="cards">
+  <div class="matrix">
 
-    <div class="card">
-      <div class="chead">
-        <div class="badge" style="background:#1F5FD1;"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="14" rx="2" stroke="white" stroke-width="1.7"/><path d="M7 9l3 2.5L7 14M12 14h5" stroke="white" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <div><div class="cname">Codex</div><div class="cvendor">OpenAI</div></div>
+    <div class="mrow mhead">
+      <div class="mlabel"></div>
+      <div class="mhead-cell">
+        <div class="micon" style="background:#1F5FD1;"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="14" rx="2" stroke="white" stroke-width="1.7"/><path d="M7 9l3 2.5L7 14M12 14h5" stroke="white" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><div class="mname">Codex</div><div class="mvendor">OpenAI</div></div>
       </div>
-      <div class="rows">
-        <div class="r"><div class="lbl" style="color:#6FA3FF;">Enfoque</div><div class="val">Agente de terminal que lee, modifica y ejecuta código en tu proyecto.</div></div>
-        <div class="r"><div class="lbl" style="color:#6FA3FF;">Fortalezas</div><div class="val">Integración simple, ejecución rápida de tareas, ideal para debugging.</div></div>
-        <div class="r"><div class="lbl" style="color:#6FA3FF;">Mejor para</div><div class="val">Desarrollo diario, nuevas funcionalidades, pruebas y corrección de errores.</div></div>
-        <div class="r"><div class="lbl" style="color:#6FA3FF;">Acceso</div><div class="val">Requiere cuenta OpenAI (ChatGPT Plus/Pro).</div></div>
-        <div class="r"><div class="lbl" style="color:#6FA3FF;">Úsalo cuando</div><div class="val">Necesitas avanzar rápido y ejecutar tareas concretas.</div></div>
+      <div class="mhead-cell">
+        <div class="micon" style="background:#D97757;"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l2.6 5.6 6 .7-4.4 4.1 1.2 6-5.4-3-5.4 3 1.2-6L3.4 9.3l6-.7L12 3z" stroke="white" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+        <div><div class="mname">Claude Code</div><div class="mvendor">Anthropic</div></div>
+      </div>
+      <div class="mhead-cell">
+        <div class="micon" style="background:#238636;"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="white" stroke-width="1.7"/><path d="M8 12h8M12 8v8" stroke="white" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+        <div><div class="mname">OpenCode</div><div class="mvendor">Open Source</div></div>
       </div>
     </div>
 
-    <div class="card">
-      <div class="chead">
-        <div class="badge" style="background:#D97757;"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l2.6 5.6 6 .7-4.4 4.1 1.2 6-5.4-3-5.4 3 1.2-6L3.4 9.3l6-.7L12 3z" stroke="white" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
-        <div><div class="cname">Claude Code</div><div class="cvendor">Anthropic</div></div>
-      </div>
-      <div class="rows">
-        <div class="r"><div class="lbl" style="color:#E8A386;">Enfoque</div><div class="val">Agente de análisis profundo, razonamiento y comprensión de proyectos grandes.</div></div>
-        <div class="r"><div class="lbl" style="color:#E8A386;">Fortalezas</div><div class="val">Refactorización, revisión de arquitectura, explicaciones detalladas.</div></div>
-        <div class="r"><div class="lbl" style="color:#E8A386;">Mejor para</div><div class="val">Diseño de arquitectura, revisión de seguridad, documentación.</div></div>
-        <div class="r"><div class="lbl" style="color:#E8A386;">Acceso</div><div class="val">Requiere cuenta Claude (Pro, Team o Enterprise).</div></div>
-        <div class="r"><div class="lbl" style="color:#E8A386;">Úsalo cuando</div><div class="val">Necesitas entender a fondo un proyecto o decidir técnicamente.</div></div>
-      </div>
+    <div class="mrow">
+      <div class="mlabel">Enfoque</div>
+      <div class="mcell">Agente de terminal que lee, modifica y ejecuta código en tu proyecto.</div>
+      <div class="mcell">Agente de análisis profundo, razonamiento y comprensión de proyectos grandes.</div>
+      <div class="mcell">Plataforma flexible que permite usar distintos modelos y configuraciones.</div>
     </div>
 
-    <div class="card">
-      <div class="chead">
-        <div class="badge" style="background:#238636;"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="white" stroke-width="1.7"/><path d="M8 12h8M12 8v8" stroke="white" stroke-width="1.6" stroke-linecap="round"/></svg></div>
-        <div><div class="cname">OpenCode</div><div class="cvendor">Open Source</div></div>
-      </div>
-      <div class="rows">
-        <div class="r"><div class="lbl" style="color:#7EE083;">Enfoque</div><div class="val">Plataforma flexible que permite usar distintos modelos y configuraciones.</div></div>
-        <div class="r"><div class="lbl" style="color:#7EE083;">Fortalezas</div><div class="val">Personalizable, extensible, soporte multi-modelo, comunidad activa.</div></div>
-        <div class="r"><div class="lbl" style="color:#7EE083;">Mejor para</div><div class="val">Equipos que buscan flexibilidad, control total y adaptar la herramienta.</div></div>
-        <div class="r"><div class="lbl" style="color:#7EE083;">Acceso</div><div class="val">Open source — usa tus propios modelos (OpenAI, Claude, Gemini, locales).</div></div>
-        <div class="r"><div class="lbl" style="color:#7EE083;">Úsalo cuando</div><div class="val">Quieres flexibilidad total y experimentar con distintos flujos.</div></div>
-      </div>
+    <div class="mrow">
+      <div class="mlabel">Fortalezas</div>
+      <div class="mcell">Integración simple, ejecución rápida de tareas, ideal para debugging.</div>
+      <div class="mcell">Refactorización, revisión de arquitectura, explicaciones detalladas.</div>
+      <div class="mcell">Personalizable, extensible, soporte multi-modelo, comunidad activa.</div>
+    </div>
+
+    <div class="mrow">
+      <div class="mlabel">Mejor para</div>
+      <div class="mcell">Desarrollo diario, nuevas funcionalidades, pruebas y corrección de errores.</div>
+      <div class="mcell">Diseño de arquitectura, revisión de seguridad, documentación.</div>
+      <div class="mcell">Equipos que buscan flexibilidad, control total y adaptar la herramienta.</div>
+    </div>
+
+    <div class="mrow">
+      <div class="mlabel">Facilidad de uso</div>
+      <div class="mcell">Muy fácil de instalar y usar. Ideal para empezar rápido.</div>
+      <div class="mcell">Fácil de usar, pero requiere contexto claro para aprovechar su potencial.</div>
+      <div class="mcell">Requiere más configuración inicial, pero ofrece mayor control y personalización.</div>
+    </div>
+
+    <div class="mrow">
+      <div class="mlabel">Acceso</div>
+      <div class="mcell">Requiere cuenta OpenAI (ChatGPT Plus/Pro).</div>
+      <div class="mcell">Requiere cuenta Claude (Pro, Team o Enterprise).</div>
+      <div class="mcell">Open source — usa tus propios modelos (OpenAI, Claude, Gemini, locales).</div>
+    </div>
+
+    <div class="mrow">
+      <div class="mlabel">Úsalo cuando</div>
+      <div class="mcell">Necesitas avanzar rápido y ejecutar tareas concretas.</div>
+      <div class="mcell">Necesitas entender a fondo un proyecto o decidir técnicamente.</div>
+      <div class="mcell">Quieres flexibilidad total y experimentar con distintos flujos.</div>
     </div>
 
   </div>

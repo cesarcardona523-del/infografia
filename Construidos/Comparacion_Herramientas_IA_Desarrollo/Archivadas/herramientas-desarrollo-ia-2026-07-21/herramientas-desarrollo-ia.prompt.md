@@ -22,9 +22,3 @@
 **Cierre (verbatim)**: "La IA no reemplaza al desarrollador. Lo potencia. La clave está en combinar criterio técnico + buenas herramientas + intención."
 
 **Dirección visual**: tabla comparativa real de 6 filas × 3 columnas (mismo formato que la referencia, es información genuinamente tabular), redibujada con el sistema de diseño propio en tema oscuro (variedad respecto a las piezas claras del mismo lote), con franja de recomendación de 3 pasos al pie.
-
-## Actualización — 2026-07-21
-
-La primera construcción de esta pieza no siguió esta dirección visual: en vez de la tabla real de 6 filas × 3 columnas ya especificada arriba, se implementó como 3 tarjetas independientes con las mismas 5 etiquetas repetidas en cada una (y sin la fila "Facilidad de uso", quedando en 5 en vez de 6) — esto obligaba a leer cada tarjeta de arriba a abajo para comparar, en vez de poder escanear un mismo aspecto entre las 3 herramientas de un vistazo.
-
-Se corrige a una matriz real (grid con una columna de etiquetas compartida + 3 columnas de datos), restaurando la fila "Facilidad de uso" que faltaba, tal como indicaba este mismo documento desde el inicio. Esta corrección se disparó al comparar el enfoque con el de una pieza nueva (`sql-joins`, tema SQL) que sí usa una matriz de referencia real — la misma lógica aplicada aquí. Se agrega la insignia `Actualizada` por el aporte real de contenido (fila restaurada + mejora de la explicación), y se archiva la versión anterior en `Construidos/Comparacion_Herramientas_IA_Desarrollo/Archivadas/herramientas-desarrollo-ia-2026-07-21/`.
