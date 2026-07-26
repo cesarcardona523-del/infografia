@@ -96,6 +96,24 @@ El usuario da el tema y el `<topico-slug>`, y adjunta o lista una o varias imág
    - Validar el JS antes de darlo por terminado: extraer el objeto tras `window.PUBLICACIONES_DATA = ` y parsearlo como JSON para confirmar que sigue siendo válido.
    - Si en este punto se descubre que el tema ya tenía una entrada muy similar que se pasó por alto en el análisis inicial, no seguir agregando — volver al flujo de consolidación de "Gestión inteligente de publicaciones e infografías".
 
+## Flujo alterno: el usuario entrega el HTML y el JSON ya resueltos
+
+Coexiste con el flujo normal de arriba — no lo reemplaza. Se usa cuando el usuario ya resolvió el diseño y el análisis por su cuenta (por ejemplo, corriendo los prompts equivalentes a INFOGRAFIA-SPEC.md e INFOGRAFIA-INVESTIGAR.md en otra sesión o herramienta, sin partir de una imagen de referencia) y entrega directamente:
+
+- El HTML completo de la infografía (no una imagen de referencia).
+- El objeto JSON de metadata ya redactado (mismo schema de INFOGRAFIA-INVESTIGAR.md).
+
+En este flujo **no se investiga ni se redacta nada de nuevo** — ese trabajo ya vino resuelto. La labor se reduce a organizar, renderizar y publicar:
+
+1. Determinar `<Tema>` y `<topico-slug>` a partir del `id`/`imagen` del JSON entregado (o preguntar si no es claro).
+2. Crear (o reutilizar) `Construidos/<Tema>/`.
+3. Guardar el HTML recibido tal cual como `Construidos/<Tema>/<topico-slug>.html`.
+4. Renderizarlo y exportarlo a PNG con el mismo pipeline técnico del flujo normal (Chrome headless 2x, recorte del `.canvas` con PIL — ver paso 4 de "Flujo para crear una infografía nueva") — verificando con medición real (`getBoundingClientRect`, no solo inspección visual) que ningún elemento desborda el canvas de 1200×627 antes de darlo por bueno; si desborda, corregirlo antes de exportar.
+5. **No generar `.prompt.md`** para esta pieza — no hay contexto de diseño propio ni investigación que documentar en este flujo. Solo generarlo si el usuario lo pide explícitamente.
+6. Agregar el objeto JSON recibido **tal cual** al final de `publicaciones.json`, sin reescribir el contenido/redacción que ya viene resuelto — solo validar que sea JSON válido, que `categoriaPrincipal`/`temas`/`tipoContenido` existan en `taxonomia.json`, y que `fechaPublicacion` no deje más de dos entradas con la misma fecha en el catálogo.
+7. Publicar como siempre (ver paso 6 del flujo normal): copiar el PNG a `paginaweb/publications/` con nombre `Title_Case_Con_Guion_Bajo`, y agregar la misma entrada a `paginaweb/publications/publicaciones.js` con su propio `imagen: "publications/..."` y su propia fecha (+2 días sobre la última entrada de ese archivo, salvo que el JSON entregado ya indique que es una pieza de evento).
+8. Si la pieza resulta ser una actualización de una publicación existente (mismo tópico exacto), aplica igual la regla de consolidación de "Gestión inteligente de publicaciones e infografías" (archivar versión previa, editar in-place) en vez de duplicar.
+
 ## Branding de evento (opcional)
 
 El usuario puede indicar, junto con el tema/tópico/referencias, dos variables adicionales:
