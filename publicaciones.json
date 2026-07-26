@@ -1779,5 +1779,30 @@
       "likes": 0,
       "shares": 0
     }
+  },
+  {
+    "id": "comparativa-arquitectura-claude-5",
+    "imagen": "Construidos/Claude/comparativa-arquitectura-claude-5.png",
+    "fechaPublicacion": "2026-07-23T18:20:00",
+    "categoriaPrincipal": "inteligencia-artificial",
+    "temas": [
+      "claude",
+      "ia",
+      "machine-learning"
+    ],
+    "tipoContenido": "infografia",
+    "es": {
+      "topico": "Comparativa y Enrutamiento de Modelos Claude Generación 5",
+      "descripcion": "El despliegue empresarial de modelos de lenguaje ya no se resuelve con un único modelo para todos los casos de uso: la familia Claude de quinta generación —Opus 5, Sonnet 5, Fable 5 y Haiku 4.5— ofrece niveles diferenciados de capacidad, costo y velocidad, y aprovecharla exige una arquitectura de enrutamiento semántico (LLM Routing) que dirija cada solicitud al modelo correcto según su complejidad real. Los modelos de mayor capacidad, como Opus 5, destacan en razonamiento profundo, análisis multi-paso y tareas ambiguas, a costa de mayor costo por token y mayor latencia; los modelos más livianos, como Haiku 4.5, responden con tiempos de primer token (TTFT) mucho menores y a menor costo, ideales para clasificación, extracción o conversación de alto volumen; Sonnet 5 y Fable 5 ocupan puntos intermedios de ese espectro, equilibrando profundidad de razonamiento con eficiencia. Un router semántico clasifica la intención y complejidad de cada solicitud entrante —mediante reglas, un clasificador liviano o el propio modelo— y decide en tiempo real qué miembro de la familia debe atenderla, en vez de enviar todo el tráfico al modelo más potente por defecto. Esta arquitectura reduce el costo operativo agregado y la latencia percibida sin sacrificar calidad en las tareas que realmente la requieren, aunque exige monitoreo continuo de la tasa de acierto del router y manejo explícito de los casos límite donde la clasificación inicial resulta incorrecta. Es una decisión de arquitectura central para cualquier equipo de ingeniería que integre IA generativa a escala en producción."
+    },
+    "en": {
+      "topico": "Claude Generation 5 Models Comparison and Routing",
+      "descripcion": "Enterprise deployment of language models is no longer solved with a single model for every use case: Anthropic's fifth-generation Claude family — Opus 5, Sonnet 5, Fable 5, and Haiku 4.5 — offers differentiated levels of capability, cost, and speed, and using it well requires a semantic routing architecture (LLM Routing) that directs each request to the right model based on its actual complexity. The most capable models, such as Opus 5, excel at deep reasoning, multi-step analysis, and ambiguous tasks, at the cost of higher per-token pricing and higher latency; lighter models, such as Haiku 4.5, respond with much lower time-to-first-token (TTFT) and lower cost, ideal for classification, extraction, or high-volume conversation; Sonnet 5 and Fable 5 sit at intermediate points on that spectrum, balancing reasoning depth with efficiency. A semantic router classifies the intent and complexity of each incoming request — through rules, a lightweight classifier, or the model itself — and decides in real time which family member should handle it, instead of sending all traffic to the most powerful model by default. This architecture reduces aggregate operating cost and perceived latency without sacrificing quality on tasks that genuinely require it, though it demands continuous monitoring of the router's accuracy and explicit handling of edge cases where the initial classification is wrong. It is a central architectural decision for any engineering team integrating generative AI at production scale."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
   }
 ]
