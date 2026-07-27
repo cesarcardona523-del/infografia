@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografía - Algoritmos de Machine Learning y Normalización</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+        :root {
+            /* Paleta Verde Predominante + Acento Tierra */
+            --bg-canvas: #f0f5f2;
+            --green-dark: #0a2416;
+            --green-card: #0e2e1d;
+            --green-glow: #237a4b;
+            --green-light: #e6f4ed;
+            --earth-accent: #c95c1a;
+            --earth-bg: rgba(201, 92, 26, 0.12);
+            --white: #ffffff;
+            --gray-border: #d4dde8;
+            --gray-text: #55665e;
+            --radius: 10px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #121e18;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .canvas {
+            width: 1200px;
+            height: 627px;
+            background: linear-gradient(135deg, #ffffff 0%, var(--bg-canvas) 100%);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            padding: 14px 24px;
+            gap: 8px;
+        }
+
+        /* --- FONDO PATRÓN SUTIL --- */
+        .canvas::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: radial-gradient(rgba(35, 122, 75, 0.1) 1px, transparent 1px);
+            background-size: 24px 24px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* --- HEADER --- */
+        .header {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1.5px solid rgba(35, 122, 75, 0.2);
+            padding-bottom: 6px;
+            flex-shrink: 0;
+        }
+
+        .header-title h1 {
+            font-size: 19px;
+            font-weight: 800;
+            color: var(--green-dark);
+            letter-spacing: -0.5px;
+            text-transform: uppercase;
+        }
+
+        .header-title h1 span {
+            color: var(--earth-accent);
+        }
+
+        .header-badge {
+            background: var(--earth-bg);
+            color: var(--earth-accent);
+            border: 1px solid rgba(201, 92, 26, 0.3);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 9px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- CONTENEDOR PRINCIPAL DOS COLUMNAS --- */
+        .main-layout {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1.25fr 0.95fr;
+            gap: 12px;
+            flex-grow: 1;
+            min-height: 0;
+        }
+
+        .panel {
+            background: var(--white);
+            border: 1px solid var(--gray-border);
+            border-radius: var(--radius);
+            padding: 10px 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            box-shadow: 0 4px 12px rgba(10, 36, 22, 0.04);
+        }
+
+        .panel-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid #edf2ef;
+            padding-bottom: 5px;
+        }
+
+        .panel-icon {
+            width: 22px;
+            height: 22px;
+            background: var(--green-light);
+            border-radius: 6px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--green-glow);
+            flex-shrink: 0;
+        }
+
+        .panel-icon.earth {
+            background: var(--earth-bg);
+            color: var(--earth-accent);
+        }
+
+        .panel-icon svg { width: 13px; height: 13px; }
+
+        .panel-title h2 {
+            font-size: 10.5px;
+            font-weight: 800;
+            color: var(--green-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- TABLAS EDITORIALES --- */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            flex-grow: 1;
+        }
+
+        .data-table th {
+            font-size: 8.5px;
+            font-weight: 700;
+            color: var(--gray-text);
+            text-transform: uppercase;
+            padding: 3px 6px;
+            border-bottom: 1.5px solid var(--gray-border);
+            text-align: left;
+        }
+
+        .data-table td {
+            font-size: 9px;
+            color: var(--green-dark);
+            padding: 4px 6px;
+            border-bottom: 1px solid #f2f6f4;
+            vertical-align: middle;
+        }
+
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .algo-name {
+            font-weight: 700;
+        }
+
+        .badge-si {
+            background: #e1f5ec;
+            color: #0f5132;
+            padding: 1px 6px;
+            border-radius: 4px;
+            font-size: 8px;
+            font-weight: 700;
+            display: inline-block;
+        }
+
+        .badge-no {
+            background: #f8d7da;
+            color: #842029;
+            padding: 1px 6px;
+            border-radius: 4px;
+            font-size: 8px;
+            font-weight: 700;
+            display: inline-block;
+        }
+
+        .method-code {
+            font-family: monospace;
+            font-weight: 600;
+            color: #2c3e50;
+            background: #f8faf9;
+            padding: 1px 4px;
+            border-radius: 3px;
+            border: 1px solid #e2e8e4;
+        }
+
+        /* --- FOOTER --- */
+        .footer {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+            flex-shrink: 0;
+            padding-top: 2px;
+        }
+
+        .tech-tags {
+            display: flex;
+            gap: 6px;
+        }
+
+        .tech-pill {
+            background: var(--white);
+            border: 1px solid var(--gray-border);
+            color: var(--green-dark);
+            font-size: 8.5px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .signature {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--green-dark);
+            background: var(--green-light);
+            border: 1px solid rgba(35, 122, 75, 0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            box-shadow: 0 2px 6px rgba(10, 36, 22, 0.05);
+        }
+
+        .linkedin-icon {
+            width: 12px;
+            height: 12px;
+            fill: #0A66C2;
+        }
+    </style>
+</head>
+<body>
+    <div class="canvas">
+        
+        <header class="header">
+            <div class="header-title">
+                <h1>Algoritmos de Machine Learning y <span>Normalización de Datos</span></h1>
+            </div>
+            <div class="header-badge">
+                📊 Guía Técnica Analítica
+            </div>
+        </header>
+
+        <main class="main-layout">
+            
+            <!-- PANEL IZQUIERDO: ALGORITMOS QUE REQUIEREN NORMALIZACIÓN -->
+            <div class="panel">
+                <div class="panel-header">
+                    <div class="panel-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 21H3V3"></path><path d="M18 9l-5 5-3-3-4 4"></path></svg>
+                    </div>
+                    <div class="panel-title">
+                        <h2>¿Qué Algoritmos Requieren Normalización?</h2>
+                    </div>
+                </div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Algoritmo</th>
+                            <th>¿Normalización?</th>
+                            <th>Método Recomendado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="algo-name">Regresión Lineal / Logística</td>
+                            <td><span class="badge-si">Sí (Regularización)</span></td>
+                            <td><span class="method-code">Z-Score</span></td>
+                        </tr>
+                        <tr>
+                            <td class="algo-name">K-Means & KNN</td>
+                            <td><span class="badge-si">Sí (Distancias)</span></td>
+                            <td><span class="method-code">Z-Score / Min-Max</span></td>
+                        </tr>
+                        <tr>
+                            <td class="algo-name">Support Vector Machines (SVM)</td>
+                            <td><span class="badge-si">Sí (Optimización)</span></td>
+                            <td><span class="method-code">Z-Score</span></td>
+                        </tr>
+                        <tr>
+                            <td class="algo-name">Redes Neuronales (Deep Learning)</td>
+                            <td><span class="badge-si">Sí (Gradientes)</span></td>
+                            <td><span class="method-code">Min-Max</span></td>
+                        </tr>
+                        <tr>
+                            <td class="algo-name">PCA (Reducción de Dimensionalidad)</td>
+                            <td><span class="badge-si">Sí (Varianza)</span></td>
+                            <td><span class="method-code">Z-Score</span></td>
+                        </tr>
+                        <tr>
+                            <td class="algo-name">Árboles de Decisión / Random Forest</td>
+                            <td><span class="badge-no">No requerido</span></td>
+                            <td><span class="method-code">No aplica</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- PANEL DERECHO: GUÍA RÁPIDA DE DECISIÓN -->
+            <div class="panel">
+                <div class="panel-header">
+                    <div class="panel-icon earth">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                    </div>
+                    <div class="panel-title">
+                        <h2>Guía Rápida de Decisión por Escenario</h2>
+                    </div>
+                </div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Situación de los Datos</th>
+                            <th>Técnica Ideal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Datos con distribución normal</strong> (Gaussiana)</td>
+                            <td><span class="method-code">Z-Score Normalization</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Presencia de outliers severos</strong> en el dataset</td>
+                            <td><span class="method-code">Robust Scaling</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Redes Neuronales</strong> (activaciones acotadas)</td>
+                            <td><span class="method-code">Min-Max (0 a 1)</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Variables altamente sesgadas</strong> (asimetría)</td>
+                            <td><span class="method-code">Log / Box-Cox Transform</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Modelos basados en distancias</strong> (Euclideana)</td>
+                            <td><span class="method-code">StandardScaler</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ensembles basados en árboles</strong> (XGBoost, RF)</td>
+                            <td><span class="method-code">Sin transformación</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </main>
+
+        <footer class="footer">
+            <div class="tech-tags">
+                <span class="tech-pill">Data Preprocessing</span>
+                <span class="tech-pill">Machine Learning Pipeline</span>
+                <span class="tech-pill">Feature Scaling</span>
+            </div>
+            <div class="signature">
+                <svg class="linkedin-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/>
+                </svg>
+                cacm523
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

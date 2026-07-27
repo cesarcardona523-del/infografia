@@ -1903,5 +1903,29 @@
       "likes": 0,
       "shares": 0
     }
+  },
+  {
+    "id": "algoritmos-machine-learning-normalizacion",
+    "imagen": "Construidos/Cultura_Datos/algoritmos-machine-learning-normalizacion.png",
+    "fechaPublicacion": "2026-08-02T18:20:00",
+    "categoriaPrincipal": "inteligencia-artificial",
+    "temas": [
+      "machine-learning",
+      "ciencia-datos"
+    ],
+    "tipoContenido": "infografia",
+    "es": {
+      "topico": "Algoritmos de Machine Learning que Requieren Normalización",
+      "descripcion": "No todos los algoritmos de Machine Learning son sensibles a la escala de las variables de entrada, y confundir esto es una fuente común de errores silenciosos en un pipeline. Los modelos que dependen de gradientes o de distancias euclidianas —regresión lineal y logística, K-Means, KNN, Support Vector Machines, redes neuronales y PCA— exigen normalización previa, porque una variable con rango numérico mucho mayor que otras domina el cálculo de distancia o el descenso de gradiente sin que eso refleje su verdadera importancia. Los modelos basados en árboles, como Random Forest o Gradient Boosting, dividen el espacio por umbrales independientes en cada variable y por eso no la requieren. Existen varias técnicas, cada una apropiada para un escenario distinto. La estandarización por Z-Score centra los datos en media cero y desviación estándar uno, y es la opción por defecto para datos con distribución aproximadamente normal. Min-Max Normalization comprime los valores a un rango fijo, típicamente [0,1], lo que resulta clave para redes neuronales con funciones de activación acotadas. Robust Scaling usa la mediana y el rango intercuartílico en lugar de la media y la desviación estándar, por lo que un valor atípico extremo no distorsiona la escala del resto de los datos. Finalmente, las transformaciones logarítmicas o Box-Cox reducen la asimetría de variables con colas largas antes de aplicar cualquier otro escalado. Elegir la técnica correcta según el algoritmo y la forma de los datos es una decisión de ingeniería de features, no un detalle cosmético."
+    },
+    "en": {
+      "topico": "Machine Learning Algorithms That Require Normalization",
+      "descripcion": "Not every Machine Learning algorithm is sensitive to the scale of its input variables, and conflating this is a common source of silent errors in a pipeline. Models that rely on gradients or Euclidean distances — linear and logistic regression, K-Means, KNN, Support Vector Machines, neural networks, and PCA — require prior normalization, because a variable with a much larger numeric range than others dominates the distance calculation or gradient descent without that reflecting its true importance. Tree-based models, such as Random Forest or Gradient Boosting, split the space using independent thresholds per variable and therefore don't need it. Several techniques exist, each suited to a different scenario. Z-Score standardization centers the data at mean zero and standard deviation one, and is the default choice for approximately normally distributed data. Min-Max normalization compresses values into a fixed range, typically [0,1], which is key for neural networks with bounded activation functions. Robust Scaling uses the median and interquartile range instead of the mean and standard deviation, so an extreme outlier doesn't distort the scale of the rest of the data. Finally, logarithmic or Box-Cox transforms reduce the skew of long-tailed variables before any further scaling is applied. Choosing the right technique based on the algorithm and the shape of the data is a feature-engineering decision, not a cosmetic detail."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
   }
 ]
