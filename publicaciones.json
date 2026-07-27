@@ -1927,5 +1927,28 @@
       "likes": 0,
       "shares": 0
     }
+  },
+  {
+    "id": "matriz-raci-gestion-proyectos",
+    "imagen": "Construidos/Proyectos/matriz-raci-gestion-proyectos.png",
+    "fechaPublicacion": "2026-08-04T18:20:00",
+    "categoriaPrincipal": "profesion-y-negocio",
+    "temas": [
+      "gestion-proyectos"
+    ],
+    "tipoContenido": "infografia",
+    "es": {
+      "topico": "Matriz RACI: Asignación de Responsabilidades y Gobierno",
+      "descripcion": "En cualquier proyecto que involucre a varias áreas, la causa más común de retrasos no es la falta de recursos sino la ambigüedad sobre quién debe hacer qué: dos equipos duplicando el mismo trabajo, o una decisión que nadie se anima a tomar porque no está claro quién tiene la autoridad para aprobarla. La matriz RACI resuelve esta ambigüedad asignando, para cada actividad del proyecto, exactamente uno de cuatro niveles de participación a cada rol involucrado. El Responsable (R) es quien ejecuta materialmente la tarea. El Aprobador (A) —debe existir exactamente uno por actividad— asume la responsabilidad final y da el visto bueno. El Consultado (C) aporta su opinión antes de que la actividad avance, típicamente porque su área se ve afectada por la decisión. El Informado (I) simplemente se entera del resultado, sin participar en la ejecución ni en la aprobación. Aplicada a un caso concreto como el lanzamiento de un nuevo producto, la matriz deja explícito, por ejemplo, que Producción es responsable de fabricar el lote inicial mientras Gerencia General aprueba, o que Finanzas ejecuta el presupuesto operativo mientras Marketing solo es informado. Este nivel de explicitud convierte una estructura organizacional implícita en un documento de gobernanza consultable, que se revisa antes de que surjan los conflictos, no después."
+    },
+    "en": {
+      "topico": "RACI Matrix: Responsibility Assignment and Governance",
+      "descripcion": "In any project that involves multiple areas, the most common cause of delays isn't a lack of resources but ambiguity about who should do what: two teams duplicating the same work, or a decision nobody dares to make because it isn't clear who has the authority to approve it. The RACI matrix resolves that ambiguity by assigning, for each project activity, exactly one of four participation levels to each role involved. The Responsible (R) party actually executes the task. The Accountable (A) party — there must be exactly one per activity — takes final ownership and signs off. The Consulted (C) party provides input before the activity moves forward, typically because their area is affected by the decision. The Informed (I) party simply learns the outcome, without participating in execution or approval. Applied to a concrete case such as a new product launch, the matrix makes explicit, for example, that Production is responsible for manufacturing the initial batch while Executive Management approves it, or that Finance executes the operating budget while Marketing is merely informed. This level of explicitness turns an implicit organizational structure into a consultable governance document, one that gets reviewed before conflicts arise, not after."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
   }
 ]
