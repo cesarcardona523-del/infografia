@@ -1804,5 +1804,28 @@
       "likes": 0,
       "shares": 0
     }
+  },
+  {
+    "id": "finops-ai-costos-2026",
+    "imagen": "Construidos/IA/finops-ai-costos-2026.png",
+    "fechaPublicacion": "2026-07-25T18:20:00",
+    "categoriaPrincipal": "inteligencia-artificial",
+    "temas": [
+      "ia"
+    ],
+    "tipoContenido": "infografia",
+    "es": {
+      "topico": "FinOps AI: Arquitectura de Costos y Facturación de LLMs en 2026",
+      "descripcion": "El costo de operar modelos de lenguaje a escala empresarial depende de una arquitectura de facturación que rara vez se entiende del todo, y esa brecha de conocimiento se traduce directamente en sobrecostos evitables. El principio de AI FinOps parte de un hecho estructural: los proveedores cobran por tokens, no por consultas, y separan la facturación en dos contadores independientes —tokens de entrada (el prompt y el contexto que se envía) y tokens de salida (lo que el modelo genera)—, con los tokens de salida consistentemente más caros porque generarlos exige inferencia computacional, mientras que leerlos es comparativamente barato. Sobre esa asimetría se apoya una segunda palanca de optimización: el caching de contexto, que permite reutilizar prompts o documentos base ya procesados en llamadas sucesivas, reduciendo el costo de la porción de entrada que no cambia entre solicitudes. La implicación arquitectónica es que estandarizar todo el tráfico en un único modelo de máxima capacidad es, casi siempre, un error de diseño: la mayoría de las tareas rutinarias puede resolverse con modelos más económicos, reservando los modelos de frontera solo para la fracción de solicitudes que realmente requiere razonamiento profundo. Un sistema de enrutamiento de modelos —que clasifica cada solicitud por complejidad y la dirige al nivel de modelo adecuado— es la práctica central para optimizar el costo total de propiedad (TCO) en pipelines de IA empresarial, sin sacrificar calidad en los casos que sí la necesitan."
+    },
+    "en": {
+      "topico": "AI FinOps: LLM Cost Architecture and Billing Mechanics in 2026",
+      "descripcion": "The cost of operating language models at enterprise scale depends on a billing architecture that is rarely fully understood, and that knowledge gap translates directly into avoidable overspend. The AI FinOps principle starts from a structural fact: providers charge by tokens, not by queries, and split billing into two independent counters — input tokens (the prompt and context sent to the model) and output tokens (what the model generates) — with output tokens consistently priced higher because generating them requires computational inference, while reading input is comparatively cheap. A second optimization lever builds on that asymmetry: context caching, which lets a team reuse prompts or base documents already processed across successive calls, cutting the cost of the portion of the input that doesn't change between requests. The architectural implication is that standardizing all traffic on a single, top-tier model is almost always a design mistake: most routine tasks can be handled by cheaper models, reserving frontier-level models only for the fraction of requests that genuinely requires deep reasoning. A model routing system — one that classifies each incoming request by complexity and directs it to the right model tier — is the central practice for optimizing total cost of ownership (TCO) in enterprise AI pipelines without sacrificing quality on the cases that actually need it."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
   }
 ]
