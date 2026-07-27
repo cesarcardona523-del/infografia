@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografía - 12 Tecnologías Data Science 2026</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+        :root {
+            /* Paleta Verde Predominante */
+            --bg-base: #f2f6f4;
+            --green-900: #0a2e1c;
+            --green-800: #14452a;
+            --green-600: #237a4b;
+            --green-400: #49a874;
+            --green-100: #cce8d9;
+            --green-50: #e8f3ee;
+            
+            /* Acento Tierra */
+            --earth-700: #9c4514;
+            --earth-500: #c95c1a;
+            --earth-100: #fcebe1;
+            
+            /* Neutros */
+            --white: #ffffff;
+            --gray-200: #e2e8e5;
+            --gray-300: #d1d9d5;
+            --gray-500: #8ba396;
+            --gray-600: #5c7366;
+            --gray-800: #1d2b24;
+            
+            --radius-lg: 12px;
+            --radius-md: 8px;
+            --shadow-sm: 0 2px 4px rgba(10, 46, 28, 0.04);
+            --shadow-md: 0 8px 16px rgba(10, 46, 28, 0.06);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #1a2620;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .canvas {
+            width: 1200px;
+            height: 627px;
+            background: linear-gradient(135deg, var(--white) 0%, var(--bg-base) 100%);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            padding: 18px 28px;
+            gap: 12px;
+        }
+
+        /* --- BACKGROUND PATTERN --- */
+        .canvas::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: radial-gradient(var(--green-100) 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.6;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* --- HEADER --- */
+        .header {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-shrink: 0;
+            padding-bottom: 8px;
+            border-bottom: 1.5px solid var(--green-100);
+        }
+
+        .header-content h1 {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--green-900);
+            letter-spacing: -0.5px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header-content h1 span {
+            color: var(--earth-500);
+        }
+
+        .header-content p {
+            font-size: 11px;
+            color: var(--green-600);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 2px;
+        }
+
+        .badge-update {
+            background: var(--earth-100);
+            color: var(--earth-700);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 9.5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(201, 92, 26, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* --- MAIN GRID --- */
+        .grid-container {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 12px;
+            flex-grow: 1;
+            min-height: 0; /* Prevents flexbox overflow */
+        }
+
+        /* --- CARDS --- */
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--gray-200);
+            box-shadow: var(--shadow-sm);
+            padding: 12px 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--green-400);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 2px;
+        }
+
+        .card-number {
+            background: var(--green-900);
+            color: var(--white);
+            font-size: 10px;
+            font-weight: 800;
+            padding: 2px 8px;
+            border-radius: 4px;
+            display: inline-flex;
+        }
+
+        .card-icon {
+            width: 24px;
+            height: 24px;
+            color: var(--green-600);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .card:nth-child(even) .card-icon {
+            color: var(--earth-500);
+        }
+
+        .card-title h3 {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--green-900);
+            line-height: 1.25;
+        }
+
+        .card-desc {
+            font-size: 9px;
+            color: var(--gray-600);
+            line-height: 1.35;
+        }
+
+        /* --- FOOTER --- */
+        .footer {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-top: auto;
+            flex-shrink: 0;
+            padding-top: 4px;
+        }
+
+        .tech-tags {
+            display: flex;
+            gap: 6px;
+        }
+
+        .tech-tag {
+            background: var(--white);
+            border: 1px solid var(--gray-300);
+            color: var(--gray-600);
+            font-size: 8.5px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .signature {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--green-900);
+            background: rgba(255,255,255,0.9);
+            padding: 4px 12px;
+            border-radius: 20px;
+            border: 1px solid var(--white);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .linkedin-icon {
+            width: 12px;
+            height: 12px;
+            fill: #0A66C2;
+        }
+    </style>
+</head>
+<body>
+    <div class="canvas">
+        
+        <header class="header">
+            <div class="header-content">
+                <h1>
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green-600)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                        <polyline points="2 17 12 22 22 17"></polyline>
+                        <polyline points="2 12 12 17 22 12"></polyline>
+                    </svg>
+                    Las 12 Tecnologías que transforman la <span>Ciencia de Datos en 2026</span>
+                </h1>
+                <p>Framework de Innovación Tecnológica y Analítica Avanzada</p>
+            </div>
+            <div class="badge-update">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 2v6h-6"></path>
+                    <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                    <path d="M3 3v6h6"></path>
+                </svg>
+                Radar Tecnológico
+            </div>
+        </header>
+
+        <main class="grid-container">
+            
+            <!-- 01 -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-number">01</span>
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a8 8 0 0 0-8 8c0 5.4 6 12 8 12s8-6.6 8-12a8 8 0 0 0-8-8z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                </div>
+                <div class="card-title">
+                    <h3>IA Generativa para Datos</h3>
+                </div>
+                <div class="card-desc">
+                    Generación de código (SQL/Python), síntesis de datasets sintéticos y asistentes nativos inteligentes para potenciar la productividad de científicos de datos.
+                </div>
+            </div>
+
+            <!-- 02 -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-number">02</span>
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="5" rx="1"/><rect x="2" y="10" width="20" height="5" rx="1"/><rect x="2" y="17" width="20" height="5" rx="1"/><path d="M18 6h.01M18 13h.01M18 20h.01"/></svg>
+                    </div>
+                </div>
+                <div class="card-title">
+                    <h3>Lakehouse Inteligente</h3>
+                </div>
+                <div class="card-desc">
+                    Arquitecturas unificadas que combinan la flexibilidad de los data lakes con el rendimiento de los data warehouses, integrando capacidades nativas de IA.
+                </div>
+            </div>
+
+            <!-- 03 -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-number">03</span>
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                    </div>
+                </div>
+                <div class="card-title">
+                    <h3>Analítica en Tiempo Real</h3>
+                </div>
+                <div class="card-desc">
+                    Procesamiento de eventos en streaming continuo con ultra-baja latencia y alta escalabilidad para toma de decisiones instantáneas y dashboards vivos.
+                </div>
+            </div>
+
+            <!-- 04 -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-number">04</span>
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                    </div>
+                </div>
+                <div class="card-title">
+                    <h3>Graph Analytics</h3>
+                </div>
+                <div class="card-desc">
+                    Análisis profundo de redes y relaciones complejas (nodos y aristas) para detección de fraude, optimización logística y motores de recomendación.
+                </div>
+            </div>
+
+            <!-- 05 -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-number">05</span>
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                    </div>
+                </div>
+                <div class="card-title">
+                    <h3>Vector Databases</h3>
+                </div>
+                <div class="card-desc">
+                    Sistemas especializados en almacenamiento y búsqueda de alta dimensión (embeddings) para potenciar arquitecturas RAG y búsqueda semántica exacta.
+                </div>
+            </div>
+
+            <!-- 06 -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-number">06</span>
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/><line x1="8" y1="16" x2="8" y2="16"/><line x1="16" y1="16" x2="16" y2="16"/></svg>
+                    </div>
+                </div>
+                <div class="card-title">
+                    <h3>AutoML Avanzado</h3>
+                </div>
+                <div class="card-desc">
+                    Automatización integral del ciclo de vida del modelado: desde la preparación de características y selección de algoritmos, hasta el ajuste de hiperparámetros.
+                </div>
+            </div>
+
+            <!-- 07 -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-number">07</span>
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/></svg>
+                    </div>
+                </div>
+                <div class="card-title">
+                    <h3>MLOps & LLMOps</h3>
+                </div>
+                <div class="card-desc">
+                    Prácticas de ingeniería para despliegue, monitoreo, reentrenamiento continuo y gobierno de modelos en producción con trazabilidad completa.
+                </div>
+            </div>
+
+            <!-- 08 -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-number">08</span>
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+                    </div>
+                </div>
+                <div class="card-title">
+                    <h3>Gobernanza de Datos e IA</h3>
+                </div>
+                <div class="card-desc">
+                    Marcos corporativos estrictos para asegurar calidad, privacidad (Data Clean Rooms), cumplimiento regulatorio y uso ético/responsable de la IA.
+                </div>
+            </div>
+
+            <!-- 09 -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-number">09</span>
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/><path d="M12 12v6"/><path d="M9 15l3 3 3-3"/></svg>
+                    </div>
+                </div>
+                <div class="card-title">
+                    <h3>Serverless Data Platforms</h3>
+                </div>
+                <div class="card-desc">
+                    Infraestructura elástica abstracta (Zero-Ops) para pipelines de ingeniería y analítica, escalando automáticamente bajo demanda con pago por uso.
+                </div>
+            </div>
+
+            <!-- 10 -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-number">10</span>
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>
+                    </div>
+                </div>
+                <div class="card-title">
+                    <h3>IA Geoespacial</h3>
+                </div>
+                <div class="card-desc">
+                    Integración de redes neuronales con datos geoespaciales, satelitales y de IoT para simulaciones complejas y toma de decisiones contextuales.
+                </div>
+            </div>
+
+            <!-- 11 -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-number">11</span>
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+                    </div>
+                </div>
+                <div class="card-title">
+                    <h3>Computación Acelerada</h3>
+                </div>
+                <div class="card-desc">
+                    Uso avanzado de clústeres GPU/TPU y chips neuromórficos para reducir drásticamente los tiempos de entrenamiento e inferencia en LLMs y Big Data.
+                </div>
+            </div>
+
+            <!-- 12 -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-number">12</span>
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>
+                    </div>
+                </div>
+                <div class="card-title">
+                    <h3>Data Storytelling con IA</h3>
+                </div>
+                <div class="card-desc">
+                    Generación dinámica de narrativas interactivas que combinan visualización de datos, generación de lenguaje natural y extracción de insights accionables.
+                </div>
+            </div>
+
+        </main>
+
+        <footer class="footer">
+            <div class="tech-tags">
+                <span class="tech-tag">Data Science Trends</span>
+                <span class="tech-tag">GenAI Ecosystem</span>
+                <span class="tech-tag">Data Architecture</span>
+            </div>
+            <div class="signature">
+                <svg class="linkedin-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/>
+                </svg>
+                cacm523
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

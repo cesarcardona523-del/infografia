@@ -1851,5 +1851,31 @@
       "likes": 0,
       "shares": 0
     }
+  },
+  {
+    "id": "12-tecnologias-ciencia-de-datos-2026",
+    "imagen": "Construidos/Cultura_Datos/12-tecnologias-ciencia-de-datos-2026.png",
+    "fechaPublicacion": "2026-07-29T18:20:00",
+    "categoriaPrincipal": "analisis-de-datos",
+    "temas": [
+      "ciencia-datos",
+      "ia",
+      "arquitectura-datos",
+      "machine-learning"
+    ],
+    "tipoContenido": "infografia",
+    "es": {
+      "topico": "Las 12 Tecnologías que Transforman la Ciencia de Datos en 2026",
+      "descripcion": "El panorama tecnológico de la ciencia de datos en 2026 se organiza alrededor de doce capacidades que, en conjunto, redefinen cómo las organizaciones capturan, procesan y explotan la información. La IA generativa se integra directamente en el flujo de trabajo del científico de datos, generando código SQL y Python y sintetizando datasets cuando los datos reales son escasos o sensibles. La arquitectura de datos converge hacia el lakehouse inteligente, que combina la flexibilidad de un data lake con el rendimiento de un data warehouse e incorpora capacidades nativas de IA, mientras que las plataformas serverless eliminan la gestión operativa de la infraestructura subyacente. Sobre esa base conviven la analítica en tiempo real para decisiones instantáneas, el graph analytics para modelar relaciones complejas como el fraude o la logística, y las bases de datos vectoriales que sostienen arquitecturas RAG y búsqueda semántica. En el ciclo de vida del modelo, el AutoML automatiza la selección de algoritmos y el ajuste de hiperparámetros, mientras que MLOps y LLMOps aportan la disciplina de ingeniería para desplegar, monitorear y reentrenar modelos en producción con trazabilidad completa. La gobernanza de datos e IA se vuelve un requisito no negociable para calidad, privacidad y cumplimiento regulatorio, la computación acelerada con GPU y TPU sostiene el entrenamiento e inferencia a gran escala, la IA geoespacial extiende el análisis a datos satelitales e IoT, y el data storytelling con IA convierte los hallazgos técnicos en narrativas comprensibles para la toma de decisiones."
+    },
+    "en": {
+      "topico": "The 12 Technologies Transforming Data Science in 2026",
+      "descripcion": "The technology landscape of data science in 2026 is organized around twelve capabilities that together redefine how organizations capture, process, and exploit information. Generative AI is now integrated directly into the data scientist's workflow, generating SQL and Python code and synthesizing datasets when real data is scarce or sensitive. Data architecture is converging toward the intelligent lakehouse, which combines the flexibility of a data lake with the performance of a data warehouse and embeds native AI capabilities, while serverless platforms remove the operational burden of managing the underlying infrastructure. Built on that foundation are real-time analytics for instant decisions, graph analytics for modeling complex relationships such as fraud or logistics, and vector databases that underpin RAG architectures and semantic search. Across the model lifecycle, AutoML automates algorithm selection and hyperparameter tuning, while MLOps and LLMOps provide the engineering discipline to deploy, monitor, and retrain production models with full traceability. Data and AI governance has become a non-negotiable requirement for quality, privacy, and regulatory compliance, accelerated computing on GPUs and TPUs sustains large-scale training and inference, geospatial AI extends analysis to satellite and IoT data, and AI-driven data storytelling turns technical findings into narratives that decision-makers can actually act on."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
   }
 ]
