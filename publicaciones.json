@@ -1827,5 +1827,29 @@
       "likes": 0,
       "shares": 0
     }
+  },
+  {
+    "id": "glosario-ia-agentica",
+    "imagen": "Construidos/IA/glosario-ia-agentica.png",
+    "fechaPublicacion": "2026-07-27T18:20:00",
+    "categoriaPrincipal": "inteligencia-artificial",
+    "temas": [
+      "agentes-ia",
+      "ia"
+    ],
+    "tipoContenido": "infografia",
+    "es": {
+      "topico": "Glosario de IA Agéntica para Líderes Tecnológicos",
+      "descripcion": "A medida que los sistemas de IA generativa evolucionan de simples generadores de texto a agentes capaces de razonar y actuar, los equipos técnicos y de liderazgo necesitan un vocabulario común para diseñar, evaluar y gobernar estas arquitecturas. Este glosario organiza los conceptos esenciales de la IA agéntica en cinco frentes. En fundamentos, distingue un agente de IA —software que razona y ejecuta tareas autónomas invocando herramientas como APIs o bases de datos, más allá de solo generar texto— de la IA agéntica como ecosistema, donde múltiples agentes colaboran con distintos niveles de autonomía. En arquitectura, cubre patrones de orquestación como el patrón supervisor, donde un agente maestro evalúa intenciones y delega subtareas a agentes ejecutores especializados, y los sistemas multiagente, donde roles diferenciados —investigador, programador, revisor— colaboran iterativamente. En el funcionamiento cognitivo, explica el razonamiento tipo cadena de pensamiento, el uso de herramientas mediante invocación de funciones, y la memoria persistente que sostiene la coherencia a largo plazo. En seguridad corporativa, define guardrails, human-in-the-loop y los mecanismos de escalación que devuelven el control a un humano ante errores o límites. Finalmente, en despliegue y MLOps, aborda la observabilidad de trazas y latencia, y el rastro de auditoría necesario para cumplimiento. Dominar este vocabulario es un requisito previo para diseñar arquitecturas agénticas responsables en producción."
+    },
+    "en": {
+      "topico": "Agentic AI Glossary for Tech Leaders",
+      "descripcion": "As generative AI systems evolve from simple text generators into agents capable of reasoning and acting, technical and leadership teams need a shared vocabulary to design, evaluate, and govern these architectures. This glossary organizes the essential concepts of agentic AI across five fronts. In fundamentals, it distinguishes an AI agent — software that reasons and executes autonomous tasks by invoking tools such as APIs or databases, beyond merely generating text — from agentic AI as an ecosystem, where multiple agents collaborate with varying degrees of autonomy. In architecture, it covers orchestration patterns such as the supervisor pattern, where a master agent evaluates intent and delegates subtasks to specialized executor agents, and multi-agent systems, where differentiated roles — researcher, coder, reviewer — collaborate iteratively. In cognitive functioning, it explains chain-of-thought style reasoning, tool use through function invocation, and the persistent memory that sustains long-term coherence. In enterprise security, it defines guardrails, human-in-the-loop, and the escalation mechanisms that hand control back to a human when errors or limits are detected. Finally, in deployment and MLOps, it addresses observability of traces and latency, and the audit trail required for compliance. Mastering this vocabulary is a prerequisite for designing responsible agentic architectures in production."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
   }
 ]
