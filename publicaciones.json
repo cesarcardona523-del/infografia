@@ -1877,5 +1877,31 @@
       "likes": 0,
       "shares": 0
     }
+  },
+  {
+    "id": "evolucion-ia-2025-2027-estrategia",
+    "imagen": "Construidos/Adopcion_IA/evolucion-ia-2025-2027-estrategia.png",
+    "fechaPublicacion": "2026-07-31T18:20:00",
+    "categoriaPrincipal": "inteligencia-artificial",
+    "temas": [
+      "ia",
+      "transformacion-digital",
+      "gobierno-datos",
+      "estrategia-datos"
+    ],
+    "tipoContenido": "infografia",
+    "es": {
+      "topico": "Evolución y Hoja de Ruta de la Adopción de IA (2025-2027)",
+      "descripcion": "La adopción organizacional de la inteligencia artificial no ocurre de un salto: sigue una trayectoria de maduración que puede describirse en tres fases sucesivas entre 2025 y 2027. La fase de 2025 se centra en prompts y aprendizaje: dominar los fundamentos de los modelos conversacionales, desarrollar ingeniería de prompts para estructurar instrucciones de forma efectiva, entender los límites de contexto y ventana de tokens, aplicar criterios razonados para elegir entre modelos como GPT, Claude o Gemini, y construir alfabetización corporativa sobre la terminología básica. En 2026, el foco se desplaza hacia la aplicación práctica y los asistentes: flujos de trabajo semiautónomos de múltiples pasos, una disciplina de creación de valor centrada en ROI e impacto medible, integración de herramientas que conecta APIs y procesos core, asistentes especializados por dominio —ventas, soporte, finanzas, operaciones— y una capa de gobierno del dato que garantiza fuentes fiables para la analítica. Para 2027, la organización consolida cultura y operaciones: preparación organizativa con liderazgo ejecutivo activo, transformación del trabajo mediante upskilling masivo y rediseño de roles, gobernanza de IA con marcos éticos y de gestión de riesgos, adopción transversal integrada en toda la empresa, y una colaboración humano-IA madura donde el juicio experto complementa la ejecución automatizada. Entender esta secuencia evita saltarse etapas y ayuda a diagnosticar en qué punto de la curva se encuentra realmente cada organización."
+    },
+    "en": {
+      "topico": "AI Adoption Evolution and Roadmap (2025-2027)",
+      "descripcion": "Organizational adoption of artificial intelligence doesn't happen in a single leap: it follows a maturity trajectory that can be described across three successive phases between 2025 and 2027. The 2025 phase centers on prompting and learning: mastering the fundamentals of conversational models, developing prompt engineering to structure instructions effectively, understanding context limits and token windows, applying reasoned criteria to choose between models such as GPT, Claude, or Gemini, and building corporate literacy around basic terminology. In 2026, the focus shifts toward practical application and assistants: semi-autonomous multi-step workflows, a value-creation discipline centered on ROI and measurable impact, tool integration connecting APIs and core processes, domain-specific assistants for sales, support, finance, and operations, and a data governance layer that ensures reliable sources for analytics. By 2027, the organization consolidates culture and operations: organizational readiness with active executive leadership, work transformation through mass upskilling and role redesign, AI governance with ethical and risk-management frameworks, cross-functional adoption integrated across the entire enterprise, and a mature human-AI collaboration where expert judgment complements automated execution. Understanding this sequence helps organizations avoid skipping stages and diagnose where they actually stand on the curve."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
   }
 ]
