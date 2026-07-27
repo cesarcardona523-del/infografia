@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Infografía - Diccionario de Agentes de IA</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap');
+
         :root {
             --bg-canvas: #0b1712;
             --card-bg: rgba(18, 38, 29, 0.85);
@@ -22,7 +25,7 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Inter', sans-serif;
         }
 
         body {
@@ -70,27 +73,6 @@
             padding-bottom: 10px;
         }
 
-        .header-title {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .header-icon {
-            width: 34px;
-            height: 34px;
-            border-radius: 9px;
-            background: rgba(59, 156, 106, 0.12);
-            border: 1px solid rgba(59, 156, 106, 0.35);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--green-glow);
-            flex-shrink: 0;
-        }
-
-        .header-icon svg { width: 18px; height: 18px; }
-
         .header-title h1 {
             font-size: 24px;
             font-weight: 900;
@@ -104,28 +86,10 @@
             text-shadow: 0 0 15px rgba(59, 156, 106, 0.5);
         }
 
-        .header-badges {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
         .header-badge {
             background: var(--earth-bg);
             color: var(--earth-accent);
             border: 1px solid rgba(217, 107, 39, 0.4);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 10px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .badge-updated {
-            background: rgba(59, 156, 106, 0.15);
-            color: var(--green-glow);
-            border: 1px solid rgba(59, 156, 106, 0.4);
             padding: 4px 12px;
             border-radius: 20px;
             font-size: 10px;
@@ -179,33 +143,6 @@
             padding-bottom: 6px;
         }
 
-        .card-heading-left {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .card-icon-wrap {
-            width: 20px;
-            height: 20px;
-            border-radius: 6px;
-            background: rgba(59, 156, 106, 0.12);
-            border: 1px solid rgba(59, 156, 106, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--green-glow);
-            flex-shrink: 0;
-        }
-
-        .card-icon-wrap svg { width: 11px; height: 11px; }
-
-        .bento-card.earth-theme .card-icon-wrap {
-            background: var(--earth-bg);
-            border-color: rgba(217, 107, 39, 0.4);
-            color: var(--earth-accent);
-        }
-
         .card-heading h2 {
             font-size: 11.5px;
             font-weight: 800;
@@ -215,7 +152,7 @@
         }
 
         .card-tag {
-            font-family: "SF Mono", Menlo, Consolas, monospace;
+            font-family: 'Fira Code', monospace;
             font-size: 9px;
             color: var(--green-glow);
             background: rgba(59, 156, 106, 0.1);
@@ -244,7 +181,7 @@
         }
 
         .term-badge {
-            font-family: "SF Mono", Menlo, Consolas, monospace;
+            font-family: 'Fira Code', monospace;
             font-size: 8px;
             font-weight: 700;
             color: var(--white);
@@ -326,16 +263,10 @@
         
         <header class="header">
             <div class="header-title">
-                <div class="header-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-                </div>
                 <h1>Diccionario Técnico <span>IA Agéntica</span></h1>
             </div>
-            <div class="header-badges">
-                <span class="badge-updated">Actualizada</span>
-                <div class="header-badge">
-                    ⚡ 30 Términos Core para Enterprise
-                </div>
+            <div class="header-badge">
+                ⚡ 30 Términos Core para Enterprise
             </div>
         </header>
 
@@ -344,10 +275,7 @@
             <!-- MÓDULO 1: FUNDAMENTOS -->
             <div class="bento-card">
                 <div class="card-heading">
-                    <div class="card-heading-left">
-                        <div class="card-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div>
-                        <h2>01. Fundamentos</h2>
-                    </div>
+                    <h2>01. Fundamentos</h2>
                     <span class="card-tag">CORE 01-05</span>
                 </div>
                 <div class="terms-stack">
@@ -378,10 +306,7 @@
             <!-- MÓDULO 2: CÓMO FUNCIONAN -->
             <div class="bento-card">
                 <div class="card-heading">
-                    <div class="card-heading-left">
-                        <div class="card-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg></div>
-                        <h2>02. Motor Cognitivo</h2>
-                    </div>
+                    <h2>02. Motor Cognitivo</h2>
                     <span class="card-tag">COGNITION 06-10</span>
                 </div>
                 <div class="terms-stack">
@@ -412,10 +337,7 @@
             <!-- MÓDULO 3: ARQUITECTURA (EARTH ACCENT) -->
             <div class="bento-card earth-theme">
                 <div class="card-heading">
-                    <div class="card-heading-left">
-                        <div class="card-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg></div>
-                        <h2>03. Arquitectura</h2>
-                    </div>
+                    <h2>03. Arquitectura</h2>
                     <span class="card-tag">TOPOLOGY 11-15</span>
                 </div>
                 <div class="terms-stack">
@@ -446,10 +368,7 @@
             <!-- MÓDULO 4: COSTE Y VELOCIDAD -->
             <div class="bento-card">
                 <div class="card-heading">
-                    <div class="card-heading-left">
-                        <div class="card-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg></div>
-                        <h2>04. Rendimiento & FinOps</h2>
-                    </div>
+                    <h2>04. Rendimiento & FinOps</h2>
                     <span class="card-tag">METRICS 16-20</span>
                 </div>
                 <div class="terms-stack">
@@ -473,10 +392,7 @@
             <!-- MÓDULO 5: SEGURIDAD Y CONTROL (EARTH ACCENT) -->
             <div class="bento-card earth-theme">
                 <div class="card-heading">
-                    <div class="card-heading-left">
-                        <div class="card-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
-                        <h2>05. Seguridad & Governance</h2>
-                    </div>
+                    <h2>05. Seguridad & Governance</h2>
                     <span class="card-tag">SAFETY 21-25</span>
                 </div>
                 <div class="terms-stack">
@@ -500,10 +416,7 @@
             <!-- MÓDULO 6: DESPLIEGUE EMPRESARIAL -->
             <div class="bento-card">
                 <div class="card-heading">
-                    <div class="card-heading-left">
-                        <div class="card-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg></div>
-                        <h2>06. Despliegue & MLOps</h2>
-                    </div>
+                    <h2>06. Despliegue & MLOps</h2>
                     <span class="card-tag">OPS 26-30</span>
                 </div>
                 <div class="terms-stack">
