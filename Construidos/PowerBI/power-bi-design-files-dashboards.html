@@ -105,14 +105,14 @@
             gap: 18px;
             flex-grow: 1;
             min-height: 0;
-            align-items: center;
+            align-items: stretch;
         }
 
         /* Columna Izquierda: Mensaje y Callouts */
         .left-column {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 14px;
         }
 
         .intro-card {
@@ -168,6 +168,59 @@
         .feature-box .f-desc {
             font-size: 8px;
             color: var(--gray-text);
+        }
+
+        /* Panel de reglas de diseño (rellena el espacio inferior de la columna izquierda) */
+        .rules-panel {
+            background: var(--green-dark);
+            border-radius: var(--radius-lg);
+            padding: 12px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            box-shadow: 0 8px 20px rgba(7, 33, 19, 0.18);
+        }
+
+        .rules-panel h2 {
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .rules-panel h2 span {
+            color: var(--earth-accent);
+        }
+
+        .rule-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .rule-num {
+            flex-shrink: 0;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--earth-accent);
+            color: var(--white);
+            font-size: 9px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .rule-text {
+            font-size: 9px;
+            line-height: 1.35;
+            color: var(--green-light);
+        }
+
+        .rule-text b {
+            color: var(--white);
         }
 
         /* Columna Derecha: Mockups UI de Dashboards Power BI (Estilo Referencia) */
@@ -345,6 +398,20 @@
         .donut-legend .leg-dot { width: 6px; height: 6px; border-radius: 2px; flex-shrink: 0; }
         .donut-legend b { color: var(--green-dark); }
 
+        /* Insight derivado (dato calculado a partir de la propia dona, no inventado) */
+        .insight-box {
+            margin-top: auto;
+            background: var(--earth-bg);
+            border-left: 3px solid var(--earth-accent);
+            border-radius: 4px;
+            padding: 5px 7px;
+            font-size: 7.5px;
+            line-height: 1.35;
+            color: var(--green-dark);
+        }
+
+        .insight-box b { color: var(--earth-accent); }
+
         /* Sparkline / trend line (tipo Performance Analysis) */
         .spark-box { flex-grow: 1; display: flex; flex-direction: column; gap: 2px; }
         .spark-box svg { width: 100%; height: 100%; }
@@ -418,7 +485,7 @@
                 <h1>Power BI Design Files: <span>Dashboards de Alto Impacto</span></h1>
             </div>
             <div class="header-badge">
-                📊 Data Visualization Gallery
+                📊 Galería de Visualización de Datos
             </div>
         </header>
 
@@ -434,20 +501,44 @@
 
                 <div class="features-grid">
                     <div class="feature-box">
-                        <span class="f-title">Root Cause Analysis</span>
+                        <span class="f-title">Análisis de Causa Raíz</span>
                         <span class="f-desc">Desglose de KPIs y filtros cruzados dinámicos.</span>
                     </div>
                     <div class="feature-box">
-                        <span class="f-title">Executive Summary</span>
+                        <span class="f-title">Resumen Ejecutivo</span>
                         <span class="f-desc">Estructuras limpias orientadas a la toma de decisiones.</span>
                     </div>
                     <div class="feature-box">
-                        <span class="f-title">Advanced DAX</span>
-                        <span class="f-desc">Medidas optimizadas para rendimiento analítico.</span>
+                        <span class="f-title">DAX Avanzado</span>
+                        <span class="f-desc">Medidas explícitas en vez de columnas calculadas.</span>
                     </div>
                     <div class="feature-box">
-                        <span class="f-title">UI/UX Editorial</span>
+                        <span class="f-title">Diseño UI/UX Editorial</span>
                         <span class="f-desc">Jerarquía visual milimétrica y paletas corporativas.</span>
+                    </div>
+                    <div class="feature-box">
+                        <span class="f-title">Modelo Estrella</span>
+                        <span class="f-desc">Hechos y dimensiones separados para consultas más rápidas.</span>
+                    </div>
+                    <div class="feature-box">
+                        <span class="f-title">Storytelling Visual</span>
+                        <span class="f-desc">Cada gráfico responde una pregunta de negocio concreta.</span>
+                    </div>
+                </div>
+
+                <div class="rules-panel">
+                    <h2>3 Reglas de Oro <span>del Diseño Ganador</span></h2>
+                    <div class="rule-row">
+                        <span class="rule-num">1</span>
+                        <span class="rule-text"><b>Regla de los 5 segundos:</b> el mensaje principal se entiende sin leer cada dato.</span>
+                    </div>
+                    <div class="rule-row">
+                        <span class="rule-num">2</span>
+                        <span class="rule-text"><b>Máximo 5-7 KPIs por vista:</b> más elementos generan sobrecarga cognitiva.</span>
+                    </div>
+                    <div class="rule-row">
+                        <span class="rule-num">3</span>
+                        <span class="rule-text"><b>El color comunica estado:</b> el acento se reserva para alertas, no decoración.</span>
                     </div>
                 </div>
             </div>
@@ -455,50 +546,55 @@
             <!-- DERECHA: MOCKUPS UI DE POWER BI SIMULADOS EXACTOS -->
             <div class="right-column">
                 
-                <!-- Mockup 1: Root Cause Dashboard (barras) -->
+                <!-- Mockup 1: Dashboard de Causa Raíz (barras) -->
                 <div class="dashboard-mockup">
                     <div class="mockup-header">
-                        <span class="mockup-title">Root Cause Dashboard</span>
+                        <span class="mockup-title">Dashboard de Causa Raíz</span>
                         <div class="mockup-dot"></div>
                     </div>
                     <div class="kpi-row">
                         <div class="kpi-card">
-                            <span class="kpi-label">Sales</span>
+                            <span class="kpi-label">Ventas</span>
                             <span class="kpi-val">1.9M</span>
                         </div>
                         <div class="kpi-card">
-                            <span class="kpi-label">Profit</span>
+                            <span class="kpi-label">Utilidad</span>
                             <span class="kpi-val negative">▼9.5%</span>
                         </div>
                         <div class="kpi-card">
-                            <span class="kpi-label">Quantity</span>
+                            <span class="kpi-label">Cantidad</span>
                             <span class="kpi-val">74.2K</span>
                         </div>
                     </div>
                     <div class="chart-sim">
-                        <div style="font-size: 7px; font-weight: 700; color: var(--green-dark); margin-bottom: 2px;">Sub-Category Performance</div>
+                        <div style="font-size: 7px; font-weight: 700; color: var(--green-dark); margin-bottom: 2px;">Rendimiento por Subcategoría</div>
                         <div class="bar-chart-row">
-                            <span class="bar-label">Accessories</span>
+                            <span class="bar-label">Accesorios</span>
                             <div class="bar-track"><div class="bar-fill" style="width: 85%;"></div></div>
                             <span class="bar-val">43%</span>
                         </div>
                         <div class="bar-chart-row">
-                            <span class="bar-label">Phones</span>
+                            <span class="bar-label">Teléfonos</span>
                             <div class="bar-track"><div class="bar-fill earth" style="width: 65%;"></div></div>
                             <span class="bar-val">33%</span>
                         </div>
                         <div class="bar-chart-row">
-                            <span class="bar-label">Copiers</span>
+                            <span class="bar-label">Copiadoras</span>
                             <div class="bar-track"><div class="bar-fill" style="width: 50%;"></div></div>
                             <span class="bar-val">26%</span>
+                        </div>
+                        <div class="bar-chart-row">
+                            <span class="bar-label">Máquinas</span>
+                            <div class="bar-track"><div class="bar-fill earth" style="width: 36%;"></div></div>
+                            <span class="bar-val">18%</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Mockup 2: Performance Analysis (línea de tendencia) -->
+                <!-- Mockup 2: Análisis de Desempeño (línea de tendencia) -->
                 <div class="dashboard-mockup">
                     <div class="mockup-header">
-                        <span class="mockup-title">Performance Analysis</span>
+                        <span class="mockup-title">Análisis de Desempeño</span>
                         <div class="mockup-dot" style="background: var(--earth-accent);"></div>
                     </div>
                     <div class="kpi-row">
@@ -507,16 +603,16 @@
                             <span class="kpi-val">11,923</span>
                         </div>
                         <div class="kpi-card">
-                            <span class="kpi-label">Resolution</span>
+                            <span class="kpi-label">Resolución</span>
                             <span class="kpi-val">161.1h</span>
                         </div>
                         <div class="kpi-card">
-                            <span class="kpi-label">Conversion</span>
+                            <span class="kpi-label">Conversión</span>
                             <span class="kpi-val">23.1%</span>
                         </div>
                     </div>
                     <div class="chart-sim spark-box">
-                        <div style="font-size: 7px; font-weight: 700; color: var(--green-dark);">Monthly Ticket Volume Trend</div>
+                        <div style="font-size: 7px; font-weight: 700; color: var(--green-dark);">Tendencia Mensual de Tickets</div>
                         <svg viewBox="0 0 110 34" preserveAspectRatio="none">
                             <polyline points="4,26 4,30 106,30 106,26" fill="none" stroke="none"/>
                             <line x1="4" y1="30" x2="106" y2="30" stroke="#e2e8f0" stroke-width="1"/>
@@ -532,31 +628,32 @@
                     </div>
                 </div>
 
-                <!-- Mockup 3: IT Support Ticket Breakdown (dona) -->
+                <!-- Mockup 3: Distribución de Tickets de Soporte TI (dona) -->
                 <div class="dashboard-mockup">
                     <div class="mockup-header">
-                        <span class="mockup-title">IT Support Dashboard</span>
+                        <span class="mockup-title">Dashboard de Soporte TI</span>
                         <div class="mockup-dot"></div>
                     </div>
-                    <div style="font-size: 7px; font-weight: 700; color: var(--green-dark);">Ticket Type Breakdown</div>
+                    <div style="font-size: 7px; font-weight: 700; color: var(--green-dark);">Distribución por Tipo de Ticket</div>
                     <div class="donut-row">
                         <div class="donut-shape"></div>
                         <div class="donut-legend">
-                            <div class="leg-row"><span class="leg-dot" style="background:var(--green-primary);"></span><b>42%</b>&nbsp;Incident</div>
-                            <div class="leg-row"><span class="leg-dot" style="background:var(--green-glow);"></span><b>26%</b>&nbsp;Request</div>
-                            <div class="leg-row"><span class="leg-dot" style="background:var(--earth-accent);"></span><b>20%</b>&nbsp;Problem</div>
-                            <div class="leg-row"><span class="leg-dot" style="background:#cbd5e1;"></span><b>12%</b>&nbsp;Change</div>
+                            <div class="leg-row"><span class="leg-dot" style="background:var(--green-primary);"></span><b>42%</b>&nbsp;Incidente</div>
+                            <div class="leg-row"><span class="leg-dot" style="background:var(--green-glow);"></span><b>26%</b>&nbsp;Solicitud</div>
+                            <div class="leg-row"><span class="leg-dot" style="background:var(--earth-accent);"></span><b>20%</b>&nbsp;Problema</div>
+                            <div class="leg-row"><span class="leg-dot" style="background:#cbd5e1;"></span><b>12%</b>&nbsp;Cambio</div>
                         </div>
                     </div>
+                    <div class="insight-box"><b>Insight:</b> Incidentes y Solicitudes concentran el 68% del volumen total de tickets.</div>
                 </div>
 
-                <!-- Mockup 4: QoQ Sales & Conversion (dispersión) -->
+                <!-- Mockup 4: Ventas Trimestrales y Conversión (dispersión) -->
                 <div class="dashboard-mockup">
                     <div class="mockup-header">
-                        <span class="mockup-title">QoQ Sales Performance</span>
+                        <span class="mockup-title">Ventas Trimestrales</span>
                         <div class="mockup-dot" style="background: var(--earth-accent);"></div>
                     </div>
-                    <div style="font-size: 7px; font-weight: 700; color: var(--green-dark);">Agents: Sales vs. Conversion %</div>
+                    <div style="font-size: 7px; font-weight: 700; color: var(--green-dark);">Agentes: Ventas vs. % Conversión</div>
                     <div class="chart-sim scatter-box">
                         <svg viewBox="0 0 110 44" preserveAspectRatio="none">
                             <line x1="10" y1="4" x2="10" y2="38" stroke="#e2e8f0" stroke-width="1"/>
@@ -582,7 +679,7 @@
             <div class="tech-tags">
                 <span class="tech-pill">Power BI</span>
                 <span class="tech-pill">DAX Studio</span>
-                <span class="tech-pill">Data Storytelling</span>
+                <span class="tech-pill">Narrativa de Datos</span>
             </div>
             <div class="signature">
                 <svg class="linkedin-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
