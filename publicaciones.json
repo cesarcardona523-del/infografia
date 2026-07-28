@@ -1975,5 +1975,31 @@
       "likes": 0,
       "shares": 0
     }
+  },
+  {
+    "id": "10-consultas-sql-fundamentales",
+    "imagen": "Construidos/SQL/10-consultas-sql-fundamentales.png",
+    "fechaPublicacion": "2026-08-08T18:20:00",
+    "categoriaPrincipal": "analisis-de-datos",
+    "temas": [
+      "sql",
+      "data-engineering",
+      "bi",
+      "roles-datos"
+    ],
+    "tipoContenido": "infografia",
+    "es": {
+      "topico": "10 Consultas SQL que Todo Analista de Datos Debe Dominar",
+      "descripcion": "Antes de construir un pipeline de ETL, un dashboard de Business Intelligence o un modelo de Data Science, todo pasa por SQL: es el lenguaje común con el que se extrae, limpia y transforma la materia prima. Diez estructuras concentran la mayor parte del trabajo diario de un analista de datos. SELECT combinado con WHERE filtra registros según una condición lógica, y ORDER BY define su secuencia. GROUP BY agrupa filas para aplicar funciones de agregación —COUNT, SUM, AVG, MAX—, mientras que HAVING filtra esos grupos ya agregados, algo que WHERE no puede hacer por actuar antes de la agregación. INNER JOIN y LEFT JOIN combinan tablas relacionadas: el primero retorna solo coincidencias exactas, el segundo conserva todos los registros de la tabla izquierda aunque no haya correspondencia en la derecha. CASE WHEN introduce lógica condicional directamente dentro de la consulta, evitando procesar esa transformación fuera de la base de datos. ROW_NUMBER(), una función de ventana, asigna un número secuencial a las filas dentro de una partición, típica para encontrar el registro más reciente o el de mayor valor por grupo. Las expresiones de tabla común (CTE, mediante WITH) y las subconsultas permiten anidar lógica compleja de forma legible y reutilizable en lugar de consultas monolíticas difíciles de mantener. Dominar estas diez estructuras cubre la gran mayoría de los casos reales de extracción y transformación de datos, y es, además, el contenido más frecuente en entrevistas técnicas para roles de datos."
+    },
+    "en": {
+      "topico": "10 SQL Queries Every Data Analyst Must Master",
+      "descripcion": "Before building an ETL pipeline, a Business Intelligence dashboard, or a Data Science model, everything runs through SQL: it's the common language used to extract, clean, and transform raw data. Ten structures account for most of a data analyst's daily work. SELECT combined with WHERE filters records based on a logical condition, and ORDER BY defines their sequence. GROUP BY groups rows to apply aggregate functions — COUNT, SUM, AVG, MAX — while HAVING filters those already-aggregated groups, something WHERE cannot do since it runs before aggregation. INNER JOIN and LEFT JOIN combine related tables: the former returns only exact matches, the latter keeps every record from the left table even without a match on the right. CASE WHEN introduces conditional logic directly inside the query, avoiding the need to process that transformation outside the database. ROW_NUMBER(), a window function, assigns a sequential number to rows within a partition, typically used to find the most recent or highest-value record per group. Common table expressions (CTEs, via WITH) and subqueries allow nesting complex logic in a readable, reusable way instead of monolithic queries that are hard to maintain. Mastering these ten structures covers the vast majority of real-world data extraction and transformation cases, and is also the most frequent content tested in technical interviews for data roles."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
   }
 ]
