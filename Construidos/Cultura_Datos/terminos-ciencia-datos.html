@@ -6,8 +6,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   :root{
-    --indigo:#4338CA; --indigo-dark:#332C99; --indigo-pale:#EBEAFB; --line:#DCDCF0;
-    --lime:#84A83A;
+    --green-dark:#072113; --green-primary:#0e3d23; --green-glow:#10b981; --green-pale:#EAF3EC; --line:#DCE6DF;
+    --earth-accent:#d97706; --earth-bg:rgba(217,119,6,0.10);
     --ink:#1D2129; --muted:#5C6470; --white:#FFFFFF;
   }
   *{box-sizing:border-box;}
@@ -31,18 +31,23 @@
   .header p{ margin:0 auto; font-size:10.5px; color:var(--muted); max-width:720px; }
 
   .grid{ flex:1; display:grid; grid-template-columns: repeat(5, 1fr); grid-template-rows: repeat(2, 1fr); gap:9px; }
-  .card{ background:var(--indigo-pale); border:1px solid var(--line); border-radius:9px; padding:10px 11px; display:flex; flex-direction:column; }
-  .card .icon{ width:26px; height:26px; border-radius:7px; background:var(--indigo); color:#fff; display:flex; align-items:center; justify-content:center; margin-bottom:7px; }
+  .card{ background:var(--green-pale); border:1px solid var(--line); border-radius:9px; padding:10px 11px; display:flex; flex-direction:column; }
+  .card .icon{ width:26px; height:26px; border-radius:7px; background:var(--green-primary); color:#fff; display:flex; align-items:center; justify-content:center; margin-bottom:7px; flex:none; }
+  .card.adv .icon{ background:var(--earth-accent); }
   .card .icon svg{ width:14px; height:14px; }
   .card b{ display:block; font-size:10px; font-weight:800; margin-bottom:4px; line-height:1.2; }
   .card p{ margin:0; font-size:8px; color:var(--muted); line-height:1.32; }
+  .card .detail{ margin-top:7px; padding-top:7px; border-top:1px dashed var(--line); font-size:7.4px; line-height:1.38; color:var(--ink); }
+  .card .detail b{ display:inline; font-size:7.4px; color:var(--earth-accent); font-weight:800; margin:0; }
+  .card .mini-viz{ margin-top:auto; padding-top:6px; }
+  .card .mini-viz svg{ width:100%; height:46px; display:block; }
 
   .ribbon{
     margin-top:8px; display:flex; align-items:center; gap:10px;
-    background:var(--indigo-dark); color:#EAEAF6; border-radius:9px; padding:8px 18px; font-size:9.8px;
+    background:var(--green-dark); color:#EAF3EC; border-radius:9px; padding:8px 18px; font-size:9.8px;
   }
   .ribbon b{ color:#fff; }
-  .ribbon span{ color:#C2BEE8; }
+  .ribbon span{ color:#AFC9BA; }
 
   .footer{ position:absolute; bottom:10px; right:20px; display:flex; align-items:center; gap:6px; }
   .li-badge{ width:16px; height:16px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:800; font-family: Arial, sans-serif; }
@@ -65,60 +70,149 @@
         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg></div>
         <b>Dataset</b>
         <p>Instancia particular de datos usada para análisis o modelado en un momento dado.</p>
+        <div class="detail"><b>Tipos:</b> numérico, categórico, texto, imagen, voz y video. Para proyectos iniciales, lo más común es un dataset numérico en formato CSV.</div>
+        <div class="mini-viz"><svg viewBox="0 0 100 34">
+          <rect x="4" y="2" width="92" height="9" rx="2" fill="var(--green-primary)"/>
+          <rect x="4" y="13" width="92" height="8" rx="1" fill="var(--white)" stroke="var(--line)" stroke-width="1"/>
+          <rect x="4" y="23" width="92" height="8" rx="1" fill="var(--white)" stroke="var(--line)" stroke-width="1"/>
+          <line x1="34" y1="2" x2="34" y2="31" stroke="var(--line)" stroke-width="1"/>
+          <line x1="64" y1="2" x2="64" y2="31" stroke="var(--line)" stroke-width="1"/>
+        </svg></div>
       </div>
 
       <div class="card">
         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16l-6 8v6l-4 2v-8L4 4Z"/></svg></div>
         <b>Data Wrangling</b>
         <p>Convertir datos crudos en una forma ordenada, lista para el análisis.</p>
+        <div class="detail"><b>Incluye:</b> importación, limpieza y estructuración, procesamiento de texto, manejo de fechas y de valores faltantes — la base de todo el preprocesamiento.</div>
+        <div class="mini-viz"><svg viewBox="0 0 100 34">
+          <rect x="2" y="10" width="26" height="14" rx="4" fill="var(--earth-bg)" stroke="var(--earth-accent)" stroke-width="1"/><text x="15" y="19.5" font-size="6" text-anchor="middle" fill="var(--earth-accent)" font-weight="700">Raw</text>
+          <rect x="37" y="10" width="26" height="14" rx="4" fill="var(--green-pale)" stroke="var(--green-primary)" stroke-width="1"/><text x="50" y="19.5" font-size="6" text-anchor="middle" fill="var(--green-dark)" font-weight="700">Clean</text>
+          <rect x="72" y="10" width="26" height="14" rx="4" fill="var(--green-primary)"/><text x="85" y="19.5" font-size="6" text-anchor="middle" fill="white" font-weight="700">Ready</text>
+          <path d="M28 17 L37 17" stroke="var(--muted)" stroke-width="1.2" marker-end="url(#a3)"/>
+          <path d="M63 17 L72 17" stroke="var(--muted)" stroke-width="1.2" marker-end="url(#a3)"/>
+          <defs><marker id="a3" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="var(--muted)"/></marker></defs>
+        </svg></div>
       </div>
 
-      <div class="card">
+      <div class="card adv">
         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="6" cy="18" r="2"/><circle cx="10" cy="15" r="2"/><circle cx="14" cy="17" r="2"/><circle cx="19" cy="7" r="3"/></svg></div>
         <b>Outliers</b>
         <p>Puntos muy distintos al resto del dataset; se detectan con boxplots.</p>
+        <div class="detail"><b>Riesgo:</b> pueden degradar el poder predictivo de un modelo. Método avanzado de detección: RANSAC.</div>
+        <div class="mini-viz"><svg viewBox="0 0 100 44"><line x1="4" y1="40" x2="96" y2="40" stroke="#DCE6DF" stroke-width="1.5"/><line x1="4" y1="4" x2="4" y2="40" stroke="#DCE6DF" stroke-width="1.5"/>
+          <circle cx="18" cy="33" r="2.4" fill="var(--green-primary)"/><circle cx="26" cy="30" r="2.4" fill="var(--green-primary)"/><circle cx="22" cy="36" r="2.4" fill="var(--green-primary)"/><circle cx="32" cy="34" r="2.4" fill="var(--green-primary)"/><circle cx="36" cy="29" r="2.4" fill="var(--green-primary)"/><circle cx="28" cy="37" r="2.4" fill="var(--green-primary)"/>
+          <circle cx="78" cy="11" r="3.2" fill="none" stroke="var(--earth-accent)" stroke-width="1.6"/><circle cx="78" cy="11" r="1.6" fill="var(--earth-accent)"/>
+          <text x="60" y="10" font-size="6.5" fill="var(--earth-accent)" font-weight="700">outlier</text>
+        </svg></div>
       </div>
 
       <div class="card">
         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="7" height="7" rx="1"/><path d="M14 7h7M14 17h7"/><circle cx="17.5" cy="7" r="0" /><path d="M10 7h1M6 14v3a2 2 0 0 0 2 2h9"/></svg></div>
         <b>Supervised Learning</b>
         <p>Aprende la relación entre variables y un target ya conocido.</p>
+        <div class="detail"><b>Continuo →</b> regresión (Lineal, KNR, SVR). <b>Discreto →</b> clasificación (Logística, SVM, árboles de decisión).</div>
+        <div class="mini-viz"><svg viewBox="0 0 100 34">
+          <text x="10" y="19" font-size="7" fill="var(--green-dark)" font-weight="700">X, y</text>
+          <path d="M24 17 L40 17" stroke="var(--muted)" stroke-width="1.2" marker-end="url(#a4)"/>
+          <rect x="41" y="8" width="26" height="18" rx="4" fill="var(--green-primary)"/><text x="54" y="20" font-size="6.5" text-anchor="middle" fill="white" font-weight="700">Modelo</text>
+          <path d="M67 17 L84 17" stroke="var(--muted)" stroke-width="1.2" marker-end="url(#a4)"/>
+          <text x="88" y="19" font-size="7" fill="var(--earth-accent)" font-weight="700">ŷ</text>
+          <defs><marker id="a4" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="var(--muted)"/></marker></defs>
+        </svg></div>
       </div>
 
       <div class="card">
         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="7" cy="8" r="2.4"/><circle cx="17" cy="8" r="2.4"/><circle cx="12" cy="16" r="2.4"/><path d="M9 9.5 11 14M15 9.5 13 14"/></svg></div>
         <b>Unsupervised Learning</b>
         <p>Explora la estructura de datos no etiquetados, sin variable objetivo.</p>
+        <div class="detail"><b>Ejemplo:</b> K-means clustering agrupa observaciones similares sin conocer las categorías de antemano.</div>
+        <div class="mini-viz"><svg viewBox="0 0 100 34">
+          <ellipse cx="21.5" cy="12.5" rx="12" ry="10" fill="none" stroke="var(--green-primary)" stroke-width="0.8" stroke-dasharray="1.5 1.5" opacity="0.6"/>
+          <ellipse cx="72.5" cy="21" rx="12" ry="10" fill="none" stroke="var(--earth-accent)" stroke-width="0.8" stroke-dasharray="1.5 1.5" opacity="0.6"/>
+          <ellipse cx="48" cy="29" rx="9" ry="7" fill="none" stroke="var(--green-glow)" stroke-width="0.8" stroke-dasharray="1.5 1.5" opacity="0.6"/>
+          <circle cx="20" cy="10" r="2.2" fill="var(--green-primary)"/><circle cx="26" cy="15" r="2.2" fill="var(--green-primary)"/><circle cx="16" cy="17" r="2.2" fill="var(--green-primary)"/><circle cx="24" cy="8" r="2.2" fill="var(--green-primary)"/>
+          <circle cx="70" cy="20" r="2.2" fill="var(--earth-accent)"/><circle cx="78" cy="24" r="2.2" fill="var(--earth-accent)"/><circle cx="66" cy="26" r="2.2" fill="var(--earth-accent)"/><circle cx="76" cy="15" r="2.2" fill="var(--earth-accent)"/>
+          <circle cx="45" cy="30" r="2" fill="var(--green-glow)"/><circle cx="52" cy="32" r="2" fill="var(--green-glow)"/><circle cx="48" cy="26" r="2" fill="var(--green-glow)"/>
+        </svg></div>
       </div>
 
       <div class="card">
         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v6M12 9 6 15M12 9l6 6M6 15v6M18 15v6"/></svg></div>
         <b>Reinforcement Learning</b>
         <p>Un agente aprende por prueba y error, usando recompensas y castigos.</p>
+        <div class="detail"><b>Ciclo:</b> el agente actúa sobre el entorno; el entorno responde con un nuevo estado y una recompensa.</div>
+        <div class="mini-viz"><svg viewBox="0 0 100 44">
+          <rect x="4" y="14" width="34" height="16" rx="5" fill="var(--green-pale)" stroke="var(--green-primary)" stroke-width="1.2"/><text x="21" y="24.5" font-size="7" font-weight="700" fill="var(--green-dark)" text-anchor="middle">Agente</text>
+          <rect x="62" y="14" width="34" height="16" rx="5" fill="var(--earth-bg)" stroke="var(--earth-accent)" stroke-width="1.2"/><text x="79" y="24.5" font-size="7" font-weight="700" fill="var(--earth-accent)" text-anchor="middle">Entorno</text>
+          <path d="M38 18 L62 18" stroke="var(--green-primary)" stroke-width="1.3" marker-end="url(#arr1)"/>
+          <path d="M62 27 L38 27" stroke="var(--earth-accent)" stroke-width="1.3" marker-end="url(#arr2)"/>
+          <text x="50" y="14" font-size="6" fill="var(--muted)" text-anchor="middle">acción</text>
+          <text x="50" y="39" font-size="6" fill="var(--muted)" text-anchor="middle">recompensa</text>
+          <defs><marker id="arr1" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="var(--green-primary)"/></marker>
+          <marker id="arr2" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="var(--earth-accent)"/></marker></defs>
+        </svg></div>
       </div>
 
       <div class="card">
         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="4" height="14" rx="1"/><rect x="10" y="5" width="4" height="14" rx="1"/><rect x="17" y="5" width="4" height="14" rx="1"/></svg></div>
         <b>Cross-validation</b>
         <p>Evalúa el modelo repitiendo el entrenamiento en k particiones distintas.</p>
+        <div class="detail"><b>K-fold:</b> el proceso se repite k veces rotando el bloque de test; el resultado final promedia el desempeño de todas las particiones.</div>
+        <div class="mini-viz"><svg viewBox="0 0 100 40">
+          <rect x="2" y="4" width="18" height="10" rx="2" fill="var(--earth-accent)"/><rect x="22" y="4" width="18" height="10" rx="2" fill="var(--green-pale)" stroke="var(--line)"/><rect x="42" y="4" width="18" height="10" rx="2" fill="var(--green-pale)" stroke="var(--line)"/><rect x="62" y="4" width="18" height="10" rx="2" fill="var(--green-pale)" stroke="var(--line)"/><rect x="82" y="4" width="16" height="10" rx="2" fill="var(--green-pale)" stroke="var(--line)"/>
+          <rect x="2" y="16" width="18" height="10" rx="2" fill="var(--green-pale)" stroke="var(--line)"/><rect x="22" y="16" width="18" height="10" rx="2" fill="var(--earth-accent)"/><rect x="42" y="16" width="18" height="10" rx="2" fill="var(--green-pale)" stroke="var(--line)"/><rect x="62" y="16" width="18" height="10" rx="2" fill="var(--green-pale)" stroke="var(--line)"/><rect x="82" y="16" width="16" height="10" rx="2" fill="var(--green-pale)" stroke="var(--line)"/>
+          <rect x="2" y="28" width="18" height="10" rx="2" fill="var(--green-pale)" stroke="var(--line)"/><rect x="22" y="28" width="18" height="10" rx="2" fill="var(--green-pale)" stroke="var(--line)"/><rect x="42" y="28" width="18" height="10" rx="2" fill="var(--earth-accent)"/><rect x="62" y="28" width="18" height="10" rx="2" fill="var(--green-pale)" stroke="var(--line)"/><rect x="82" y="28" width="16" height="10" rx="2" fill="var(--green-pale)" stroke="var(--line)"/>
+        </svg></div>
       </div>
 
-      <div class="card">
+      <div class="card adv">
         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20q8-18 16 0" fill="none"/><path d="M4 4q8 18 16 0" stroke-dasharray="1 2.5"/></svg></div>
         <b>Bias-Variance Tradeoff</b>
         <p>El equilibrio entre subajuste (alto sesgo) y sobreajuste (alta varianza).</p>
+        <div class="detail"><b>Objetivo:</b> ajustar la complejidad del modelo hasta el punto de capacidad óptima, donde el error de generalización es mínimo.</div>
+        <div class="mini-viz"><svg viewBox="0 0 100 40">
+          <line x1="4" y1="36" x2="96" y2="36" stroke="#DCE6DF" stroke-width="1.2"/>
+          <path d="M6 8 Q28 34 50 26 Q72 22 94 6" fill="none" stroke="var(--earth-accent)" stroke-width="1.8"/>
+          <line x1="50" y1="4" x2="50" y2="36" stroke="var(--line)" stroke-width="1" stroke-dasharray="2 2"/>
+          <text x="22" y="12" font-size="6" fill="var(--muted)">sesgo alto</text>
+          <text x="66" y="12" font-size="6" fill="var(--muted)">varianza alta</text>
+          <circle cx="50" cy="25" r="2.2" fill="var(--green-primary)"/>
+        </svg></div>
       </div>
 
       <div class="card">
         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20V4M4 20h16"/><path d="M8 16 12 8l4 6 4-10" stroke-dasharray="1 2.5"/></svg></div>
         <b>PCA</b>
         <p>Reduce la dimensionalidad conservando la mayor varianza posible.</p>
+        <div class="detail"><b>Cómo funciona:</b> transforma variables correlacionadas en componentes principales no correlacionados, ordenados por varianza explicada.</div>
+        <div class="mini-viz"><svg viewBox="0 0 100 34">
+          <line x1="4" y1="30" x2="4" y2="4" stroke="var(--line)" stroke-width="1"/><line x1="4" y1="30" x2="44" y2="30" stroke="var(--line)" stroke-width="1"/>
+          <line x1="6" y1="26" x2="40" y2="8" stroke="var(--earth-accent)" stroke-width="1.3"/>
+          <circle cx="10" cy="24" r="1.4" fill="var(--green-primary)"/><circle cx="16" cy="20" r="1.4" fill="var(--green-primary)"/><circle cx="22" cy="18" r="1.4" fill="var(--green-primary)"/><circle cx="28" cy="14" r="1.4" fill="var(--green-primary)"/><circle cx="34" cy="12" r="1.4" fill="var(--green-primary)"/>
+          <text x="22" y="4" font-size="5.2" fill="var(--muted)" text-anchor="middle">espacio original</text>
+          <path d="M50 17 L58 17" stroke="var(--muted)" stroke-width="1.2" marker-end="url(#a5)"/>
+          <line x1="64" y1="17" x2="96" y2="17" stroke="var(--line)" stroke-width="1"/>
+          <circle cx="70" cy="17" r="1.4" fill="var(--green-primary)"/><circle cx="76" cy="17" r="1.4" fill="var(--green-primary)"/><circle cx="82" cy="17" r="1.4" fill="var(--green-primary)"/><circle cx="88" cy="17" r="1.4" fill="var(--green-primary)"/><circle cx="93" cy="17" r="1.4" fill="var(--green-primary)"/>
+          <text x="80" y="27" font-size="5.2" fill="var(--muted)" text-anchor="middle">PC1</text>
+          <defs><marker id="a5" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="var(--muted)"/></marker></defs>
+        </svg></div>
       </div>
 
-      <div class="card">
+      <div class="card adv">
         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v18M4 12h16"/><circle cx="12" cy="12" r="9"/></svg></div>
         <b>Regularización (L1/L2)</b>
         <p>Penaliza coeficientes grandes para reducir el sobreajuste del modelo.</p>
+        <div class="detail"><b>L1 (Lasso):</b> puede llevar coeficientes exactamente a cero (selección de variables). <b>L2 (Ridge):</b> los reduce sin eliminarlos.</div>
+        <div class="mini-viz"><svg viewBox="0 0 100 34">
+          <text x="20" y="6" font-size="5.5" fill="var(--muted)" text-anchor="middle">coeficientes</text>
+          <text x="79" y="6" font-size="5.5" fill="var(--earth-accent)" text-anchor="middle">con L1 (Lasso)</text>
+          <line x1="2" y1="28" x2="40" y2="28" stroke="var(--line)" stroke-width="1"/>
+          <rect x="4" y="10" width="9" height="18" fill="var(--green-primary)"/><rect x="16" y="14" width="9" height="14" fill="var(--green-primary)"/><rect x="28" y="8" width="9" height="20" fill="var(--green-primary)"/>
+          <line x1="60" y1="28" x2="98" y2="28" stroke="var(--line)" stroke-width="1"/>
+          <rect x="62" y="16" width="9" height="12" fill="var(--earth-accent)"/><rect x="74" y="27" width="9" height="1" fill="var(--earth-accent)"/><rect x="86" y="12" width="9" height="16" fill="var(--earth-accent)"/>
+          <text x="78" y="33" font-size="5" fill="var(--earth-accent)" text-anchor="middle">→ 0</text>
+        </svg></div>
       </div>
 
     </div>

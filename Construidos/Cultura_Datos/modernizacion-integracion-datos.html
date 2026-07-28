@@ -6,46 +6,52 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   :root{
-    --graphite-0:#1B1D21; --graphite-1:#24272C; --panel:#2A2E34; --panel-line:#3A3F46;
-    --orange:#E8611C; --orange-pale:#3A2A1E;
-    --ink:#EDEFF3; --muted:#9BA1AB; --white:#FFFFFF;
+    --bg-canvas:#f4f7f5; --white:#FFFFFF; --panel-line:#DCE6DF;
+    --green-dark:#072113; --green-primary:#0e3d23; --green-glow:#10b981; --green-pale:#EAF3EC;
+    --earth-accent:#d97706; --earth-bg:rgba(217,119,6,0.10);
+    --ink:#1D2129; --muted:#5C6470;
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
   body{
     min-height:627px; display:flex; align-items:center; justify-content:center;
-    padding:32px 16px; background:#141518;
+    padding:32px 16px; background:#e7ede9;
     font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   }
   .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
   .canvas{
     position:relative; width:1200px; height:627px; margin:0 auto;
-    background:radial-gradient(circle at 90% 0%, var(--graphite-1) 0%, var(--graphite-0) 60%);
-    border-radius:16px; box-shadow:0 24px 60px rgba(0,0,0,0.5); overflow:hidden;
+    background:linear-gradient(135deg, #ffffff 0%, var(--bg-canvas) 100%);
+    border-radius:16px; box-shadow:0 24px 60px rgba(7,33,19,0.14); overflow:hidden;
     padding:22px 36px 14px; color:var(--ink);
     display:flex; flex-direction:column;
   }
 
   .header{ text-align:center; margin-bottom:8px; }
-  .header .eyebrow{ font-size:10px; font-weight:700; letter-spacing:1.6px; color:var(--orange); text-transform:uppercase; margin-bottom:5px; }
-  .header h1{ font-size:20px; margin:0 0 4px; font-weight:800; letter-spacing:-0.2px; }
+  .header .eyebrow{ font-size:10px; font-weight:700; letter-spacing:1.6px; color:var(--earth-accent); text-transform:uppercase; margin-bottom:5px; }
+  .header h1{ font-size:20px; margin:0 0 4px; font-weight:800; letter-spacing:-0.2px; color:var(--green-dark); }
   .header p{ margin:0 auto; font-size:11px; color:var(--muted); max-width:700px; }
 
   .checklist{ flex:1; display:grid; grid-template-columns: 1fr 1fr; grid-template-rows: repeat(4,1fr); gap:8px; margin-top:8px; }
-  .item{ background:var(--panel); border:1px solid var(--panel-line); border-radius:9px; padding:9px 13px; display:flex; gap:10px; align-items:center; }
-  .item .n{ width:24px; height:24px; border-radius:6px; background:var(--orange); color:#fff; font-weight:800; font-size:11px; display:flex; align-items:center; justify-content:center; flex:none; }
-  .item b{ display:block; font-size:10.3px; font-weight:700; margin-bottom:1px; }
+  .item{ background:var(--white); border:1px solid var(--panel-line); border-radius:9px; padding:9px 13px; display:flex; gap:10px; align-items:flex-start; box-shadow:0 3px 10px rgba(7,33,19,0.05); }
+  .item .n{ width:24px; height:24px; border-radius:6px; background:var(--green-primary); color:#fff; font-weight:800; font-size:11px; display:flex; align-items:center; justify-content:center; flex:none; }
+  .item.wide .n{ background:var(--earth-accent); }
+  .item b{ display:block; font-size:10.3px; font-weight:700; margin-bottom:1px; color:var(--green-dark); }
   .item span{ display:block; font-size:8.6px; color:var(--muted); line-height:1.3; }
+  .item .detail{ display:block; font-size:8px; color:var(--ink); line-height:1.35; margin-top:5px; padding-top:5px; border-top:1px dashed var(--panel-line); }
+  .item .detail b{ font-size:8px; color:var(--earth-accent); font-weight:800; display:inline; }
   .item.wide{ grid-column: span 2; }
+  .item.wide .wide-body{ display:flex; gap:16px; align-items:flex-start; flex:1; }
+  .item.wide .col{ flex:1; }
 
   .ribbon{
     margin-top:8px; display:flex; align-items:center; gap:10px;
-    background:var(--panel); border:1px solid var(--panel-line); color:#EDEFF3; border-radius:9px; padding:9px 18px; font-size:10px;
+    background:var(--green-dark); border:1px solid var(--green-dark); color:#EAF3EC; border-radius:9px; padding:9px 18px; font-size:10px;
   }
-  .ribbon .icon{ width:20px; height:20px; flex:none; border-radius:6px; background:var(--orange-pale); display:flex; align-items:center; justify-content:center; }
-  .ribbon .icon svg{ width:11px; height:11px; color:var(--orange); }
+  .ribbon .icon{ width:20px; height:20px; flex:none; border-radius:6px; background:rgba(217,119,6,0.22); display:flex; align-items:center; justify-content:center; }
+  .ribbon .icon svg{ width:11px; height:11px; color:var(--earth-accent); }
   .ribbon b{ color:#fff; }
-  .ribbon span{ color:var(--muted); }
+  .ribbon span{ color:#AFC9BA; }
 
   .footer{ position:absolute; bottom:10px; right:20px; display:flex; align-items:center; gap:6px; }
   .li-badge{ width:16px; height:16px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:800; font-family: Arial, sans-serif; }
@@ -64,13 +70,19 @@
     </div>
 
     <div class="checklist">
-      <div class="item"><div class="n">1</div><div><b>Amplía la ingestión de datos</b><span>Complementa el ETL nocturno tradicional con ingestión continua y streaming.</span></div></div>
-      <div class="item"><div class="n">2</div><div><b>Adopta preparación ágil</b><span>Nuevas herramientas de data prep para exploración, sin la rigidez del modelado tradicional.</span></div></div>
-      <div class="item"><div class="n">3</div><div><b>Habilita el autoservicio</b><span>Acceso a datos para una amplia variedad de usuarios técnicos y de negocio.</span></div></div>
-      <div class="item"><div class="n">4</div><div><b>Moderniza la infraestructura</b><span>Aprovecha nuevas plataformas: Hadoop, NoSQL, bases columnares.</span></div></div>
-      <div class="item"><div class="n">5</div><div><b>Suma funciones de tiempo oportuno</b><span>Desde el lote nocturno hasta el streaming en tiempo real.</span></div></div>
-      <div class="item"><div class="n">6</div><div><b>Da valor a datos no tradicionales</b><span>Texto, IoT y redes sociales, no solo datos estructurados.</span></div></div>
-      <div class="item wide"><div class="n">7</div><div><b>Considera una plataforma integrada</b><span>Múltiples herramientas de gestión de datos unificadas, en vez de un portafolio fragmentado que exige integrar cada pieza por separado.</span></div></div>
+      <div class="item"><div class="n">1</div><div><b>Amplía la ingestión de datos</b><span>Complementa el ETL nocturno tradicional con ingestión continua y streaming.</span><span class="detail"><b>Por qué:</b> sumar CDC (Change Data Capture) y streaming reduce la latencia de horas a segundos, sin descartar el batch donde ya funciona bien.</span></div></div>
+      <div class="item"><div class="n">2</div><div><b>Adopta preparación ágil</b><span>Nuevas herramientas de data prep para exploración, sin la rigidez del modelado tradicional.</span><span class="detail"><b>Por qué:</b> el self-service data prep permite a analistas de negocio explorar y transformar datos sin depender de un ciclo completo de modelado en TI.</span></div></div>
+      <div class="item"><div class="n">3</div><div><b>Habilita el autoservicio</b><span>Acceso a datos para una amplia variedad de usuarios técnicos y de negocio.</span><span class="detail"><b>Por qué:</b> un catálogo de datos con permisos claros es lo que hace posible el autoservicio sin sacrificar gobierno ni seguridad.</span></div></div>
+      <div class="item"><div class="n">4</div><div><b>Moderniza la infraestructura</b><span>Aprovecha nuevas plataformas: Hadoop, NoSQL, bases columnares.</span><span class="detail"><b>Por qué:</b> estas plataformas escalan horizontalmente y manejan datos semi-estructurados que un data warehouse relacional clásico no absorbe bien.</span></div></div>
+      <div class="item"><div class="n">5</div><div><b>Suma funciones de tiempo oportuno</b><span>Desde el lote nocturno hasta el streaming en tiempo real.</span><span class="detail"><b>Por qué:</b> no se trata de elegir batch o streaming — la mayoría de las organizaciones necesita ambos, según qué tan urgente sea cada decisión.</span></div></div>
+      <div class="item"><div class="n">6</div><div><b>Da valor a datos no tradicionales</b><span>Texto, IoT y redes sociales, no solo datos estructurados.</span><span class="detail"><b>Por qué:</b> estas fuentes exigen parsing y enriquecimiento antes de integrarse — no llegan tabuladas como los datos de un ERP.</span></div></div>
+      <div class="item wide">
+        <div class="n">7</div>
+        <div class="wide-body">
+          <div class="col"><b>Considera una plataforma integrada</b><span>Múltiples herramientas de gestión de datos unificadas, en vez de un portafolio fragmentado que exige integrar cada pieza por separado.</span></div>
+          <div class="col detail" style="margin-top:0; padding-top:0; border-top:none; border-left:1px dashed var(--panel-line); padding-left:16px;"><b>Resultado esperado:</b> menos tiempo de mantenimiento entre herramientas y un gobierno de datos consistente en toda la arquitectura, en vez de reglas distintas por cada pieza del portafolio.</div>
+        </div>
+      </div>
     </div>
 
     <div class="ribbon">

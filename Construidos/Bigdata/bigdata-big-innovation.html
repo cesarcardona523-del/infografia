@@ -6,22 +6,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   :root{
-    --navy:#0B3D4C; --navy-dark:#082B36; --navy-pale:#E4EFF2; --navy-line:#C7DEE4;
-    --coral:#E85A3B; --coral-pale:#FCE7E1; --coral-line:#F5C2AE;
-    --ink:#1B2A2E; --muted:#5A6C71; --white:#FFFFFF;
+    --navy:#0e3d23; --navy-dark:#072113; --navy-pale:#EAF3EC; --navy-line:#DCE6DF;
+    --coral:#d97706; --coral-pale:#FCEEDD; --coral-line:#F0D2A8;
+    --ink:#1D2129; --muted:#5C6470; --white:#FFFFFF;
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
   body{
     min-height:627px; display:flex; align-items:center; justify-content:center;
-    padding:32px 16px; background:#EAF1F2;
+    padding:32px 16px; background:#e7ede9;
     font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   }
   .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
   .canvas{
     position:relative; width:1200px; height:627px; margin:0 auto;
-    background:linear-gradient(160deg, #FFFFFF 0%, #F2F8F9 60%, #EAF3F4 100%);
-    border-radius:16px; box-shadow:0 20px 50px rgba(11,61,76,0.16); overflow:hidden;
+    background:linear-gradient(160deg, #FFFFFF 0%, #F2F9F5 60%, #EAF3EE 100%);
+    border-radius:16px; box-shadow:0 20px 50px rgba(7,33,19,0.16); overflow:hidden;
     padding:24px 38px 16px; color:var(--ink);
   }
 
@@ -37,32 +37,34 @@
 
   .body-grid{ display:grid; grid-template-columns: 1fr 320px; gap:14px; margin-top:12px; height:378px; }
 
-  .sectors{ background:var(--white); border:1px solid var(--navy-line); border-radius:12px; padding:12px 14px; box-shadow:0 6px 16px rgba(11,61,76,0.06); }
+  .sectors{ background:var(--white); border:1px solid var(--navy-line); border-radius:12px; padding:12px 14px; box-shadow:0 6px 16px rgba(7,33,19,0.06); }
   .sectors h2{ margin:0 0 9px; font-size:10.5px; font-weight:800; text-transform:uppercase; letter-spacing:0.4px; color:var(--navy); }
-  .sector-grid{ display:grid; grid-template-columns:1fr 1fr; grid-template-rows: 1fr 1fr 1fr; gap:8px 16px; height:302px; align-items:center; }
-  .sector{ display:flex; gap:8px; align-items:flex-start; }
-  .sector .icon{ width:26px; height:26px; border-radius:7px; background:var(--navy-pale); color:var(--navy); display:flex; align-items:center; justify-content:center; flex:none; }
+  .sector-grid{ display:grid; grid-template-columns:1fr 1fr; grid-template-rows: 1fr 1fr 1fr; gap:10px 16px; height:302px; align-items:stretch; }
+  .sector{ display:flex; gap:8px; align-items:flex-start; background:var(--navy-pale); border-radius:9px; padding:8px 10px; }
+  .sector .icon{ width:26px; height:26px; border-radius:7px; background:var(--white); color:var(--navy); display:flex; align-items:center; justify-content:center; flex:none; }
   .sector .icon svg{ width:14px; height:14px; }
-  .sector b{ display:block; font-size:10.3px; font-weight:700; }
+  .sector b{ display:block; font-size:10.3px; font-weight:700; color:var(--navy-dark); }
   .sector span{ display:block; font-size:8.5px; color:var(--muted); line-height:1.3; margin-top:1px; }
+  .sector .detail{ display:block; font-size:7.6px; color:var(--ink); line-height:1.35; margin-top:5px; padding-top:5px; border-top:1px dashed var(--navy-line); }
+  .sector .detail b{ font-size:7.6px; color:var(--coral); font-weight:800; }
 
-  .case{ background:linear-gradient(160deg, var(--navy), var(--navy-dark)); border-radius:12px; padding:14px 16px; color:#fff; display:flex; flex-direction:column; box-shadow:0 10px 24px rgba(8,43,54,0.3); }
-  .case .tag{ display:inline-block; background:rgba(232,90,59,0.22); color:#FFCFC0; font-size:8.5px; font-weight:800; text-transform:uppercase; letter-spacing:0.4px; padding:3px 9px; border-radius:20px; width:fit-content; margin-bottom:8px; }
+  .case{ background:linear-gradient(160deg, var(--navy), var(--navy-dark)); border-radius:12px; padding:14px 16px; color:#fff; display:flex; flex-direction:column; box-shadow:0 10px 24px rgba(7,33,19,0.3); }
+  .case .tag{ display:inline-block; background:rgba(217,119,6,0.22); color:#FBD9AE; font-size:8.5px; font-weight:800; text-transform:uppercase; letter-spacing:0.4px; padding:3px 9px; border-radius:20px; width:fit-content; margin-bottom:8px; }
   .case h2{ margin:0 0 4px; font-size:16px; font-weight:800; }
-  .case p.sub{ margin:0 0 10px; font-size:9.5px; color:#B9D3DA; line-height:1.35; }
+  .case p.sub{ margin:0 0 10px; font-size:9.5px; color:#C3D6CC; line-height:1.35; }
   .stat-grid{ display:grid; grid-template-columns:1fr 1fr; gap:8px 10px; }
   .stat{ }
   .stat b{ display:block; font-size:16px; font-weight:800; color:var(--coral); line-height:1.1; }
-  .stat span{ display:block; font-size:7.8px; color:#B9D3DA; margin-top:2px; line-height:1.25; }
-  .rfid{ margin-top:16px; padding-top:10px; border-top:1px dashed rgba(255,255,255,0.2); font-size:8.6px; color:#CFE3E8; line-height:1.4; }
+  .stat span{ display:block; font-size:7.8px; color:#C3D6CC; margin-top:2px; line-height:1.25; }
+  .rfid{ margin-top:16px; padding-top:10px; border-top:1px dashed rgba(255,255,255,0.2); font-size:8.6px; color:#C3D6CC; line-height:1.4; }
   .rfid b{ color:#fff; }
   .footprint{ margin-top:16px; }
-  .footprint b{ display:block; font-size:7.8px; color:#B9D3DA; text-transform:uppercase; letter-spacing:0.3px; margin-bottom:6px; font-weight:700; }
+  .footprint b{ display:block; font-size:7.8px; color:#C3D6CC; text-transform:uppercase; letter-spacing:0.3px; margin-bottom:6px; font-weight:700; }
   .footprint svg{ width:100%; height:38px; display:block; }
 
   .ribbon{
     margin-top:11px; display:flex; align-items:center; gap:10px;
-    background:var(--ink); color:#EAF1F2; border-radius:10px; padding:9px 16px; font-size:10.3px;
+    background:var(--navy-dark); color:#EAF3EE; border-radius:10px; padding:9px 16px; font-size:10.3px;
   }
   .ribbon .icon{ width:22px; height:22px; flex:none; border-radius:6px; background:rgba(255,255,255,0.1); display:flex; align-items:center; justify-content:center; }
   .ribbon .icon svg{ width:12px; height:12px; color:var(--coral); }
@@ -100,27 +102,27 @@
         <div class="sector-grid">
           <div class="sector">
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="10" width="18" height="9" rx="1"/><path d="M3 10 12 4l9 6M6 14v2M12 14v2M18 14v2"/></svg></div>
-            <div><b>Banca</b><span>Gestión de riesgo y prevención de fraude con datos transaccionales.</span></div>
+            <div><b>Banca</b><span>Gestión de riesgo y prevención de fraude con datos transaccionales.</span><span class="detail"><b>Aplicación:</b> los modelos de scoring crediticio y detección de fraude en tiempo real dependen de analizar millones de transacciones por segundo.</span></div>
           </div>
           <div class="sector">
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 21s-7-4.5-9.5-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6c-2.5 4.5-9.5 9-9.5 9Z"/><path d="M9 12h2l1-2 2 4 1-2h2"/></svg></div>
-            <div><b>Salud</b><span>Diagnósticos y tratamientos más oportunos, prevención e investigación.</span></div>
+            <div><b>Salud</b><span>Diagnósticos y tratamientos más oportunos, prevención e investigación.</span><span class="detail"><b>Aplicación:</b> cruzar historiales clínicos, genómica e imágenes médicas acelera diagnósticos que antes tomaban semanas.</span></div>
           </div>
           <div class="sector">
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 21V9l6-4 6 4v12M9 21V13h6v8"/><circle cx="18" cy="8" r="2.5"/></svg></div>
-            <div><b>Smart Cities</b><span>Seguridad, movilidad y gestión del agua vía IoT + cloud computing.</span></div>
+            <div><b>Smart Cities</b><span>Seguridad, movilidad y gestión del agua vía IoT + cloud computing.</span><span class="detail"><b>Aplicación:</b> sensores en semáforos, medidores y cámaras alimentan modelos que optimizan tráfico y consumo de recursos en tiempo real.</span></div>
           </div>
           <div class="sector">
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 2 3 6v14a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V6l-3-4Z"/><path d="M3 6h18M9 10a3 3 0 0 0 6 0"/></svg></div>
-            <div><b>Retail</b><span>Anticipar demanda y personalizar oferta en tiempo real.</span></div>
+            <div><b>Retail</b><span>Anticipar demanda y personalizar oferta en tiempo real.</span><span class="detail"><b>Aplicación:</b> combinar punto de venta, clima e inventario permite ajustar la oferta antes de que la demanda cambie, no después (ver caso Zara →).</span></div>
           </div>
           <div class="sector">
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3c-3 4-6 7.5-6 11a6 6 0 0 0 12 0c0-3.5-3-7-6-11Z"/></svg></div>
-            <div><b>Sector Agrícola</b><span>Minimizar costos, eficiencia y prevención de averías en maquinaria.</span></div>
+            <div><b>Sector Agrícola</b><span>Minimizar costos, eficiencia y prevención de averías en maquinaria.</span><span class="detail"><b>Aplicación:</b> sensores de suelo y clima junto con telemetría de maquinaria permiten pasar de mantenimiento programado a predictivo.</span></div>
           </div>
           <div class="sector">
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 9 12 5 2 9l10 4 10-4Z"/><path d="M6 11v4c0 1.1 2.7 3 6 3s6-1.9 6-3v-4"/></svg></div>
-            <div><b>Educación</b><span>Experiencia individual y medición real del proceso de aprendizaje.</span></div>
+            <div><b>Educación</b><span>Experiencia individual y medición real del proceso de aprendizaje.</span><span class="detail"><b>Aplicación:</b> las plataformas adaptativas ajustan ritmo y contenido según el desempeño real de cada estudiante, no un plan fijo.</span></div>
           </div>
         </div>
       </div>
@@ -139,9 +141,9 @@
           <b>Ciclo RFID de reposición</b>
           <svg viewBox="0 0 320 38" overflow="visible">
             <line x1="24" y1="19" x2="296" y2="19" stroke="rgba(255,255,255,0.25)" stroke-width="2" stroke-dasharray="3 4"/>
-            <circle cx="24" cy="19" r="7" fill="#E85A3B"/><text x="24" y="34" font-size="7.5" fill="#CFE3E8" text-anchor="middle">Pedido 5s</text>
-            <circle cx="160" cy="19" r="7" fill="#E85A3B"/><text x="160" y="34" font-size="7.5" fill="#CFE3E8" text-anchor="middle">Repone 15min</text>
-            <circle cx="296" cy="19" r="7" fill="#E85A3B"/><text x="296" y="34" font-size="7.5" fill="#CFE3E8" text-anchor="middle">Inventario 3h</text>
+            <circle cx="24" cy="19" r="7" fill="#d97706"/><text x="24" y="34" font-size="7.5" fill="#C3D6CC" text-anchor="middle">Pedido 5s</text>
+            <circle cx="160" cy="19" r="7" fill="#d97706"/><text x="160" y="34" font-size="7.5" fill="#C3D6CC" text-anchor="middle">Repone 15min</text>
+            <circle cx="296" cy="19" r="7" fill="#d97706"/><text x="296" y="34" font-size="7.5" fill="#C3D6CC" text-anchor="middle">Inventario 3h</text>
           </svg>
         </div>
         <div class="rfid"><b>RFID en tienda</b> — recibe pedidos en 5 segundos, repone anaqueles en 15 minutos y actualiza el inventario completo en 3 horas.</div>
