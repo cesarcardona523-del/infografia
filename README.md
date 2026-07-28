@@ -139,6 +139,16 @@ Antes de crear una entrada nueva, el proyecto analiza si el contenido amplía o 
 - ✅ Chain of Thought — tema `Escuela_IA` (evento: Escuela de Inteligencia Artificial · Uniremington) — [HTML](Construidos/Escuela_IA/chain-of-thought-prompting.html) · [PNG](Construidos/Escuela_IA/chain-of-thought-prompting.png)
 - ✅ Cuando la IA Alucina: 3 Casos Reales — tema `Escuela_IA` (evento: Escuela de Inteligencia Artificial · Uniremington) — [HTML](Construidos/Escuela_IA/cuando-la-ia-alucina.html) · [PNG](Construidos/Escuela_IA/cuando-la-ia-alucina.png)
 - ✅ SQL Joins: Cómo Elegir Entre INNER, LEFT, RIGHT y FULL OUTER JOIN — tema `SQL` — [HTML](Construidos/SQL/sql-joins.html) · [PNG](Construidos/SQL/sql-joins.png)
+- ✅ Comparativa y Enrutamiento de Modelos Claude Generación 5 — tema `Claude` — [HTML](Construidos/Claude/comparativa-arquitectura-claude-5.html) · [PNG](Construidos/Claude/comparativa-arquitectura-claude-5.png)
+- ✅ FinOps AI: Arquitectura de Costos y Facturación de LLMs en 2026 — tema `IA` — [HTML](Construidos/IA/finops-ai-costos-2026.html) · [PNG](Construidos/IA/finops-ai-costos-2026.png)
+- ✅ Diccionario Técnico de Agentes de IA para Líderes Enterprise — tema `IA` — [HTML](Construidos/IA/glosario-ia-agentica.html) · [PNG](Construidos/IA/glosario-ia-agentica.png)
+- ✅ Las 12 Tecnologías que Transforman la Ciencia de Datos en 2026 — tema `Cultura_Datos` — [HTML](Construidos/Cultura_Datos/12-tecnologias-ciencia-de-datos-2026.html) · [PNG](Construidos/Cultura_Datos/12-tecnologias-ciencia-de-datos-2026.png)
+- ✅ Evolución y Hoja de Ruta de la Adopción de IA (2025-2027) — tema `Adopcion_IA` — [HTML](Construidos/Adopcion_IA/evolucion-ia-2025-2027-estrategia.html) · [PNG](Construidos/Adopcion_IA/evolucion-ia-2025-2027-estrategia.png)
+- ✅ Algoritmos de Machine Learning que Requieren Normalización — tema `Cultura_Datos` — [HTML](Construidos/Cultura_Datos/algoritmos-machine-learning-normalizacion.html) · [PNG](Construidos/Cultura_Datos/algoritmos-machine-learning-normalizacion.png)
+- ✅ Matriz RACI: Asignación de Responsabilidades y Gobierno — tema `Proyectos` — [HTML](Construidos/Proyectos/matriz-raci-gestion-proyectos.html) · [PNG](Construidos/Proyectos/matriz-raci-gestion-proyectos.png)
+- ✅ Arquitectura Desacoplada: Aplicando Data Engineering al Desarrollo — tema `Arquitectura` — [HTML](Construidos/Arquitectura/arquitectura-desacoplada-data-engineering.html) · [PNG](Construidos/Arquitectura/arquitectura-desacoplada-data-engineering.png)
+- ✅ 10 Consultas SQL que Todo Analista de Datos Debe Dominar — tema `SQL` — [HTML](Construidos/SQL/10-consultas-sql-fundamentales.html) · [PNG](Construidos/SQL/10-consultas-sql-fundamentales.png)
+- ✅ Power BI Design Files: Dashboards de Alto Impacto — tema `PowerBI` — [HTML](Construidos/PowerBI/power-bi-design-files-dashboards.html) · [PNG](Construidos/PowerBI/power-bi-design-files-dashboards.png)
 
 Este README se irá actualizando con un enlace por cada infografía nueva.
 

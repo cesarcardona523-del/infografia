@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power BI Design Files - Dashboards de Alto Impacto</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap');
+
+        :root {
+            --bg-canvas: #f4f7f5;
+            --green-dark: #072113;
+            --green-primary: #0e3d23;
+            --green-glow: #10b981;
+            --green-light: #e6f4ed;
+            --earth-accent: #d97706;
+            --earth-bg: rgba(217, 119, 6, 0.12);
+            --white: #ffffff;
+            --gray-border: #cbd5e1;
+            --gray-text: #475569;
+            --radius-lg: 12px;
+            --radius-md: 8px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #0b1410;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* --- CONTENEDOR PRINCIPAL EXACTO 1200x627 --- */
+        .canvas {
+            width: 1200px;
+            height: 627px;
+            background: linear-gradient(135deg, #ffffff 0%, var(--bg-canvas) 100%);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+            display: flex;
+            flex-direction: column;
+            padding: 16px 28px;
+            gap: 10px;
+        }
+
+        /* Patrón sutil de fondo */
+        .canvas::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: radial-gradient(rgba(14, 61, 35, 0.08) 1px, transparent 1px);
+            background-size: 24px 24px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* --- HEADER --- */
+        .header {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid rgba(14, 61, 35, 0.15);
+            padding-bottom: 8px;
+            flex-shrink: 0;
+        }
+
+        .header-title h1 {
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--green-dark);
+            letter-spacing: -0.5px;
+            text-transform: uppercase;
+        }
+
+        .header-title h1 span {
+            color: var(--earth-accent);
+        }
+
+        .header-badge {
+            background: var(--earth-bg);
+            color: var(--earth-accent);
+            border: 1.5px solid rgba(217, 119, 6, 0.3);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        /* --- LAYOUT PRINCIPAL (2 COLUMNAS: TEXTO + MINI-DASHBOARDS UI) --- */
+        .main-grid {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1.35fr;
+            gap: 18px;
+            flex-grow: 1;
+            min-height: 0;
+            align-items: center;
+        }
+
+        /* Columna Izquierda: Mensaje y Callouts */
+        .left-column {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .intro-card {
+            background: var(--white);
+            border: 1px solid var(--gray-border);
+            border-radius: var(--radius-lg);
+            padding: 14px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(7, 33, 19, 0.04);
+            border-left: 4px solid var(--green-primary);
+        }
+
+        .intro-card h2 {
+            font-size: 13px;
+            font-weight: 800;
+            color: var(--green-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .intro-card p {
+            font-size: 9.5px;
+            color: var(--gray-text);
+            line-height: 1.35;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .feature-box {
+            background: var(--white);
+            border: 1px solid var(--gray-border);
+            border-radius: var(--radius-md);
+            padding: 8px 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            box-shadow: 0 2px 6px rgba(7, 33, 19, 0.03);
+        }
+
+        .feature-box .f-title {
+            font-size: 9px;
+            font-weight: 800;
+            color: var(--green-primary);
+            text-transform: uppercase;
+        }
+
+        .feature-box .f-desc {
+            font-size: 8px;
+            color: var(--gray-text);
+        }
+
+        /* Columna Derecha: Mockups UI de Dashboards Power BI (Estilo Referencia) */
+        .right-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            height: 100%;
+            max-height: 430px;
+        }
+
+        .dashboard-mockup {
+            background: var(--white);
+            border: 1.5px solid var(--gray-border);
+            border-radius: var(--radius-md);
+            padding: 8px 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            box-shadow: 0 6px 16px rgba(7, 33, 19, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mockup-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #edf2ef;
+            padding-bottom: 4px;
+        }
+
+        .mockup-title {
+            font-size: 9px;
+            font-weight: 800;
+            color: var(--green-dark);
+            text-transform: uppercase;
+        }
+
+        .mockup-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--green-glow);
+            border-radius: 50%;
+        }
+
+        .kpi-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4px;
+        }
+
+        .kpi-card {
+            background: #f8faf9;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            padding: 4px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .kpi-label {
+            font-size: 6.5px;
+            color: var(--gray-text);
+            text-transform: uppercase;
+        }
+
+        .kpi-val {
+            font-size: 9px;
+            font-weight: 800;
+            color: var(--green-primary);
+        }
+
+        .kpi-val.negative {
+            color: #dc2626;
+        }
+
+        /* Simulador de Gráficos tipo Power BI */
+        .chart-sim {
+            background: #fafcfb;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            padding: 6px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            flex-grow: 1;
+        }
+
+        .bar-chart-row {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 7.5px;
+        }
+
+        .bar-label {
+            width: 45px;
+            color: var(--gray-text);
+            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .bar-track {
+            flex-grow: 1;
+            height: 5px;
+            background: #e2e8f0;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            height: 100%;
+            background: var(--green-primary);
+            border-radius: 3px;
+        }
+
+        .bar-fill.earth {
+            background: var(--earth-accent);
+        }
+
+        .bar-val {
+            width: 25px;
+            text-align: right;
+            font-family: 'Fira Code', monospace;
+            font-size: 7px;
+            font-weight: 700;
+        }
+
+        /* --- FOOTER --- */
+        .footer {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+            flex-shrink: 0;
+            padding-top: 2px;
+        }
+
+        .tech-tags {
+            display: flex;
+            gap: 6px;
+        }
+
+        .tech-pill {
+            background: var(--white);
+            border: 1px solid var(--gray-border);
+            color: var(--green-dark);
+            font-size: 8.5px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .signature {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--green-dark);
+            background: var(--green-light);
+            border: 1px solid rgba(14, 61, 35, 0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            box-shadow: 0 2px 6px rgba(7, 33, 19, 0.05);
+        }
+
+        .linkedin-icon {
+            width: 12px;
+            height: 12px;
+            fill: #0A66C2;
+        }
+    </style>
+</head>
+<body>
+    <div class="canvas">
+        
+        <!-- HEADER -->
+        <header class="header">
+            <div class="header-title">
+                <h1>Power BI Design Files: <span>Dashboards de Alto Impacto</span></h1>
+            </div>
+            <div class="header-badge">
+                📊 Data Visualization Gallery
+            </div>
+        </header>
+
+        <!-- MAIN LAYOUT -->
+        <main class="main-grid">
+            
+            <!-- IZQUIERDA: TEXTO Y CARACTERÍSTICAS -->
+            <div class="left-column">
+                <div class="intro-card">
+                    <h2>Galería de Visualización Profesional</h2>
+                    <p>Repositorio especializado que recopila plantillas, DAX avanzado y dashboards ganadores en retos internacionales de diseño y analítica corporativa.</p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-box">
+                        <span class="f-title">Root Cause Analysis</span>
+                        <span class="f-desc">Desglose de KPIs y filtros cruzados dinámicos.</span>
+                    </div>
+                    <div class="feature-box">
+                        <span class="f-title">Executive Summary</span>
+                        <span class="f-desc">Estructuras limpias orientadas a la toma de decisiones.</span>
+                    </div>
+                    <div class="feature-box">
+                        <span class="f-title">Advanced DAX</span>
+                        <span class="f-desc">Medidas optimizadas para rendimiento analítico.</span>
+                    </div>
+                    <div class="feature-box">
+                        <span class="f-title">UI/UX Editorial</span>
+                        <span class="f-desc">Jerarquía visual milimétrica y paletas corporativas.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DERECHA: MOCKUPS UI DE POWER BI SIMULADOS EXACTOS -->
+            <div class="right-column">
+                
+                <!-- Mockup 1: Root Cause Dashboard -->
+                <div class="dashboard-mockup">
+                    <div class="mockup-header">
+                        <span class="mockup-title">Root Cause Dashboard</span>
+                        <div class="mockup-dot"></div>
+                    </div>
+                    <div class="kpi-row">
+                        <div class="kpi-card">
+                            <span class="kpi-label">Sales</span>
+                            <span class="kpi-val">1.9M</span>
+                        </div>
+                        <div class="kpi-card">
+                            <span class="kpi-label">Profit</span>
+                            <span class="kpi-val negative">▼9.5%</span>
+                        </div>
+                        <div class="kpi-card">
+                            <span class="kpi-label">Quantity</span>
+                            <span class="kpi-val">74.2K</span>
+                        </div>
+                    </div>
+                    <div class="chart-sim">
+                        <div style="font-size: 7px; font-weight: 700; color: var(--green-dark); margin-bottom: 2px;">Sub-Category Performance</div>
+                        <div class="bar-chart-row">
+                            <span class="bar-label">Accessories</span>
+                            <div class="bar-track"><div class="bar-fill" style="width: 85%;"></div></div>
+                            <span class="bar-val">43%</span>
+                        </div>
+                        <div class="bar-chart-row">
+                            <span class="bar-label">Phones</span>
+                            <div class="bar-track"><div class="bar-fill earth" style="width: 65%;"></div></div>
+                            <span class="bar-val">33%</span>
+                        </div>
+                        <div class="bar-chart-row">
+                            <span class="bar-label">Copiers</span>
+                            <div class="bar-track"><div class="bar-fill" style="width: 50%;"></div></div>
+                            <span class="bar-val">26%</span>
+                        </div>
+                        <div class="bar-chart-row">
+                            <span class="bar-label">Machines</span>
+                            <div class="bar-track"><div class="bar-fill earth" style="width: 30%;"></div></div>
+                            <span class="bar-val">12%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mockup 2: Performance & Metrics Analysis -->
+                <div class="dashboard-mockup">
+                    <div class="mockup-header">
+                        <span class="mockup-title">Performance Analysis</span>
+                        <div class="mockup-dot" style="background: var(--earth-accent);"></div>
+                    </div>
+                    <div class="kpi-row">
+                        <div class="kpi-card">
+                            <span class="kpi-label">Total Tickets</span>
+                            <span class="kpi-val">11,923</span>
+                        </div>
+                        <div class="kpi-card">
+                            <span class="kpi-label">Resolution</span>
+                            <span class="kpi-val">161.1h</span>
+                        </div>
+                        <div class="kpi-card">
+                            <span class="kpi-label">Conversion</span>
+                            <span class="kpi-val">23.1%</span>
+                        </div>
+                    </div>
+                    <div class="chart-sim">
+                        <div style="font-size: 7px; font-weight: 700; color: var(--green-dark); margin-bottom: 2px;">Monthly Ticket Volume Trend</div>
+                        <div class="bar-chart-row">
+                            <span class="bar-label">Jan</span>
+                            <div class="bar-track"><div class="bar-fill" style="width: 40%;"></div></div>
+                            <span class="bar-val">410</span>
+                        </div>
+                        <div class="bar-chart-row">
+                            <span class="bar-label">Feb</span>
+                            <div class="bar-track"><div class="bar-fill" style="width: 70%;"></div></div>
+                            <span class="bar-val">780</span>
+                        </div>
+                        <div class="bar-chart-row">
+                            <span class="bar-label">Mar</span>
+                            <div class="bar-track"><div class="bar-fill earth" style="width: 95%;"></div></div>
+                            <span class="bar-val">1.2K</span>
+                        </div>
+                        <div class="bar-chart-row">
+                            <span class="bar-label">Apr</span>
+                            <div class="bar-track"><div class="bar-fill" style="width: 60%;"></div></div>
+                            <span class="bar-val">640</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="tech-tags">
+                <span class="tech-pill">Power BI</span>
+                <span class="tech-pill">DAX Studio</span>
+                <span class="tech-pill">Data Storytelling</span>
+            </div>
+            <div class="signature">
+                <svg class="linkedin-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/>
+                </svg>
+                cacm523
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

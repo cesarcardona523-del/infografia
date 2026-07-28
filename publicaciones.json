@@ -2001,5 +2001,30 @@
       "likes": 0,
       "shares": 0
     }
+  },
+  {
+    "id": "power-bi-design-files-dashboards",
+    "imagen": "Construidos/PowerBI/power-bi-design-files-dashboards.png",
+    "fechaPublicacion": "2026-08-10T18:20:00",
+    "categoriaPrincipal": "powerbi-y-visualizacion",
+    "temas": [
+      "power-bi",
+      "visualizacion",
+      "dashboards-ejecutivos"
+    ],
+    "tipoContenido": "infografia",
+    "es": {
+      "topico": "Power BI Design Files: Dashboards de Alto Impacto",
+      "descripcion": "Un dashboard de Power BI que gana reconocimiento en retos de visualización rara vez se distingue por la cantidad de gráficos que contiene, sino por cuánto reduce el tiempo entre una pregunta de negocio y su respuesta. Esa diferencia se construye en varios frentes simultáneos. El primero es el modelo de datos: medidas DAX bien optimizadas evitan cálculos redundantes y sostienen el rendimiento incluso cuando el volumen de filas crece. El segundo es la elección del tipo de visualización correcto para cada pregunta —un desglose de causa raíz (Root Cause Analysis) exige gráficos de barras jerárquicos con filtros cruzados dinámicos; una tendencia temporal se explica mejor con una línea que con una tabla; una composición porcentual, como el tipo de tickets en un dashboard de soporte técnico, se lee de un vistazo en una dona; y la relación entre dos variables continuas, como ventas y tasa de conversión por vendedor, requiere un diagrama de dispersión, no una lista. El tercer frente es puramente editorial: jerarquía visual milimétrica, una paleta corporativa consistente y un resumen ejecutivo que prioriza los KPIs que realmente importan por encima de saturar el lienzo con widgets. Estas prácticas convierten un reporte técnico en una herramienta de toma de decisiones que un directivo puede interpretar en segundos, no en minutos."
+    },
+    "en": {
+      "topico": "Power BI Design Files: High-Impact Dashboards",
+      "descripcion": "A Power BI dashboard that earns recognition in visualization challenges is rarely distinguished by how many charts it contains, but by how much it shortens the gap between a business question and its answer. That difference is built across several fronts at once. The first is the data model: well-optimized DAX measures avoid redundant calculations and sustain performance even as row volume grows. The second is choosing the right visualization type for each question — a root cause breakdown calls for hierarchical bar charts with dynamic cross-filtering; a time trend is better explained with a line than a table; a percentage composition, such as ticket types in an IT support dashboard, reads at a glance in a donut chart; and the relationship between two continuous variables, such as sales and conversion rate per salesperson, requires a scatter plot, not a list. The third front is purely editorial: precise visual hierarchy, a consistent corporate palette, and an executive summary that prioritizes the KPIs that actually matter instead of saturating the canvas with widgets. These practices turn a technical report into a decision-making tool that an executive can interpret in seconds, not minutes."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
   }
 ]
