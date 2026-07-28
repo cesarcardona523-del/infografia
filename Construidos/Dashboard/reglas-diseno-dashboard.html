@@ -6,8 +6,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   :root{
-    --blue:#1E5FB8; --blue-dark:#154684; --blue-pale:#E8F0FB; --blue-line:#C7DCF3;
-    --green:#1B9E6B; --amber:#D9820E; --purple:#8B5CF6;
+    --green-dark:#072113; --green-primary:#0e3d23; --green-glow:#10b981;
+    --earth-accent:#d97706; --earth-bg:rgba(217,119,6,0.12); --earth-line:rgba(217,119,6,0.3);
+    --gray-accent:#94a3b8;
     --ink:#1D2129; --muted:#5C6470; --line:#E4E6EA; --white:#FFFFFF;
   }
   *{box-sizing:border-box;}
@@ -30,8 +31,8 @@
   .header h1{ font-size:20px; margin:0 0 4px; font-weight:800; letter-spacing:-0.2px; }
   .header p{ margin:0 auto; font-size:11px; color:var(--muted); max-width:640px; }
 
-  .error{ display:flex; gap:10px; background:var(--blue-pale); border:1px solid var(--blue-line); border-radius:9px; padding:8px 14px; margin-bottom:8px; font-size:9.5px; }
-  .error b{ color:var(--blue-dark); }
+  .error{ display:flex; gap:10px; background:var(--earth-bg); border:1px solid var(--earth-line); border-radius:9px; padding:8px 14px; margin-bottom:8px; font-size:9.5px; }
+  .error b{ color:var(--earth-accent); }
 
   .layout{ flex:1; display:grid; grid-template-columns: 330px 1fr; gap:16px; }
 
@@ -41,25 +42,44 @@
   .zone b{ display:block; font-size:9.6px; font-weight:800; }
   .zone span{ display:block; font-size:8.2px; color:var(--muted); line-height:1.3; }
 
+  .rule-callout{ background:var(--green-dark); color:#EDEFF3; border-radius:9px; padding:12px 14px; display:flex; flex-direction:column; gap:5px; }
+  .rule-callout .rc-title{ font-size:10.5px; font-weight:800; color:#fff; display:flex; align-items:center; gap:5px; }
+  .rule-callout p{ margin:0; font-size:9px; line-height:1.42; color:#C3D6CC; }
+  .rule-callout p b{ color:var(--earth-accent); }
+
+  .checklist-title{ font-size:9px; font-weight:800; color:var(--ink); text-transform:uppercase; letter-spacing:0.4px; margin-top:2px; }
+  .check-row{ display:flex; align-items:center; gap:8px; background:var(--white); border:1px solid var(--line); border-radius:8px; padding:7px 12px; font-size:8.8px; color:var(--ink); box-shadow:0 2px 6px rgba(29,33,41,0.04); }
+  .check-row .ck-icon{ width:16px; height:16px; border-radius:50%; flex:none; display:flex; align-items:center; justify-content:center; font-size:9px; font-weight:800; color:#fff; }
+  .check-row.good .ck-icon{ background:var(--green-glow); }
+  .check-row.bad .ck-icon{ background:var(--earth-accent); }
+
   .mockup{ position:relative; background:#F5F8FC; border:1px solid var(--line); border-radius:12px; padding:16px; }
-  .mockup-grid{ position:relative; height:100%; display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr; gap:10px; }
-  .widget{ background:var(--white); border:1px solid var(--line); border-radius:9px; padding:10px 12px; position:relative; display:flex; flex-direction:column; }
-  .widget .badge{ position:absolute; top:8px; right:8px; width:18px; height:18px; border-radius:50%; color:#fff; font-size:9px; font-weight:800; display:flex; align-items:center; justify-content:center; }
+  .mockup-grid{ position:relative; height:100%; display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr auto 1fr; gap:10px; }
+  .widget{ background:var(--white); border:1px solid var(--line); border-radius:9px; padding:10px 12px; position:relative; display:flex; flex-direction:column; z-index:1; }
+  .widget .badge{ position:absolute; top:8px; right:8px; width:18px; height:18px; border-radius:50%; color:#fff; font-size:9px; font-weight:800; display:flex; align-items:center; justify-content:center; z-index:3; }
   .widget-body{ flex:1; display:flex; flex-direction:column; justify-content:center; }
   .widget b.lbl{ display:block; font-size:8px; color:var(--muted); text-transform:uppercase; letter-spacing:0.3px; margin-bottom:4px; font-weight:700; }
-  .metric-val{ font-size:22px; font-weight:800; color:var(--blue-dark); }
-  .metric-sub{ font-size:8.5px; color:var(--green); font-weight:700; }
+  .metric-val{ font-size:22px; font-weight:800; color:var(--green-dark); }
+  .metric-sub{ font-size:8.5px; color:var(--green-glow); font-weight:700; }
   .line-chart svg{ width:100%; height:50px; }
   .donut{ display:flex; align-items:center; gap:10px; }
   .donut svg{ width:56px; height:56px; }
   .legend div{ font-size:7.6px; color:var(--muted); display:flex; align-items:center; gap:4px; margin-bottom:2px; }
   .legend .d{ width:6px; height:6px; border-radius:50%; }
   .insight{ font-size:8px; color:var(--ink); display:flex; gap:5px; align-items:flex-start; margin-bottom:4px; line-height:1.3; }
-  .zpath{ position:absolute; inset:16px; pointer-events:none; width:calc(100% - 32px); height:calc(100% - 32px); }
+  .donut-insight{ margin-top:auto; background:var(--earth-bg); border-left:3px solid var(--earth-accent); border-radius:4px; padding:5px 7px; font-size:7.5px; line-height:1.35; color:var(--ink); }
+  .donut-insight b{ color:var(--earth-accent); }
+  .zpath{ position:absolute; inset:16px; pointer-events:none; width:calc(100% - 32px); height:calc(100% - 32px); z-index:2; overflow:visible; }
+
+  .kpi-strip{ grid-column: 1 / -1; display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; z-index:1; position:relative; }
+  .mini-kpi{ background:var(--white); border:1px solid var(--line); border-radius:8px; padding:6px 12px; display:flex; flex-direction:column; gap:1px; box-shadow:0 2px 6px rgba(29,33,41,0.04); }
+  .mini-val{ font-size:14px; font-weight:800; color:var(--green-dark); }
+  .mini-lbl{ font-size:7.5px; color:var(--muted); text-transform:uppercase; letter-spacing:.3px; }
+  .mini-delta{ font-size:7.5px; color:var(--green-glow); font-weight:700; }
 
   .ribbon{
     margin-top:8px; display:flex; align-items:center; gap:10px;
-    background:var(--ink); color:#EDEFF3; border-radius:9px; padding:8px 18px; font-size:10px;
+    background:var(--green-dark); color:#EDEFF3; border-radius:9px; padding:8px 18px; font-size:10px;
   }
   .ribbon b{ color:#fff; }
   .ribbon span{ color:#B7BCC6; }
@@ -83,33 +103,63 @@
 
     <div class="layout">
       <div class="zones">
-        <div class="zone"><div class="n" style="background:var(--blue);">1</div><div><b>Arriba-izquierda: métrica clave</b><span>Lo más importante — el número que querés que vean primero.</span></div></div>
-        <div class="zone"><div class="n" style="background:var(--green);">2</div><div><b>Arriba-derecha: contexto</b><span>Comparativas, evolución o distribución que dan contexto.</span></div></div>
-        <div class="zone"><div class="n" style="background:var(--amber);">3</div><div><b>Abajo-izquierda: detalle</b><span>Profundiza en los datos principales.</span></div></div>
-        <div class="zone"><div class="n" style="background:var(--purple);">4</div><div><b>Abajo-derecha: acción</b><span>Llamados a la acción o insights clave para decidir.</span></div></div>
+        <div class="zone"><div class="n" style="background:var(--earth-accent);">1</div><div><b>Arriba-izquierda: métrica clave</b><span>Lo más importante — el número que querés que vean primero.</span></div></div>
+        <div class="zone"><div class="n" style="background:var(--green-glow);">2</div><div><b>Arriba-derecha: contexto</b><span>Comparativas, evolución o distribución que dan contexto.</span></div></div>
+        <div class="zone"><div class="n" style="background:var(--green-primary);">3</div><div><b>Abajo-izquierda: detalle</b><span>Profundiza en los datos principales.</span></div></div>
+        <div class="zone"><div class="n" style="background:var(--green-dark);">4</div><div><b>Abajo-derecha: acción</b><span>Llamados a la acción o insights clave para decidir.</span></div></div>
+
+        <div class="rule-callout">
+          <div class="rc-title">🧠 Regla Clave</div>
+          <p>El usuario <b>no lee, escanea</b>. La Regla del Z guía su mirada de forma natural, sin esfuerzo consciente — el diseño puede aprovechar ese recorrido en vez de competir contra él.</p>
+        </div>
+
+        <div class="checklist-title">Checklist Rápido</div>
+        <div class="check-row good"><span class="ck-icon">✓</span><span>Un mensaje y un foco claro por pantalla.</span></div>
+        <div class="check-row good"><span class="ck-icon">✓</span><span>Lo más importante, siempre arriba a la izquierda.</span></div>
+        <div class="check-row bad"><span class="ck-icon">✕</span><span>Saturar con más de 8 widgets sin jerarquía.</span></div>
+        <div class="check-row bad"><span class="ck-icon">✕</span><span>Darle el mismo peso visual a todos los elementos.</span></div>
       </div>
 
       <div class="mockup">
         <div class="mockup-grid">
-          <div class="widget"><div class="badge" style="background:var(--blue);">1</div><b class="lbl">Ingresos Totales</b>
+          <svg class="zpath" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <defs>
+              <marker id="zhead" markerWidth="6" markerHeight="6" refX="4.5" refY="3" orient="auto">
+                <path d="M0,0 L6,3 L0,6 Z" fill="var(--earth-accent)"/>
+              </marker>
+            </defs>
+            <path d="M 46.8 4 L 96 4 L 46.8 61 L 96 61" fill="none" stroke="var(--earth-accent)" stroke-width="0.7" stroke-dasharray="2.2 1.8" opacity="0.6" marker-end="url(#zhead)" vector-effect="non-scaling-stroke"/>
+          </svg>
+
+          <div class="widget"><div class="badge" style="background:var(--earth-accent);">1</div><b class="lbl">Ingresos Totales</b>
             <div class="widget-body"><div class="metric-val">$1.234.567</div><div class="metric-sub">▲ 15,7% vs. período anterior</div></div>
           </div>
-          <div class="widget"><div class="badge" style="background:var(--green);">2</div><b class="lbl">Evolución de Ingresos</b>
-            <div class="widget-body line-chart"><svg viewBox="0 0 200 50"><polyline points="0,40 30,32 60,36 90,20 120,26 150,14 180,18 200,8" fill="none" stroke="#1B9E6B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="widget"><div class="badge" style="background:var(--green-glow);">2</div><b class="lbl">Evolución de Ingresos</b>
+            <div class="widget-body line-chart"><svg viewBox="0 0 200 50"><polyline points="0,40 30,32 60,36 90,20 120,26 150,14 180,18 200,8" fill="none" stroke="#10b981" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           </div>
-          <div class="widget"><div class="badge" style="background:var(--amber);">3</div><b class="lbl">Ingresos por Canal</b>
+
+          <div class="kpi-strip">
+            <div class="mini-kpi"><span class="mini-val">45.678</span><span class="mini-lbl">Usuarios</span><span class="mini-delta">▲ 8,3%</span></div>
+            <div class="mini-kpi"><span class="mini-val">3.456</span><span class="mini-lbl">Conversiones</span><span class="mini-delta">▲ 12,1%</span></div>
+            <div class="mini-kpi"><span class="mini-val">7,56%</span><span class="mini-lbl">Tasa Conversión</span><span class="mini-delta">▲ 1,2%</span></div>
+          </div>
+
+          <div class="widget"><div class="badge" style="background:var(--green-primary);">3</div><b class="lbl">Ingresos por Canal</b>
             <div class="widget-body donut">
               <svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15.5" fill="none" stroke="#E4E6EA" stroke-width="5"/>
-                <circle cx="18" cy="18" r="15.5" fill="none" stroke="#1E5FB8" stroke-width="5" stroke-dasharray="43.8 97.4" stroke-dashoffset="0" transform="rotate(-90 18 18)"/>
-                <circle cx="18" cy="18" r="15.5" fill="none" stroke="#1B9E6B" stroke-width="5" stroke-dasharray="29.2 97.4" stroke-dashoffset="-43.8" transform="rotate(-90 18 18)"/>
-                <circle cx="18" cy="18" r="15.5" fill="none" stroke="#D9820E" stroke-width="5" stroke-dasharray="14.6 97.4" stroke-dashoffset="-73" transform="rotate(-90 18 18)"/>
+                <circle cx="18" cy="18" r="15.5" fill="none" stroke="#0e3d23" stroke-width="5" stroke-dasharray="43.83 97.4" stroke-dashoffset="0" transform="rotate(-90 18 18)"/>
+                <circle cx="18" cy="18" r="15.5" fill="none" stroke="#10b981" stroke-width="5" stroke-dasharray="29.22 97.4" stroke-dashoffset="-43.83" transform="rotate(-90 18 18)"/>
+                <circle cx="18" cy="18" r="15.5" fill="none" stroke="#d97706" stroke-width="5" stroke-dasharray="14.61 97.4" stroke-dashoffset="-73.05" transform="rotate(-90 18 18)"/>
+                <circle cx="18" cy="18" r="15.5" fill="none" stroke="#94a3b8" stroke-width="5" stroke-dasharray="9.74 97.4" stroke-dashoffset="-87.66" transform="rotate(-90 18 18)"/>
               </svg>
-              <div class="legend"><div><span class="d" style="background:#1E5FB8;"></span>Orgánico 45%</div><div><span class="d" style="background:#1B9E6B;"></span>Pago 30%</div><div><span class="d" style="background:#D9820E;"></span>Directo 15%</div></div>
+              <div class="legend"><div><span class="d" style="background:#0e3d23;"></span>Orgánico 45%</div><div><span class="d" style="background:#10b981;"></span>Pago 30%</div><div><span class="d" style="background:#d97706;"></span>Directo 15%</div><div><span class="d" style="background:#94a3b8;"></span>Referidos 10%</div></div>
             </div>
+            <div class="donut-insight"><b>Insight:</b> Orgánico y Pago concentran el 75% de los ingresos.</div>
           </div>
-          <div class="widget"><div class="badge" style="background:var(--purple);">4</div><b class="lbl">Insights Clave</b>
+          <div class="widget"><div class="badge" style="background:var(--green-dark);">4</div><b class="lbl">Insights Clave</b>
             <div class="widget-body">
               <div class="insight">📈 Los ingresos crecieron 15,7% vs. el período anterior.</div>
+              <div class="insight">🧭 El canal orgánico es el que más ingresos genera.</div>
               <div class="insight">🎯 Oportunidad: mejorar la tasa de conversión en campañas pagas.</div>
             </div>
           </div>
