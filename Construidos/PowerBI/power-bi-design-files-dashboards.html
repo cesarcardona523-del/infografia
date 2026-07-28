@@ -103,9 +103,96 @@
             display: grid;
             grid-template-columns: 1fr 1.35fr;
             gap: 18px;
-            flex-grow: 1;
+            flex-grow: 0;
+            flex-shrink: 0;
             min-height: 0;
             align-items: stretch;
+        }
+
+        /* Franja inferior: pipeline de valor (Datos -> Decisión), aprovecha el ancho completo */
+        .pipeline-strip {
+            position: relative;
+            z-index: 1;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 6px;
+            min-height: 0;
+        }
+
+        .pipeline-strip .pl-title {
+            font-size: 9px;
+            font-weight: 800;
+            color: var(--green-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .pipeline-strip .pl-title span {
+            color: var(--earth-accent);
+        }
+
+        .pipeline-track {
+            position: relative;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+
+        .pipeline-track::before {
+            content: '';
+            position: absolute;
+            top: 11px;
+            left: 16px;
+            right: 16px;
+            height: 2px;
+            background-image: repeating-linear-gradient(to right, var(--gray-border) 0, var(--gray-border) 5px, transparent 5px, transparent 9px);
+            z-index: 0;
+        }
+
+        .pl-step {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            flex: 1;
+            padding: 0 4px;
+        }
+
+        .pl-num {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: var(--green-primary);
+            color: var(--white);
+            font-size: 10px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid var(--bg-canvas);
+        }
+
+        .pl-step.highlight .pl-num {
+            background: var(--earth-accent);
+        }
+
+        .pl-label {
+            font-size: 8.5px;
+            font-weight: 800;
+            color: var(--green-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .pl-desc {
+            font-size: 7px;
+            color: var(--gray-text);
+            text-align: center;
+            line-height: 1.25;
         }
 
         /* Columna Izquierda: Mensaje y Callouts */
@@ -588,6 +675,7 @@
                             <div class="bar-track"><div class="bar-fill earth" style="width: 36%;"></div></div>
                             <span class="bar-val">18%</span>
                         </div>
+                        <div class="insight-box">Accesorios lidera el rendimiento (43%); <b>Máquinas</b> es la subcategoría con mayor oportunidad de mejora.</div>
                     </div>
                 </div>
 
@@ -673,6 +761,38 @@
             </div>
 
         </main>
+
+        <!-- FRANJA: DEL DATO A LA DECISIÓN -->
+        <div class="pipeline-strip">
+            <div class="pl-title">De los Datos a la Decisión: <span>el Pipeline de un Dashboard Ganador</span></div>
+            <div class="pipeline-track">
+                <div class="pl-step">
+                    <span class="pl-num">1</span>
+                    <span class="pl-label">Datos</span>
+                    <span class="pl-desc">Extracción y limpieza en Power Query</span>
+                </div>
+                <div class="pl-step">
+                    <span class="pl-num">2</span>
+                    <span class="pl-label">Modelo</span>
+                    <span class="pl-desc">Esquema estrella: hechos y dimensiones</span>
+                </div>
+                <div class="pl-step highlight">
+                    <span class="pl-num">3</span>
+                    <span class="pl-label">DAX</span>
+                    <span class="pl-desc">Medidas explícitas y optimizadas</span>
+                </div>
+                <div class="pl-step">
+                    <span class="pl-num">4</span>
+                    <span class="pl-label">Storytelling</span>
+                    <span class="pl-desc">Jerarquía visual y narrativa clara</span>
+                </div>
+                <div class="pl-step">
+                    <span class="pl-num">5</span>
+                    <span class="pl-label">Decisión</span>
+                    <span class="pl-desc">Acción de negocio respaldada en datos</span>
+                </div>
+            </div>
+        </div>
 
         <!-- FOOTER -->
         <footer class="footer">
