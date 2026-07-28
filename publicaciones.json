@@ -1950,5 +1950,30 @@
       "likes": 0,
       "shares": 0
     }
+  },
+  {
+    "id": "arquitectura-desacoplada-data-engineering",
+    "imagen": "Construidos/Arquitectura/arquitectura-desacoplada-data-engineering.png",
+    "fechaPublicacion": "2026-08-06T18:20:00",
+    "categoriaPrincipal": "ingenieria-de-datos",
+    "temas": [
+      "data-engineering",
+      "arquitectura-datos",
+      "bases-de-datos"
+    ],
+    "tipoContenido": "infografia",
+    "es": {
+      "topico": "Arquitectura Desacoplada: Aplicando Data Engineering al Desarrollo",
+      "descripcion": "Una de las decisiones arquitectónicas con mayor impacto a largo plazo en una aplicación es dónde termina el código y dónde empieza el contenido. El patrón de arquitectura desacoplada separa deliberadamente dos capas: el motor —la lógica de negocio, el renderizado de interfaz y las reglas de seguridad— se escribe una sola vez y permanece estable; el contenido —catálogos, configuraciones, metadata— vive fuera del binario y se actualiza sin recompilar nada. Aplicar esta separación con disciplina de Data Engineering significa tratar el contenido como un producto de datos con su propio pipeline: una etapa Bronze que ingiere fuentes crudas (scraping, APIs externas, CMS, archivos planos), una etapa Silver donde scripts ETL en Python limpian, normalizan y curan esa información, y una etapa Gold que empaqueta el resultado en una base de datos local embebida —SQLite con índices FTS5 para búsqueda de texto completo— lista para que el cliente la consuma directamente, sin backend intermedio. Un cuarto componente de analítica y telemetría cierra el ciclo, monitoreando el uso en producción para recalibrar el modelo de datos. El beneficio práctico es concreto: el contenido puede crecer o corregirse mediante una actualización de datos distribuida (OTA), sin publicar una nueva versión de la aplicación. La conclusión de fondo es que los mismos principios que sostienen una plataforma de Big Data —ingesta, transformación, gobernanza y trazabilidad por capas— son igual de aplicables a una aplicación de cualquier escala, porque la disciplina arquitectónica no depende del volumen de datos sino del diseño conceptual."
+    },
+    "en": {
+      "topico": "Decoupled Architecture: Applying Data Engineering to Development",
+      "descripcion": "One of the architectural decisions with the greatest long-term impact on an application is where the code ends and the content begins. The decoupled architecture pattern deliberately separates two layers: the engine — business logic, UI rendering, and security rules — is written once and stays stable; the content — catalogs, configuration, metadata — lives outside the binary and updates without recompiling anything. Applying this separation with Data Engineering discipline means treating content as a data product with its own pipeline: a Bronze stage that ingests raw sources (scraping, external APIs, CMS, flat files), a Silver stage where Python ETL scripts clean, normalize, and curate that information, and a Gold stage that packages the result into an embedded local database — SQLite with FTS5 full-text search indexes — ready for the client to consume directly, with no intermediate backend. A fourth component, analytics and telemetry, closes the loop by monitoring production usage to recalibrate the data model. The practical benefit is concrete: content can grow or be corrected through a distributed data update (OTA), without shipping a new application version. The underlying conclusion is that the same principles behind a Big Data platform — layered ingestion, transformation, governance, and traceability — apply just as well to an application of any scale, because architectural discipline doesn't depend on data volume but on conceptual design."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
   }
 ]
