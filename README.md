@@ -159,11 +159,11 @@ Este README se irá actualizando con un enlace por cada infografía nueva.
 Cifras reales de este repositorio (calculadas con `git log`/`git shortlog` sobre este mismo git — sin servicios externos ni redirecciones a otros sitios, instantánea al 2026-07-27):
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Commits-60-00C9A7?style=for-the-badge&logo=git&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Commits-64-00C9A7?style=for-the-badge&logo=git&logoColor=white"/>
   &nbsp;
   <img src="https://img.shields.io/badge/Archivos-422-1A56E8?style=for-the-badge&logo=files&logoColor=white"/>
   &nbsp;
-  <img src="https://img.shields.io/badge/Líneas%20%2B%2F%E2%88%92-75%2C898%20%2F%201%2C654-0B1426?style=for-the-badge&logo=git&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Líneas%20%2B%2F%E2%88%92-76%2C155%20%2F%201%2C694-0B1426?style=for-the-badge&logo=git&logoColor=white"/>
 </p>
 
 <p align="center">
@@ -175,7 +175,7 @@ Cifras reales de este repositorio (calculadas con `git log`/`git shortlog` sobre
 **Commits por autor:**
 
 <p align="center">
-  <img src="https://img.shields.io/badge/caesar523__dev-60%20commits-00C9A7?style=flat&logo=github&logoColor=white"/>
+  <img src="https://img.shields.io/badge/caesar523__dev-64%20commits-00C9A7?style=flat&logo=github&logoColor=white"/>
 </p>
 
 > Esta sección se debe recalcular y actualizar cada vez que se agregue o modifique contenido en este repositorio — ver la regla correspondiente en [CLAUDE.md](CLAUDE.md).
