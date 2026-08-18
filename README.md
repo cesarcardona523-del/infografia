@@ -18,22 +18,85 @@
 
 ## 👨‍💻 Sobre este proyecto
 
-Este repositorio reúne **infografías técnicas premium** para LinkedIn sobre temas de datos y tecnología — Arquitectura, Python, Power BI, y los que se vayan sumando — organizadas por tema, con un catálogo de metadata incremental listo para publicar.
+Este repositorio es la **fábrica de contenido** detrás de las infografías técnicas premium que se publican en LinkedIn y en el muro de Tendencias de [cesarcardona.com](https://cesarcardona-orcin-iota.vercel.app) (repo hermano `paginaweb`) — piezas de 1200×627px sobre Arquitectura, IA, Big Data, Power BI, SQL, Gobierno de Datos, y los temas que se vayan sumando, cada una con su propio catálogo de metadata bilingüe listo para programar la publicación.
 
-## 📁 Estructura
+```text
+📁  27 temas          → Construidos/<Tema>/, cada uno con varias infografías a lo largo del tiempo
+🖼️  86 infografías     → HTML/CSS puro (1200×627px), exportadas automáticamente a PNG en alta resolución
+📄  publicaciones.json → catálogo único e incremental, espejado en paginaweb/publications/publicaciones.js
+🏷️  Taxonomía cerrada  → 10 categorías · 45 temas · 13 tipos de contenido (taxonomia.json)
+🔁  2 flujos de trabajo → creación desde cero, o HTML+JSON ya resueltos entregados por el usuario
+🧠  Mejora continua    → piezas ya publicadas se regeneran si hay una mejora objetiva real, mismo archivo
+```
+
+- **Spec de diseño visual (fija):** [INFOGRAFIA-SPEC.md](INFOGRAFIA-SPEC.md)
+- **Spec de análisis/metadata (fija):** [INFOGRAFIA-INVESTIGAR.md](INFOGRAFIA-INVESTIGAR.md)
+- **Reglas operativas del proyecto:** [CLAUDE.md](CLAUDE.md)
+- **Taxonomía cerrada del catálogo:** [taxonomia.json](taxonomia.json)
+
+---
+
+## 🔁 Cómo funciona
+
+<table>
+<tr>
+<td width="50%">
+
+**🆕 Flujo de creación nueva**
+- El usuario da tema + tópico + imágenes de referencia (o PDF/PPTX/DOCX)
+- El HTML se construye siguiendo `INFOGRAFIA-SPEC.md`
+- Export automático a PNG (Chrome headless + recorte PIL)
+- Metadata generada con `INFOGRAFIA-INVESTIGAR.md`
+- Publicación en `paginaweb/publications/` como último paso
+
+**♻️ Flujo alterno (HTML + JSON ya resueltos)**
+- El usuario entrega el HTML (vía `HTML/`) y el JSON de metadata ya redactados
+- Se valida paleta, cifras no verificables y overflow contra el canvas real
+- Se corrige el schema (taxonomía, longitud de descripción) antes de publicar
+
+</td>
+<td width="50%">
+
+**🔄 Gestión inteligente / consolidación**
+- Antes de crear, se revisa si el contenido nuevo amplía una publicación existente
+- Si es el mismo tópico exacto: se actualiza en el mismo lugar (mismo `id`), la versión anterior se archiva en `Archivadas/`, y se agrega la insignia `Actualizada`
+- Si es un tema distinto, aunque esté relacionado: se crea una entrada nueva
+
+**🏷️ Taxonomía cerrada**
+- `categoriaPrincipal`, `temas` y `tipoContenido` usan claves fijas de `taxonomia.json`
+- Administrada exclusivamente por el usuario — nunca se crea una categoría/tema nuevo sin autorización explícita
+
+</td>
+</tr>
+</table>
+
+---
+
+## 📁 Arquitectura y Organización
 
 ```text
 infografia/
-├── referencias/<Tema>/          → imágenes de referencia que se suministran para ese tema (input)
-├── Construidos/<Tema>/          → salida: infografías generadas para ese tema, incremental en el tiempo
-│   ├── <topico>.prompt.md
-│   ├── <topico>.png              (o <topico>.html si no hay imagen generada)
-├── publicaciones.json    → catálogo único e incremental de metadata de todas las infografías
-├── INFOGRAFIA-SPEC.md    → spec de diseño visual (fija)
-└── INFOGRAFIA-INVESTIGAR.md → spec de análisis/metadata (fija)
+├── referencias/<Tema>/<topico-slug>/  → input: imagen(es) de referencia de UNA infografía puntual
+├── Construidos/<Tema>/                → output incremental: todo lo ya construido vive acá, nunca en la raíz
+│   ├── <topico>.html                    (fuente editable)
+│   ├── <topico>.png                     (asset final publicable, 1200×627px)
+│   ├── <topico>.prompt.md               (spec + contexto específico usado para construirla)
+│   └── Archivadas/<topico>-<fecha>/     (versiones previas conservadas al consolidar)
+├── HTML/                              → carpeta de intake: HTML entregados ya resueltos (flujo alterno)
+├── publicaciones.json                 → catálogo único e incremental, fuente de verdad de metadata
+├── taxonomia.json                     → categorías/temas/tipos de contenido cerrados (gobernanza del usuario)
+├── INFOGRAFIA-SPEC.md                 → cómo se ve una infografía (paleta, tipografía, composición, firma)
+├── INFOGRAFIA-INVESTIGAR.md           → cómo se describe (prompt de análisis → objeto de metadata)
+├── CLAUDE.md                          → reglas operativas vivas: flujos, consolidación, gobernanza
+├── CLAUDE-PROMPTS.md                  → borrador de master-prompt anterior, no referenciado por CLAUDE.md
+└── IDENTIDAD-VISUAL.md                → bitácora de una revisión de identidad visual puntual (2026-07-16)
 ```
 
-`<Tema>` es una categoría amplia (ej. `Arquitectura`, `Python`, `Power BI`) — dentro de una misma carpeta de tema conviven, en el tiempo, varias infografías de distintos tópicos. Toda infografía ya construida vive dentro de `Construidos/<Tema>/`, nunca directamente en la raíz del repositorio.
+`<Tema>` es una categoría amplia de carpeta (ej. `Arquitectura`, `Power BI`, `Big Data`) — no confundir con `categoriaPrincipal` del catálogo (la clasificación cerrada de `taxonomia.json`): una misma carpeta de tema puede publicar bajo distintas categorías del catálogo, y viceversa.
+
+**Varias referencias para una misma infografía** van juntas en `referencias/<Tema>/<topico-slug>/` (imagen principal + secundarias) — el subfolder por tópico evita ambigüedad cuando un mismo tema acumula referencias de varias infografías con el tiempo.
+
+---
 
 ## 🛠️ Stack Técnico
 
@@ -41,27 +104,41 @@ infografia/
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 
-Sin framework, sin bundler, sin paso de build. Cada infografía se construye en HTML/CSS puro (contenedor fijo 1200×627px) y se exporta automáticamente a PNG en alta resolución — sin depender de una herramienta externa de generación de imágenes.
+Sin framework, sin bundler, sin paso de build. Cada infografía se construye en HTML/CSS puro, con el contenedor principal en una clase `.canvas` de tamaño fijo 1200×627px.
+
+**Pipeline de exportación** (sin depender de una herramienta externa de generación de imágenes):
+
+1. Render con Chrome headless a 2x escala, viewport `1264×691` (1200×627 + 32px de margen por lado): `--headless --disable-gpu --hide-scrollbars --force-device-scale-factor=2 --window-size=1264,691 --screenshot=raw.png`
+2. Recorte exacto del `.canvas` con PIL, midiendo el `getBoundingClientRect()` real en vez de asumir un offset fijo — la vista previa de un navegador embebido con viewport angosto puede dar medidas de overflow poco confiables.
+3. Verificación de que ningún elemento desborda el canvas antes de dar la pieza por buena.
+
+---
 
 ## 🎨 Diseño
 
-Todas las infografías siguen el mismo sistema de diseño, definido en [INFOGRAFIA-SPEC.md](INFOGRAFIA-SPEC.md): infografía técnica editorial (nunca fotografía ni escena real), paleta fija, tipografía, marca de agua y firma, tamaño 1200×627px optimizado para LinkedIn.
+Todas las infografías siguen el mismo sistema de diseño, definido en [INFOGRAFIA-SPEC.md](INFOGRAFIA-SPEC.md): infografía técnica editorial (nunca fotografía ni escena real), paleta verde predominante + acento tierra, tipografía tipo Inter/SF Pro, firma LinkedIn discreta, tamaño 1200×627px optimizado para LinkedIn. No se adopta dark-mode ni paletas de producto web (Apple/Vercel/Linear/Stripe) por defecto — son referencias de otro tipo de producto, no del brief editorial ya validado.
 
 Para crear una infografía nueva: se listan imágenes de referencia en `referencias/<Tema>/`, y ese contexto se combina con el spec de diseño en `Construidos/<Tema>/<topico>.prompt.md` — ver [CLAUDE.md](CLAUDE.md) para el flujo completo.
 
-El proyecto mantiene un rol permanente de mejora continua: cada vez que se trabaja un tema, las piezas ya construidas de ese tema se revisan y, si hay una mejora objetiva real, se regeneran conservando el mismo nombre de archivo — sin tocar las que ya son consistentes con el estándar actual. INFOGRAFIA-SPEC.md evoluciona como design system vivo bajo el mismo criterio (ver "Rol permanente y mejora continua" en [CLAUDE.md](CLAUDE.md)).
+El proyecto mantiene un rol permanente de mejora continua: cada vez que se trabaja un tema, las piezas ya construidas de ese tema se revisan y, si hay una mejora objetiva real (diseño, legibilidad, jerarquía visual, consistencia con la paleta, espacio vacío sin aprovechar), se regeneran conservando el mismo nombre de archivo — sin tocar las que ya son consistentes con el estándar actual. INFOGRAFIA-SPEC.md evoluciona como design system vivo bajo el mismo criterio (ver "Rol permanente y mejora continua" en [CLAUDE.md](CLAUDE.md)).
+
+---
 
 ## 📄 Catálogo de publicaciones
 
-Cada infografía agrega una entrada a [publicaciones.json](publicaciones.json), generada con el prompt de análisis de [INFOGRAFIA-INVESTIGAR.md](INFOGRAFIA-INVESTIGAR.md): categoría principal, temas, tipo de contenido, tópico y descripción en español e inglés, listos para programar la publicación. Las fechas se espacian +2 días entre entradas sucesivas, sin más de dos publicaciones el mismo día.
+Cada infografía agrega una entrada a [publicaciones.json](publicaciones.json), generada con el prompt de análisis de [INFOGRAFIA-INVESTIGAR.md](INFOGRAFIA-INVESTIGAR.md): categoría principal, temas, tipo de contenido, tópico y descripción en español e inglés (180–250 palabras cada una), listos para programar la publicación. Las fechas se espacian +2 días entre entradas sucesivas, sin más de dos publicaciones el mismo día.
 
-Desde el 2026-07-20, la clasificación usa una taxonomía cerrada de 10 categorías principales, ~45 temas reutilizables y 13 tipos de contenido — ver [`taxonomia.json`](taxonomia.json) y "Gobernanza de la taxonomía" en [CLAUDE.md](CLAUDE.md). Reemplaza el antiguo campo `tema` de texto libre.
+La clasificación usa una taxonomía cerrada de **10 categorías principales, ~45 temas reutilizables y 13 tipos de contenido** — ver [`taxonomia.json`](taxonomia.json) y "Gobernanza de la taxonomía" en [CLAUDE.md](CLAUDE.md). Nunca se crea una clave nueva sin autorización explícita del usuario.
 
-Como último paso, el PNG final y esa misma entrada se publican también en el sitio real: `paginaweb/publications/` (imagen) y `paginaweb/publications/publicaciones.js` (catálogo consumido por el sitio).
+Como último paso, el PNG final y esa misma entrada se publican también en el sitio real: `paginaweb/publications/` (imagen) y `paginaweb/publications/publicaciones.js` (catálogo consumido por el sitio) — dos catálogos independientes, cada uno con su propia secuencia de fechas.
 
 Antes de crear una entrada nueva, el proyecto analiza si el contenido amplía o corrige una publicación ya existente (mismo tópico exacto); si es así, esa entrada se actualiza en el mismo lugar en vez de duplicarse, y la versión anterior de los archivos se conserva archivada en `Archivadas/` — ver "Gestión inteligente de publicaciones e infografías" en [CLAUDE.md](CLAUDE.md).
 
+---
+
 ## 🗺️ Estado
+
+**86 infografías publicadas en 27 temas**, listadas en orden de creación:
 
 - ✅ Automatización vs Autonomía: Arquitectura de Sistemas de IA Agénticos — tema `Automatización` — [HTML](Construidos/Automatización/automatizacion-agentesia.html) · [PNG](Construidos/Automatización/automatizacion-agentesia.png)
 - ✅ Automatización de Reportes con Python: de Excel a Producción — tema `Automatización` — [HTML](Construidos/Automatización/automatizacion-python.html) · [PNG](Construidos/Automatización/automatizacion-python.png)
@@ -97,7 +174,7 @@ Antes de crear una entrada nueva, el proyecto analiza si el contenido amplía o 
 - ✅ Tipos de Dashboards — tema `Dashboard` — [HTML](Construidos/Dashboard/tipos-dashboard.html) · [PNG](Construidos/Dashboard/tipos-dashboard.png)
 - ✅ Top 6 Conceptos de Datos — tema `Cultura_Datos` — [HTML](Construidos/Cultura_Datos/conceptos-datos.html) · [PNG](Construidos/Cultura_Datos/conceptos-datos.png)
 - ✅ 10 Términos Esenciales de Ciencia de Datos y Machine Learning — tema `Cultura_Datos` — [HTML](Construidos/Cultura_Datos/terminos-ciencia-datos.html) · [PNG](Construidos/Cultura_Datos/terminos-ciencia-datos.png)
-- ✅ Databricks: Datos en Conocimiento 12x Más Rápido — tema `Arquitectura` — [HTML](Construidos/Arquitectura/databricks.html) · [PNG](Construidos/Arquitectura/databricks.png)
+- ✅ Databricks: Arquitectura Lakehouse con Unity Catalog, Photon y Delta Lake — tema `Arquitectura` — [HTML](Construidos/Arquitectura/databricks.html) · [PNG](Construidos/Arquitectura/databricks.png)
 - ✅ ¿Docente o Líder de Aprendizaje? Los 3 Cambios que Redefinen la Enseñanza — tema `Docencia` — [HTML](Construidos/Docencia/docente-lider-aprendizaje.html) · [PNG](Construidos/Docencia/docente-lider-aprendizaje.png)
 - ✅ ¿Cómo Liderar a Cada Generación? 8 Claves para Boomers, Gen X, Millennials y Gen Z — tema `Liderazgo` — [HTML](Construidos/Liderazgo/liderar-cada-generacion.html) · [PNG](Construidos/Liderazgo/liderar-cada-generacion.png)
 - ✅ 8 Conceptos Estadísticos Esenciales para Ciencia de Datos — tema `Cultura_Datos` — [HTML](Construidos/Cultura_Datos/conceptos-estadisticos-basicos.html) · [PNG](Construidos/Cultura_Datos/conceptos-estadisticos-basicos.png)
