@@ -94,6 +94,12 @@ Cada infografía debe usar al menos un color de acento además del verde princip
 
 **Excepción — infografías de evento:** si la infografía se crea para un evento específico (variables `Evento` y/o `Realizado por`, ver sección "Branding de Evento"), la paleta puede ser más arriesgada y no está limitada al verde predominante de esta spec — se puede adoptar la paleta del evento o de la organización que lo realiza, siempre manteniendo blanco/gris/negro como neutros de apoyo y sin sacrificar legibilidad ni jerarquía visual.
 
+**Excepción — paleta arriesgada por diferenciación dentro de un mismo tema:** cuando varias infografías conviven en la misma carpeta `Construidos/<Tema>/` (ej. varias piezas sobre "Dashboard" o "Bigdata"), usar verde+tierra en todas hace que se vean intercambiables entre sí. En ese caso está permitido asignarle a una pieza puntual una paleta secundaria distinta y arriesgada (ej. azul petróleo + coral, grafito + ámbar, teal + violeta) en vez de verde+tierra, siempre que:
+- Se mantenga **una sola paleta secundaria por pieza** (no mezclar tres o más familias de color en la misma infografía) y blanco/gris/negro como neutros de apoyo.
+- No se reutilice la misma paleta secundaria ya usada por otra pieza del mismo `<Tema>` — el objetivo es que cada una se distinga de un vistazo dentro de esa carpeta, no acumular colores al azar.
+- La firma personal (LinkedIn + `cacm523`) y la calidad de contraste/legibilidad se mantengan sin cambios.
+- Esta excepción es una decisión de diseño consciente para esa pieza puntual, no un default — la mayoría de las infografías del catálogo sigue usando verde+tierra; se reserva para cuando de verdad hace falta distinguir piezas muy similares entre sí dentro del mismo tema.
+
 ## Tipografía
 
 Usar una tipografía similar a Inter, SF Pro, Segoe UI, Roboto, Helvetica o IBM Plex Sans. Mantener excelente legibilidad.
