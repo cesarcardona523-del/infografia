@@ -59,6 +59,16 @@ Crear una jerarquía clara utilizando: título principal, subtítulo, bloques, t
 
 No saturar la composición.
 
+## Aprovechamiento del Espacio (sin espacios vacíos)
+
+El canvas de 1200×627px debe sentirse lleno y equilibrado — nunca con franjas grandes de fondo vacío ni tarjetas con mucho más padding del que su contenido necesita. Antes de dar una pieza por terminada, verificar explícitamente:
+
+- **Ninguna tarjeta o panel debe quedar con más de ~30-40% de su alto en blanco** debajo de su contenido. Si una tarjeta tiene mucho más espacio del que su texto ocupa, es señal de que falta contenido real (un dato derivado, un ejemplo, un mini-diagrama, un detalle técnico adicional) — nunca de que hay que agrandar el espaciado para "llenarla".
+- **Contenido antes que espaciado.** Si una sección se ve vacía, la solución por defecto es sumar información real y verificable relacionada con el tema (un ejemplo concreto, una cifra ya mostrada en otra parte de la pieza, una consecuencia práctica, un "por qué importa") — no estirar `padding`, `gap` ni usar `justify-content: center/space-between` para distribuir dos o tres líneas de texto en un contenedor mucho más alto que ellas.
+- **El tamaño de fuente es una herramienta de ajuste fino, no la primera respuesta.** Está permitido y es válido ajustar tamaños de letra, iconos y espaciados para que el contenido llene mejor su contenedor (ni tan grande que desborde el canvas, ni tan chico que dejen huecos) — pero ese ajuste se hace *después* de asegurar que hay suficiente contenido real, nunca en su lugar. Igual de importante: nunca reducir agresivamente una fuente solo para que quepa más texto forzado — ver la regla de legibilidad en CLAUDE.md.
+- **Verificar antes de exportar** (con el mismo método de medición real contra Chrome headless que se usa para detectar overflow): además de que nada se salga del canvas, que ninguna tarjeta/columna quede con un vacío inferior o central obviamente mayor al de sus tarjetas vecinas — si una columna de una grilla queda visiblemente más corta que las demás, es la misma señal de contenido faltante.
+- Esto aplica tanto a piezas nuevas como a piezas ya construidas que se estén regenerando por mejora continua.
+
 ## Integración Inteligente
 
 Cuando existan código, diagramas, arquitecturas, gráficos, tablas, consultas SQL, JSON, Power BI, Python, Docker, Azure, AWS, Kubernetes, Airflow o Machine Learning: no copiarlos literalmente. Interpretarlos, redibujarlos, simplificarlos, modernizarlos. Mantener únicamente la idea técnica.
