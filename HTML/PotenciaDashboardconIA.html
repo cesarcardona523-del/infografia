@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IA aplicada a Business Intelligence</title>
+    <style>
+        :root {
+            --primary: #10b981;      /* Emerald Green */
+            --primary-dark: #047857;
+            --primary-light: #d1fae5;
+            --primary-bg: #ecfdf5;
+            --accent: #d97706;       /* Earthy Amber */
+            --accent-bg: #fffbeb;
+            --text-main: #0f172a;    /* Slate 900 */
+            --text-muted: #475569;   /* Slate 600 */
+            --bg-canvas: #f8fafc;
+            --bg-card: #ffffff;
+            --border-color: rgba(15, 23, 42, 0.08);
+            --code-bg: #0f172a;      /* Dark theme for AI Engine */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #1e293b;
+            font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .canvas {
+            width: 1200px;
+            height: 627px;
+            background: linear-gradient(135deg, var(--bg-canvas) 0%, var(--primary-bg) 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            padding: 24px 32px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Ambient Glow */
+        .glow {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: 0;
+            opacity: 0.5;
+        }
+        .glow-1 {
+            width: 400px; height: 400px;
+            background: rgba(16, 185, 129, 0.15);
+            top: -100px; left: -100px;
+        }
+        .glow-2 {
+            width: 300px; height: 300px;
+            background: rgba(217, 119, 6, 0.08);
+            top: 50%; left: 50%; transform: translate(-50%, -50%);
+        }
+
+        /* Header */
+        .header {
+            position: relative;
+            z-index: 10;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            width: fit-content;
+        }
+
+        .title {
+            font-size: 30px;
+            font-weight: 800;
+            color: var(--text-main);
+            letter-spacing: -0.5px;
+            line-height: 1.1;
+        }
+
+        .title span { color: var(--primary); }
+
+        .subtitle {
+            font-size: 13.5px;
+            color: var(--text-muted);
+            font-weight: 500;
+            max-width: 650px;
+        }
+
+        /* Main Architecture Flow */
+        .arch-flow {
+            position: relative;
+            z-index: 10;
+            display: grid;
+            grid-template-columns: 1fr 1.3fr 1fr;
+            gap: 16px;
+            flex: 1;
+            min-height: 0;
+            margin-bottom: 16px;
+        }
+
+        /* Connection Arrows */
+        .arch-flow::before, .arch-flow::after {
+            content: '→';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            color: var(--primary);
+            font-weight: 800;
+            z-index: 20;
+        }
+        .arch-flow::before { left: 32.5%; }
+        .arch-flow::after { right: 32.5%; }
+
+        .panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
+        }
+
+        .panel-header {
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--text-main);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Engine Panel (Center) */
+        .panel-engine {
+            background: var(--code-bg);
+            border: 1px solid rgba(217, 119, 6, 0.4);
+            box-shadow: inset 0 0 20px rgba(217, 119, 6, 0.1), 0 10px 25px -5px rgba(0,0,0,0.2);
+        }
+        
+        .panel-engine::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 12px 12px 0 0;
+        }
+
+        .panel-engine .panel-header {
+            color: #f8fafc;
+            border-bottom-color: rgba(255,255,255,0.1);
+        }
+
+        .panel-engine .panel-header svg { color: var(--accent); }
+
+        /* Feature Items */
+        .feature-item {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            background: var(--bg-card);
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .panel-engine .feature-item {
+            background: rgba(255,255,255,0.03);
+            border-color: rgba(255,255,255,0.05);
+        }
+
+        .icon-box {
+            width: 28px; height: 28px;
+            border-radius: 6px;
+            background: var(--primary-bg);
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .panel-engine .icon-box {
+            background: rgba(217, 119, 6, 0.15);
+            color: var(--accent);
+        }
+
+        .feature-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .feature-title {
+            font-size: 11.5px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .panel-engine .feature-title { color: #e2e8f0; }
+
+        .feature-desc {
+            font-size: 10px;
+            color: var(--text-muted);
+            line-height: 1.35;
+        }
+
+        .panel-engine .feature-desc { color: #94a3b8; }
+
+        /* Code Snippet in Engine */
+        .code-block {
+            background: rgba(0,0,0,0.4);
+            border-radius: 6px;
+            padding: 10px;
+            font-family: "SF Mono", Menlo, Consolas, monospace;
+            font-size: 9px;
+            color: #cbd5e1;
+            border: 1px solid rgba(255,255,255,0.05);
+            margin-top: auto;
+        }
+        .code-block .key { color: #7dd3fc; }
+        .code-block .str { color: #a7f3d0; }
+        .code-block .acc { color: var(--accent); }
+
+        /* Pipeline Bottom */
+        .pipeline-container {
+            position: relative;
+            z-index: 10;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 14px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
+        }
+
+        .pipeline-header {
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--text-main);
+            text-transform: uppercase;
+        }
+
+        .pipeline-track {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative;
+        }
+
+        /* Connecting line for pipeline */
+        .pipeline-track::before {
+            content: '';
+            position: absolute;
+            top: 14px; left: 40px; right: 40px;
+            height: 2px;
+            background: repeating-linear-gradient(90deg, var(--primary) 0, var(--primary) 4px, transparent 4px, transparent 8px);
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .pipeline-step {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 130px;
+            gap: 8px;
+        }
+
+        .step-node {
+            width: 30px; height: 30px;
+            background: var(--bg-card);
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--primary-dark);
+            box-shadow: 0 0 0 4px var(--bg-canvas);
+        }
+
+        .pipeline-step.accent .step-node {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .step-label {
+            font-size: 10.5px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .step-sub {
+            font-size: 9px;
+            color: var(--text-muted);
+            line-height: 1.2;
+        }
+
+        /* Footer */
+        .footer {
+            position: absolute;
+            bottom: 24px;
+            left: 32px;
+            right: 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 20;
+        }
+
+        .takeaway {
+            background: var(--primary-dark);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+
+        .takeaway span { color: var(--accent); font-weight: 800; }
+
+        .signature-box {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 4px 10px;
+            border-radius: 20px;
+            backdrop-filter: blur(4px);
+            border: 1px solid var(--border-color);
+        }
+
+        .signature-box svg { width: 14px; height: 14px; fill: #0a66c2; }
+        .signature { font-size: 11px; font-weight: 700; color: var(--text-muted); }
+
+        /* Icons SVG standard */
+        svg { width: 14px; height: 14px; stroke-width: 2; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; }
+    </style>
+</head>
+<body>
+
+    <div class="canvas">
+        <div class="glow glow-1"></div>
+        <div class="glow glow-2"></div>
+
+        <!-- Header -->
+        <div class="header">
+            <div class="header-content">
+                <div class="tag">
+                    <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                    Data Architecture & AI
+                </div>
+                <h1 class="title">La IA potencia el <span>Business Intelligence</span></h1>
+                <p class="subtitle">Transición de un enfoque reactivo basado en reportes manuales, a un ecosistema cognitivo que automatiza la preparación, descubre patrones y acelera las decisiones.</p>
+            </div>
+        </div>
+
+        <!-- Main Flow -->
+        <div class="arch-flow">
+            
+            <!-- Left: Bottlenecks (Inputs) -->
+            <div class="panel">
+                <div class="panel-header">
+                    <svg viewBox="0 0 24 24"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
+                    Desafíos del BI Tradicional
+                </div>
+                <div class="feature-item">
+                    <div class="icon-box"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg></div>
+                    <div class="feature-text">
+                        <span class="feature-title">Silos y Dispersión</span>
+                        <span class="feature-desc">Datos fragmentados en múltiples formatos (CRM, ERP, Web) dificultando la consolidación.</span>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="icon-box"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
+                    <div class="feature-text">
+                        <span class="feature-title">Deuda Técnica Operativa</span>
+                        <span class="feature-desc">Exceso de tiempo invertido en limpieza manual y procesos ETL frágiles.</span>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="icon-box"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></div>
+                    <div class="feature-text">
+                        <span class="feature-title">Análisis Descriptivo Limitado</span>
+                        <span class="feature-desc">Reportes que explican "qué pasó", pero carecen de insights predictivos o contexto profundo.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Center: AI Engine -->
+            <div class="panel panel-engine">
+                <div class="panel-header">
+                    <svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path></svg>
+                    Capa Cognitiva (Motor IA)
+                </div>
+                <div class="feature-item">
+                    <div class="icon-box"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></div>
+                    <div class="feature-text">
+                        <span class="feature-title">Data Prep Automatizada</span>
+                        <span class="feature-desc">Machine Learning para detectar anomalías, inferir esquemas e imputar valores nulos.</span>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="icon-box"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg></div>
+                    <div class="feature-text">
+                        <span class="feature-title">Descubrimiento de Patrones</span>
+                        <span class="feature-desc">Algoritmos que identifican correlaciones ocultas y varianzas sin configuración manual explícita.</span>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="icon-box"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div>
+                    <div class="feature-text">
+                        <span class="feature-title">NLP & Text-to-SQL</span>
+                        <span class="feature-desc">Consultas en lenguaje natural apoyadas por LLMs integrados a la capa semántica.</span>
+                    </div>
+                </div>
+                
+                <div class="code-block">
+<span class="acc">// NLP to SQL Translation Layer</span>
+{
+  <span class="key">"model"</span>: <span class="str">"gpt-4-turbo"</span>,
+  <span class="key">"intent"</span>: <span class="str">"query_generation"</span>,
+  <span class="key">"nl_input"</span>: <span class="str">"¿Ventas Q3 vs Q2 por región?"</span>,
+  <span class="key">"context"</span>: [<span class="str">"sales_datamart"</span>, <span class="str">"dim_geography"</span>]
+}
+                </div>
+            </div>
+
+            <!-- Right: Outcomes (Outputs) -->
+            <div class="panel">
+                <div class="panel-header">
+                    <svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                    Impacto en el Negocio
+                </div>
+                <div class="feature-item">
+                    <div class="icon-box" style="color:var(--primary); background:var(--primary-light)"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div>
+                    <div class="feature-text">
+                        <span class="feature-title">Insights Profundos</span>
+                        <span class="feature-desc">Transición de métricas reactivas a comprensión conductual de clientes y mercados.</span>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="icon-box" style="color:var(--primary); background:var(--primary-light)"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg></div>
+                    <div class="feature-text">
+                        <span class="feature-title">Time-to-Insight Reducido</span>
+                        <span class="feature-desc">Eliminación de cuellos de botella técnicos, democratizando el acceso a la analítica.</span>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="icon-box" style="color:var(--primary); background:var(--primary-light)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg></div>
+                    <div class="feature-text">
+                        <span class="feature-title">Decisiones Estratégicas</span>
+                        <span class="feature-desc">Capacidad de accionar sobre datos precisos, proyectados y libres de sesgo humano operativo.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pipeline Bottom -->
+        <div class="pipeline-container">
+            <div class="pipeline-header">Modern BI Workflow (AI-Augmented)</div>
+            <div class="pipeline-track">
+                
+                <div class="pipeline-step">
+                    <div class="step-node">1</div>
+                    <span class="step-label">Ingesta</span>
+                    <span class="step-sub">Unificación de fuentes (Cloud DWH / Data Lake)</span>
+                </div>
+                <div class="pipeline-step">
+                    <div class="step-node">2</div>
+                    <span class="step-label">Smart Prep</span>
+                    <span class="step-sub">Limpieza y validación auto-escalable con ML</span>
+                </div>
+                <div class="pipeline-step accent">
+                    <div class="step-node">3</div>
+                    <span class="step-label">Análisis Cognitivo</span>
+                    <span class="step-sub">Forecasting, clustering y detección de anomalías</span>
+                </div>
+                <div class="pipeline-step">
+                    <div class="step-node">4</div>
+                    <span class="step-label">Visualización Dinámica</span>
+                    <span class="step-sub">Dashboards adaptativos y narrativas naturales</span>
+                </div>
+                <div class="pipeline-step">
+                    <div class="step-node">5</div>
+                    <span class="step-label">Estrategia</span>
+                    <span class="step-sub">Decisión de negocio informada y accionable</span>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="takeaway">
+                <svg viewBox="0 0 24 24" style="color:var(--accent); stroke-width: 2.5;"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path></svg>
+                La IA no reemplaza al analista. <span>Potencia su criterio de negocio.</span>
+            </div>
+
+            <div class="signature-box">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+                <span class="signature">cacm523</span>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

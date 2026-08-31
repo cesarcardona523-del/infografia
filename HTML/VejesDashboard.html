@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gobierno de Datos: Ciclo de Vida de un Dashboard</title>
+    <style>
+        :root {
+            --primary: #10b981;      /* Emerald Green */
+            --primary-dark: #047857;
+            --primary-light: #d1fae5;
+            --primary-bg: #ecfdf5;
+            --accent: #d97706;       /* Earthy Amber */
+            --accent-bg: #fffbeb;
+            --text-main: #0f172a;    /* Slate 900 */
+            --text-muted: #475569;   /* Slate 600 */
+            --text-light: #94a3b8;
+            --bg-canvas: #f8fafc;
+            --bg-card: rgba(255, 255, 255, 0.95);
+            --border-color: rgba(15, 23, 42, 0.08);
+            --code-bg: #0f172a;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #1e293b;
+            font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .canvas {
+            width: 1200px;
+            height: 627px;
+            background: linear-gradient(135deg, var(--bg-canvas) 0%, var(--primary-bg) 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            padding: 28px 36px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Decorative Gradients */
+        .glow {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: 0;
+            opacity: 0.6;
+        }
+        .glow-1 {
+            width: 400px; height: 400px;
+            background: rgba(16, 185, 129, 0.2);
+            top: -100px; left: -100px;
+        }
+        .glow-2 {
+            width: 300px; height: 300px;
+            background: rgba(217, 119, 6, 0.1);
+            bottom: -50px; right: -50px;
+        }
+
+        /* Header */
+        .header {
+            position: relative;
+            z-index: 10;
+            margin-bottom: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            width: fit-content;
+        }
+
+        .title {
+            font-size: 34px;
+            font-weight: 800;
+            color: var(--text-main);
+            letter-spacing: -0.5px;
+            line-height: 1.1;
+        }
+
+        .title span {
+            color: var(--primary);
+        }
+
+        .subtitle {
+            font-size: 15px;
+            color: var(--text-muted);
+            font-weight: 500;
+            max-width: 600px;
+        }
+
+        /* Main Grid */
+        .content-grid {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            flex: 1;
+            min-height: 0;
+        }
+
+        /* Pipeline Steps (5 Columns) */
+        .pipeline-container {
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+        }
+
+        .pipeline-track {
+            position: absolute;
+            top: 24px;
+            left: 50px;
+            right: 50px;
+            height: 2px;
+            background: repeating-linear-gradient(90deg, var(--primary) 0, var(--primary) 6px, transparent 6px, transparent 12px);
+            z-index: 0;
+            opacity: 0.4;
+        }
+
+        .step-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
+            position: relative;
+            z-index: 1;
+            backdrop-filter: blur(10px);
+        }
+
+        .step-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 12px 12px 0 0;
+            opacity: 0.8;
+        }
+
+        .step-card.accent::before {
+            background: var(--accent);
+        }
+
+        .step-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            background: var(--primary-bg);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+            border: 1px solid var(--primary-light);
+        }
+
+        .step-card.accent .step-icon {
+            background: var(--accent-bg);
+            color: var(--accent);
+            border-color: rgba(217, 119, 6, 0.2);
+        }
+
+        .step-number {
+            font-size: 10px;
+            font-weight: 800;
+            color: var(--text-light);
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .step-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 8px;
+        }
+
+        .step-desc {
+            font-size: 11.5px;
+            line-height: 1.45;
+            color: var(--text-muted);
+        }
+
+        /* Bottom Section: Bento Box */
+        .bottom-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            flex: 1;
+            min-height: 0;
+        }
+
+        .panel {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 16px 20px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .panel-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .panel-title svg {
+            width: 16px; height: 16px;
+            color: var(--primary);
+        }
+
+        /* Code Block */
+        .code-container {
+            background: var(--code-bg);
+            border-radius: 8px;
+            padding: 12px;
+            flex: 1;
+            font-family: "SF Mono", Menlo, Consolas, monospace;
+            font-size: 11px;
+            color: #e2e8f0;
+            line-height: 1.5;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .code-container .key { color: #7dd3fc; } /* Light Blue */
+        .code-container .str { color: #a7f3d0; } /* Light Green */
+        .code-container .num { color: #fba11b; } /* Amber */
+        .code-container .sym { color: #94a3b8; } /* Slate */
+
+        /* Impact Grid */
+        .impact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            flex: 1;
+        }
+
+        .impact-item {
+            background: var(--bg-canvas);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 10px 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .impact-item-header {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .impact-item-desc {
+            font-size: 10.5px;
+            color: var(--text-muted);
+            line-height: 1.3;
+        }
+
+        /* Signature */
+        .footer {
+            position: absolute;
+            bottom: 24px;
+            right: 36px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            z-index: 20;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 4px 10px;
+            border-radius: 20px;
+            backdrop-filter: blur(4px);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .footer svg {
+            width: 14px;
+            height: 14px;
+            fill: #0a66c2;
+        }
+
+        .signature {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="canvas">
+        <div class="glow glow-1"></div>
+        <div class="glow glow-2"></div>
+
+        <div class="header">
+            <div class="tag">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                Data Governance
+            </div>
+            <h1 class="title">El Ciclo de Vida de un <span>Dashboard</span></h1>
+            <p class="subtitle">5 controles críticos para gobernar activos analíticos, evitar la saturación de información y prevenir la acumulación de deuda técnica en los ecosistemas de datos.</p>
+        </div>
+
+        <div class="content-grid">
+            
+            <!-- Pipeline Steps -->
+            <div class="pipeline-container">
+                <div class="pipeline-track"></div>
+                
+                <!-- Step 1 -->
+                <div class="step-card">
+                    <div class="step-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                    </div>
+                    <div class="step-number">Fase 01</div>
+                    <h3 class="step-title">Definir</h3>
+                    <p class="step-desc">Establecer el propósito, usuarios objetivo, decisiones de negocio a soportar y criterios de aceptación antes de iniciar el desarrollo analítico.</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="step-card">
+                    <div class="step-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
+                    </div>
+                    <div class="step-number">Fase 02</div>
+                    <h3 class="step-title">Certificar</h3>
+                    <p class="step-desc">Validar la calidad de las fuentes (ETL/ELT), certificar la precisión de los KPIs y configurar las políticas de seguridad y roles de acceso.</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="step-card">
+                    <div class="step-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                    </div>
+                    <div class="step-number">Fase 03</div>
+                    <h3 class="step-title">Monitorear</h3>
+                    <p class="step-desc">Analizar telemetría operativa: logs de visualización, frecuencia de uso real, tiempos de carga y patrones de consulta de los usuarios.</p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="step-card">
+                    <div class="step-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+                    </div>
+                    <div class="step-number">Fase 04</div>
+                    <h3 class="step-title">Rectificar</h3>
+                    <p class="step-desc">Auditar periódicamente la vigencia del modelo. Adaptar reglas de negocio o dimensiones si la estrategia de la compañía ha evolucionado.</p>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="step-card accent">
+                    <div class="step-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="21 8 21 21 3 21 3 8"></polyline><rect x="1" y="3" width="22" height="5"></rect><line x1="10" y1="12" x2="14" y2="12"></line></svg>
+                    </div>
+                    <div class="step-number">Fase 05</div>
+                    <h3 class="step-title">Retirar</h3>
+                    <p class="step-desc">Consolidar reportes redundantes, suspender pipelines de actualización de tableros no usados y documentar su paso a estado inactivo.</p>
+                </div>
+            </div>
+
+            <!-- Bottom Data Panels -->
+            <div class="bottom-section">
+                <!-- Impact Panel -->
+                <div class="panel">
+                    <div class="panel-title">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                        Impacto del Gobierno Analítico
+                    </div>
+                    <div class="impact-grid">
+                        <div class="impact-item">
+                            <div class="impact-item-header">
+                                <span style="color:var(--primary)">■</span> Optimización de Cómputo
+                            </div>
+                            <div class="impact-item-desc">Evita el procesamiento inútil en DWH desactivando queries y pipelines de tableros obsoletos.</div>
+                        </div>
+                        <div class="impact-item">
+                            <div class="impact-item-header">
+                                <span style="color:var(--primary)">■</span> Prevención de Ruido
+                            </div>
+                            <div class="impact-item-desc">Garantiza una "única fuente de verdad", eliminando ambigüedades por múltiples versiones de KPIs.</div>
+                        </div>
+                        <div class="impact-item">
+                            <div class="impact-item-header">
+                                <span style="color:var(--primary)">■</span> Seguridad de Datos
+                            </div>
+                            <div class="impact-item-desc">Revocación oportuna de permisos de lectura cuando un caso de uso analítico pierde vigencia.</div>
+                        </div>
+                        <div class="impact-item">
+                            <div class="impact-item-header">
+                                <span style="color:var(--primary)">■</span> Carga Operativa
+                            </div>
+                            <div class="impact-item-desc">Reduce el mantenimiento reactivo del equipo de BI al minimizar el inventario activo de artefactos.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Code/Metadata Panel -->
+                <div class="panel">
+                    <div class="panel-title">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                        Ejemplo: Configuración de Metadatos (State State)
+                    </div>
+                    <div class="code-container">
+<pre><code><span class="sym">{</span>
+  <span class="key">"asset_id"</span><span class="sym">:</span> <span class="str">"dash_sales_ops_04"</span><span class="sym">,</span>
+  <span class="key">"governance"</span><span class="sym">:</span> <span class="sym">{</span>
+    <span class="key">"status"</span><span class="sym">:</span> <span class="str">"deprecated"</span><span class="sym">,</span>
+    <span class="key">"data_steward"</span><span class="sym">:</span> <span class="str">"id_usr_849"</span><span class="sym">,</span>
+    <span class="key">"telemetry"</span><span class="sym">:</span> <span class="sym">{</span>
+      <span class="key">"avg_monthly_users"</span><span class="sym">:</span> <span class="num">2</span><span class="sym">,</span>
+      <span class="key">"last_accessed"</span><span class="sym">:</span> <span class="str">"2026-06-15"</span>
+    <span class="sym">},</span>
+    <span class="key">"retirement_plan"</span><span class="sym">:</span> <span class="sym">{</span>
+      <span class="key">"sunset_date"</span><span class="sym">:</span> <span class="str">"2026-08-31"</span><span class="sym">,</span>
+      <span class="key">"pipeline_suspend"</span><span class="sym">:</span> <span class="num">true</span><span class="sym">,</span>
+      <span class="key">"redirect_to"</span><span class="sym">:</span> <span class="str">"dash_revenue_v2"</span>
+    <span class="sym">}</span>
+  <span class="sym">}</span>
+<span class="sym">}</span></code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+            <span class="signature">cacm523</span>
+        </div>
+    </div>
+
+</body>
+</html>

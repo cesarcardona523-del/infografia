@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6 Errores Comunes con GROUP BY y Cómo Solucionarlos</title>
+    <style>
+
+        :root {
+            --bg-canvas: #f0fdf4;
+            --primary: #064e3b;
+            --primary-light: #10b981;
+            --accent: #d97706; /* Tono tierra/ámbar */
+            --accent-light: #fef3c7;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #d1fae5;
+            --card-bg: #ffffff;
+            --code-bg: #f8fafc;
+            --error-color: #ef4444;
+            --success-color: #059669;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #cbd5e1;
+            font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .canvas {
+            width: 1200px;
+            height: 627px;
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            position: relative;
+            overflow: hidden;
+            padding: 16px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* HEADER */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 8px;
+            flex-shrink: 0;
+        }
+
+        .title-section {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        h1 {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+            line-height: 1.1;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .header-badge {
+            background-color: var(--primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        /* GRID / ROWS CONTAINER */
+        .rows-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            flex: 1;
+            min-height: 0;
+            justify-content: center;
+        }
+
+        /* ROW CARD */
+        .error-row {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 14px 18px;
+            display: grid;
+            grid-template-columns: 42px 230px 1fr;
+            gap: 16px;
+            align-items: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+            position: relative;
+        }
+
+        .error-number {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            font-size: 16px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .error-title-desc {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .error-name {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1.25;
+        }
+
+        .error-desc {
+            font-size: 10.5px;
+            color: var(--text-muted);
+            line-height: 1.35;
+        }
+
+        /* CODE COMPARISON COLUMNS */
+        .comparison-cols {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .code-box {
+            background: var(--code-bg);
+            border-radius: 6px;
+            padding: 9px 12px;
+            border: 1px solid #e2e8f0;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            font-family: "SF Mono", Menlo, Consolas, monospace;
+            font-size: 11px;
+        }
+
+        .code-box.incorrect {
+            border-left: 3px solid var(--error-color);
+            background: #fff5f5;
+        }
+
+        .code-box.correct {
+            border-left: 3px solid var(--success-color);
+            background: #f0fdf4;
+        }
+
+        .code-header {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 9.5px;
+            font-weight: 700;
+            font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            text-transform: uppercase;
+        }
+
+        .code-box.incorrect .code-header { color: var(--error-color); }
+        .code-box.correct .code-header { color: var(--success-color); }
+
+        pre {
+            font-family: "SF Mono", Menlo, Consolas, monospace;
+            color: var(--text-main);
+            white-space: pre-wrap;
+            line-height: 1.35;
+        }
+
+        .kw { color: #0284c7; font-weight: 600; }
+        .fn { color: #7c3aed; font-weight: 600; }
+        .err { color: var(--error-color); background: #fee2e2; padding: 0 2px; border-radius: 2px; }
+
+        /* FOOTER CONCLUSION */
+        .footer-conclusion {
+            background: var(--primary);
+            color: white;
+            border-radius: 8px;
+            padding: 8px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .conclusion-text {
+            font-size: 11px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .conclusion-text strong {
+            color: #34d399;
+            font-weight: 700;
+        }
+
+        .conclusion-tags {
+            display: flex;
+            gap: 12px;
+            font-size: 9.5px;
+            font-weight: 600;
+        }
+
+        .tag-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            color: #ecfdf5;
+        }
+
+        .tag-item svg {
+            width: 12px;
+            height: 12px;
+            stroke: #34d399;
+            stroke-width: 3;
+            fill: none;
+        }
+
+        /* SIGNATURE */
+        .signature {
+            position: absolute;
+            bottom: 12px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            opacity: 0.85;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 3px 8px;
+            border-radius: 12px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .signature svg { width: 12px; height: 12px; fill: var(--primary); }
+        .signature span { font-size: 10.5px; font-weight: 700; color: var(--primary); }
+
+    </style>
+</head>
+<body>
+
+<div class="canvas">
+    
+    <!-- HEADER -->
+    <header class="header">
+        <div class="title-section">
+            <h1>6 Errores Comunes con GROUP BY</h1>
+            <span class="subtitle">Guía Técnica de SQL · Diagnóstico y Soluciones</span>
+        </div>
+        <div class="header-badge">SQL Optimization</div>
+    </header>
+
+    <!-- ROWS CONTAINER -->
+    <div class="rows-container">
+        
+        <!-- ERROR 1 -->
+        <div class="error-row">
+            <div class="error-number">1</div>
+            <div class="error-title-desc">
+                <span class="error-name">Columnas no agrupadas</span>
+                <span class="error-desc">Seleccionar columnas que no están en el GROUP BY ni agregadas.</span>
+            </div>
+            <div class="comparison-cols">
+                <div class="code-box incorrect">
+                    <div class="code-header">✕ Incorrecto</div>
+                    <pre><span class="kw">SELECT</span> Ciudad, <span class="err">Nombre</span>, <span class="fn">COUNT</span>(*) 
+<span class="kw">FROM</span> Clientes <span class="kw">GROUP BY</span> Ciudad;</pre>
+                </div>
+                <div class="code-box correct">
+                    <div class="code-header">✓ Correcto</div>
+                    <pre><span class="kw">SELECT</span> Ciudad, <span class="fn">COUNT</span>(*) 
+<span class="kw">FROM</span> Clientes <span class="kw">GROUP BY</span> Ciudad;</pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- ERROR 2 -->
+        <div class="error-row">
+            <div class="error-number">2</div>
+            <div class="error-title-desc">
+                <span class="error-name">Omitir funciones de agregación</span>
+                <span class="error-desc">Intentar resumir datos planos sin usar funciones como SUM o AVG.</span>
+            </div>
+            <div class="comparison-cols">
+                <div class="code-box incorrect">
+                    <div class="code-header">✕ Incorrecto</div>
+                    <pre><span class="kw">SELECT</span> Dept, <span class="err">Salario</span> 
+<span class="kw">FROM</span> Empleados <span class="kw">GROUP BY</span> Dept;</pre>
+                </div>
+                <div class="code-box correct">
+                    <div class="code-header">✓ Correcto</div>
+                    <pre><span class="kw">SELECT</span> Dept, <span class="fn">SUM</span>(Salario) <span class="kw">AS</span> Total 
+<span class="kw">FROM</span> Empleados <span class="kw">GROUP BY</span> Dept;</pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- ERROR 3 -->
+        <div class="error-row">
+            <div class="error-number">3</div>
+            <div class="error-title-desc">
+                <span class="error-name">Filtrar agregados con WHERE</span>
+                <span class="error-desc">WHERE actúa antes de agrupar; para filtrar grupos se usa HAVING.</span>
+            </div>
+            <div class="comparison-cols">
+                <div class="code-box incorrect">
+                    <div class="code-header">✕ Incorrecto</div>
+                    <pre><span class="kw">FROM</span> Emp <span class="kw">GROUP BY</span> Dept 
+<span class="err">WHERE COUNT(*) > 5</span>;</pre>
+                </div>
+                <div class="code-box correct">
+                    <div class="code-header">✓ Correcto</div>
+                    <pre><span class="kw">FROM</span> Emp <span class="kw">GROUP BY</span> Dept 
+<span class="kw">HAVING</span> <span class="fn">COUNT</span>(*) > 5;</pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- ERROR 4 -->
+        <div class="error-row">
+            <div class="error-number">4</div>
+            <div class="error-title-desc">
+                <span class="error-name">Agrupar columnas de más</span>
+                <span class="error-desc">Agregar demasiadas dimensiones fragmenta innecesariamente el resultado.</span>
+            </div>
+            <div class="comparison-cols">
+                <div class="code-box incorrect">
+                    <div class="code-header">✕ Exceso de Grupos</div>
+                    <pre><span class="kw">GROUP BY</span> Año, Mes, Dia, <span class="err">Hora_Exacta</span>, Producto;</pre>
+                </div>
+                <div class="code-box correct">
+                    <div class="code-header">✓ Nivel Óptimo</div>
+                    <pre><span class="kw">GROUP BY</span> Año, Mes, Producto;</pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- ERROR 5 -->
+        <div class="error-row">
+            <div class="error-number">5</div>
+            <div class="error-title-desc">
+                <span class="error-name">Ignorar datos duplicados</span>
+                <span class="error-desc">El error de conteo suele deberse a registros duplicados previos en la tabla.</span>
+            </div>
+            <div class="comparison-cols">
+                <div class="code-box incorrect">
+                    <div class="code-header">✕ Sin Validación</div>
+                    <pre><span class="kw">SELECT</span> <span class="err">*</span>, <span class="fn">COUNT</span>(*) <span class="kw">FROM</span> Tabla 
+<span class="kw">GROUP BY</span> Clave;</pre>
+                </div>
+                <div class="code-box correct">
+                    <div class="code-header">✓ Con Auditoría previa</div>
+                    <pre><span class="kw">SELECT</span> Clave, <span class="fn">COUNT</span>(*) <span class="kw">FROM</span> Tabla
+<span class="kw">GROUP BY</span> Clave <span class="kw">HAVING</span> <span class="fn">COUNT</span>(*) > 1;</pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- ERROR 6 -->
+        <div class="error-row">
+            <div class="error-number">6</div>
+            <div class="error-title-desc">
+                <span class="error-name">No filtrar antes de agrupar</span>
+                <span class="error-desc">Agrupar la tabla completa cuando WHERE podría descartar filas irrelevantes desde antes.</span>
+            </div>
+            <div class="comparison-cols">
+                <div class="code-box incorrect">
+                    <div class="code-header">✕ Agrupa Todo</div>
+                    <pre><span class="kw">SELECT</span> Dept, <span class="fn">COUNT</span>(*) <span class="kw">FROM</span> Empleados
+<span class="kw">GROUP BY</span> Dept;</pre>
+                </div>
+                <div class="code-box correct">
+                    <div class="code-header">✓ Filtra Primero</div>
+                    <pre><span class="kw">SELECT</span> Dept, <span class="fn">COUNT</span>(*) <span class="kw">FROM</span> Empleados
+<span class="kw">WHERE</span> Activo = 1 <span class="kw">GROUP BY</span> Dept;</pre>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- FOOTER CONCLUSION -->
+    <div class="footer-conclusion">
+        <div class="conclusion-text">
+            <span>💡 <strong>Regla de Oro:</strong> Menos columnas innecesarias y uso correcto de cláusulas garantizan consultas limpias y eficientes.</span>
+        </div>
+        <div class="conclusion-tags">
+            <div class="tag-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Valida tus datos</div>
+            <div class="tag-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Usa HAVING</div>
+            <div class="tag-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Agrupa con propósito</div>
+        </div>
+    </div>
+
+    <!-- SIGNATURE -->
+    <div class="signature">
+        <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+        <span>cacm523</span>
+    </div>
+
+</div>
+
+</body>
+</html>

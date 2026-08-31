@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografía - ISO 8000 Calidad de Datos</title>
+    <style>
+
+        :root {
+            --bg-canvas: #f0fdf4;
+            --primary: #064e3b;
+            --primary-light: #10b981;
+            --accent: #d97706; /* Tono tierra/ámbar */
+            --accent-light: #fef3c7;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --card-bg: #ffffff;
+            --success: #059669;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #cbd5e1;
+            font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .canvas {
+            width: 1200px;
+            height: 627px;
+            background: linear-gradient(135deg, #f8fafc 0%, #ecfdf5 100%);
+            position: relative;
+            overflow: hidden;
+            padding: 24px 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* HEADER */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 12px;
+            flex-shrink: 0;
+        }
+
+        .title-section {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .title-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+            line-height: 1;
+        }
+
+        .badge-update {
+            background-color: var(--accent);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .subtitle {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .header-desc {
+            font-size: 12px;
+            color: var(--text-muted);
+            max-width: 600px;
+            line-height: 1.4;
+        }
+
+        /* GRID LAYOUT */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: 172px 118px 165px;
+            gap: 14px;
+            flex: 1;
+            min-height: 0;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 14px 16px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--primary-light);
+            opacity: 0.8;
+        }
+        
+        .card.accent::before { background: var(--accent); }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .card-header svg {
+            width: 16px;
+            height: 16px;
+            stroke: var(--primary);
+            stroke-width: 2.5;
+            fill: none;
+        }
+
+        h2 {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* CARD SPECIFICS */
+        .col-3 { grid-column: span 3; }
+        .col-4 { grid-column: span 4; }
+        .col-5 { grid-column: span 5; }
+        .col-6 { grid-column: span 6; }
+        .col-7 { grid-column: span 7; }
+        .col-8 { grid-column: span 8; }
+        .col-12 { grid-column: span 12; }
+
+        p.text-sm {
+            font-size: 11px;
+            color: var(--text-muted);
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+
+        /* Lists */
+        .feature-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 12px;
+        }
+
+        .feature-list li {
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .feature-list li svg {
+            width: 12px;
+            height: 12px;
+            stroke: var(--success);
+            stroke-width: 3;
+            flex-shrink: 0;
+        }
+
+        /* Flowchart */
+        .flow-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 10px;
+            border: 1px dashed var(--border);
+            margin-bottom: 8px;
+        }
+
+        .flow-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 4px;
+            width: 75px;
+        }
+
+        .flow-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .flow-icon svg { width: 14px; height: 14px; stroke: var(--text-main); stroke-width: 2; fill: none; }
+        .flow-step:nth-child(1) .flow-icon svg { stroke: #ef4444; }
+        .flow-step:nth-child(5) .flow-icon svg { stroke: #ef4444; }
+
+        .flow-label { font-size: 9px; font-weight: 600; color: var(--text-main); line-height: 1.1; }
+
+        .flow-arrow {
+            color: var(--text-muted);
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .result-box {
+            background: var(--primary);
+            color: white;
+            padding: 8px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        /* Dimensions Grid */
+        .dim-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            height: 100%;
+        }
+
+        .dim-card {
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px 6px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+
+        .dim-icon {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: var(--accent-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dim-icon svg {
+            width: 14px;
+            height: 14px;
+            stroke: var(--accent);
+            stroke-width: 2.5;
+            fill: none;
+        }
+
+        .dim-title { font-size: 10px; font-weight: 700; color: var(--primary); }
+        .dim-desc { font-size: 8.5px; color: var(--text-muted); line-height: 1.2; }
+
+        /* Structure / Family */
+        .family-container {
+            display: flex;
+            gap: 8px;
+            height: 100%;
+            align-items: stretch;
+        }
+
+        .family-box {
+            flex: 1;
+            background: #f1f5f9;
+            border-radius: 6px;
+            padding: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            border-top: 3px solid var(--text-muted);
+        }
+        
+        .family-box:nth-child(odd) { border-top-color: var(--primary-light); }
+
+        .fam-id { font-size: 10px; font-weight: 800; color: var(--text-main); }
+        .fam-title { font-size: 9px; font-weight: 600; color: var(--primary); }
+        .fam-desc { font-size: 8.5px; color: var(--text-muted); line-height: 1.2; }
+
+        /* Implementation Steps */
+        .steps-container {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            background: #f8fafc;
+            padding: 6px 8px;
+            border-radius: 6px;
+            border-left: 2px solid var(--accent);
+        }
+
+        .step-num {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: white;
+            font-size: 10px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .step-text { font-size: 10.5px; font-weight: 500; color: var(--text-main); line-height: 1.3; }
+
+        /* Signature */
+        .footer {
+            position: absolute;
+            bottom: 16px;
+            right: 24px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            opacity: 0.8;
+        }
+
+        .footer svg { width: 14px; height: 14px; fill: var(--primary); }
+        .footer span { font-size: 12px; font-weight: 600; color: var(--primary); }
+        
+        /* Summary Box */
+        .summary-box {
+            background: var(--primary-light);
+            color: white;
+            padding: 10px 12px;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: 500;
+            line-height: 1.4;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: auto;
+        }
+        .summary-box svg { width: 24px; height: 24px; stroke: white; flex-shrink: 0; }
+
+    </style>
+</head>
+<body>
+
+<div class="canvas">
+    
+    <!-- HEADER -->
+    <header class="header">
+        <div class="title-section">
+            <div class="title-wrapper">
+                <h1>ISO 8000</h1>
+                <span class="badge-update">Guía y Marco de Referencia</span>
+            </div>
+            <div class="subtitle">Estándar Internacional para la Calidad de los Datos</div>
+        </div>
+        <div class="header-desc">
+            Define los estándares globales para gestionar y mejorar la calidad de los datos a lo largo de todo su ciclo de vida, asegurando que se conviertan en un activo estratégico confiable para la organización.
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <div class="bento-grid">
+        
+        <!-- ROW 1 -->
+        <!-- Card 1: ¿Qué es? -->
+        <div class="card col-4">
+            <div class="card-header">
+                <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <h2>¿Qué es la ISO 8000?</h2>
+            </div>
+            <p class="text-sm">Proporciona un marco metodológico común para definir, medir, gestionar y mejorar la calidad de los datos empresariales, garantizando que sean:</p>
+            <ul class="feature-list">
+                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Confiables</li>
+                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Consistentes</li>
+                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Relevantes</li>
+                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Comprensibles</li>
+                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Accesibles</li>
+                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Seguros</li>
+            </ul>
+        </div>
+
+        <!-- Card 2: Importancia -->
+        <div class="card col-5 accent">
+            <div class="card-header">
+                <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                <h2 style="color: var(--accent);">El Riesgo de la Mala Calidad</h2>
+            </div>
+            <p class="text-sm" style="margin-bottom:6px;">Los datos deficientes generan una reacción en cadena destructiva:</p>
+            <div class="flow-container">
+                <div class="flow-step">
+                    <div class="flow-icon"><svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg></div>
+                    <span class="flow-label">Datos Inexactos</span>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">
+                    <div class="flow-icon"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+                    <span class="flow-label">Decisiones Equivocadas</span>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">
+                    <div class="flow-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+                    <span class="flow-label">Pérdidas y Daño Reputacional</span>
+                </div>
+            </div>
+            <div class="result-box">
+                <svg viewBox="0 0 24 24" style="width:16px; height:16px; stroke:white; fill:none; stroke-width:2;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                Mejores Datos = Mejores Decisiones = Mejores Resultados
+            </div>
+        </div>
+
+        <!-- Card 3: Beneficios -->
+        <div class="card col-3">
+            <div class="card-header">
+                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <h2>Beneficios Clave</h2>
+            </div>
+            <ul class="feature-list" style="grid-template-columns: 1fr; gap:10px;">
+                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Decisiones basadas en datos confiables</li>
+                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Reducción de costos por reprocesos</li>
+                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Mayor satisfacción de clientes</li>
+                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Cumplimiento normativo y control de riesgo</li>
+            </ul>
+        </div>
+
+        <!-- ROW 2: Dimensiones -->
+        <div class="card col-12">
+            <div class="card-header" style="margin-bottom: 6px;">
+                <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                <h2>7 Dimensiones de la Calidad de Datos (Según ISO 8000)</h2>
+            </div>
+            <div class="dim-grid">
+                <div class="dim-card">
+                    <div class="dim-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+                    <span class="dim-title">Exactitud</span>
+                    <span class="dim-desc">¿Qué tan correctos y precisos son los datos?</span>
+                </div>
+                <div class="dim-card">
+                    <div class="dim-icon"><svg viewBox="0 0 24 24"><path d="M19.439 7.85c-.049.322.059.648.289.878l1.568 1.568c.47.47.706 1.087.706 1.704s-.235 1.233-.706 1.704l-1.611 1.611a.954.954 0 0 0-.253.943c.224.795.093 1.666-.37 2.36l-1.396 2.094c-.457.685-1.229 1.09-2.052 1.09h-1.954c-.319 0-.623.125-.852.35l-1.658 1.62c-.469.458-1.09.7-1.724.7s-1.255-.242-1.724-.7l-1.658-1.62a1.205 1.205 0 0 0-.852-.35H5.238c-.823 0-1.595-.405-2.052-1.09l-1.396-2.094c-.463-.694-.594-1.565-.37-2.36.082-.293-.007-.608-.253-.943L-.444 13.7c-.47-.47-.706-1.087-.706-1.704s.235-1.233.706-1.704l1.568-1.568c.23-.23.338-.556.289-.878-.135-.884.093-1.785.642-2.48l1.396-1.761c.44-.555 1.12-.878 1.832-.878h2.098c.307 0 .6-.118.82-.33l1.554-1.488c.473-.453 1.101-.693 1.745-.693s1.272.24 1.745.693l1.554 1.488c.22.212.513.33.82.33h2.098c.712 0 1.391.323 1.832.878l1.396 1.761c.549.695.777 1.596.642 2.48z"/></svg></div>
+                    <span class="dim-title">Completitud</span>
+                    <span class="dim-desc">¿Están presentes todos los valores y datos necesarios?</span>
+                </div>
+                <div class="dim-card">
+                    <div class="dim-icon"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/></svg></div>
+                    <span class="dim-title">Consistencia</span>
+                    <span class="dim-desc">¿Son los datos iguales a través de múltiples sistemas?</span>
+                </div>
+                <div class="dim-card">
+                    <div class="dim-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+                    <span class="dim-title">Credibilidad</span>
+                    <span class="dim-desc">¿Provienen de fuentes confiables y son verificables?</span>
+                </div>
+                <div class="dim-card">
+                    <div class="dim-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+                    <span class="dim-title">Relevancia</span>
+                    <span class="dim-desc">¿Son útiles, aplicables y necesarios para el negocio?</span>
+                </div>
+                <div class="dim-card">
+                    <div class="dim-icon"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
+                    <span class="dim-title">Accesibilidad</span>
+                    <span class="dim-desc">¿Están disponibles y en el formato tecnológico adecuado?</span>
+                </div>
+                <div class="dim-card">
+                    <div class="dim-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+                    <span class="dim-title">Actualidad</span>
+                    <span class="dim-desc">¿Reflejan el estado más reciente y están al día?</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ROW 3 -->
+        <!-- Card 5: Estructura -->
+        <div class="card col-7">
+            <div class="card-header">
+                <svg viewBox="0 0 24 24"><path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4"/><polyline points="14 2 14 8 20 8"/><path d="M3 15h6"/><path d="M3 18h6"/></svg>
+                <h2>Estructura (Familia de Normas)</h2>
+            </div>
+            <div class="family-container">
+                <div class="family-box">
+                    <span class="fam-id">ISO 8000-1 / 2</span>
+                    <span class="fam-title">Conceptos Base</span>
+                    <span class="fam-desc">Vista general, principios y vocabulario estándar.</span>
+                </div>
+                <div class="family-box">
+                    <span class="fam-id">ISO 8000-8 / 6x</span>
+                    <span class="fam-title">Requisitos</span>
+                    <span class="fam-desc">Características para productos y servicios de datos.</span>
+                </div>
+                <div class="family-box">
+                    <span class="fam-id">ISO 8000-1xx</span>
+                    <span class="fam-title">Datos Maestros</span>
+                    <span class="fam-desc">Medición, intercambio y formato de Master Data.</span>
+                </div>
+                <div class="family-box">
+                    <span class="fam-id">ISO 8000-3xx</span>
+                    <span class="fam-title">Gestión</span>
+                    <span class="fam-desc">Mejores prácticas y evaluación de madurez.</span>
+                </div>
+            </div>
+            <div class="summary-box">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M9 11l3 3L22 4" stroke-width="2"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" stroke-width="2"/></svg>
+                <span><strong>En Resumen:</strong> ISO 8000 establece un lenguaje común corporativo para que los datos pasen de ser un subproducto a un activo estratégico medible.</span>
+            </div>
+        </div>
+
+        <!-- Card 6: Implementación -->
+        <div class="card col-5">
+            <div class="card-header">
+                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <h2>¿Cómo Implementar ISO 8000?</h2>
+            </div>
+            <div class="steps-container">
+                <div class="step-item">
+                    <div class="step-num">1</div>
+                    <div class="step-text">Comprender el contexto y los requisitos específicos del negocio y stakeholders.</div>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">2</div>
+                    <div class="step-text">Definir la estrategia, el alcance y las políticas de calidad de datos.</div>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">3</div>
+                    <div class="step-text">Establecer procesos robustos de gestión, gobernanza y limpieza de datos.</div>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">4</div>
+                    <div class="step-text">Medir y monitorear la calidad utilizando KPIs alineados a las dimensiones.</div>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">5</div>
+                    <div class="step-text">Ejecutar ciclos de mejora continua (PDCA) adaptando los controles.</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- FOOTER SIGNATURE -->
+    <div class="footer">
+        <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+        <span>cacm523</span>
+    </div>
+
+</div>
+
+</body>
+</html>

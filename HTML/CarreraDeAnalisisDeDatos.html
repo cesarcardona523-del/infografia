@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cómo Empezar una Carrera Tecnológica en Análisis de Datos</title>
+    <style>
+
+        :root {
+            --bg-canvas: #f0fdf4;
+            --primary: #064e3b;
+            --primary-light: #10b981;
+            --accent: #d97706; /* Tono tierra/ámbar */
+            --accent-light: #fef3c7;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #d1fae5;
+            --card-bg: #ffffff;
+            --code-bg: #f8fafc;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #cbd5e1;
+            font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .canvas {
+            width: 1200px;
+            height: 627px;
+            background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+            position: relative;
+            overflow: hidden;
+            padding: 16px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* HEADER */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 8px;
+            flex-shrink: 0;
+        }
+
+        .title-section {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        h1 {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+            line-height: 1.1;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .header-badge {
+            background-color: var(--primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        /* BENTO GRID LAYOUT */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: 1fr 140px;
+            gap: 8px;
+            flex: 1;
+            min-height: 0;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 8px 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+            position: relative;
+            overflow: hidden;
+            min-height: 0;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: var(--primary-light);
+        }
+
+        .card.accent::before {
+            background: var(--accent);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 4px;
+        }
+
+        .card-header svg {
+            width: 14px;
+            height: 14px;
+            stroke: var(--primary);
+            stroke-width: 2.5;
+            fill: none;
+        }
+
+        h2 {
+            font-size: 10.5px;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* SPANS */
+        .col-4 { grid-column: span 4; }
+        .col-5 { grid-column: span 5; }
+        .col-7 { grid-column: span 7; }
+        .col-8 { grid-column: span 8; }
+        .col-12 { grid-column: span 12; }
+
+        p.text-xs {
+            font-size: 8.5px;
+            color: var(--text-muted);
+            line-height: 1.25;
+            margin-bottom: 4px;
+        }
+
+        /* ROUTE TIMELINE GRID (6 STEPS) */
+        .route-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 6px;
+            height: 100%;
+        }
+
+        .route-step {
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 6px;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            position: relative;
+        }
+
+        .route-num {
+            font-size: 8px;
+            font-weight: 800;
+            color: var(--accent);
+            text-transform: uppercase;
+        }
+
+        .route-title {
+            font-size: 9px;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1.1;
+        }
+
+        .route-desc {
+            font-size: 7.5px;
+            color: var(--text-muted);
+            line-height: 1.2;
+        }
+
+        .route-skills {
+            margin-top: 8px;
+            padding-top: 5px;
+            border-top: 1px dashed var(--border);
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .route-skills li {
+            list-style: none;
+            font-size: 7px;
+            color: var(--primary);
+            font-weight: 600;
+            display: flex;
+            align-items: flex-start;
+            gap: 3px;
+        }
+
+        .route-skills li::before {
+            content: '›';
+            color: var(--accent);
+            font-weight: 800;
+        }
+
+        /* CODE BOX */
+        .code-snippet {
+            background: var(--code-bg);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 6px 8px;
+            font-family: "SF Mono", Menlo, Consolas, monospace;
+            font-size: 8px;
+            color: var(--text-main);
+            line-height: 1.3;
+            margin-top: 4px;
+        }
+
+        .code-snippet .kw { color: #0284c7; font-weight: 600; }
+        .code-snippet .fn { color: #7c3aed; font-weight: 600; }
+
+        /* FLOWCHART (PROJECT STEPS) */
+        .flow-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #f8fafc;
+            border-radius: 6px;
+            padding: 6px 8px;
+            border: 1px dashed var(--border);
+            flex: 1;
+            min-height: 0;
+            margin-top: 6px;
+        }
+
+        .flow-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 2px;
+            width: 85px;
+        }
+
+        .flow-icon {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .flow-icon svg { width: 12px; height: 12px; stroke: var(--primary); stroke-width: 2; fill: none; }
+        .flow-label { font-size: 8px; font-weight: 700; color: var(--primary); }
+        .flow-sub { font-size: 7px; color: var(--text-muted); line-height: 1.1; }
+        .flow-arrow { color: var(--text-muted); font-size: 12px; font-weight: bold; }
+
+        /* ADVICE LIST */
+        .advice-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3px 12px;
+        }
+
+        .advice-list li {
+            font-size: 8.5px;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-weight: 500;
+        }
+
+        .advice-list li svg {
+            width: 10px;
+            height: 10px;
+            stroke: var(--accent);
+            stroke-width: 3;
+            fill: none;
+            flex-shrink: 0;
+        }
+
+        /* FOOTER SIGNATURE */
+        .footer {
+            position: absolute;
+            bottom: 10px;
+            right: 24px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            opacity: 0.85;
+            background: rgba(255,255,255,0.9);
+            padding: 3px 8px;
+            border-radius: 12px;
+        }
+
+        .footer svg { width: 12px; height: 12px; fill: var(--primary); }
+        .footer span { font-size: 10px; font-weight: 700; color: var(--primary); }
+
+    </style>
+</head>
+<body>
+
+<div class="canvas">
+    
+    <!-- HEADER -->
+    <header class="header">
+        <div class="title-section">
+            <h1>Cómo Empezar una Carrera en Análisis de Datos</h1>
+            <span class="subtitle">Guía paso a paso para principiantes · De cero al primer empleo</span>
+        </div>
+        <div class="header-badge">
+            Curiosidad + Constancia<br>= Impacto Real
+        </div>
+    </header>
+
+    <!-- BENTO GRID -->
+    <div class="bento-grid">
+        
+        <!-- CARD 1: Ruta de Aprendizaje en 6 Pasos (Span 12, Row 1) -->
+        <div class="card col-12">
+            <div>
+                <div class="card-header">
+                    <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                    <h2>Ruta de Aprendizaje Recomendada (6 Hitos Clave)</h2>
+                </div>
+                <p class="text-xs">Camino estructurado para dominar las habilidades técnicas y analíticas esenciales.</p>
+            </div>
+            <div class="route-grid">
+                <div class="route-step">
+                    <span class="route-num">Paso 01</span>
+                    <span class="route-title">Entiende el Rol</span>
+                    <span class="route-desc">Explora, limpia y transforma datos para responder preguntas de negocio.</span>
+                    <ul class="route-skills">
+                        <li>Analista vs. Científico vs. Ingeniero</li>
+                        <li>Pensamiento orientado a preguntas</li>
+                    </ul>
+                </div>
+                <div class="route-step">
+                    <span class="route-num">Paso 02</span>
+                    <span class="route-title">Bases y Estadística</span>
+                    <span class="route-desc">Pensamiento analítico, estadística descriptiva y hojas de cálculo (Excel).</span>
+                    <ul class="route-skills">
+                        <li>Media, mediana, desviación</li>
+                        <li>Tablas dinámicas y fórmulas</li>
+                    </ul>
+                </div>
+                <div class="route-step">
+                    <span class="route-num">Paso 03</span>
+                    <span class="route-title">Domina SQL</span>
+                    <span class="route-desc">Consultas relacionales, JOINs y agregaciones para extraer datos masivos.</span>
+                    <ul class="route-skills">
+                        <li>SELECT, WHERE, GROUP BY</li>
+                        <li>INNER / LEFT JOIN</li>
+                    </ul>
+                </div>
+                <div class="route-step">
+                    <span class="route-num">Paso 04</span>
+                    <span class="route-title">Visualización</span>
+                    <span class="route-desc">Power BI o Tableau para transformar métricas en dashboards interactivos.</span>
+                    <ul class="route-skills">
+                        <li>Modelado de datos (DAX)</li>
+                        <li>Storytelling visual</li>
+                    </ul>
+                </div>
+                <div class="route-step">
+                    <span class="route-num">Paso 05</span>
+                    <span class="route-title">Python (Opcional)</span>
+                    <span class="route-desc">Pandas y NumPy para automatización y análisis exploratorio avanzado.</span>
+                    <ul class="route-skills">
+                        <li>Limpieza con Pandas</li>
+                        <li>Scripts de automatización</li>
+                    </ul>
+                </div>
+                <div class="route-step">
+                    <span class="route-num">Paso 06</span>
+                    <span class="route-title">Portafolio</span>
+                    <span class="route-desc">Sube proyectos reales a GitHub o Kaggle para validar competencias.</span>
+                    <ul class="route-skills">
+                        <li>Documenta el proceso, no solo el resultado</li>
+                        <li>Comparte hallazgos en LinkedIn</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARD 2: Ejemplo de Proyecto Práctico (Span 7, Row 2) -->
+        <div class="card col-7">
+            <div>
+                <div class="card-header">
+                    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                    <h2>Flujo de un Proyecto Práctico para Principiantes</h2>
+                </div>
+                <p class="text-xs">Ejemplo práctico: Análisis de rendimiento de ventas minoristas.</p>
+            </div>
+            <div class="flow-container">
+                <div class="flow-step">
+                    <div class="flow-icon"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
+                    <span class="flow-label">1. Ingesta</span>
+                    <span class="flow-sub">Dataset Kaggle</span>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">
+                    <div class="flow-icon"><svg viewBox="0 0 24 24"><path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></div>
+                    <span class="flow-label">2. Limpieza</span>
+                    <span class="flow-sub">Duplicados/Nulos</span>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">
+                    <div class="flow-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+                    <span class="flow-label">3. SQL / Análisis</span>
+                    <span class="flow-sub">GROUP BY / SUM</span>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">
+                    <div class="flow-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+                    <span class="flow-label">4. Dashboard</span>
+                    <span class="flow-sub">Power BI Visual</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARD 3: Consejos Clave (Span 5, Row 2) -->
+        <div class="card col-5 accent">
+            <div>
+                <div class="card-header">
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <h2>Consejos Clave para Triunfar</h2>
+                </div>
+                <p class="text-xs">Hábitos recomendados para acelerar tu inserción en el mercado.</p>
+            </div>
+            <ul class="advice-list">
+                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Sé constante (30 min/día)</li>
+                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Aprende haciendo (proyectos)</li>
+                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Comparte en LinkedIn</li>
+                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Enfócate en resolver problemas</li>
+                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Prioriza claridad sobre complejidad</li>
+                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Pide retroalimentación temprano</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <!-- FOOTER SIGNATURE -->
+    <div class="footer">
+        <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+        <span>cacm523</span>
+    </div>
+
+</div>
+
+</body>
+</html>

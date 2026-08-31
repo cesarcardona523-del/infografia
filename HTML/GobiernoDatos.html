@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Gobierno de Datos no es el destino, es el puente a los resultados</title>
+    <style>
+
+        :root {
+            --bg-canvas: #f0fdf4;
+            --primary: #064e3b;
+            --primary-light: #10b981;
+            --accent: #d97706; /* Tono tierra/ámbar */
+            --accent-light: #fef3c7;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #d1fae5;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #cbd5e1;
+            font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .canvas {
+            width: 1200px;
+            height: 627px;
+            background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+            position: relative;
+            overflow: hidden;
+            padding: 16px 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* HEADER */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 8px;
+            flex-shrink: 0;
+        }
+
+        .title-section {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        h1 {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+            line-height: 1.1;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .header-badge {
+            background-color: var(--primary);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        /* BENTO GRID LAYOUT */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: 1fr 125px;
+            gap: 8px;
+            flex: 1;
+            min-height: 0;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: var(--primary-light);
+        }
+
+        .card.accent::before {
+            background: var(--accent);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 6px;
+        }
+
+        .card-header svg {
+            width: 14px;
+            height: 14px;
+            stroke: var(--primary);
+            stroke-width: 2.5;
+            fill: none;
+        }
+
+        h2 {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* SPANS */
+        .col-4 { grid-column: span 4; }
+        .col-5 { grid-column: span 5; }
+        .col-7 { grid-column: span 7; }
+        .col-8 { grid-column: span 8; }
+        .col-12 { grid-column: span 12; }
+
+        p.text-xs {
+            font-size: 9px;
+            color: var(--text-muted);
+            line-height: 1.3;
+            margin-bottom: 6px;
+        }
+
+        /* 4 LAYERS CONCENTRIC METAPHOR (COMPACT) */
+        .layers-container {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            height: 100%;
+            justify-content: space-evenly;
+        }
+
+        .layer-row {
+            display: grid;
+            grid-template-columns: 24px 110px 1fr;
+            align-items: start;
+            background: #f8fafc;
+            padding: 8px 10px;
+            border-radius: 6px;
+            border-left: 3px solid var(--primary);
+            gap: 8px;
+        }
+
+        .layer-row:nth-child(1) { border-left-color: var(--primary-light); }
+        .layer-row:nth-child(2) { border-left-color: var(--primary); }
+        .layer-row:nth-child(3) { border-left-color: var(--accent); }
+        .layer-row:nth-child(4) { border-left-color: #7a5c3e; background: #f7f2ea; }
+
+        .layer-num {
+            font-size: 9px;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .layer-title {
+            font-size: 9.5px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .layer-desc {
+            font-size: 8.5px;
+            color: var(--text-muted);
+        }
+
+        /* BUSINESS RESULTS GRID */
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+            height: 100%;
+        }
+
+        .result-box {
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 6px 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .result-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--accent-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .result-icon svg {
+            width: 12px;
+            height: 12px;
+            stroke: var(--accent);
+            stroke-width: 2.5;
+            fill: none;
+        }
+
+        .result-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+        }
+
+        .result-title {
+            font-size: 9.5px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .result-desc {
+            font-size: 8px;
+            color: var(--text-muted);
+            line-height: 1.2;
+        }
+
+        /* PRINCIPLES ROW (BOTTOM) */
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 6px;
+            height: 100%;
+        }
+
+        .principle-box {
+            background: #f8fafc;
+            border-radius: 6px;
+            padding: 6px;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            text-align: center;
+            align-items: center;
+        }
+
+        .principle-box svg {
+            width: 14px;
+            height: 14px;
+            stroke: var(--primary-light);
+            stroke-width: 2;
+            fill: none;
+            margin-bottom: 2px;
+        }
+
+        .principle-title {
+            font-size: 8.5px;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1.1;
+        }
+
+        .principle-desc {
+            font-size: 7.5px;
+            color: var(--text-muted);
+            line-height: 1.15;
+        }
+
+        /* FOOTER SIGNATURE */
+        .footer {
+            position: absolute;
+            bottom: 10px;
+            right: 28px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            opacity: 0.85;
+            background: rgba(255,255,255,0.9);
+            padding: 3px 8px;
+            border-radius: 12px;
+        }
+
+        .footer svg { width: 12px; height: 12px; fill: var(--primary); }
+        .footer span { font-size: 10px; font-weight: 700; color: var(--primary); }
+
+    </style>
+</head>
+<body>
+
+<div class="canvas">
+    
+    <!-- HEADER -->
+    <header class="header">
+        <div class="title-section">
+            <h1>El Gobierno de Datos no es el destino, es el puente a los resultados</h1>
+            <span class="subtitle">De la burocracia normativa al impacto estratégico de negocio</span>
+        </div>
+        <div class="header-badge">
+            Empezar de afuera hacia adentro<br>conecta gobierno y valor.
+        </div>
+    </header>
+
+    <!-- BENTO GRID -->
+    <div class="bento-grid">
+        
+        <!-- CARD 1: El Modelo en 4 Capas (Span 5) -->
+        <div class="card col-5">
+            <div>
+                <div class="card-header">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg>
+                    <h2>El Modelo en 4 Capas (De afuera hacia adentro)</h2>
+                </div>
+                <p class="text-xs">Estructura jerárquica para alinear la gobernanza con la creación de valor.</p>
+            </div>
+            <div class="layers-container">
+                <div class="layer-row">
+                    <span class="layer-num">01</span>
+                    <span class="layer-title">Data Operating Model</span>
+                    <span class="layer-desc">Estructura organizacional y quién decide — comités, Data Owners y líneas de escalamiento.</span>
+                </div>
+                <div class="layer-row">
+                    <span class="layer-num">02</span>
+                    <span class="layer-title">Data Governance</span>
+                    <span class="layer-desc">Políticas, estándares y reglas del juego — qué se permite, qué se audita y quién responde.</span>
+                </div>
+                <div class="layer-row">
+                    <span class="layer-num">03</span>
+                    <span class="layer-title">Data Management</span>
+                    <span class="layer-desc">Calidad, linaje, catálogos y accesos operativos — la ejecución diaria que sostiene la política.</span>
+                </div>
+                <div class="layer-row">
+                    <span class="layer-num">04</span>
+                    <span class="layer-title">Data Products</span>
+                    <span class="layer-desc">Donde aparece el valor real y reutilizable — dashboards, modelos y APIs listos para negocio.</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARD 2: Resultados de Negocio (Span 7) -->
+        <div class="card col-7 accent">
+            <div>
+                <div class="card-header">
+                    <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                    <h2>Resultados de Negocio Habilitados</h2>
+                </div>
+                <p class="text-xs">El valor del gobierno de datos se mide en el rendimiento estratégico que desbloquea.</p>
+            </div>
+            <div class="results-grid">
+                <div class="result-box">
+                    <div class="result-icon"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+                    <div class="result-info">
+                        <span class="result-title">Mejores KPIs</span>
+                        <span class="result-desc">Decisiones basadas en datos confiables. Menos discusión sobre qué número es el correcto.</span>
+                    </div>
+                </div>
+                <div class="result-box">
+                    <div class="result-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+                    <div class="result-info">
+                        <span class="result-title">Transparencia</span>
+                        <span class="result-desc">Reportes consistentes y auditables. El mismo dato significa lo mismo en toda la empresa.</span>
+                    </div>
+                </div>
+                <div class="result-box">
+                    <div class="result-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                    <div class="result-info">
+                        <span class="result-title">Cumplimiento</span>
+                        <span class="result-desc">Menor riesgo normativo y sanciones. Evidencia lista ante cualquier auditoría externa.</span>
+                    </div>
+                </div>
+                <div class="result-box">
+                    <div class="result-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+                    <div class="result-info">
+                        <span class="result-title">Dashboards</span>
+                        <span class="result-desc">Información oportuna y entendida. Confianza para actuar sobre lo que muestra el tablero.</span>
+                    </div>
+                </div>
+                <div class="result-box">
+                    <div class="result-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+                    <div class="result-info">
+                        <span class="result-title">M&A Ágiles</span>
+                        <span class="result-desc">Datos alineados, menor fricción. La due diligence de datos deja de ser el cuello de botella.</span>
+                    </div>
+                </div>
+                <div class="result-box">
+                    <div class="result-icon"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 1 7.54 16.54L22 21l-2.46-2.46A10 10 0 1 1 12 2z"/></svg></div>
+                    <div class="result-info">
+                        <span class="result-title">AI Readiness</span>
+                        <span class="result-desc">IA efectiva requiere datos gobernados. Sin esto, el modelo hereda el mismo ruido de siempre.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARD 3: Principios Clave (Span 12) -->
+        <div class="card col-12" style="justify-content: center; padding: 8px 12px;">
+            <div class="card-header" style="margin-bottom: 4px;">
+                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <h2>Principios Clave del Gobierno de Datos Efectivo</h2>
+            </div>
+            <div class="principles-grid">
+                <div class="principle-box">
+                    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    <span class="principle-title">Empezar por el Negocio</span>
+                    <span class="principle-desc">Trabajar desde los resultados hacia atrás — nunca desde la tecnología disponible.</span>
+                </div>
+                <div class="principle-box">
+                    <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                    <span class="principle-title">Claridad en Roles</span>
+                    <span class="principle-desc">Sin ownership claro nada funcionará — alguien decide, o nadie decide.</span>
+                </div>
+                <div class="principle-box">
+                    <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    <span class="principle-title">Reglas que Habilitan</span>
+                    <span class="principle-desc">Políticas para habilitar, no burocratizar — cada regla debe reducir fricción real.</span>
+                </div>
+                <div class="principle-box">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                    <span class="principle-title">Ejecución con Disciplina</span>
+                    <span class="principle-desc">Lo que no se opera, no se gobierna — un documento sin proceso no cambia nada.</span>
+                </div>
+                <div class="principle-box">
+                    <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    <span class="principle-title">Valor Tangible Siempre</span>
+                    <span class="principle-desc">Conectar iniciativa con KPI o riesgo — si no mueve ninguno, no es prioridad.</span>
+                </div>
+                <div class="principle-box">
+                    <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    <span class="principle-title">Adopción Organizacional</span>
+                    <span class="principle-desc">Personas y procesos simples sostienen el cambio más que cualquier herramienta.</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- FOOTER SIGNATURE -->
+    <div class="footer">
+        <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+        <span>cacm523</span>
+    </div>
+
+</div>
+
+</body>
+</html>
