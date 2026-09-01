@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISO 9001 y Gobernanza de Datos</title>
+    <style>
+
+        :root {
+            --bg-canvas: #f8fafc;
+            --primary: #072113;
+            --primary-light: #d97706;
+            --accent: #10b981; /* Verde esmeralda para destacar */
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --card-bg: #ffffff;
+            --iso-color: #64748b;
+            --data-color: #0e3d23;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #e7ede9;
+            font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .canvas {
+            width: 1200px;
+            height: 627px;
+            background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+            position: relative;
+            overflow: hidden;
+            padding: 18px 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* HEADER */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 8px;
+            flex-shrink: 0;
+        }
+
+        .title-section {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            max-width: 70%;
+        }
+
+        .title-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h1 {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+            line-height: 1.1;
+        }
+
+        .badge {
+            background-color: var(--primary-light);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 9.5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .header-desc {
+            font-size: 10px;
+            color: var(--text-muted);
+            font-weight: 500;
+            line-height: 1.35;
+        }
+
+        /* COMPARISON LEGEND */
+        .legend {
+            display: flex;
+            gap: 16px;
+            background: var(--card-bg);
+            padding: 7px 16px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 9.5px;
+            font-weight: 600;
+        }
+
+        .legend-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+        .legend-dot.iso { background-color: var(--iso-color); }
+        .legend-dot.data { background-color: var(--data-color); }
+
+        /* GRID LAYOUT */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            flex: 1;
+            min-height: 0;
+        }
+
+        /* CARD STYLES */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 11px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--iso-color) 50%, var(--data-color) 50%);
+        }
+        
+        .card.summary::before {
+            background: var(--accent);
+        }
+
+        .card-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 6px;
+            padding-bottom: 8px;
+            border-bottom: 1px dashed var(--border);
+        }
+
+        .icon-container {
+            width: 30px;
+            height: 30px;
+            border-radius: 9px;
+            background: #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+        }
+
+        .icon-container svg {
+            width: 16px;
+            height: 16px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .card-title {
+            font-size: 11.5px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .comparison-block {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+            flex: 1;
+        }
+
+        .comp-item {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            padding-left: 8px;
+            border-left: 3px solid;
+        }
+
+        .comp-item.iso {
+            border-color: var(--iso-color);
+        }
+
+        .comp-item.data {
+            border-color: var(--data-color);
+        }
+
+        .comp-label {
+            font-size: 7.6px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+        }
+
+        .comp-item.iso .comp-label { color: var(--iso-color); }
+        .comp-item.data .comp-label { color: var(--data-color); }
+
+        .comp-text {
+            font-size: 8.6px;
+            color: var(--text-main);
+            line-height: 1.32;
+            font-weight: 500;
+        }
+
+        .comp-tool {
+            margin-top: auto;
+            padding-top: 6px;
+            border-top: 1px dashed var(--border);
+            font-size: 7.8px;
+            color: var(--text-muted);
+            line-height: 1.35;
+        }
+
+        .comp-tool b { color: var(--data-color); }
+
+        /* SUMMARY CARD */
+        .card.summary {
+            grid-column: span 2; /* Ocupa 2 columnas si es necesario, o lo ubicamos distinto */
+            background: var(--primary);
+            color: white;
+            border: none;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 14px 20px;
+            gap: 8px;
+        }
+
+        .quote-icon {
+            opacity: 0.2;
+        }
+        
+        .quote-icon svg {
+            width: 26px;
+            height: 26px;
+            fill: white;
+        }
+
+        .summary-text {
+            font-size: 11px;
+            font-weight: 400;
+            line-height: 1.35;
+            color: #e2e8f0;
+        }
+
+        .summary-text strong {
+            font-weight: 700;
+            color: white;
+        }
+
+        .summary-recap {
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 6px;
+            font-size: 8.5px;
+            font-weight: 700;
+            color: #cbd5e1;
+        }
+
+        .summary-recap span:not(.recap-final) {
+            background: rgba(255,255,255,0.08);
+            padding: 3px 8px;
+            border-radius: 12px;
+        }
+
+        .recap-final {
+            color: var(--accent);
+            font-size: 10px;
+        }
+
+        .summary-highlight {
+            font-size: 12.5px;
+            font-weight: 700;
+            color: var(--accent);
+            padding-top: 8px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            width: 100%;
+        }
+
+        /* FOOTER */
+        .footer {
+            position: absolute;
+            bottom: 14px;
+            right: 24px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: #ffffff;
+            border: 1px solid var(--border);
+            padding: 4px 10px;
+            border-radius: 20px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            z-index: 5;
+        }
+
+        .footer svg { width: 14px; height: 14px; fill: #0A66C2; }
+        .footer span { font-size: 10px; font-weight: 600; color: var(--primary); }
+
+        /* Grid Specific Layout */
+        .grid-wrapper {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: auto auto;
+            gap: 10px;
+            height: 100%;
+        }
+        
+        .grid-item-summary {
+            grid-column: span 3;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="canvas">
+    
+    <!-- HEADER -->
+    <header class="header">
+        <div class="title-section">
+            <div class="title-wrapper">
+                <h1>ISO 9001 vs Gobernanza de Datos</h1>
+                <span class="badge">Paralelismos Estructurales</span>
+            </div>
+            <div class="header-desc">
+                Dos sistemas distintos operando bajo el mismo principio fundamental: asegurar la calidad, fiabilidad y trazabilidad mediante procesos estandarizados, no solo dependiendo del factor humano.
+            </div>
+        </div>
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-dot iso"></div>
+                <span>ISO 9001 (Manufactura/Servicios)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot data"></div>
+                <span>Gobernanza de Datos (IT/Data)</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT GRID -->
+    <div class="grid-wrapper">
+        
+        <!-- Card 1: Trazabilidad -->
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-container">
+                    <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                </div>
+                <h2 class="card-title">Trazabilidad (Linaje)</h2>
+            </div>
+            <div class="comparison-block">
+                <div class="comp-item iso">
+                    <span class="comp-label">Enfoque Físico</span>
+                    <span class="comp-text">¿Qué le pasó a este producto durante su ciclo de vida y cuándo ocurrió cada transformación?</span>
+                </div>
+                <div class="comp-item data">
+                    <span class="comp-label">Enfoque Digital</span>
+                    <span class="comp-text">¿De dónde provienen estos datos exactos, qué transformaciones (ETL) sufrieron y quién/qué los modificó?</span>
+                </div>
+                <div class="comp-tool"><b>Herramientas típicas:</b> catálogos de datos con linaje automático (ej. Unity Catalog, Purview) en vez de la trazabilidad en papel de un lote de producción.</div>
+            </div>
+        </div>
+
+        <!-- Card 2: Responsabilidad -->
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-container">
+                    <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                </div>
+                <h2 class="card-title">Responsabilidad (Ownership)</h2>
+            </div>
+            <div class="comparison-block">
+                <div class="comp-item iso">
+                    <span class="comp-label">Enfoque Físico</span>
+                    <span class="comp-text">Roles y responsabilidades claramente definidos sobre cada etapa del proceso de producción.</span>
+                </div>
+                <div class="comp-item data">
+                    <span class="comp-label">Enfoque Digital</span>
+                    <span class="comp-text">Asignación de 'Data Owners' y 'Data Stewards' responsables de la calidad, seguridad y uso correcto de dominios de datos.</span>
+                </div>
+                <div class="comp-tool"><b>Paralelismo clave:</b> así como ISO 9001 exige un responsable de calidad por proceso, el gobierno de datos exige un dueño por dominio — sin ambigüedad sobre quién decide.</div>
+            </div>
+        </div>
+
+        <!-- Card 3: Criterios de Calidad -->
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-container">
+                    <svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                </div>
+                <h2 class="card-title">Criterios de Calidad</h2>
+            </div>
+            <div class="comparison-block">
+                <div class="comp-item iso">
+                    <span class="comp-label">Enfoque Físico</span>
+                    <span class="comp-text">Establecimiento de criterios estrictos de aceptación y rechazo del producto final o insumos.</span>
+                </div>
+                <div class="comp-item data">
+                    <span class="comp-label">Enfoque Digital</span>
+                    <span class="comp-text">Definición de reglas de validación (Data Quality rules) para identificar datos válidos, ruido, nulos o corruptos.</span>
+                </div>
+                <div class="comp-tool"><b>Ejemplo:</b> una regla que rechaza un registro sin identificador es el equivalente digital a rechazar un insumo fuera de especificación en planta.</div>
+            </div>
+        </div>
+
+        <!-- Card 4: Auditoría -->
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-container">
+                    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+                </div>
+                <h2 class="card-title">Auditoría y Control</h2>
+            </div>
+            <div class="comparison-block">
+                <div class="comp-item iso">
+                    <span class="comp-label">Enfoque Físico</span>
+                    <span class="comp-text">Revisiones y auditorías periódicas del sistema de gestión de calidad para asegurar cumplimiento.</span>
+                </div>
+                <div class="comp-item data">
+                    <span class="comp-label">Enfoque Digital</span>
+                    <span class="comp-text">Auditorías automatizadas de fuentes, monitoreo de data drift, detección de anomalías y sesgos acumulados.</span>
+                </div>
+                <div class="comp-tool"><b>Diferencia clave:</b> la auditoría digital puede correr de forma continua y automática, mientras que la física suele ser periódica y muestral.</div>
+            </div>
+        </div>
+
+        <!-- Summary / Conclusion Span -->
+        <div class="card summary" style="grid-column: span 2;">
+            <div class="quote-icon">
+                <svg viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+            </div>
+            <div class="summary-text">
+                La calidad estructural <strong>no depende</strong> de tener a las personas correctas presentes en todo momento supervisando cada paso.
+            </div>
+            <div class="summary-highlight">
+                Depende de sistemas y procesos diseñados desde su origen para ser consistentes y confiables.
+            </div>
+            <div class="summary-recap">
+                <span>Trazabilidad</span><span>+</span><span>Responsabilidad</span><span>+</span><span>Calidad</span><span>+</span><span>Auditoría</span><span>=</span><span class="recap-final">Confianza</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- FOOTER SIGNATURE -->
+    <div class="footer">
+        <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+        <span>cacm523</span>
+    </div>
+
+</div>
+
+</body>
+</html>

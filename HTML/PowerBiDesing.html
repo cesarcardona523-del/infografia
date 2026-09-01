@@ -130,7 +130,6 @@
 
         .panel {
             background: var(--bg-card);
-            backdrop-filter: blur(12px);
             border: 1px solid var(--border-color);
             border-radius: 8px;
             padding: 12px;
@@ -260,7 +259,6 @@
             background: rgba(255, 255, 255, 0.9);
             padding: 2px 8px;
             border-radius: 20px;
-            backdrop-filter: blur(4px);
             border: 1px solid var(--border-color);
         }
 
@@ -305,6 +303,10 @@
                         <span class="item-badge">Granularidad</span>
                         <span class="item-text">Alinear el nivel de detalle de las tablas de hechos directamente con las preguntas de negocio clave.</span>
                     </div>
+                    <div class="item-row">
+                        <span class="item-badge">Cardinalidad</span>
+                        <span class="item-text">Preferir columnas de baja cardinalidad como claves de relación para reducir el consumo de memoria.</span>
+                    </div>
                 </div>
             </div>
 
@@ -326,6 +328,10 @@
                     <div class="item-row">
                         <span class="item-badge">Variables Time</span>
                         <span class="item-text">Optimizar funciones de inteligencia de tiempo asegurando una tabla de calendario dedicada.</span>
+                    </div>
+                    <div class="item-row">
+                        <span class="item-badge">Query Folding</span>
+                        <span class="item-text">Verificar que Power Query delegue transformaciones a la fuente en vez de procesarlas localmente.</span>
                     </div>
                 </div>
             </div>
@@ -349,6 +355,10 @@
                         <span class="item-badge">Espacio</span>
                         <span class="item-text">Mantenimiento de márgenes limpios y separación modular mediante contenedores de fondo neutro.</span>
                     </div>
+                    <div class="item-row">
+                        <span class="item-badge">Grid</span>
+                        <span class="item-text">Alinear cada visual a una cuadrícula consistente evita composiciones que se sienten improvisadas.</span>
+                    </div>
                 </div>
             </div>
 
@@ -370,6 +380,10 @@
                     <div class="item-row">
                         <span class="item-badge">Simplicidad</span>
                         <span class="item-text">Eliminación de bordes redundantes, líneas de cuadrícula excesivas y efectos 3D innecesarios.</span>
+                    </div>
+                    <div class="item-row">
+                        <span class="item-badge">Jerarquía</span>
+                        <span class="item-text">El tamaño y la posición del elemento deben reflejar su importancia real para la decisión.</span>
                     </div>
                 </div>
             </div>
@@ -393,6 +407,10 @@
                         <span class="item-badge">Deployment</span>
                         <span class="item-text">Uso de Pipelines de Despliegue en Power BI Service (Dev -> Test -> Prod).</span>
                     </div>
+                    <div class="item-row">
+                        <span class="item-badge">Sensitivity</span>
+                        <span class="item-text">Etiquetas de sensibilidad de Microsoft Purview aplicadas al reporte, no solo al dataset.</span>
+                    </div>
                 </div>
             </div>
 
@@ -414,6 +432,10 @@
                     <div class="item-row">
                         <span class="item-badge">Acción</span>
                         <span class="item-text">Diseñar reportes que no solo informen el pasado, sino que faciliten la toma de decisiones.</span>
+                    </div>
+                    <div class="item-row">
+                        <span class="item-badge">Bookmarks</span>
+                        <span class="item-text">Usar marcadores para guiar al usuario por un flujo narrativo predefinido, paso a paso.</span>
                     </div>
                 </div>
             </div>

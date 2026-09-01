@@ -2008,18 +2008,487 @@
     "fechaPublicacion": "2026-11-21T09:10:00",
     "categoriaPrincipal": "powerbi-y-visualizacion",
     "temas": [
+      "dashboards-ejecutivos",
+      "gobierno-datos",
       "power-bi",
-      "visualizacion",
-      "dashboards-ejecutivos"
+      "visualizacion"
     ],
     "tipoContenido": "infografia",
     "es": {
-      "topico": "Power BI Design Files: Dashboards de Alto Impacto",
-      "descripcion": "Un dashboard de Power BI que gana reconocimiento en retos de visualización rara vez se distingue por la cantidad de gráficos que contiene, sino por cuánto reduce el tiempo entre una pregunta de negocio y su respuesta. Esa diferencia se construye en varios frentes simultáneos. El primero es el modelo de datos: medidas DAX bien optimizadas evitan cálculos redundantes y sostienen el rendimiento incluso cuando el volumen de filas crece. El segundo es la elección del tipo de visualización correcto para cada pregunta —un desglose de causa raíz (Root Cause Analysis) exige gráficos de barras jerárquicos con filtros cruzados dinámicos; una tendencia temporal se explica mejor con una línea que con una tabla; una composición porcentual, como el tipo de tickets en un dashboard de soporte técnico, se lee de un vistazo en una dona; y la relación entre dos variables continuas, como ventas y tasa de conversión por vendedor, requiere un diagrama de dispersión, no una lista. El tercer frente es puramente editorial: jerarquía visual milimétrica, una paleta corporativa consistente y un resumen ejecutivo que prioriza los KPIs que realmente importan por encima de saturar el lienzo con widgets. Estas prácticas convierten un reporte técnico en una herramienta de toma de decisiones que un directivo puede interpretar en segundos, no en minutos."
+      "topico": "Power BI Design Files & Architecture",
+      "descripcion": "Un dashboard de Power BI que gana reconocimiento en retos de visualización rara vez se distingue por la cantidad de gráficos que contiene, sino por cuánto reduce el tiempo entre una pregunta de negocio y su respuesta. Esta guía organiza esa diferencia en seis frentes técnicos. El modelo tabular exige separación estricta entre hechos y dimensiones, relaciones de propagación en sentido único y columnas de baja cardinalidad como claves. El rendimiento DAX se sostiene con variables (VAR) para evitar recálculos, minimizando iteradores pesados como SUMX sobre tablas completas, y verificando que Power Query delegue transformaciones a la fuente (query folding) en lugar de procesarlas localmente. El diseño UX aplica patrones de lectura en Z para priorizar KPIs, contraste intencional para resaltar alertas y una cuadrícula consistente que evita composiciones improvisadas. La claridad analítica selecciona el tipo de gráfico correcto para cada pregunta y elimina elementos decorativos que no aportan información. La gobernanza y seguridad —el frente que distingue esta edición ampliada— cubre Row-Level Security dinámica basada en roles, nomenclatura estandarizada de medidas DAX, pipelines de despliegue Dev-Test-Prod y etiquetas de sensibilidad de Microsoft Purview aplicadas al reporte completo, no solo al dataset. El data storytelling final guía al usuario del resumen ejecutivo al detalle operativo mediante bookmarks y narrativa con contexto temporal. Estas prácticas convierten un reporte técnico en una herramienta de decisión que un directivo interpreta en segundos."
     },
     "en": {
-      "topico": "Power BI Design Files: High-Impact Dashboards",
-      "descripcion": "A Power BI dashboard that earns recognition in visualization challenges is rarely distinguished by how many charts it contains, but by how much it shortens the gap between a business question and its answer. That difference is built across several fronts at once. The first is the data model: well-optimized DAX measures avoid redundant calculations and sustain performance even as row volume grows. The second is choosing the right visualization type for each question — a root cause breakdown calls for hierarchical bar charts with dynamic cross-filtering; a time trend is better explained with a line than a table; a percentage composition, such as ticket types in an IT support dashboard, reads at a glance in a donut chart; and the relationship between two continuous variables, such as sales and conversion rate per salesperson, requires a scatter plot, not a list. The third front is purely editorial: precise visual hierarchy, a consistent corporate palette, and an executive summary that prioritizes the KPIs that actually matter instead of saturating the canvas with widgets. These practices turn a technical report into a decision-making tool that an executive can interpret in seconds, not minutes."
+      "topico": "Power BI Design Files & Architecture",
+      "descripcion": "A Power BI dashboard that earns recognition in visualization challenges is rarely distinguished by how many charts it contains, but by how much it reduces the time between a business question and its answer. This guide organizes that difference across six technical fronts. The tabular model requires strict separation between facts and dimensions, single-direction filter propagation, and low-cardinality columns as keys. DAX performance is sustained through variables (VAR) to avoid recalculation, minimizing heavy iterators like SUMX over full tables, and verifying that Power Query delegates transformations to the source (query folding) instead of processing them locally. UX design applies Z-pattern reading to prioritize KPIs, intentional contrast to highlight alerts, and a consistent grid that avoids improvised compositions. Analytical clarity selects the right chart type for each question and removes decorative elements that add no information. Governance and security —the front that sets this expanded edition apart— covers dynamic Row-Level Security based on corporate roles, standardized DAX measure naming, Dev-Test-Prod deployment pipelines, and Microsoft Purview sensitivity labels applied to the full report, not just the dataset. The closing data storytelling layer guides the user from executive summary to operational detail through bookmarks and time-contextualized narrative. These practices turn a technical report into a decision-making tool an executive can interpret in seconds."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "blueprint-arquitectura-datos-contratos",
+    "imagen": "Construidos/Arquitectura/blueprint-arquitectura-datos-contratos.png",
+    "fechaPublicacion": "2026-11-23T09:10:00",
+    "categoriaPrincipal": "ingenieria-de-datos",
+    "temas": [
+      "arquitectura-datos",
+      "data-engineering",
+      "calidad-datos"
+    ],
+    "tipoContenido": "infografia",
+    "es": {
+      "topico": "Blueprint de Arquitectura de Datos: Contratos y Confianza",
+      "descripcion": "Un pipeline de datos confiable no se define por la cantidad de capas que atraviesa, sino por los contratos que se hacen cumplir en cada frontera. Este blueprint recorre las seis etapas del flujo end-to-end —origen, ingesta, capa raw/Bronze, transformación, Silver/curada y Gold/serving— y en cada una expone la decisión de diseño que realmente sostiene la confiabilidad del dato: validación de esquema en la ingesta para rechazar payloads corruptos antes de que contaminen el lago, inmutabilidad y trazabilidad completa en Bronze, reglas de limpieza y deduplicación explícitas en la transformación, y modelado dimensional orientado a consumo en la capa Gold. El eje central es el concepto de \"data contract\": un acuerdo versionado entre productor y consumidor de datos sobre esquema, semántica y SLA de frescura, que convierte fallos silenciosos aguas abajo en errores detectables aguas arriba. La pieza también clasifica los niveles de latencia esperados por capa —Bronze near-real-time, Silver batch validado, Gold consumo analítico— ayudando a fijar expectativas realistas de SLA con los equipos de negocio. Para arquitectos de datos, ingenieros de plataforma y equipos de gobierno, este mapa visual sirve como referencia rápida para auditar dónde un pipeline existente carece de controles de calidad, y como plantilla de diseño al construir una arquitectura medallion nueva desde cero."
+    },
+    "en": {
+      "topico": "Data Architecture Blueprint: Contracts and Trust",
+      "descripcion": "A reliable data pipeline isn't defined by how many layers it crosses, but by the contracts enforced at each boundary. This blueprint walks through the six stages of the end-to-end flow —source, ingestion, raw/Bronze layer, transformation, curated Silver, and serving Gold— and at each one surfaces the design decision that actually sustains data trustworthiness: schema validation at ingestion to reject corrupt payloads before they contaminate the lake, full immutability and lineage in Bronze, explicit cleaning and deduplication rules in transformation, and consumption-oriented dimensional modeling in the Gold layer. The centerpiece is the \"data contract\" concept: a versioned agreement between data producer and consumer covering schema, semantics, and freshness SLA, which turns silent downstream failures into detectable upstream errors. The piece also classifies expected latency tiers per layer —near-real-time Bronze, validated batch Silver, analytics-ready Gold— helping teams set realistic SLA expectations with business stakeholders. For data architects, platform engineers, and governance teams, this visual map works as a quick reference to audit where an existing pipeline lacks quality controls, and as a design template when building a medallion architecture from scratch."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "ruta-analista-datos",
+    "imagen": "Construidos/Roles/ruta-analista-datos.png",
+    "fechaPublicacion": "2026-11-25T09:10:00",
+    "categoriaPrincipal": "profesion-y-negocio",
+    "temas": [
+      "roadmaps",
+      "roles-datos",
+      "ciencia-datos"
+    ],
+    "tipoContenido": "infografia",
+    "es": {
+      "topico": "Ruta de Carrera: De Cero a Analista de Datos",
+      "descripcion": "Convertirse en analista de datos no exige un título específico, pero sí exige recorrer una secuencia de competencias en el orden correcto. Esta infografía traza la ruta completa en pasos progresivos: fundamentos de estadística descriptiva y pensamiento analítico, dominio de hojas de cálculo y SQL para extraer y transformar datos desde bases relacionales, un lenguaje de programación —Python o R— para automatizar análisis repetitivos, herramientas de visualización como Power BI o Tableau para comunicar hallazgos, y finalmente las habilidades de negocio que convierten un análisis técnico en una recomendación accionable: storytelling con datos, entendimiento del dominio y comunicación ejecutiva. Cada paso incluye subhabilidades concretas y ejemplos de las preguntas que un analista debe poder responder en esa etapa, evitando el error común de saltar directo a herramientas de visualización sin una base sólida de SQL y estadística. La sección de consejos clave cierra con recomendaciones prácticas sobre construcción de portafolio, proyectos con datos públicos reales y la importancia de dominar una sola herramienta de BI a fondo antes de dispersarse en varias. Pensada para quienes evalúan una transición de carrera hacia datos o buscan estructurar su autoaprendizaje, la pieza funciona como checklist de progreso, no como promesa de dominio instantáneo."
+    },
+    "en": {
+      "topico": "Career Path: From Zero to Data Analyst",
+      "descripcion": "Becoming a data analyst doesn't require a specific degree, but it does require working through a sequence of competencies in the right order. This infographic maps the full path in progressive steps: descriptive statistics fundamentals and analytical thinking, spreadsheet and SQL mastery to extract and transform data from relational databases, a programming language —Python or R— to automate repetitive analysis, visualization tools like Power BI or Tableau to communicate findings, and finally the business skills that turn a technical analysis into an actionable recommendation: data storytelling, domain understanding, and executive communication. Each step includes concrete sub-skills and example questions an analyst should be able to answer at that stage, avoiding the common mistake of jumping straight to visualization tools without a solid SQL and statistics foundation. The key-tips section closes with practical advice on portfolio building, working with real public datasets, and the importance of mastering one BI tool deeply before spreading across several. Built for anyone evaluating a career transition into data or looking to structure their self-learning, the piece works as a progress checklist, not a promise of instant mastery."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "ruta-cientifico-datos-2026",
+    "imagen": "Construidos/Roles/ruta-cientifico-datos-2026.png",
+    "fechaPublicacion": "2026-11-27T09:10:00",
+    "categoriaPrincipal": "profesion-y-negocio",
+    "temas": [
+      "roadmaps",
+      "ciencia-datos",
+      "estadistica"
+    ],
+    "tipoContenido": "infografia",
+    "es": {
+      "topico": "Ruta de Carrera: Científico de Datos 2026",
+      "descripcion": "El camino hacia la ciencia de datos en 2026 exige más que aprender un modelo predictivo: exige una progresión deliberada desde los fundamentos matemáticos hasta la integración con las herramientas de IA generativa que hoy forman parte del flujo de trabajo diario. Esta ruta organiza el aprendizaje en etapas: álgebra lineal, probabilidad y estadística inferencial como base no negociable; programación en Python con las librerías del ecosistema científico (NumPy, Pandas, scikit-learn); modelado predictivo clásico antes de saltar a redes neuronales; y finalmente la capa de IA generativa, entendida no como reemplazo del análisis estadístico sino como acelerador de exploración y documentación. Cada paso incluye una razón concreta de por qué importa en ese orden —por ejemplo, por qué dominar regresión y árboles de decisión antes de deep learning evita construir modelos de caja negra sin poder explicar sus fallos—. La pieza cierra con un flujo visual que resume la progresión completa: de fundamentos a machine learning, de ahí a IA generativa, y finalmente a la traducción de ese conocimiento técnico en valor de negocio medible. Sirve como mapa de estudio para quienes inician la transición hacia ciencia de datos y como checklist de brechas para quienes ya trabajan en el campo."
+    },
+    "en": {
+      "topico": "Career Path: Data Scientist 2026",
+      "descripcion": "The path into data science in 2026 demands more than learning a predictive model: it demands a deliberate progression from mathematical fundamentals to integration with the generative AI tools that are now part of the daily workflow. This route organizes learning into stages: linear algebra, probability, and inferential statistics as the non-negotiable base; Python programming with the scientific ecosystem's libraries (NumPy, Pandas, scikit-learn); classical predictive modeling before jumping to neural networks; and finally the generative AI layer, understood not as a replacement for statistical analysis but as an accelerator for exploration and documentation. Each step includes a concrete reason why it matters in that order —for example, why mastering regression and decision trees before deep learning avoids building black-box models whose failures can't be explained. The piece closes with a visual flow summarizing the full progression: from fundamentals to machine learning, from there to generative AI, and finally to translating that technical knowledge into measurable business value. It works as a study map for those starting the transition into data science and as a gap checklist for those already working in the field."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "arquitectura-claude-code",
+    "imagen": "Construidos/Claude/arquitectura-claude-code.png",
+    "fechaPublicacion": "2026-09-02T10:10:00",
+    "categoriaPrincipal": "inteligencia-artificial",
+    "temas": [
+      "claude",
+      "agentes-ia",
+      "ia"
+    ],
+    "tipoContenido": "infografia",
+    "es": {
+      "topico": "Arquitectura de Claude Code: Cómo Funciona el CLI de Anthropic",
+      "descripcion": "Claude Code no es un autocompletado glorificado: es un agente que opera dentro de un bucle de lectura-planificación-ejecución-verificación sobre el sistema de archivos y la terminal real del desarrollador. Esta infografía descompone su arquitectura en los bloques que explican su comportamiento: el acceso directo a herramientas del sistema (lectura/escritura de archivos, ejecución de comandos de shell, búsqueda en el código), el ciclo agTico que le permite planear una tarea compleja, ejecutar pasos intermedios y corregir el rumbo si un comando falla, y el modelo de permisos que decide qué acciones requieren confirmación explícita del usuario y cuáles puede ejecutar de forma autónoma dentro de un directorio de trabajo. Se ilustra también el flujo típico de una sesión: desde la interpretación del prompt en lenguaje natural, pasando por la exploración del código existente para entender contexto antes de modificarlo, hasta la verificación del resultado —correr pruebas, revisar diffs— antes de considerar la tarea completa. La pieza es relevante para equipos de ingeniería que evalúan asistentes de código agTicos: entender que el valor no está solo en la generación de código sino en el ciclo de verificación integrado es lo que diferencia una herramienta de autocompletado de un colaborador capaz de ejecutar tareas de varios pasos sin supervisión constante."
+    },
+    "en": {
+      "topico": "Claude Code Architecture: How Anthropic's CLI Works",
+      "descripcion": "Claude Code isn't a glorified autocomplete: it's an agent that operates within a read-plan-execute-verify loop over the developer's actual filesystem and terminal. This infographic breaks down its architecture into the blocks that explain its behavior: direct access to system tools (file read/write, shell command execution, code search), the agentic loop that lets it plan a complex task, execute intermediate steps, and course-correct if a command fails, and the permission model that decides which actions require explicit user confirmation versus which it can run autonomously within a working directory. It also illustrates a typical session flow: from interpreting the natural-language prompt, through exploring existing code to gather context before modifying it, to verifying the result —running tests, reviewing diffs— before considering the task complete. The piece is relevant for engineering teams evaluating agentic code assistants: understanding that the value isn't only in code generation but in the built-in verification loop is what separates an autocomplete tool from a collaborator capable of executing multi-step tasks without constant supervision. This distinction matters for teams comparing options: a tool that only autocompletes still needs a human to run tests and interpret results, while an agentic loop closes that gap by validating its own output before handing control back."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "matriz-habilidades-data-engineering",
+    "imagen": "Construidos/Data_Engineering/matriz-habilidades-data-engineering.png",
+    "fechaPublicacion": "2026-11-29T09:10:00",
+    "categoriaPrincipal": "ingenieria-de-datos",
+    "temas": [
+      "data-engineering",
+      "roles-datos",
+      "arquitectura-datos"
+    ],
+    "tipoContenido": "infografia",
+    "es": {
+      "topico": "Matriz de Habilidades: Data Engineering",
+      "descripcion": "El rol de ingeniero de datos abarca un espectro de competencias que rara vez cabe en una sola descripción de puesto, y esta matriz lo organiza en nueve bloques de habilidad con su justificación técnica. Cubre desde las bases no negociables —SQL avanzado y modelado dimensional— hasta las capas de orquestación (Airflow, Dagster), procesamiento distribuido (Spark), infraestructura como código y control de versiones aplicado a pipelines de datos, pasando por el diseño de arquitecturas de almacenamiento (data lake, lakehouse, warehouse) y las prácticas de calidad y observabilidad de datos que evitan que un pipeline falle en silencio. Cada bloque incluye una línea de contexto que explica por qué esa habilidad es indispensable y no solo deseable —por ejemplo, por qué la infraestructura como código no es una preferencia de DevOps sino un requisito para reproducir un pipeline de datos de forma confiable entre entornos—. La pieza está pensada tanto para quienes construyen su ruta de aprendizaje hacia data engineering como para líderes técnicos que necesitan evaluar de forma objetiva las brechas de un equipo existente frente al estándar actual del rol, sin caer en listas genéricas de tecnologías sin justificación de por qué importan."
+    },
+    "en": {
+      "topico": "Skill Matrix: Data Engineering",
+      "descripcion": "The data engineer role spans a range of competencies that rarely fits into a single job description, and this matrix organizes it into nine skill blocks with their technical rationale. It covers everything from the non-negotiable basics —advanced SQL and dimensional modeling— to orchestration layers (Airflow, Dagster), distributed processing (Spark), infrastructure as code and version control applied to data pipelines, storage architecture design (data lake, lakehouse, warehouse), and the data quality and observability practices that keep a pipeline from failing silently. Each block includes a context line explaining why that skill is essential rather than merely nice-to-have —for example, why infrastructure as code isn't a DevOps preference but a requirement for reproducing a data pipeline reliably across environments. The piece is built both for those charting their learning path toward data engineering and for technical leaders who need to objectively assess an existing team's gaps against the role's current standard, without falling back on generic technology lists with no explanation of why they matter. None of these blocks is optional in isolation — orchestration without quality checks just automates failure faster, and storage design without governance produces a lake no one trusts enough to query."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "datos-faltantes-tecnicas",
+    "imagen": "Construidos/Ciencia_Datos/datos-faltantes-tecnicas.png",
+    "fechaPublicacion": "2026-12-01T09:10:00",
+    "categoriaPrincipal": "analisis-de-datos",
+    "temas": [
+      "ciencia-datos",
+      "estadistica",
+      "calidad-datos"
+    ],
+    "tipoContenido": "infografia",
+    "es": {
+      "topico": "Datos Faltantes: Técnicas de Diagnóstico e Imputación",
+      "descripcion": "No todo dato faltante se trata de la misma forma, y tratarlo mal distorsiona cualquier análisis posterior. Esta infografía organiza el problema en seis paneles que cubren desde el diagnóstico hasta la resolución: la clasificación estadística de por qué falta un dato —MCAR (completamente al azar), MAR (al azar condicionado a otras variables) y MNAR (no al azar, el patrón de ausencia está relacionado con el valor faltante mismo)—, el test de Little para verificar formalmente si un conjunto de datos es MCAR, y las estrategias de imputación apropiadas para cada escenario: desde eliminación de columnas cuando el porcentaje de ausencia supera un umbral razonable, hasta imputación por grupo, imputación iterativa (`IterativeImputer` de scikit-learn) e imputación por vecinos más cercanos (`KNNImputer`). Se destaca también que los modelos de gradient boosting modernos —XGBoost, LightGBM, CatBoost— manejan valores nulos de forma nativa sin necesidad de imputación previa, y la práctica recomendada de crear una columna indicadora \"era_faltante\" para no perder la señal informativa que a veces contiene la propia ausencia del dato. Dirigida a analistas y científicos de datos, la pieza funciona como referencia de decisión rápida antes de aplicar ciegamente `dropna()` o rellenar con la media sin entender el mecanismo real detrás del dato ausente."
+    },
+    "en": {
+      "topico": "Missing Data: Diagnosis and Imputation Techniques",
+      "descripcion": "Not every missing value should be treated the same way, and handling it poorly distorts any analysis built on top of it. This infographic organizes the problem into six panels covering diagnosis through resolution: the statistical classification of why a value is missing —MCAR (missing completely at random), MAR (missing at random, conditioned on other variables), and MNAR (missing not at random, where the absence pattern relates to the missing value itself)—, Little's test to formally verify whether a dataset is MCAR, and the appropriate imputation strategies for each scenario: from column elimination when the missing percentage crosses a reasonable threshold, to group-wise imputation, iterative imputation (scikit-learn's `IterativeImputer`), and nearest-neighbor imputation (`KNNImputer`). It also highlights that modern gradient boosting models —XGBoost, LightGBM, CatBoost— handle null values natively without prior imputation, and the recommended practice of creating a \"was_missing\" indicator column so the informative signal sometimes carried by the absence itself isn't lost. Aimed at analysts and data scientists, the piece works as a quick decision reference before blindly applying `dropna()` or mean-filling without understanding the actual mechanism behind the missing data."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "errores-comunes-group-by",
+    "imagen": "Construidos/SQL/errores-comunes-group-by.png",
+    "fechaPublicacion": "2026-12-03T09:10:00",
+    "categoriaPrincipal": "bases-de-datos",
+    "temas": [
+      "sql",
+      "calidad-datos"
+    ],
+    "tipoContenido": "infografia",
+    "es": {
+      "topico": "6 Errores Comunes con GROUP BY en SQL",
+      "descripcion": "GROUP BY es una de las cláusulas SQL más usadas y, a la vez, más propensas a errores silenciosos que no rompen la consulta pero sí corrompen el resultado. Esta guía técnica documenta seis errores recurrentes con su versión incorrecta y su corrección lado a lado: seleccionar columnas que no están en el GROUP BY ni agregadas (comportamiento indefinido o rechazado según el motor), omitir funciones de agregación al intentar resumir datos planos, filtrar sobre un valor agregado usando WHERE en lugar de HAVING —un error conceptual frecuente, ya que WHERE se evalúa antes de agrupar—, agrupar por más columnas de las necesarias fragmentando el resultado en grupos demasiado finos para ser útiles, ignorar duplicados previos en la tabla que inflan el conteo, y agrupar la tabla completa cuando un WHERE previo podría haber descartado filas irrelevantes desde antes, desperdiciando cómputo. Cada error incluye el fragmento de código exacto que lo dispara y su versión corregida, además de una regla de oro final: menos columnas innecesarias y el uso correcto de las cláusulas de filtrado garantizan consultas limpias y eficientes. Pensada para analistas y desarrolladores que escriben SQL a diario, sirve como checklist de revisión antes de confiar en el resultado de una consulta agregada."
+    },
+    "en": {
+      "topico": "6 Common GROUP BY Mistakes in SQL",
+      "descripcion": "GROUP BY is one of the most used SQL clauses and, at the same time, one of the most prone to silent errors that don't break the query but do corrupt the result. This technical guide documents six recurring mistakes with their incorrect version and correction side by side: selecting columns that are neither in the GROUP BY nor aggregated (undefined or rejected behavior depending on the engine), skipping aggregate functions when trying to summarize flat data, filtering on an aggregated value using WHERE instead of HAVING —a frequent conceptual error, since WHERE is evaluated before grouping—, grouping by more columns than necessary and fragmenting the result into groups too fine to be useful, ignoring prior duplicates in the table that inflate counts, and grouping the entire table when an earlier WHERE could have discarded irrelevant rows first, wasting compute. Each mistake includes the exact code snippet that triggers it and its corrected version, plus a closing golden rule: fewer unnecessary columns and correct use of filtering clauses guarantee clean, efficient queries. Built for analysts and developers who write SQL daily, it works as a review checklist before trusting the result of an aggregate query."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "evolucion-ingenieria-ia",
+    "imagen": "Construidos/IA/evolucion-ingenieria-ia.png",
+    "fechaPublicacion": "2026-09-03T09:10:00",
+    "categoriaPrincipal": "inteligencia-artificial",
+    "temas": [
+      "ia",
+      "agentes-ia"
+    ],
+    "tipoContenido": "infografia",
+    "es": {
+      "topico": "La Evolución de la Ingeniería de IA",
+      "descripcion": "La ingeniería de sistemas de inteligencia artificial ha pasado por etapas claramente diferenciadas, y entender esa evolución explica por qué las prácticas actuales lucen tan distintas de las de hace apenas unos años. Esta infografía traza el recorrido desde los sistemas de machine learning clásico —modelos entrenados a medida para una tarea específica, con ciclos de entrenamiento largos y despliegue rígido—, pasando por la era de los modelos fundacionales y el fine-tuning, hasta el paradigma actual de ingeniería basada en prompting, RAG (recuperación aumentada de generación) y arquitecturas agTicas que orquestan múltiples llamadas a modelos y herramientas externas para resolver tareas complejas de forma autónoma. Cada etapa se ilustra con sus rasgos distintivos: qué tipo de problema resolvía mejor, qué habilidades de ingeniería exigía del equipo, y qué limitación de la etapa anterior motivó el salto a la siguiente. El hilo conductor es que la ingeniería de IA moderna se parece cada vez menos al entrenamiento de modelos desde cero y cada vez más a la ingeniería de software distribuido: orquestación, observabilidad, control de costos y diseño de sistemas confiables alrededor de un componente probabilístico. Relevante para equipos de ingeniería y liderazgo técnico que necesitan situar en qué punto de esa evolución se encuentra su propia práctica."
+    },
+    "en": {
+      "topico": "The Evolution of AI Engineering",
+      "descripcion": "AI systems engineering has moved through clearly distinct stages, and understanding that evolution explains why current practices look so different from just a few years ago. This infographic traces the path from classical machine learning systems —models custom-trained for a specific task, with long training cycles and rigid deployment— through the era of foundation models and fine-tuning, to the current paradigm of prompt-based engineering, RAG (retrieval-augmented generation), and agentic architectures that orchestrate multiple model calls and external tools to solve complex tasks autonomously. Each stage is illustrated with its distinctive traits: what kind of problem it solved best, what engineering skills it demanded from the team, and what limitation of the previous stage drove the jump to the next. The throughline is that modern AI engineering looks less and less like training models from scratch and more and more like distributed software engineering: orchestration, observability, cost control, and designing reliable systems around a probabilistic component. Relevant for engineering teams and technical leadership who need to place their own practice on that evolutionary curve. Skipping stages rarely works well in practice: teams that jump straight to agentic orchestration without first mastering prompt engineering and evaluation tend to ship systems that are impressive in a demo and brittle in production."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "flujos-trabajo-ia",
+    "imagen": "Construidos/IA/flujos-trabajo-ia.png",
+    "fechaPublicacion": "2026-09-03T10:10:00",
+    "categoriaPrincipal": "inteligencia-artificial",
+    "temas": [
+      "ia",
+      "automatizacion",
+      "agentes-ia"
+    ],
+    "tipoContenido": "infografia",
+    "es": {
+      "topico": "Flujos de Trabajo con IA: Patrones de Orquestación",
+      "descripcion": "No todo caso de uso de IA generativa requiere un agente autónomo complejo: elegir el patrón de orquestación correcto para la tarea es una decisión de arquitectura, no una preferencia estética. Esta infografía organiza los patrones de flujo de trabajo con IA más usados en producción, desde encadenamiento simple de prompts (prompt chaining) para tareas secuenciales predecibles, pasando por enrutamiento (routing) que dirige una solicitud al modelo o prompt especializado según su naturaleza, paralelización para tareas independientes que pueden resolverse simultáneamente y luego consolidarse, hasta los patrones más complejos de orquestador-trabajador y evaluador-optimizador, donde un modelo coordina subtareas delegadas a otros modelos y verifica la calidad del resultado antes de aceptarlo. Cada patrón se presenta con el escenario donde rinde mejor y el riesgo de sobre-ingeniería de usar un patrón más complejo del que la tarea realmente requiere —el error común de construir un sistema multiagente para un problema que un solo prompt bien diseñado resolvía igual de bien—. Dirigida a equipos de ingeniería de IA y arquitectos de soluciones, la pieza funciona como marco de decisión: identificar primero la naturaleza de la tarea (secuencial, paralela, condicional, iterativa) antes de elegir la arquitectura de orquestación que la resuelve con el menor costo y complejidad posibles."
+    },
+    "en": {
+      "topico": "AI Workflows: Orchestration Patterns",
+      "descripcion": "Not every generative AI use case requires a complex autonomous agent: choosing the right orchestration pattern for the task is an architecture decision, not an aesthetic preference. This infographic organizes the most common AI workflow patterns used in production, from simple prompt chaining for predictable sequential tasks, through routing that directs a request to the specialized model or prompt based on its nature, parallelization for independent tasks that can be solved simultaneously and then consolidated, up to the more complex orchestrator-worker and evaluator-optimizer patterns, where a model coordinates subtasks delegated to other models and verifies result quality before accepting it. Each pattern is presented with the scenario where it performs best and the over-engineering risk of using a pattern more complex than the task actually requires —the common mistake of building a multi-agent system for a problem a single well-designed prompt would have solved just as well. Aimed at AI engineering teams and solution architects, the piece works as a decision framework: identify the nature of the task first (sequential, parallel, conditional, iterative) before choosing the orchestration architecture that solves it with the least possible cost and complexity."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "capas-gobierno-datos",
+    "imagen": "Construidos/Gobierno_de_Datos/capas-gobierno-datos.png",
+    "fechaPublicacion": "2026-12-05T09:10:00",
+    "categoriaPrincipal": "gobierno-de-datos",
+    "temas": [
+      "gobierno-datos",
+      "calidad-datos",
+      "mdm"
+    ],
+    "tipoContenido": "infografia",
+    "es": {
+      "topico": "Las Capas del Gobierno de Datos",
+      "descripcion": "El gobierno de datos rara vez falla por falta de intención y casi siempre por falta de estructura: sin capas claras, las políticas quedan como documentos sin dueño y sin mecanismo de cumplimiento. Esta infografía organiza el gobierno de datos en capas jerárquicas, desde la definición de propiedad y roles (data owners, data stewards) hasta los controles operativos que hacen cumplir esa propiedad en la práctica: catalogación y linaje de datos para saber qué existe y de dónde viene, políticas de calidad con reglas de validación medibles en lugar de directrices vagas, gestión maestra de datos (MDM) para resolver conflictos de una misma entidad representada de forma distinta en varios sistemas, y control de acceso basado en clasificación de sensibilidad. Cada capa se presenta con su propósito y con un resultado esperado concreto, evitando el enfoque habitual de tratar el gobierno de datos como un conjunto de reglas aisladas. La pieza es útil para equipos que están diseñando su primer programa de gobierno de datos y necesitan una estructura de referencia, y para organizaciones más maduras que quieren auditar en qué capa tienen una brecha real —frecuentemente, la capa de cumplimiento y auditoría continua es la que menos atención recibe frente al diseño inicial de políticas."
+    },
+    "en": {
+      "topico": "The Layers of Data Governance",
+      "descripcion": "Data governance rarely fails from lack of intent and almost always from lack of structure: without clear layers, policies remain ownerless documents with no enforcement mechanism. This infographic organizes data governance into hierarchical layers, from defining ownership and roles (data owners, data stewards) to the operational controls that enforce that ownership in practice: data cataloging and lineage to know what exists and where it comes from, quality policies with measurable validation rules instead of vague guidelines, master data management (MDM) to resolve conflicts when the same entity is represented differently across systems, and access control based on sensitivity classification. Each layer is presented with its purpose and a concrete expected outcome, avoiding the common approach of treating data governance as a set of isolated rules. The piece is useful for teams designing their first data governance program and needing a reference structure, and for more mature organizations wanting to audit which layer has a real gap —often, the continuous compliance and audit layer gets the least attention compared to initial policy design. Skipping straight to access control without first defining ownership is a common shortcut that backfires: permissions without an accountable owner behind them tend to drift out of sync with how the organization actually uses the data."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "gobierno-ia-responsable",
+    "imagen": "Construidos/IA/gobierno-ia-responsable.png",
+    "fechaPublicacion": "2026-09-04T09:10:00",
+    "categoriaPrincipal": "inteligencia-artificial",
+    "temas": [
+      "ia",
+      "gobierno-datos"
+    ],
+    "tipoContenido": "infografia",
+    "es": {
+      "topico": "Cómo Definir el Gobierno de IA",
+      "descripcion": "La IA no se gobierna con un comunicado de política de uso: se gobierna con roles claros, políticas escritas y mecanismos de supervisión que se revisan con la misma frecuencia con la que aparecen nuevas herramientas. Esta infografía estructura el gobierno de IA en dos pilares fundacionales y un ciclo operativo de cinco fases. Los pilares son definir responsables —un comité multidisciplinario con Alta Dirección, TI, Legal, Seguridad de la Información, Protección de Datos y Negocio, que se reúne antes de aprobar un caso de uso nuevo, no después de que ya está en producción— y establecer políticas de uso responsable que cubran usos permitidos y restringidos, transparencia algorítmica, supervisión humana obligatoria y reglas específicas para la adquisición de soluciones de IA de terceros. El ciclo integral que cierra la pieza conecta ambos pilares con tres fases adicionales: alinear los proyectos de IA con objetivos de negocio medibles en lugar de perseguir la moda tecnológica, aplicar mecanismos de control como evaluación de riesgos y planes de contingencia antes de desplegar un modelo, y medir y supervisar de forma continua, retroalimentando los hallazgos de vuelta al comité inicial. Dirigida a líderes de datos, riesgo y cumplimiento, la pieza traduce un tema regulatoriamente denso en un marco operativo accionable."
+    },
+    "en": {
+      "topico": "How to Define AI Governance",
+      "descripcion": "AI isn't governed with a usage-policy memo: it's governed with clear roles, written policies, and oversight mechanisms reviewed as often as new tools appear. This infographic structures AI governance around two foundational pillars and a five-phase operating cycle. The pillars are defining accountable owners —a multidisciplinary committee spanning executive leadership, IT, Legal, Information Security, Data Protection, and Business, that meets before approving a new use case, not after it's already in production— and establishing responsible-use policies covering permitted and restricted uses, algorithmic transparency, mandatory human oversight, and specific rules for acquiring third-party AI solutions. The integral cycle closing the piece connects both pillars to three additional phases: aligning AI projects with measurable business objectives instead of chasing technology trends, applying control mechanisms like risk assessment and contingency plans before deploying a model, and continuously measuring and monitoring, feeding findings back to the initial committee. Aimed at data, risk, and compliance leaders, the piece translates a regulation-dense topic into an actionable operating framework. Together, these two pillars and the five-phase cycle form a loop rather than a one-time checklist — governance that stops at policy documents without a measurement phase behind it tends to decay the moment a new AI tool appears."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "iso-8000-calidad-datos",
+    "imagen": "Construidos/Calidad_Datos_Gobierno/iso-8000-calidad-datos.png",
+    "fechaPublicacion": "2026-12-07T09:10:00",
+    "categoriaPrincipal": "gobierno-de-datos",
+    "temas": [
+      "calidad-datos",
+      "gobierno-datos"
+    ],
+    "tipoContenido": "infografia",
+    "es": {
+      "topico": "ISO 8000: Las Dimensiones de la Calidad de Datos",
+      "descripcion": "ISO 8000 es el estándar internacional de calidad de datos, y su valor práctico está en las dimensiones concretas y medibles que define para evaluar si un conjunto de datos es confiable, en lugar de dejar \"calidad de datos\" como un concepto vago. Esta infografía recorre esas dimensiones —exactitud, completitud, consistencia, actualidad, unicidad y validez, entre otras— con una definición operativa de cada una y un ejemplo de cómo se mide en la práctica: la exactitud como grado de correspondencia entre el dato almacenado y la realidad que representa, la completitud como ausencia de valores faltantes en campos obligatorios, la consistencia como ausencia de contradicciones entre distintos sistemas que almacenan la misma entidad, y la actualidad como qué tan reciente es el dato respecto a la frecuencia con la que su valor real cambia. La pieza conecta estas dimensiones con su relevancia práctica en programas de gobierno de datos: no se puede mejorar lo que no se mide, y sin dimensiones estandarizadas cada equipo termina definiendo \"calidad\" de forma distinta, lo que hace imposible comparar el estado de dos fuentes de datos entre sí. Útil como marco de referencia para equipos que están diseñando sus primeras métricas de calidad de datos o auditando fuentes existentes contra un estándar reconocido internacionalmente."
+    },
+    "en": {
+      "topico": "ISO 8000: The Dimensions of Data Quality",
+      "descripcion": "ISO 8000 is the international data quality standard, and its practical value lies in the concrete, measurable dimensions it defines for assessing whether a dataset is trustworthy, rather than leaving \"data quality\" as a vague concept. This infographic walks through those dimensions —accuracy, completeness, consistency, timeliness, uniqueness, and validity, among others— with an operational definition of each and an example of how it's measured in practice: accuracy as the degree of correspondence between the stored value and the reality it represents, completeness as the absence of missing values in mandatory fields, consistency as the absence of contradictions between different systems storing the same entity, and timeliness as how recent the data is relative to how often its real-world value actually changes. The piece connects these dimensions to their practical relevance in data governance programs: you can't improve what you don't measure, and without standardized dimensions each team ends up defining \"quality\" differently, making it impossible to compare the state of two data sources against each other. Useful as a reference framework for teams designing their first data quality metrics or auditing existing sources against an internationally recognized standard."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "iso-9001-vs-business-intelligence",
+    "imagen": "Construidos/Calidad_Datos_Gobierno/iso-9001-vs-business-intelligence.png",
+    "fechaPublicacion": "2026-12-09T09:10:00",
+    "categoriaPrincipal": "gobierno-de-datos",
+    "temas": [
+      "iso-9001",
+      "calidad-datos",
+      "bi"
+    ],
+    "tipoContenido": "infografia",
+    "es": {
+      "topico": "ISO 9001 y Business Intelligence: Paralelos de Gestión de Calidad",
+      "descripcion": "ISO 9001 es un estándar de gestión de calidad para procesos organizacionales, pero sus principios de trazabilidad, responsabilidad y mejora continua se trasladan de forma directa al mundo del Business Intelligence, y esta infografía traza ese paralelo explícitamente. Cada principio de ISO 9001 se enfrenta a su equivalente en un entorno de datos y dashboards: la trazabilidad de procesos se traduce en linaje de datos y documentación de transformaciones ETL, la asignación de responsabilidades se traduce en ownership claro de cada dataset y métrica dentro de un catálogo de gobierno, el control de no conformidades se traduce en alertas de calidad de datos y validación automatizada antes de que un dato incorrecto llegue a un dashboard ejecutivo, y el ciclo de mejora continua (PDCA) se traduce en la revisión periódica de KPIs y modelos de datos para asegurar que sigan respondiendo preguntas de negocio vigentes, no las de hace dos años. La pieza cierra con una síntesis: trazabilidad más responsabilidad más calidad más auditoría constante son los cuatro pilares que, combinados, producen confianza —tanto en un sistema de gestión de calidad tradicional como en una plataforma de datos. Dirigida a equipos de BI y gobierno de datos que buscan un marco de madurez prestado de una disciplina con décadas de rigor probado."
+    },
+    "en": {
+      "topico": "ISO 9001 and Business Intelligence: Quality Management Parallels",
+      "descripcion": "ISO 9001 is a quality management standard for organizational processes, but its principles of traceability, accountability, and continuous improvement translate directly into the world of Business Intelligence, and this infographic maps that parallel explicitly. Each ISO 9001 principle is matched to its equivalent in a data and dashboards environment: process traceability translates into data lineage and ETL transformation documentation, assignment of responsibilities translates into clear ownership of every dataset and metric within a governance catalog, nonconformity control translates into data quality alerts and automated validation before incorrect data reaches an executive dashboard, and the continuous improvement cycle (PDCA) translates into periodic review of KPIs and data models to ensure they still answer current business questions, not ones from two years ago. The piece closes with a synthesis: traceability plus accountability plus quality plus constant auditing are the four pillars that, combined, produce trust —in a traditional quality management system just as much as in a data platform. Aimed at BI and data governance teams looking for a maturity framework borrowed from a discipline with decades of proven rigor. The mapping is deliberately literal rather than metaphorical: each ISO 9001 clause has a concrete BI counterpart, which makes the framework usable as an actual audit checklist rather than just an inspirational analogy."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "inteligencia-negocios-con-ia",
+    "imagen": "Construidos/IA/inteligencia-negocios-con-ia.png",
+    "fechaPublicacion": "2026-09-04T10:10:00",
+    "categoriaPrincipal": "inteligencia-artificial",
+    "temas": [
+      "ia",
+      "bi",
+      "gobierno-datos"
+    ],
+    "tipoContenido": "infografia",
+    "es": {
+      "topico": "Inteligencia de Negocios con IA: El Pipeline de Valor",
+      "descripcion": "Incorporar IA a un programa de Business Intelligence no es agregar un chatbot sobre un dashboard existente: es rediseñar el pipeline completo desde el dato crudo hasta la decisión de negocio, pasando por capas de gobierno y confianza que la IA generativa no puede saltarse sin comprometer la calidad de sus respuestas. Esta infografía organiza ese pipeline en cinco etapas: Data, la base de datos limpios y bien modelados sin la cual cualquier capa de IA generativa amplifica errores en lugar de corregirlos; Govern, las políticas de acceso y linaje que aseguran que la IA solo consulte datos autorizados y con contexto correcto; Trust, los mecanismos de validación y citación de fuente que permiten verificar que una respuesta generada por IA es trazable a un dato real y no una alucinación; Intelligence, la capa donde el modelo genera análisis, resúmenes y respuestas en lenguaje natural sobre los datos gobernados; y Value, la traducción final de esa inteligencia en decisiones de negocio medibles. Cada etapa incluye una explicación de por qué es indispensable y qué ocurre cuando se omite —por ejemplo, qué tan rápido se erosiona la confianza del usuario de negocio si la etapa de Trust se salta y una respuesta de IA resulta ser incorrecta sin advertencia—. Dirigida a líderes de datos y BI que evalúan cómo integrar IA generativa sin sacrificar la gobernanza ya construida."
+    },
+    "en": {
+      "topico": "Business Intelligence with AI: The Value Pipeline",
+      "descripcion": "Bringing AI into a Business Intelligence program isn't about bolting a chatbot onto an existing dashboard: it's about redesigning the entire pipeline from raw data to business decision, passing through governance and trust layers that generative AI can't skip without compromising the quality of its answers. This infographic organizes that pipeline into five stages: Data, the foundation of clean, well-modeled data without which any generative AI layer amplifies errors instead of correcting them; Govern, the access and lineage policies that ensure AI only queries authorized data with correct context; Trust, the validation and source-citation mechanisms that let you verify an AI-generated answer traces back to real data rather than a hallucination; Intelligence, the layer where the model generates analysis, summaries, and natural-language answers over the governed data; and Value, the final translation of that intelligence into measurable business decisions. Each stage includes an explanation of why it's essential and what happens when it's skipped —for example, how quickly a business user's trust erodes if the Trust stage is skipped and an AI answer turns out wrong with no warning. Aimed at data and BI leaders evaluating how to integrate generative AI without sacrificing governance already built."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "potenciar-dashboards-con-ia",
+    "imagen": "Construidos/Dashboard/potenciar-dashboards-con-ia.png",
+    "fechaPublicacion": "2026-09-05T09:10:00",
+    "categoriaPrincipal": "inteligencia-artificial",
+    "temas": [
+      "ia",
+      "dashboard",
+      "power-bi"
+    ],
+    "tipoContenido": "infografia",
+    "es": {
+      "topico": "Cómo la IA Potencia el Diseño de Dashboards",
+      "descripcion": "La IA generativa está cambiando el ciclo de construcción de un dashboard mucho antes de que el usuario final vea el resultado: desde la generación asistida de medidas DAX y consultas SQL, hasta la sugerencia automática del tipo de visualización más adecuado para una pregunta de negocio dada. Esta infografía mapea ese flujo en cinco pasos con ejemplos de código real: la definición del modelo de datos asistida por IA para sugerir relaciones y jerarquías, la generación de medidas y cálculos complejos a partir de una descripción en lenguaje natural, la recomendación de layout y tipo de gráfico según el patrón de los datos, la detección automatizada de anomalías que resalta valores atípicos sin que el analista tenga que revisarlos manualmente uno por uno, y la capa final de narrativa generada automáticamente que traduce las cifras del dashboard en un resumen ejecutivo en texto plano. Cada paso incluye el fragmento de configuración o código que lo ilustra, dejando claro que el valor de la IA aquí no es reemplazar el criterio del diseñador de dashboards sino acelerar las partes mecánicas del proceso —redacción de DAX repetitivo, exploración inicial de qué gráfico usar— para que el tiempo humano se concentre en la interpretación de negocio. Relevante para equipos de BI que evalúan copilotos de IA dentro de su stack de Power BI o herramientas equivalentes."
+    },
+    "en": {
+      "topico": "How AI Powers Dashboard Design",
+      "descripcion": "Generative AI is changing the dashboard-building cycle long before the end user ever sees the result: from AI-assisted generation of DAX measures and SQL queries, to automatic suggestions of the most appropriate visualization type for a given business question. This infographic maps that flow in five steps with real code examples: AI-assisted data model definition suggesting relationships and hierarchies, generation of complex measures and calculations from a natural-language description, layout and chart-type recommendations based on data patterns, automated anomaly detection that flags outliers without the analyst reviewing them one by one, and a final auto-generated narrative layer that translates the dashboard's numbers into a plain-text executive summary. Each step includes the configuration or code snippet that illustrates it, making clear that AI's value here isn't replacing the dashboard designer's judgment but accelerating the mechanical parts of the process —writing repetitive DAX, initial exploration of which chart to use— so human time concentrates on business interpretation. Relevant for BI teams evaluating AI copilots within their Power BI stack or equivalent tools. Teams adopting these copilots still need to review generated DAX and chart suggestions critically — the tools accelerate drafting, they don't remove the need for a human who understands what the underlying business question actually requires."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "niveles-madurez-gestion-proyectos",
+    "imagen": "Construidos/Proyectos/niveles-madurez-gestion-proyectos.png",
+    "fechaPublicacion": "2026-12-11T09:10:00",
+    "categoriaPrincipal": "profesion-y-negocio",
+    "temas": [
+      "gestion-proyectos",
+      "roadmaps"
+    ],
+    "tipoContenido": "infografia",
+    "es": {
+      "topico": "Niveles de Madurez en Gestión de Proyectos",
+      "descripcion": "La madurez en gestión de proyectos no es binaria —\"la tenemos\" o \"no la tenemos\"— sino un espectro con niveles reconocibles, y esta infografía los organiza en tres estadios con su ejemplo y su límite característico. El primer nivel describe una gestión reactiva y ad-hoc, sin metodología formal, donde los proyectos avanzan por el esfuerzo individual del líder más que por un proceso repetible. El segundo nivel introduce procesos estandarizados —cronogramas, matrices de riesgo, seguimiento de hitos— pero todavía aplicados de forma inconsistente entre equipos. El tercer nivel describe una gestión de proyectos optimizada e integrada con la estrategia organizacional, con métricas de portafolio, gestión proactiva de riesgos y mejora continua basada en lecciones aprendidas documentadas. Cada nivel incluye el límite explícito que le impide avanzar al siguiente —por ejemplo, qué impide a una organización en el nivel dos alcanzar el nivel tres sin antes centralizar sus métricas de portafolio—. La segunda mitad de la pieza recorre las cinco fases clásicas del ciclo de vida de un proyecto —inicio, planificación, ejecución, monitoreo y cierre— con las actividades concretas de cada una. Útil para líderes de PMO y gerentes de proyecto que necesitan situar objetivamente el nivel de madurez actual de su organización antes de diseñar un plan de mejora."
+    },
+    "en": {
+      "topico": "Project Management Maturity Levels",
+      "descripcion": "Project management maturity isn't binary —\"we have it\" or \"we don't\"— but a spectrum with recognizable levels, and this infographic organizes them into three stages with their example and characteristic limit. The first level describes reactive, ad-hoc management, with no formal methodology, where projects move forward through the individual leader's effort rather than a repeatable process. The second level introduces standardized processes —schedules, risk matrices, milestone tracking— but still applied inconsistently across teams. The third level describes optimized project management integrated with organizational strategy, with portfolio metrics, proactive risk management, and continuous improvement based on documented lessons learned. Each level includes the explicit limit preventing it from advancing to the next —for example, what keeps a level-two organization from reaching level three without first centralizing its portfolio metrics. The second half of the piece walks through the five classic phases of a project lifecycle —initiation, planning, execution, monitoring, and closing— with the concrete activities of each. Useful for PMO leaders and project managers who need to objectively place their organization's current maturity level before designing an improvement plan. Recognizing the current level honestly, rather than the level a PMO aspires to claim, is what makes this framework useful as a planning tool instead of just a vanity assessment."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "tabla-periodica-herramientas-ia",
+    "imagen": "Construidos/IA/tabla-periodica-herramientas-ia.png",
+    "fechaPublicacion": "2026-09-05T10:10:00",
+    "categoriaPrincipal": "inteligencia-artificial",
+    "temas": [
+      "ia",
+      "agentes-ia",
+      "automatizacion"
+    ],
+    "tipoContenido": "infografia",
+    "es": {
+      "topico": "Tabla Periódica de Herramientas de IA para Negocios",
+      "descripcion": "El ecosistema de herramientas de IA empresarial creció tan rápido que ubicarlas por categoría de uso, más que por nombre de marca, es la única forma práctica de navegarlo. Esta infografía clasifica dieciocho herramientas en seis categorías funcionales al estilo de una tabla periódica: experiencia de cliente (soporte multicanal, agentes conversacionales), ventas y marketing (prospección B2B, copilotos de conversación, SDRs autónomos), automatización y operaciones (orquestación de sistemas, flujos de trabajo, integraciones), ingeniería de software (asistentes de código, editores con IA integrada, generación de interfaces desde texto), gestión de conocimiento y texto (contenido empresarial, documentos inteligentes, agentes de investigación) y legal y compliance (colaboración legal, análisis de litigios, revisión de contratos). Cada herramienta incluye su categoría de uso específica y el escenario ideal para adoptarla, evitando la lista genérica de \"herramientas de IA de moda\" sin contexto de aplicación. El mensaje de cierre es deliberado: el valor no está en acumular herramientas sino en integrarlas con arquitectura y criterio técnico —elegir la herramienta correcta para el flujo de trabajo específico, no adoptar la más popular del momento. Útil como mapa de referencia para líderes de tecnología y operaciones que evalúan qué categoría de solución de IA resuelve una necesidad concreta de su organización."
+    },
+    "en": {
+      "topico": "Periodic Table of Business AI Tools",
+      "descripcion": "The enterprise AI tools ecosystem grew so fast that organizing them by use-case category, rather than by brand name, is the only practical way to navigate it. This infographic classifies eighteen tools into six functional categories in periodic-table style: customer experience (multichannel support, conversational agents), sales and marketing (B2B prospecting, conversation copilots, autonomous SDRs), automation and operations (system orchestration, workflows, integrations), software engineering (code assistants, AI-native editors, text-to-interface generation), knowledge and text management (enterprise content, intelligent documents, research agents), and legal and compliance (legal collaboration, litigation analysis, contract review). Each tool includes its specific use-case category and the ideal scenario for adopting it, avoiding the generic \"trending AI tools\" list with no application context. The closing message is deliberate: the value isn't in accumulating tools but in integrating them with architecture and technical judgment —choosing the right tool for the specific workflow, not adopting whichever is most popular at the moment. Useful as a reference map for technology and operations leaders evaluating which AI solution category solves a concrete need in their organization. Treating the table as a shopping list misses the point — the categories exist so a team can identify which functional gap it actually has before evaluating vendors within that specific category."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "7-trucos-sql-optimizacion",
+    "imagen": "Construidos/SQL/7-trucos-sql-optimizacion.png",
+    "fechaPublicacion": "2026-12-13T09:10:00",
+    "categoriaPrincipal": "bases-de-datos",
+    "temas": [
+      "sql"
+    ],
+    "tipoContenido": "infografia",
+    "es": {
+      "topico": "7 Trucos SQL para Código Óptimo",
+      "descripcion": "Los cambios que más impactan el rendimiento de una consulta SQL en producción rara vez son los más vistosos: son ajustes arquitectónicos pequeños aplicados de forma consistente. Esta infografía documenta siete prácticas con su código de ejemplo: evitar SELECT * y proyectar solo las columnas necesarias para reducir carga en memoria e I/O de disco; implementar índices B-Tree estratégicos en columnas frecuentemente consultadas para convertir escaneos secuenciales en búsquedas logarítmicas; usar sintaxis JOIN explícita en lugar de joins implícitos con comas, que pueden generar productos cartesianos accidentales difíciles de detectar; sustituir subconsultas anidadas complejas por expresiones CTE (WITH) para modularizar la lógica y mejorar la legibilidad; usar alias semánticos que auto-documentan la salida de una consulta para el consumidor final; envolver valores potencialmente nulos con COALESCE para definir fallbacks seguros que no rompan integraciones aguas abajo; y aplicar límites estrictos de paginación para proteger al servidor de colapsos por consultas sin acotar. La pieza cierra con un resumen de impacto en producción: menor consumo de CPU/RAM, menor latencia y menor tráfico de red como resultado directo de aplicar estas prácticas de forma sistemática, no solo puntual. Dirigida a desarrolladores backend y analistas que escriben SQL con frecuencia y buscan hábitos que escalen bien en bases de datos grandes."
+    },
+    "en": {
+      "topico": "7 SQL Tricks for Optimal Code",
+      "descripcion": "The changes that most impact a production SQL query's performance are rarely the flashiest ones: they're small architectural adjustments applied consistently. This infographic documents seven practices with example code: avoiding SELECT * and projecting only the needed columns to reduce memory load and disk I/O; implementing strategic B-Tree indexes on frequently queried columns to turn sequential scans into logarithmic lookups; using explicit JOIN syntax instead of implicit comma joins, which can generate accidental cartesian products that are hard to detect; replacing complex nested subqueries with CTE (WITH) expressions to modularize logic and improve readability; using semantic aliases that self-document a query's output for the end consumer; wrapping potentially null values with COALESCE to define safe fallbacks that won't break downstream integrations; and applying strict pagination limits to protect the server from crashes caused by unbounded queries. The piece closes with a production impact summary: lower CPU/RAM consumption, lower latency, and lower network I/O as a direct result of applying these practices systematically, not just occasionally. Aimed at backend developers and analysts who write SQL frequently and want habits that scale well on large databases."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "ciclo-vida-dashboard",
+    "imagen": "Construidos/Gobernanza_Tableros_BI/ciclo-vida-dashboard.png",
+    "fechaPublicacion": "2026-12-15T09:10:00",
+    "categoriaPrincipal": "gobierno-de-datos",
+    "temas": [
+      "gobierno-datos",
+      "dashboard",
+      "calidad-datos"
+    ],
+    "tipoContenido": "infografia",
+    "es": {
+      "topico": "El Ciclo de Vida de un Dashboard",
+      "descripcion": "Un dashboard que nunca se retira es tan riesgoso como uno mal diseñado: acumula deuda técnica, saturación de información y confusión sobre cuál versión de un KPI es la fuente de verdad. Esta infografía propone cinco controles críticos organizados como fases de un ciclo de vida completo: Definir, donde se establece el propósito, los usuarios objetivo y los criterios de aceptación antes de iniciar cualquier desarrollo; Certificar, donde se valida la calidad de las fuentes ETL/ELT y se configuran las políticas de seguridad y roles de acceso antes de publicar; Monitorear, donde se analiza telemetría operativa real —frecuencia de uso, tiempos de carga, patrones de consulta— en lugar de asumir que el dashboard sigue siendo relevante; Rectificar, donde se audita periódicamente si el modelo de datos sigue alineado con una estrategia de negocio que probablemente evolucionó desde su diseño original; y Retirar, la fase que la mayoría de programas de gobierno omite: consolidar reportes redundantes, suspender pipelines de actualización de tableros sin uso real y documentar formalmente su paso a estado inactivo. La pieza incluye un ejemplo de configuración de metadatos de gobierno con el estado de un activo analítico marcado para retiro, y un panel de impacto que resume los beneficios de aplicar el ciclo completo: menor cómputo desperdiciado, menor ambigüedad de KPIs y menor carga operativa del equipo de BI."
+    },
+    "en": {
+      "topico": "The Lifecycle of a Dashboard",
+      "descripcion": "A dashboard that never gets retired is as risky as a poorly designed one: it accumulates technical debt, information overload, and confusion about which version of a KPI is the source of truth. This infographic proposes five critical controls organized as phases of a complete lifecycle: Define, where purpose, target users, and acceptance criteria are established before any development starts; Certify, where ETL/ELT source quality is validated and security policies and access roles are configured before publishing; Monitor, where real operational telemetry is analyzed —usage frequency, load times, query patterns— instead of assuming the dashboard is still relevant; Rectify, where the data model is periodically audited to check it still aligns with a business strategy that has likely evolved since its original design; and Retire, the phase most governance programs skip: consolidating redundant reports, suspending refresh pipelines for dashboards with no real usage, and formally documenting their move to inactive status. The piece includes a sample governance metadata configuration showing an analytics asset flagged for retirement, and an impact panel summarizing the benefits of applying the full cycle: less wasted compute, less KPI ambiguity, and less operational load on the BI team."
     },
     "baseStats": {
       "views": 0,

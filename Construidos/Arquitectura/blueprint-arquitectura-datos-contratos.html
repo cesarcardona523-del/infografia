@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blueprint de Arquitectura de Datos</title>
+    <style>
+
+        :root {
+            --bg-blueprint: #f4f8f5;
+            --grid-line: rgba(14, 61, 35, 0.07);
+            --blueprint-line: rgba(14, 61, 35, 0.28);
+            --blueprint-primary: #0e3d23;
+            --blueprint-accent: #d97706;
+            --text-light: #072113;
+            --text-muted: #5c6470;
+            --card-bg: #ffffff;
+            --success: #10b981;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #e7ede9;
+            font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .canvas {
+            width: 1200px;
+            height: 627px;
+            background-color: var(--bg-blueprint);
+            background-image: 
+                linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+            background-size: 20px 20px;
+            position: relative;
+            overflow: hidden;
+            padding: 24px 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            border: 2px solid var(--blueprint-line);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+        }
+
+        /* HEADER BLUEPRINT STYLE */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--blueprint-line);
+            padding-bottom: 12px;
+            flex-shrink: 0;
+        }
+
+        .title-section {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        h1 {
+            font-family: "SF Mono", Menlo, Consolas, monospace;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-light);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            font-family: "SF Mono", Menlo, Consolas, monospace;
+            font-size: 11px;
+            color: var(--blueprint-primary);
+            letter-spacing: 0.5px;
+        }
+
+        .blueprint-badge {
+            font-family: "SF Mono", Menlo, Consolas, monospace;
+            border: 1px solid var(--blueprint-primary);
+            color: var(--blueprint-primary);
+            padding: 4px 10px;
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            background: rgba(14, 61, 35, 0.06);
+        }
+
+        /* MAIN ARCHITECTURE PIPELINE LAYOUT */
+        .pipeline-container {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            flex: 1;
+            min-height: 0;
+            justify-content: space-between;
+        }
+
+        /* GOVERNANCE / METADATA BAR */
+        .gov-bar {
+            display: flex;
+            justify-content: space-around;
+            background: #ffffff;
+            border: 1px dashed var(--blueprint-line);
+            padding: 8px 12px;
+            border-radius: 4px;
+        }
+
+        .gov-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-family: "SF Mono", Menlo, Consolas, monospace;
+            font-size: 10px;
+            color: var(--text-light);
+            text-transform: uppercase;
+        }
+
+        .gov-item svg {
+            width: 12px;
+            height: 12px;
+            stroke: var(--blueprint-primary);
+            stroke-width: 2;
+            fill: none;
+        }
+
+        /* ARCHITECTURE FLOW GRID */
+        .arch-flow {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 12px;
+            align-items: center;
+            position: relative;
+        }
+
+        .arch-node {
+            background: var(--card-bg);
+            border: 1px solid var(--blueprint-primary);
+            border-radius: 6px;
+            padding: 12px 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 8px;
+            position: relative;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.3);
+        }
+
+        .arch-node::after {
+            content: '→';
+            position: absolute;
+            right: -14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--blueprint-primary);
+            font-family: "SF Mono", Menlo, Consolas, monospace;
+            font-size: 14px;
+            font-weight: bold;
+            z-index: 2;
+        }
+
+        .arch-node:last-child::after {
+            display: none;
+        }
+
+        .node-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 4px;
+            background: rgba(14, 61, 35, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .node-icon svg {
+            width: 16px;
+            height: 16px;
+            stroke: var(--blueprint-primary);
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .node-title {
+            font-family: "SF Mono", Menlo, Consolas, monospace;
+            font-size: 10.5px;
+            font-weight: 700;
+            color: var(--text-light);
+        }
+
+        .node-desc {
+            font-size: 9px;
+            color: var(--text-muted);
+            line-height: 1.2;
+        }
+
+        /* SUB-PIPELINE DETAILS (DLQ / OBSERVABILITY) */
+        .sub-architecture {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 16px;
+        }
+
+        .details-box {
+            background: #ffffff;
+            border: 1px solid var(--blueprint-line);
+            border-radius: 6px;
+            padding: 10px 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .details-title {
+            font-family: "SF Mono", Menlo, Consolas, monospace;
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--blueprint-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+
+        .detail-item {
+            font-size: 9px;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-family: "SF Mono", Menlo, Consolas, monospace;
+        }
+
+        .detail-item svg {
+            width: 10px;
+            height: 10px;
+            stroke: var(--success);
+            stroke-width: 2.5;
+            fill: none;
+            flex-shrink: 0;
+        }
+
+        /* CODE SNIPPET STYLE */
+        .code-snippet {
+            background: #072113;
+            border: 1px solid var(--blueprint-line);
+            border-radius: 6px;
+            padding: 8px 12px;
+            font-family: "SF Mono", Menlo, Consolas, monospace;
+            font-size: 9px;
+            color: #f4f8f5;
+            line-height: 1.3;
+        }
+
+        .code-snippet .kw { color: #6ee7b7; font-weight: 600; }
+        .code-snippet .str { color: #d9791e; }
+        .code-snippet .cm { color: #94a3b8; font-style: italic; }
+
+        /* FOOTER SIGNATURE */
+        .closing-bar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--blueprint-primary);
+            color: #fff;
+            border-radius: 6px;
+            padding: 8px 14px;
+            font-size: 9.5px;
+            line-height: 1.4;
+        }
+
+        .closing-bar svg {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+            fill: var(--blueprint-accent);
+        }
+
+        .closing-bar b { color: #fff; }
+
+        .latency-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .latency-item {
+            background: var(--card-bg);
+            border: 1px solid var(--blueprint-line);
+            border-radius: 6px;
+            padding: 8px 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .lat-tag {
+            width: fit-content;
+            font-size: 8.5px;
+            font-weight: 800;
+            text-transform: uppercase;
+            padding: 2px 8px;
+            border-radius: 10px;
+            color: #fff;
+        }
+
+        .lat-tag.bronze { background: #8a4a0f; }
+        .lat-tag.silver { background: #64748b; }
+        .lat-tag.gold { background: var(--blueprint-accent); }
+
+        .lat-desc {
+            font-size: 8.5px;
+            color: var(--text-muted);
+            line-height: 1.3;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 12px;
+            right: 24px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-family: "SF Mono", Menlo, Consolas, monospace;
+            background: #ffffff;
+            padding: 4px 10px;
+            border: 1px solid var(--blueprint-line);
+            border-radius: 4px;
+        }
+
+        .footer svg { width: 12px; height: 12px; fill: #0A66C2; }
+        .footer span { font-size: 10px; font-weight: 600; color: var(--text-light); }
+
+    </style>
+</head>
+<body>
+
+<div class="canvas">
+    
+    <!-- HEADER -->
+    <header class="header">
+        <div class="title-section">
+            <h1>Blueprint de Arquitectura de Datos</h1>
+            <span class="subtitle">Pipelines resilientes, linaje automatizado y contratos de datos</span>
+        </div>
+        <div class="blueprint-badge">DA-01 // Enterprise Standard</div>
+    </header>
+
+    <!-- MAIN PIPELINE CONTAINER -->
+    <div class="pipeline-container">
+        
+        <!-- GOVERNANCE BAR -->
+        <div class="gov-bar">
+            <div class="gov-item"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Gobierno y Seguridad</div>
+            <div class="gov-item"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> Linaje Automatizado (Data Lineage)</div>
+            <div class="gov-item"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Control de Accesos (RBAC / ABAC)</div>
+            <div class="gov-item"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> Data Contracts & Schemas</div>
+        </div>
+
+        <!-- 6-STAGE ARCHITECTURE FLOW -->
+        <div class="arch-flow">
+            
+            <!-- Stage 1: Fuentes -->
+            <div class="arch-node">
+                <div class="node-icon"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
+                <span class="node-title">1. Origen</span>
+                <span class="node-desc">Bases transaccionales, APIs, IoT y Event Streams.</span>
+            </div>
+
+            <!-- Stage 2: Ingesta -->
+            <div class="arch-node">
+                <div class="node-icon"><svg viewBox="0 0 24 24"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg></div>
+                <span class="node-title">2. Ingesta</span>
+                <span class="node-desc">Procesos batch, CDC (Change Data Capture) y streaming.</span>
+            </div>
+
+            <!-- Stage 3: Raw / Bronze -->
+            <div class="arch-node">
+                <div class="node-icon"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
+                <span class="node-title">3. Raw / Bronze</span>
+                <span class="node-desc">Almacenamiento inmutable en formato crudo optimizado.</span>
+            </div>
+
+            <!-- Stage 4: Transformación -->
+            <div class="arch-node">
+                <div class="node-icon"><svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+                <span class="node-title">4. Transformación</span>
+                <span class="node-desc">Validación de esquemas, limpieza y tipado estricto.</span>
+            </div>
+
+            <!-- Stage 5: Silver / Curated -->
+            <div class="arch-node">
+                <div class="node-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                <span class="node-title">5. Silver / Curated</span>
+                <span class="node-desc">Datos limpios, desduplicados y modelados dimensionalmente.</span>
+            </div>
+
+            <!-- Stage 6: Gold / Data Products -->
+            <div class="arch-node">
+                <div class="node-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+                <span class="node-title">6. Gold / Serving</span>
+                <span class="node-desc">Data products listos para BI, analítica avanzada y ML.</span>
+            </div>
+
+        </div>
+
+        <!-- SUB-ARCHITECTURE DETAILS -->
+        <div class="sub-architecture">
+            
+            <!-- Resiliencia y Manejo de Errores -->
+            <div class="details-box">
+                <div class="details-title">
+                    <svg viewBox="0 0 24 24" style="width:12px; height:12px; stroke:var(--blueprint-accent); stroke-width:2; fill:none;"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    Resiliencia, Calidad y Manejo de Errores (DLQ)
+                </div>
+                <div class="details-grid">
+                    <div class="detail-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Idempotencia en ingesta</div>
+                    <div class="detail-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Contratos de datos (Data Contracts)</div>
+                    <div class="detail-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Dead Letter Queue (DLQ) automática</div>
+                    <div class="detail-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Checkpoints de estado distribuidos</div>
+                    <div class="detail-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Políticas de Retry con Backoff</div>
+                    <div class="detail-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Observabilidad y Alertas (SLA/SLO)</div>
+                </div>
+            </div>
+
+            <!-- Fragmento de Código / Configuración -->
+            <div class="code-snippet">
+                <span class="cm"># Contrato de Datos (YAML Schema)</span><br>
+                <span class="kw">data_contract_version</span>: <span class="str">"1.2.0"</span><br>
+                <span class="kw">schema</span>:<br>
+                &nbsp;&nbsp;- <span class="kw">name</span>: id_cliente<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">type</span>: string<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">constraints</span>: [not_null, unique]<br>
+                &nbsp;&nbsp;- <span class="kw">name</span>: monto<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">type</span>: decimal<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">constraints</span>: [not_null, positive]
+            </div>
+
+        </div>
+
+        <div class="closing-bar">
+            <svg viewBox="0 0 24 24"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z"/></svg>
+            <span><b>El contrato de datos es la frontera:</b> si el productor rompe el schema, la ingesta falla rápido y de forma visible — en vez de propagar datos corruptos silenciosamente hasta Gold.</span>
+        </div>
+
+        <div class="latency-row">
+            <div class="latency-item">
+                <span class="lat-tag bronze">Bronze</span>
+                <span class="lat-desc">Ingesta casi en tiempo real vía streaming o CDC — prioriza velocidad sobre limpieza.</span>
+            </div>
+            <div class="latency-item">
+                <span class="lat-tag silver">Silver</span>
+                <span class="lat-desc">Procesamiento por micro-lotes cada pocos minutos — ya validado y deduplicado.</span>
+            </div>
+            <div class="latency-item">
+                <span class="lat-tag gold">Gold</span>
+                <span class="lat-desc">Actualización programada (batch) alineada al ritmo real de consumo del negocio.</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- SIGNATURE -->
+    <div class="footer">
+        <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+        <span>cacm523</span>
+    </div>
+
+</div>
+
+</body>
+</html>

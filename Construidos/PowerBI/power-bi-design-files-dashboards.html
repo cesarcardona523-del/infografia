@@ -3,811 +3,460 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Power BI Design Files - Dashboards de Alto Impacto</title>
+    <title>Power BI Dashboard Design & Architecture</title>
     <style>
         :root {
-            --bg-canvas: #f4f7f5;
-            --green-dark: #072113;
-            --green-primary: #0e3d23;
-            --green-glow: #10b981;
-            --green-light: #e6f4ed;
-            --earth-accent: #d97706;
-            --earth-bg: rgba(217, 119, 6, 0.12);
-            --white: #ffffff;
-            --gray-border: #cbd5e1;
-            --gray-text: #475569;
-            --radius-lg: 12px;
-            --radius-md: 8px;
+            --primary: #10b981;
+            --primary-dark: #047857;
+            --primary-light: #d1fae5;
+            --primary-bg: #ecfdf5;
+            --accent: #d97706;
+            --accent-bg: #fffbeb;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --text-light: #94a3b8;
+            --bg-canvas: #f8fafc;
+            --bg-card: #ffffff;
+            --border-color: rgba(15, 23, 42, 0.08);
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
 
         body {
-            background-color: #0b1410;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            background-color: #1e293b;
+            font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* --- CONTENEDOR PRINCIPAL EXACTO 1200x627 --- */
         .canvas {
             width: 1200px;
             height: 627px;
-            background: linear-gradient(135deg, #ffffff 0%, var(--bg-canvas) 100%);
+            background: linear-gradient(135deg, var(--bg-canvas) 0%, var(--primary-bg) 100%);
             position: relative;
             overflow: hidden;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
             display: flex;
             flex-direction: column;
-            padding: 16px 28px;
-            gap: 10px;
+            padding: 20px 28px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
         }
 
-        /* Patrón sutil de fondo */
-        .canvas::before {
-            content: '';
+        /* Ambient Glows */
+        .glow {
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-image: radial-gradient(rgba(14, 61, 35, 0.08) 1px, transparent 1px);
-            background-size: 24px 24px;
-            pointer-events: none;
+            border-radius: 50%;
+            filter: blur(80px);
             z-index: 0;
+            opacity: 0.4;
+        }
+        .glow-1 {
+            width: 400px; height: 400px;
+            background: rgba(16, 185, 129, 0.15);
+            top: -100px; left: -100px;
+        }
+        .glow-2 {
+            width: 350px; height: 350px;
+            background: rgba(217, 119, 6, 0.08);
+            bottom: -100px; right: -50px;
         }
 
-        /* --- HEADER --- */
+        /* Header */
         .header {
             position: relative;
-            z-index: 1;
+            z-index: 10;
+            margin-bottom: 12px;
             display: flex;
             justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .tag {
+            display: inline-flex;
             align-items: center;
-            border-bottom: 2px solid rgba(14, 61, 35, 0.15);
-            padding-bottom: 8px;
-            flex-shrink: 0;
-        }
-
-        .header-title h1 {
-            font-size: 24px;
-            font-weight: 900;
-            color: var(--green-dark);
-            letter-spacing: -0.5px;
-            text-transform: uppercase;
-        }
-
-        .header-title h1 span {
-            color: var(--earth-accent);
-        }
-
-        .header-badge {
-            background: var(--earth-bg);
-            color: var(--earth-accent);
-            border: 1.5px solid rgba(217, 119, 6, 0.3);
-            padding: 4px 14px;
+            gap: 6px;
+            background: var(--primary-dark);
+            color: white;
+            padding: 3px 10px;
             border-radius: 20px;
             font-size: 10px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-        }
-
-        /* --- LAYOUT PRINCIPAL (2 COLUMNAS: TEXTO + MINI-DASHBOARDS UI) --- */
-        .main-grid {
-            position: relative;
-            z-index: 1;
-            display: grid;
-            grid-template-columns: 1fr 1.35fr;
-            gap: 18px;
-            flex-grow: 0;
-            flex-shrink: 0;
-            min-height: 0;
-            align-items: stretch;
-        }
-
-        /* Franja inferior: pipeline de valor (Datos -> Decisión), aprovecha el ancho completo */
-        .pipeline-strip {
-            position: relative;
-            z-index: 1;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 6px;
-            min-height: 0;
-        }
-
-        .pipeline-strip .pl-title {
-            font-size: 9px;
-            font-weight: 800;
-            color: var(--green-dark);
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            width: fit-content;
         }
 
-        .pipeline-strip .pl-title span {
-            color: var(--earth-accent);
+        .title {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--text-main);
+            letter-spacing: -0.5px;
+            line-height: 1.1;
         }
 
-        .pipeline-track {
+        .title span { color: var(--primary); }
+
+        .subtitle {
+            font-size: 11.5px;
+            color: var(--text-muted);
+            font-weight: 500;
+            max-width: 750px;
+        }
+
+        /* Bento Grid Layout (3x2 Columns/Rows) */
+        .grid-container {
             position: relative;
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
+            z-index: 10;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 12px;
+            flex: 1;
+            min-height: 0;
+            margin-bottom: 10px;
         }
 
-        .pipeline-track::before {
-            content: '';
-            position: absolute;
-            top: 11px;
-            left: 16px;
-            right: 16px;
-            height: 2px;
-            background-image: repeating-linear-gradient(to right, var(--gray-border) 0, var(--gray-border) 5px, transparent 5px, transparent 9px);
-            z-index: 0;
-        }
-
-        .pl-step {
-            position: relative;
-            z-index: 1;
+        .panel {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 12px;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            gap: 4px;
-            flex: 1;
-            padding: 0 4px;
+            gap: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            position: relative;
         }
 
-        .pl-num {
-            width: 22px;
-            height: 22px;
-            border-radius: 50%;
-            background: var(--green-primary);
-            color: var(--white);
-            font-size: 10px;
-            font-weight: 800;
+        .panel::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2.5px;
+            background: var(--primary);
+            border-radius: 8px 8px 0 0;
+        }
+
+        .panel.accent::before {
+            background: var(--accent);
+        }
+
+        .panel-header {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 6px;
+        }
+
+        .panel-icon {
+            width: 18px; height: 18px;
+            border-radius: 4px;
+            background: var(--primary-bg);
+            color: var(--primary-dark);
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 3px solid var(--bg-canvas);
         }
 
-        .pl-step.highlight .pl-num {
-            background: var(--earth-accent);
+        .panel.accent .panel-icon {
+            background: var(--accent-bg);
+            color: var(--accent);
         }
 
-        .pl-label {
-            font-size: 8.5px;
-            font-weight: 800;
-            color: var(--green-dark);
+        .panel-title {
+            font-size: 11.5px;
+            font-weight: 700;
+            color: var(--text-main);
             text-transform: uppercase;
             letter-spacing: 0.3px;
         }
 
-        .pl-desc {
-            font-size: 7px;
-            color: var(--gray-text);
-            text-align: center;
-            line-height: 1.25;
-        }
-
-        /* Columna Izquierda: Mensaje y Callouts */
-        .left-column {
+        /* Micro-typography Lists */
+        .item-list {
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            gap: 6px;
+            flex: 1;
         }
 
-        .intro-card {
-            background: var(--white);
-            border: 1px solid var(--gray-border);
-            border-radius: var(--radius-lg);
-            padding: 14px 16px;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            box-shadow: 0 4px 12px rgba(7, 33, 19, 0.04);
-            border-left: 4px solid var(--green-primary);
-        }
-
-        .intro-card h2 {
-            font-size: 13px;
-            font-weight: 800;
-            color: var(--green-dark);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .intro-card p {
-            font-size: 9.5px;
-            color: var(--gray-text);
-            line-height: 1.35;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
-        }
-
-        .feature-box {
-            background: var(--white);
-            border: 1px solid var(--gray-border);
-            border-radius: var(--radius-md);
-            padding: 8px 10px;
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-            box-shadow: 0 2px 6px rgba(7, 33, 19, 0.03);
-        }
-
-        .feature-box .f-title {
-            font-size: 9px;
-            font-weight: 800;
-            color: var(--green-primary);
-            text-transform: uppercase;
-        }
-
-        .feature-box .f-desc {
-            font-size: 8px;
-            color: var(--gray-text);
-        }
-
-        /* Panel de reglas de diseño (rellena el espacio inferior de la columna izquierda) */
-        .rules-panel {
-            background: var(--green-dark);
-            border-radius: var(--radius-lg);
-            padding: 12px 16px;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            box-shadow: 0 8px 20px rgba(7, 33, 19, 0.18);
-        }
-
-        .rules-panel h2 {
-            font-size: 12px;
-            font-weight: 800;
-            color: var(--white);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .rules-panel h2 span {
-            color: var(--earth-accent);
-        }
-
-        .rule-row {
+        .item-row {
             display: flex;
             align-items: flex-start;
             gap: 8px;
         }
 
-        .rule-num {
-            flex-shrink: 0;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background: var(--earth-accent);
-            color: var(--white);
-            font-size: 9px;
-            font-weight: 800;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .rule-text {
-            font-size: 9px;
-            line-height: 1.35;
-            color: var(--green-light);
-        }
-
-        .rule-text b {
-            color: var(--white);
-        }
-
-        /* Columna Derecha: Mockups UI de Dashboards Power BI (Estilo Referencia) */
-        .right-column {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: 1fr 1fr;
-            gap: 9px;
-            height: 100%;
-            max-height: 430px;
-        }
-
-        .dashboard-mockup {
-            background: var(--white);
-            border: 1.5px solid var(--gray-border);
-            border-radius: var(--radius-md);
-            padding: 7px 9px;
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            box-shadow: 0 6px 16px rgba(7, 33, 19, 0.08);
-            position: relative;
-            overflow: hidden;
-            min-height: 0;
-        }
-
-        .mockup-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #edf2ef;
-            padding-bottom: 4px;
-        }
-
-        .mockup-title {
-            font-size: 9px;
-            font-weight: 800;
-            color: var(--green-dark);
-            text-transform: uppercase;
-        }
-
-        .mockup-dot {
-            width: 6px;
-            height: 6px;
-            background: var(--green-glow);
-            border-radius: 50%;
-        }
-
-        .kpi-row {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 4px;
-        }
-
-        .kpi-card {
-            background: #f8faf9;
-            border: 1px solid #e2e8f0;
-            border-radius: 4px;
-            padding: 4px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .kpi-label {
-            font-size: 6.5px;
-            color: var(--gray-text);
-            text-transform: uppercase;
-        }
-
-        .kpi-val {
-            font-size: 9px;
-            font-weight: 800;
-            color: var(--green-primary);
-        }
-
-        .kpi-val.negative {
-            color: #dc2626;
-        }
-
-        /* Simulador de Gráficos tipo Power BI */
-        .chart-sim {
-            background: #fafcfb;
-            border: 1px solid #e2e8f0;
-            border-radius: 4px;
-            padding: 6px;
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            flex-grow: 1;
-        }
-
-        .bar-chart-row {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 7.5px;
-        }
-
-        .bar-label {
-            width: 45px;
-            color: var(--gray-text);
-            font-weight: 600;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .bar-track {
-            flex-grow: 1;
-            height: 5px;
-            background: #e2e8f0;
-            border-radius: 3px;
-            overflow: hidden;
-        }
-
-        .bar-fill {
-            height: 100%;
-            background: var(--green-primary);
-            border-radius: 3px;
-        }
-
-        .bar-fill.earth {
-            background: var(--earth-accent);
-        }
-
-        .bar-val {
-            width: 25px;
-            text-align: right;
+        .item-badge {
             font-family: "SF Mono", Menlo, Consolas, monospace;
-            font-size: 7px;
+            font-size: 9px;
             font-weight: 700;
-        }
-
-        /* Donut chart (tipo IT Support Ticket Breakdown) */
-        .donut-row {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            flex-grow: 1;
-        }
-
-        .donut-shape {
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: conic-gradient(
-                var(--green-primary) 0% 42%,
-                var(--green-glow) 42% 68%,
-                var(--earth-accent) 68% 88%,
-                #cbd5e1 88% 100%
-            );
-        }
-
-        .donut-shape::after {
-            content: '';
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background: var(--white);
-        }
-
-        .donut-legend {
-            display: flex;
-            flex-direction: column;
-            gap: 3px;
-            font-size: 7px;
-            color: var(--gray-text);
-        }
-
-        .donut-legend .leg-row { display: flex; align-items: center; gap: 4px; }
-        .donut-legend .leg-dot { width: 6px; height: 6px; border-radius: 2px; flex-shrink: 0; }
-        .donut-legend b { color: var(--green-dark); }
-
-        /* Insight derivado (dato calculado a partir de la propia dona, no inventado) */
-        .insight-box {
-            margin-top: auto;
-            background: var(--earth-bg);
-            border-left: 3px solid var(--earth-accent);
+            background: var(--bg-canvas);
+            color: var(--primary-dark);
+            padding: 2px 6px;
             border-radius: 4px;
-            padding: 5px 7px;
-            font-size: 7.5px;
+            border: 1px solid var(--border-color);
+            min-width: 65px;
+            text-align: center;
+        }
+
+        .panel.accent .item-badge {
+            color: var(--accent);
+            background: var(--accent-bg);
+            border-color: rgba(217, 119, 6, 0.2);
+        }
+
+        .item-text {
+            font-size: 10px;
+            color: var(--text-muted);
             line-height: 1.35;
-            color: var(--green-dark);
         }
 
-        .insight-box b { color: var(--earth-accent); }
-
-        /* Sparkline / trend line (tipo Performance Analysis) */
-        .spark-box { flex-grow: 1; display: flex; flex-direction: column; gap: 2px; }
-        .spark-box svg { width: 100%; height: 100%; }
-
-        /* Scatter plot (tipo QoQ Sales & Conversion) */
-        .scatter-box {
-            flex-grow: 1;
-            position: relative;
-            background: #fafcfb;
-            border-radius: 4px;
+        .item-text strong {
+            color: var(--text-main);
         }
 
-        .scatter-box svg { width: 100%; height: 100%; display: block; }
-
-        /* --- FOOTER --- */
-        .footer {
+        /* Footer Banner */
+        .banner {
             position: relative;
-            z-index: 1;
+            z-index: 10;
+            background: var(--primary-dark);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 6px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: auto;
-            flex-shrink: 0;
-            padding-top: 2px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
         }
 
-        .tech-tags {
-            display: flex;
-            gap: 6px;
-        }
-
-        .tech-pill {
-            background: var(--white);
-            border: 1px solid var(--gray-border);
-            color: var(--green-dark);
-            font-size: 8.5px;
-            font-weight: 700;
-            padding: 3px 10px;
-            border-radius: 4px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .signature {
+        .banner-text {
+            font-size: 10px;
+            font-weight: 600;
             display: flex;
             align-items: center;
             gap: 6px;
-            font-size: 11px;
-            font-weight: 800;
-            color: var(--green-dark);
-            background: var(--green-light);
-            border: 1px solid rgba(14, 61, 35, 0.3);
-            padding: 4px 12px;
-            border-radius: 20px;
-            box-shadow: 0 2px 6px rgba(7, 33, 19, 0.05);
         }
 
-        .linkedin-icon {
-            width: 12px;
-            height: 12px;
-            fill: #0A66C2;
+        .banner-text span { color: #fcd34d; font-weight: 700; }
+
+        /* Signature */
+        .signature-box {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2px 8px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
         }
+
+        .signature-box svg { width: 11px; height: 11px; fill: #0a66c2; }
+        .signature { font-size: 9.5px; font-weight: 700; color: var(--text-muted); }
+
+        svg { width: 11px; height: 11px; stroke-width: 2; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; }
     </style>
 </head>
 <body>
+
     <div class="canvas">
-        
-        <!-- HEADER -->
-        <header class="header">
-            <div class="header-title">
-                <h1>Power BI Design Files: <span>Dashboards de Alto Impacto</span></h1>
-            </div>
-            <div class="header-badge">
-                📊 Galería de Visualización de Datos
-            </div>
-        </header>
+        <div class="glow glow-1"></div>
+        <div class="glow glow-2"></div>
 
-        <!-- MAIN LAYOUT -->
-        <main class="main-grid">
-            
-            <!-- IZQUIERDA: TEXTO Y CARACTERÍSTICAS -->
-            <div class="left-column">
-                <div class="intro-card">
-                    <h2>Galería de Visualización Profesional</h2>
-                    <p>Repositorio especializado que recopila plantillas, DAX avanzado y dashboards ganadores en retos internacionales de diseño y analítica corporativa.</p>
-                </div>
-
-                <div class="features-grid">
-                    <div class="feature-box">
-                        <span class="f-title">Análisis de Causa Raíz</span>
-                        <span class="f-desc">Desglose de KPIs y filtros cruzados dinámicos.</span>
-                    </div>
-                    <div class="feature-box">
-                        <span class="f-title">Resumen Ejecutivo</span>
-                        <span class="f-desc">Estructuras limpias orientadas a la toma de decisiones.</span>
-                    </div>
-                    <div class="feature-box">
-                        <span class="f-title">DAX Avanzado</span>
-                        <span class="f-desc">Medidas explícitas en vez de columnas calculadas.</span>
-                    </div>
-                    <div class="feature-box">
-                        <span class="f-title">Diseño UI/UX Editorial</span>
-                        <span class="f-desc">Jerarquía visual milimétrica y paletas corporativas.</span>
-                    </div>
-                    <div class="feature-box">
-                        <span class="f-title">Modelo Estrella</span>
-                        <span class="f-desc">Hechos y dimensiones separados para consultas más rápidas.</span>
-                    </div>
-                    <div class="feature-box">
-                        <span class="f-title">Storytelling Visual</span>
-                        <span class="f-desc">Cada gráfico responde una pregunta de negocio concreta.</span>
-                    </div>
-                </div>
-
-                <div class="rules-panel">
-                    <h2>3 Reglas de Oro <span>del Diseño Ganador</span></h2>
-                    <div class="rule-row">
-                        <span class="rule-num">1</span>
-                        <span class="rule-text"><b>Regla de los 5 segundos:</b> el mensaje principal se entiende sin leer cada dato.</span>
-                    </div>
-                    <div class="rule-row">
-                        <span class="rule-num">2</span>
-                        <span class="rule-text"><b>Máximo 5-7 KPIs por vista:</b> más elementos generan sobrecarga cognitiva.</span>
-                    </div>
-                    <div class="rule-row">
-                        <span class="rule-num">3</span>
-                        <span class="rule-text"><b>El color comunica estado:</b> el acento se reserva para alertas, no decoración.</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- DERECHA: MOCKUPS UI DE POWER BI SIMULADOS EXACTOS -->
-            <div class="right-column">
-                
-                <!-- Mockup 1: Dashboard de Causa Raíz (barras) -->
-                <div class="dashboard-mockup">
-                    <div class="mockup-header">
-                        <span class="mockup-title">Dashboard de Causa Raíz</span>
-                        <div class="mockup-dot"></div>
-                    </div>
-                    <div class="kpi-row">
-                        <div class="kpi-card">
-                            <span class="kpi-label">Ventas</span>
-                            <span class="kpi-val">1.9M</span>
-                        </div>
-                        <div class="kpi-card">
-                            <span class="kpi-label">Utilidad</span>
-                            <span class="kpi-val negative">▼9.5%</span>
-                        </div>
-                        <div class="kpi-card">
-                            <span class="kpi-label">Cantidad</span>
-                            <span class="kpi-val">74.2K</span>
-                        </div>
-                    </div>
-                    <div class="chart-sim">
-                        <div style="font-size: 7px; font-weight: 700; color: var(--green-dark); margin-bottom: 2px;">Rendimiento por Subcategoría</div>
-                        <div class="bar-chart-row">
-                            <span class="bar-label">Accesorios</span>
-                            <div class="bar-track"><div class="bar-fill" style="width: 85%;"></div></div>
-                            <span class="bar-val">43%</span>
-                        </div>
-                        <div class="bar-chart-row">
-                            <span class="bar-label">Teléfonos</span>
-                            <div class="bar-track"><div class="bar-fill earth" style="width: 65%;"></div></div>
-                            <span class="bar-val">33%</span>
-                        </div>
-                        <div class="bar-chart-row">
-                            <span class="bar-label">Copiadoras</span>
-                            <div class="bar-track"><div class="bar-fill" style="width: 50%;"></div></div>
-                            <span class="bar-val">26%</span>
-                        </div>
-                        <div class="bar-chart-row">
-                            <span class="bar-label">Máquinas</span>
-                            <div class="bar-track"><div class="bar-fill earth" style="width: 36%;"></div></div>
-                            <span class="bar-val">18%</span>
-                        </div>
-                        <div class="insight-box">Accesorios lidera el rendimiento (43%); <b>Máquinas</b> es la subcategoría con mayor oportunidad de mejora.</div>
-                    </div>
-                </div>
-
-                <!-- Mockup 2: Análisis de Desempeño (línea de tendencia) -->
-                <div class="dashboard-mockup">
-                    <div class="mockup-header">
-                        <span class="mockup-title">Análisis de Desempeño</span>
-                        <div class="mockup-dot" style="background: var(--earth-accent);"></div>
-                    </div>
-                    <div class="kpi-row">
-                        <div class="kpi-card">
-                            <span class="kpi-label">Total Tickets</span>
-                            <span class="kpi-val">11,923</span>
-                        </div>
-                        <div class="kpi-card">
-                            <span class="kpi-label">Resolución</span>
-                            <span class="kpi-val">161.1h</span>
-                        </div>
-                        <div class="kpi-card">
-                            <span class="kpi-label">Conversión</span>
-                            <span class="kpi-val">23.1%</span>
-                        </div>
-                    </div>
-                    <div class="chart-sim spark-box">
-                        <div style="font-size: 7px; font-weight: 700; color: var(--green-dark);">Tendencia Mensual de Tickets</div>
-                        <svg viewBox="0 0 110 34" preserveAspectRatio="none">
-                            <polyline points="4,26 4,30 106,30 106,26" fill="none" stroke="none"/>
-                            <line x1="4" y1="30" x2="106" y2="30" stroke="#e2e8f0" stroke-width="1"/>
-                            <polygon points="4,22 24,26 44,15 64,10 84,17 106,6 106,30 4,30" fill="var(--green-glow)" opacity="0.12"/>
-                            <polyline points="4,22 24,26 44,15 64,10 84,17 106,6" fill="none" stroke="var(--green-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <circle cx="4" cy="22" r="2" fill="var(--green-primary)"/>
-                            <circle cx="24" cy="26" r="2" fill="var(--green-primary)"/>
-                            <circle cx="44" cy="15" r="2" fill="var(--green-primary)"/>
-                            <circle cx="64" cy="10" r="2" fill="var(--green-primary)"/>
-                            <circle cx="84" cy="17" r="2" fill="var(--green-primary)"/>
-                            <circle cx="106" cy="6" r="2.4" fill="var(--earth-accent)"/>
-                        </svg>
-                    </div>
-                </div>
-
-                <!-- Mockup 3: Distribución de Tickets de Soporte TI (dona) -->
-                <div class="dashboard-mockup">
-                    <div class="mockup-header">
-                        <span class="mockup-title">Dashboard de Soporte TI</span>
-                        <div class="mockup-dot"></div>
-                    </div>
-                    <div style="font-size: 7px; font-weight: 700; color: var(--green-dark);">Distribución por Tipo de Ticket</div>
-                    <div class="donut-row">
-                        <div class="donut-shape"></div>
-                        <div class="donut-legend">
-                            <div class="leg-row"><span class="leg-dot" style="background:var(--green-primary);"></span><b>42%</b>&nbsp;Incidente</div>
-                            <div class="leg-row"><span class="leg-dot" style="background:var(--green-glow);"></span><b>26%</b>&nbsp;Solicitud</div>
-                            <div class="leg-row"><span class="leg-dot" style="background:var(--earth-accent);"></span><b>20%</b>&nbsp;Problema</div>
-                            <div class="leg-row"><span class="leg-dot" style="background:#cbd5e1;"></span><b>12%</b>&nbsp;Cambio</div>
-                        </div>
-                    </div>
-                    <div class="insight-box"><b>Insight:</b> Incidentes y Solicitudes concentran el 68% del volumen total de tickets.</div>
-                </div>
-
-                <!-- Mockup 4: Ventas Trimestrales y Conversión (dispersión) -->
-                <div class="dashboard-mockup">
-                    <div class="mockup-header">
-                        <span class="mockup-title">Ventas Trimestrales</span>
-                        <div class="mockup-dot" style="background: var(--earth-accent);"></div>
-                    </div>
-                    <div style="font-size: 7px; font-weight: 700; color: var(--green-dark);">Agentes: Ventas vs. % Conversión</div>
-                    <div class="chart-sim scatter-box">
-                        <svg viewBox="0 0 110 44" preserveAspectRatio="none">
-                            <line x1="10" y1="4" x2="10" y2="38" stroke="#e2e8f0" stroke-width="1"/>
-                            <line x1="10" y1="38" x2="106" y2="38" stroke="#e2e8f0" stroke-width="1"/>
-                            <circle cx="30" cy="28" r="2.6" fill="var(--green-primary)" opacity="0.75"/>
-                            <circle cx="42" cy="18" r="2.6" fill="var(--green-primary)" opacity="0.75"/>
-                            <circle cx="55" cy="30" r="2.6" fill="var(--green-primary)" opacity="0.75"/>
-                            <circle cx="60" cy="12" r="3.2" fill="var(--earth-accent)"/>
-                            <circle cx="70" cy="22" r="2.6" fill="var(--green-primary)" opacity="0.75"/>
-                            <circle cx="78" cy="9" r="2.6" fill="var(--earth-accent)" opacity="0.8"/>
-                            <circle cx="86" cy="26" r="2.6" fill="var(--green-primary)" opacity="0.75"/>
-                            <circle cx="95" cy="15" r="2.6" fill="var(--earth-accent)" opacity="0.8"/>
-                        </svg>
-                    </div>
-                </div>
-
-            </div>
-
-        </main>
-
-        <!-- FRANJA: DEL DATO A LA DECISIÓN -->
-        <div class="pipeline-strip">
-            <div class="pl-title">De los Datos a la Decisión: <span>el Pipeline de un Dashboard Ganador</span></div>
-            <div class="pipeline-track">
-                <div class="pl-step">
-                    <span class="pl-num">1</span>
-                    <span class="pl-label">Datos</span>
-                    <span class="pl-desc">Extracción y limpieza en Power Query</span>
-                </div>
-                <div class="pl-step">
-                    <span class="pl-num">2</span>
-                    <span class="pl-label">Modelo</span>
-                    <span class="pl-desc">Esquema estrella: hechos y dimensiones</span>
-                </div>
-                <div class="pl-step highlight">
-                    <span class="pl-num">3</span>
-                    <span class="pl-label">DAX</span>
-                    <span class="pl-desc">Medidas explícitas y optimizadas</span>
-                </div>
-                <div class="pl-step">
-                    <span class="pl-num">4</span>
-                    <span class="pl-label">Storytelling</span>
-                    <span class="pl-desc">Jerarquía visual y narrativa clara</span>
-                </div>
-                <div class="pl-step">
-                    <span class="pl-num">5</span>
-                    <span class="pl-label">Decisión</span>
-                    <span class="pl-desc">Acción de negocio respaldada en datos</span>
-                </div>
+        <div class="header">
+            <div class="header-content">
+                <div class="tag">Business Intelligence & UI/UX Design</div>
+                <h1 class="title">Power BI <span>Design Files & Architecture</span></h1>
+                <p class="subtitle">Guía de diseño de alto impacto: jerarquía visual, optimización de modelos tabulares y gobernanza de dashboards interactivos.</p>
             </div>
         </div>
 
-        <!-- FOOTER -->
-        <footer class="footer">
-            <div class="tech-tags">
-                <span class="tech-pill">Power BI</span>
-                <span class="tech-pill">DAX Studio</span>
-                <span class="tech-pill">Narrativa de Datos</span>
+        <div class="grid-container">
+            
+            <!-- Panel 1: Arquitectura de Datos -->
+            <div class="panel">
+                <div class="panel-header">
+                    <div class="panel-icon"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg></div>
+                    <span class="panel-title">1. Modelo Tabular (SSAS)</span>
+                </div>
+                <div class="item-list">
+                    <div class="item-row">
+                        <span class="item-badge">Star Schema</span>
+                        <span class="item-text"><strong>Esquema Estrella:</strong> Separación estricta entre tablas de hechos y dimensiones para maximizar rendimiento de VertiPaq.</span>
+                    </div>
+                    <div class="item-row">
+                        <span class="item-badge">Relaciones</span>
+                        <span class="item-text">Evitar relaciones bidireccionales innecesarias; priorizar propagación de filtros en sentido único (1-a-muchos).</span>
+                    </div>
+                    <div class="item-row">
+                        <span class="item-badge">Granularidad</span>
+                        <span class="item-text">Alinear el nivel de detalle de las tablas de hechos directamente con las preguntas de negocio clave.</span>
+                    </div>
+                    <div class="item-row">
+                        <span class="item-badge">Cardinalidad</span>
+                        <span class="item-text">Preferir columnas de baja cardinalidad como claves de relación para reducir el consumo de memoria.</span>
+                    </div>
+                </div>
             </div>
-            <div class="signature">
-                <svg class="linkedin-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/>
+
+            <!-- Panel 2: Optimización DAX -->
+            <div class="panel">
+                <div class="panel-header">
+                    <div class="panel-icon"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div>
+                    <span class="panel-title">2. Rendimiento DAX</span>
+                </div>
+                <div class="item-list">
+                    <div class="item-row">
+                        <span class="item-badge">Variables</span>
+                        <span class="item-text">Uso extensivo de <strong>VAR</strong> para almacenar resultados intermedios y mejorar la legibilidad del código.</span>
+                    </div>
+                    <div class="item-row">
+                        <span class="item-badge">Filter Context</span>
+                        <span class="item-text">Minimizar el uso de iteradores pesados (SUMX, FILTER) sobre tablas completas en favor de CALCULATE.</span>
+                    </div>
+                    <div class="item-row">
+                        <span class="item-badge">Variables Time</span>
+                        <span class="item-text">Optimizar funciones de inteligencia de tiempo asegurando una tabla de calendario dedicada.</span>
+                    </div>
+                    <div class="item-row">
+                        <span class="item-badge">Query Folding</span>
+                        <span class="item-text">Verificar que Power Query delegue transformaciones a la fuente en vez de procesarlas localmente.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Panel 3: Jerarquía Visual y UX -->
+            <div class="panel">
+                <div class="panel-header">
+                    <div class="panel-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg></div>
+                    <span class="panel-title">3. UX & Layout</span>
+                </div>
+                <div class="item-list">
+                    <div class="item-row">
+                        <span class="item-badge">Z-Pattern</span>
+                        <span class="item-text">Disposición de KPIs globales en la parte superior izquierda siguiendo los patrones naturales de lectura.</span>
+                    </div>
+                    <div class="item-row">
+                        <span class="item-badge">Contraste</span>
+                        <span class="item-text">Uso intencional de colores institucionales para destacar anomalías o métricas críticas (Alertas).</span>
+                    </div>
+                    <div class="item-row">
+                        <span class="item-badge">Espacio</span>
+                        <span class="item-text">Mantenimiento de márgenes limpios y separación modular mediante contenedores de fondo neutro.</span>
+                    </div>
+                    <div class="item-row">
+                        <span class="item-badge">Grid</span>
+                        <span class="item-text">Alinear cada visual a una cuadrícula consistente evita composiciones que se sienten improvisadas.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Panel 4: Reducción de Ruido -->
+            <div class="panel">
+                <div class="panel-header">
+                    <div class="panel-icon"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div>
+                    <span class="panel-title">4. Claridad Analítica</span>
+                </div>
+                <div class="item-list">
+                    <div class="item-row">
+                        <span class="item-badge">Chart Selection</span>
+                        <span class="item-text">Selección rigurosa del gráfico adecuado (evitar gráficos de torta con más de 4 categorías).</span>
+                    </div>
+                    <div class="item-row">
+                        <span class="item-badge">Tooltips</span>
+                        <span class="item-text">Uso de información sobre herramientas personalizada para evitar saturar el lienzo principal.</span>
+                    </div>
+                    <div class="item-row">
+                        <span class="item-badge">Simplicidad</span>
+                        <span class="item-text">Eliminación de bordes redundantes, líneas de cuadrícula excesivas y efectos 3D innecesarios.</span>
+                    </div>
+                    <div class="item-row">
+                        <span class="item-badge">Jerarquía</span>
+                        <span class="item-text">El tamaño y la posición del elemento deben reflejar su importancia real para la decisión.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Panel 5: Gobernanza y Mantenimiento -->
+            <div class="panel accent">
+                <div class="panel-header">
+                    <div class="panel-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
+                    <span class="panel-title">5. Gobernanza & Seguridad</span>
+                </div>
+                <div class="item-list">
+                    <div class="item-row">
+                        <span class="item-badge">RLS</span>
+                        <span class="item-text">Implementación de <strong>Row-Level Security</strong> dinámica basada en roles de usuario corporativos.</span>
+                    </div>
+                    <div class="item-row">
+                        <span class="item-badge">Naming</span>
+                        <span class="item-text">Estandarización estricta de nomenclatura para medidas DAX, tablas y columnas calculadas.</span>
+                    </div>
+                    <div class="item-row">
+                        <span class="item-badge">Deployment</span>
+                        <span class="item-text">Uso de Pipelines de Despliegue en Power BI Service (Dev -> Test -> Prod).</span>
+                    </div>
+                    <div class="item-row">
+                        <span class="item-badge">Sensitivity</span>
+                        <span class="item-text">Etiquetas de sensibilidad de Microsoft Purview aplicadas al reporte, no solo al dataset.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Panel 6: Storytelling con Datos -->
+            <div class="panel">
+                <div class="panel-header">
+                    <div class="panel-icon"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg></div>
+                    <span class="panel-title">6. Data Storytelling</span>
+                </div>
+                <div class="item-list">
+                    <div class="item-row">
+                        <span class="item-badge">Contexto</span>
+                        <span class="item-text">Contextualizar cada KPI con su comparativo temporal (YoY, MoM) o presupuesto objetivo.</span>
+                    </div>
+                    <div class="item-row">
+                        <span class="item-badge">Narrativa</span>
+                        <span class="item-text">Guiar al usuario desde la perspectiva macro (resumen ejecutivo) hasta el detalle operativo.</span>
+                    </div>
+                    <div class="item-row">
+                        <span class="item-badge">Acción</span>
+                        <span class="item-text">Diseñar reportes que no solo informen el pasado, sino que faciliten la toma de decisiones.</span>
+                    </div>
+                    <div class="item-row">
+                        <span class="item-badge">Bookmarks</span>
+                        <span class="item-text">Usar marcadores para guiar al usuario por un flujo narrativo predefinido, paso a paso.</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="banner">
+            <div class="banner-text">
+                <svg viewBox="0 0 24 24" style="color: #fcd34d;"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                Un gran dashboard no es el que muestra más datos: <span>es el que comunica la información con mayor claridad y precisión.</span>
+            </div>
+            
+            <div class="signature-box">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                 </svg>
-                cacm523
+                <span class="signature">cacm523</span>
             </div>
-        </footer>
+        </div>
+
     </div>
+
 </body>
 </html>

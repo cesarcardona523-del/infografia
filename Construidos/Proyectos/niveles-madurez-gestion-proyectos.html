@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Project Manager y la Inteligencia Artificial</title>
+    <style>
+
+        :root {
+            --bg-canvas: #f0fdf4;
+            --primary: #064e3b;
+            --primary-light: #10b981;
+            --accent: #d97706; /* Tono tierra/ámbar */
+            --accent-light: #fef3c7;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #d1fae5;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #cbd5e1;
+            font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .canvas {
+            width: 1200px;
+            height: 627px;
+            background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+            position: relative;
+            overflow: hidden;
+            padding: 16px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* HEADER */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 8px;
+            flex-shrink: 0;
+        }
+
+        .title-section {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        h1 {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+            line-height: 1.1;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .header-badge {
+            background-color: var(--primary);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        /* BENTO GRID CONTAINER */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 8px;
+            flex: 1;
+            min-height: 0;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: var(--primary-light);
+        }
+
+        .card.accent::before {
+            background: var(--accent);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 6px;
+        }
+
+        .card-header svg {
+            width: 14px;
+            height: 14px;
+            stroke: var(--primary);
+            stroke-width: 2.5;
+            fill: none;
+        }
+
+        h2 {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* CARD SPANS */
+        .col-4 { grid-column: span 4; }
+        .col-6 { grid-column: span 6; }
+        .col-8 { grid-column: span 8; }
+        .col-12 { grid-column: span 12; }
+        .row-2 { grid-row: span 2; }
+
+        /* CONTENT ELEMENTS */
+        p.text-xs {
+            font-size: 9px;
+            color: var(--text-muted);
+            line-height: 1.3;
+            margin-bottom: 6px;
+        }
+
+        .levels-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+            height: 100%;
+        }
+
+        .level-box {
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 6px;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .level-num {
+            font-size: 8px;
+            font-weight: 800;
+            color: var(--accent);
+            text-transform: uppercase;
+        }
+
+        .level-title {
+            font-size: 9.5px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .level-desc {
+            font-size: 8.5px;
+            color: var(--text-muted);
+            line-height: 1.2;
+        }
+
+        .level-example {
+            font-size: 7.6px;
+            color: var(--text-main);
+            line-height: 1.3;
+            padding-top: 4px;
+            margin-top: 4px;
+            border-top: 1px dashed var(--border);
+        }
+
+        .level-example b { color: var(--accent); }
+
+        /* PHASES GRID */
+        .phases-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 6px;
+            height: 100%;
+        }
+
+        .phase-box {
+            background: #f8fafc;
+            border-radius: 6px;
+            padding: 6px;
+            border-top: 2px solid var(--primary);
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .phase-title {
+            font-size: 9px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .phase-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .phase-list li {
+            font-size: 8px;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+
+        .phase-list li::before {
+            content: '•';
+            color: var(--primary-light);
+            font-weight: bold;
+        }
+
+        /* LISTS GENERALES */
+        .bullet-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .bullet-list li {
+            font-size: 9px;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 500;
+        }
+
+        .bullet-list li svg {
+            width: 10px;
+            height: 10px;
+            stroke: var(--accent);
+            stroke-width: 3;
+            fill: none;
+            flex-shrink: 0;
+        }
+
+        /* FORMULA BOX */
+        .formula-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            background: #f8fafc;
+            border-radius: 6px;
+            padding: 8px;
+            border: 1px dashed var(--border);
+        }
+
+        .formula-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 2px;
+        }
+
+        .formula-item span {
+            font-size: 8.5px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .formula-item svg {
+            width: 16px;
+            height: 16px;
+            stroke: var(--primary-light);
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .formula-op {
+            font-size: 14px;
+            font-weight: 800;
+            color: var(--accent);
+        }
+
+        /* FOOTER SIGNATURE */
+        .footer {
+            position: absolute;
+            bottom: 12px;
+            right: 24px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            opacity: 0.85;
+            background: rgba(255,255,255,0.9);
+            padding: 3px 8px;
+            border-radius: 12px;
+        }
+
+        .footer svg { width: 12px; height: 12px; fill: var(--primary); }
+        .footer span { font-size: 10px; font-weight: 700; color: var(--primary); }
+
+    </style>
+</head>
+<body>
+
+<div class="canvas">
+    
+    <!-- HEADER -->
+    <header class="header">
+        <div class="title-section">
+            <h1>El Project Manager y la Inteligencia Artificial</h1>
+            <span class="subtitle">De herramienta operativa a aliada estratégica</span>
+        </div>
+        <div class="header-badge">
+            Menos trabajo operativo,<br>más impacto real.
+        </div>
+    </header>
+
+    <!-- BENTO GRID -->
+    <div class="bento-grid">
+        
+        <!-- CARD 1: Evolución (Span 8, Row 2) -->
+        <div class="card col-8 row-2">
+            <div>
+                <div class="card-header">
+                    <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                    <h2>1. La Evolución: 3 Niveles de IA en Gestión de Proyectos</h2>
+                </div>
+                <p class="text-xs">Evolución desde la asistencia reactiva hasta la ejecución autónoma supervisada.</p>
+            </div>
+            <div class="levels-container">
+                <div class="level-box">
+                    <span class="level-num">Nivel 01</span>
+                    <span class="level-title">IA Generativa</span>
+                    <span class="level-desc">Interacción conversacional. Útil para redactar actas, estructurar EDT y generar ideas iniciales.</span>
+                    <span class="level-example"><b>Ejemplo:</b> ChatGPT o Claude para el primer borrador del acta de constitución.</span>
+                    <span class="level-example"><b>Límite:</b> no conoce el contexto real del proyecto — todo requiere revisión humana.</span>
+                </div>
+                <div class="level-box">
+                    <span class="level-num">Nivel 02</span>
+                    <span class="level-title">IA como Copiloto</span>
+                    <span class="level-desc">Análisis predictivo de riesgos, estimaciones de cronograma y propuestas de optimización de recursos.</span>
+                    <span class="level-example"><b>Ejemplo:</b> asistentes de Microsoft Project o Asana que sugieren reasignar tareas ante un retraso.</span>
+                    <span class="level-example"><b>Límite:</b> propone, pero el PM sigue aprobando cada cambio.</span>
+                </div>
+                <div class="level-box">
+                    <span class="level-num">Nivel 03</span>
+                    <span class="level-title">IA Agéntica</span>
+                    <span class="level-desc">Ejecución autónoma de tareas rutinarias, monitoreo de dependencias y alertas tempranas 24/7.</span>
+                    <span class="level-example"><b>Ejemplo:</b> agentes que actualizan el estado de tareas y notifican bloqueos sin intervención manual.</span>
+                    <span class="level-example"><b>Límite:</b> decisiones de alto impacto siguen requiriendo aprobación humana.</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARD 2: Límites / No Delegables (Span 4, Row 2) -->
+        <div class="card col-4 row-2 accent">
+            <div>
+                <div class="card-header">
+                    <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    <h2>Lo que NUNCA se debe delegar</h2>
+                </div>
+                <p class="text-xs">La IA recomienda, el PM decide y asume la responsabilidad ética.</p>
+            </div>
+            <ul class="bullet-list">
+                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Decisiones críticas y negociación contractual</li>
+                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Gestión de conflictos humanos complejos</li>
+                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Liderazgo, motivación y empatía de equipo</li>
+                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Juicio profesional y criterio contextual</li>
+                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Comunicación con patrocinadores clave</li>
+                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Manejo de ambigüedad sin datos históricos</li>
+            </ul>
+        </div>
+
+        <!-- CARD 3: Fases del Proyecto (Span 12, Row 1) -->
+        <div class="card col-12">
+            <div class="card-header" style="margin-bottom: 2px;">
+                <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                <h2>2. Dónde Aporta la IA en el Ciclo de Vida del Proyecto</h2>
+            </div>
+            <div class="phases-grid">
+                <div class="phase-box">
+                    <span class="phase-title">Inicio</span>
+                    <ul class="phase-list">
+                        <li>Análisis de viabilidad</li>
+                        <li>Revisión documental</li>
+                        <li>Identificación de stakeholders</li>
+                    </ul>
+                </div>
+                <div class="phase-box">
+                    <span class="phase-title">Planificación</span>
+                    <ul class="phase-list">
+                        <li>Estimación de riesgos</li>
+                        <li>Consistencia de EDT</li>
+                        <li>Optimización de recursos</li>
+                    </ul>
+                </div>
+                <div class="phase-box">
+                    <span class="phase-title">Ejecución</span>
+                    <ul class="phase-list">
+                        <li>Automatización de minutas</li>
+                        <li>Seguimiento de tareas</li>
+                        <li>Reasignación dinámica</li>
+                    </ul>
+                </div>
+                <div class="phase-box">
+                    <span class="phase-title">Monitoreo</span>
+                    <ul class="phase-list">
+                        <li>Detección de desviaciones</li>
+                        <li>Alertas de plazos</li>
+                        <li>Predicción de sobrecostos</li>
+                    </ul>
+                </div>
+                <div class="phase-box">
+                    <span class="phase-title">Cierre</span>
+                    <ul class="phase-list">
+                        <li>Lecciones aprendidas</li>
+                        <li>Informes ejecutivos</li>
+                        <li>Documentación reutilizable</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARD 4: Fórmula del Éxito (Span 12, Row 1) -->
+        <div class="card col-12" style="justify-content: center; padding: 8px 12px;">
+            <div class="formula-container">
+                <div class="formula-item">
+                    <svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    <span>IA Agéntica</span>
+                </div>
+                <span class="formula-op">+</span>
+                <div class="formula-item">
+                    <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+                    <span>Datos de Calidad</span>
+                </div>
+                <span class="formula-op">+</span>
+                <div class="formula-item">
+                    <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                    <span>Criterio Humano</span>
+                </div>
+                <span class="formula-op">=</span>
+                <div class="formula-item">
+                    <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                    <span style="color: var(--primary-light);">Proyectos de Alto Valor</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- FOOTER SIGNATURE -->
+    <div class="footer">
+        <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+        <span>cacm523</span>
+    </div>
+
+</div>
+
+</body>
+</html>
