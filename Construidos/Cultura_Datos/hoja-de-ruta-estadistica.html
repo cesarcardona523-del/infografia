@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   :root{
-    --blue:#2360A8; --green:#3C8A5C; --amber:#C1780E; --purple:#6B4EA0;
+    --blue:#059669; --green:#065F46; --amber:#D97706; --purple:#92400E;
     --ink:#1D2129; --muted:#5C6470; --line:#E5E7EA; --white:#FFFFFF; --paper:#F7F8FA;
   }
   *{box-sizing:border-box;}
@@ -53,6 +53,7 @@
   .app .icon{ width:36px; height:36px; border-radius:9px; background:var(--purple); color:#fff; display:flex; align-items:center; justify-content:center; }
   .app .icon svg{ width:19px; height:19px; }
   .app span{ font-size:10.8px; font-weight:700; color:var(--ink); line-height:1.25; }
+  .app p{ font-size:8.8px; font-weight:500; color:var(--muted); line-height:1.35; margin:0; }
 
   .ribbon{
     margin-top:11px; display:flex; align-items:center; gap:12px;
@@ -107,13 +108,13 @@
     </div>
 
     <div class="apps">
-      <div class="app"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4l13 13M17 4v13h-13"/></svg></div><span>Marketing</span></div>
-      <div class="app"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="8" r="2.4"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0M15 20a4.5 4.5 0 0 1 7-3.6"/></svg></div><span>Segmentación de Clientes</span></div>
-      <div class="app"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 18 10 12 14 16 20 6M14 6h6v6"/></svg></div><span>Ventas y Forecasting</span></div>
-      <div class="app"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="3.4"/><path d="M5.5 20a6.5 6.5 0 0 1 13 0"/></svg></div><span>Experiencia del Cliente</span></div>
-      <div class="app"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="6" width="8" height="12" rx="1.5"/><rect x="13" y="6" width="8" height="12" rx="1.5"/><path d="M7 12h0M17 12h0"/></svg></div><span>Experimentación (A/B)</span></div>
-      <div class="app"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M6 6l2 2M16 16l2 2M6 18l2-2M16 8l2-2"/><circle cx="12" cy="12" r="3.5"/></svg></div><span>Optimización de Procesos</span></div>
-      <div class="app"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="0.6" fill="currentColor"/></svg></div><span>Decisiones Estratégicas</span></div>
+      <div class="app"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4l13 13M17 4v13h-13"/></svg></div><span>Marketing</span><p>Atribución de campañas y análisis de conversión con pruebas de hipótesis.</p></div>
+      <div class="app"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="8" r="2.4"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0M15 20a4.5 4.5 0 0 1 7-3.6"/></svg></div><span>Segmentación de Clientes</span><p>Clustering y distribuciones para agrupar perfiles de comportamiento.</p></div>
+      <div class="app"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 18 10 12 14 16 20 6M14 6h6v6"/></svg></div><span>Ventas y Forecasting</span><p>Intervalos de confianza para proyectar demanda con incertidumbre.</p></div>
+      <div class="app"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="3.4"/><path d="M5.5 20a6.5 6.5 0 0 1 13 0"/></svg></div><span>Experiencia del Cliente</span><p>Muestreo representativo en encuestas de satisfacción (NPS, CSAT).</p></div>
+      <div class="app"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="6" width="8" height="12" rx="1.5"/><rect x="13" y="6" width="8" height="12" rx="1.5"/><path d="M7 12h0M17 12h0"/></svg></div><span>Experimentación (A/B)</span><p>Pruebas de hipótesis para validar cambios de producto con datos.</p></div>
+      <div class="app"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M6 6l2 2M16 16l2 2M6 18l2-2M16 8l2-2"/><circle cx="12" cy="12" r="3.5"/></svg></div><span>Optimización de Procesos</span><p>Análisis de variabilidad para detectar cuellos de botella reales.</p></div>
+      <div class="app"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="0.6" fill="currentColor"/></svg></div><span>Decisiones Estratégicas</span><p>Relaciones entre variables para priorizar qué mover primero.</p></div>
     </div>
 
     <div class="ribbon">
