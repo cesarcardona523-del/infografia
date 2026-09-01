@@ -105,28 +105,48 @@
             max-width: 700px;
         }
 
-        /* 3-Column Layout */
+        /* Ascending Staircase Layout — autonomy grows left to right */
         .architecture-grid {
             position: relative;
             z-index: 10;
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            grid-template-columns: 0.78fr 1fr 1.3fr;
+            align-items: end;
+            gap: 16px;
             flex: 1;
             min-height: 0;
         }
 
-        /* Progression Arrow overlay */
+        /* Ascending step baseline overlay */
         .progression-line {
             position: absolute;
-            top: 45px;
-            left: 10%;
-            right: 10%;
-            height: 2px;
-            background: linear-gradient(90deg, var(--primary) 0%, var(--primary) 50%, var(--accent) 100%);
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--primary) 55%, var(--accent) 100%);
             z-index: 0;
-            opacity: 0.3;
+            opacity: 0.35;
+            border-radius: 2px;
         }
+
+        .tier-1 { align-self: end; }
+        .tier-2 { align-self: end; }
+        .tier-3 { align-self: end; }
+
+        .tier-1 .tier-title { font-size: 15px; }
+        .tier-1 .step-title { font-size: 10.5px; }
+        .tier-1 .step-desc { font-size: 9px; }
+        .tier-1 .step-list { gap: 8px; }
+        .tier-1 { padding: 14px 13px; }
+
+        .tier-3 { padding: 26px 22px; }
+        .tier-3 .tier-title { font-size: 22px; }
+        .tier-3 .step-title { font-size: 13px; }
+        .tier-3 .step-desc { font-size: 11px; }
+        .tier-3 .step-icon-wrapper { width: 32px; height: 32px; min-width: 32px; }
+        .tier-3 .step-icon-wrapper svg { width: 16px; height: 16px; }
+        .tier-3 .step-list { gap: 15px; }
 
         /* Card / Column */
         .tier-card {
@@ -311,7 +331,7 @@
             <div class="progression-line"></div>
 
             <!-- Tier 1: No-Agent (LLM) -->
-            <div class="tier-card">
+            <div class="tier-card tier-1">
                 <div class="tier-header">
                     <div class="autonomy-badge">AUTONOMÍA: BAJA</div>
                     <h2 class="tier-title">Flujo No-Agente</h2>
@@ -360,7 +380,7 @@
             </div>
 
             <!-- Tier 2: Agentic Workflow -->
-            <div class="tier-card">
+            <div class="tier-card tier-2">
                 <div class="tier-header">
                     <div class="autonomy-badge">AUTONOMÍA: MEDIA</div>
                     <h2 class="tier-title">Agente de IA</h2>
@@ -409,7 +429,7 @@
             </div>
 
             <!-- Tier 3: Autonomous AI -->
-            <div class="tier-card accent">
+            <div class="tier-card tier-3 accent">
                 <div class="tier-header">
                     <div class="autonomy-badge">AUTONOMÍA: TOTAL</div>
                     <h2 class="tier-title">Sistemas Autónomos</h2>

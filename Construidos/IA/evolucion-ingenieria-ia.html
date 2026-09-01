@@ -313,6 +313,19 @@
         .signature { font-size: 9px; font-weight: 700; color: var(--text-muted); }
 
         svg { width: 11px; height: 11px; stroke-width: 2; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; }
+        .evo-diagram svg text { stroke: none; }
+        .evo-diagram svg rect, .evo-diagram svg path { stroke-linecap: round; stroke-linejoin: round; }
+
+        .evo-example {
+            margin-top: 10px;
+            padding-top: 8px;
+            border-top: 1px dashed var(--border-color);
+            font-size: 8.8px;
+            color: var(--text-main);
+            line-height: 1.4;
+        }
+        .evo-example b { color: var(--primary); }
+        .evo-card.accent .evo-example b { color: var(--accent); }
     </style>
 </head>
 <body>
@@ -348,9 +361,11 @@
                     <li>Sin memoria entre llamadas — cada prompt parte de cero.</li>
                     <li>El humano corrige manualmente si la respuesta falla.</li>
                 </ul>
-                <div style="font-size: 8.5px; color: var(--text-muted); margin-top: auto; border-top: 1px dashed var(--border-color); pt: 3px;">
+                <div class="evo-example"><b>Ejemplo real:</b> Escribir instrucciones directas en un chat para generar o resumir un texto, sin herramientas ni pasos intermedios.</div>
+                <div style="font-size: 8.5px; color: var(--text-muted); margin-top: 10px; padding-top: 6px; border-top: 1px dashed var(--border-color);">
                     <strong>Unidad:</strong> Una interacción | <strong>Estado:</strong> Ninguno / Limitado
                 </div>
+                <div class="evo-example" style="border-top:none; margin-top:8px; padding-top:0;"><b>Riesgo de saltarla:</b> Depender solo de prompting para tareas que requieren pasos múltiples o memoria produce respuestas inconsistentes entre intentos.</div>
             </div>
 
             <!-- Stage 2: Loop Engineering -->
@@ -370,9 +385,11 @@
                     <li>El agente evalúa su propio resultado antes de responder.</li>
                     <li>Corrige el rumbo sin intervención humana en cada paso.</li>
                 </ul>
-                <div style="font-size: 8.5px; color: var(--text-muted); margin-top: auto; border-top: 1px dashed var(--border-color); pt: 3px;">
+                <div class="evo-example"><b>Ejemplo real:</b> Un agente de codificación que ejecuta las pruebas, lee el error y corrige el código hasta que pasan, sin que el humano revise cada intento.</div>
+                <div style="font-size: 8.5px; color: var(--text-muted); margin-top: 10px; padding-top: 6px; border-top: 1px dashed var(--border-color);">
                     <strong>Unidad:</strong> Ejecución autónoma | <strong>Estado:</strong> Dentro de un bucle
                 </div>
+                <div class="evo-example" style="border-top:none; margin-top:8px; padding-top:0;"><b>Riesgo de saltarla:</b> Dejar que el bucle reintente sin límite ni observabilidad puede consumir presupuesto de tokens sin converger a una solución.</div>
             </div>
 
             <!-- Stage 3: Graph Engineering (Accent) -->
@@ -396,9 +413,11 @@
                     <li>Varios agentes y herramientas colaboran en paralelo.</li>
                     <li>Si un camino falla, el grafo enruta hacia otro nodo válido.</li>
                 </ul>
-                <div style="font-size: 8.5px; color: var(--text-muted); margin-top: auto; border-top: 1px dashed var(--border-color); pt: 3px;">
+                <div class="evo-example"><b>Ejemplo real:</b> Un router que evalúa la consulta entrante y la despacha a un agente especializado o a otro, con caminos de recuperación si uno de los nodos falla.</div>
+                <div style="font-size: 8.5px; color: var(--text-muted); margin-top: 10px; padding-top: 6px; border-top: 1px dashed var(--border-color);">
                     <strong>Unidad:</strong> Red de bucles | <strong>Estado:</strong> A través del grafo
                 </div>
+                <div class="evo-example" style="border-top:none; margin-top:8px; padding-top:0;"><b>Riesgo de saltarla:</b> Diseñar un grafo sin monitoreo de cada nodo dificulta diagnosticar cuál agente falló cuando el resultado final es incorrecto.</div>
             </div>
 
         </div>

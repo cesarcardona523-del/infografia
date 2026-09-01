@@ -115,29 +115,59 @@
             max-width: 750px;
         }
 
-        /* Pipeline 5-Stage Grid */
+        /* Ascending Value Staircase — 5 stages growing toward Value */
         .pipeline-grid {
             position: relative;
             z-index: 10;
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 10px;
+            grid-template-columns: 0.82fr 0.88fr 0.96fr 1.08fr 1.26fr;
+            align-items: stretch;
+            gap: 8px;
             flex: 1;
             min-height: 0;
-            margin-bottom: 10px;
+            margin-bottom: 14px;
+            padding-bottom: 10px;
+        }
+
+        .value-baseline {
+            position: absolute;
+            left: 0; right: 0; bottom: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--primary) 60%, var(--accent) 100%);
+            opacity: 0.35;
+            border-radius: 2px;
+            z-index: 0;
         }
 
         .stage-card {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            padding: 10px 10px;
+            padding: 9px 9px;
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 5px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.02);
             position: relative;
         }
+
+        .stage-1 .stage-name, .stage-1 .stage-desc { opacity: 0.92; }
+        .stage-1 { padding: 8px 8px; }
+        .stage-1 .stage-name { font-size: 9.5px; }
+        .stage-1 .stage-desc, .stage-1 .stage-detail { font-size: 8.3px; }
+
+        .stage-2 { padding: 9px 9px; }
+        .stage-3 { padding: 11px 10px; }
+        .stage-3 .stage-name { font-size: 11.5px; }
+        .stage-4 { padding: 13px 12px; }
+        .stage-4 .stage-name { font-size: 12.5px; }
+        .stage-4 .stage-desc { font-size: 10px; }
+
+        .stage-5 { padding: 16px 15px; }
+        .stage-5 .stage-name { font-size: 15px; }
+        .stage-5 .stage-desc { font-size: 10.5px; }
+        .stage-5 .stage-detail { font-size: 10px; }
+        .stage-5 .stage-num { font-size: 10.5px; padding: 2px 7px; }
 
         .stage-card::before {
             content: '';
@@ -201,10 +231,36 @@
             display: flex;
             flex-direction: column;
             gap: 3px;
-            margin-top: auto;
+            margin-top: 6px;
             border-top: 1px dashed var(--border-color);
-            padding-top: 4px;
+            padding-top: 5px;
         }
+
+        .stage-weight {
+            margin-top: auto;
+            padding-top: 8px;
+        }
+        .stage-weight-label {
+            font-size: 7.5px;
+            font-weight: 700;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            margin-bottom: 3px;
+        }
+        .stage-weight-bar-bg {
+            height: 5px;
+            background: var(--primary-bg);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        .stage-weight-bar-fill {
+            height: 100%;
+            background: var(--primary);
+            border-radius: 3px;
+        }
+        .stage-card.accent .stage-weight-bar-fill { background: var(--accent); }
+        .stage-card.accent .stage-weight-bar-bg { background: var(--accent-bg); }
 
         .stage-bullet {
             font-size: 9px;
@@ -280,9 +336,10 @@
         </div>
 
         <div class="pipeline-grid">
+            <div class="value-baseline"></div>
             
             <!-- Stage 1: Data -->
-            <div class="stage-card">
+            <div class="stage-card stage-1">
                 <div class="stage-header">
                     <span class="stage-num">01</span>
                     <span class="stage-name">Data</span>
@@ -290,15 +347,20 @@
                 <div class="stage-desc">Datos accesibles, definidos, con calidad y gestionados adecuadamente.</div>
                 <div class="stage-detail">Sin esta base, cualquier modelo o dashboard construido encima hereda el mismo ruido y los mismos vacíos.</div>
                 <div class="stage-detail"><b>Resultado:</b> un inventario de datos confiable, con dueños claros por dominio.</div>
+                <div class="stage-detail" style="margin-top:6px; padding-top:6px;">En la práctica: un catálogo de datos vivo, con definiciones de negocio acordadas y un dueño identificable por cada dominio, no solo por cada tabla.</div>
                 <div class="stage-list">
                     <span class="stage-bullet">Origen y linaje</span>
                     <span class="stage-bullet">Calidad y consistencia</span>
                     <span class="stage-bullet">Seguridad y privacidad</span>
                 </div>
+                <div class="stage-weight">
+                    <div class="stage-weight-label">Acumulación de Valor</div>
+                    <div class="stage-weight-bar-bg"><div class="stage-weight-bar-fill" style="width:20%;"></div></div>
+                </div>
             </div>
 
             <!-- Stage 2: Govern -->
-            <div class="stage-card">
+            <div class="stage-card stage-2">
                 <div class="stage-header">
                     <span class="stage-num">02</span>
                     <span class="stage-name">Govern</span>
@@ -306,15 +368,20 @@
                 <div class="stage-desc">Llevar el gobierno corporativo hacia el entorno de la inteligencia artificial.</div>
                 <div class="stage-detail">Las mismas reglas de calidad y acceso que ya existían para datos ahora deben cubrir modelos y prompts.</div>
                 <div class="stage-detail"><b>Resultado:</b> un marco de políticas que no frena la innovación, solo la ordena.</div>
+                <div class="stage-detail" style="margin-top:6px; padding-top:6px;">En la práctica: comités de aprobación ágiles que revisan un caso de uso en días, no en meses, y un registro central de qué modelos están en producción.</div>
                 <div class="stage-list">
                     <span class="stage-bullet">Políticas de IA</span>
                     <span class="stage-bullet">Roles y responsables</span>
                     <span class="stage-bullet">Gestión de riesgos</span>
                 </div>
+                <div class="stage-weight">
+                    <div class="stage-weight-label">Acumulación de Valor</div>
+                    <div class="stage-weight-bar-bg"><div class="stage-weight-bar-fill" style="width:40%;"></div></div>
+                </div>
             </div>
 
             <!-- Stage 3: Trust -->
-            <div class="stage-card">
+            <div class="stage-card stage-3">
                 <div class="stage-header">
                     <span class="stage-num">03</span>
                     <span class="stage-name">Trust</span>
@@ -322,15 +389,20 @@
                 <div class="stage-desc">Construir confianza en los modelos, los resultados y en su uso práctico.</div>
                 <div class="stage-detail">Un modelo que nadie entiende ni audita rara vez sobrevive el primer error visible en producción.</div>
                 <div class="stage-detail"><b>Resultado:</b> decisiones de negocio que el usuario final entiende y puede cuestionar.</div>
+                <div class="stage-detail" style="margin-top:6px; padding-top:6px;">En la práctica: cada predicción o recomendación viene acompañada de una explicación legible y un registro de qué datos la originaron.</div>
                 <div class="stage-list">
                     <span class="stage-bullet">Trazabilidad y linaje</span>
                     <span class="stage-bullet">Explicabilidad</span>
                     <span class="stage-bullet">Monitoreo y auditoría</span>
                 </div>
+                <div class="stage-weight">
+                    <div class="stage-weight-label">Acumulación de Valor</div>
+                    <div class="stage-weight-bar-bg"><div class="stage-weight-bar-fill" style="width:60%;"></div></div>
+                </div>
             </div>
 
             <!-- Stage 4: Intelligence -->
-            <div class="stage-card">
+            <div class="stage-card stage-4">
                 <div class="stage-header">
                     <span class="stage-num">04</span>
                     <span class="stage-name">Intelligence</span>
@@ -338,15 +410,20 @@
                 <div class="stage-desc">Habilitar casos de uso reales que generen decisiones y acciones automáticas.</div>
                 <div class="stage-detail">Aquí es donde la inversión en datos y gobierno finalmente se traduce en algo que el negocio usa.</div>
                 <div class="stage-detail"><b>Resultado:</b> casos de uso concretos, no un piloto que nunca llega a producción.</div>
+                <div class="stage-detail" style="margin-top:6px; padding-top:6px;">En la práctica: casos de uso con un dueño de negocio, un KPI objetivo definido antes de construir, y un plan de despliegue más allá del piloto.</div>
                 <div class="stage-list">
                     <span class="stage-bullet">Modelos y GenAI</span>
                     <span class="stage-bullet">RAG & Búsqueda semántica</span>
                     <span class="stage-bullet">Adopción por personas</span>
                 </div>
+                <div class="stage-weight">
+                    <div class="stage-weight-label">Acumulación de Valor</div>
+                    <div class="stage-weight-bar-bg"><div class="stage-weight-bar-fill" style="width:80%;"></div></div>
+                </div>
             </div>
 
             <!-- Stage 5: Value (Accent) -->
-            <div class="stage-card accent">
+            <div class="stage-card stage-5 accent">
                 <div class="stage-header">
                     <span class="stage-num">05</span>
                     <span class="stage-name">Value</span>
@@ -354,10 +431,15 @@
                 <div class="stage-desc">Medir el impacto, aprender y mejorar continuamente en un ciclo iterativo.</div>
                 <div class="stage-detail">Sin medir el resultado real, es imposible distinguir un caso de uso que funciona de uno que solo luce bien.</div>
                 <div class="stage-detail"><b>Resultado:</b> un ciclo de mejora continua con evidencia, no con intuición.</div>
+                <div class="stage-detail" style="margin-top:6px; padding-top:6px;">En la práctica: un tablero que compara el resultado esperado contra el real de cada caso de uso, y un ritual periódico para decidir qué escalar o retirar.</div>
                 <div class="stage-list">
                     <span class="stage-bullet">KPIs de negocio</span>
                     <span class="stage-bullet">ROI & reducción de riesgos</span>
                     <span class="stage-bullet">Mejora continua</span>
+                </div>
+                <div class="stage-weight">
+                    <div class="stage-weight-label">Acumulación de Valor</div>
+                    <div class="stage-weight-bar-bg"><div class="stage-weight-bar-fill" style="width:100%;"></div></div>
                 </div>
             </div>
 

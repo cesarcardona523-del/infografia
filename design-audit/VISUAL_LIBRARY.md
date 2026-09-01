@@ -118,31 +118,31 @@ Consultar **antes** de elegir la estructura visual de una pieza nueva (ver `IMAG
 
 ---
 
-### PIECE_ID: evolucion-ingenieria-ia
-**TITLE:** La Evolución de la Ingeniería de IA
+### PIECE_ID: evolucion-ingenieria-ia [REDISEÑADA 2026-09-01]
+**TITLE:** Evolución de la Ingeniería de IA: Prompt → Loop → Graph
 **TOPIC:** IA
-**VISUAL_CONCEPT:** Timeline de eras con rasgos distintivos
-**COMPOSITION:** Bento 2 columnas superior + fila de 5 tarjetas inferior
-**DOMINANT_ELEMENT:** No claramente definido — compite con el resto de piezas de IA del lote
-**COLOR_STRATEGY:** Verde base
-**TYPOGRAPHY:** Estándar
-**LAYOUT:** Bento 2-col + 5-cards — **estructura repetida 4 veces en este lote (ver abajo), marcada como prioridad de corrección en `DESIGN_EVOLUTION_PLAN.md`**
-**SIMILAR_PIECES:** flujos-trabajo-ia, gobierno-ia-responsable, inteligencia-negocios-con-ia (alto Repetition Score entre las 4, estimado >60%)
-**UNIQUENESS_SCORE:** 5/10
+**VISUAL_CONCEPT:** 3 paradigmas con mini-diagrama SVG propio + matriz comparativa
+**COMPOSITION:** Grid de 3 columnas iguales, cada una con diagrama de nodos SVG, ejemplo real y riesgo de omitirla; matriz comparativa de 3×3 debajo
+**DOMINANT_ELEMENT:** Los 3 mini-diagramas SVG (Prompt→Respuesta / Agente en bucle / Router→Agentes)
+**COLOR_STRATEGY:** Verde base, tercera columna en acento tierra
+**TYPOGRAPHY:** Estándar + monoespaciada en la matriz
+**LAYOUT:** System diagram + comparison matrix — **corrección de auditoría previa: NO era bento, ya era distinta de las otras 3; se corrigió un bug real (texto SVG con stroke heredado ilegible) y el espacio vacío bajo cada columna con líneas de "Ejemplo real" y "Riesgo de saltarla"**
+**SIMILAR_PIECES:** ninguna directa tras la corrección
+**UNIQUENESS_SCORE:** 7/10 (subió de 5 tras el rediseño)
 
 ---
 
-### PIECE_ID: flujos-trabajo-ia
-**TITLE:** Flujos de Trabajo con IA: Patrones de Orquestación
+### PIECE_ID: flujos-trabajo-ia [REDISEÑADA 2026-09-01]
+**TITLE:** Evolución de Flujos de IA (No-Agente → Agente → Sistemas Autónomos)
 **TOPIC:** IA
-**VISUAL_CONCEPT:** Catálogo de patrones de orquestación
-**COMPOSITION:** Bento 2 columnas + fila inferior
-**DOMINANT_ELEMENT:** No definido
-**COLOR_STRATEGY:** Verde base
-**TYPOGRAPHY:** Estándar
-**LAYOUT:** Bento 2-col + 5-cards (repetido, ver arriba)
-**SIMILAR_PIECES:** evolucion-ingenieria-ia, gobierno-ia-responsable, inteligencia-negocios-con-ia
-**UNIQUENESS_SCORE:** 5/10
+**VISUAL_CONCEPT:** Escalera ascendente de autonomía
+**COMPOSITION:** 3 tarjetas de ancho y tamaño creciente (0.78fr/1fr/1.3fr), alineadas al final (bottom) con línea base degradada verde→ámbar
+**DOMINANT_ELEMENT:** La tarjeta 3 ("Sistemas Autónomos"), notablemente más grande y en acento — jerarquía por tamaño, no por posición
+**COLOR_STRATEGY:** Verde base, tercera tarjeta en acento tierra con mayor peso tipográfico
+**TYPOGRAPHY:** Escala progresiva (10.5px→13px) según nivel de autonomía — tipografía como jerarquía real, no decorativa
+**LAYOUT:** Asymmetric composition / Progression — **corrección de auditoría previa: el contenido real es progresión de autonomía (No-Agente/Agente/Autónomo), no "patrones de orquestación" (la metadata del catálogo tenía ese error y fue corregida); rediseñada de 3 columnas iguales a escalera ascendente asimétrica**
+**SIMILAR_PIECES:** ninguna directa
+**UNIQUENESS_SCORE:** 8/10 (subió de 5 tras el rediseño — la más distintiva del lote junto con tabla-periodica-herramientas-ia)
 
 ---
 
@@ -160,17 +160,17 @@ Consultar **antes** de elegir la estructura visual de una pieza nueva (ver `IMAG
 
 ---
 
-### PIECE_ID: gobierno-ia-responsable
+### PIECE_ID: gobierno-ia-responsable [REDISEÑADA 2026-09-01]
 **TITLE:** Cómo Definir el Gobierno de IA
 **TOPIC:** IA · gobierno
-**VISUAL_CONCEPT:** 2 pilares + ciclo de 5 fases retroalimentado
-**COMPOSITION:** Bento 2 columnas superior (pilares) + fila de 5 círculos numerados con badge de cadencia
-**DOMINANT_ELEMENT:** El ciclo de 5 fases con badges de frecuencia (Mensual/Continuo/etc.)
-**COLOR_STRATEGY:** Verde + acento tierra en pilar 2
+**VISUAL_CONCEPT:** Dos pilares arquitectónicos literales + ciclo radial de 5 fases
+**COMPOSITION:** Asimétrica: columna izquierda (39%) con 2 "pilares" apilados (franja tipo capitel arriba, tags de área abajo) + columna derecha (61%) con diagrama radial SVG (círculo con 5 nodos numerados, flechas de flujo clockwise, centro "Gobierno Continuo") y su leyenda de 2×3
+**DOMINANT_ELEMENT:** El diagrama radial — único elemento circular de todo el catálogo de IA, visual hero inequívoco
+**COLOR_STRATEGY:** Verde + acento tierra en pilar 2 y nodo 5
 **TYPOGRAPHY:** Estándar
-**LAYOUT:** Bento 2-col + ciclo retroalimentado — mismo esqueleto que evolucion-ingenieria-ia/flujos-trabajo-ia, pero el badge de cadencia le da un elemento dominante más claro que sus pares
-**SIMILAR_PIECES:** evolucion-ingenieria-ia, flujos-trabajo-ia, inteligencia-negocios-con-ia
-**UNIQUENESS_SCORE:** 6/10 — el mejor ejecutado de las 4 piezas bento-IA, pero sigue compartiendo esqueleto
+**LAYOUT:** Central metaphor (arquitectura) + Radial diagram — **era la única pieza realmente bento del lote; rediseñada por completo, ya no comparte esqueleto con ninguna otra pieza de IA**
+**SIMILAR_PIECES:** ninguna
+**UNIQUENESS_SCORE:** 9/10 (subió de 6 tras el rediseño — empata con tabla-periodica-herramientas-ia como la más original del catálogo de IA)
 
 ---
 
@@ -202,17 +202,17 @@ Consultar **antes** de elegir la estructura visual de una pieza nueva (ver `IMAG
 
 ---
 
-### PIECE_ID: inteligencia-negocios-con-ia
-**TITLE:** Inteligencia de Negocios con IA: El Pipeline de Valor
+### PIECE_ID: inteligencia-negocios-con-ia [REDISEÑADA 2026-09-01]
+**TITLE:** De los Datos a la Inteligencia que Genera Valor
 **TOPIC:** IA · BI
-**VISUAL_CONCEPT:** Pipeline de 5 etapas (Data→Govern→Trust→Intelligence→Value)
-**COMPOSITION:** Fila de 5 tarjetas de etapa (pipeline-grid)
-**DOMINANT_ELEMENT:** La secuencia de 5 etapas en sí
-**COLOR_STRATEGY:** Verde base
-**TYPOGRAPHY:** Estándar
-**LAYOUT:** Pipeline horizontal — más cercano al mapping correcto que sus 3 pares de IA del lote, pero visualmente similar en tratamiento de tarjeta
-**SIMILAR_PIECES:** evolucion-ingenieria-ia, flujos-trabajo-ia, gobierno-ia-responsable
-**UNIQUENESS_SCORE:** 6/10
+**VISUAL_CONCEPT:** Escalera ascendente de 5 etapas + barras de "acumulación de valor" alineadas
+**COMPOSITION:** 5 columnas de ancho y tipografía crecientes (Data más pequeña → Value más grande y en acento), cada una con una barra de progreso horizontal al pie (20%→100%) que en conjunto forman un mini-gráfico de barras ascendente unificado
+**DOMINANT_ELEMENT:** La fila de barras "Acumulación de Valor" al pie — convierte 5 tarjetas sueltas en un solo gráfico de lectura horizontal
+**COLOR_STRATEGY:** Verde base, última barra y tarjeta en acento tierra
+**TYPOGRAPHY:** Escala progresiva (8.3px→15px) siguiendo el crecimiento de la etapa
+**LAYOUT:** Asymmetric composition + data visualization — **ya no comparte tratamiento uniforme de tarjeta con las demás; la fila de barras es un elemento de dataviz genuino, no decorativo**
+**SIMILAR_PIECES:** flujos-trabajo-ia (comparten la técnica de "escalera ascendente", pero aplicada a 3 vs. 5 elementos y con dataviz añadido aquí — variación aceptable, no plantilla idéntica)
+**UNIQUENESS_SCORE:** 8/10 (subió de 6 tras el rediseño)
 
 ---
 
@@ -288,7 +288,8 @@ Consultar **antes** de elegir la estructura visual de una pieza nueva (ver `IMAG
 
 ## Lectura agregada del lote 2026-09-01
 
-- **Estructura más repetida:** Bento 2-columnas + fila de 5 tarjetas — 4 ocurrencias (`evolucion-ingenieria-ia`, `flujos-trabajo-ia`, `gobierno-ia-responsable`, `inteligencia-negocios-con-ia`). Todas del tema IA, todas construidas en la misma sesión — el caso de manual más claro de por qué existe la regla de Repetition Score.
-- **Segunda estructura más repetida:** Timeline horizontal + 2 paneles inferiores — 2 ocurrencias (`potenciar-dashboards-con-ia`, `ciclo-vida-dashboard`).
-- **Mejor pieza en Originalidad:** `tabla-periodica-herramientas-ia` (9/10) — única con una metáfora central inédita en todo el catálogo conocido.
-- **Peor pieza en Originalidad:** `matriz-habilidades-data-engineering` (4/10) — grid uniforme sin visual hero, candidata a rediseño futuro si se vuelve a tocar ese tema.
+- **Corrección de auditoría (2026-09-01, segunda pasada):** la primera versión de este documento afirmaba que 4 piezas de IA compartían un esqueleto "bento 2-columnas + 5-tarjetas". Al releer el HTML real antes de rediseñar, solo `gobierno-ia-responsable` coincidía con esa descripción — `evolucion-ingenieria-ia` ya era un grid de 3 columnas con diagramas SVG + tabla comparativa, y `flujos-trabajo-ia` ya eran 3 tarjetas verticales de nivel de autonomía. El error quedó documentado en `DESIGN_MISTAKES.md` como lección: describir composición de memoria en vez de releer el archivo final es exactamente el tipo de fallo que este sistema existe para prevenir.
+- **Las 4 piezas fueron rediseñadas igualmente**, no solo por la repetición real sino porque las 4 tenían espacio vacío significativo (>30% de card) y en 2 casos (`evolucion-ingenieria-ia`, `flujos-trabajo-ia`) también un error de metadata/contenido real. Resultado: Uniqueness Score subió en las 4 (5→7, 5→8, 6→9, 6→8).
+- **Técnica compartida entre `flujos-trabajo-ia` e `inteligencia-negocios-con-ia`:** ambas usan "escalera ascendente" (columnas de ancho/tipografía creciente, alineadas al mismo baseline). Es una variación deliberada de la misma técnica aplicada a contenidos distintos (3 niveles de autonomía vs. 5 etapas con dataviz de barras) — vigilar que una tercera pieza futura no la use por defecto sin justificación, o pasaría a ser plantilla.
+- **Mejor pieza en Originalidad tras el rediseño:** `gobierno-ia-responsable` (9/10, diagrama radial) empata con `tabla-periodica-herramientas-ia` (9/10, metáfora de tabla periódica) como las más distintivas del catálogo de IA.
+- **Peor pieza en Originalidad (sin cambios, fuera de alcance de este rediseño):** `matriz-habilidades-data-engineering` (4/10) — grid uniforme sin visual hero, candidata a rediseño futuro si se vuelve a tocar ese tema.

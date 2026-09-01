@@ -1,384 +1,241 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¿Cómo Definir el Gobierno de IA?</title>
-    <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¿Cómo Definir el Gobierno de IA?</title>
+<style>
+    :root {
+        --bg-canvas: #f0fdf4;
+        --primary: #064e3b;
+        --primary-light: #10b981;
+        --primary-bg: #ecfdf5;
+        --accent: #d97706;
+        --accent-bg: #fef3c7;
+        --text-main: #1e293b;
+        --text-muted: #64748b;
+        --border: #d1fae5;
+        --card-bg: #ffffff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+        display: flex; justify-content: center; align-items: center;
+        height: 100vh; background-color: #cbd5e1;
+        font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+    }
+    .canvas {
+        width: 1200px; height: 627px;
+        background: linear-gradient(160deg, #f0fdf4 0%, #ecfdf5 60%, #f0fdf4 100%);
+        position: relative; overflow: hidden;
+        padding: 22px 30px 18px;
+        display: flex; flex-direction: column; gap: 12px;
+        box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+    }
 
-        :root {
-            --bg-canvas: #f0fdf4;
-            --primary: #064e3b;
-            --primary-light: #10b981;
-            --accent: #d97706; /* Tono tierra/ámbar */
-            --accent-light: #fef3c7;
-            --text-main: #1e293b;
-            --text-muted: #64748b;
-            --border: #d1fae5;
-            --card-bg: #ffffff;
-        }
+    /* HEADER */
+    .header { display: flex; justify-content: space-between; align-items: flex-end; flex-shrink: 0; }
+    .title-section { display: flex; flex-direction: column; gap: 3px; }
+    .eyebrow { font-size: 10px; font-weight: 800; color: var(--accent); letter-spacing: 1.2px; text-transform: uppercase; }
+    h1 { font-size: 24px; font-weight: 800; color: var(--primary); letter-spacing: -0.6px; line-height: 1.08; }
+    .subtitle { font-size: 11.5px; color: var(--text-muted); font-weight: 500; max-width: 640px; }
+    .header-badge {
+        background: var(--primary); color: white; padding: 6px 14px; border-radius: 10px;
+        font-size: 10.5px; font-weight: 700; line-height: 1.3; text-align: right; max-width: 220px;
+    }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    /* MAIN: ASYMMETRIC 2/5 + 3/5 */
+    .main-area { display: flex; gap: 16px; flex: 1; min-height: 0; }
 
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #cbd5e1;
-            font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            -webkit-font-smoothing: antialiased;
-        }
+    /* LEFT: TWO LITERAL PILLARS STACKED */
+    .pillars-col { width: 39%; display: flex; flex-direction: column; gap: 10px; min-height: 0; }
 
-        .canvas {
-            width: 1200px;
-            height: 627px;
-            background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
-            position: relative;
-            overflow: hidden;
-            padding: 16px 24px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
+    .pillar {
+        flex: 1; background: var(--card-bg); border: 1px solid var(--border);
+        border-radius: 10px; padding: 12px 14px; position: relative; overflow: hidden;
+        display: flex; flex-direction: column; gap: 6px;
+    }
+    .pillar-cap {
+        position: absolute; top: 0; left: 0; right: 0; height: 8px;
+        background: repeating-linear-gradient(90deg, var(--primary-light) 0 10px, var(--primary) 10px 20px);
+    }
+    .pillar.accent .pillar-cap {
+        background: repeating-linear-gradient(90deg, var(--accent) 0 10px, #b45309 10px 20px);
+    }
+    .pillar-head { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
+    .pillar-num-badge {
+        width: 24px; height: 24px; border-radius: 6px; background: var(--primary-bg);
+        color: var(--primary); display: flex; align-items: center; justify-content: center;
+        font-weight: 800; font-size: 12px; flex-shrink: 0;
+    }
+    .pillar.accent .pillar-num-badge { background: var(--accent-bg); color: var(--accent); }
+    .pillar-title { font-size: 12.5px; font-weight: 800; color: var(--primary); text-transform: uppercase; letter-spacing: 0.3px; line-height: 1.2; }
+    .pillar.accent .pillar-title { color: var(--accent); }
+    .pillar-desc { font-size: 9.5px; color: var(--text-muted); line-height: 1.35; }
+    .pillar-why {
+        background: #f8faf9; border: 1px dashed var(--border); border-radius: 6px;
+        padding: 14px 16px; font-size: 10px; color: var(--text-main); line-height: 1.6;
+        flex: 1; display: flex; flex-direction: column; justify-content: center;
+    }
+    .pillar-why b { color: var(--primary); }
+    .pillar.accent .pillar-why b { color: var(--accent); }
+    .pillar-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: auto; }
+    .pillar-tags span {
+        font-size: 7.8px; font-weight: 700; color: var(--text-main); background: var(--primary-bg);
+        border-radius: 8px; padding: 2px 6px;
+    }
+    .pillar.accent .pillar-tags span { background: var(--accent-bg); }
 
-        /* HEADER */
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px solid var(--primary-light);
-            padding-bottom: 8px;
-            flex-shrink: 0;
-        }
+    /* RIGHT: RADIAL CYCLE */
+    .cycle-col {
+        width: 61%; background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px;
+        padding: 10px 14px; display: flex; flex-direction: column; min-height: 0;
+    }
+    .cycle-title { display: flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 800; color: var(--primary); text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 2px; }
+    .cycle-title svg { width: 14px; height: 14px; stroke: var(--primary); }
+    .cycle-body { flex: 1; display: flex; gap: 10px; min-height: 0; }
+    .cycle-svg-wrap { width: 44%; display: flex; align-items: center; justify-content: center; }
+    .cycle-svg-wrap svg { width: 100%; height: auto; max-height: 100%; }
 
-        .title-section {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-        }
+    .cycle-legend { width: 56%; display: grid; grid-template-columns: 1fr 1fr; gap: 6px; align-content: center; }
+    .leg-item {
+        background: #f8fafc; border: 1px solid var(--border); border-radius: 7px; padding: 7px 9px;
+        display: flex; flex-direction: column; gap: 2px;
+    }
+    .leg-head { display: flex; align-items: center; gap: 5px; }
+    .leg-num {
+        width: 15px; height: 15px; border-radius: 50%; background: var(--primary); color: white;
+        font-size: 8px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .leg-title { font-size: 9.3px; font-weight: 700; color: var(--text-main); }
+    .leg-desc { font-size: 8px; color: var(--text-muted); line-height: 1.25; }
+    .leg-freq { font-size: 7.3px; font-weight: 700; color: var(--primary); background: var(--primary-bg); border-radius: 6px; padding: 1px 5px; width: fit-content; margin-top: 2px; }
 
-        h1 {
-            font-size: 22px;
-            font-weight: 800;
-            color: var(--primary);
-            letter-spacing: -0.5px;
-            line-height: 1.1;
-            text-transform: uppercase;
-        }
-
-        .subtitle {
-            font-size: 11px;
-            font-weight: 700;
-            color: var(--accent);
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-
-        .header-badge {
-            background-color: var(--primary);
-            color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            text-align: center;
-            line-height: 1.2;
-        }
-
-        /* BENTO GRID LAYOUT */
-        .bento-grid {
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            grid-template-rows: 230px 1fr;
-            gap: 8px;
-            flex: 1;
-            min-height: 0;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 10px 12px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            gap: 8px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 3px;
-            height: 100%;
-            background: var(--primary-light);
-        }
-
-        .card.accent::before {
-            background: var(--accent);
-        }
-
-        .card-header {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            margin-bottom: 4px;
-        }
-
-        .card-header svg {
-            width: 14px;
-            height: 14px;
-            stroke: var(--primary);
-            stroke-width: 2.5;
-            fill: none;
-        }
-
-        h2 {
-            font-size: 10.5px;
-            font-weight: 700;
-            color: var(--primary);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        /* SPANS */
-        .col-4 { grid-column: span 4; }
-        .col-6 { grid-column: span 6; }
-        .col-12 { grid-column: span 12; }
-
-        p.text-xs {
-            font-size: 8.5px;
-            color: var(--text-muted);
-            line-height: 1.25;
-            margin-bottom: 4px;
-        }
-
-        .mid-callout {
-            background: #f8faf9;
-            border: 1px dashed var(--border);
-            border-radius: 8px;
-            padding: 10px 14px;
-            font-size: 9.5px;
-            color: var(--text-main);
-            line-height: 1.5;
-        }
-        .mid-callout b { color: var(--primary); }
-        .card.accent .mid-callout b { color: var(--accent); }
-
-        /* COMPACT LISTS */
-        .compact-list {
-            list-style: none;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2px 8px;
-        }
-
-        .compact-list li {
-            font-size: 8.5px;
-            color: var(--text-main);
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            font-weight: 500;
-        }
-
-        .compact-list li::before {
-            content: '•';
-            color: var(--primary-light);
-            font-weight: bold;
-        }
-
-        /* 5 PILLARS / ELEMENTS GRID (SPAN 12 BOTTOM) */
-        .pillars-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 6px;
-            height: 100%;
-        }
-
-        .pillar-box {
-            background: #f8fafc;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 14px 12px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 8px;
-            text-align: center;
-            align-items: center;
-        }
-
-        .pillar-num {
-            width: 26px;
-            height: 26px;
-            border-radius: 50%;
-            background: var(--primary);
-            color: white;
-            font-size: 13px;
-            font-weight: 800;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .pillar-title {
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--primary);
-            line-height: 1.2;
-        }
-
-        .pillar-desc {
-            font-size: 10.5px;
-            color: var(--text-muted);
-            line-height: 1.4;
-        }
-
-        .pillar-freq {
-            font-size: 9px;
-            font-weight: 700;
-            color: var(--text-main);
-            background: var(--primary-light);
-            border-radius: 10px;
-            padding: 2px 8px;
-            margin-top: 2px;
-        }
-
-        .card.accent .pillar-freq { background: rgba(217,119,6,0.12); }
-
-        /* FOOTER SIGNATURE */
-        .footer {
-            position: absolute;
-            bottom: 10px;
-            right: 24px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            opacity: 0.85;
-            background: rgba(255,255,255,0.9);
-            padding: 3px 8px;
-            border-radius: 12px;
-        }
-
-        .footer svg { width: 12px; height: 12px; fill: var(--primary); }
-        .footer span { font-size: 10px; font-weight: 700; color: var(--primary); }
-
-    </style>
+    /* FOOTER */
+    .footer {
+        position: absolute; bottom: 10px; right: 24px; display: flex; align-items: center; gap: 6px;
+        background: rgba(255,255,255,0.92); padding: 3px 9px; border-radius: 12px; border: 1px solid var(--border);
+    }
+    .footer svg { width: 12px; height: 12px; fill: var(--primary); }
+    .footer span { font-size: 10px; font-weight: 700; color: var(--primary); }
+</style>
 </head>
 <body>
 
 <div class="canvas">
-    
-    <!-- HEADER -->
+
     <header class="header">
         <div class="title-section">
+            <span class="eyebrow">AI Governance Framework</span>
             <h1>¿Cómo Definir el Gobierno de IA?</h1>
-            <span class="subtitle">Roles claros, políticas sólidas y supervisión para una IA responsable</span>
+            <p class="subtitle">Dos pilares fundacionales sostienen un ciclo operativo continuo de cinco fases — sin uno, el otro no tiene quién lo haga cumplir.</p>
         </div>
-        <div class="header-badge">
-            La IA no solo se implementa,<br>se gobierna.
-        </div>
+        <div class="header-badge">La IA no solo se implementa,<br>se gobierna.</div>
     </header>
 
-    <!-- BENTO GRID -->
-    <div class="bento-grid">
-        
-        <!-- CARD 1: Definir Responsables (Span 6) -->
-        <div class="card col-6">
-            <div>
-                <div class="card-header">
-                    <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                    <h2>1. Definir Responsables (Áreas Clave)</h2>
+    <div class="main-area">
+
+        <!-- LEFT: two literal pillars -->
+        <div class="pillars-col">
+            <div class="pillar">
+                <div class="pillar-cap"></div>
+                <div class="pillar-head">
+                    <div class="pillar-num-badge">1</div>
+                    <div class="pillar-title">Definir Responsables</div>
                 </div>
-                <p class="text-xs">Involucrar a los actores estratégicos de la organización para asegurar gobernanza transversal.</p>
+                <div class="pillar-desc">Involucrar a los actores estratégicos de la organización para asegurar gobernanza transversal.</div>
+                <div class="pillar-why"><b>Por qué importa:</b> sin un dueño claro por área, las decisiones de IA quedan en un vacío — nadie aprueba, nadie audita, nadie responde cuando algo falla. Este comité se reúne antes de aprobar un caso de uso nuevo, no después de que ya está en producción.</div>
+                <div class="pillar-tags">
+                    <span>Alta Dirección & TI</span><span>Legal y Cumplimiento</span><span>Seguridad</span><span>Protección de Datos</span><span>Riesgos</span>
+                </div>
             </div>
-            <div class="mid-callout"><b>Por qué importa:</b> sin un dueño claro por área, las decisiones de IA quedan en un vacío — nadie aprueba, nadie audita y nadie responde cuando algo falla. Un comité multidisciplinario reduce ese riesgo desde el diseño.<br><br><b>En la práctica:</b> este comité se reúne antes de aprobar cualquier caso de uso nuevo, no después de que ya está en producción.</div>
-            <ul class="compact-list">
-                <li>Alta Dirección & TI</li>
-                <li>Seguridad de la Información</li>
-                <li>Legal y Cumplimiento</li>
-                <li>Protección de Datos</li>
-                <li>Negocio & Operaciones</li>
-                <li>Gestión de Riesgos</li>
-            </ul>
+            <div class="pillar accent">
+                <div class="pillar-cap"></div>
+                <div class="pillar-head">
+                    <div class="pillar-num-badge">2</div>
+                    <div class="pillar-title">Establecer Políticas de Uso</div>
+                </div>
+                <div class="pillar-desc">Definir reglas claras sobre usos permitidos, ética, privacidad y gestión de soluciones de IA.</div>
+                <div class="pillar-why"><b>Por qué importa:</b> una política escrita convierte el criterio individual en un estándar de la organización — evita que cada equipo decida por su cuenta qué es aceptable hacer con datos sensibles. Se revisa con cada herramienta nueva, no una vez al año.</div>
+                <div class="pillar-tags">
+                    <span>Usos permitidos</span><span>Ética algorítmica</span><span>Supervisión humana</span><span>Privacidad de datos</span>
+                </div>
+            </div>
         </div>
 
-        <!-- CARD 2: Establecer Políticas de IA (Span 6) -->
-        <div class="card col-6 accent">
-            <div>
-                <div class="card-header">
-                    <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-                    <h2>2. Establecer Políticas de Uso Responsable</h2>
-                </div>
-                <p class="text-xs">Definir reglas claras sobre usos permitidos, ética, privacidad y gestión de soluciones.</p>
+        <!-- RIGHT: radial cycle -->
+        <div class="cycle-col">
+            <div class="cycle-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+                Ciclo Continuo de Gobierno de IA
             </div>
-            <div class="mid-callout"><b>Por qué importa:</b> una política escrita convierte el criterio individual en un estándar de la organización — evita que cada equipo decida por su cuenta qué es aceptable hacer con datos sensibles o modelos generativos.<br><br><b>En la práctica:</b> se revisa cada vez que aparece una nueva herramienta o modelo, no una vez al año.</div>
-            <ul class="compact-list">
-                <li>Usos permitidos y restringidos</li>
-                <li>Seguridad y privacidad de datos</li>
-                <li>Transparencia y ética algorítmica</li>
-                <li>Supervisión humana obligatoria</li>
-                <li>Adquisición de soluciones externas</li>
-                <li>Uso seguro de IA generativa</li>
-            </ul>
-        </div>
+            <div class="cycle-body">
+                <div class="cycle-svg-wrap">
+                    <svg viewBox="0 0 420 420">
+                        <defs>
+                            <marker id="arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#a7d7c5"/></marker>
+                        </defs>
+                        <circle cx="210" cy="210" r="155" fill="none" stroke="#a7d7c5" stroke-width="2.5"/>
+                        <!-- direction arrowheads at midpoints between nodes, clockwise flow -->
+                        <path d="M -7,-6 L 8,0 L -7,6 Z" fill="#5eae8c" transform="translate(301.1,84.6) rotate(36)"/>
+                        <path d="M -7,-6 L 8,0 L -7,6 Z" fill="#5eae8c" transform="translate(357.4,257.9) rotate(108)"/>
+                        <path d="M -7,-6 L 8,0 L -7,6 Z" fill="#5eae8c" transform="translate(210,365) rotate(180)"/>
+                        <path d="M -7,-6 L 8,0 L -7,6 Z" fill="#5eae8c" transform="translate(62.6,257.9) rotate(252)"/>
+                        <path d="M -7,-6 L 8,0 L -7,6 Z" fill="#5eae8c" transform="translate(118.9,84.6) rotate(324)"/>
 
-        <!-- CARD 3: Los 5 Pilares Operativos (Span 12) -->
-        <div class="card col-12" style="justify-content: center; padding: 8px 12px;">
-            <div class="card-header" style="margin-bottom: 4px;">
-                <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
-                <h2>Ciclo Integral de Gobierno de IA</h2>
-            </div>
-            <div class="pillars-grid">
-                <div class="pillar-box">
-                    <div class="pillar-num">1</div>
-                    <span class="pillar-title">Definir Responsables</span>
-                    <span class="pillar-desc">Comité multidisciplinario y roles de ownership definidos. Sin esto, ninguna política tiene quién la haga cumplir. Se reúne mensualmente o ante cualquier incidente.</span>
-                    <span class="pillar-freq">Mensual</span>
+                        <circle cx="210" cy="210" r="62" fill="#064e3b"/>
+                        <text x="210" y="203" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="800" fill="#ffffff" text-anchor="middle">Gobierno</text>
+                        <text x="210" y="222" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="800" fill="#ffffff" text-anchor="middle">Continuo</text>
+
+                        <!-- Node 1 -->
+                        <circle cx="210" cy="55" r="30" fill="#ffffff" stroke="#10b981" stroke-width="2.5"/>
+                        <text x="210" y="61" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="800" fill="#064e3b" text-anchor="middle">1</text>
+                        <!-- Node 2 -->
+                        <circle cx="357" cy="162" r="30" fill="#ffffff" stroke="#10b981" stroke-width="2.5"/>
+                        <text x="357" y="168" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="800" fill="#064e3b" text-anchor="middle">2</text>
+                        <!-- Node 3 -->
+                        <circle cx="301" cy="335" r="30" fill="#ffffff" stroke="#10b981" stroke-width="2.5"/>
+                        <text x="301" y="341" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="800" fill="#064e3b" text-anchor="middle">3</text>
+                        <!-- Node 4 -->
+                        <circle cx="119" cy="335" r="30" fill="#ffffff" stroke="#10b981" stroke-width="2.5"/>
+                        <text x="119" y="341" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="800" fill="#064e3b" text-anchor="middle">4</text>
+                        <!-- Node 5 -->
+                        <circle cx="63" cy="162" r="30" fill="#ffffff" stroke="#d97706" stroke-width="2.5"/>
+                        <text x="63" y="168" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="800" fill="#b45309" text-anchor="middle">5</text>
+                    </svg>
                 </div>
-                <div class="pillar-box">
-                    <div class="pillar-num">2</div>
-                    <span class="pillar-title">Políticas de Uso</span>
-                    <span class="pillar-desc">Normas éticas, privacidad y control de IA generativa. Documento vivo, revisado con cada nuevo caso de uso. Firmado y comunicado a todo el personal.</span>
-                    <span class="pillar-freq">Por caso de uso</span>
-                </div>
-                <div class="pillar-box">
-                    <div class="pillar-num">3</div>
-                    <span class="pillar-title">Alinear Objetivos</span>
-                    <span class="pillar-desc">Conectar iniciativas de IA con la estrategia de negocio. Cada proyecto responde a un KPI, no a la moda. Prioriza casos de uso con retorno medible.</span>
-                    <span class="pillar-freq">Trimestral</span>
-                </div>
-                <div class="pillar-box">
-                    <div class="pillar-num">4</div>
-                    <span class="pillar-title">Mecanismos de Control</span>
-                    <span class="pillar-desc">Evaluación de riesgos, sesgos y dependencia técnica. Incluye plan de contingencia si el modelo falla. Define umbrales aceptables antes de desplegar.</span>
-                    <span class="pillar-freq">Antes de desplegar</span>
-                </div>
-                <div class="pillar-box">
-                    <div class="pillar-num">5</div>
-                    <span class="pillar-title">Medir y Supervisar</span>
-                    <span class="pillar-desc">Auditoría continua de modelos, incidentes y cumplimiento. Cierra el ciclo retroalimentando la política. Reporta hallazgos al comité del pilar 1.</span>
-                    <span class="pillar-freq">Continuo</span>
+                <div class="cycle-legend">
+                    <div class="leg-item">
+                        <div class="leg-head"><div class="leg-num">1</div><span class="leg-title">Definir Responsables</span></div>
+                        <span class="leg-desc">Comité multidisciplinario activo antes de aprobar cualquier caso de uso.</span>
+                        <span class="leg-freq">Mensual</span>
+                    </div>
+                    <div class="leg-item">
+                        <div class="leg-head"><div class="leg-num">2</div><span class="leg-title">Políticas de Uso</span></div>
+                        <span class="leg-desc">Documento vivo, revisado con cada herramienta o modelo nuevo.</span>
+                        <span class="leg-freq">Por caso de uso</span>
+                    </div>
+                    <div class="leg-item">
+                        <div class="leg-head"><div class="leg-num">3</div><span class="leg-title">Alinear Objetivos</span></div>
+                        <span class="leg-desc">Cada proyecto de IA responde a un KPI de negocio, no a la moda.</span>
+                        <span class="leg-freq">Trimestral</span>
+                    </div>
+                    <div class="leg-item">
+                        <div class="leg-head"><div class="leg-num">4</div><span class="leg-title">Mecanismos de Control</span></div>
+                        <span class="leg-desc">Evaluación de riesgos y plan de contingencia antes de desplegar.</span>
+                        <span class="leg-freq">Antes de desplegar</span>
+                    </div>
+                    <div class="leg-item" style="grid-column: 1 / -1;">
+                        <div class="leg-head"><div class="leg-num" style="background:#d97706;">5</div><span class="leg-title">Medir y Supervisar</span></div>
+                        <span class="leg-desc">Auditoría continua de modelos e incidentes — cierra el ciclo retroalimentando al comité del pilar 1.</span>
+                        <span class="leg-freq" style="color:#b45309; background:#fef3c7;">Continuo</span>
+                    </div>
                 </div>
             </div>
         </div>
 
     </div>
 
-    <!-- FOOTER SIGNATURE -->
     <div class="footer">
         <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
         <span>cacm523</span>
