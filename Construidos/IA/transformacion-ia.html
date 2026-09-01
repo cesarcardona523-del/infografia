@@ -6,17 +6,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   :root{
-    --paper:#F3EEE3; --paper-line:#E2D9C6;
-    --navy:#16223F; --muted-l:#5B6478;
-    --dark:#1B1712; --dark2:#241E17;
-    --ember:#E8703A; --ember-dark:#B8532A;
-    --cream:#EDE6D8; --muted-d:#B7A896;
+    --paper:#ECFDF5; --paper-line:#D1FAE5;
+    --navy:#064E3B; --muted-l:#475569;
+    --dark:#0F1E17; --dark2:#16281F;
+    --ember:#D97706; --ember-dark:#B45309;
+    --green:#10B981; --green-dark:#047857;
+    --cream:#E7F5EE; --muted-d:#9CC2AE;
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
   body{
     min-height:627px; display:flex; align-items:center; justify-content:center;
-    padding:32px 16px; background:#15110D;
+    padding:32px 16px; background:#0F1E17;
     font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   }
   .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
@@ -49,7 +50,7 @@
   .bottom-panel .label b{ color:#fff; }
   .bottom-grid{ flex:1; display:grid; grid-template-columns: repeat(4,1fr); grid-template-rows: 1fr 1fr; gap:11px; }
   .real{ background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.12); border-radius:10px; padding:13px 14px; display:flex; flex-direction:column; justify-content:center; gap:9px; }
-  .real .icon{ width:28px; height:28px; border-radius:8px; background:var(--ember); color:#1B1712; display:flex; align-items:center; justify-content:center; }
+  .real .icon{ width:28px; height:28px; border-radius:8px; background:var(--green); color:#0F1E17; display:flex; align-items:center; justify-content:center; }
   .real .icon svg{ width:15px; height:15px; }
   .real span{ font-size:11px; font-weight:700; line-height:1.36; color:var(--cream); }
 

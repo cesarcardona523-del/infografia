@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   :root{
-    --clay:#D97757; --clay-dark:#B35A3D; --cream:#F5F1E7; --cream-2:#EAE3D2;
+    --clay:#D97706; --clay-dark:#047857; --cream:#F5F1E7; --cream-2:#EAE3D2;
     --yes:#2E9E6B; --no:#C1453A;
     --ink:#26211B; --muted:#6B6357; --line:#DDD6C7; --white:#FFFFFF;
   }
@@ -14,14 +14,14 @@
   html,body{margin:0;padding:0;}
   body{
     min-height:627px; display:flex; align-items:center; justify-content:center;
-    padding:32px 16px; background:#EFEBE0;
+    padding:32px 16px; background:#F3F0E6;
     font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   }
   .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
   .canvas{
     position:relative; width:1200px; height:627px; margin:0 auto;
     background:var(--white);
-    border-radius:16px; box-shadow:0 20px 50px rgba(179,90,61,0.18); overflow:hidden;
+    border-radius:16px; box-shadow:0 20px 50px rgba(6,78,59,0.14); overflow:hidden;
     padding:14px 30px 10px; color:var(--ink);
     display:flex; flex-direction:column; min-height:0;
   }
@@ -95,6 +95,7 @@
         <div class="tag">Ligero, ahorra tokens</div>
         <ul><li>Chat sin archivos</li><li>Activa búsqueda web</li></ul>
         <div class="promptbox"><b>Ejemplo de prompt</b>"Quiero [resultado] con [condiciones]. Hazme preguntas antes de empezar."</div>
+        <div class="note">Ideal para clasificar, resumir o responder consultas simples en volumen alto sin disparar el costo por token.</div>
         <div class="gauge">
           <div class="grow"><div class="glabel">Velocidad</div><div class="gtrack"><div class="gfill" style="width:95%"></div></div></div>
           <div class="grow"><div class="glabel">Profundidad</div><div class="gtrack"><div class="gfill" style="width:20%"></div></div></div>
@@ -105,6 +106,7 @@
         <div class="tag">Rápido, modelo del día a día</div>
         <ul><li>Tareas simples</li><li>Conecta con Slack, Drive, Notion, Figma y 50+ más</li></ul>
         <div class="promptbox"><b>Ejemplo de prompt</b>"Eres [rol]. [Tarea] con [input]. Tono [casual/formal]. Sin preámbulos, solo el resultado."</div>
+        <div class="note">El punto de partida por defecto — cámbialo a Opus solo cuando la tarea lo justifique, no antes.</div>
         <div class="gauge">
           <div class="grow"><div class="glabel">Velocidad</div><div class="gtrack"><div class="gfill" style="width:75%"></div></div></div>
           <div class="grow"><div class="glabel">Profundidad</div><div class="gtrack"><div class="gfill" style="width:45%"></div></div></div>
@@ -115,6 +117,7 @@
         <div class="tag">Modelo para trabajo profundo</div>
         <ul><li>Cowork + esfuerzo en High. Siempre.</li><li>Usa Skills en Projects</li></ul>
         <div class="promptbox"><b>Ejemplo de prompt</b>"8 herramientas de IA que uso cada día. NO empieces aún — hazme preguntas de aclaración."</div>
+        <div class="note">Reserva este nivel de esfuerzo para tareas con ambigüedad real, donde una respuesta apresurada sale más cara que el tiempo extra.</div>
         <div class="gauge">
           <div class="grow"><div class="glabel">Velocidad</div><div class="gtrack"><div class="gfill" style="width:45%"></div></div></div>
           <div class="grow"><div class="glabel">Profundidad</div><div class="gtrack"><div class="gfill" style="width:80%"></div></div></div>
