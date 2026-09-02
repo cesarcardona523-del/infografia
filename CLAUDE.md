@@ -21,7 +21,34 @@ Además del flujo puntual de cada infografía, se asume permanentemente el rol d
   - Si una mejora detectada generaliza claramente a otros temas, propagarla la próxima vez que se trabaje en ellos (no hace falta salir a tocar los 17 temas de una vez).
 - **Patrones reutilizables**: como no hay stylesheet compartido en runtime, la reutilización se logra manteniendo consistentes los patrones de CSS entre piezas (tarjetas, KPI tiles, badges, tablas, timeline, gráficos) documentados en la sección "Riqueza Visual" de INFOGRAFIA-SPEC.md — partir de esos patrones ya validados en vez de reinventar cada card/badge/tabla desde cero.
 - **Visualización de datos**: para cualquier gráfico dentro de una infografía, aplicar las recomendaciones del skill `dataviz` (claridad, jerarquía, escalas, color, etiquetas) antes de exportar.
-- **Estilo visual**: la base es el lenguaje ya definido en INFOGRAFIA-SPEC.md (paleta verde + acento tierra, referencias tipo Microsoft Learn/Azure Architecture Center/Databricks). Se admite glassmorphism moderado en tarjetas/paneles y layouts tipo Bento Grid como una opción más de composición, siempre sin contradecir esas reglas. No se adopta dark-mode (no aplica a una imagen exportada una sola vez) ni paletas tipo Apple/Vercel/Linear/Stripe/OpenAI por defecto — son referencias de producto web, no del brief editorial ya validado.
+- **Estilo visual**: la base es el lenguaje ya definido en INFOGRAFIA-SPEC.md (paleta verde + acento tierra, referencias tipo Microsoft Learn/Azure Architecture Center/Databricks). Se admite glassmorphism moderado en tarjetas/paneles y layouts tipo Bento Grid como una opción más de composición, siempre sin contradecir esas reglas. No se adopta dark-mode general (no aplica a una imagen exportada una sola vez) ni paletas tipo Apple/Vercel/Linear/Stripe/OpenAI por defecto — son referencias de producto web, no del brief editorial ya validado. Ver las dos excepciones controladas de paleta abajo ("Colores de marca por aplicación" y "Dark-mode para zonas de código").
+
+### Colores de marca por aplicación (excepción a la paleta verde+tierra)
+
+Cuando una infografía trata específicamente sobre **una aplicación o herramienta con identidad de marca propia** (el tema central es esa herramienta, no solo la menciona de paso), usar los colores representativos oficiales de esa aplicación en vez de la paleta verde+tierra por defecto — el verde+tierra sigue siendo el default para todo lo demás (temas generales de datos, gobierno, procesos, comparativas entre herramientas, etc.).
+
+| Aplicación | Colores representativos | Hex |
+|---|---|---|
+| Claude | Naranja claro (melocotón) y negro | `#D97757`, `#000000` |
+| ChatGPT | Verde (menta/cerceta) y blanco | `#10A37F`, `#FFFFFF` |
+| Gemini | Azul, morado y cian | `#1A73E8`, `#B326CB`, `#12B5CB` |
+| Grok | Negro y blanco | `#000000`, `#FFFFFF` |
+| Excel | Verde oscuro y blanco | `#217346`, `#FFFFFF` |
+| Power BI | Amarillo (dorado) y negro | `#F2C811`, `#000000` |
+| Tableau | Azul oscuro, azul claro y naranja | `#2A4B7C`, `#5C88BA`, `#E9692C` |
+| Python | Azul y amarillo | `#3776AB`, `#FFD43B` |
+| SQL Server | Rojo y gris | `#EE352E`, `#7F7F7F` |
+| Databricks | Rojo ladrillo y negro | `#FF3621`, `#000000` |
+| AWS | Naranja y azul marino (oscuro) | `#FF9900`, `#232F3E` |
+| Azure | Azul (tono Microsoft) | `#0078D4` |
+| Google Cloud | Azul, rojo, amarillo y verde | `#4285F4`, `#DB4437`, `#F4B400`, `#0F9D58` |
+| Oracle | Rojo brillante | `#F80000` |
+
+Si una infografía trata sobre una aplicación que no está en esta tabla, preguntarle al usuario el nombre y los colores representativos (hex) antes de construirla o corregirla — no inventar ni asumir la paleta de marca. Una vez indicados, se agregan a esta tabla para reutilizarse en el futuro.
+
+### Dark-mode para zonas de código (excepción a "no dark-mode")
+
+Cuando una infografía es predominantemente código (bloques de SQL, Python u otro lenguaje como contenido central, ej. un cheat-sheet de comandos), se permite que el **esquema completo de la pieza** use colores oscuros tipo editor de código (fondo oscuro, sintaxis resaltada), en vez de forzar el fondo claro verde+tierra del resto del catálogo. Esta excepción es solo para piezas donde el código es el protagonista — no aplica a una infografía general que simplemente incluye un bloque de código dentro de un layout mayormente claro (ahí el bloque de código oscuro va dentro de un canvas claro, como ya es el patrón habitual).
 - **Calidad de código**: al modificar un HTML, eliminar CSS/JS muerto o no usado en el render final y evitar duplicación dentro del mismo archivo.
 - **Flujo de commit/documentación rutinario, sin pedir autorización cada vez**: comitear cambios, actualizar el `README.md` de ambos repositorios (incluida su sección de estadísticas vía `git log`/`git shortlog`), y validar que `publicaciones.js` siga siendo JSON válido son tareas rutinarias de mantenimiento — no requieren confirmación previa. Sí requieren confirmación explícita: cambios destructivos (borrar/sobreescribir catálogo, eliminar infografías o referencias), `git push`, o cambios importantes de arquitectura del proyecto.
 
