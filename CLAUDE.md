@@ -46,6 +46,8 @@ Cuando una infografía trata específicamente sobre **una aplicación o herramie
 
 Si una infografía trata sobre una aplicación que no está en esta tabla, preguntarle al usuario el nombre y los colores representativos (hex) antes de construirla o corregirla — no inventar ni asumir la paleta de marca. Una vez indicados, se agregan a esta tabla para reutilizarse en el futuro.
 
+**Varias marcas en una misma pieza**: si una infografía combina varias aplicaciones con identidad propia (ej. una comparativa Python + SQL Server, o un stack Claude + Excel), combinar los colores de marca de cada una — cada sección/columna/bloque asociado a una herramienta usa su propio color representativo, en vez de forzar un único color para toda la pieza.
+
 ### Dark-mode para zonas de código (excepción a "no dark-mode")
 
 Cuando una infografía es predominantemente código (bloques de SQL, Python u otro lenguaje como contenido central, ej. un cheat-sheet de comandos), se permite que el **esquema completo de la pieza** use colores oscuros tipo editor de código (fondo oscuro, sintaxis resaltada), en vez de forzar el fondo claro verde+tierra del resto del catálogo. Esta excepción es solo para piezas donde el código es el protagonista — no aplica a una infografía general que simplemente incluye un bloque de código dentro de un layout mayormente claro (ahí el bloque de código oscuro va dentro de un canvas claro, como ya es el patrón habitual).
