@@ -6,28 +6,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   :root{
-    --clay:#047857; --clay-dark:#064e3b; --cream:#ECFDF5; --cream-2:#D1FAE5;
+    --clay:#D97757; --clay-dark:#7A3B23; --cream:#FDF3EE; --cream-2:#F5E1D6;
     --slate:#5C6470;
-    --ink:#0F172A; --muted:#475569; --line:#D1FAE5; --white:#FFFFFF;
+    --ink:#0F172A; --muted:#475569; --line:#F0D9CC; --white:#FFFFFF;
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
   body{
     min-height:627px; display:flex; align-items:center; justify-content:center;
-    padding:32px 16px; background:#ECFDF5;
+    padding:32px 16px; background:#FDF3EE;
     font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   }
   .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
   .canvas{
     position:relative; width:1200px; height:627px; margin:0 auto;
     background:var(--white);
-    border-radius:16px; box-shadow:0 20px 50px rgba(6,78,59,0.18); overflow:hidden;
+    border-radius:16px; box-shadow:0 20px 50px rgba(122,59,35,0.16); overflow:hidden;
     padding:16px 32px 12px; color:var(--ink);
     display:flex; flex-direction:column; min-height:0;
   }
 
   .header{ text-align:center; margin-bottom:8px; }
-  .header .eyebrow{ font-size:10.5px; font-weight:700; letter-spacing:1.8px; color:var(--clay); text-transform:uppercase; margin-bottom:3px; }
+  .header .eyebrow{ font-size:10.5px; font-weight:700; letter-spacing:1.8px; color:var(--clay-dark); text-transform:uppercase; margin-bottom:3px; }
   .header h1{ font-size:20px; margin:0 0 4px; font-weight:800; letter-spacing:-0.2px; }
   .header p{ margin:0 auto; font-size:10.8px; color:var(--muted); max-width:760px; }
 
@@ -53,7 +53,7 @@
   .ribbon .icon{ width:20px; height:20px; flex:none; border-radius:6px; background:rgba(255,255,255,0.14); display:flex; align-items:center; justify-content:center; }
   .ribbon .icon svg{ width:11px; height:11px; color:var(--clay); }
   .ribbon b{ color:#fff; }
-  .ribbon span{ color:#C9C0B0; }
+  .ribbon span{ color:#E8DED2; }
 
   .footer{ position:absolute; bottom:9px; right:20px; display:flex; align-items:center; gap:6px; }
   .li-badge{ width:15px; height:15px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:9.5px; font-weight:800; font-family: Arial, sans-serif; }
