@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   :root{
-    --vba:#1F4FD8; --vba-dark:#173CA8; --vba-pale:#EAEFFC; --line:#DCE3F5;
+    --vba:#B45309; --vba-dark:#92400E; --vba-pale:#FBEEE0; --line:#F5D3A0;
     --excel:#217346; --excel-pale:#E8F3EC;
     --ink:#1D2129; --muted:#5C6470; --white:#FFFFFF; --paper:#F7F8FA;
   }
@@ -14,14 +14,14 @@
   html,body{margin:0;padding:0;}
   body{
     min-height:627px; display:flex; align-items:center; justify-content:center;
-    padding:32px 16px; background:#EBEFF8;
+    padding:32px 16px; background:#ECFDF5;
     font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   }
   .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
   .canvas{
     position:relative; width:1200px; height:627px; margin:0 auto;
     background:var(--white);
-    border-radius:16px; box-shadow:0 20px 50px rgba(31,79,216,0.15); overflow:hidden;
+    border-radius:16px; box-shadow:0 20px 50px rgba(180,83,9,0.14); overflow:hidden;
     padding:16px 32px 12px; color:var(--ink);
     display:flex; flex-direction:column; min-height:0;
   }
@@ -43,9 +43,10 @@
   .section-title b{ font-size:11.5px; font-weight:800; white-space:nowrap; }
 
   .flow{ display:flex; align-items:stretch; gap:6px; margin-bottom:9px; height:80px; }
-  .fbox{ flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; border-radius:10px; border:1px solid var(--line); background:var(--paper); padding:6px; text-align:center; }
-  .fbox .n{ width:17px; height:17px; border-radius:50%; background:var(--vba); color:#fff; font-size:9px; font-weight:800; display:flex; align-items:center; justify-content:center; }
-  .fbox span{ font-size:8.4px; font-weight:700; line-height:1.25; }
+  .fbox{ flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; border-radius:10px; border:1px solid var(--line); background:var(--paper); padding:10px 8px; text-align:center; }
+  .fbox span{ font-size:10.5px; font-weight:700; }
+  .fbox p{ font-size:8.8px; font-weight:500; color:var(--muted); line-height:1.35; margin:0; }
+  .fbox .n{ width:20px; height:20px; border-radius:50%; background:var(--vba); color:#fff; font-size:10px; font-weight:800; display:flex; align-items:center; justify-content:center; }
   .arrow{ flex:none; color:var(--muted); align-self:center; }
 
   .uses{ flex:1; min-height:0; display:grid; grid-template-columns: repeat(7,1fr); gap:8px; }
@@ -60,9 +61,9 @@
     background:var(--ink); color:#EAEFFA; border-radius:10px; padding:8px 18px; font-size:10.2px;
   }
   .ribbon .icon{ width:20px; height:20px; flex:none; border-radius:6px; background:rgba(255,255,255,0.14); display:flex; align-items:center; justify-content:center; }
-  .ribbon .icon svg{ width:11px; height:11px; color:#7FA0FF; }
+  .ribbon .icon svg{ width:11px; height:11px; color:#F5D3A0; }
   .ribbon b{ color:#fff; }
-  .ribbon span{ color:#C2C8D6; }
+  .ribbon span{ color:#94A3B8; }
 
   .footer{ position:absolute; bottom:9px; right:20px; display:flex; align-items:center; gap:6px; }
   .li-badge{ width:15px; height:15px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:9.5px; font-weight:800; font-family: Arial, sans-serif; }
@@ -88,13 +89,13 @@
 
     <div class="section-title"><b>Cómo Empezar con Macros VBA</b></div>
     <div class="flow">
-      <div class="fbox"><div class="n">1</div><span>Habilita la ficha "Programador"</span></div>
+      <div class="fbox"><div class="n">1</div><span>Habilita la ficha "Programador"</span><p>Opciones de Excel → Personalizar cinta.</p></div>
       <svg class="arrow" width="16" height="12" viewBox="0 0 24 16"><path d="M2 8h18M14 2l8 6-8 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <div class="fbox"><div class="n">2</div><span>Graba una Macro</span></div>
+      <div class="fbox"><div class="n">2</div><span>Graba una Macro</span><p>Excel registra cada clic y tecla como código VBA.</p></div>
       <svg class="arrow" width="16" height="12" viewBox="0 0 24 16"><path d="M2 8h18M14 2l8 6-8 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <div class="fbox"><div class="n">3</div><span>Edita la Macro</span></div>
+      <div class="fbox"><div class="n">3</div><span>Edita la Macro</span><p>Alt+F11 abre el editor para ajustar la lógica.</p></div>
       <svg class="arrow" width="16" height="12" viewBox="0 0 24 16"><path d="M2 8h18M14 2l8 6-8 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <div class="fbox"><div class="n">4</div><span>Ejecuta la Macro</span></div>
+      <div class="fbox"><div class="n">4</div><span>Ejecuta la Macro</span><p>Asigna un botón o atajo para correrla al instante.</p></div>
     </div>
 
     <div class="section-title"><b>¿Cuándo Utilizar Macros?</b></div>
