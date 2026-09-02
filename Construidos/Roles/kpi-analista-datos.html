@@ -6,45 +6,45 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   :root{
-    --teal:#28C7C0; --teal-dark:#1A8F8A; --teal-pale:rgba(40,199,192,0.12);
-    --red:#E85B4F; --green:#3FBF83;
-    --bg:#0C2230; --bg2:#0F2B3B; --card:#123342; --line:#1D4657;
-    --ink:#EAF3F5; --muted:#8FADB9; --white:#FFFFFF;
+    --teal:#059669; --teal-dark:#047857; --teal-pale:rgba(5,150,105,0.10);
+    --red:#C1453A; --green:#10B981;
+    --bg:#ECFDF5; --bg2:#F0FDF9; --card:#FFFFFF; --line:#D1FAE5;
+    --ink:#0F172A; --muted:#475569; --white:#FFFFFF;
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
   body{
     min-height:627px; display:flex; align-items:center; justify-content:center;
-    padding:32px 16px; background:#081824;
+    padding:32px 16px; background:#ECFDF5;
     font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   }
   .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
   .canvas{
     position:relative; width:1200px; height:627px; margin:0 auto;
     background:linear-gradient(160deg, var(--bg) 0%, var(--bg2) 100%);
-    border-radius:16px; box-shadow:0 20px 50px rgba(0,0,0,0.4); overflow:hidden;
+    border-radius:16px; box-shadow:0 20px 50px rgba(6,78,59,0.16); overflow:hidden;
     padding:16px 32px 12px; color:var(--ink);
     display:flex; flex-direction:column; min-height:0;
   }
 
   .header{ text-align:center; margin-bottom:9px; }
   .header .eyebrow{ font-size:10.5px; font-weight:700; letter-spacing:1.8px; color:var(--teal); text-transform:uppercase; margin-bottom:3px; }
-  .header h1{ font-size:20px; margin:0 0 4px; font-weight:800; letter-spacing:-0.2px; color:#fff; }
+  .header h1{ font-size:20px; margin:0 0 4px; font-weight:800; letter-spacing:-0.2px; color:var(--ink); }
   .header p{ margin:0 auto; font-size:11px; color:var(--muted); max-width:720px; }
 
   .grid{ flex:1; min-height:0; display:grid; grid-template-columns: repeat(3,1fr); grid-template-rows: 1fr 1fr; gap:10px; }
   .card{ background:var(--card); border:1px solid var(--line); border-radius:11px; padding:14px 18px; display:flex; flex-direction:column; justify-content:center; gap:12px; }
   .card .top{ display:flex; align-items:center; gap:10px; }
   .card .n{ width:26px; height:26px; border-radius:8px; background:var(--teal); color:var(--bg); font-weight:800; font-size:13px; display:flex; align-items:center; justify-content:center; flex:none; }
-  .card b{ font-size:13.5px; font-weight:800; color:#fff; }
+  .card b{ font-size:13.5px; font-weight:800; color:var(--ink); }
   .card p{ margin:0; font-size:10.8px; color:var(--muted); line-height:1.45; }
   .viz svg{ width:100%; height:64px; display:block; }
 
   .chips{ display:flex; align-items:center; gap:10px; }
-  .chip{ flex:1; background:rgba(255,255,255,0.06); border:1px solid var(--line); border-radius:8px; padding:9px 11px; font-size:9.8px; }
+  .chip{ flex:1; background:var(--bg); border:1px solid var(--line); border-radius:8px; padding:9px 11px; font-size:9.8px; }
   .chip b{ display:block; font-size:10.5px; color:var(--teal); margin-bottom:2px; }
 
-  .quote{ background:rgba(40,199,192,0.1); border-left:3px solid var(--teal); border-radius:7px; padding:11px 14px; font-size:11px; color:var(--ink); line-height:1.5; }
+  .quote{ background:var(--teal-pale); border-left:3px solid var(--teal); border-radius:7px; padding:11px 14px; font-size:11px; color:var(--ink); line-height:1.5; }
   .quote b{ color:var(--teal); }
 
   .ribbon{
@@ -54,7 +54,7 @@
 
   .footer{ position:absolute; bottom:9px; right:20px; display:flex; align-items:center; gap:6px; }
   .li-badge{ width:15px; height:15px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:9.5px; font-weight:800; font-family: Arial, sans-serif; }
-  .footer span{ font-size:9.5px; font-weight:600; color:var(--muted); }
+  .footer span{ font-size:9.5px; font-weight:600; color:#fff; }
 </style>
 </head>
 <body>
