@@ -6,22 +6,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   :root{
-    --violet:#5B3FA6; --violet-dark:#432E80; --violet-pale:#EFEAF9; --line:#E1DAF2;
-    --bronze:#C1793D; --silver:#8B95A3; --gold:#C9971E;
+    --violet:#047857; --violet-dark:#064E3B; --violet-pale:#ECFDF5; --line:#D1FAE5;
+    --bronze:#B45309; --silver:#78716C; --gold:#D97706;
     --ink:#1D2129; --muted:#5C6470; --white:#FFFFFF; --paper:#F7F8FA;
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
   body{
     min-height:627px; display:flex; align-items:center; justify-content:center;
-    padding:32px 16px; background:#EFEBF8;
+    padding:32px 16px; background:#ECFDF5;
     font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   }
   .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
   .canvas{
     position:relative; width:1200px; height:627px; margin:0 auto;
     background:var(--white);
-    border-radius:16px; box-shadow:0 20px 50px rgba(67,46,128,0.18); overflow:hidden;
+    border-radius:16px; box-shadow:0 20px 50px rgba(6,78,59,0.16); overflow:hidden;
     padding:16px 32px 12px; color:var(--ink);
     display:flex; flex-direction:column; min-height:0;
   }
@@ -88,6 +88,7 @@
           <li>Historial y versionado completo</li>
           <li>Trazabilidad y auditoría</li>
         </ul>
+        <div class="tag" style="font-weight:500;">Ejemplo: logs de eventos crudos desde una API, tal como llegaron.</div>
         <div class="meter"><div class="lbl"><span>Nivel de confianza para el negocio</span></div><div class="track"><div class="fill"></div></div></div>
       </div>
       <div class="layer silver">
@@ -98,6 +99,7 @@
           <li>Eliminación de duplicados</li>
           <li>Datos consistentes y confiables</li>
         </ul>
+        <div class="tag" style="font-weight:500;">Ejemplo: tabla de clientes deduplicada, con tipos de dato ya validados.</div>
         <div class="meter"><div class="lbl"><span>Nivel de confianza para el negocio</span></div><div class="track"><div class="fill"></div></div></div>
       </div>
       <div class="layer gold">
@@ -108,6 +110,7 @@
           <li>Alto valor de negocio</li>
           <li>Consistencia y rendimiento</li>
         </ul>
+        <div class="tag" style="font-weight:500;">Ejemplo: tabla de ventas agregada por región, lista para un dashboard.</div>
         <div class="meter"><div class="lbl"><span>Nivel de confianza para el negocio</span></div><div class="track"><div class="fill"></div></div></div>
       </div>
     </div>
