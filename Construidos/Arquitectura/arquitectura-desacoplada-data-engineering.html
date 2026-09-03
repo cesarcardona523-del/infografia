@@ -7,24 +7,24 @@
     <style>
         :root {
             /* Paleta Dark Mode */
-            --bg-base: #040d08;
-            --bg-surface: #0a1a12;
-            --bg-card: rgba(13, 33, 23, 0.7);
+            --bg-base: #ECFDF5;
+            --bg-surface: #F0FDF9;
+            --bg-card: rgba(255, 255, 255, 0.85);
 
-            --green-neon: #2ecc71;
-            --green-bright: #10b981;
-            --green-muted: #2d6a4f;
-            --green-glow: rgba(46, 204, 113, 0.18);
+            --green-neon: #047857;
+            --green-bright: #059669;
+            --green-muted: #065F46;
+            --green-glow: rgba(5, 150, 105, 0.12);
 
-            --earth-accent: #d9791e;
-            --earth-glow: rgba(217, 121, 30, 0.2);
-            --earth-muted: #b45309;
-            
-            --text-main: #e2e8f0;
-            --text-muted: #94a3b8;
-            
-            --border-thin: rgba(16, 185, 129, 0.2);
-            --border-earth: rgba(245, 158, 11, 0.4);
+            --earth-accent: #B45309;
+            --earth-glow: rgba(180, 83, 9, 0.14);
+            --earth-muted: #92400E;
+
+            --text-main: #0F172A;
+            --text-muted: #475569;
+
+            --border-thin: rgba(6, 78, 59, 0.18);
+            --border-earth: rgba(180, 83, 9, 0.35);
             
             --radius-lg: 12px;
             --radius-md: 8px;
@@ -39,7 +39,7 @@
         }
 
         body {
-            background-color: #000;
+            background-color: #ECFDF5;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -278,8 +278,8 @@
         }
         
         .dot.bronze { border-color: #cd7f32; box-shadow: 0 0 6px rgba(205, 127, 50, 0.3); }
-        .dot.silver { border-color: #c0c0c0; box-shadow: 0 0 6px rgba(192, 192, 192, 0.3); }
-        .dot.gold { border-color: #ffd700; box-shadow: 0 0 6px rgba(255, 215, 0, 0.3); }
+        .dot.silver { border-color: #71717A; box-shadow: 0 0 6px rgba(113, 113, 122, 0.3); }
+        .dot.gold { border-color: #C9971E; box-shadow: 0 0 6px rgba(201, 151, 30, 0.3); }
         .dot.roadmap { border-color: var(--earth-accent); border-style: dashed; }
 
         .node h3 {
@@ -300,9 +300,9 @@
             letter-spacing: 0.5px;
         }
         
-        .medallion-tag.bronze { background: rgba(205, 127, 50, 0.15); color: #cd7f32; border: 1px solid #cd7f32; }
-        .medallion-tag.silver { background: rgba(192, 192, 192, 0.15); color: #c0c0c0; border: 1px solid #c0c0c0; }
-        .medallion-tag.gold { background: rgba(255, 215, 0, 0.15); color: #ffd700; border: 1px solid #ffd700; }
+        .medallion-tag.bronze { background: rgba(146, 90, 36, 0.15); color: #7A4A20; border: 1px solid #B0703A; }
+        .medallion-tag.silver { background: rgba(113, 113, 122, 0.15); color: #52525B; border: 1px solid #A1A1AA; }
+        .medallion-tag.gold { background: rgba(180, 130, 0, 0.15); color: #92700A; border: 1px solid #C9971E; }
         .medallion-tag.roadmap { background: var(--earth-glow); color: var(--earth-accent); border: 1px solid var(--earth-accent); }
 
         .node p {
