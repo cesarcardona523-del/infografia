@@ -2494,5 +2494,30 @@
       "likes": 0,
       "shares": 0
     }
+  },
+  {
+    "id": "encuesta-genz-millennials-2026-deloitte",
+    "imagen": "Construidos/Liderazgo/encuesta-genz-millennials-2026-deloitte.png",
+    "fechaPublicacion": "2026-09-06T09:15:00",
+    "categoriaPrincipal": "profesion-y-negocio",
+    "temas": [
+      "liderazgo",
+      "transformacion-digital",
+      "ia"
+    ],
+    "tipoContenido": "investigacion",
+    "es": {
+      "topico": "Encuesta Gen Z y Millennials 2026 de Deloitte: progreso en sus propios términos",
+      "descripcion": "La investigación global de Deloitte, en su 15.º aniversario, recoge las respuestas de más de 22,500 profesionales Gen Z y millennials en 44 países para entender cómo estas generaciones redefinen el trabajo, el liderazgo y el bienestar. La presión financiera emerge como la fuerza estructural que más condiciona sus decisiones: el costo de vida es la principal preocupación por quinto año consecutivo, y más de la mitad ha retrasado decisiones de vida importantes por su situación económica. El interés en el liderazgo persiste, pero de forma condicionada: solo una minoría lo prioriza como objetivo inmediato, no por falta de ambición sino porque el modelo actual se asocia con burnout y cargas insostenibles; la mayoría sí aspira a roles senior si existen flexibilidad, compensación adecuada y rutas claras. La adopción de inteligencia artificial se aceleró de forma marcada en el último año, superando la velocidad con la que las organizaciones rediseñan procesos, capacitación y liderazgo para acompañarla. La salud mental muestra mejoras sostenidas, aunque el estrés y la fatiga digital permanecen como retos activos. El propósito y la conexión social se consolidan como factores casi universales de satisfacción laboral y como predictores de permanencia. Para líderes de talento y de personas, el informe ofrece evidencia accionable sobre compensación, flexibilidad, rediseño de roles con IA y cultura de bienestar como palancas de retención generacional."
+    },
+    "en": {
+      "topico": "Deloitte's 2026 Gen Z and Millennial Survey: progress on their own terms",
+      "descripcion": "Deloitte Global's flagship research, now in its 15th year, surveyed more than 22,500 Gen Z and millennial professionals across 44 countries to understand how these generations are redefining work, leadership, and wellbeing. Financial pressure emerges as the structural force shaping most decisions: cost of living has ranked as the top concern for five consecutive years, and more than half of respondents have delayed major life decisions because of their financial situation. Interest in leadership persists, but conditionally: only a small share prioritize reaching a leadership position as their primary career goal, not for lack of ambition but because current leadership models are associated with burnout and unsustainable workloads; most still aspire to senior roles when flexibility, fair compensation, and clear pathways exist. AI adoption accelerated sharply over the past year, outpacing how quickly organizations are redesigning processes, training, and leadership to keep up. Mental health shows sustained improvement, though stress and digital fatigue remain active challenges. Purpose and social connection have become near-universal drivers of job satisfaction and strong predictors of retention. For talent and people leaders, the report offers actionable evidence on compensation, flexibility, AI-driven role redesign, and wellbeing culture as generational retention levers."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
   }
 ]
