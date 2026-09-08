@@ -6,83 +6,78 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   :root{
-    --bg-0:#12151A;
-    --bg-1:#181D24;
-    --panel:#1E252D;
-    --panel-line:#2C3540;
-    --ink:#E8EDF2;
-    --muted:#8B98A5;
-    --muted-2:#5B6772;
+    --green:#1E7A4F; --green-dark:#125C39; --green-pale:#E2F2E8; --green-line:#BFE0CC;
+    --earth:#C1620E; --earth-dark:#8C480A; --earth-pale:#FBEADD; --earth-line:#F0CBA0;
+    --ink:#1D2129; --muted:#5C6470; --line:#E4E9E6; --white:#FFFFFF; --paper:#F5F8F6;
 
-    --rel:#4C8DFF;   --rel-pale:#1B2B4A;
-    --nosql:#22C55E; --nosql-pale:#12301F;
-    --cloud:#F59E0B; --cloud-pale:#3A2A0E;
-    --esp:#A855F7;   --esp-pale:#2E1F42;
+    --rel:#125C39;   --rel-pale:#E2F2E8; --rel-line:#BFE0CC;
+    --nosql:#2F8F5B; --nosql-pale:#E9F5EE; --nosql-line:#C7E6D5;
+    --cloud:#C1620E; --cloud-pale:#FBEADD; --cloud-line:#F0CBA0;
+    --esp:#8C480A;   --esp-pale:#F5E4D3; --esp-line:#E8C79E;
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
   body{
     min-height:627px; display:flex; align-items:center; justify-content:center;
-    padding:32px 16px; background:#0A0C0F;
+    padding:32px 16px; background:#F0F6F2;
     font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   }
   .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
   .canvas{
     position:relative; width:1200px; height:627px; margin:0 auto;
-    background:radial-gradient(circle at 85% 0%, var(--bg-1) 0%, var(--bg-0) 60%);
-    border-radius:14px; box-shadow:0 24px 60px rgba(0,0,0,0.5); overflow:hidden;
-    padding:26px 38px 16px; color:var(--ink);
+    background:linear-gradient(160deg, #FAFDFB 0%, var(--paper) 55%, #EFF6F1 100%);
+    border-radius:16px; box-shadow:0 20px 50px rgba(14,40,26,0.16); overflow:hidden;
+    padding:18px 30px 14px; color:var(--ink);
+    display:flex; flex-direction:column;
   }
 
-  .header{ margin-bottom:10px; }
-  .header .eyebrow{ font-size:10.5px; font-weight:700; letter-spacing:1.8px; color:var(--muted); text-transform:uppercase; margin-bottom:5px; }
-  .header h1{ font-size:22px; margin:0 0 5px; font-weight:800; letter-spacing:-0.2px; }
-  .header p{ margin:0; font-size:11.8px; color:var(--muted); max-width:760px; }
+  .header{ margin-bottom:9px; }
+  .eyebrow{ display:inline-flex; align-items:center; gap:6px; font-size:9.5px; font-weight:800; letter-spacing:1.6px; color:var(--green-dark); text-transform:uppercase; background:var(--green-pale); border:1px solid var(--green-line); padding:2.5px 8px; border-radius:20px; margin-bottom:6px; }
+  .header h1{ font-size:21px; margin:0 0 3px; font-weight:800; letter-spacing:-0.3px; }
+  .header p{ margin:0; font-size:10.6px; color:var(--muted); max-width:780px; line-height:1.35; }
 
-  .racks{ display:grid; grid-template-columns: repeat(4, 1fr); gap:14px; margin-top:10px; height:392px; }
+  .racks{ display:grid; grid-template-columns: repeat(4, 1fr); gap:10px; flex:1; min-height:0; }
 
   .rack{
-    background:var(--panel); border:1px solid var(--panel-line); border-radius:10px;
-    padding:12px 13px; display:flex; flex-direction:column; position:relative;
-    border-top:3px solid var(--accent);
+    background:var(--white); border:1px solid var(--line); border-radius:11px;
+    padding:10px 12px; display:flex; flex-direction:column; position:relative;
+    border-top:3px solid var(--accent); box-shadow:0 2px 8px rgba(14,40,26,0.04);
   }
-  .rack::before, .rack::after{ content:""; position:absolute; top:7px; width:5px; height:5px; border-radius:50%; background:var(--panel-line); }
-  .rack::before{ left:8px; } .rack::after{ right:8px; }
 
   .rack.rel{ --accent:var(--rel); }
   .rack.nosql{ --accent:var(--nosql); }
   .rack.cloud{ --accent:var(--cloud); }
   .rack.esp{ --accent:var(--esp); }
 
-  .rack-head{ display:flex; align-items:center; gap:7px; margin-bottom:10px; margin-top:4px; }
-  .rack-head .icon{ width:22px; height:22px; border-radius:6px; flex:none; display:flex; align-items:center; justify-content:center; background:var(--accent-pale); color:var(--accent); }
+  .rack-head{ display:flex; align-items:center; gap:7px; margin-bottom:8px; }
+  .rack-head .icon{ width:22px; height:22px; border-radius:6px; flex:none; display:flex; align-items:center; justify-content:center; }
   .rack-head .icon svg{ width:13px; height:13px; }
-  .rack.rel .icon{ background:var(--rel-pale); }
-  .rack.nosql .icon{ background:var(--nosql-pale); }
-  .rack.cloud .icon{ background:var(--cloud-pale); }
-  .rack.esp .icon{ background:var(--esp-pale); }
-  .rack-head h3{ margin:0; font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:0.4px; color:var(--accent); }
+  .rack.rel .icon{ background:var(--rel-pale); color:var(--rel); }
+  .rack.nosql .icon{ background:var(--nosql-pale); color:var(--nosql); }
+  .rack.cloud .icon{ background:var(--cloud-pale); color:var(--cloud); }
+  .rack.esp .icon{ background:var(--esp-pale); color:var(--esp); }
+  .rack-head h3{ margin:0; font-size:10.6px; font-weight:800; text-transform:uppercase; letter-spacing:0.3px; color:var(--accent); }
 
-  .db-item{ display:flex; gap:7px; align-items:flex-start; margin-bottom:8px; }
+  .db-item{ display:flex; gap:7px; align-items:flex-start; margin-bottom:6.5px; }
   .db-item .dot{ width:8px; height:8px; border-radius:50%; margin-top:4px; flex:none; }
-  .db-item b{ display:block; font-size:10.3px; font-weight:700; color:var(--ink); line-height:1.25; }
-  .db-item span{ display:block; font-size:8.5px; color:var(--muted); line-height:1.3; margin-top:1px; }
+  .db-item b{ display:block; font-size:9.8px; font-weight:800; color:var(--ink); line-height:1.25; }
+  .db-item span{ display:block; font-size:8.2px; color:var(--muted); line-height:1.3; margin-top:1px; }
 
-  .rack-note{ margin-top:auto; padding-top:9px; border-top:1px dashed var(--panel-line); font-size:8.6px; color:var(--muted); line-height:1.35; }
+  .rack-note{ margin-top:auto; padding-top:8px; border-top:1px dashed var(--line); font-size:8.2px; color:var(--muted); line-height:1.35; }
   .rack-note b{ color:var(--accent); }
 
   .ribbon{
-    margin-top:11px; display:flex; align-items:center; gap:10px;
-    background:var(--bg-1); border:1px solid var(--panel-line); border-radius:10px; padding:9px 16px; font-size:10.3px;
+    margin-top:9px; display:flex; align-items:center; gap:10px;
+    background:var(--green-pale); border:1px solid var(--green-line); border-radius:10px; padding:8px 14px; font-size:9.6px;
   }
-  .ribbon .icon{ width:22px; height:22px; flex:none; border-radius:6px; background:rgba(255,255,255,0.06); display:flex; align-items:center; justify-content:center; }
-  .ribbon .icon svg{ width:12px; height:12px; color:#F5C451; }
-  .ribbon b{ color:#fff; }
-  .ribbon span{ color:var(--muted); }
+  .ribbon .icon{ width:22px; height:22px; flex:none; border-radius:6px; background:var(--white); border:1px solid var(--green-line); display:flex; align-items:center; justify-content:center; }
+  .ribbon .icon svg{ width:12px; height:12px; color:var(--green-dark); }
+  .ribbon b{ color:var(--green-dark); }
+  .ribbon span{ color:var(--ink); }
 
-  .footer{ position:absolute; bottom:12px; right:22px; display:flex; align-items:center; gap:6px; }
-  .li-badge{ width:18px; height:18px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; font-family: Arial, sans-serif; }
-  .footer span{ font-size:11px; font-weight:600; color:var(--muted); }
+  .footer{ display:flex; align-items:center; justify-content:flex-end; gap:6px; margin-top:8px; }
+  .li-badge{ width:16px; height:16px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:800; font-family: Arial, sans-serif; }
+  .footer span{ font-size:9.5px; font-weight:700; color:var(--muted); }
 </style>
 </head>
 <body>
@@ -91,9 +86,12 @@
   <div class="canvas">
 
     <div class="header">
-      <div class="eyebrow">Panorama de Plataformas de Datos</div>
+      <div class="eyebrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg>
+        Panorama de Plataformas de Datos
+      </div>
       <h1>Bases de Datos Populares: un Mapa por Familias</h1>
-      <p>16 plataformas agrupadas por lo que realmente las diferencia — no por marca, sino por el problema que resuelven.</p>
+      <p>23 plataformas agrupadas por lo que realmente las diferencia — no por marca, sino por el problema que resuelven.</p>
     </div>
 
     <div class="racks">
@@ -103,9 +101,9 @@
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 10v10"/></svg></div>
           <h3>Relacionales (SQL)</h3>
         </div>
-        <div class="db-item"><span class="dot" style="background:#4479A1"></span><div><b>MySQL</b><span>Código abierto, la más usada en apps web</span></div></div>
+        <div class="db-item"><span class="dot" style="background:#00758F"></span><div><b>MySQL</b><span>Código abierto, la más usada en apps web</span></div></div>
         <div class="db-item"><span class="dot" style="background:#336791"></span><div><b>PostgreSQL</b><span>Extensible, soporte geoespacial y texto completo</span></div></div>
-        <div class="db-item"><span class="dot" style="background:#CC2927"></span><div><b>SQL Server</b><span>Microsoft, integrado al ecosistema Windows</span></div></div>
+        <div class="db-item"><span class="dot" style="background:#EE352E"></span><div><b>SQL Server</b><span>Microsoft, integrado al ecosistema Windows</span></div></div>
         <div class="db-item"><span class="dot" style="background:#F80000"></span><div><b>Oracle Database</b><span>Alto rendimiento, entornos empresariales</span></div></div>
         <div class="db-item"><span class="dot" style="background:#7DD4FC"></span><div><b>SQLite</b><span>Sin servidor, embebida en apps y navegadores</span></div></div>
         <div class="db-item"><span class="dot" style="background:#C0765A"></span><div><b>MariaDB</b><span>Fork de MySQL, foco en comunidad y seguridad</span></div></div>
@@ -121,6 +119,8 @@
         <div class="db-item"><span class="dot" style="background:#DC382D"></span><div><b>Redis</b><span>En memoria — caché, colas, tiempo real</span></div></div>
         <div class="db-item"><span class="dot" style="background:#1287B1"></span><div><b>Cassandra</b><span>Distribuida, escrita para alta disponibilidad</span></div></div>
         <div class="db-item"><span class="dot" style="background:#EA2328"></span><div><b>Couchbase</b><span>Documentos + memoria en un mismo motor</span></div></div>
+        <div class="db-item"><span class="dot" style="background:#4053D6"></span><div><b>Amazon DynamoDB</b><span>Clave-valor administrada, latencia de milisegundos</span></div></div>
+        <div class="db-item"><span class="dot" style="background:#0EA5E9"></span><div><b>Memcached</b><span>Caché en memoria, simple y de propósito específico</span></div></div>
         <div class="rack-note">Ideal para: <b>catálogos de producto, IoT, datos que cambian de forma</b> — volumen y escala horizontal antes que esquema rígido.</div>
       </div>
 
@@ -133,6 +133,8 @@
         <div class="db-item"><span class="dot" style="background:#4285F4"></span><div><b>Cloud Spanner</b><span>Relacional distribuida, consistencia global</span></div></div>
         <div class="db-item"><span class="dot" style="background:#0078D4"></span><div><b>Azure SQL Database</b><span>Relacional administrada, alta disponibilidad</span></div></div>
         <div class="db-item"><span class="dot" style="background:#FFCA28"></span><div><b>Firebase Realtime DB</b><span>Sincronización en tiempo real, móvil/web</span></div></div>
+        <div class="db-item"><span class="dot" style="background:#FF9900"></span><div><b>Amazon RDS</b><span>MySQL/PostgreSQL/SQL Server como servicio, AWS</span></div></div>
+        <div class="db-item"><span class="dot" style="background:#0F9D58"></span><div><b>Google Cloud SQL</b><span>MySQL/PostgreSQL administrada, GCP</span></div></div>
         <div class="rack-note">Ideal para: <b>equipos sin DBA dedicado</b> — el proveedor gestiona parcheo, backups y escalado.</div>
       </div>
 
@@ -144,6 +146,8 @@
         <div class="db-item"><span class="dot" style="background:#018BFF"></span><div><b>Neo4j</b><span>Grafos — datos y relaciones complejas</span></div></div>
         <div class="db-item"><span class="dot" style="background:#FEC514"></span><div><b>Elasticsearch</b><span>Búsqueda y análisis en tiempo real</span></div></div>
         <div class="db-item"><span class="dot" style="background:#D22128"></span><div><b>Apache HBase</b><span>NoSQL sobre Hadoop, grandes volúmenes</span></div></div>
+        <div class="db-item"><span class="dot" style="background:#22ADF6"></span><div><b>InfluxDB</b><span>Series de tiempo — métricas, sensores, monitoreo</span></div></div>
+        <div class="db-item"><span class="dot" style="background:#FFCC01"></span><div><b>ClickHouse</b><span>Columnar, analítica y consultas OLAP a gran escala</span></div></div>
         <div class="rack-note">Ideal para: <b>recomendaciones, redes sociales, búsqueda de logs</b> — un caso de uso puntual, no un motor de propósito general.</div>
       </div>
 
