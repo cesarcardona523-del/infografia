@@ -138,7 +138,7 @@ Antes de crear una entrada nueva, el proyecto analiza si el contenido amplía o 
 
 ## 🗺️ Estado
 
-**88 infografías publicadas en 28 temas**, listadas en orden de creación:
+**89 infografías publicadas en 28 temas**, listadas en orden de creación:
 
 - ✅ Automatización vs Autonomía: Arquitectura de Sistemas de IA Agénticos — tema `Automatización` — [HTML](Construidos/Automatización/automatizacion-agentesia.html) · [PNG](Construidos/Automatización/automatizacion-agentesia.png)
 - ✅ Automatización de Reportes con Python: de Excel a Producción — tema `Automatización` — [HTML](Construidos/Automatización/automatizacion-python.html) · [PNG](Construidos/Automatización/automatizacion-python.png)
@@ -247,6 +247,7 @@ Antes de crear una entrada nueva, el proyecto analiza si el contenido amplía o 
 - ✅ El Ciclo de Vida de un Dashboard — tema `Gobernanza_Tableros_BI` — [HTML](Construidos/Gobernanza_Tableros_BI/ciclo-vida-dashboard.html) · [PNG](Construidos/Gobernanza_Tableros_BI/ciclo-vida-dashboard.png)
 - ✅ Encuesta Gen Z y Millennials 2026 de Deloitte: Progreso en sus Propios Términos — tema `Liderazgo` — investigación (fuente: Deloitte Global) — [HTML](Construidos/Liderazgo/encuesta-genz-millennials-2026-deloitte.html) · [PNG](Construidos/Liderazgo/encuesta-genz-millennials-2026-deloitte.png)
 - ✅ Operadores de Comparación y Conectores Lógicos AND/OR en SQL — tema `SQL` — [HTML](Construidos/SQL/operadores-comparacion-and-or-sql.html) · [PNG](Construidos/SQL/operadores-comparacion-and-or-sql.png)
+- ✅ Bases de Datos On-Premise vs. en la Nube: Diferencias y Motores Clave — tema `Base de Datos` — [HTML](Construidos/Base_de_Datos/bd-on-premise-vs-nube.html) · [PNG](Construidos/Base_de_Datos/bd-on-premise-vs-nube.png)
 
 Este README se irá actualizando con un enlace por cada infografía nueva.
 

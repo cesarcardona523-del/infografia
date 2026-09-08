@@ -2542,5 +2542,32 @@
       "likes": 0,
       "shares": 0
     }
+  },
+  {
+    "id": "bd-on-premise-vs-nube",
+    "imagen": "Construidos/Base_de_Datos/bd-on-premise-vs-nube.png",
+    "fechaPublicacion": "2026-09-10T09:25:00",
+    "categoriaPrincipal": "bases-de-datos",
+    "temas": [
+      "bases-de-datos",
+      "arquitectura-datos",
+      "aws",
+      "azure",
+      "gcp"
+    ],
+    "tipoContenido": "infografia",
+    "es": {
+      "topico": "Bases de Datos On-Premise vs. en la Nube: Diferencias y Motores Clave",
+      "descripcion": "La decisión entre desplegar una base de datos On-Premise o en la nube determina directamente el modelo de costos, la velocidad de escalamiento y la carga operativa de un equipo de datos. En un despliegue On-Premise, la organización asume una inversión inicial alta en servidores, licencias y centro de datos propio (CapEx), escala agregando hardware físico de forma manual, y su equipo de TI es responsable directo del mantenimiento, los parches, los backups y la estrategia de recuperación ante desastres, a cambio de control físico y lógico total sobre el dato. En la nube, el modelo cambia a pago por uso u OpEx: el aprovisionamiento de una instancia toma minutos en lugar de semanas, la escalabilidad es elástica y bajo demanda, y buena parte del mantenimiento —parches, alta disponibilidad, réplicas multi-zona— queda a cargo del proveedor bajo un modelo de responsabilidad compartida, mientras el control del dato pasa de físico a lógico. Es clave entender que esta es una decisión de infraestructura, no de motor de base de datos: motores como MySQL, PostgreSQL, SQL Server, Oracle Database o MongoDB pueden instalarse tanto en infraestructura propia como consumirse en forma de servicio administrado en la nube (Amazon RDS, Azure SQL Database, Google Cloud SQL), cada uno manteniendo su modelo de datos relacional o no relacional. La elección correcta depende de la predictibilidad de la carga, el apetito de riesgo operativo, requisitos regulatorios sobre dónde reside el dato, y la capacidad del equipo interno para operar infraestructura crítica."
+    },
+    "en": {
+      "topico": "On-Premise vs. Cloud Databases: Key Differences and Engines",
+      "descripcion": "The decision to deploy a database On-Premise or in the cloud directly shapes the cost model, scaling speed, and operational load of a data team. In an On-Premise deployment, the organization takes on a high upfront investment in servers, licenses, and its own data center (CapEx), scales by manually adding physical hardware, and its IT team is directly responsible for maintenance, patching, backups, and the disaster-recovery strategy, in exchange for full physical and logical control over the data. In the cloud, the model shifts to pay-as-you-go OpEx: provisioning an instance takes minutes instead of weeks, scalability is elastic and on-demand, and much of the maintenance — patching, high availability, multi-zone replication — falls on the provider under a shared-responsibility model, while data control shifts from physical to logical. It's important to understand this is an infrastructure decision, not a database-engine decision: engines like MySQL, PostgreSQL, SQL Server, Oracle Database, or MongoDB can run either on owned infrastructure or as a managed cloud service (Amazon RDS, Azure SQL Database, Google Cloud SQL), each keeping its relational or non-relational data model. The right choice depends on workload predictability, operational risk appetite, regulatory requirements on data residency, and the internal team's capacity to operate critical infrastructure."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
   }
 ]

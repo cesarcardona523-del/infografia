@@ -43,6 +43,9 @@ Cuando una infografía trata específicamente sobre **una aplicación o herramie
 | Azure | Azul (tono Microsoft) | `#0078D4` |
 | Google Cloud | Azul, rojo, amarillo y verde | `#4285F4`, `#DB4437`, `#F4B400`, `#0F9D58` |
 | Oracle | Rojo brillante | `#F80000` |
+| MySQL | Azul marino y naranja | `#00758F`, `#F29111` |
+| PostgreSQL | Azul "elephant" | `#336791` |
+| MongoDB | Verde y verde oscuro | `#47A248`, `#001E2B` |
 
 Si una infografía trata sobre una aplicación que no está en esta tabla, preguntarle al usuario el nombre y los colores representativos (hex) antes de construirla o corregirla — no inventar ni asumir la paleta de marca. Una vez indicados, se agregan a esta tabla para reutilizarse en el futuro.
 

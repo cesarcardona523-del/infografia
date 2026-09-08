@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Bases de Datos: On-Premise vs. Nube</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --green:#1E7A4F; --green-dark:#125C39; --green-pale:#E2F2E8; --green-line:#BFE0CC;
+    --earth:#C1620E; --earth-dark:#8C480A; --earth-pale:#FBEADD; --earth-line:#F0CBA0;
+    --ink:#1D2129; --muted:#5C6470; --line:#E4E9E6; --white:#FFFFFF; --paper:#F5F8F6;
+
+    --mysql-1:#00758F; --mysql-2:#F29111;
+    --pg:#336791;
+    --mongo:#47A248; --mongo-2:#001E2B;
+    --sqlsrv:#EE352E; --sqlsrv-2:#7F7F7F;
+    --oracle:#F80000;
+    --aws:#FF9900; --aws-2:#232F3E;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    min-height:627px; display:flex; align-items:center; justify-content:center;
+    padding:32px 16px; background:#F0F6F2;
+    font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
+  .canvas{
+    position:relative; width:1200px; height:627px; margin:0 auto;
+    background:linear-gradient(160deg, #FAFDFB 0%, var(--paper) 55%, #EFF6F1 100%);
+    border-radius:16px; box-shadow:0 20px 50px rgba(14,40,26,0.16); overflow:hidden;
+    padding:18px 30px 12px; color:var(--ink);
+    display:flex; flex-direction:column;
+  }
+
+  /* Header */
+  .header{ margin-bottom:9px; }
+  .eyebrow{ display:inline-flex; align-items:center; gap:6px; font-size:9.5px; font-weight:800; letter-spacing:1.6px; color:var(--green-dark); text-transform:uppercase; background:var(--green-pale); border:1px solid var(--green-line); padding:2.5px 8px; border-radius:20px; margin-bottom:6px; }
+  .header h1{ font-size:21px; margin:0 0 3px; font-weight:800; letter-spacing:-0.3px; line-height:1.15; }
+  .header h1 span{ color:var(--green-dark); }
+  .header p.sub{ margin:0; font-size:10.3px; color:var(--muted); max-width:760px; line-height:1.35; }
+
+  /* Comparison */
+  .compare{ display:grid; grid-template-columns: 1fr 44px 1fr; gap:0; margin-bottom:10px; }
+
+  .col{ background:var(--white); border:1px solid var(--line); border-radius:12px 0 0 12px; padding:9px 14px; box-shadow:0 2px 8px rgba(14,40,26,0.04); }
+  .col.right{ border-radius:0 12px 12px 0; }
+
+  .col-head{ display:flex; align-items:center; gap:8px; padding-bottom:7px; margin-bottom:6px; border-bottom:1.5px solid var(--line); }
+  .col-head .ic{ width:26px; height:26px; border-radius:8px; display:flex; align-items:center; justify-content:center; flex:none; }
+  .col.left .ic{ background:var(--green-pale); color:var(--green-dark); }
+  .col.right .ic{ background:var(--earth-pale); color:var(--earth-dark); }
+  .col-head .ic svg{ width:15px; height:15px; }
+  .col-head h2{ margin:0; font-size:13px; font-weight:800; }
+  .col.left h2{ color:var(--green-dark); }
+  .col.right h2{ color:var(--earth-dark); }
+  .col-head .tagline{ font-size:7.6px; color:var(--muted); font-weight:600; display:block; margin-top:0px; }
+
+  .vs-mid{ display:flex; align-items:center; justify-content:center; position:relative; }
+  .vs-mid .line{ position:absolute; top:6px; bottom:6px; left:50%; width:1px; background:var(--line); }
+  .vs-mid .badge{ position:relative; z-index:1; width:30px; height:30px; border-radius:50%; background:var(--white); border:2px solid var(--green); color:var(--green-dark); font-size:8.5px; font-weight:800; display:flex; align-items:center; justify-content:center; box-shadow:0 2px 6px rgba(14,40,26,0.12); }
+
+  .rows{ display:flex; flex-direction:column; }
+  .row{ display:flex; align-items:flex-start; gap:7px; padding:5px 0; border-bottom:1px dashed var(--line); }
+  .row:last-child{ border-bottom:none; }
+  .row .ric{ width:16px; height:16px; border-radius:5px; display:flex; align-items:center; justify-content:center; flex:none; margin-top:1px; }
+  .col.left .row .ric{ background:var(--green-pale); color:var(--green-dark); }
+  .col.right .row .ric{ background:var(--earth-pale); color:var(--earth-dark); }
+  .row .ric svg{ width:9.5px; height:9.5px; }
+  .row .rt b{ display:block; font-size:8.6px; font-weight:800; color:var(--ink); line-height:1.2; }
+  .row .rt span{ font-size:8px; color:var(--muted); line-height:1.28; display:block; margin-top:1px; }
+
+  /* Engines strip */
+  .engines{ flex:1; background:var(--white); border:1px solid var(--line); border-radius:12px; padding:9px 16px; display:flex; flex-direction:column; box-shadow:0 2px 8px rgba(14,40,26,0.04); min-height:0; }
+  .engines h2{ display:flex; align-items:center; gap:6px; margin:0 0 8px; font-size:10.5px; font-weight:800; text-transform:uppercase; letter-spacing:0.3px; color:var(--green-dark); }
+  .engines h2 svg{ width:13px; height:13px; }
+  .engines h2 .note{ font-weight:600; text-transform:none; letter-spacing:0; color:var(--muted); font-size:8.6px; margin-left:4px; }
+
+  .badge-row{ flex:1; display:grid; grid-template-columns: repeat(6, 1fr); gap:10px; }
+  .ebadge{ display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; border-radius:10px; padding:8px 4px; border:1px solid var(--line); background:var(--paper); }
+  .ebadge .logo{ width:34px; height:34px; border-radius:9px; display:flex; align-items:center; justify-content:center; }
+  .ebadge .logo svg{ width:20px; height:20px; }
+  .ebadge .nm{ font-size:9px; font-weight:800; color:var(--ink); text-align:center; line-height:1.15; }
+  .ebadge .tp{ font-size:6.6px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:0.3px; }
+
+  /* Footer */
+  .footer{ display:flex; align-items:center; justify-content:space-between; margin-top:8px; padding-top:6px; border-top:1px solid var(--line); }
+  .footer .note{ font-size:8px; color:var(--muted); max-width:900px; line-height:1.3; }
+  .footer .note b{ color:var(--green-dark); }
+  .sig{ display:flex; align-items:center; gap:6px; flex:none; }
+  .li-badge{ width:16px; height:16px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:800; font-family: Arial, sans-serif; }
+  .sig span{ font-size:9.5px; font-weight:700; color:var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="canvas-wrap">
+  <div class="canvas">
+
+    <!-- Header -->
+    <div class="header">
+      <div class="eyebrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg>
+        Bases de Datos · Infraestructura
+      </div>
+      <h1>Bases de Datos <span>On-Premise</span> vs. <span>en la Nube</span>: diferencias clave</h1>
+      <p class="sub">Mismo motor de base de datos, dos formas de operarlo — quién compra el hardware, quién lo mantiene y qué tan rápido puedes escalar.</p>
+    </div>
+
+    <!-- Comparison -->
+    <div class="compare">
+
+      <div class="col left">
+        <div class="col-head">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="3" width="16" height="7" rx="1.5"/><rect x="4" y="14" width="16" height="7" rx="1.5"/><circle cx="8" cy="6.5" r="0.6" fill="currentColor" stroke="none"/><circle cx="8" cy="17.5" r="0.6" fill="currentColor" stroke="none"/></svg></div>
+          <div><h2>On-Premise</h2><span class="tagline">Infraestructura propia, en tu centro de datos</span></div>
+        </div>
+        <div class="rows">
+          <div class="row"><div class="ric"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><div class="rt"><b>Inversión inicial alta (CapEx)</b><span>Servidores, licencias y centro de datos propios, pagados por adelantado.</span></div></div>
+          <div class="row"><div class="ric"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 20V10M18 20V4M6 20v-6"/></svg></div><div class="rt"><b>Escalabilidad manual</b><span>Crecer significa comprar e instalar más hardware físico.</span></div></div>
+          <div class="row"><div class="ric"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.6-1.1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V9c.2.7.8 1.2 1.5 1.4h.1a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/></svg></div><div class="rt"><b>Mantenimiento propio</b><span>Parches, backups y alta disponibilidad los opera tu propio equipo de TI.</span></div></div>
+          <div class="row"><div class="ric"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div><div class="rt"><b>Control total del dato</b><span>Control físico y lógico completo — el hardware nunca sale de tu red.</span></div></div>
+          <div class="row"><div class="ric"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div><div class="rt"><b>Aprovisionar toma semanas</b><span>Comprar, entregar, instalar y configurar antes de tener el servidor listo.</span></div></div>
+          <div class="row"><div class="ric"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg></div><div class="rt"><b>DR es responsabilidad propia</b><span>Diseñar y operar sitio alterno, réplicas y pruebas de recuperación.</span></div></div>
+        </div>
+      </div>
+
+      <div class="vs-mid"><div class="line"></div><div class="badge">VS</div></div>
+
+      <div class="col right">
+        <div class="col-head">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 18a4 4 0 1 1 .7-7.94A5 5 0 0 1 16 9a4.5 4.5 0 0 1 1 8.9"/></svg></div>
+          <div><h2>En la Nube</h2><span class="tagline">Aprovisionada y administrada por un proveedor cloud</span></div>
+        </div>
+        <div class="rows">
+          <div class="row"><div class="ric"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div><div class="rt"><b>Pago por uso (OpEx)</b><span>Costo variable, sin comprar hardware — se paga lo que se consume.</span></div></div>
+          <div class="row"><div class="ric"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 20V10M18 20V4M6 20v-6"/><path d="M3 3l3 3 3-3"/></svg></div><div class="rt"><b>Escalabilidad elástica</b><span>Crece o reduce capacidad bajo demanda, casi al instante.</span></div></div>
+          <div class="row"><div class="ric"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg></div><div class="rt"><b>Mantenimiento administrado</b><span>El proveedor aplica parches, backups y alta disponibilidad por ti.</span></div></div>
+          <div class="row"><div class="ric"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><path d="M12 15v2"/></svg></div><div class="rt"><b>Control lógico del dato</b><span>El dato reside en la infraestructura del proveedor, bajo su modelo de responsabilidad compartida.</span></div></div>
+          <div class="row"><div class="ric"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M13 2 3 14h7l-1 8 11-14h-8l1-6Z"/></svg></div><div class="rt"><b>Aprovisionar toma minutos</b><span>Crear una instancia desde el panel o una API, lista en minutos.</span></div></div>
+          <div class="row"><div class="ric"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M2 12h5l2-7 4 14 2-7h7"/></svg></div><div class="rt"><b>Alta disponibilidad nativa</b><span>Réplicas multi-zona y backup automático ya incluidos en el servicio.</span></div></div>
+        </div>
+      </div>
+
+    </div><!-- /.compare -->
+
+    <!-- Engines -->
+    <div class="engines">
+      <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg>Motores de base de datos<span class="note">— los mismos motores corren On-Premise o como servicio administrado en la nube</span></h2>
+      <div class="badge-row">
+
+        <div class="ebadge">
+          <div class="logo" style="background:linear-gradient(135deg, var(--mysql-1), var(--mysql-2));">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M4 17c3-6 6-8 9-8 3.5 0 5.5 2.2 6.5 5" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M17 12c1 .5 2 1.6 2.5 3" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/><circle cx="19.6" cy="16.2" r="1.1" fill="#fff"/></svg>
+          </div>
+          <div class="nm">MySQL</div>
+          <div class="tp">Relacional</div>
+        </div>
+
+        <div class="ebadge">
+          <div class="logo" style="background:var(--pg);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c-4.5 0-7 2.8-7 7 0 3.6 1.6 6 3 7.2.5.4.9 1 .9 1.8v1h2.2v-2.3c0-.5.4-.9.9-.9.2 0 .4 0 .6.1.4.1.9.1 1.4.1 4.5 0 7-3.6 7-8S16.5 3 12 3Z"/><path d="M9.5 11.5c.3-.6 1-1 1.5-1M14 10.5c.6 0 1.2.5 1.4 1.2"/></svg>
+          </div>
+          <div class="nm">PostgreSQL</div>
+          <div class="tp">Relacional</div>
+        </div>
+
+        <div class="ebadge">
+          <div class="logo" style="background:linear-gradient(135deg, var(--sqlsrv), #B0201A);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><rect x="4" y="3" width="16" height="7" rx="1.5"/><rect x="4" y="14" width="16" height="7" rx="1.5"/><circle cx="8" cy="6.5" r="0.6" fill="#fff" stroke="none"/><circle cx="8" cy="17.5" r="0.6" fill="#fff" stroke="none"/></svg>
+          </div>
+          <div class="nm">SQL Server</div>
+          <div class="tp">Relacional</div>
+        </div>
+
+        <div class="ebadge">
+          <div class="logo" style="background:linear-gradient(135deg, var(--oracle), #B00000);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><ellipse cx="12" cy="7" rx="8" ry="3.4"/><path d="M4 7v10c0 1.9 3.6 3.4 8 3.4s8-1.5 8-3.4V7"/></svg>
+          </div>
+          <div class="nm">Oracle DB</div>
+          <div class="tp">Relacional</div>
+        </div>
+
+        <div class="ebadge">
+          <div class="logo" style="background:linear-gradient(180deg, var(--mongo), var(--mongo-2));">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c3 3.5 4.5 7 4.5 10.5A4.5 4.5 0 0 1 12 17a4.5 4.5 0 0 1-4.5-4.5C7.5 9 9 5.5 12 2Z"/><path d="M12 17v5"/></svg>
+          </div>
+          <div class="nm">MongoDB</div>
+          <div class="tp">No relacional</div>
+        </div>
+
+        <div class="ebadge">
+          <div class="logo" style="background:linear-gradient(135deg, var(--aws-2), var(--aws-2));">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--aws)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15c5 3 13 3 18 0"/><path d="M17 12.5 20 15l-1 3.6"/></svg>
+          </div>
+          <div class="nm">Amazon RDS</div>
+          <div class="tp">Servicio cloud</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="note">Un mismo motor (MySQL, PostgreSQL, SQL Server, Oracle, MongoDB) puede instalarse <b>On-Premise</b> o consumirse como <b>servicio administrado en la nube</b> (ej. Amazon RDS, Azure SQL Database, Google Cloud SQL) — la decisión es de infraestructura, no del motor en sí.</div>
+      <div class="sig">
+        <div class="li-badge">in</div>
+        <span>cacm523</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
