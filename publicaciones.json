@@ -2519,5 +2519,28 @@
       "likes": 0,
       "shares": 0
     }
+  },
+  {
+    "id": "operadores-comparacion-and-or-sql",
+    "imagen": "Construidos/SQL/operadores-comparacion-and-or-sql.png",
+    "fechaPublicacion": "2026-09-08T09:20:00",
+    "categoriaPrincipal": "bases-de-datos",
+    "temas": [
+      "sql"
+    ],
+    "tipoContenido": "infografia",
+    "es": {
+      "topico": "Operadores de Comparación y Conectores Lógicos AND/OR en SQL",
+      "descripcion": "La cláusula WHERE es el mecanismo central de filtrado en SQL, y su comportamiento depende de dos elementos: los operadores de comparación y los conectores lógicos que combinan condiciones. Los operadores de igualdad (=) y diferencia (<>) aplican tanto a valores alfanuméricos como numéricos, porque solo evalúan coincidencia exacta. Los operadores de orden (<, >, <=, >=) en cambio solo tienen sentido sobre valores numéricos o de fecha, ya que requieren una escala comparable; aplicarlos sobre texto no produce un resultado consistente entre distintos motores de base de datos. Comprender esta distinción evita errores comunes al construir condiciones de filtrado, especialmente en consultas que combinan columnas de distinto tipo. Los conectores lógicos AND y OR determinan cómo se combinan múltiples condiciones dentro de un mismo WHERE, y su comportamiento se explica de forma natural con teoría de conjuntos: AND corresponde a la intersección de los conjuntos que cumplen cada condición por separado, devolviendo únicamente las filas que satisfacen todas a la vez; OR corresponde a la unión, devolviendo las filas que satisfacen al menos una. Esta distinción tiene implicaciones prácticas directas sobre el tamaño del resultado: agregar condiciones con AND reduce el conjunto resultante, mientras que agregar condiciones con OR lo amplía. Cuando una consulta combina ambos conectores, la precedencia de operadores evalúa AND antes que OR, por lo que se recomienda usar paréntesis explícitos para evitar resultados inesperados, especialmente en consultas de reportes o validaciones de negocio donde la lógica de filtrado debe ser inequívoca."
+    },
+    "en": {
+      "topico": "SQL Comparison Operators and AND/OR Logical Connectors",
+      "descripcion": "The WHERE clause is SQL's central filtering mechanism, and its behavior depends on two elements: comparison operators and the logical connectors that combine conditions. Equality (=) and inequality (<>) operators apply to both alphanumeric and numeric values, since they only evaluate exact matching. Order operators (<, >, <=, >=), by contrast, only make sense on numeric or date values, since they require a comparable scale; applying them to text does not produce a consistent result across different database engines. Understanding this distinction prevents common mistakes when building filter conditions, especially in queries that combine columns of different types. The logical connectors AND and OR determine how multiple conditions combine within a single WHERE clause, and their behavior maps naturally onto set theory: AND corresponds to the intersection of the sets satisfying each condition separately, returning only rows that satisfy all of them at once; OR corresponds to the union, returning rows that satisfy at least one. This distinction has direct practical implications for result size: adding conditions with AND shrinks the resulting set, while adding conditions with OR expands it. When a query combines both connectors, operator precedence evaluates AND before OR, so explicit parentheses are recommended to avoid unexpected results, particularly in reporting or business-validation queries where filtering logic must be unambiguous."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
   }
 ]
