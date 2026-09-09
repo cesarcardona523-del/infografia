@@ -91,7 +91,7 @@
             color: white;
             padding: 2px 8px;
             border-radius: 20px;
-            font-size:10px;
+            font-size:12px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -109,7 +109,7 @@
         .title span { color: var(--primary); }
 
         .subtitle {
-            font-size: 10.5px;
+            font-size:12px;
             color: var(--text-muted);
             font-weight: 500;
             max-width: 750px;
@@ -162,7 +162,7 @@
 
         .evo-badge {
             font-family: "SF Mono", Menlo, Consolas, monospace;
-            font-size:10px;
+            font-size:12px;
             font-weight: 700;
             color: var(--primary-dark);
             background: var(--primary-bg);
@@ -176,14 +176,14 @@
         }
 
         .evo-name {
-            font-size: 10.5px;
+            font-size:12px;
             font-weight: 700;
             color: var(--text-main);
             text-transform: uppercase;
         }
 
         .evo-desc {
-            font-size:10px;
+            font-size:12px;
             color: var(--text-muted);
             line-height: 1.3;
         }
@@ -207,7 +207,7 @@
 
         .evo-traits li {
             list-style: none;
-            font-size:10px;
+            font-size:12px;
             color: var(--text-main);
             display: flex;
             align-items: flex-start;
@@ -238,7 +238,7 @@
         }
 
         .table-header {
-            font-size: 10px;
+            font-size:12px;
             font-weight: 800;
             color: var(--text-main);
             text-transform: uppercase;
@@ -251,7 +251,7 @@
             display: grid;
             grid-template-columns: 1.2fr 1fr 1fr 1fr;
             gap: 4px;
-            font-size:10px;
+            font-size:12px;
         }
 
         .table-row {
@@ -288,7 +288,7 @@
         }
 
         .banner-text {
-            font-size:10px;
+            font-size:12px;
             font-weight: 600;
             display: flex;
             align-items: center;
@@ -310,7 +310,7 @@
         }
 
         .signature-box svg { width: 11px; height: 11px; fill: #0a66c2; }
-        .signature { font-size:10px; font-weight: 700; color: var(--text-muted); }
+        .signature { font-size:12px; font-weight: 700; color: var(--text-muted); }
 
         svg { width: 11px; height: 11px; stroke-width: 2; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; }
         .evo-diagram svg text { stroke: none; }
@@ -320,7 +320,7 @@
             margin-top: 10px;
             padding-top: 8px;
             border-top: 1px dashed var(--border-color);
-            font-size:10px;
+            font-size:12px;
             color: var(--text-main);
             line-height: 1.4;
         }
@@ -362,7 +362,7 @@
                     <li>El humano corrige manualmente si la respuesta falla.</li>
                 </ul>
                 <div class="evo-example"><b>Ejemplo real:</b> Escribir instrucciones directas en un chat para generar o resumir un texto, sin herramientas ni pasos intermedios.</div>
-                <div style="font-size:10px; color: var(--text-muted); margin-top: 10px; padding-top: 6px; border-top: 1px dashed var(--border-color);">
+                <div style="font-size:12px; color: var(--text-muted); margin-top: 10px; padding-top: 6px; border-top: 1px dashed var(--border-color);">
                     <strong>Unidad:</strong> Una interacción | <strong>Estado:</strong> Ninguno / Limitado
                 </div>
                 <div class="evo-example" style="border-top:none; margin-top:8px; padding-top:0;"><b>Riesgo de saltarla:</b> Depender solo de prompting para tareas que requieren pasos múltiples o memoria produce respuestas inconsistentes entre intentos.</div>
@@ -386,7 +386,7 @@
                     <li>Corrige el rumbo sin intervención humana en cada paso.</li>
                 </ul>
                 <div class="evo-example"><b>Ejemplo real:</b> Un agente de codificación que ejecuta las pruebas, lee el error y corrige el código hasta que pasan, sin que el humano revise cada intento.</div>
-                <div style="font-size:10px; color: var(--text-muted); margin-top: 10px; padding-top: 6px; border-top: 1px dashed var(--border-color);">
+                <div style="font-size:12px; color: var(--text-muted); margin-top: 10px; padding-top: 6px; border-top: 1px dashed var(--border-color);">
                     <strong>Unidad:</strong> Ejecución autónoma | <strong>Estado:</strong> Dentro de un bucle
                 </div>
                 <div class="evo-example" style="border-top:none; margin-top:8px; padding-top:0;"><b>Riesgo de saltarla:</b> Dejar que el bucle reintente sin límite ni observabilidad puede consumir presupuesto de tokens sin converger a una solución.</div>
@@ -414,7 +414,7 @@
                     <li>Si un camino falla, el grafo enruta hacia otro nodo válido.</li>
                 </ul>
                 <div class="evo-example"><b>Ejemplo real:</b> Un router que evalúa la consulta entrante y la despacha a un agente especializado o a otro, con caminos de recuperación si uno de los nodos falla.</div>
-                <div style="font-size:10px; color: var(--text-muted); margin-top: 10px; padding-top: 6px; border-top: 1px dashed var(--border-color);">
+                <div style="font-size:12px; color: var(--text-muted); margin-top: 10px; padding-top: 6px; border-top: 1px dashed var(--border-color);">
                     <strong>Unidad:</strong> Red de bucles | <strong>Estado:</strong> A través del grafo
                 </div>
                 <div class="evo-example" style="border-top:none; margin-top:8px; padding-top:0;"><b>Riesgo de saltarla:</b> Diseñar un grafo sin monitoreo de cada nodo dificulta diagnosticar cuál agente falló cuando el resultado final es incorrecto.</div>

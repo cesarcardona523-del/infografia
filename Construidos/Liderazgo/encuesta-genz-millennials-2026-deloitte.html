@@ -30,60 +30,60 @@
   }
 
   /* ===== Header ===== */
-  .header{ display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:8px; gap:14px; }
+  .header{ display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:5px; gap:14px; }
   .header-l{ flex:1; }
-  .eyebrow{ display:inline-flex; align-items:center; gap:6px; font-size:10px; font-weight:800; letter-spacing:1.6px; color:var(--green-dark); text-transform:uppercase; background:var(--green-pale); border:1px solid #CFE9DA; padding:2.5px 8px; border-radius:20px; margin-bottom:5px; }
+  .eyebrow{ display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:800; letter-spacing:1.6px; color:var(--green-dark); text-transform:uppercase; background:var(--green-pale); border:1px solid #CFE9DA; padding:2.5px 8px; border-radius:20px; margin-bottom:5px; }
   .eyebrow svg{ width:13px; height:13px; flex:none; }
   .header h1{ font-size:20.5px; margin:0 0 3px; font-weight:800; letter-spacing:-0.3px; line-height:1.15; }
   .header h1 span{ color:var(--green-dark); }
-  .header p.sub{ margin:0; font-size:10.3px; color:var(--muted); max-width:660px; line-height:1.35; }
+  .header p.sub{ margin:0; font-size:12px; color:var(--muted); max-width:660px; line-height:1.35; }
 
   .study-card{ flex:none; width:186px; background:var(--white); border:1px solid var(--line); border-radius:10px; padding:8px 10px; box-shadow:0 3px 10px rgba(14,40,26,0.06); }
-  .study-card .t{ font-size:10px; font-weight:800; letter-spacing:0.5px; text-transform:uppercase; color:var(--earth); margin-bottom:3px; }
+  .study-card .t{ font-size:12px; font-weight:800; letter-spacing:0.5px; text-transform:uppercase; color:var(--earth); margin-bottom:3px; }
   .study-card .n{ font-size:16px; font-weight:800; color:var(--green-dark); line-height:1.05; }
-  .study-card .n small{ font-size:10px; font-weight:700; color:var(--ink); }
+  .study-card .n small{ font-size:12px; font-weight:700; color:var(--ink); }
   .study-card .row{ display:flex; justify-content:space-between; align-items:baseline; margin-top:3px; }
-  .study-card .d{ font-size:10px; color:var(--muted); line-height:1.25; margin-top:2px; }
+  .study-card .d{ font-size:12px; color:var(--muted); line-height:1.25; margin-top:2px; }
 
   /* ===== KPI strip ===== */
-  .kpis{ display:grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap:7px; margin-bottom:9px; }
-  .kpi{ background:var(--white); border:1px solid var(--line); border-radius:9px; padding:7px 8px; border-top:3px solid var(--green); }
+  .kpis{ display:grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap:7px; margin-bottom:6px; }
+  .kpi{ background:var(--white); border:1px solid var(--line); border-radius:9px; padding:5px 8px; border-top:3px solid var(--green); }
   .kpi.a2{ border-top-color:var(--genz); }
-  .kpi .lbl{ font-size:10px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:0.3px; line-height:1.25; min-height:18px; }
+  .kpi .lbl{ font-size:12px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:0.3px; line-height:1.25; min-height:18px; }
   .kpi .vals{ display:flex; align-items:baseline; gap:5px; margin-top:2px; }
   .kpi .vals b{ font-size:15px; font-weight:800; color:var(--mill); }
   .kpi .vals b.gz{ color:var(--genz); }
-  .kpi .vals span{ font-size:10px; color:var(--muted); font-weight:700; }
+  .kpi .vals span{ font-size:12px; color:var(--muted); font-weight:700; }
 
   /* ===== Body grid ===== */
   .body-grid{ flex:1; display:grid; grid-template-columns: 1.12fr 1fr 1fr; gap:9px; min-height:0; }
 
-  .card{ background:var(--white); border:1px solid var(--line); border-radius:10px; padding:9px 10px 8px; display:flex; flex-direction:column; box-shadow:0 2px 8px rgba(14,40,26,0.04); }
-  .card h2{ display:flex; align-items:center; gap:5px; margin:0 0 6px; font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:0.3px; color:var(--green-dark); }
+  .card{ background:var(--white); border:1px solid var(--line); border-radius:10px; padding:8px 10px 5px; display:flex; flex-direction:column; box-shadow:0 2px 8px rgba(14,40,26,0.04); overflow:hidden; }
+  .card h2{ display:flex; align-items:center; gap:5px; margin:0 0 4px; font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:0.3px; color:var(--green-dark); }
   .card h2 svg{ width:13px; height:13px; flex:none; color:var(--green-dark); }
-  .card p.txt{ font-size:10px; color:var(--ink); line-height:1.42; margin:0 0 6px; }
+  .card p.txt{ font-size:12px; color:var(--ink); line-height:1.3; margin:0 0 4px; }
   .card p.txt b{ color:var(--green-dark); }
 
-  .bar-row{ margin-bottom:6px; }
-  .bar-row .lb{ display:flex; justify-content:space-between; font-size:10px; color:var(--muted); font-weight:700; margin-bottom:2px; }
-  .bar-track{ display:flex; flex-direction:column; gap:2px; }
+  .bar-row{ margin-bottom:3px; }
+  .bar-row .lb{ display:flex; justify-content:space-between; font-size:12px; color:var(--muted); font-weight:700; margin-bottom:2px; }
+  .bar-track{ display:flex; flex-direction:column; gap:1px; }
   .bar-line{ display:flex; align-items:center; gap:5px; }
-  .bar-line .tag{ width:34px; font-size:10px; font-weight:800; color:var(--muted); flex:none; }
-  .bar-bg{ flex:1; height:8px; background:#EEF2EF; border-radius:5px; overflow:hidden; }
+  .bar-line .tag{ width:34px; font-size:12px; font-weight:800; color:var(--muted); flex:none; }
+  .bar-bg{ flex:1; height:7px; background:#EEF2EF; border-radius:4px; overflow:hidden; }
   .bar-fill{ height:100%; border-radius:5px; background:var(--mill); }
   .bar-fill.gz{ background:var(--genz); }
-  .bar-line .pct{ width:28px; font-size:10px; font-weight:800; color:var(--ink); text-align:right; flex:none; }
+  .bar-line .pct{ width:28px; font-size:12px; font-weight:800; color:var(--ink); text-align:right; flex:none; }
 
   .stat-mini{ display:flex; gap:6px; margin-top:auto; padding-top:6px; border-top:1px dashed var(--line); }
   .stat-mini div{ flex:1; text-align:center; }
   .stat-mini b{ display:block; font-size:12px; font-weight:800; color:var(--earth); }
-  .stat-mini span{ font-size:10px; color:var(--muted); font-weight:700; text-transform:uppercase; }
+  .stat-mini span{ font-size:12px; color:var(--muted); font-weight:700; text-transform:uppercase; }
 
   .chip-list{ display:flex; flex-wrap:wrap; gap:4px; margin-top:2px; }
-  .chip{ font-size:10px; font-weight:700; background:var(--green-pale); color:var(--green-dark); border:1px solid #CFE9DA; padding:2px 6px; border-radius:20px; }
+  .chip{ font-size:12px; font-weight:700; background:var(--green-pale); color:var(--green-dark); border:1px solid #CFE9DA; padding:2px 6px; border-radius:20px; }
   .chip.earth{ background:var(--earth-pale); color:var(--earth); border-color:#EAD9BC; }
 
-  .quote{ margin-top:6px; background:var(--green-pale); border-left:3px solid var(--green); border-radius:6px; padding:5px 7px; font-size:10px; font-style:italic; color:var(--ink); line-height:1.35; }
+  .quote{ margin-top:3px; background:var(--green-pale); border-left:3px solid var(--green); border-radius:6px; padding:4px 6px; font-size:12px; font-style:italic; color:var(--ink); line-height:1.22; }
 
   /* ===== Column 2 stack ===== */
   .col2{ display:flex; flex-direction:column; gap:9px; min-height:0; }
@@ -91,39 +91,39 @@
 
   .funnel{ display:flex; flex-direction:column; gap:4px; margin-bottom:4px; }
   .fstep{ display:flex; align-items:center; gap:6px; }
-  .fstep .fn{ width:16px; height:16px; border-radius:50%; background:var(--green-pale); border:1px solid var(--green); color:var(--green-dark); font-size:10px; font-weight:800; display:flex; align-items:center; justify-content:center; flex:none; }
-  .fstep .fbar{ flex:1; height:14px; border-radius:5px; display:flex; align-items:center; padding:0 6px; font-size:10px; font-weight:700; color:#fff; }
+  .fstep .fn{ width:16px; height:16px; border-radius:50%; background:var(--green-pale); border:1px solid var(--green); color:var(--green-dark); font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center; flex:none; }
+  .fstep .fbar{ flex:1; height:15px; border-radius:5px; display:flex; align-items:center; padding:0 6px; font-size:12px; font-weight:700; color:#fff; }
 
-  .gap-box{ display:flex; align-items:center; gap:7px; background:var(--earth-pale); border:1px solid #EAD9BC; border-radius:8px; padding:6px 8px; margin-top:4px; }
+  .gap-box{ display:flex; align-items:center; gap:7px; background:var(--earth-pale); border:1px solid #EAD9BC; border-radius:8px; padding:5px 8px; margin-top:2px; }
   .gap-box .big{ font-size:17px; font-weight:800; color:var(--earth); line-height:1; }
-  .gap-box .txt2{ font-size:10px; color:var(--ink); line-height:1.3; }
+  .gap-box .txt2{ font-size:12px; color:var(--ink); line-height:1.3; }
 
   /* ===== Column 3 ===== */
   .col3{ display:flex; flex-direction:column; gap:9px; min-height:0; }
   .col3 .card{ flex:1; }
 
-  .duo{ display:flex; gap:6px; margin-bottom:5px; }
+  .duo{ display:flex; gap:6px; margin-bottom:3px; }
   .duo-box{ flex:1; text-align:center; background:var(--bg1); border:1px solid var(--line); border-radius:8px; padding:6px 4px; }
   .duo-box b{ display:block; font-size:15px; font-weight:800; }
   .duo-box b.mill{ color:var(--mill); }
   .duo-box b.gz{ color:var(--genz); }
-  .duo-box span{ font-size:10px; color:var(--muted); font-weight:700; text-transform:uppercase; }
+  .duo-box span{ font-size:12px; color:var(--muted); font-weight:700; text-transform:uppercase; }
 
-  .list-check{ list-style:none; margin:0 0 4px; padding:0; display:flex; flex-direction:column; gap:3.5px; }
-  .list-check li{ display:flex; align-items:flex-start; gap:5px; font-size:10px; color:var(--ink); line-height:1.3; }
-  .list-check .ic{ width:13px; height:13px; border-radius:4px; background:var(--green-pale); color:var(--green-dark); display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:800; flex:none; }
+  .list-check{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:1px; }
+  .list-check li{ display:flex; align-items:flex-start; gap:5px; font-size:12px; color:var(--ink); line-height:1.18; }
+  .list-check .ic{ width:13px; height:13px; border-radius:4px; background:var(--green-pale); color:var(--green-dark); display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800; flex:none; }
 
   .purpose-hero{ text-align:center; background:linear-gradient(135deg, var(--green-dark), var(--green)); border-radius:8px; padding:8px 6px; margin-top:auto; }
   .purpose-hero .pn{ font-size:19px; font-weight:800; color:#fff; line-height:1; }
-  .purpose-hero .pl{ font-size:10px; color:#DFF3E6; font-weight:700; text-transform:uppercase; letter-spacing:0.3px; margin-top:2px; }
+  .purpose-hero .pl{ font-size:12px; color:#DFF3E6; font-weight:700; text-transform:uppercase; letter-spacing:0.3px; margin-top:2px; }
 
   /* ===== Footer ===== */
   .footer{ display:flex; align-items:center; justify-content:space-between; margin-top:8px; padding-top:6px; border-top:1px solid var(--line); }
-  .footer .source{ font-size:10px; color:var(--muted); line-height:1.3; max-width:830px; }
+  .footer .source{ font-size:12px; color:var(--muted); line-height:1.3; max-width:830px; }
   .footer .source b{ color:var(--green-dark); }
   .footer .sig{ display:flex; align-items:center; gap:6px; flex:none; }
-  .li-badge{ width:16px; height:16px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:800; font-family: Arial, sans-serif; }
-  .footer .sig span{ font-size:10px; font-weight:700; color:var(--muted); }
+  .li-badge{ width:16px; height:16px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800; font-family: Arial, sans-serif; }
+  .footer .sig span{ font-size:12px; font-weight:700; color:var(--muted); }
 </style>
 </head>
 <body>
@@ -213,7 +213,7 @@
             <span class="chip earth">Responsabilidad 50%/48%</span>
             <span class="chip">Flexibilidad lo atrae 42%/44%</span>
           </div>
-          <div class="quote">“No están rechazando el liderazgo: están recalibrándolo en torno al bienestar y al ajuste de largo plazo.” — Hallazgo del informe</div>
+          <div class="quote">“Recalibrando el liderazgo en torno al bienestar, no rechazándolo.” — Hallazgo del informe</div>
         </div>
       </div>
 
@@ -230,7 +230,7 @@
           </div>
           <div class="gap-box">
             <div class="big">1/3</div>
-            <div class="txt2">de los encuestados vivió <b>+15 cambios laborales</b> importantes en el último año (Deloitte Human Capital Trends 2026).</div>
+            <div class="txt2">de los encuestados vivió <b>+15 cambios laborales</b> en el último año (Deloitte, 2026).</div>
           </div>
         </div>
 
@@ -243,7 +243,7 @@
           </div>
           <div class="gap-box">
             <div class="big">84%</div>
-            <div class="txt2">de las empresas <b>no ha rediseñado los puestos</b> en torno a la IA — ~30% cree que su organización no está lista (State of AI in the Enterprise 2026).</div>
+            <div class="txt2">de las empresas <b>no ha rediseñado los puestos</b> para la IA (State of AI in the Enterprise 2026).</div>
           </div>
         </div>
       </div>
@@ -258,11 +258,11 @@
           </div>
           <ul class="list-check">
             <li><div class="ic">✓</div>Mejora vs. 2025: +11 y +8 puntos respectivamente.</li>
-            <li><div class="ic">✓</div>69% dice que su empleador ya toma en serio la salud mental (+14/+15 pts desde 2024).</li>
+            <li><div class="ic">✓</div>69% ve que su empleador toma en serio la salud mental (+14/+15 pts).</li>
           </ul>
           <div class="gap-box">
             <div class="big">~48%</div>
-            <div class="txt2">de Gen Z (45% mill.) aún se siente <b>quemado</b>; fatiga digital en 58%/54%.</div>
+            <div class="txt2">Gen Z (45% mill.) <b>quemado</b>; fatiga digital 58%/54%.</div>
           </div>
         </div>
 
@@ -271,7 +271,7 @@
           <p class="txt">~40% ha rechazado un empleador o proyecto por ética personal. <b>68%/72%</b> siente que su trabajo aporta a la sociedad.</p>
           <div class="purpose-hero">
             <div class="pn">96% · 97%</div>
-            <div class="pl">Gen Z · Millennials dicen que el propósito importa para su bienestar laboral</div>
+            <div class="pl">Dicen que el propósito importa para su bienestar</div>
           </div>
         </div>
       </div>

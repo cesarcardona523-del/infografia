@@ -28,9 +28,10 @@
   }
 
   .header{ text-align:center; margin-bottom:8px; }
-  .header .eyebrow{ font-size:10.5px; font-weight:700; letter-spacing:1.8px; color:var(--pq); text-transform:uppercase; margin-bottom:3px; }
+  .header .eyebrow{ display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:700; letter-spacing:1.8px; color:var(--pq); text-transform:uppercase; margin-bottom:3px; }
+  .header .eyebrow svg{ width:15px; height:15px; flex:none; }
   .header h1{ font-size:19px; margin:0 0 3px; font-weight:800; letter-spacing:-0.2px; }
-  .header p{ margin:0 auto; font-size:10.8px; color:var(--muted); max-width:700px; }
+  .header p{ margin:0 auto; font-size:12px; color:var(--muted); max-width:700px; }
 
   .cols{ display:grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap:12px; margin-bottom:9px; }
   .col{ border-radius:11px; padding:9px 14px; border:1px solid; }
@@ -44,9 +45,9 @@
   .col.pq .icon{ background:var(--pq); }
   .col .icon svg{ width:17px; height:17px; }
   .col .name{ font-size:14.5px; font-weight:800; line-height:1.1; }
-  .col .tag{ font-size:10px; font-weight:700; color:var(--muted); }
+  .col .tag{ font-size:12px; font-weight:700; color:var(--muted); }
   .col ul{ margin:0; padding-left:14px; }
-  .col li{ font-size:10px; line-height:1.5; color:var(--ink); }
+  .col li{ font-size:12px; line-height:1.5; color:var(--ink); }
 
   .section-title{ display:flex; align-items:center; gap:10px; margin:2px 0 7px; }
   .section-title::before, .section-title::after{ content:""; flex:1; height:1px; background:var(--line); }
@@ -54,31 +55,31 @@
 
   .rank{ display:grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap:10px; margin-bottom:9px; }
   .rk{ display:flex; align-items:center; gap:8px; border-radius:9px; padding:6px 12px; border:1px solid var(--line); background:var(--paper); }
-  .rk .n{ width:20px; height:20px; border-radius:50%; color:#fff; font-size:10px; font-weight:800; display:flex; align-items:center; justify-content:center; flex:none; }
-  .rk b{ font-size:10px; font-weight:800; }
-  .rk span{ display:block; font-size:10px; color:var(--muted); font-weight:600; }
+  .rk .n{ width:20px; height:20px; border-radius:50%; color:#fff; font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center; flex:none; }
+  .rk b{ font-size:12px; font-weight:800; }
+  .rk span{ display:block; font-size:12px; color:var(--muted); font-weight:600; }
   .rk.n1 .n{ background:var(--pq); } .rk.n2 .n{ background:var(--csv); } .rk.n3 .n{ background:var(--xlsx); }
 
   .flow{ flex:1; min-height:0; display:flex; align-items:center; gap:6px; }
-  .fbox{ flex:1; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; border-radius:10px; border:1px solid var(--line); background:var(--paper); padding:6px; text-align:center; }
+  .fbox{ flex:1; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; border-radius:10px; border:1px solid var(--line); background:var(--paper); padding:6px; text-align:center; overflow:hidden;}
   .fbox .icon{ width:30px; height:30px; border-radius:8px; display:flex; align-items:center; justify-content:center; color:#fff; }
   .fbox .icon svg{ width:16px; height:16px; }
-  .fbox span{ font-size:10px; font-weight:700; line-height:1.25; }
-  .fbox p{ font-size:10px; font-weight:500; color:var(--muted); line-height:1.35; margin:2px 8px 0; }
+  .fbox span{ font-size:12px; font-weight:700; line-height:1.25; }
+  .fbox p{ font-size:12px; font-weight:500; color:var(--muted); line-height:1.35; margin:2px 8px 0; }
   .arrow{ flex:none; color:var(--muted); }
   .fbox.f1 .icon{ background:#546678; } .fbox.f2 .icon{ background:var(--csv); } .fbox.f3 .icon{ background:#D9A227; } .fbox.f4 .icon{ background:var(--pq); } .fbox.f5 .icon{ background:#92400E; }
 
-  .note{ display:flex; align-items:center; gap:8px; margin:7px 0; font-size:10px; color:var(--muted); justify-content:center; }
-  .note .di{ width:15px; height:15px; border-radius:50%; background:var(--pq); color:#fff; display:flex; align-items:center; justify-content:center; flex:none; font-size:10px; font-weight:800; font-style:italic; font-family:Georgia,serif; }
+  .note{ display:flex; align-items:center; gap:8px; margin:7px 0; font-size:12px; color:var(--muted); justify-content:center; }
+  .note .di{ width:15px; height:15px; border-radius:50%; background:var(--pq); color:#fff; display:flex; align-items:center; justify-content:center; flex:none; font-size:12px; font-weight:800; font-style:italic; font-family:Georgia,serif; }
 
-  .rule{ display:flex; align-items:center; gap:10px; background:var(--ink); color:#fff; border-radius:10px; padding:8px 18px; font-size:10.3px; }
+  .rule{ display:flex; align-items:center; gap:10px; background:var(--ink); color:#fff; border-radius:10px; padding:8px 18px; font-size:12px; }
   .rule .icon{ width:20px; height:20px; flex:none; border-radius:6px; background:rgba(255,255,255,0.14); display:flex; align-items:center; justify-content:center; }
   .rule .icon svg{ width:11px; height:11px; color:#F0C93B; }
   .rule b.gx{ color:var(--xlsx); } .rule b.gc{ color:#5EEAD4; } .rule b.gp{ color:#F5D3A0; }
 
   .footer{ position:absolute; bottom:9px; right:20px; display:flex; align-items:center; gap:6px; }
-  .li-badge{ width:15px; height:15px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:800; font-family: Arial, sans-serif; }
-  .footer span{ font-size:10px; font-weight:600; color:var(--muted); }
+  .li-badge{ width:15px; height:15px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800; font-family: Arial, sans-serif; }
+  .footer span{ font-size:12px; font-weight:600; color:var(--muted); }
 </style>
 </head>
 <body>
@@ -87,7 +88,7 @@
   <div class="canvas">
 
     <div class="header">
-      <div class="eyebrow">Formatos para Análisis de Datos</div>
+      <div class="eyebrow"><svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" id="Livello_1" x="0" y="0" version="1.1" viewBox="0 17.9 512 476.2"><style>.st2{fill:#107c41}.st4{opacity:.2;enable-background:new}</style><path d="m321.5 244.1-202.4-35.7v263.9c0 12.1 9.8 21.8 21.8 21.8h349.3c12.1 0 21.8-9.8 21.8-21.8v-97.2z" style="fill:#185c37"/><path d="M321.5 17.9H140.9c-12.1 0-21.8 9.8-21.8 21.8v97.2L321.5 256l107.2 35.7L512 256V136.9z" style="fill:#21a366"/><path d="M119.1 136.9h202.4V256H119.1z" class="st2"/><path d="M263.9 113.1H119.1v297.7H264c12 0 21.8-9.8 21.8-21.8V135c-.1-12.1-9.8-21.8-21.9-21.9" style="opacity:.1"/><path d="M252 125H119v297.7h133c12 0 21.8-9.8 21.8-21.8v-254c0-12.1-9.7-21.8-21.8-21.9" class="st4"/><path d="M252 125H119v273.9h133c12 0 21.8-9.8 21.8-21.8V146.8c0-12-9.7-21.7-21.8-21.8" class="st4"/><path d="M240.1 125h-121v273.9h121.1c12 0 21.8-9.8 21.8-21.8V146.8c-.1-12-9.8-21.7-21.9-21.8" class="st4"/><linearGradient id="SVGID_1_" x1="45.507" x2="216.447" y1="-1232.031" y2="-935.97" gradientTransform="translate(0 1340)" gradientUnits="userSpaceOnUse"><stop offset="0" style="stop-color:#18884f"/><stop offset=".5" style="stop-color:#117e43"/><stop offset="1" style="stop-color:#0b6631"/></linearGradient><path d="M21.8 125h218.3c12.1 0 21.8 9.8 21.8 21.8v218.3c0 12.1-9.8 21.8-21.8 21.8H21.8C9.8 387 0 377.2 0 365.2V146.8c0-12 9.8-21.8 21.8-21.8" style="fill:url(#SVGID_1_)"/><path d="m67.6 326.9 45.9-71.1L71.4 185h33.8l23 45.2c2.1 4.3 3.6 7.5 4.4 9.6h.3c1.5-3.4 3.1-6.8 4.8-10l24.5-44.8h31.1l-43.1 70.3 44.2 71.5h-33.1l-26.5-49.7c-1.2-2.1-2.3-4.3-3.2-6.6h-.4c-.8 2.3-1.8 4.4-3.1 6.4l-27.3 49.9z" style="fill:#fff"/><path d="M490.2 17.9H321.5V137H512V39.7c0-12.1-9.8-21.8-21.8-21.8" style="fill:#33c481"/><path d="M321.5 256H512v119.1H321.5z" class="st2"/></svg>Formatos para Análisis de Datos</div>
       <h1>XLSX vs. TXT/CSV vs. Parquet</h1>
       <p>Comparación rápida para análisis masivo (500 mil a 1 millón de filas).</p>
     </div>
