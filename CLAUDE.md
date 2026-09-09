@@ -46,10 +46,40 @@ Cuando una infografía trata específicamente sobre **una aplicación o herramie
 | MySQL | Azul marino y naranja | `#00758F`, `#F29111` |
 | PostgreSQL | Azul "elephant" | `#336791` |
 | MongoDB | Verde y verde oscuro | `#47A248`, `#001E2B` |
+| MariaDB | Azul marino (fondo/león) y marrón claro/naranja | `#003545` |
+| SQLite | Azul celeste (pluma) y azul oscuro (texto) | `#0F80CC` |
+| Redis | Rojo, blanco y gris oscuro | `#DC382D` |
+| Cassandra | Azul medio (ojo/logo Apache), blanco y negro | `#387FB8` |
+| Couchbase | Rojo, blanco y negro | `#EA2328` |
+| Amazon DynamoDB | Azul/púrpura (iconografía AWS DB), blanco y gris AWS | `#405CFA` |
+| Memcached | Verde claro y azul medio | `#8FC73E` |
+| Google Cloud Spanner | Azul (Google Cloud), blanco y tonos de azul | `#4285F4` |
+| Firebase Realtime DB | Amarillo/ámbar y naranja intenso | `#FFCA28` |
+| Amazon RDS | Azul/púrpura (iconografía AWS DB), blanco y gris AWS | `#405CFA` |
+| Google Cloud SQL | Azul (Google Cloud) y tonos de azul oscuro | `#4285F4` |
+| Amazon Aurora | Azul/púrpura (iconografía AWS DB), blanco y gris AWS | `#405CFA` |
+| Neo4j | Azul brillante, verde y blanco | `#018BFA` |
+| Elasticsearch | Turquesa, rosa y amarillo (marca completa de Elastic) | `#00BFB3`, `#F93892`, `#FEC514` |
+| Apache HBase | Gris/negro (la orca), azul claro y blanco | `#4D4D4D` |
+| InfluxDB | Magenta/morado y azul cian (degradado) | `#9322F6` |
+| ClickHouse | Amarillo, rojo y blanco | `#FFCC01` |
+
+Notas de marca por familia (para mantener consistencia entre motores relacionados):
+- **Servicios de base de datos de AWS** (DynamoDB, RDS, Aurora): Amazon unificó el ícono de estos servicios en un tono azul/púrpura (`#405CFA`, acento `#3B48CC`) — usar ese tono para los tres en vez de el naranja genérico de AWS, salvo que la pieza sea sobre AWS en general (ahí sigue aplicando `#FF9900`/`#232F3E`).
+- **Servicios de base de datos de Google Cloud** (Cloud Spanner, Cloud SQL): siguen el azul estándar de Google (`#4285F4`), normalmente con variaciones de opacidad/sombra para dar profundidad — no introducir otro color fuera de esa familia azul.
 
 Si una infografía trata sobre una aplicación que no está en esta tabla, preguntarle al usuario el nombre y los colores representativos (hex) antes de construirla o corregirla — no inventar ni asumir la paleta de marca. Una vez indicados, se agregan a esta tabla para reutilizarse en el futuro.
 
 **Varias marcas en una misma pieza**: si una infografía combina varias aplicaciones con identidad propia (ej. una comparativa Python + SQL Server, o un stack Claude + Excel), combinar los colores de marca de cada una — cada sección/columna/bloque asociado a una herramienta usa su propio color representativo, en vez de forzar un único color para toda la pieza.
+
+### Iconos oficiales de aplicaciones (`assets/iconos-apps/`)
+
+Cuando una infografía necesite el ícono real de una aplicación/herramienta (no un ícono genérico dibujado a mano), usar los SVG oficiales guardados en `assets/iconos-apps/<slug>.svg` — descargados de [dashboardicons.com](https://dashboardicons.com/icons) (fuente: repo `homarr-labs/dashboard-icons`), nunca recreados a mano cuando ya existe el archivo real.
+
+- **Antes de construir/corregir una pieza que muestre logos de aplicaciones**: revisar primero si el ícono ya existe en `assets/iconos-apps/`. Si no existe, buscarlo en dashboardicons.com; si tampoco está ahí, informarle al usuario cuál ícono falta (nombre de la app) para que lo consiga y lo cargue él mismo — nunca inventar o aproximar un logo a mano cuando se supone que debe ser el ícono real.
+- Al insertar un ícono en el HTML de una infografía: para que el PNG final sea autocontenido (requisito del pipeline de exportación), embeber el SVG **inline** en el HTML (copiar su contenido, no referenciarlo por `<img src="assets/...">`) o convertirlo a `data:` URI — nunca depender de una ruta de archivo externa al momento de exportar con Chrome headless.
+- Íconos ya descargados a la fecha: Claude, ChatGPT, Gemini, Grok, Excel, Power BI, Python, SQL Server, Databricks, AWS, Azure, Google Cloud, Oracle, MySQL, PostgreSQL, MongoDB, MariaDB, SQLite, Redis, Cassandra, Amazon DynamoDB, Firebase, Neo4j, Elasticsearch, InfluxDB, ClickHouse.
+- **No disponibles en dashboardicons.com** (confirmado 2026-09-09): Tableau, Couchbase, Memcached, Apache HBase — si una pieza los necesita, pedirle el archivo al usuario.
 
 ### Dark-mode para zonas de código (excepción a "no dark-mode")
 
