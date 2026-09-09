@@ -114,6 +114,11 @@ Cada infografía debe usar al menos un color de acento además del verde princip
 
 Usar una tipografía similar a Inter, SF Pro, Segoe UI, Roboto, Helvetica o IBM Plex Sans. Mantener excelente legibilidad.
 
+**Tamaño mínimo de fuente — legibilidad en LinkedIn (regla verificada 2026-09-09).** El canvas se diseña a 1200×627px, pero en el feed de LinkedIn se muestra reducido a un ancho de aproximadamente 400-550px (≈2.2-3x más chico que el original) — cualquier texto por debajo de **8px en el archivo fuente** se vuelve borroso o ilegible a ese tamaño de despliegue, sin importar que se vea nítido en la vista previa a tamaño completo. Por eso:
+- **Ningún `font-size` de una infografía debe ser menor a 8px.** Si una pieza necesita más microcopy del que cabe a ese tamaño mínimo, no reducir la fuente — aplicar el sistema de rebalanceo ya descrito en "Aprovechamiento del Espacio" (grid, padding, gaps, tamaño de tarjetas) o consolidar/recortar texto redundante (ver ejemplo: combinar 2-3 párrafos de detalle en uno solo, sin perder información real).
+- Esto aplica tanto a texto de cuerpo (descripciones, párrafos) como a etiquetas secundarias (labels de gráficos, chips, badges, ejes) — una etiqueta a 7px es tan ilegible en LinkedIn como un párrafo a 7px.
+- Verificar esta regla al crear una pieza nueva y al revisar piezas existentes de un `<Tema>` (ver "Revisión antes de construir" en CLAUDE.md) — es una mejora objetiva de legibilidad, no una preferencia estética.
+
 ## Fondo
 
 Utilizar un fondo limpio, minimalista, con degradados suaves y texturas muy discretas. Nunca recrear escenarios, habitaciones u oficinas. Nunca utilizar fotografías como fondo.
