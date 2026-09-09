@@ -31,12 +31,12 @@
   .header h1{ font-size:20px; margin:0 0 4px; font-weight:800; letter-spacing:-0.2px; }
   .header p{ margin:0 auto; font-size:10.6px; color:var(--muted); max-width:800px; line-height:1.4; }
 
-  .adv{ display:grid; grid-template-columns: repeat(3,1fr); gap:10px; margin-bottom:8px; }
+  .adv{ display:grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap:10px; margin-bottom:8px; }
   .a-card{ background:var(--vba-pale); border:1px solid var(--line); border-radius:10px; padding:8px 12px; display:flex; align-items:center; gap:9px; }
   .a-card .icon{ width:26px; height:26px; border-radius:7px; background:var(--vba); color:#fff; display:flex; align-items:center; justify-content:center; flex:none; }
   .a-card .icon svg{ width:14px; height:14px; }
-  .a-card b{ display:block; font-size:9.8px; font-weight:800; }
-  .a-card span{ display:block; font-size:8px; color:var(--muted); line-height:1.25; }
+  .a-card b{ display:block; font-size:10px; font-weight:800; }
+  .a-card span{ display:block; font-size:10px; color:var(--muted); line-height:1.25; }
 
   .section-title{ display:flex; align-items:center; gap:10px; margin:2px 0 6px; }
   .section-title::before, .section-title::after{ content:""; flex:1; height:1px; background:var(--line); }
@@ -45,16 +45,16 @@
   .flow{ display:flex; align-items:stretch; gap:6px; margin-bottom:9px; height:80px; }
   .fbox{ flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; border-radius:10px; border:1px solid var(--line); background:var(--paper); padding:10px 8px; text-align:center; }
   .fbox span{ font-size:10.5px; font-weight:700; }
-  .fbox p{ font-size:8.8px; font-weight:500; color:var(--muted); line-height:1.35; margin:0; }
+  .fbox p{ font-size:10px; font-weight:500; color:var(--muted); line-height:1.35; margin:0; }
   .fbox .n{ width:20px; height:20px; border-radius:50%; background:var(--vba); color:#fff; font-size:10px; font-weight:800; display:flex; align-items:center; justify-content:center; }
   .arrow{ flex:none; color:var(--muted); align-self:center; }
 
-  .uses{ flex:1; min-height:0; display:grid; grid-template-columns: repeat(7,1fr); gap:8px; }
+  .uses{ flex:1; min-height:0; display:grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap:8px; }
   .use{ background:var(--excel-pale); border:1px solid #CFE6D8; border-radius:9px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:7px; padding:12px 10px; text-align:center; }
   .use .icon{ width:38px; height:38px; border-radius:10px; background:var(--excel); color:#fff; display:flex; align-items:center; justify-content:center; }
   .use .icon svg{ width:20px; height:20px; }
   .use b{ font-size:10.8px; font-weight:800; line-height:1.28; }
-  .use span{ font-size:8.8px; font-weight:500; color:var(--muted); line-height:1.35; }
+  .use span{ font-size:10px; font-weight:500; color:var(--muted); line-height:1.35; }
 
   .ribbon{
     margin-top:9px; display:flex; align-items:center; gap:10px;
@@ -66,8 +66,8 @@
   .ribbon span{ color:#94A3B8; }
 
   .footer{ position:absolute; bottom:9px; right:20px; display:flex; align-items:center; gap:6px; }
-  .li-badge{ width:15px; height:15px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:9.5px; font-weight:800; font-family: Arial, sans-serif; }
-  .footer span{ font-size:9.5px; font-weight:600; color:var(--muted); }
+  .li-badge{ width:15px; height:15px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:800; font-family: Arial, sans-serif; }
+  .footer span{ font-size:10px; font-weight:600; color:var(--muted); }
 </style>
 </head>
 <body>

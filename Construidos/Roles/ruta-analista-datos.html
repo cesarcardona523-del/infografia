@@ -96,7 +96,7 @@
         /* BENTO GRID LAYOUT */
         .bento-grid {
             display: grid;
-            grid-template-columns: repeat(12, 1fr);
+            grid-template-columns: repeat(12, minmax(0, 1fr));
             grid-template-rows: 1fr 140px;
             gap: 8px;
             flex: 1;
@@ -162,7 +162,7 @@
         .col-12 { grid-column: span 12; }
 
         p.text-xs {
-            font-size: 8.5px;
+            font-size:10px;
             color: var(--text-muted);
             line-height: 1.25;
             margin-bottom: 4px;
@@ -171,7 +171,7 @@
         /* ROUTE TIMELINE GRID (6 STEPS) */
         .route-grid {
             display: grid;
-            grid-template-columns: repeat(6, 1fr);
+            grid-template-columns: repeat(6, minmax(0, 1fr));
             gap: 6px;
             height: 100%;
         }
@@ -188,21 +188,21 @@
         }
 
         .route-num {
-            font-size: 8px;
+            font-size:10px;
             font-weight: 800;
             color: var(--accent);
             text-transform: uppercase;
         }
 
         .route-title {
-            font-size: 9px;
+            font-size:10px;
             font-weight: 700;
             color: var(--primary);
             line-height: 1.1;
         }
 
         .route-desc {
-            font-size:8.2px;
+            font-size:10px;
             color: var(--text-muted);
             line-height: 1.2;
         }
@@ -218,7 +218,7 @@
 
         .route-skills li {
             list-style: none;
-            font-size:8px;
+            font-size:10px;
             color: var(--primary);
             font-weight: 600;
             display: flex;
@@ -239,7 +239,7 @@
             border-radius: 6px;
             padding: 6px 8px;
             font-family: "SF Mono", Menlo, Consolas, monospace;
-            font-size: 8px;
+            font-size:10px;
             color: var(--text-main);
             line-height: 1.3;
             margin-top: 4px;
@@ -283,8 +283,8 @@
         }
 
         .flow-icon svg { width: 12px; height: 12px; stroke: var(--primary); stroke-width: 2; fill: none; }
-        .flow-label { font-size: 8px; font-weight: 700; color: var(--primary); }
-        .flow-sub { font-size:8px; color: var(--text-muted); line-height: 1.1; }
+        .flow-label { font-size:10px; font-weight: 700; color: var(--primary); }
+        .flow-sub { font-size:10px; color: var(--text-muted); line-height: 1.1; }
         .flow-arrow { color: var(--text-muted); font-size: 12px; font-weight: bold; }
 
         /* ADVICE LIST */
@@ -296,7 +296,7 @@
         }
 
         .advice-list li {
-            font-size: 8.5px;
+            font-size:10px;
             color: var(--text-main);
             display: flex;
             align-items: center;

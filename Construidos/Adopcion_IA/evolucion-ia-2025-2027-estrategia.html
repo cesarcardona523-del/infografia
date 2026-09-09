@@ -97,7 +97,7 @@
             position: relative;
             z-index: 1;
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 14px;
             flex-grow: 1;
             min-height: 0;
@@ -207,7 +207,7 @@
         }
 
         .phase-desc {
-            font-size: 8.5px;
+            font-size:10px;
             font-weight: 500;
             color: var(--gray-text);
             line-height: 1.25;
@@ -235,7 +235,7 @@
             background: var(--white);
             border: 1px solid rgba(10, 36, 22, 0.2);
             color: var(--green-dark);
-            font-size: 9px;
+            font-size:10px;
             font-weight: 800;
             padding: 4px 12px;
             border-radius: 6px;

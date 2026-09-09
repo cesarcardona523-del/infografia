@@ -120,8 +120,8 @@
             position: relative;
             z-index: 10;
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: repeat(3, 1fr);
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            grid-template-rows: repeat(3, minmax(0, 1fr));
             gap: 10px;
             flex: 1;
             min-height: 0;
@@ -200,14 +200,14 @@
             margin-top: auto;
             padding-top: 8px;
             border-top: 1px dashed var(--border-color);
-            font-size: 9.5px;
+            font-size:10px;
             color: var(--text-muted);
             line-height: 1.4;
         }
 
         .tech-pill {
             font-family: "SF Mono", Menlo, Consolas, monospace;
-            font-size: 9px;
+            font-size:10px;
             font-weight: 500;
             background: var(--bg-canvas);
             color: var(--text-muted);
@@ -261,7 +261,7 @@
         }
 
         .signature-box svg { width: 11px; height: 11px; fill: #0a66c2; }
-        .signature { font-size: 9.5px; font-weight: 700; color: var(--text-muted); }
+        .signature { font-size:10px; font-weight: 700; color: var(--text-muted); }
 
         svg { width: 11px; height: 11px; stroke-width: 2; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; }
     </style>

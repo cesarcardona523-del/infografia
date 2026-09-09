@@ -32,43 +32,43 @@
   .header h1{ font-size:21px; margin:0 0 4px; font-weight:800; letter-spacing:-0.2px; }
   .header p{ margin:0 auto; font-size:11px; color:var(--muted); max-width:700px; }
 
-  .formula{ display:grid; grid-template-columns: repeat(5, 1fr); gap:8px; margin-top:12px; }
+  .formula{ display:grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap:8px; margin-top:12px; }
   .fblock{ background:var(--panel); border:1px solid var(--panel-line); border-top:3px solid var(--teal); border-radius:8px; padding:8px 9px; }
-  .fblock .n{ font-size:8px; font-weight:800; color:var(--teal); text-transform:uppercase; letter-spacing:0.4px; margin-bottom:3px; }
+  .fblock .n{ font-size:10px; font-weight:800; color:var(--teal); text-transform:uppercase; letter-spacing:0.4px; margin-bottom:3px; }
   .fblock b{ display:block; font-size:10px; font-weight:800; margin-bottom:3px; }
-  .fblock span{ display:block; font-size:8.2px; color:var(--muted); line-height:1.3; font-style:italic; }
+  .fblock span{ display:block; font-size:10px; color:var(--muted); line-height:1.3; font-style:italic; }
   .farrow{ text-align:center; color:var(--panel-line); font-size:12px; }
 
   .body-grid{ display:grid; grid-template-columns: 320px 1fr; gap:14px; margin-top:12px; height:330px; }
 
   .chain-panel{ background:var(--panel); border:1px solid var(--panel-line); border-radius:10px; padding:12px 14px; display:flex; flex-direction:column; }
-  .chain-panel h2{ margin:0 0 9px; font-size:9.8px; font-weight:800; text-transform:uppercase; letter-spacing:0.4px; color:var(--teal); }
+  .chain-panel h2{ margin:0 0 9px; font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:0.4px; color:var(--teal); }
   .chain{ flex:1; display:flex; flex-direction:column; }
   .cstep{ display:flex; gap:8px; align-items:flex-start; }
-  .cstep .num{ width:18px; height:18px; border-radius:50%; background:var(--teal-pale); color:var(--teal); border:1px solid var(--teal-dark); font-size:8.5px; font-weight:800; display:flex; align-items:center; justify-content:center; flex:none; }
-  .cstep b{ display:block; font-size:9.6px; font-weight:700; }
-  .cstep span{ display:block; font-size:8px; color:var(--muted); line-height:1.3; margin-top:1px; }
+  .cstep .num{ width:18px; height:18px; border-radius:50%; background:var(--teal-pale); color:var(--teal); border:1px solid var(--teal-dark); font-size:10px; font-weight:800; display:flex; align-items:center; justify-content:center; flex:none; }
+  .cstep b{ display:block; font-size:10px; font-weight:700; }
+  .cstep span{ display:block; font-size:10px; color:var(--muted); line-height:1.3; margin-top:1px; }
   .cline{ width:1px; flex:1; background:var(--panel-line); margin-left:9px; min-height:22px; }
 
   .right-col{ display:flex; flex-direction:column; gap:12px; }
 
   .errors{ background:var(--panel); border:1px solid var(--panel-line); border-radius:10px; padding:12px 14px; }
-  .errors h2{ margin:0 0 9px; font-size:9.8px; font-weight:800; text-transform:uppercase; letter-spacing:0.4px; color:var(--red); }
+  .errors h2{ margin:0 0 9px; font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:0.4px; color:var(--red); }
   .err-grid{ display:grid; grid-template-columns:1fr 1fr; gap:7px 14px; }
   .err-item{ display:flex; gap:7px; align-items:flex-start; }
-  .err-item .x{ width:16px; height:16px; border-radius:4px; background:var(--red-pale); color:var(--red); display:flex; align-items:center; justify-content:center; flex:none; font-size:9px; font-weight:800; }
-  .err-item span{ font-size:9px; color:var(--ink); line-height:1.3; }
+  .err-item .x{ width:16px; height:16px; border-radius:4px; background:var(--red-pale); color:var(--red); display:flex; align-items:center; justify-content:center; flex:none; font-size:10px; font-weight:800; }
+  .err-item span{ font-size:10px; color:var(--ink); line-height:1.3; }
 
   .case{ background:var(--panel); border:1px solid var(--panel-line); border-radius:10px; padding:12px 14px; flex:1; display:flex; flex-direction:column; }
-  .case h2{ margin:0 0 9px; font-size:9.8px; font-weight:800; text-transform:uppercase; letter-spacing:0.4px; color:var(--teal); }
+  .case h2{ margin:0 0 9px; font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:0.4px; color:var(--teal); }
   .case-flow{ flex:1; display:flex; align-items:center; gap:10px; }
-  .prompt-box{ flex:1; background:var(--graphite-0); border:1px solid var(--panel-line); border-radius:8px; padding:10px 12px; font-family:"SF Mono","Menlo","Consolas",monospace; font-size:8.6px; color:#C9D1D9; line-height:1.5; }
-  .prompt-box .lbl{ font-family:Inter,sans-serif; font-size:8.2px; color:var(--muted); text-transform:uppercase; letter-spacing:0.3px; margin-bottom:5px; font-weight:700; }
+  .prompt-box{ flex:1; background:var(--graphite-0); border:1px solid var(--panel-line); border-radius:8px; padding:10px 12px; font-family:"SF Mono","Menlo","Consolas",monospace; font-size:10px; color:#C9D1D9; line-height:1.5; }
+  .prompt-box .lbl{ font-family:Inter,sans-serif; font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:0.3px; margin-bottom:5px; font-weight:700; }
   .case-arrow{ color:var(--teal); font-size:18px; flex:none; }
   .result-box{ flex:1; background:var(--teal-pale); border:1px solid var(--teal-dark); border-radius:8px; padding:10px 12px; }
-  .result-box .lbl{ font-size:8.2px; color:var(--teal-dark); text-transform:uppercase; letter-spacing:0.3px; margin-bottom:5px; font-weight:700; }
-  .result-box code{ font-family:"SF Mono","Menlo","Consolas",monospace; font-size:8.8px; color:var(--ink); display:block; }
-  .result-box p{ margin:6px 0 0; font-size:8px; color:var(--teal-dark); line-height:1.3; }
+  .result-box .lbl{ font-size:10px; color:var(--teal-dark); text-transform:uppercase; letter-spacing:0.3px; margin-bottom:5px; font-weight:700; }
+  .result-box code{ font-family:"SF Mono","Menlo","Consolas",monospace; font-size:10px; color:var(--ink); display:block; }
+  .result-box p{ margin:6px 0 0; font-size:10px; color:var(--teal-dark); line-height:1.3; }
 
   .footer{ position:absolute; bottom:10px; right:20px; display:flex; align-items:center; gap:6px; }
   .li-badge{ width:16px; height:16px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:800; font-family: Arial, sans-serif; }

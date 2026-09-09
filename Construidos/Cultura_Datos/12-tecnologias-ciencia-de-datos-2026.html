@@ -116,7 +116,7 @@
             color: var(--earth-700);
             padding: 4px 12px;
             border-radius: 20px;
-            font-size: 9.5px;
+            font-size:10px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -131,8 +131,8 @@
             position: relative;
             z-index: 1;
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-template-rows: repeat(3, 1fr);
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            grid-template-rows: repeat(3, minmax(0, 1fr));
             gap: 12px;
             flex-grow: 1;
             min-height: 0; /* Prevents flexbox overflow */
@@ -196,7 +196,7 @@
         }
 
         .card-desc {
-            font-size: 9px;
+            font-size:10px;
             color: var(--gray-600);
             line-height: 1.35;
         }
@@ -222,7 +222,7 @@
             background: var(--white);
             border: 1px solid var(--gray-300);
             color: var(--gray-600);
-            font-size: 8.5px;
+            font-size:10px;
             font-weight: 600;
             padding: 4px 10px;
             border-radius: 4px;

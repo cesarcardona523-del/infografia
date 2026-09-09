@@ -84,7 +84,7 @@
             color: white;
             padding: 4px 10px;
             border-radius: 20px;
-            font-size: 9.5px;
+            font-size:10px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -112,7 +112,7 @@
             display: flex;
             align-items: center;
             gap: 6px;
-            font-size: 9.5px;
+            font-size:10px;
             font-weight: 600;
         }
 
@@ -127,7 +127,7 @@
         /* GRID LAYOUT */
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(4, minmax(0, 1fr));
             gap: 16px;
             flex: 1;
             min-height: 0;
@@ -223,7 +223,7 @@
         }
 
         .comp-label {
-            font-size:8.2px;
+            font-size:10px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.4px;
@@ -233,7 +233,7 @@
         .comp-item.data .comp-label { color: var(--data-color); }
 
         .comp-text {
-            font-size: 8.6px;
+            font-size:10px;
             color: var(--text-main);
             line-height: 1.32;
             font-weight: 500;
@@ -243,7 +243,7 @@
             margin-top: auto;
             padding-top: 6px;
             border-top: 1px dashed var(--border);
-            font-size:8.2px;
+            font-size:10px;
             color: var(--text-muted);
             line-height: 1.35;
         }
@@ -292,7 +292,7 @@
             justify-content: center;
             flex-wrap: wrap;
             gap: 6px;
-            font-size: 8.5px;
+            font-size:10px;
             font-weight: 700;
             color: #cbd5e1;
         }
@@ -339,7 +339,7 @@
         /* Grid Specific Layout */
         .grid-wrapper {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(3, minmax(0, 1fr));
             grid-template-rows: auto auto;
             gap: 10px;
             height: 100%;

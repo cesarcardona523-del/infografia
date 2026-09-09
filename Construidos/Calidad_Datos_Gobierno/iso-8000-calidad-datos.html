@@ -105,7 +105,7 @@
         /* GRID LAYOUT */
         .bento-grid {
             display: grid;
-            grid-template-columns: repeat(12, 1fr);
+            grid-template-columns: repeat(12, minmax(0, 1fr));
             grid-template-rows: 172px 118px 165px;
             gap: 14px;
             flex: 1;
@@ -237,7 +237,7 @@
         .flow-step:nth-child(1) .flow-icon svg { stroke: #ef4444; }
         .flow-step:nth-child(5) .flow-icon svg { stroke: #ef4444; }
 
-        .flow-label { font-size: 9px; font-weight: 600; color: var(--text-main); line-height: 1.1; }
+        .flow-label { font-size:10px; font-weight: 600; color: var(--text-main); line-height: 1.1; }
 
         .flow-arrow {
             color: var(--text-muted);
@@ -262,7 +262,7 @@
         /* Dimensions Grid */
         .dim-grid {
             display: grid;
-            grid-template-columns: repeat(7, 1fr);
+            grid-template-columns: repeat(7, minmax(0, 1fr));
             gap: 10px;
             height: 100%;
         }
@@ -299,7 +299,7 @@
         }
 
         .dim-title { font-size: 10px; font-weight: 700; color: var(--primary); }
-        .dim-desc { font-size: 8.5px; color: var(--text-muted); line-height: 1.2; }
+        .dim-desc { font-size:10px; color: var(--text-muted); line-height: 1.2; }
 
         /* Structure / Family */
         .family-container {
@@ -323,8 +323,8 @@
         .family-box:nth-child(odd) { border-top-color: var(--primary-light); }
 
         .fam-id { font-size: 10px; font-weight: 800; color: var(--text-main); }
-        .fam-title { font-size: 9px; font-weight: 600; color: var(--primary); }
-        .fam-desc { font-size: 8.5px; color: var(--text-muted); line-height: 1.2; }
+        .fam-title { font-size:10px; font-weight: 600; color: var(--primary); }
+        .fam-desc { font-size:10px; color: var(--text-muted); line-height: 1.2; }
 
         /* Implementation Steps */
         .steps-container {

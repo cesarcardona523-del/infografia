@@ -36,43 +36,43 @@
   }
 
   .header{ margin-bottom:9px; display:flex; justify-content:space-between; align-items:flex-end; }
-  .header .eyebrow{ font-family:"SF Mono","Menlo",monospace; font-size:9.5px; font-weight:700; letter-spacing:1.6px; color:var(--blue); text-transform:uppercase; margin-bottom:4px; }
+  .header .eyebrow{ font-family:"SF Mono","Menlo",monospace; font-size:10px; font-weight:700; letter-spacing:1.6px; color:var(--blue); text-transform:uppercase; margin-bottom:4px; }
   .header h1{ font-size:19px; margin:0 0 3px; font-weight:800; letter-spacing:-0.2px; }
   .header p{ margin:0; font-size:10.8px; color:var(--muted); max-width:640px; }
-  .rev{ font-family:"SF Mono","Menlo",monospace; font-size:8.5px; color:var(--muted); text-align:right; line-height:1.5; border-left:1px solid var(--line); padding-left:10px; }
+  .rev{ font-family:"SF Mono","Menlo",monospace; font-size:10px; color:var(--muted); text-align:right; line-height:1.5; border-left:1px solid var(--line); padding-left:10px; }
   .rev b{ color:var(--ink); }
 
-  .grid{ display:grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 1fr); gap:9px; height:452px; }
+  .grid{ display:grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(3, minmax(0, 1fr)); gap:9px; height:452px; }
 
   .arch-card{
     position:relative; background:var(--white); border:1px solid var(--line); border-radius:3px; padding:8px 10px 8px;
     display:flex; flex-direction:column; min-width:0;
   }
-  .arch-card::before, .arch-card::after{ content:"+"; position:absolute; font-size:9px; color:var(--line); line-height:1; }
+  .arch-card::before, .arch-card::after{ content:"+"; position:absolute; font-size:10px; color:var(--line); line-height:1; }
   .arch-card::before{ top:-5px; left:-5px; }
   .arch-card::after{ bottom:-5px; right:-5px; }
 
-  .arch-card h3{ margin:0 0 5px; padding-bottom:5px; border-bottom:1px solid var(--blue-pale); font-size:9.8px; font-weight:800; color:var(--ink); text-transform:uppercase; letter-spacing:0.2px; display:flex; align-items:center; gap:6px; }
-  .idx{ font-family:"SF Mono","Menlo",monospace; font-size:8px; font-weight:700; color:var(--white); background:var(--blue); border-radius:3px; padding:1.5px 4px; flex:none; }
+  .arch-card h3{ margin:0 0 5px; padding-bottom:5px; border-bottom:1px solid var(--blue-pale); font-size:10px; font-weight:800; color:var(--ink); text-transform:uppercase; letter-spacing:0.2px; display:flex; align-items:center; gap:6px; }
+  .idx{ font-family:"SF Mono","Menlo",monospace; font-size:10px; font-weight:700; color:var(--white); background:var(--blue); border-radius:3px; padding:1.5px 4px; flex:none; }
   .idx.warm{ background:var(--accent); }
 
   .flow{ display:flex; align-items:center; gap:3px; margin-bottom:5px; flex-wrap:nowrap; font-family:"SF Mono","Menlo",monospace; }
   .chip{
     background:var(--blue-pale); border:1px solid #CFE0F2; border-radius:3px; padding:2px 5px;
-    font-size:8px; font-weight:700; color:var(--blue); white-space:nowrap;
+    font-size:10px; font-weight:700; color:var(--blue); white-space:nowrap;
   }
   .chip.warm{ background:var(--accent-pale); border-color:#EBCBA9; color:var(--accent); }
-  .arrow{ color:#9FB1C8; font-size:8px; flex:none; }
+  .arrow{ color:#9FB1C8; font-size:10px; flex:none; }
 
-  .arch-card p{ margin:0; font-size:8.2px; color:var(--muted); line-height:1.32; }
+  .arch-card p{ margin:0; font-size:10px; color:var(--muted); line-height:1.32; }
 
   .specs{ margin-top:auto; padding-top:6px; border-top:1px dashed var(--line); display:flex; gap:14px; font-family:"SF Mono","Menlo",monospace; }
-  .specs div{ font-size:8px; color:var(--muted); }
-  .specs b{ display:block; color:var(--ink); font-size:8.2px; text-transform:uppercase; letter-spacing:0.3px; }
+  .specs div{ font-size:10px; color:var(--muted); }
+  .specs b{ display:block; color:var(--ink); font-size:10px; text-transform:uppercase; letter-spacing:0.3px; }
 
   .ribbon{
     margin-top:9px; display:flex; align-items:center; gap:10px;
-    background:var(--ink); color:#EAF0F8; border-radius:4px; padding:8px 14px; font-size:9.3px;
+    background:var(--ink); color:#EAF0F8; border-radius:4px; padding:8px 14px; font-size:10px;
   }
   .ribbon .icon{ width:18px; height:18px; flex:none; border-radius:3px; background:rgba(255,255,255,0.14); display:flex; align-items:center; justify-content:center; }
   .ribbon .icon svg{ width:10px; height:10px; color:#F0A870; }

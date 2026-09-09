@@ -111,7 +111,7 @@
         .title span { color: var(--primary); }
 
         .subtitle {
-            font-size: 9.5px;
+            font-size:10px;
             color: var(--text-muted);
             font-weight: 500;
             max-width: 800px;
@@ -122,8 +122,8 @@
             position: relative;
             z-index: 10;
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: repeat(2, 1fr);
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            grid-template-rows: repeat(2, minmax(0, 1fr));
             gap: 9px;
             flex: 1;
             min-height: 0;
@@ -247,7 +247,7 @@
             padding: 3px 8px;
             border-radius: 6px;
             font-family: "SF Mono", Menlo, Consolas, monospace;
-            font-size: 8.5px;
+            font-size:10px;
             color: #cbd5e1;
         }
 
