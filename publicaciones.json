@@ -2569,5 +2569,30 @@
       "likes": 0,
       "shares": 0
     }
+  },
+  {
+    "id": "modelos-ia-lideres-mercado-2026",
+    "imagen": "Construidos/IA/modelos-ia-lideres-mercado-2026.png",
+    "fechaPublicacion": "2026-09-11T10:10:00",
+    "categoriaPrincipal": "inteligencia-artificial",
+    "temas": [
+      "ia",
+      "chatgpt",
+      "claude"
+    ],
+    "tipoContenido": "infografia",
+    "es": {
+      "topico": "Modelos de IA en 2026: Quién Lidera en Inteligencia y Quién Domina el Mercado",
+      "descripcion": "El panorama de modelos de lenguaje a septiembre de 2026 se mueve en dos carreras paralelas que no coinciden. En la carrera del rendimiento medido, el Artificial Analysis Intelligence Index v4.3 —que combina diez evaluaciones de razonamiento, código, ciencia y tareas de agente— ubica a Claude Fable 5.1 de Anthropic en la primera posición con 53.4 puntos, seguido muy de cerca por GPT-6 Astra de OpenAI con 52.8 y por Claude Opus 5 con 50.7. Meta entra a la frontera con Muse Spark 1.3 (48.2), y aparecen también GPT-5.6 Sol, Grok 4.6 de xAI y Gemini 3.8 Flash de Google, este último el más rápido y económico del grupo con 203 tokens por segundo y 0,75 dólares por millón de tokens. En la carrera del uso real, la foto es distinta: ChatGPT concentra el 51.5% del mercado de chatbots de consumo en Estados Unidos, con Gemini en 27.6% y Claude en 10.2%, según First Page Sage. ChatGPT ha cedido terreno —bajó del 67% en enero al 51.5% en agosto— mientras Claude crece más rápido que ningún otro, cerca de 855% interanual. La lectura para equipos técnicos y de negocio: el modelo con el mejor benchmark no es necesariamente el más adoptado, y la elección debe pesar inteligencia, velocidad, precio y ecosistema según el caso de uso, no solo la posición en una tabla que cambia cada pocas semanas."
+    },
+    "en": {
+      "topico": "AI Models in 2026: Who Leads on Intelligence and Who Dominates the Market",
+      "descripcion": "The large language model landscape as of September 2026 is running in two parallel races that do not line up. In the measured-performance race, the Artificial Analysis Intelligence Index v4.3 —which blends ten evaluations across reasoning, coding, science and agentic tasks— places Anthropic's Claude Fable 5.1 first with 53.4 points, closely followed by OpenAI's GPT-6 Astra at 52.8 and Claude Opus 5 at 50.7. Meta reaches the frontier with Muse Spark 1.3 (48.2), alongside GPT-5.6 Sol, xAI's Grok 4.6 and Google's Gemini 3.8 Flash, the last being the fastest and cheapest of the group at 203 tokens per second and 0.75 dollars per million tokens. In the real-usage race, the picture is different: ChatGPT holds 51.5% of the US consumer chatbot market, with Gemini at 27.6% and Claude at 10.2%, according to First Page Sage. ChatGPT has lost ground —down from 67% in January to 51.5% in August— while Claude grows faster than anyone else, roughly 855% year over year. The takeaway for technical and business teams: the model with the best benchmark is not necessarily the most adopted, and model selection should weigh intelligence, speed, price and ecosystem against the specific use case, not just a leaderboard position that shifts every few weeks."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
   }
 ]

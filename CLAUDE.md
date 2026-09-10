@@ -63,6 +63,8 @@ Cuando una infografía trata específicamente sobre **una aplicación o herramie
 | Apache HBase | Gris/negro (la orca), azul claro y blanco | `#4D4D4D` |
 | InfluxDB | Magenta/morado y azul cian (degradado) | `#9322F6` |
 | ClickHouse | Amarillo, rojo y blanco | `#FFCC01` |
+| Meta (Meta AI / Muse) | Azul de marca Meta | `#0866FF` |
+| DeepSeek | Azul | `#4D6BFE` |
 
 Notas de marca por familia (para mantener consistencia entre motores relacionados):
 - **Servicios de base de datos de AWS** (DynamoDB, RDS, Aurora): Amazon unificó el ícono de estos servicios en un tono azul/púrpura (`#405CFA`, acento `#3B48CC`) — usar ese tono para los tres en vez de el naranja genérico de AWS, salvo que la pieza sea sobre AWS en general (ahí sigue aplicando `#FF9900`/`#232F3E`).
