@@ -2594,5 +2594,53 @@
       "likes": 0,
       "shares": 0
     }
+  },
+  {
+    "id": "herramientas-investigacion-cientifica",
+    "imagen": "Construidos/Cultura_Datos/herramientas-investigacion-cientifica.png",
+    "fechaPublicacion": "2026-09-13T09:10:00",
+    "categoriaPrincipal": "aprendizaje-y-recursos",
+    "temas": [
+      "estadistica",
+      "ciencia-datos"
+    ],
+    "tipoContenido": "infografia",
+    "es": {
+      "topico": "Herramientas para la Investigación Científica: Cualitativa vs. Cuantitativa",
+      "descripcion": "Elegir la herramienta correcta de investigación depende del tipo de pregunta que se busca responder, no solo de la disponibilidad de datos. La investigación cualitativa analiza significados, percepciones y contexto a través de herramientas de codificación como ATLAS.ti, NVivo y MAXQDA, que organizan entrevistas, textos y videos en categorías interpretables; Dedoose añade colaboración en la nube para equipos de investigación, y Transana se especializa en el análisis fino de video y audio, transcripción y anotación temporal. La investigación cuantitativa, en cambio, mide, prueba hipótesis y busca generalizar resultados: SPSS sigue siendo el estándar para pruebas estadísticas y manejo de bases de datos grandes en ciencias sociales; Stata domina el análisis econométrico y el manejo de datos de panel en economía aplicada; R aporta un ecosistema estadístico y de visualización orientado a la reproducibilidad; Python extiende ese trabajo hacia machine learning y automatización de pipelines de análisis; y Excel sigue siendo la puerta de entrada para estadística descriptiva y visualización básica de resultados. Ninguna herramienta reemplaza a las demás: la elección correcta depende de la naturaleza del dato, el nivel de colaboración requerido y la profundidad estadística necesaria. Cada vez más, los proyectos de investigación robustos combinan ambos enfoques —métodos mixtos— usando lo cualitativo para explicar el porqué detrás de los patrones que lo cuantitativo logra medir y generalizar."
+    },
+    "en": {
+      "topico": "Tools for Scientific Research: Qualitative vs. Quantitative",
+      "descripcion": "Choosing the right research tool depends on the type of question being answered, not just on data availability. Qualitative research analyzes meaning, perception and context through coding tools such as ATLAS.ti, NVivo and MAXQDA, which organize interviews, text and video into interpretable categories; Dedoose adds cloud-based collaboration for research teams, and Transana specializes in fine-grained video and audio analysis, transcription and time-based annotation. Quantitative research, by contrast, measures, tests hypotheses and seeks generalizable results: SPSS remains the standard for statistical testing and large dataset handling in the social sciences; Stata dominates econometric analysis and panel data management in applied economics; R provides a statistics and visualization ecosystem built around reproducibility; Python extends that work into machine learning and analysis-pipeline automation; and Excel remains the entry point for descriptive statistics and basic result visualization. No single tool replaces the others: the right choice depends on the nature of the data, the level of collaboration required and the statistical depth needed. Increasingly, robust research projects combine both approaches —mixed methods— using qualitative work to explain the why behind the patterns that quantitative work measures and generalizes."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "etl-elt-etlt-reverse-etl",
+    "imagen": "Construidos/Data_Engineering/etl-elt-etlt-reverse-etl.png",
+    "fechaPublicacion": "2026-09-15T09:10:00",
+    "categoriaPrincipal": "ingenieria-de-datos",
+    "temas": [
+      "data-engineering",
+      "arquitectura-datos"
+    ],
+    "tipoContenido": "infografia",
+    "es": {
+      "topico": "ETL, ELT, ETLT y Reverse ETL: Cuándo Transformar el Dato",
+      "descripcion": "Los cuatro patrones de integración de datos se distinguen por un solo factor: en qué momento del recorrido ocurre la transformación. ETL (Extract, Transform, Load) transforma los datos antes de cargarlos, el patrón clásico de los data warehouses tradicionales, que produce datos limpios desde el primer momento pero con pipelines rígidos ante cambios de esquema. ELT (Extract, Load, Transform) invierte el orden: carga los datos crudos primero y transforma dentro del propio warehouse aprovechando su capacidad de cómputo con herramientas como dbt o SQL, lo que da más flexibilidad y deja el dato crudo disponible para reprocesar. ETLT (Extract, Transform, Load, Transform) es un patrón híbrido cada vez más común en arquitecturas medallón: aplica una transformación ligera antes de cargar —enmascarado de datos sensibles o estandarización mínima— y una transformación pesada después, ya dentro del warehouse, combinando gobierno temprano con flexibilidad analítica. El cuarto patrón, Reverse ETL, invierte la dirección completa del flujo: en vez de llevar datos crudos hacia el warehouse, extrae datos ya modelados y confiables desde el warehouse, los adapta al esquema de una herramienta operativa y los carga en sistemas como CRM, plataformas publicitarias o herramientas de soporte al cliente. Es el paso que operacionaliza el análisis: sin él, los hallazgos del equipo de datos se quedan en un dashboard en vez de llegar a las manos de quien toma la decisión comercial todos los días."
+    },
+    "en": {
+      "topico": "ETL, ELT, ETLT and Reverse ETL: When to Transform the Data",
+      "descripcion": "The four data integration patterns are distinguished by a single factor: at which point in the journey the transformation happens. ETL (Extract, Transform, Load) transforms data before loading it, the classic pattern behind traditional data warehouses, producing clean data from the start but with pipelines that are rigid to schema changes. ELT (Extract, Load, Transform) reverses the order: raw data is loaded first and transformed inside the warehouse itself, leveraging its compute power with tools like dbt or SQL, which adds flexibility and keeps the raw data available for reprocessing. ETLT (Extract, Transform, Load, Transform) is a hybrid pattern increasingly common in medallion architectures: it applies a light transformation before loading —masking sensitive fields or minimal standardization— and a heavier transformation afterward, inside the warehouse, combining early governance with analytical flexibility. The fourth pattern, Reverse ETL, flips the direction of the flow entirely: instead of moving raw data toward the warehouse, it extracts already-modeled, trustworthy data from the warehouse, adapts it to an operational tool's schema, and loads it into systems like CRM platforms, advertising tools or customer support software. It is the step that operationalizes analytics: without it, the data team's findings stay in a dashboard instead of reaching the person making the business decision every day."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
   }
 ]

@@ -138,7 +138,7 @@ Antes de crear una entrada nueva, el proyecto analiza si el contenido amplía o 
 
 ## 🗺️ Estado
 
-**90 infografías publicadas en 28 temas**, listadas en orden de creación:
+**92 infografías publicadas en 28 temas**, listadas en orden de creación:
 
 - ✅ Automatización vs Autonomía: Arquitectura de Sistemas de IA Agénticos — tema `Automatización` — [HTML](Construidos/Automatización/automatizacion-agentesia.html) · [PNG](Construidos/Automatización/automatizacion-agentesia.png)
 - ✅ Automatización de Reportes con Python: de Excel a Producción — tema `Automatización` — [HTML](Construidos/Automatización/automatizacion-python.html) · [PNG](Construidos/Automatización/automatizacion-python.png)
@@ -249,6 +249,8 @@ Antes de crear una entrada nueva, el proyecto analiza si el contenido amplía o 
 - ✅ Operadores de Comparación y Conectores Lógicos AND/OR en SQL — tema `SQL` — [HTML](Construidos/SQL/operadores-comparacion-and-or-sql.html) · [PNG](Construidos/SQL/operadores-comparacion-and-or-sql.png)
 - ✅ Bases de Datos On-Premise vs. en la Nube: Diferencias y Motores Clave — tema `Base de Datos` — [HTML](Construidos/Base_de_Datos/bd-on-premise-vs-nube.html) · [PNG](Construidos/Base_de_Datos/bd-on-premise-vs-nube.png)
 - ✅ Modelos de IA en 2026: Quién Lidera en Inteligencia y Quién Domina el Mercado — tema `IA` — fuentes: Artificial Analysis · First Page Sage — [HTML](Construidos/IA/modelos-ia-lideres-mercado-2026.html) · [PNG](Construidos/IA/modelos-ia-lideres-mercado-2026.png)
+- ✅ Herramientas para la Investigación Científica: Cualitativa vs. Cuantitativa — tema `Cultura_Datos` — [HTML](Construidos/Cultura_Datos/herramientas-investigacion-cientifica.html) · [PNG](Construidos/Cultura_Datos/herramientas-investigacion-cientifica.png)
+- ✅ ETL, ELT, ETLT y Reverse ETL: Cuándo Transformar el Dato — tema `Data_Engineering` — [HTML](Construidos/Data_Engineering/etl-elt-etlt-reverse-etl.html) · [PNG](Construidos/Data_Engineering/etl-elt-etlt-reverse-etl.png)
 
 Este README se irá actualizando con un enlace por cada infografía nueva.
 

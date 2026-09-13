@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Herramientas para la Investigación Científica</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --green:#1E7A4F; --green-dark:#125C39; --green-pale:#E2F2E8; --green-line:#BFE0CC;
+    --earth:#C1620E; --earth-dark:#8C480A; --earth-pale:#FBEADD; --earth-line:#F0CBA0;
+    --ink:#1D2129; --muted:#5C6470; --line:#E4E9E6; --white:#FFFFFF; --paper:#F5F8F6;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    min-height:627px; display:flex; align-items:center; justify-content:center;
+    padding:32px 16px; background:#F0F6F2;
+    font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
+  .canvas{
+    position:relative; width:1200px; height:627px; margin:0 auto;
+    background:linear-gradient(160deg, #FAFDFB 0%, var(--paper) 55%, #EFF6F1 100%);
+    border-radius:16px; box-shadow:0 20px 50px rgba(14,40,26,0.16); overflow:hidden;
+    padding:18px 30px 12px; color:var(--ink); display:flex; flex-direction:column;
+  }
+  .header{ text-align:center; margin-bottom:9px; }
+  .eyebrow{ display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:800; letter-spacing:1.6px; color:var(--green-dark); text-transform:uppercase; background:var(--green-pale); border:1px solid var(--green-line); padding:3px 10px; border-radius:20px; margin-bottom:6px; }
+  .eyebrow svg{ width:14px; height:14px; flex:none; }
+  .header h1{ font-size:22px; margin:0 0 3px; font-weight:800; letter-spacing:-0.3px; }
+  .header p{ margin:0 auto; font-size:12px; color:var(--muted); max-width:760px; line-height:1.35; }
+
+  .body-grid{ flex:1; display:grid; grid-template-columns: 1fr 1fr; gap:18px; min-height:0; }
+  .col{ background:var(--white); border:1px solid var(--line); border-radius:12px; padding:12px 16px; display:flex; flex-direction:column; box-shadow:0 2px 8px rgba(14,40,26,0.04); overflow:hidden; }
+  .col.qual{ border-top:4px solid var(--green); }
+  .col.quant{ border-top:4px solid var(--earth); }
+  .col-head{ display:flex; align-items:center; gap:8px; margin-bottom:4px; }
+  .col-head .cico{ width:30px; height:30px; border-radius:9px; display:flex; align-items:center; justify-content:center; flex:none; }
+  .col.qual .cico{ background:var(--green-pale); color:var(--green-dark); }
+  .col.quant .cico{ background:var(--earth-pale); color:var(--earth-dark); }
+  .col-head .cico svg{ width:17px; height:17px; }
+  .col-head h2{ margin:0; font-size:14px; font-weight:800; }
+  .col.qual h2{ color:var(--green-dark); }
+  .col.quant h2{ color:var(--earth-dark); }
+  .col-head span{ display:block; font-size:12px; color:var(--muted); font-weight:600; }
+
+  .trow{ display:flex; gap:9px; align-items:flex-start; padding:6px 0; border-bottom:1px dashed var(--line); }
+  .trow:last-child{ border-bottom:none; }
+  .ticon{ width:26px; height:26px; border-radius:7px; display:flex; align-items:center; justify-content:center; flex:none; margin-top:1px; }
+  .col.qual .ticon{ background:var(--green-pale); color:var(--green-dark); }
+  .col.quant .ticon{ background:var(--earth-pale); color:var(--earth-dark); }
+  .ticon.real{ background:var(--white); border:1px solid var(--line); }
+  .ticon svg{ width:15px; height:15px; }
+  .ttxt b{ display:block; font-size:13px; font-weight:800; color:var(--ink); line-height:1.2; }
+  .ttxt span{ display:block; font-size:12px; color:var(--muted); line-height:1.28; margin-top:1px; }
+
+  .ribbon{ margin-top:9px; display:flex; align-items:center; gap:10px; background:var(--green-pale); border:1px solid var(--green-line); border-radius:10px; padding:9px 16px; }
+  .ribbon .ic{ width:24px; height:24px; flex:none; border-radius:6px; background:var(--white); border:1px solid var(--green-line); display:flex; align-items:center; justify-content:center; color:var(--green-dark); }
+  .ribbon .ic svg{ width:14px; height:14px; }
+  .ribbon b{ color:var(--green-dark); font-size:12.5px; }
+  .ribbon span{ color:var(--ink); font-size:12px; }
+
+  .footer{ display:flex; align-items:center; justify-content:flex-end; gap:6px; margin-top:8px; }
+  .li-badge{ width:16px; height:16px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; font-family: Arial, sans-serif; }
+  .footer span{ font-size:12px; font-weight:700; color:var(--muted); }
+</style>
+</head>
+<body>
+<div class="canvas-wrap">
+  <div class="canvas">
+
+    <div class="header">
+      <div class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4a7 7 0 1 0 4.9 12.1l4 4M11 4a7 7 0 0 1 4.9 12.1"/></svg>Métodos de Investigación</div>
+      <h1>Herramientas para la Investigación Científica</h1>
+      <p>Diez herramientas de referencia, agrupadas por el tipo de pregunta que responden — significados y contexto de un lado, medición y generalización del otro.</p>
+    </div>
+
+    <div class="body-grid">
+      <div class="col qual">
+        <div class="col-head">
+          <div class="cico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41 12 22l-9-9V4h9l9 9.41Z"/><circle cx="8" cy="8" r="1.5"/></svg></div>
+          <div><h2>Investigación Cualitativa</h2><span>Analiza significados, percepciones y contexto</span></div>
+        </div>
+      <div class="trow">
+        <div class="ticon "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41 12 22l-9-9V4h9l9 9.41Z"/><circle cx="8" cy="8" r="1.5"/></svg></div>
+        <div class="ttxt"><b>ATLAS.ti</b><span>Codificación y análisis de datos cualitativos (entrevistas, textos, videos).</span></div>
+      </div>
+      <div class="trow">
+        <div class="ticon "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="12" r="6"/><circle cx="16" cy="12" r="6"/></svg></div>
+        <div class="ttxt"><b>NVivo</b><span>Organiza, codifica y analiza información cualitativa y mixta.</span></div>
+      </div>
+      <div class="trow">
+        <div class="ticon "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg></div>
+        <div class="ttxt"><b>MAXQDA</b><span>Análisis de datos cualitativos y métodos mixtos.</span></div>
+      </div>
+      <div class="trow">
+        <div class="ticon "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M2 21c0-3.9 3.1-7 7-7s7 3.1 7 7"/><circle cx="18" cy="9" r="2.3"/><path d="M15.5 21c.3-2.9 2-5 4.5-5.6"/></svg></div>
+        <div class="ttxt"><b>Dedoose</b><span>Gestión y análisis colaborativo de datos cualitativos.</span></div>
+      </div>
+      <div class="trow">
+        <div class="ticon "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M16 10.5 22 7v10l-6-3.5Z"/></svg></div>
+        <div class="ttxt"><b>Transana</b><span>Análisis de video y audio en investigación cualitativa.</span></div>
+      </div>
+      </div>
+
+      <div class="col quant">
+        <div class="col-head">
+          <div class="cico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M11 20V4M18 20v-7"/></svg></div>
+          <div><h2>Investigación Cuantitativa</h2><span>Analiza datos, prueba hipótesis y genera resultados precisos</span></div>
+        </div>
+      <div class="trow">
+        <div class="ticon "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M11 20V4M18 20v-7"/></svg></div>
+        <div class="ttxt"><b>SPSS</b><span>Análisis estadístico, pruebas de hipótesis y manejo de grandes bases de datos.</span></div>
+      </div>
+      <div class="trow">
+        <div class="ticon "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M21 7h-6v6"/></svg></div>
+        <div class="ttxt"><b>Stata</b><span>Análisis econométrico, estadística avanzada y manejo de paneles de datos.</span></div>
+      </div>
+      <div class="trow">
+        <div class="ticon real"><svg style="width:20px;height:20px;flex:none" viewBox="0 0 724 561" xmlns="http://www.w3.org/2000/svg" width="724" height="561" preserveAspectRatio="xMidYMid"><defs><linearGradient id="icr-a" x1="0" x2="1" y1="0" y2="1" gradientUnits="objectBoundingBox" spreadMethod="pad"><stop offset="0" stop-color="#CBCED0"/><stop offset="1" stop-color="#84838B"/></linearGradient><linearGradient id="icr-b" x1="0" x2="1" y1="0" y2="1" gradientUnits="objectBoundingBox" spreadMethod="pad"><stop offset="0" stop-color="#276DC3"/><stop offset="1" stop-color="#165CAA"/></linearGradient></defs><path fill="url(#icr-a)" fill-rule="evenodd" d="M361.453 485.937C162.329 485.937.906 377.828.906 244.469.906 111.109 162.329 3 361.453 3S722 111.109 722 244.469c0 133.359-161.422 241.468-360.547 241.468m55.188-388.531c-151.352 0-274.047 73.908-274.047 165.078s122.695 165.078 274.047 165.078c151.351 0 263.046-50.529 263.046-165.078 0-114.513-111.695-165.078-263.046-165.078"/><path fill="url(#icr-b)" fill-rule="evenodd" d="M550 377s21.822 6.585 34.5 13c4.399 2.226 12.01 6.668 17.5 12.5 5.378 5.712 8 11.5 8 11.5l86 145-139 .062L492 437s-13.31-22.869-21.5-29.5c-6.832-5.531-9.745-7.5-16.5-7.5h-33.026L421 558.974l-123 .052V152.938h247S657.5 154.967 657.5 262 550 377 550 377m-53.5-135.976-74.463-.048-.037 69.05 74.5-.024s34.5-.107 34.5-35.125c0-35.722-34.5-33.853-34.5-33.853"/></svg></div>
+        <div class="ttxt"><b>R</b><span>Análisis estadístico, visualización y programación para ciencia de datos.</span></div>
+      </div>
+      <div class="trow">
+        <div class="ticon real"><svg style="width:20px;height:20px;flex:none" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 512 512"><linearGradient id="icpy-a" x1="47.667" x2="544.303" y1="363.376" y2="-63.912" gradientTransform="matrix(.5625 0 0 -.568 -36.442 220.966)" gradientUnits="userSpaceOnUse"><stop offset="0" style="stop-color:#5a9fd4"/><stop offset="1" style="stop-color:#306998"/></linearGradient><path d="M253 0c-20.9.1-40.8 1.9-58.4 5-51.7 9.1-61.1 28.2-61.1 63.5V115h122.1v15.5H87.7c-35.5 0-66.6 21.3-76.3 61.9C.2 239-.3 268 11.4 316.6c8.7 36.2 29.4 61.9 64.9 61.9h42v-55.8c0-40.3 34.9-75.9 76.3-75.9h122c34 0 61.1-28 61.1-62.1V68.5c0-33.1-27.9-58-61.1-63.5-21-3.5-42.7-5.1-63.6-5m-66.1 37.4c12.6 0 22.9 10.5 22.9 23.3s-10.3 23.2-22.9 23.2C174.3 84 164 73.6 164 60.8c0-12.9 10.3-23.4 22.9-23.4" style="fill:url(#icpy-a)"/><linearGradient id="icpy-b" x1="736.305" x2="558.957" y1="-322.524" y2="-71.607" gradientTransform="matrix(.5625 0 0 -.568 -36.442 220.966)" gradientUnits="userSpaceOnUse"><stop offset="0" style="stop-color:#ffd43b"/><stop offset="1" style="stop-color:#ffe873"/></linearGradient><path d="M392.9 130.6v54.2c0 42.1-35.7 77.4-76.3 77.4h-122c-33.4 0-61.1 28.6-61.1 62.1v116.3c0 33.1 28.8 52.6 61.1 62.1 38.7 11.4 75.7 13.4 122 0 30.8-8.9 61.1-26.8 61.1-62.1V394h-122v-15.5h183.1c35.5 0 48.7-24.8 61.1-61.9 12.8-38.3 12.2-75.1 0-124.1-8.8-35.3-25.5-61.9-61.1-61.9zm-68.6 294.5c12.7 0 22.9 10.4 22.9 23.2 0 12.9-10.3 23.3-22.9 23.3s-22.9-10.5-22.9-23.3 10.3-23.2 22.9-23.2" style="fill:url(#icpy-b)"/></svg></div>
+        <div class="ttxt"><b>Python</b><span>Análisis de datos, machine learning y automatización de procesos estadísticos.</span></div>
+      </div>
+      <div class="trow">
+        <div class="ticon real"><svg style="width:20px;height:20px;flex:none" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" id="icxl-Livello_1" x="0" y="0" version="1.1" viewBox="0 17.9 512 476.2"><style>.st2{fill:#107c41}.st4{opacity:.2;enable-background:new}</style><path d="m321.5 244.1-202.4-35.7v263.9c0 12.1 9.8 21.8 21.8 21.8h349.3c12.1 0 21.8-9.8 21.8-21.8v-97.2z" style="fill:#185c37"/><path d="M321.5 17.9H140.9c-12.1 0-21.8 9.8-21.8 21.8v97.2L321.5 256l107.2 35.7L512 256V136.9z" style="fill:#21a366"/><path d="M119.1 136.9h202.4V256H119.1z" class="st2"/><path d="M263.9 113.1H119.1v297.7H264c12 0 21.8-9.8 21.8-21.8V135c-.1-12.1-9.8-21.8-21.9-21.9" style="opacity:.1"/><path d="M252 125H119v297.7h133c12 0 21.8-9.8 21.8-21.8v-254c0-12.1-9.7-21.8-21.8-21.9" class="st4"/><path d="M252 125H119v273.9h133c12 0 21.8-9.8 21.8-21.8V146.8c0-12-9.7-21.7-21.8-21.8" class="st4"/><path d="M240.1 125h-121v273.9h121.1c12 0 21.8-9.8 21.8-21.8V146.8c-.1-12-9.8-21.7-21.9-21.8" class="st4"/><linearGradient id="icxl-SVGID_1_" x1="45.507" x2="216.447" y1="-1232.031" y2="-935.97" gradientTransform="translate(0 1340)" gradientUnits="userSpaceOnUse"><stop offset="0" style="stop-color:#18884f"/><stop offset=".5" style="stop-color:#117e43"/><stop offset="1" style="stop-color:#0b6631"/></linearGradient><path d="M21.8 125h218.3c12.1 0 21.8 9.8 21.8 21.8v218.3c0 12.1-9.8 21.8-21.8 21.8H21.8C9.8 387 0 377.2 0 365.2V146.8c0-12 9.8-21.8 21.8-21.8" style="fill:url(#icxl-SVGID_1_)"/><path d="m67.6 326.9 45.9-71.1L71.4 185h33.8l23 45.2c2.1 4.3 3.6 7.5 4.4 9.6h.3c1.5-3.4 3.1-6.8 4.8-10l24.5-44.8h31.1l-43.1 70.3 44.2 71.5h-33.1l-26.5-49.7c-1.2-2.1-2.3-4.3-3.2-6.6h-.4c-.8 2.3-1.8 4.4-3.1 6.4l-27.3 49.9z" style="fill:#fff"/><path d="M490.2 17.9H321.5V137H512V39.7c0-12.1-9.8-21.8-21.8-21.8" style="fill:#33c481"/><path d="M321.5 256H512v119.1H321.5z" class="st2"/></svg></div>
+        <div class="ttxt"><b>Excel</b><span>Estadística básica, análisis de datos y visualización de resultados.</span></div>
+      </div>
+      </div>
+    </div>
+
+    <div class="ribbon">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="12" r="6"/><circle cx="16" cy="12" r="6"/></svg></div>
+      <div><b>Métodos mixtos</b> <span>— la mayoría de la investigación robusta combina ambos enfoques: lo cualitativo explica el "por qué" detrás de lo que lo cuantitativo mide y generaliza.</span></div>
+    </div>
+
+    <div class="footer">
+      <div class="li-badge">in</div>
+      <span>cacm523</span>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

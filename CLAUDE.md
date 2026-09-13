@@ -80,8 +80,8 @@ Cuando una infografía necesite el ícono real de una aplicación/herramienta (n
 
 - **Antes de construir/corregir una pieza que muestre logos de aplicaciones**: revisar primero si el ícono ya existe en `assets/iconos-apps/`. Si no existe, buscarlo en dashboardicons.com; si tampoco está ahí, informarle al usuario cuál ícono falta (nombre de la app) para que lo consiga y lo cargue él mismo — nunca inventar o aproximar un logo a mano cuando se supone que debe ser el ícono real.
 - Al insertar un ícono en el HTML de una infografía: para que el PNG final sea autocontenido (requisito del pipeline de exportación), embeber el SVG **inline** en el HTML (copiar su contenido, no referenciarlo por `<img src="assets/...">`) o convertirlo a `data:` URI — nunca depender de una ruta de archivo externa al momento de exportar con Chrome headless.
-- Íconos ya descargados a la fecha: Claude, ChatGPT, Gemini, Grok, Excel, Power BI, Python, SQL Server, Databricks, AWS, Azure, Google Cloud, Oracle, MySQL, PostgreSQL, MongoDB, MariaDB, SQLite, Redis, Cassandra, Amazon DynamoDB, Firebase, Neo4j, Elasticsearch, InfluxDB, ClickHouse.
-- **No disponibles en dashboardicons.com** (confirmado 2026-09-09): Tableau, Couchbase, Memcached, Apache HBase — si una pieza los necesita, pedirle el archivo al usuario.
+- Íconos ya descargados a la fecha: Claude, ChatGPT, Gemini, Grok, Excel, Power BI, Python, SQL Server, Databricks, AWS, Azure, Google Cloud, Oracle, MySQL, PostgreSQL, MongoDB, MariaDB, SQLite, Redis, Cassandra, Couchbase, Amazon DynamoDB, Memcached, Firebase, Neo4j, Elasticsearch, HBase, InfluxDB, ClickHouse, Tableau, R.
+- **No disponibles en dashboardicons.com** (confirmado 2026-09-13): SPSS, Stata, ATLAS.ti, NVivo, MAXQDA, Dedoose, Transana — si una pieza los necesita, pedirle el archivo al usuario; mientras tanto se usa iconografía semántica genérica (nunca un logo aproximado a mano).
 
 ### Dark-mode para zonas de código (excepción a "no dark-mode")
 

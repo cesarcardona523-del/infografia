@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>ETL vs. ELT vs. ETLT vs. Reverse ETL</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --earth:#C1620E; --earth-dark:#8C480A; --earth-pale:#FBEADD; --earth-line:#F0CBA0;
+    --green:#1E7A4F; --green-dark:#125C39; --green-pale:#E2F2E8; --green-line:#BFE0CC;
+    --ink:#1D2129; --muted:#5C6470; --line:#E4E9E6; --white:#FFFFFF; --paper:#FDF8F3;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    min-height:627px; display:flex; align-items:center; justify-content:center;
+    padding:32px 16px; background:#F7EFE6;
+    font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
+  .canvas{
+    position:relative; width:1200px; height:627px; margin:0 auto;
+    background:linear-gradient(160deg, #FFFCF8 0%, var(--paper) 55%, #FBF1E6 100%);
+    border-radius:16px; box-shadow:0 20px 50px rgba(60,30,5,0.16); overflow:hidden;
+    padding:16px 26px 10px; color:var(--ink); display:flex; flex-direction:column;
+  }
+  .header{ text-align:center; margin-bottom:8px; }
+  .eyebrow{ display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:800; letter-spacing:1.6px; color:var(--earth-dark); text-transform:uppercase; background:var(--earth-pale); border:1px solid var(--earth-line); padding:3px 10px; border-radius:20px; margin-bottom:5px; }
+  .eyebrow svg{ width:14px; height:14px; }
+  .header h1{ font-size:21px; margin:0 0 2px; font-weight:800; letter-spacing:-0.3px; }
+  .header p{ margin:0 auto; font-size:12px; color:var(--muted); max-width:820px; line-height:1.3; }
+
+  .body-grid{ flex:1; display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:12px; min-height:0; }
+  .col{ background:var(--white); border:1px solid var(--line); border-top:4px solid var(--accent); border-radius:12px; padding:10px 11px 9px; display:flex; flex-direction:column; box-shadow:0 2px 8px rgba(60,30,5,0.05); overflow:hidden; }
+  .ctag{ font-size:14px; font-weight:900; color:var(--accent); letter-spacing:0.5px; text-align:center; }
+  .cformula{ font-size:12px; color:var(--muted); text-align:center; font-weight:600; margin:2px 0 7px; line-height:1.2; }
+
+  .step{ display:flex; align-items:center; gap:8px; }
+  .sicon{ width:28px; height:28px; border-radius:8px; background:color-mix(in srgb, var(--accent) 14%, white); color:var(--accent); display:flex; align-items:center; justify-content:center; flex:none; }
+  .sicon svg{ width:16px; height:16px; }
+  .slabel{ font-size:13px; font-weight:800; color:var(--ink); line-height:1.15; }
+  .ssub{ font-size:12px; font-weight:500; color:var(--muted); line-height:1.2; margin-top:1px; }
+  .sarrow{ display:flex; justify-content:center; margin:2px 0; color:var(--line); }
+  .sarrow svg{ width:13px; height:13px; }
+
+  .cresult{ display:flex; align-items:center; gap:8px; margin-top:6px; padding:6px 8px; background:var(--green-pale); border:1px solid var(--green-line); border-radius:8px; font-size:12px; line-height:1.2; }
+  .cresult b{ color:var(--green-dark); font-size:12.5px; }
+  .ricon{ width:20px; height:20px; border-radius:50%; background:var(--green-dark); color:#fff; display:flex; align-items:center; justify-content:center; flex:none; }
+  .ricon svg{ width:12px; height:12px; }
+
+  .cnote{ margin-top:auto; padding-top:6px; font-size:12px; color:var(--muted); line-height:1.28; border-top:1px dashed var(--line); }
+  .cbest{ margin-top:7px; font-size:12px; color:var(--ink); line-height:1.3; }
+  .cbest span{ display:inline-block; font-weight:800; color:var(--accent); text-transform:uppercase; font-size:12px; letter-spacing:0.3px; margin-right:3px; }
+
+  .footer{ display:flex; align-items:center; justify-content:space-between; margin-top:8px; padding-top:6px; border-top:1px solid var(--line); }
+  .footer .note{ font-size:12px; color:var(--muted); max-width:900px; line-height:1.25; }
+  .footer .note b{ color:var(--earth-dark); }
+  .li-badge{ width:16px; height:16px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; font-family: Arial, sans-serif; }
+  .sig{ display:flex; align-items:center; gap:6px; flex:none; }
+  .sig span{ font-size:12px; font-weight:700; color:var(--muted); }
+</style>
+</head>
+<body>
+<div class="canvas-wrap">
+  <div class="canvas">
+
+    <div class="header">
+      <div class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>Arquitectura de Datos · Patrones de Integración</div>
+      <h1>ETL, ELT, ETLT y Reverse ETL: Cuándo Transformar el Dato</h1>
+      <p>Los cuatro patrones se diferencian por <b>cuándo</b> ocurre la transformación — antes de cargar, después, en ambos momentos, o en sentido inverso hacia el negocio.</p>
+    </div>
+
+    <div class="body-grid">
+      <div class="col" style="--accent:#C1620E">
+        <div class="ctag">ETL</div>
+        <div class="cformula">Extract → Transform → Load</div>
+        <div class="step">
+          <div class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 4c2 3 2 13 0 16M4 12h16"/></svg></div>
+          <div class="slabel">Extract<div class="ssub">Datos crudos de la fuente</div></div>
+        </div>
+        <div class="sarrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></div>
+<div class="step">
+          <div class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h16"/><path d="M8 7l-2 2 2 2M16 12l2 2-2 2"/></svg></div>
+          <div class="slabel">Transform<div class="ssub">Limpieza y reglas de negocio</div></div>
+        </div>
+        <div class="sarrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></div>
+<div class="step">
+          <div class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></div>
+          <div class="slabel">Load<div class="ssub">Se carga ya transformado</div></div>
+        </div>
+        
+        <div class="cresult"><div class="ricon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div><div>Resultado<br><b>Datos listos, pipeline rígido</b></div></div>
+        <div class="cbest"><span>Mejor para</span> BI tradicional y reportes con esquema estable y gobernanza estricta desde el origen.</div>
+        <div class="cnote">Transforma antes de cargar — clásico en data warehouses tradicionales.</div>
+      </div>
+      <div class="col" style="--accent:#8C480A">
+        <div class="ctag">ELT</div>
+        <div class="cformula">Extract → Load → Transform</div>
+        <div class="step">
+          <div class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 4c2 3 2 13 0 16M4 12h16"/></svg></div>
+          <div class="slabel">Extract<div class="ssub">Datos crudos de la fuente</div></div>
+        </div>
+        <div class="sarrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></div>
+<div class="step">
+          <div class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></div>
+          <div class="slabel">Load<div class="ssub">Se carga sin transformar</div></div>
+        </div>
+        <div class="sarrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></div>
+<div class="step">
+          <div class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+          <div class="slabel">Transform<div class="ssub">Se transforma dentro del warehouse</div></div>
+        </div>
+        
+        <div class="cresult"><div class="ricon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div><div>Resultado<br><b>Flexible y reprocesable</b></div></div>
+        <div class="cbest"><span>Mejor para</span> Volúmenes grandes en cloud warehouses modernos (Snowflake, BigQuery, Databricks).</div>
+        <div class="cnote">Aprovecha el cómputo del warehouse (dbt, SQL) — el crudo queda disponible.</div>
+      </div>
+      <div class="col" style="--accent:#B8860B">
+        <div class="ctag">ETLT</div>
+        <div class="cformula">Extract → Transform → Load → Transform</div>
+        <div class="step">
+          <div class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 4c2 3 2 13 0 16M4 12h16"/></svg></div>
+          <div class="slabel">Extract<div class="ssub">Datos crudos de la fuente</div></div>
+        </div>
+        <div class="sarrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></div>
+<div class="step">
+          <div class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M4.2 4.2l2.8 2.8M17 17l2.8 2.8M3 12h4M17 12h4M4.2 19.8 7 17M17 7l2.8-2.8"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <div class="slabel">Transform<div class="ssub">Limpieza básica / PII</div></div>
+        </div>
+        <div class="sarrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></div>
+<div class="step">
+          <div class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></div>
+          <div class="slabel">Load<div class="ssub">Se carga al warehouse</div></div>
+        </div>
+        <div class="sarrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></div>
+<div class="step">
+          <div class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+          <div class="slabel">Transform<div class="ssub">Modelado analítico completo</div></div>
+        </div>
+        
+        <div class="cresult"><div class="ricon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div><div>Resultado<br><b>Gobierno + flexibilidad</b></div></div>
+        <div class="cbest"><span>Mejor para</span> Arquitecturas medallón que necesitan enmascarar datos sensibles antes de aterrizarlos.</div>
+        <div class="cnote">Híbrido: transformación ligera antes, pesada después — común en medallón.</div>
+      </div>
+      <div class="col" style="--accent:#1E7A4F">
+        <div class="ctag">REVERSE ETL</div>
+        <div class="cformula">Extract (warehouse) → Transform → Load (herramientas)</div>
+        <div class="step">
+          <div class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></div>
+          <div class="slabel">Extract<div class="ssub">Datos ya modelados del warehouse</div></div>
+        </div>
+        <div class="sarrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></div>
+<div class="step">
+          <div class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M4.2 4.2l2.8 2.8M17 17l2.8 2.8M3 12h4M17 12h4M4.2 19.8 7 17M17 7l2.8-2.8"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <div class="slabel">Transform<div class="ssub">Se adaptan al esquema destino</div></div>
+        </div>
+        <div class="sarrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></div>
+<div class="step">
+          <div class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.6-1.1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V9c.2.7.8 1.2 1.5 1.4h.1a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/></svg></div>
+          <div class="slabel">Load<div class="ssub">Se cargan en CRM / Ads / Soporte</div></div>
+        </div>
+        
+        <div class="cresult"><div class="ricon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div><div>Resultado<br><b>Datos operacionalizados</b></div></div>
+        <div class="cbest"><span>Mejor para</span> Activar métricas del warehouse directamente en CRM, ads o herramientas de soporte.</div>
+        <div class="cnote">El flujo inverso: lleva el dato YA analizado hacia donde trabaja el negocio.</div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="note">La diferencia real no es solo el orden de las siglas: <b>ETL/ELT/ETLT</b> mueven datos crudos hacia el warehouse; <b>Reverse ETL</b> mueve datos ya modelados desde el warehouse hacia las herramientas donde opera el negocio (CRM, ads, soporte) — sin ese último paso, el análisis se queda en el dashboard.</div>
+      <div class="sig"><div class="li-badge">in</div><span>cacm523</span></div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

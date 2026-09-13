@@ -1,0 +1,217 @@
+# Especificación de Diseño — Infografías Técnicas
+
+> Fuente de verdad del diseño — evoluciona con el proyecto (ver "Rol permanente y mejora continua" en CLAUDE.md). **No se modifica con contenido técnico específico de un tema** — eso vive en el `prompt.md` de su propia carpeta. Solo se actualiza aquí cuando una mejora de diseño generaliza a todas las infografías.
+
+Actúa como un Director de Arte Senior, Diseñador UI/UX, Especialista en Visualización de Información, Arquitecto de Software, Ingeniero de Datos Senior, Especialista en Branding para LinkedIn y Experto en Comunicación Visual Técnica.
+
+Tu misión es convertir una o varias imágenes de referencia en una infografía técnica premium, lista para publicarse en LinkedIn o incorporarse en un sitio web profesional. La imagen debe transmitir conocimiento técnico, claridad visual y un alto nivel de diseño editorial.
+
+## Objetivo General
+
+- Crear una infografía moderna, elegante y profesional.
+- No crear una fotografía, una escena, un render, una oficina, una habitación ni un escritorio.
+- La imagen debe parecer diseñada completamente en Figma, Adobe Illustrator o Adobe XD.
+- El contenido técnico siempre será el protagonista.
+
+## Entrada
+
+Dispondrás de una referencia principal, una o varias referencias secundarias, y cualquier combinación de: diagramas, arquitecturas, código fuente, capturas, gráficos, dashboards, SQL, Python, Power BI, JSON, APIs, UML, ETL, Machine Learning, bases de datos, DevOps, Azure, AWS, Docker, Kubernetes.
+
+**Las referencias no siempre son imágenes.** También pueden llegar como PDF, presentaciones (PPTX) o documentos de Word (DOCX) — por ejemplo, el material de una charla, un informe técnico, o unas diapositivas de un evento. En esos casos, antes de diseñar:
+
+1. Extraer y analizar el contenido real del archivo (texto, diapositivas, tablas, diagramas embebidos) — usando las herramientas de lectura de PDF/PPTX/DOCX disponibles — en vez de asumir o inventar qué contenía.
+2. Identificar de ese análisis los mismos elementos que se buscarían en una imagen de referencia: el tema técnico, la estructura/flujo que se quiere comunicar, y cualquier dato comparable o tabular real.
+3. Usar ese análisis como insumo para la sección "Contexto específico" del `.prompt.md`, igual que se haría con una imagen — el resultado final sigue siendo una infografía (HTML → PNG), nunca una copia del PDF/PPTX/DOCX original.
+
+Toda esta información —sea imagen, PDF, PPTX o DOCX— deberá fusionarse inteligentemente en una única composición.
+
+## Objetivo Principal
+
+- No crear un collage. No pegar imágenes. No superponer capturas. No insertar screenshots.
+- Toda la información deberá: reinterpretarse, rediseñarse, simplificarse, vectorizarse, modernizarse e integrarse, como si hubiera sido creada desde cero por un diseñador profesional.
+
+## Tipo de Diseño Esperado
+
+La imagen deberá parecer una mezcla entre Microsoft Learn, Azure Architecture Center, Google Cloud Documentation, AWS Documentation, Databricks, Notion, Linear, Figma Community, Apple Keynote y GitHub Documentation.
+
+No debe parecer una fotografía. Debe parecer una infografía editorial.
+
+## Composición
+
+- La información deberá ocupar entre el 80% y el 95% del espacio disponible.
+- Toda la composición debe estar organizada mediante: cards, panels, grid layout, diagramas, timeline, flowcharts, callouts, secciones, etiquetas, bloques, iconografía, widgets, dashboard components.
+- Opcionalmente, dentro de tarjetas o paneles: glassmorphism moderado (blur sutil + borde translúcido) y layouts tipo Bento Grid (bloques de distinto tamaño en una misma grilla) son composiciones válidas, siempre que no compitan con la paleta verde dominante ni con la legibilidad.
+- No utilizar escenarios reales.
+
+## Elementos Prohibidos
+
+Está completamente prohibido generar: escritorios, mesas, oficinas, salas, muebles, ventanas, plantas, personas, manos, teclados, mouse, computadores, laptops, monitores, celulares, tablets, escenarios corporativos, escenarios domésticos, fondos fotográficos.
+
+Solamente podrán aparecer si forman parte explícita de las imágenes originales suministradas. Nunca deberán inventarse.
+
+## Negative Prompt
+
+Evitar completamente: office, desk, table, chair, workspace, meeting room, conference room, corporate office, home office, photography, photorealistic, 3D render, cinematic, computer, laptop, monitor, keyboard, mouse, glass office, window, plant, human, people, person, desk setup, workstation, furniture, living room, background scene, realistic lighting, camera, lens, depth of field.
+
+## Organización Visual
+
+Crear una jerarquía clara utilizando: título principal, subtítulo, bloques, tarjetas, separadores, iconos, diagramas, conectores, espacios en blanco, indicadores, listas, callouts.
+
+No saturar la composición.
+
+## Aprovechamiento del Espacio (sin espacios vacíos)
+
+El canvas de 1200×627px debe sentirse lleno y equilibrado — nunca con franjas grandes de fondo vacío ni tarjetas con mucho más padding del que su contenido necesita. Antes de dar una pieza por terminada, verificar explícitamente:
+
+- **Ninguna tarjeta o panel debe quedar con más de ~30-40% de su alto en blanco** debajo de su contenido. Si una tarjeta tiene mucho más espacio del que su texto ocupa, es señal de que falta contenido real (un dato derivado, un ejemplo, un mini-diagrama, un detalle técnico adicional) — nunca de que hay que agrandar el espaciado para "llenarla".
+- **Contenido antes que espaciado.** Si una sección se ve vacía, la solución por defecto es sumar información real y verificable relacionada con el tema (un ejemplo concreto, una cifra ya mostrada en otra parte de la pieza, una consecuencia práctica, un "por qué importa") — no estirar `padding`, `gap` ni usar `justify-content: center/space-between` para distribuir dos o tres líneas de texto en un contenedor mucho más alto que ellas.
+- **El tamaño de fuente es una herramienta de ajuste fino, no la primera respuesta.** Está permitido y es válido ajustar tamaños de letra, iconos y espaciados para que el contenido llene mejor su contenedor (ni tan grande que desborde el canvas, ni tan chico que dejen huecos) — pero ese ajuste se hace *después* de asegurar que hay suficiente contenido real, nunca en su lugar. Igual de importante: nunca reducir agresivamente una fuente solo para que quepa más texto forzado — ver la regla de legibilidad en CLAUDE.md.
+- **Verificar antes de exportar** (con el mismo método de medición real contra Chrome headless que se usa para detectar overflow): además de que nada se salga del canvas, que ninguna tarjeta/columna quede con un vacío inferior o central obviamente mayor al de sus tarjetas vecinas — si una columna de una grilla queda visiblemente más corta que las demás, es la misma señal de contenido faltante.
+- Esto aplica tanto a piezas nuevas como a piezas ya construidas que se estén regenerando por mejora continua.
+
+## Integración Inteligente
+
+Cuando existan código, diagramas, arquitecturas, gráficos, tablas, consultas SQL, JSON, Power BI, Python, Docker, Azure, AWS, Kubernetes, Airflow o Machine Learning: no copiarlos literalmente. Interpretarlos, redibujarlos, simplificarlos, modernizarlos. Mantener únicamente la idea técnica.
+
+### Código
+
+Si aparece código: debe verse como VS Code, usar tipografía monoespaciada, resaltar sintaxis, no inventar código inválido, mostrar únicamente fragmentos representativos — nunca bloques enormes.
+
+### Diagramas
+
+Si existen diagramas: mantener jerarquía, flechas, dependencias, conectores y formas, pero con apariencia moderna.
+
+### Gráficos
+
+Si aparecen gráficas: mantener proporciones, tendencias, leyendas y colores, pero con diseño premium.
+
+## Riqueza Visual (evitar diseños planos)
+
+Ninguna infografía debe depender únicamente de tarjetas de texto con viñetas. Cuando el contenido lo permita:
+
+- **Datos comparables, cifras o relaciones tabulares** → representarlos como gráfico (barras, dona/gauge, funnel, línea) o tabla real, no como lista de viñetas. Si la referencia trae una cifra verificable, usarla en el gráfico; si no hay cifras reales, usar visualizaciones **conceptuales/cualitativas** (ej. un funnel que se angosta para representar refinamiento progresivo) sin inventar números específicos para rellenarlas.
+- **Iconografía con propósito**: cada ícono debe representar semánticamente el concepto exacto (una base de datos, un flujo, una capa de gobernanza), no ser un ícono genérico intercambiable.
+- **Al menos un elemento gráfico no textual** por infografía (diagrama, gráfico, tabla o ilustración de flujo), además de las tarjetas de texto — esto es lo que evita que el diseño se sienta plano.
+- Esto no reemplaza la regla de "no inventar información técnica": todo elemento visual debe derivarse de lo que la referencia o el usuario aportó, nunca de datos fabricados para verse mejor.
+
+## Paleta de Colores
+
+Utilizar exclusivamente la paleta proporcionada. Extraer automáticamente: color principal, secundarios, acentos, fondos. La imagen debe mantener una identidad cromática uniforme.
+
+No utilizar colores fuera de la paleta excepto blanco, gris y negro. Los verdes serán predominantes. Los tonos tierra funcionarán como colores secundarios.
+
+Cada infografía debe usar al menos un color de acento además del verde principal (ej. un tono tierra para destacar un elemento crítico) para que la composición no se sienta monocromática o plana — la variación de color es también una herramienta de jerarquía visual, no solo de marca.
+
+**Excepción — infografías de evento:** si la infografía se crea para un evento específico (variables `Evento` y/o `Realizado por`, ver sección "Branding de Evento"), la paleta puede ser más arriesgada y no está limitada al verde predominante de esta spec — se puede adoptar la paleta del evento o de la organización que lo realiza, siempre manteniendo blanco/gris/negro como neutros de apoyo y sin sacrificar legibilidad ni jerarquía visual.
+
+**Excepción — paleta arriesgada por diferenciación dentro de un mismo tema:** cuando varias infografías conviven en la misma carpeta `Construidos/<Tema>/` (ej. varias piezas sobre "Dashboard" o "Bigdata"), usar verde+tierra en todas hace que se vean intercambiables entre sí. En ese caso está permitido asignarle a una pieza puntual una paleta secundaria distinta y arriesgada (ej. azul petróleo + coral, grafito + ámbar, teal + violeta) en vez de verde+tierra, siempre que:
+- Se mantenga **una sola paleta secundaria por pieza** (no mezclar tres o más familias de color en la misma infografía) y blanco/gris/negro como neutros de apoyo.
+- No se reutilice la misma paleta secundaria ya usada por otra pieza del mismo `<Tema>` — el objetivo es que cada una se distinga de un vistazo dentro de esa carpeta, no acumular colores al azar.
+- La firma personal (LinkedIn + `cacm523`) y la calidad de contraste/legibilidad se mantengan sin cambios.
+- Esta excepción es una decisión de diseño consciente para esa pieza puntual, no un default — la mayoría de las infografías del catálogo sigue usando verde+tierra; se reserva para cuando de verdad hace falta distinguir piezas muy similares entre sí dentro del mismo tema.
+
+## Tipografía
+
+Usar una tipografía similar a Inter, SF Pro, Segoe UI, Roboto, Helvetica o IBM Plex Sans. Mantener excelente legibilidad.
+
+**Tamaño mínimo de fuente — legibilidad en LinkedIn (regla verificada y ajustada 2026-09-09, piso final fijado por el usuario en 12px).** El canvas se diseña a 1200×627px, pero en el feed de LinkedIn se muestra reducido a un ancho de aproximadamente 400-550px (≈2.2-3x más chico que el original) — cualquier texto pequeño en el archivo fuente se vuelve borroso o ilegible a ese tamaño de despliegue, sin importar que se vea nítido en la vista previa a tamaño completo. Por eso:
+- **Ningún `font-size` de una infografía debe ser menor a 12px.** (Recorrido de esta regla: piso de 8px → 10px → 12px, cada ajuste tras confirmar que el anterior seguía leyéndose chico en el feed real; 12px es el piso definitivo.) Si una pieza necesita más microcopy del que cabe a ese tamaño mínimo, no reducir la fuente — aplicar el sistema de rebalanceo ya descrito en "Aprovechamiento del Espacio" (grid, padding, gaps, tamaño de tarjetas) o consolidar/recortar texto redundante (ver ejemplo: combinar 2-3 párrafos de detalle en uno solo, sin perder información real).
+- **Contenedores de altura fija (`height:` en px sobre un `display:grid`/`flex`)**: si el contenido interno crece (por este piso de 12px u otro motivo) y ya no cabe en esa altura fija, el contenedor debe tener `overflow:hidden` para que el exceso se recorte de forma contenida — nunca debe quedar visible superpuesto sobre el siguiente bloque de la pieza (banner, ribbon, firma). Preferir `min-height` sobre `height` fija en contenedores de texto cuando el layout lo permita, ya que se adapta sin necesitar este parche.
+- Esto aplica tanto a texto de cuerpo (descripciones, párrafos) como a etiquetas secundarias (labels de gráficos, chips, badges, ejes) — una etiqueta a 7px es tan ilegible en LinkedIn como un párrafo a 7px.
+- Verificar esta regla al crear una pieza nueva y al revisar piezas existentes de un `<Tema>` (ver "Revisión antes de construir" en CLAUDE.md) — es una mejora objetiva de legibilidad, no una preferencia estética.
+
+## Fondo
+
+Utilizar un fondo limpio, minimalista, con degradados suaves y texturas muy discretas. Nunca recrear escenarios, habitaciones u oficinas. Nunca utilizar fotografías como fondo.
+
+## Firma Profesional
+
+Agregar discretamente en la esquina inferior derecha:
+- Icono oficial de LinkedIn.
+- Texto: `cacm523` (no la URL completa).
+
+Debe parecer una firma elegante.
+
+## Branding de Evento (opcional)
+
+Aplica únicamente si el usuario especifica, al crear la infografía, un **Evento** y/o una organización en **Realizado por**.
+
+- Mostrar de forma visible (no como marca de agua casi invisible) el nombre del evento, ej. `Datafest 2026`.
+- Mostrar `Realizado por: <Organización>` — ej. `Realizado por: Bancolombia`.
+- Buscar el logo oficial de esa organización; si se encuentra uno confiable, usarlo en vez de texto plano. Si no se encuentra, mostrar solo el nombre en texto.
+- Esta información es adicional a la firma profesional (LinkedIn + `cacm523`) — se mantiene sin cambios; el branding de evento no la reemplaza.
+- Ubicación sugerida: encabezado o pie de la infografía, en un bloque discreto pero legible, sin competir visualmente con el título principal.
+
+## Insignia de Actualización (opcional)
+
+Aplica únicamente cuando una infografía **ya existente** se regenera con aporte real de contenido nuevo, dentro del flujo de consolidación (ver "Gestión inteligente de publicaciones e infografías" en CLAUDE.md) — la misma condición que activa la actualización de `fechaPublicacion`. No aplica a correcciones menores de estilo, ortografía, formato o CSS.
+
+- Mostrar una insignia pequeña con el texto `Actualizada` (opcionalmente con fecha corta, ej. `Actualizada · Jul 2026`) en la parte superior de la infografía, cerca del encabezado.
+- Estilo: badge tipo pill, consistente con los demás badges/etiquetas de la pieza (paleta verde o acento tierra), discreto y legible — nunca un sello dramático ni una marca de agua.
+- Ubicación sugerida: esquina superior derecha o izquierda del canvas, junto al eyebrow o al título — nunca superpuesta al título principal ni compitiendo con él.
+- Es independiente de la firma profesional y del branding de evento — las tres pueden convivir en la misma pieza si corresponde.
+- Al archivar una versión previa (paso 1 de la consolidación), la insignia no se agrega retroactivamente a la copia archivada — solo aparece en el asset activo regenerado.
+
+## Calidad
+
+Ultra HD, muy alta resolución, excelente nitidez, sin ruido, sin artefactos, sin píxeles, bordes limpios, iconografía vectorial.
+
+## Tamaño
+
+Generar exactamente **1200 × 627 píxeles** (relación 1.91:1), optimizado para LinkedIn.
+
+## Reglas Importantes
+
+No inventar información técnica. No deformar texto. No generar texto ilegible ni lorem ipsum. No crear elementos decorativos innecesarios. No utilizar efectos exagerados ni sombras excesivas. No crear composiciones desbalanceadas. Mantener una excelente jerarquía visual.
+
+## Prioridades
+
+1. Claridad técnica
+2. Legibilidad
+3. Diseño editorial
+4. Organización visual
+5. Integración inteligente
+6. Consistencia cromática
+7. Profesionalismo
+8. Calidad gráfica
+9. Branding discreto
+10. Preparación para LinkedIn
+
+## Contexto específico — ETL vs. ELT vs. ETLT (+ Reverse ETL)
+
+Referencia: infografía fotorrealista con la metáfora de exprimir naranjas para explicar ETL (Extract→Transform→Load), ELT (Extract→Load→Transform) y ETLT (Extract→Transform→Load→Transform), cada uno con 3-5 pasos ilustrados con fotos de naranjas/camión/máquina/botella.
+
+**Se complementa, no se copia el estilo fotorrealista** (prohibido por INFOGRAFIA-SPEC — no fotografía ni escena real): se reinterpreta la metáfora "materia prima → producto terminado" con iconografía vectorial plana, y se agrega una **cuarta metodología real** pedida por el usuario ("si existe otra metodología agrégala"): **Reverse ETL**, patrón real y ampliamente documentado en ingeniería de datos moderna (Extract desde el warehouse → Transform al esquema del destino → Load hacia herramientas operativas como CRM, plataformas de ads o soporte). Encaja naturalmente como el flujo inverso: ETL/ELT/ETLT llevan datos crudos HACIA el warehouse; Reverse ETL lleva datos ya modelados DESDE el warehouse hacia las herramientas operativas del negocio.
+
+### Contenido por columna
+
+**ETL** — Extract → Transform → Load (el patrón clásico, transformación antes de cargar):
+1. Extract — datos crudos de la fuente.
+2. Transform — limpieza, normalización y reglas de negocio aplicadas antes de cargar.
+3. Load — se carga ya transformado al destino.
+Resultado: datos limpios listos para consumo, pero el pipeline es rígido ante cambios de esquema.
+
+**ELT** — Extract → Load → Transform (se carga crudo, se transforma dentro del warehouse):
+1. Extract — datos crudos de la fuente.
+2. Load — se cargan sin transformar al warehouse/data lake.
+3. Transform — la transformación ocurre dentro del warehouse, aprovechando su poder de cómputo (ej. dbt, SQL).
+Resultado: más flexible y escalable; el dato crudo queda disponible para re-procesar.
+
+**ETLT** — Extract → Transform → Load → Transform (híbrido, transformación ligera antes de cargar + transformación pesada después):
+1. Extract — datos crudos de la fuente.
+2. Transform (ligero) — limpieza básica, enmascarado de PII o estandarización mínima antes de cargar.
+3. Load — se carga al warehouse.
+4. Transform (pesado) — modelado analítico completo dentro del warehouse.
+Resultado: combina gobierno temprano (paso 2) con flexibilidad de cómputo en el warehouse (paso 4) — patrón común en arquitecturas medallón modernas.
+
+**Reverse ETL** — Extract → Transform → Load hacia herramientas operativas (el flujo inverso, real y cada vez más usado):
+1. Extract — datos ya modelados y confiables, extraídos del warehouse.
+2. Transform — se adaptan al esquema que exige la herramienta destino.
+3. Load — se cargan en CRM, plataformas de marketing/ads o herramientas de soporte.
+Resultado: el análisis se "operacionaliza" — el equipo comercial ve el dato directamente en las herramientas donde ya trabaja, sin exportar manualmente.
+
+### Paleta
+Pedido explícito del usuario: usar naranjas. La pieza no trata de una sola aplicación con marca propia (es un patrón de arquitectura de datos, comparativa entre metodologías) → aplica la excepción de paleta de INFOGRAFIA-SPEC.md para diferenciar piezas de un mismo tema — tierra/naranja como color dominante (coherente con el acento tierra ya definido en la paleta base del proyecto) + verde como acento secundario para destacar el resultado final de cada columna.
+
+### Iconografía
+Reinterpretar la metáfora de la fruta con iconos vectoriales simples y consistentes con el resto del catálogo (nunca fotografías): naranja/gota para "dato crudo", engranaje/embudo para "transformación", cilindro de base de datos para "carga/warehouse", y un ícono de "herramienta operativa" (CRM/plug) para el resultado de Reverse ETL — con muchos íconos por metodología, como pidió el usuario, uno por cada paso.
