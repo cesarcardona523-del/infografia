@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Ciberseguridad vs Seguridad de la Información</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --ink:#182018; --muted:#5B6B60; --line:#DCE5DD; --white:#FFFFFF; --paper:#F5F8F5;
+    --green:#1F7A4D; --green-deep:#0E4B33; --tierra:#B5652F;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    min-height:627px; display:flex; align-items:center; justify-content:center;
+    padding:32px 16px; background:#EDF1EC;
+    font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
+  .canvas{
+    position:relative; width:1200px; height:627px; margin:0 auto;
+    background:linear-gradient(160deg,#FBFDFB 0%, var(--paper) 55%, #EFF4EE 100%);
+    border-radius:16px; box-shadow:0 20px 50px rgba(14,30,20,0.16); overflow:hidden;
+    padding:16px 26px 12px; color:var(--ink); display:flex; flex-direction:column;
+  }
+
+  .header-top{ display:flex; align-items:flex-start; justify-content:space-between; gap:16px; margin-bottom:9px; }
+  .eyebrow{ display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:800; letter-spacing:1.3px; color:var(--green); text-transform:uppercase; background:#E4F2E8; border:1px solid #C7E3D0; padding:3px 9px; border-radius:20px; margin-bottom:6px; }
+  .eyebrow svg{ width:13px; height:13px; }
+  h1{ font-size:20px; margin:0 0 3px; font-weight:800; letter-spacing:-0.2px; line-height:1.18; }
+  h1 u{ text-decoration:none; color:var(--tierra); }
+  .sub{ margin:0; font-size:12px; color:var(--muted); max-width:740px; line-height:1.32; }
+  .quote-callout{ flex:none; max-width:270px; background:#FDF3EA; border:1px solid #EAD2B7; border-radius:10px; padding:6px 10px; font-size:12px; font-style:italic; color:#7A4A21; line-height:1.28; }
+  .quote-callout b{ font-style:normal; }
+
+  .cols{ flex:1; display:grid; grid-template-columns:1fr 200px 1fr; gap:12px; min-height:0; }
+
+  .col{ border-radius:12px; overflow:hidden; box-shadow:0 2px 8px rgba(14,30,20,0.05); border:1px solid var(--line); background:var(--white); display:flex; flex-direction:column; }
+  .col-head{ padding:8px 12px 7px; color:#fff; display:flex; align-items:center; gap:8px; }
+  .col-head .badge{ width:19px; height:19px; border-radius:50%; background:rgba(255,255,255,0.24); display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; flex:none; }
+  .col-head .ic{ width:19px; height:19px; flex:none; }
+  .col-head .names{ line-height:1.12; }
+  .col-head .name{ font-size:13.5px; font-weight:800; }
+  .col-head .meta{ font-size:12px; opacity:0.92; font-weight:600; }
+  .col.info .col-head{ background:linear-gradient(135deg,var(--green),#2E9660); }
+  .col.ciber .col-head{ background:linear-gradient(135deg,var(--green-deep),#155C3F); }
+
+  .col-body{ padding:8px 11px 9px; flex:1; display:flex; flex-direction:column; gap:5px; }
+  .row{ display:flex; gap:6px; align-items:flex-start; font-size:12px; line-height:1.24; padding-bottom:5px; border-bottom:1px dashed var(--line); }
+  .row:last-child{ border-bottom:none; padding-bottom:0; }
+  .row svg{ width:14px; height:14px; flex:none; margin-top:1px; }
+  .row .lbl{ font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:0.3px; display:block; margin-bottom:1px; }
+  .col.info .row .lbl{ color:var(--green); }
+  .col.ciber .row .lbl{ color:var(--green-deep); }
+  .row .txt{ color:var(--muted); }
+  .row .txt b{ color:var(--ink); font-weight:700; }
+
+  .mid{ background:#12241A; border-radius:12px; display:flex; flex-direction:column; padding:9px 10px; overflow:hidden; }
+  .mid h3{ margin:0 0 7px; font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:0.6px; color:#fff; text-align:center; }
+  .midrow{ display:flex; align-items:center; gap:7px; background:#1A3527; border-radius:8px; padding:5px 7px; margin-bottom:5px; }
+  .midrow:last-child{ margin-bottom:0; }
+  .midrow svg{ width:15px; height:15px; flex:none; color:#8FE0B6; }
+  .midrow .t{ font-size:12px; font-weight:800; color:#fff; line-height:1.1; }
+  .midrow .d{ font-size:12px; color:#A9C7B6; line-height:1.1; }
+
+  .aiband{ margin-top:10px; background:linear-gradient(90deg,#0E3D28,#123222); border-radius:12px; padding:8px 14px; display:grid; grid-template-columns:auto 1fr 1fr; gap:12px; align-items:center; }
+  .aiband .aitag{ display:flex; flex-direction:column; align-items:center; gap:2px; color:#fff; flex:none; }
+  .aiband .aitag svg{ width:24px; height:24px; }
+  .aiband .aitag span{ font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:0.4px; }
+  .aihalf{ font-size:12px; line-height:1.3; color:#D9E7DE; }
+  .aihalf b{ color:#fff; }
+  .aihalf .h{ font-size:12px; font-weight:800; color:#7FDDA8; text-transform:uppercase; letter-spacing:0.3px; display:block; margin-bottom:2px; }
+
+  .footer{ display:flex; align-items:center; justify-content:space-between; margin-top:9px; }
+  .closebox{ display:flex; gap:10px; flex:1; }
+  .cbox{ flex:1; background:var(--white); border:1px solid var(--line); border-radius:9px; padding:6px 10px; font-size:12px; line-height:1.25; color:var(--muted); }
+  .cbox b{ color:var(--ink); }
+  .sig{ display:flex; align-items:center; gap:6px; flex:none; margin-left:12px; }
+  .li-badge{ width:17px; height:17px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; font-family:Arial,sans-serif; }
+  .sig span{ font-size:12px; font-weight:700; color:var(--muted); }
+</style>
+</head>
+<body>
+<div class="canvas-wrap">
+  <div class="canvas">
+
+    <div class="header-top">
+      <div>
+        <div class="eyebrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18h6M10 22h4M12 2a6 6 0 0 0-4 10.5c.6.5 1 1.3 1 2.5h6c0-1.2.4-2 1-2.5A6 6 0 0 0 12 2z"/></svg>
+          ¿Sabías que...?
+        </div>
+        <h1>Ciberseguridad y Seguridad de la Información <u>no son lo mismo</u></h1>
+        <p class="sub">Se complementan, pero tienen alcance, enfoque y objetivos distintos — y ambas están siendo transformadas por la IA al mismo tiempo.</p>
+      </div>
+      <div class="quote-callout">La <b>Seguridad de la Información</b> gestiona el qué y el por qué; la <b>Ciberseguridad</b> se enfoca en el cómo y el cuándo.</div>
+    </div>
+
+    <div class="cols">
+
+      <div class="col info">
+        <div class="col-head">
+          <span class="badge">1</span>
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6l7-3z"/></svg>
+          <div class="names"><div class="name">Seguridad de la Información</div><div class="meta">Protege lo que importa: la información</div></div>
+        </div>
+        <div class="col-body">
+          <div class="row"><svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg><div><span class="lbl">Alcance</span><span class="txt">Datos, procesos y personas — toda la organización, enfoque físico y digital.</span></div></div>
+          <div class="row"><svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg><div><span class="lbl">Enfoque</span><span class="txt">Gestión de riesgos, cumplimiento normativo, continuidad del negocio.</span></div></div>
+          <div class="row"><svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6l7-3z"/></svg><div><span class="lbl">Objetivo</span><span class="txt">Preservar <b>confidencialidad, integridad y disponibilidad</b> de la información.</span></div></div>
+          <div class="row"><svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.5-2.5 2-2.5 3.5M12 17h.01"/></svg><div><span class="lbl">Pregunta clave</span><span class="txt">"¿Cómo protegemos la información crítica del negocio?"</span></div></div>
+          <div class="row"><svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18M6 20V12M12 20V6M18 20v-9"/></svg><div><span class="lbl">Impacto al negocio</span><span class="txt">Confianza, cumplimiento, continuidad.</span></div></div>
+          <div class="row"><svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M5 4h14v16l-7-3-7 3V4z"/></svg><div><span class="lbl">Marco de referencia</span><span class="txt">Estándares como <b>ISO/IEC 27001</b> y <b>ISO/IEC 27002</b>.</span></div></div>
+        </div>
+      </div>
+
+      <div class="mid">
+        <h3>Diferencias Clave</h3>
+        <div class="midrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg><div><div class="t">Alcance</div><div class="d">Qué abarca</div></div></div>
+        <div class="midrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg><div><div class="t">Enfoque</div><div class="d">Cómo lo aborda</div></div></div>
+        <div class="midrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6l7-3z"/></svg><div><div class="t">Objetivo</div><div class="d">Qué busca</div></div></div>
+        <div class="midrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.5-2.5 2-2.5 3.5M12 17h.01"/></svg><div><div class="t">Pregunta clave</div><div class="d">Qué responde</div></div></div>
+        <div class="midrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18M6 20V12M12 20V6M18 20v-9"/></svg><div><div class="t">Impacto</div><div class="d">En el negocio</div></div></div>
+        <div class="midrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M5 4h14v16l-7-3-7 3V4z"/></svg><div><div class="t">Marco</div><div class="d">Estándar de referencia</div></div></div>
+      </div>
+
+      <div class="col ciber">
+        <div class="col-head">
+          <span class="badge">2</span>
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+          <div class="names"><div class="name">Ciberseguridad</div><div class="meta">Defiende la tecnología contra amenazas</div></div>
+        </div>
+        <div class="col-body">
+          <div class="row"><svg viewBox="0 0 24 24" fill="none" stroke="var(--green-deep)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="9" y="14" width="6" height="6" rx="1"/><path d="M7 10v2h10v-2M12 14v-2"/></svg><div><span class="lbl">Alcance</span><span class="txt">Sistemas, redes y aplicaciones — activos digitales, entorno conectado.</span></div></div>
+          <div class="row"><svg viewBox="0 0 24 24" fill="none" stroke="var(--green-deep)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg><div><span class="lbl">Enfoque</span><span class="txt">Prevención y detección, respuesta a incidentes, resiliencia.</span></div></div>
+          <div class="row"><svg viewBox="0 0 24 24" fill="none" stroke="var(--green-deep)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><div><span class="lbl">Objetivo</span><span class="txt">Prevenir ataques, detectar intrusiones, responder incidentes.</span></div></div>
+          <div class="row"><svg viewBox="0 0 24 24" fill="none" stroke="var(--green-deep)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.5-2.5 2-2.5 3.5M12 17h.01"/></svg><div><span class="lbl">Pregunta clave</span><span class="txt">"¿Cómo defendemos los activos digitales ante amenazas?"</span></div></div>
+          <div class="row"><svg viewBox="0 0 24 24" fill="none" stroke="var(--green-deep)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18M6 20V12M12 20V6M18 20v-9"/></svg><div><span class="lbl">Impacto al negocio</span><span class="txt">Menos ataques, menos fugas, menos interrupciones.</span></div></div>
+          <div class="row"><svg viewBox="0 0 24 24" fill="none" stroke="var(--green-deep)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M5 4h14v16l-7-3-7 3V4z"/></svg><div><span class="lbl">Marco de referencia</span><span class="txt">Frameworks como <b>NIST Cybersecurity Framework</b> y <b>MITRE ATT&CK</b>.</span></div></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="aiband">
+      <div class="aitag">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#7FDDA8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a6 6 0 0 0-4 10.5c.6.5 1 1.3 1 2.5h6c0-1.2.4-2 1-2.5A6 6 0 0 0 12 2z"/></svg>
+        <span>El nuevo<br>factor: IA</span>
+      </div>
+      <div class="aihalf"><span class="h">En Seguridad de la Información</span>Gobernar los datos con los que se entrenan y alimentan los modelos: <b>clasificar qué información puede usarse en IA</b>, y fijar políticas de uso responsable.</div>
+      <div class="aihalf"><span class="h">En Ciberseguridad</span>La IA es <b>arma y escudo a la vez</b>: genera phishing y deepfakes más creíbles, pero también <b>detecta anomalías y responde a incidentes</b> más rápido que un equipo humano.</div>
+    </div>
+
+    <div class="footer">
+      <div class="closebox">
+        <div class="cbox"><b>Seguridad de la Información</b> gestiona el qué y el por qué.</div>
+        <div class="cbox"><b>Ciberseguridad</b> se enfoca en el cómo y el cuándo.</div>
+        <div class="cbox">Juntas — <b>y con IA de por medio</b> — forman una estrategia integral de protección.</div>
+      </div>
+      <div class="sig"><div class="li-badge">in</div><span>cacm523</span></div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
