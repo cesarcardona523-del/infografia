@@ -2666,5 +2666,29 @@
       "likes": 0,
       "shares": 0
     }
+  },
+  {
+    "id": "ciberseguridad-vs-seguridad-informacion",
+    "imagen": "Construidos/Ciberseguridad/ciberseguridad-vs-seguridad-informacion.png",
+    "fechaPublicacion": "2026-09-14T09:10:00",
+    "categoriaPrincipal": "gobierno-de-datos",
+    "temas": [
+      "gobierno-datos",
+      "ia"
+    ],
+    "tipoContenido": "infografia",
+    "es": {
+      "topico": "Ciberseguridad vs Seguridad de la Información",
+      "descripcion": "Ciberseguridad y Seguridad de la Información se confunden con frecuencia, pero son disciplinas complementarias con alcance, enfoque y objetivos distintos. La Seguridad de la Información protege lo que importa -la información en sí, sin importar su soporte-: su alcance cubre datos, procesos y personas en toda la organización; su enfoque es la gestión de riesgos, el cumplimiento normativo y la continuidad del negocio; su objetivo es preservar confidencialidad, integridad y disponibilidad, apoyada en estándares como ISO/IEC 27001 y 27002. La Ciberseguridad defiende la tecnología que contiene esa información contra amenazas digitales: su alcance son los sistemas, redes y aplicaciones; su enfoque es la prevención, detección y respuesta a incidentes; su objetivo es prevenir ataques y detectar intrusiones, apoyada en frameworks como el NIST Cybersecurity Framework y MITRE ATT&CK. La pieza suma un ángulo adicional sobre cómo la IA está transformando ambas disciplinas al mismo tiempo: en Seguridad de la Información, exige gobernar qué datos pueden usarse para entrenar o alimentar modelos y fijar políticas de uso responsable; en Ciberseguridad, la IA es arma y escudo a la vez -genera phishing y deepfakes más creíbles, pero también permite detectar anomalías y responder a incidentes más rápido que un equipo humano-. En resumen: la Seguridad de la Información gestiona el qué y el por qué; la Ciberseguridad se enfoca en el cómo y el cuándo; juntas, y con la IA de por medio, forman una estrategia integral de protección."
+    },
+    "en": {
+      "topico": "Cybersecurity vs Information Security",
+      "descripcion": "Cybersecurity and Information Security are often confused, but they are complementary disciplines with different scope, focus and goals. Information Security protects what matters -the information itself, regardless of its medium-: its scope covers data, processes and people across the whole organization; its focus is risk management, regulatory compliance and business continuity; its goal is preserving confidentiality, integrity and availability, supported by standards like ISO/IEC 27001 and 27002. Cybersecurity defends the technology that holds that information against digital threats: its scope is systems, networks and applications; its focus is prevention, detection and incident response; its goal is preventing attacks and detecting intrusions, supported by frameworks like the NIST Cybersecurity Framework and MITRE ATT&CK. The piece adds a further angle on how AI is reshaping both disciplines at once: in Information Security, it demands governing which data can be used to train or feed models and setting responsible-use policies; in Cybersecurity, AI is both weapon and shield -it generates more convincing phishing and deepfakes, but also enables faster anomaly detection and incident response than a human team-. In short: Information Security manages the what and the why; Cybersecurity focuses on the how and the when; together, with AI in the mix, they form an integrated protection strategy."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
   }
 ]
