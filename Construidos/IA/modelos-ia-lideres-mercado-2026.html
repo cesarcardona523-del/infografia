@@ -73,6 +73,15 @@
   .sig{ display:flex; align-items:center; gap:6px; flex:none; }
   .li-badge{ width:17px; height:17px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; font-family:Arial,sans-serif; }
   .sig span{ font-size:12px; font-weight:700; color:var(--muted); }
+
+  /* numeracion narrativa + callout */
+  .step-badge{ width:19px; height:19px; border-radius:50%; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800; flex:none; }
+  .header-top{ display:flex; align-items:flex-start; justify-content:space-between; gap:16px; }
+  .quote-callout{ flex:none; max-width:300px; background:#FFF6ED; border:1px solid #F3D9BE; border-radius:10px; padding:7px 11px; font-size:12px; font-style:italic; color:#8A5A2E; line-height:1.32; }
+  .quote-callout b{ font-style:normal; }
+  .best-grid{ display:grid; grid-template-columns:1fr 1fr; gap:7px 10px; }
+  .best-grid .nrow{ margin-bottom:0; align-items:flex-start; }
+  .best-grid .nrow:nth-child(5){ grid-column:1 / -1; }
 </style>
 </head>
 <body>
@@ -80,18 +89,23 @@
   <div class="canvas">
 
     <div class="header">
-      <div class="eyebrow">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:13px;height:13px"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>
-        Panorama de Modelos de IA · Septiembre 2026
+      <div class="header-top">
+        <div>
+          <div class="eyebrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:13px;height:13px"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>
+            Panorama de Modelos de IA · Septiembre 2026
+          </div>
+          <h1>Los Modelos de IA que Lideran en Inteligencia — y los que Domina el Mercado</h1>
+          <p class="sub">Dos carreras distintas: la del mejor benchmark y la del uso real. En la primera manda Anthropic; en la segunda, ChatGPT sigue muy adelante.</p>
+        </div>
+        <div class="quote-callout">"El error no es no usar IA. El error es usar <b>la misma IA para todo</b>": ningún modelo lidera en inteligencia, velocidad, costo y adopción a la vez.</div>
       </div>
-      <h1>Los Modelos de IA que Lideran en Inteligencia — y los que Domina el Mercado</h1>
-      <p class="sub">Dos carreras distintas: la del mejor benchmark y la del uso real. En la primera manda Anthropic; en la segunda, ChatGPT sigue muy adelante.</p>
     </div>
 
     <div class="body-grid">
 
       <div class="panel">
-        <h2>Ranking de Inteligencia <span class="src">— Artificial Analysis · Intelligence Index v4.3</span></h2>
+        <h2><span class="step-badge">1</span>Ranking de Inteligencia <span class="src">— Artificial Analysis · Intelligence Index v4.3</span></h2>
       <div class="lrow">
         <span class="pv" style="background:#FBEDE7"><svg style="width:18px;height:18px;flex:none" width="1200" height="1200" viewBox="0 0 1200 1200" xmlns="http://www.w3.org/2000/svg">
     <g id="icclaude-g314">
@@ -178,7 +192,7 @@
 
       <div class="right-col">
         <div class="panel">
-          <h2>Cuota de Mercado — Chatbots <span class="src">(EE.UU., sept 2026)</span></h2>
+          <h2><span class="step-badge">2</span>Cuota de Mercado — Chatbots <span class="src">(EE.UU., sept 2026)</span></h2>
         <div class="msrow">
           <div class="msname">ChatGPT</div>
           <div class="msbg"><div class="msbar" style="width:100.0%; background:#10A37F"></div></div>
@@ -218,18 +232,28 @@
         </div>
 
         <div class="panel grow">
-          <h2>El Mejor de Cada Laboratorio — y en qué destaca</h2>
-        <div class="nrow">
-          <span class="ndot" style="background:#D97757"></span>
-          <div><b>Claude Fable 5.1</b> <span class="nprov">Anthropic · #1 del índice (53.4)</span><br><span class="nnote">Mejor en <b>código y tareas de agente</b>: el puntaje de coding más alto de todo el ranking (81.6). Referencia para desarrollo asistido y flujos autónomos con herramientas.</span></div>
-        </div>
-        <div class="nrow">
-          <span class="ndot" style="background:#10A37F"></span>
-          <div><b>GPT-6 Astra</b> <span class="nprov">OpenAI · #2 del índice (52.8)</span><br><span class="nnote">Mejor en <b>inteligencia por token</b>: el más eficiente cerca de la frontera y domina la frontera de tokens de salida. El más versátil para uso general amplio.</span></div>
-        </div>
-        <div class="nrow">
-          <span class="ndot" style="background:#4285F4"></span>
-          <div><b>Gemini 3.8 Flash</b> <span class="nprov">Google · su modelo de frontera actual</span><br><span class="nnote">Mejor en <b>velocidad y costo</b>: 203 tokens/segundo y $0.75 por millón, el más rápido y barato del grupo de frontera. Ideal para volumen alto y tiempo real. (Google no lanza un "Pro" nuevo desde Gemini 3.1.)</span></div>
+          <h2><span class="step-badge">3</span>Mejor Para — según laboratorio y tarea</h2>
+        <div class="best-grid">
+          <div class="nrow">
+            <span class="ndot" style="background:#D97757"></span>
+            <div><b>Claude Fable 5.1</b> <span class="nprov">Anthropic</span><br><span class="nnote">Código y agentes — coding más alto del índice (81.6).</span></div>
+          </div>
+          <div class="nrow">
+            <span class="ndot" style="background:#10A37F"></span>
+            <div><b>GPT-6 Astra</b> <span class="nprov">OpenAI</span><br><span class="nnote">Inteligencia por token — el más eficiente en frontera.</span></div>
+          </div>
+          <div class="nrow">
+            <span class="ndot" style="background:#4285F4"></span>
+            <div><b>Gemini 3.8 Flash</b> <span class="nprov">Google</span><br><span class="nnote">Velocidad y costo — 203 t/s, $0.75/M, el más barato.</span></div>
+          </div>
+          <div class="nrow">
+            <span class="ndot" style="background:#111111"></span>
+            <div><b>Grok 4.6</b> <span class="nprov">xAI</span><br><span class="nnote">Actualidad — acceso directo a X y tendencias en vivo.</span></div>
+          </div>
+          <div class="nrow">
+            <span class="ndot" style="background:#0866FF"></span>
+            <div><b>Muse Spark 1.3</b> <span class="nprov">Meta</span><br><span class="nnote">Costo mínimo — $1.25/M, útil para volumen masivo.</span></div>
+          </div>
         </div>
         </div>
       </div>
