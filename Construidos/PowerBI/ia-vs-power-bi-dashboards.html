@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>¿Por qué Power BI si ya hay IA que crea dashboards?</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --ink:#182018; --muted:#5B6B60; --line:#DCE5DD; --white:#FFFFFF; --paper:#F5F8F5;
+    --green:#1F7A4D; --green-deep:#0E4B33; --tierra:#B5652F; --pbi:#F2C811; --pbiD:#8A6D00;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    min-height:627px; display:flex; align-items:center; justify-content:center;
+    padding:32px 16px; background:#EDF1EC;
+    font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
+  .canvas{
+    position:relative; width:1200px; height:627px; margin:0 auto;
+    background:linear-gradient(160deg,#FBFDFB 0%, var(--paper) 55%, #EFF4EE 100%);
+    border-radius:16px; box-shadow:0 20px 50px rgba(14,30,20,0.16); overflow:hidden;
+    padding:16px 26px 12px; color:var(--ink); display:flex; flex-direction:column;
+  }
+
+  .header-top{ display:flex; align-items:flex-start; justify-content:space-between; gap:16px; margin-bottom:8px; }
+  .eyebrow{ display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:800; letter-spacing:1.3px; color:var(--green); text-transform:uppercase; background:#E4F2E8; border:1px solid #C7E3D0; padding:3px 9px; border-radius:20px; margin-bottom:6px; }
+  .eyebrow svg{ width:13px; height:13px; flex:none; }
+  h1{ font-size:19px; margin:0 0 3px; font-weight:800; letter-spacing:-0.2px; line-height:1.18; }
+  h1 u{ text-decoration:none; color:var(--pbiD); }
+  .sub{ margin:0; font-size:12px; color:var(--muted); max-width:720px; line-height:1.3; }
+  .quote-callout{ flex:none; max-width:280px; background:#FFFAE6; border:1px solid #F0DF9E; border-radius:10px; padding:6px 10px; font-size:12px; font-style:italic; color:#6B551A; line-height:1.26; }
+  .quote-callout b{ font-style:normal; }
+
+  .vs-row{ display:grid; grid-template-columns:1fr auto 1fr; gap:10px; align-items:stretch; margin-bottom:9px; }
+  .vs-card{ border-radius:10px; padding:8px 12px; display:flex; align-items:center; gap:10px; }
+  .vs-card.ai{ background:#F1F0EE; border:1px solid #E2E0DC; }
+  .vs-card.pbi{ background:#FFF8DE; border:1px solid #F0DF9E; }
+  .vs-ic{ width:34px; height:34px; border-radius:9px; display:flex; align-items:center; justify-content:center; flex:none; }
+  .vs-card.ai .vs-ic{ background:#DCDAD5; }
+  .vs-card.pbi .vs-ic{ background:#FBEDB0; }
+  .vs-txt{ font-size:12px; line-height:1.26; color:var(--muted); }
+  .vs-txt b{ display:block; font-size:13px; color:var(--ink); margin-bottom:1px; }
+  .vs-mid{ display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; }
+  .vs-mid .vsbadge{ width:34px; height:34px; border-radius:50%; background:var(--ink); color:#fff; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800; }
+  .attrs{ display:flex; gap:14px; justify-content:center; }
+  .attr{ display:flex; flex-direction:column; align-items:center; gap:2px; font-size:12px; font-weight:700; color:var(--muted); }
+  .attr svg{ width:16px; height:16px; color:var(--pbiD); }
+
+  .reasons-lbl{ text-align:center; font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:0.5px; color:var(--ink); margin:2px 0 6px; }
+  .reasons{ display:grid; grid-template-columns:repeat(6,1fr); gap:8px; margin-bottom:9px; }
+  .rcard{ background:var(--white); border:1px solid var(--line); border-radius:10px; padding:7px 8px; display:flex; flex-direction:column; gap:4px; }
+  .rcard .badge{ width:18px; height:18px; border-radius:50%; background:var(--pbi); color:#3D2F00; font-size:11px; font-weight:800; display:flex; align-items:center; justify-content:center; }
+  .rcard b{ font-size:12px; color:var(--ink); line-height:1.15; }
+  .rcard span{ font-size:12px; color:var(--muted); line-height:1.22; }
+
+  .practice{ flex:1; display:grid; grid-template-columns:1fr 1fr; gap:10px; min-height:0; }
+  .pcol{ border-radius:11px; padding:8px 12px; display:flex; flex-direction:column; }
+  .pcol.aigen{ background:#26221A; }
+  .pcol.pbigen{ background:linear-gradient(135deg,#3A2F05,#1D1800); }
+  .pcol h4{ margin:0 0 6px; font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:0.4px; color:#fff; display:flex; align-items:center; gap:6px; }
+  .pcol h4 svg{ width:14px; height:14px; }
+  .prow{ display:flex; gap:6px; align-items:flex-start; font-size:12px; line-height:1.26; color:#D9D6CC; margin-bottom:4px; }
+  .prow:last-child{ margin-bottom:0; }
+  .prow svg{ width:13px; height:13px; flex:none; margin-top:1px; }
+  .prow b{ color:#fff; }
+  .pcol.aigen .prow svg{ color:#B7B39F; }
+  .pcol.pbigen .prow svg{ color:var(--pbi); }
+
+  .ribbon{ margin-top:9px; background:#12140E; border-radius:11px; padding:8px 16px; display:flex; align-items:center; gap:12px; }
+  .ribbon svg{ width:20px; height:20px; color:var(--pbi); flex:none; }
+  .ribbon .t{ font-size:13px; font-weight:800; color:#fff; }
+  .ribbon .t u{ text-decoration:none; color:var(--pbi); }
+  .ribbon .d{ font-size:12px; color:#C9C6BA; margin-left:auto; text-align:right; }
+
+  .footer{ display:flex; align-items:center; justify-content:flex-end; margin-top:7px; }
+  .sig{ display:flex; align-items:center; gap:6px; flex:none; }
+  .li-badge{ width:17px; height:17px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; font-family:Arial,sans-serif; }
+  .sig span{ font-size:12px; font-weight:700; color:var(--muted); }
+</style>
+</head>
+<body>
+<div class="canvas-wrap">
+  <div class="canvas">
+
+    <div class="header-top">
+      <div>
+        <div class="eyebrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
+          Dashboards &amp; IA
+        </div>
+        <h1>¿Por qué usar Power BI si ya hay IA que <u>crea dashboards</u>?</h1>
+        <p class="sub">Hoy varios modelos de IA generan un dashboard en HTML/CSS/JS desde un prompt. La pregunta real no es cuál gana, sino qué necesita tu negocio.</p>
+      </div>
+      <div class="quote-callout">La IA puede <b>generar</b> un dashboard. Power BI te da el <b>control, la calidad y la escalabilidad</b> que tu negocio necesita.</div>
+    </div>
+
+    <div class="vs-row">
+      <div class="vs-card ai">
+        <div class="vs-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#4A4A44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><rect x="5" y="8" width="14" height="11" rx="2"/><path d="M12 8V4M9 4h6"/><circle cx="9" cy="13" r="1.2" fill="#4A4A44" stroke="none"/><circle cx="15" cy="13" r="1.2" fill="#4A4A44" stroke="none"/><path d="M9 17h6"/></svg></div>
+        <div class="vs-txt"><b>IA Generativa</b>Genera un dashboard funcional en segundos a partir de indicaciones o datos.</div>
+      </div>
+      <div class="vs-mid"><div class="vsbadge">VS</div></div>
+      <div class="vs-card pbi">
+        <div class="vs-ic"><svg width="20" height="20" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="icpbi-c" x1="46.667" x2="88.865" y1="0" y2="89.447" gradientUnits="userSpaceOnUse"><stop stop-color="#E6AD10"/><stop offset="1" stop-color="#C87E0E"/></linearGradient><linearGradient id="icpbi-f" x1="31.997" x2="67.486" y1="24" y2="92.826" gradientUnits="userSpaceOnUse"><stop stop-color="#F6D751"/><stop offset="1" stop-color="#E6AD10"/></linearGradient><linearGradient id="icpbi-g" x1="11.997" x2="31.608" y1="48" y2="94.478" gradientUnits="userSpaceOnUse"><stop stop-color="#F9E589"/><stop offset="1" stop-color="#F6D751"/></linearGradient></defs><path fill="url(#icpbi-c)" d="M84 0v96H52V0z"/><path fill="url(#icpbi-f)" d="M64 28v68H32V24h28a4 4 0 0 1 4 4"/><path fill="url(#icpbi-g)" d="M12 48v48h32V52a4 4 0 0 0-4-4z"/></svg></div>
+        <div class="vs-txt"><b>Power BI</b>No solo crea dashboards: construye soluciones de analítica completas y alineadas a tu estrategia.</div>
+      </div>
+    </div>
+
+    <div class="attrs">
+      <div class="attr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6l7-3z"/></svg>Confiable</div>
+      <div class="attr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg>Flexible</div>
+      <div class="attr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M12 20V4M20 20v-7"/></svg>Escalable</div>
+      <div class="attr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M2.5 20c0-3 2.5-5 5.5-5s5.5 2 5.5 5M14 20c0-2.2 1.8-3.8 4-3.8s4 1.6 4 3.8"/></svg>Colaborativo</div>
+    </div>
+
+    <div class="reasons-lbl">6 razones clave para elegir Power BI</div>
+    <div class="reasons">
+      <div class="rcard"><span class="badge">1</span><b>Control total</b><span>Tú decides cómo se conectan, transforman y modelan tus datos.</span></div>
+      <div class="rcard"><span class="badge">2</span><b>Personalización</b><span>Métricas y visualizaciones a la medida de tu negocio, no genéricas.</span></div>
+      <div class="rcard"><span class="badge">3</span><b>Calidad y DAX</b><span>Modelos de datos sólidos, cálculos precisos y reglas de negocio.</span></div>
+      <div class="rcard"><span class="badge">4</span><b>Gobernanza</b><span>Roles, permisos, linaje y auditoría para entornos regulados.</span></div>
+      <div class="rcard"><span class="badge">5</span><b>Escalabilidad</b><span>De un reporte a un centro de excelencia de datos, sin migrar.</span></div>
+      <div class="rcard"><span class="badge">6</span><b>Ecosistema</b><span>Se integra con Microsoft 365, Azure, Excel, Teams y más.</span></div>
+    </div>
+
+    <div class="practice">
+      <div class="pcol aigen">
+        <h4><svg viewBox="0 0 24 24" fill="none" stroke="#B7B39F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="8" width="14" height="11" rx="2"/><path d="M12 8V4M9 4h6"/></svg>Hoy: la IA ya genera dashboards</h4>
+        <div class="prow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg><span>Herramientas como <b>ChatGPT Canvas, Claude con Artifacts</b> o generadores de código ya arman dashboards reales en HTML/CSS/JS desde un prompt — el usuario mismo ha construido varios así.</span></div>
+        <div class="prow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 9l6 6M15 9l-6 6"/></svg><span><b>Ideal para prototipos y exploración rápida</b> — validar una idea o mockup en minutos, sin levantar infraestructura de BI.</span></div>
+        <div class="prow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg><span>Pero es <b>código suelto, sin gobierno</b>: sin control de acceso, sin linaje de datos, y difícil de mantener cuando el negocio depende de él.</span></div>
+      </div>
+      <div class="pcol pbigen">
+        <h4><svg viewBox="0 0 24 24" fill="none" stroke="var(--pbi)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6l7-3z"/></svg>Cuando el negocio depende de eso: Power BI</h4>
+        <div class="prow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Diseñado para <b>producir valor sostenido</b>, no solo una demo — con un modelo de datos que se mantiene y evoluciona.</span></div>
+        <div class="prow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span><b>Confiable, gobernado y seguro</b>: cada dato tiene dueño, permiso y trazabilidad — auditable de verdad.</span></div>
+        <div class="prow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17l6-6-4-4-6 6v4h4z"/><path d="M14 7l3-3 6 6-3 3"/></svg><span><b>Escalable y mantenible por todo el equipo</b>, no solo por quien escribió el prompt original.</span></div>
+      </div>
+    </div>
+
+    <div class="ribbon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a6 6 0 0 0-4 10.5c.6.5 1 1.3 1 2.5h6c0-1.2.4-2 1-2.5A6 6 0 0 0 12 2z"/></svg>
+      <div class="t">La clave no es IA <u>vs</u> Power BI, es IA <u>+</u> Power BI.</div>
+      <div class="d">Usa la IA para explorar y prototipar rápido. Usa Power BI para gobernar y escalar lo que funciona.</div>
+    </div>
+
+    <div class="footer">
+      <div class="sig"><div class="li-badge">in</div><span>cacm523</span></div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
