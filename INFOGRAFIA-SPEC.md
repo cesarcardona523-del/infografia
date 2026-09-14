@@ -94,6 +94,22 @@ Ninguna infografía debe depender únicamente de tarjetas de texto con viñetas.
 - **Al menos un elemento gráfico no textual** por infografía (diagrama, gráfico, tabla o ilustración de flujo), además de las tarjetas de texto — esto es lo que evita que el diseño se sienta plano.
 - Esto no reemplaza la regla de "no inventar información técnica": todo elemento visual debe derivarse de lo que la referencia o el usuario aportó, nunca de datos fabricados para verse mejor.
 
+## Patrones de Composición Estructurada (contenido denso: arquitecturas, roadmaps, frameworks)
+
+Cuando el contenido tiene 5 o más facetas distintas que contar en una sola pieza (una arquitectura por capas, un framework de decisión, un roadmap con varias dimensiones) el genérico "grid de tarjetas parejas" deja de alcanzar — el contenido se ve correcto pero no se siente *organizado*. Para ese caso, usar como base el archetype de **"blueprint numerado"**, en vez de inventar la estructura desde cero cada vez. No es obligatorio ni reemplaza la regla de "diseño arriesgado, no plantillado" de abajo — es una opción más del catálogo de composiciones, a elegir cuando el contenido lo pida (multi-capa, multi-etapa, multi-criterio), igual que el bento grid o la metáfora libre siguen siendo válidos para todo lo demás.
+
+El archetype combina estos siete componentes reutilizables — usar los que apliquen, no los siete a la fuerza:
+
+1. **Numeración narrativa (1, 2, 3…)**: cada bloque grande del canvas lleva una insignia circular numerada junto a su título, formando una única secuencia de lectura de punta a punta (ej. 1=contexto de negocio, 2=decisión técnica, 3=matriz de casos, 4-6=ejecución). Es lo que más ordena una pieza densa — el ojo siempre sabe "en qué paso va", incluso si los bloques no están en una sola columna.
+2. **Pila en capas (layered stack)**: para arquitecturas o stacks tecnológicos, una columna central de bandas horizontales apiladas, cada una con su propio color (transición suave de tono entre capas, ej. de un acento a otro dentro de la misma familia cromática — nunca colores sueltos sin relación), ícono + nombre de capa a la izquierda de la banda y su descripción a la derecha, conectadas por flechas hacia arriba entre banda y banda.
+3. **Banda transversal**: debajo o a través de la pila, una franja de ancho completo para lo que aplica a *todas* las capas (gobernanza, seguridad, costos) — con sus propios mini-íconos en fila, nunca mezclada dentro de una capa específica.
+4. **Panel lateral checklist + insight**: columnas angostas a los costados con una lista corta de ítems (pregunta, criterio, mapeo) rematada por una caja de cierre destacada (ícono + una frase en cursiva que resume el "por qué importa" de ese panel) — nunca dejar el panel solo en la lista sin ese remate.
+5. **Tríptico inferior**: una fila final de 2-3 paneles del mismo alto que cierran la narrativa (ejecución, modelo objetivo, próximo paso) — buen lugar para un diagrama pequeño (ej. un "más" entre dos cajas) o una mini-línea de tiempo de íconos.
+6. **Callout de cita**: un bloque breve en cursiva, visualmente distinto (fondo propio o solo tipografía itálica), casi siempre en la esquina superior derecha del header, con la idea-fuerza de toda la pieza en una frase — funciona como resumen ejecutivo de una sola línea.
+7. **Camino de íconos (journey)**: una fila horizontal de 4-6 íconos en insignias conectados por flechas, para representar una progresión o pipeline corto (ej. Datos → Gobierno → Confianza → Inteligencia → Escala → Valor) — más compacto que un timeline vertical, ideal para el tríptico inferior o como cierre de un panel lateral.
+
+**Antes de usar este archetype en una pieza nueva o al modificar una existente**: confirmar que el contenido real tiene suficientes facetas distintas para llenarlo con información verificable (nunca rellenar capas o pasos vacíos "para que cuadre el patrón" — si sobran casillas, se ajusta cuántos componentes se usan, igual que el resto de la spec prohíbe inventar contenido para llenar espacio).
+
 ## Paleta de Colores
 
 Utilizar exclusivamente la paleta proporcionada. Extraer automáticamente: color principal, secundarios, acentos, fondos. La imagen debe mantener una identidad cromática uniforme.
