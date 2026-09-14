@@ -2882,5 +2882,28 @@
       "likes": 0,
       "shares": 0
     }
+  },
+  {
+    "id": "por-que-gente-honesta-hace-cosas-indebidas",
+    "imagen": "Construidos/Liderazgo/por-que-gente-honesta-hace-cosas-indebidas.png",
+    "fechaPublicacion": "2026-09-21T09:11:00",
+    "categoriaPrincipal": "profesion-y-negocio",
+    "temas": [
+      "liderazgo"
+    ],
+    "tipoContenido": "infografia",
+    "es": {
+      "topico": "Por Qué Gente Honesta Hace Cosas Indebidas",
+      "descripcion": "Seis mecanismos psicológicos documentados por los que personas sin intención corrupta terminan actuando de forma poco ética en una organización -ninguno requiere una persona corrupta, todos respaldados por investigación académica real-. La obediencia a la autoridad ('me lo pidió mi jefe') reduce la responsabilidad individual percibida, como documentó Stanley Milgram en 1963 en Yale, donde el 65% aplicó el shock máximo cuando una autoridad lo indicaba. La difusión de responsabilidad ('alguien más lo habrá revisado') la diluye cuando la comparte un grupo -uno de los mecanismos de 'desconexión moral' de Albert Bandura-. La racionalización ('es solo esta vez, todos lo hacen') reencuadra la conducta dañina como excepción razonable, también dentro de la teoría de Bandura. El sesgo de resultado ('salió bien, entonces no estaba mal') hace que la misma decisión se evalúe mejor si el resultado fue positivo, no por su proceso, según Baron y Hershey (1988). La presión de pares y de metas ('hay que llegar al objetivo como sea') empuja a atajos poco éticos con metas agresivas, documentado por Ordóñez, Schweitzer, Galinsky y Bazerman en 'Goals Gone Wild' (2009). Y la ceguera ética ('no es un tema ético, es un tema de negocio') es la incapacidad temporal de ver la dimensión ética de una decisión, concepto de Guido Palazzo, Franciska Krings y Ulrich Hoffrage (2012, Journal of Business Ethics). La conclusión: no alcanza con contratar gente buena, hay que diseñar contextos organizacionales -controles, incentivos, cultura- que faciliten hacer lo correcto."
+    },
+    "en": {
+      "topico": "Why Honest People Do Dishonest Things",
+      "descripcion": "Six documented psychological mechanisms through which people with no corrupt intent end up acting unethically inside an organization -none require a corrupt person, all backed by real academic research-. Obedience to authority ('my boss asked me to') reduces perceived individual responsibility, as Stanley Milgram documented in 1963 at Yale, where 65% delivered the maximum shock when an authority figure instructed them to. Diffusion of responsibility ('someone else must have checked it') dilutes responsibility when a group shares the behavior -one of Albert Bandura's 'moral disengagement' mechanisms-. Rationalization ('it's just this once, everyone does it') reframes harmful behavior as a reasonable exception, also part of Bandura's theory. Outcome bias ('it turned out fine, so it wasn't wrong') causes the same decision to be judged more favorably when the outcome is positive, regardless of the process, as Baron and Hershey showed (1988). Peer and goal pressure ('we have to hit the target no matter what') pushes people toward unethical shortcuts under aggressive goals, documented by Ordóñez, Schweitzer, Galinsky and Bazerman in 'Goals Gone Wild' (2009). And ethical blindness ('it's not an ethics issue, it's a business issue') is the temporary inability to see the ethical dimension of a decision, a concept from Guido Palazzo, Franciska Krings and Ulrich Hoffrage (2012, Journal of Business Ethics). The takeaway: hiring good people isn't enough -organizations need to design contexts, controls, incentives and culture that make doing the right thing easier."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
   }
 ]
