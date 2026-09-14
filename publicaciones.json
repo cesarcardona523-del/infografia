@@ -2642,5 +2642,29 @@
       "likes": 0,
       "shares": 0
     }
+  },
+  {
+    "id": "data-lake-warehouse-lakehouse",
+    "imagen": "Construidos/Data_Engineering/data-lake-warehouse-lakehouse.png",
+    "fechaPublicacion": "2026-09-17T09:10:00",
+    "categoriaPrincipal": "ingenieria-de-datos",
+    "temas": [
+      "data-engineering",
+      "arquitectura-datos"
+    ],
+    "tipoContenido": "infografia",
+    "es": {
+      "topico": "Data Lake vs Data Warehouse vs Data Lakehouse",
+      "descripcion": "Comparativa de los tres enfoques principales para almacenar y trabajar con datos en una organización: mismo objetivo (convertir datos en información útil), distinto enfoque de estructura y gobierno. El Data Lake (\"el lago\") guarda todo tipo de dato en su formato original -estructurado, semiestructurado y no estructurado-, sin imponer esquema al momento de guardar (schema-on-read); es escalable, económico y se consulta con motores como Spark, Presto o Athena, ideal para explorar datos, proyectos de IA/ML, logs e IoT cuando todavía no se sabe qué preguntas se van a responder. El Data Warehouse (\"el depósito ordenado\") guarda datos ya estructurados y preparados con el modelado hecho antes de cargar (schema-on-write); está optimizado para consultas rápidas, es gobernado y consistente -ejemplos típicos: Snowflake, BigQuery, Redshift, Synapse- e ideal para reportes, dashboards ejecutivos e indicadores. El Data Lakehouse (\"la casa inteligente\") combina la flexibilidad del lago con la estructura del depósito en un solo sistema con dos zonas, sin duplicar datos ni infraestructura -ejemplos típicos: Databricks/Delta Lake, Apache Iceberg-, ideal para organizaciones que quieren escalar y usar IA/ML y BI al mismo tiempo. En simple: Data Lake es guardar todo primero y entender después; Data Warehouse es entender y organizar para analizar rápido; Data Lakehouse es hacer ambas cosas a la vez, a gran escala."
+    },
+    "en": {
+      "topico": "Data Lake vs Data Warehouse vs Data Lakehouse",
+      "descripcion": "A comparison of the three main approaches to storing and working with data in an organization: same goal (turning data into useful information), different approach to structure and governance. The Data Lake (\"the lake\") stores every type of data -structured, semi-structured and unstructured- in its original format, without imposing a schema at write time (schema-on-read); it is scalable, cost-effective and queried with engines like Spark, Presto or Athena, ideal for exploring data, AI/ML projects, logs and IoT when you do not yet know which questions you will ask. The Data Warehouse (\"the organized depot\") stores already structured and prepared data, modeled before loading (schema-on-write); it is optimized for fast queries, governed and consistent -typical examples: Snowflake, BigQuery, Redshift, Synapse- and ideal for reports, executive dashboards and KPIs. The Data Lakehouse (\"the smart house\") combines the lake flexibility with the warehouse structure in a single system with two zones, without duplicating data or infrastructure -typical examples: Databricks/Delta Lake, Apache Iceberg- ideal for organizations that want to scale and use AI/ML and BI at the same time. In short: Data Lake means storing everything first and understanding later; Data Warehouse means understanding and organizing to analyze fast; Data Lakehouse means doing both at once, at scale."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
   }
 ]
