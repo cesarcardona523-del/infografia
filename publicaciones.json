@@ -2858,5 +2858,29 @@
       "likes": 0,
       "shares": 0
     }
+  },
+  {
+    "id": "25-formas-usar-claude",
+    "imagen": "Construidos/Claude/25-formas-usar-claude.png",
+    "fechaPublicacion": "2026-09-19T09:11:00",
+    "categoriaPrincipal": "inteligencia-artificial",
+    "temas": [
+      "claude",
+      "ia"
+    ],
+    "tipoContenido": "infografia",
+    "es": {
+      "topico": "25 Formas de Usar Claude como un Pro",
+      "descripcion": "Un mapa de 25 formas reales de usar Claude, de Anthropic, desde el chat básico hasta el despliegue empresarial en la nube. Empieza por el chat en claude.ai y la elección de modelo según la tarea: Claude Opus 5 para máxima profundidad de razonamiento, Claude Haiku 4.5 para velocidad y costo bajo, y Claude Sonnet 5 como balance entre ambos, apoyados en el pensamiento extendido para problemas complejos. Para desarrollo y productividad: Claude Code para programar desde la terminal, Claude en Excel para analizar datos en la hoja de cálculo, Artifacts para crear interfaces y documentos interactivos, visión para imágenes y PDFs, y Claude en Chrome para navegar y actuar sobre la web. En automatización: Computer Use para controlar el escritorio, Voice Mode para hablar por voz, Web Search para respuestas con información en vivo, Research para investigación profunda, y Agent Skills para empaquetar capacidades reutilizables. Para integración y equipo: Connectors vía MCP, Projects para contexto persistente, Scheduled Tasks para automatizar tareas recurrentes, Claude en Slack, la API o Developer Platform para integrar Claude en un producto propio, Prompt Caching para respuestas más rápidas y económicas, estilos y reglas globales personalizadas, Team Projects para colaborar, y despliegue en la nube vía AWS Bedrock o Google Vertex AI. La idea central: Claude da las herramientas; usarlas con criterio, como un flujo integrado y no como 25 utilidades sueltas, es lo que marca la diferencia en los resultados."
+    },
+    "en": {
+      "topico": "25 Ways to Use Claude Like a Pro",
+      "descripcion": "A map of 25 real ways to use Claude, by Anthropic, from basic chat to enterprise cloud deployment. It starts with conversational chat at claude.ai and choosing the right model for the task: Claude Opus 5 for maximum reasoning depth, Claude Haiku 4.5 for speed and low cost, and Claude Sonnet 5 as the balance between both, backed by extended thinking for reasoning through complex problems. For development and productivity: Claude Code to program from the terminal, Claude for Excel to analyze data inside the spreadsheet, Artifacts to build interactive interfaces and documents, vision to analyze images and PDFs, and Claude in Chrome to browse and act on the web. On the automation side: Computer Use to control the desktop, Voice Mode to talk by voice, Web Search for answers backed by live information, Research for deep multi-source investigation, and Agent Skills to package reusable capabilities. For integration and teamwork: Connectors via MCP to link external tools, Projects to keep persistent context, Scheduled Tasks to automate recurring work, Claude in Slack, the API or Claude Developer Platform to integrate Claude into your own product, Prompt Caching for faster and cheaper responses, custom styles and global instructions, Team Projects to collaborate, and cloud deployment via AWS Bedrock or Google Vertex AI. The core idea: Claude gives you the tools; using them with judgment, as one integrated flow instead of 25 separate utilities, is what actually makes the difference in results."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
   }
 ]
