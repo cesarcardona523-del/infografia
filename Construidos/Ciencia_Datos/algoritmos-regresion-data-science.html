@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>9 Algoritmos de Regresión en Data Science</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{ --ink:#182018; --muted:#5B6B60; --line:#DCE5DD; --white:#FFFFFF; --paper:#F5F8F5; --green:#1F7A4D; --tierra:#B5652F; }
+  *{box-sizing:border-box;} html,body{margin:0;padding:0;}
+  body{ min-height:627px; display:flex; align-items:center; justify-content:center; padding:32px 16px; background:#EDF1EC; font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
+  .canvas{ position:relative; width:1200px; height:627px; margin:0 auto; background:linear-gradient(160deg,#FBFDFB 0%, var(--paper) 55%, #EFF4EE 100%); border-radius:16px; box-shadow:0 20px 50px rgba(14,30,20,0.16); overflow:hidden; padding:14px 24px 10px; color:var(--ink); display:flex; flex-direction:column; }
+
+  .header-top{ display:flex; align-items:flex-start; justify-content:space-between; gap:16px; margin-bottom:7px; }
+  .eyebrow{ display:inline-flex; align-items:center; gap:6px; font-size:14px; font-weight:800; letter-spacing:1.3px; color:var(--green); text-transform:uppercase; background:#E4F2E8; border:1px solid #C7E3D0; padding:3px 9px; border-radius:20px; margin-bottom:5px; }
+  .eyebrow svg{ width:13px; height:13px; flex:none; }
+  h1{ font-size:20px; margin:0 0 2px; font-weight:800; letter-spacing:-0.2px; line-height:1.15; }
+  h1 u{ text-decoration:none; color:var(--tierra); }
+  .sub{ margin:0; font-size:14px; color:var(--muted); max-width:700px; line-height:1.28; }
+  .quote-callout{ flex:none; max-width:260px; background:#FDF3EA; border:1px solid #EAD2B7; border-radius:10px; padding:6px 10px; font-size:14px; font-style:italic; color:#7A4A21; line-height:1.24; }
+  .quote-callout b{ font-style:normal; }
+
+  .algrid{ display:grid; grid-template-columns:repeat(9,1fr); gap:6px; margin-bottom:7px; }
+  .alg{ background:var(--white); border:1px solid var(--line); border-radius:9px; padding:6px 7px; display:flex; flex-direction:column; gap:3px; }
+  .alg .n{ width:15px; height:15px; border-radius:50%; background:var(--green); color:#fff; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; margin-bottom:1px; }
+  .alg .ic{ width:28px; height:20px; margin:0 auto; }
+  .alg b{ font-size:14px; color:var(--ink); line-height:1.14; text-align:center; }
+  .alg span{ font-size:14px; color:var(--muted); line-height:1.18; text-align:center; }
+
+  .metrics-lbl{ font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.4px; color:var(--ink); margin-bottom:5px; }
+  .metrics{ display:grid; grid-template-columns:repeat(4,1fr); gap:9px; flex:1; min-height:0; }
+  .met{ background:var(--white); border:1px solid var(--line); border-radius:10px; padding:8px 10px; display:flex; flex-direction:column; gap:3px; }
+  .met b{ font-size:15px; color:var(--tierra); }
+  .met .f{ font-size:14px; font-family:Georgia,serif; font-style:italic; color:var(--ink); background:#F5F8F5; border-radius:6px; padding:3px 6px; margin:2px 0; }
+  .met span{ font-size:14px; color:var(--muted); line-height:1.24; }
+
+  .footer-row{ display:flex; align-items:center; gap:10px; margin-top:8px; }
+  .choose{ flex:1; background:#12241A; border-radius:10px; padding:7px 12px; display:flex; align-items:center; gap:10px; }
+  .choose svg{ width:15px; height:15px; color:#7FDDA8; flex:none; }
+  .choose span{ font-size:14px; color:#D9E7DE; }
+  .choose b{ color:#fff; }
+  .remember{ flex:1; background:#FDF3EA; border:1px solid #EAD2B7; border-radius:10px; padding:7px 12px; font-size:14px; color:#7A4A21; }
+  .remember b{ color:#5A3811; }
+
+  .footer{ display:flex; align-items:center; justify-content:flex-end; margin-top:7px; }
+  .sig{ display:flex; align-items:center; gap:6px; flex:none; }
+  .li-badge{ width:17px; height:17px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:800; font-family:Arial,sans-serif; }
+  .sig span{ font-size:14px; font-weight:700; color:var(--muted); }
+</style>
+</head>
+<body>
+<div class="canvas-wrap">
+  <div class="canvas">
+
+    <div class="header-top">
+      <div>
+        <div class="eyebrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="18" r="2"/><circle cx="12" cy="10" r="2"/><circle cx="18" cy="6" r="2"/><path d="M7.5 16.5l3-5M13.5 8.5l3-1.5"/></svg>
+          Machine Learning
+        </div>
+        <h1>9 Algoritmos de <u>Regresión</u> más Usados en Data Science</h1>
+        <p class="sub">Los algoritmos de regresión predicen valores numéricos continuos a partir de variables predictoras — encontrar la mejor relación entre variables para resultados continuos.</p>
+      </div>
+      <div class="quote-callout">No existe el <b>"mejor algoritmo"</b>, sino el más adecuado para tu problema, tus datos y tus objetivos.</div>
+    </div>
+
+    <div class="algrid">
+      <div class="alg"><span class="n">1</span><svg class="ic" viewBox="0 0 40 28" fill="none" stroke="#1F7A4D" stroke-width="1.6" stroke-linecap="round"><circle cx="7" cy="20" r="1.4" fill="#1F7A4D" stroke="none"/><circle cx="14" cy="15" r="1.4" fill="#1F7A4D" stroke="none"/><circle cx="20" cy="12" r="1.4" fill="#1F7A4D" stroke="none"/><circle cx="27" cy="8" r="1.4" fill="#1F7A4D" stroke="none"/><circle cx="33" cy="5" r="1.4" fill="#1F7A4D" stroke="none"/><path d="M4 22l32-19"/></svg><b>Lineal Simple</b><span>Relación lineal entre variables.</span></div>
+      <div class="alg"><span class="n">2</span><svg class="ic" viewBox="0 0 40 28" fill="none" stroke="#1F7A4D" stroke-width="1.6" stroke-linecap="round"><path d="M4 22c6-2 8-16 14-16s8 14 14 8"/></svg><b>Polinómica</b><span>Relaciones no lineales, con curvatura.</span></div>
+      <div class="alg"><span class="n">3</span><svg class="ic" viewBox="0 0 40 28" fill="none" stroke="#1F7A4D" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4v5M20 9l-8 6M20 9l8 6M12 15v5M28 15v5"/><circle cx="20" cy="9" r="2" fill="#1F7A4D" stroke="none"/><circle cx="12" cy="15" r="2" fill="#1F7A4D" stroke="none"/><circle cx="28" cy="15" r="2" fill="#1F7A4D" stroke="none"/></svg><b>Árboles de Decisión</b><span>Reglas condicionales, fácil de interpretar.</span></div>
+      <div class="alg"><span class="n">4</span><svg class="ic" viewBox="0 0 40 28" fill="none" stroke="#1F7A4D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5v4l-3 5M8 9l3 5M20 5v4l-3 5M20 9l3 5M32 5v4l-3 5M32 9l3 5"/></svg><b>Random Forest</b><span>Ensamble de árboles, reduce sobreajuste.</span></div>
+      <div class="alg"><span class="n">5</span><svg class="ic" viewBox="0 0 40 28" fill="none" stroke="#1F7A4D" stroke-width="1.6" stroke-linecap="round"><path d="M4 22l32-19" stroke-dasharray="1 3"/><path d="M4 26l32-19"/><path d="M4 18l32-19" stroke-dasharray="1 3"/></svg><b>SVR</b><span>Mejor línea dentro de un margen de error.</span></div>
+      <div class="alg"><span class="n">6</span><svg class="ic" viewBox="0 0 40 28" fill="none" stroke="#1F7A4D" stroke-width="1.6"><circle cx="20" cy="14" r="3" fill="#1F7A4D" stroke="none"/><circle cx="10" cy="8" r="1.6" fill="#1F7A4D" stroke="none"/><circle cx="12" cy="20" r="1.6" fill="#1F7A4D" stroke="none"/><circle cx="28" cy="7" r="1.6" fill="#1F7A4D" stroke="none"/><circle cx="30" cy="21" r="1.6" fill="#1F7A4D" stroke="none"/><path d="M20 14L10 8M20 14l2 6M20 14l8-7M20 14l10 7" stroke-dasharray="2 2"/></svg><b>K-Nearest Neighbors</b><span>Predice con el promedio de los k vecinos.</span></div>
+      <div class="alg"><span class="n">7</span><svg class="ic" viewBox="0 0 40 28" fill="none" stroke="#1F7A4D" stroke-width="1.6" stroke-linecap="round"><path d="M6 24c3-14 8-18 10-18s2 10 5 10 3-14 6-14 4 20 7 4"/></svg><b>Descenso Gradiente (SGD)</b><span>Optimiza parámetros de forma iterativa.</span></div>
+      <div class="alg"><span class="n">8</span><svg class="ic" viewBox="0 0 40 28" fill="none" stroke="#1F7A4D" stroke-width="1.5"><circle cx="6" cy="8" r="1.8" fill="#1F7A4D" stroke="none"/><circle cx="6" cy="14" r="1.8" fill="#1F7A4D" stroke="none"/><circle cx="6" cy="20" r="1.8" fill="#1F7A4D" stroke="none"/><circle cx="20" cy="6" r="1.8" fill="#1F7A4D" stroke="none"/><circle cx="20" cy="14" r="1.8" fill="#1F7A4D" stroke="none"/><circle cx="20" cy="22" r="1.8" fill="#1F7A4D" stroke="none"/><circle cx="34" cy="14" r="1.8" fill="#1F7A4D" stroke="none"/><path d="M6 8l14-2M6 8l14 6M6 14l14-8M6 14l14 0M6 14l14 8M6 20l14-6M6 20l14 2M20 6l14 8M20 14l14 0M20 22l14-8"/></svg><b>Redes Neuronales</b><span>Relaciones complejas y no lineales.</span></div>
+      <div class="alg"><span class="n">9</span><svg class="ic" viewBox="0 0 40 28" fill="none" stroke="#1F7A4D" stroke-width="1.5" stroke-linecap="round"><path d="M8 4v4l-3 5M8 8l3 5M20 4v4l-3 5M20 8l3 5M32 4v4l-3 5M32 8l3 5"/><path d="M5 20h6M17 20h6M29 20h6" stroke-dasharray="1 2"/></svg><b>XGBoost</b><span>Boosting de árboles, muy usado en competencias.</span></div>
+    </div>
+
+    <div class="metrics-lbl">Métricas de Evaluación en Regresión</div>
+    <div class="metrics">
+      <div class="met"><b>MAE</b><span>Mean Absolute Error</span><div class="f">MAE = (1/n)Σ|yᵢ − ŷᵢ|</div><span>Promedio de los errores absolutos. Menor es mejor.</span><span style="margin-top:auto;padding-top:5px;border-top:1px dashed var(--line);"><b style="font-size:14px">Úsala cuando:</b> quieres un error fácil de explicar, sin sobre-penalizar valores atípicos.</span></div>
+      <div class="met"><b>MSE</b><span>Mean Squared Error</span><div class="f">MSE = (1/n)Σ(yᵢ − ŷᵢ)²</div><span>Penaliza más los errores grandes.</span><span style="margin-top:auto;padding-top:5px;border-top:1px dashed var(--line);"><b style="font-size:14px">Úsala cuando:</b> los errores grandes son especialmente costosos para el negocio.</span></div>
+      <div class="met"><b>RMSE</b><span>Root Mean Squared Error</span><div class="f">RMSE = √MSE</div><span>Interpretación en las mismas unidades del objetivo.</span><span style="margin-top:auto;padding-top:5px;border-top:1px dashed var(--line);"><b style="font-size:14px">Úsala cuando:</b> necesitas comparar el error en la escala original de la variable.</span></div>
+      <div class="met"><b>R²</b><span>Coeficiente de Determinación</span><div class="f">R² = 1 − SSres/SStot</div><span>Proporción de varianza explicada. Valores entre 0 y 1.</span><span style="margin-top:auto;padding-top:5px;border-top:1px dashed var(--line);"><b style="font-size:14px">Úsala cuando:</b> quieres comunicar qué tan bien el modelo explica el fenómeno.</span></div>
+    </div>
+
+    <div class="footer-row">
+      <div class="choose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>¿Cómo elegir?</b> Conoce tus datos, empieza simple, evalúa con métricas adecuadas y valida siempre con datos no vistos.</span></div>
+      <div class="remember"><b>Recuerda:</b> el objetivo no es el algoritmo más sofisticado, sino el que mejor generaliza para tu problema real.</div>
+    </div>
+
+    <div class="footer">
+      <div class="sig"><div class="li-badge">in</div><span>cacm523</span></div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>No Necesitas Aprender Todo para Trabajar en Data</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{ --ink:#182018; --muted:#5B6B60; --line:#DCE5DD; --white:#FFFFFF; --paper:#F5F8F5; --green:#1F7A4D; --tierra:#B5652F; }
+  *{box-sizing:border-box;} html,body{margin:0;padding:0;}
+  body{ min-height:627px; display:flex; align-items:center; justify-content:center; padding:32px 16px; background:#EDF1EC; font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
+  .canvas{ position:relative; width:1200px; height:627px; margin:0 auto; background:linear-gradient(160deg,#FBFDFB 0%, var(--paper) 55%, #EFF4EE 100%); border-radius:16px; box-shadow:0 20px 50px rgba(14,30,20,0.16); overflow:hidden; padding:16px 26px 12px; color:var(--ink); display:flex; flex-direction:column; }
+
+  .header-top{ display:flex; align-items:flex-start; justify-content:space-between; gap:16px; margin-bottom:9px; }
+  .eyebrow{ display:inline-flex; align-items:center; gap:6px; font-size:14px; font-weight:800; letter-spacing:1.3px; color:var(--green); text-transform:uppercase; background:#E4F2E8; border:1px solid #C7E3D0; padding:3px 9px; border-radius:20px; margin-bottom:6px; }
+  .eyebrow svg{ width:13px; height:13px; flex:none; }
+  h1{ font-size:21px; margin:0 0 3px; font-weight:800; letter-spacing:-0.2px; line-height:1.18; }
+  h1 u{ text-decoration:none; color:var(--tierra); }
+  .sub{ margin:0; font-size:14px; color:var(--muted); max-width:700px; line-height:1.3; }
+  .quote-callout{ flex:none; max-width:270px; background:#FDF3EA; border:1px solid #EAD2B7; border-radius:10px; padding:6px 10px; font-size:14px; font-style:italic; color:#7A4A21; line-height:1.26; }
+  .quote-callout b{ font-style:normal; }
+
+  .top-row{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:9px; }
+  .panel{ background:var(--white); border:1px solid var(--line); border-radius:11px; padding:9px 12px; display:flex; flex-direction:column; }
+  .panel h2{ display:flex; align-items:center; gap:7px; margin:0 0 7px; font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.4px; }
+  .panel h2 .nb{ width:19px; height:19px; border-radius:50%; background:var(--green); color:#fff; display:flex; align-items:center; justify-content:center; font-size:13px; }
+
+  .toolgrid{ display:grid; grid-template-columns:repeat(5,1fr); gap:6px; margin-bottom:6px; }
+  .tool{ background:var(--paper); border:1px solid var(--line); border-radius:8px; padding:5px; display:flex; flex-direction:column; align-items:center; gap:2px; }
+  .tool svg{ width:16px; height:16px; color:var(--green); }
+  .tool span{ font-size:14px; color:var(--ink); font-weight:700; }
+  .p1note{ font-size:14px; color:var(--muted); line-height:1.28; margin-top:2px; }
+  .p1note b{ color:var(--ink); }
+
+  .layers{ display:flex; flex-direction:column; gap:4px; }
+  .layer{ display:flex; align-items:center; gap:8px; background:var(--paper); border-radius:8px; padding:4px 8px; }
+  .layer .lic{ width:22px; height:22px; border-radius:6px; display:flex; align-items:center; justify-content:center; flex:none; color:#fff; }
+  .layer b{ font-size:14px; color:var(--ink); flex:none; width:110px; }
+  .layer span{ font-size:14px; color:var(--muted); }
+  .l1 .lic{ background:#2E9660; } .l2 .lic{ background:#1F7A4D; } .l3 .lic{ background:#146B41; } .l4 .lic{ background:#B5652F; } .l5 .lic{ background:#8A4A22; }
+
+  .tablewrap{ flex:1; background:var(--white); border:1px solid var(--line); border-radius:11px; padding:9px 12px; display:flex; flex-direction:column; min-height:0; }
+  .tablewrap h2{ display:flex; align-items:center; gap:7px; margin:0 0 6px; font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.4px; }
+  .tablewrap h2 .nb{ width:19px; height:19px; border-radius:50%; background:var(--tierra); color:#fff; display:flex; align-items:center; justify-content:center; font-size:13px; }
+  table{ width:100%; border-collapse:collapse; font-size:14px; }
+  th{ text-align:left; padding:4px 6px; color:var(--muted); font-weight:700; border-bottom:1px solid var(--line); }
+  td{ padding:5px 6px; border-bottom:1px dashed var(--line); color:var(--ink); }
+  tr:last-child td{ border-bottom:none; }
+  .dots{ display:inline-flex; gap:2px; vertical-align:middle; margin-right:5px; }
+  .dot{ width:7px; height:7px; border-radius:50%; background:var(--line); }
+  .dot.on{ background:var(--green); }
+  .lvl{ font-size:14px; color:var(--muted); }
+
+  .footer{ display:flex; align-items:center; justify-content:space-between; margin-top:8px; }
+  .goal{ font-size:14px; color:var(--muted); }
+  .goal b{ color:var(--ink); }
+  .sig{ display:flex; align-items:center; gap:6px; flex:none; }
+  .li-badge{ width:17px; height:17px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:800; font-family:Arial,sans-serif; }
+  .sig span{ font-size:14px; font-weight:700; color:var(--muted); }
+</style>
+</head>
+<body>
+<div class="canvas-wrap">
+  <div class="canvas">
+
+    <div class="header-top">
+      <div>
+        <div class="eyebrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          Carrera en Datos
+        </div>
+        <h1>No Necesitas Aprender <u>TODO</u> para Trabajar en Data</h1>
+        <p class="sub">Qué priorizar si apuntas a Data Analytics, Business Intelligence o Business Analytics — según el rol, no según una lista infinita.</p>
+      </div>
+      <div class="quote-callout">Una lista enorme no siempre es un roadmap. A veces es <b>solo un inventario</b>.</div>
+    </div>
+
+    <div class="top-row">
+      <div class="panel">
+        <h2><span class="nb">1</span>El error del roadmap infinito</h2>
+        <div class="toolgrid">
+          <div class="tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg><span>SQL</span></div>
+          <div class="tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>Excel</span></div>
+          <div class="tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4v3H8V6a4 4 0 0 1 4-4z"/><path d="M8 9h8v6a4 4 0 0 1-8 0z"/></svg><span>Python</span></div>
+          <div class="tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg><span>Power BI</span></div>
+          <div class="tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg><span>Estadística</span></div>
+          <div class="tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg><span>ETL</span></div>
+          <div class="tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg><span>Cloud</span></div>
+          <div class="tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="18" r="2"/><circle cx="12" cy="10" r="2"/><circle cx="18" cy="6" r="2"/><path d="M7.5 16.5l3-5M13.5 8.5l3-1.5"/></svg><span>Spark</span></div>
+          <div class="tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 9c0-1.5 1.5-2 3-2s3 1 3 2-1 1.5-3 2.5-3 1.5-3 2.5M12 17h.01"/></svg><span>ML</span></div>
+        </div>
+        <div class="p1note">El problema no es aprender herramientas. Es <b>creer que tenés que dominar todas</b> antes de postularte.</div>
+      </div>
+
+      <div class="panel">
+        <h2><span class="nb">2</span>Pensalo por capas</h2>
+        <div class="layers">
+          <div class="layer l1"><div class="lic"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/></svg></div><b>Fundamentos</b><span>Excel, SQL, limpieza de datos</span></div>
+          <div class="layer l2"><div class="lic"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></div><b>Análisis</b><span>métricas, tendencias, segmentación</span></div>
+          <div class="layer l3"><div class="lic"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg></div><b>Visualización y BI</b><span>dashboards, KPIs, modelado</span></div>
+          <div class="layer l4"><div class="lic"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="4"/><path d="M2 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><path d="M17 7a4 4 0 0 1 0 8"/></svg></div><b>Negocio</b><span>procesos, objetivos, decisiones</span></div>
+          <div class="layer l5"><div class="lic"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 9c0-1.5 1.5-2 3-2s3 1 3 2-1 1.5-3 2.5-3 1.5-3 2.5M12 17h.01"/></svg></div><b>Especialización</b><span>Python, Cloud, ML, Big Data</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tablewrap">
+      <h2><span class="nb">3</span>No todos los roles priorizan lo mismo</h2>
+      <table>
+        <tr><th>Competencia</th><th>Data Analyst</th><th>BI Analyst</th><th>Business Analyst</th></tr>
+        <tr><td>SQL</td><td><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span><span class="lvl">Alta</span></td><td><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span><span class="lvl">Alta</span></td><td><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span><span class="lvl">Media</span></td></tr>
+        <tr><td>Power BI / Tableau</td><td><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span><span class="lvl">Alta</span></td><td><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></span><span class="lvl">Muy alta</span></td><td><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span><span class="lvl">Media</span></td></tr>
+        <tr><td>Estadística</td><td><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span><span class="lvl">Alta</span></td><td><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span><span class="lvl">Media</span></td><td><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span><span class="lvl">Media</span></td></tr>
+        <tr><td>KPIs y métricas</td><td><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></span><span class="lvl">Muy alta</span></td><td><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></span><span class="lvl">Muy alta</span></td><td><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></span><span class="lvl">Muy alta</span></td></tr>
+        <tr><td>Procesos de negocio</td><td><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span><span class="lvl">Alta</span></td><td><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span><span class="lvl">Media</span></td><td><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></span><span class="lvl">Muy alta</span></td></tr>
+        <tr><td>Requisitos / stakeholders</td><td><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span><span class="lvl">Media</span></td><td><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span><span class="lvl">Media</span></td><td><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span><span class="lvl">Alta</span></td></tr>
+      </table>
+    </div>
+
+    <div class="footer">
+      <div class="goal">El objetivo no es aprender todo. Es construir <b>base</b>, resolver <b>problemas</b> y desarrollar <b>criterio</b>.</div>
+      <div class="sig"><div class="li-badge">in</div><span>cacm523</span></div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

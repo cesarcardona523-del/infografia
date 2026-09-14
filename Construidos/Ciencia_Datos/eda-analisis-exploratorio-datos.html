@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>EDA: Análisis Exploratorio de Datos</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{ --ink:#182018; --muted:#5B6B60; --line:#DCE5DD; --white:#FFFFFF; --paper:#F5F8F5; --green:#1F7A4D; --tierra:#B5652F; }
+  *{box-sizing:border-box;} html,body{margin:0;padding:0;}
+  body{ min-height:627px; display:flex; align-items:center; justify-content:center; padding:32px 16px; background:#EDF1EC; font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
+  .canvas{ position:relative; width:1200px; height:627px; margin:0 auto; background:linear-gradient(160deg,#FBFDFB 0%, var(--paper) 55%, #EFF4EE 100%); border-radius:16px; box-shadow:0 20px 50px rgba(14,30,20,0.16); overflow:hidden; padding:14px 24px 10px; color:var(--ink); display:flex; flex-direction:column; }
+
+  .header-top{ display:flex; align-items:flex-start; justify-content:space-between; gap:16px; margin-bottom:7px; }
+  .eyebrow{ display:inline-flex; align-items:center; gap:6px; font-size:14px; font-weight:800; letter-spacing:1.3px; color:var(--green); text-transform:uppercase; background:#E4F2E8; border:1px solid #C7E3D0; padding:3px 9px; border-radius:20px; margin-bottom:5px; }
+  .eyebrow svg{ width:13px; height:13px; flex:none; }
+  h1{ font-size:19px; margin:0 0 2px; font-weight:800; letter-spacing:-0.2px; line-height:1.15; }
+  h1 u{ text-decoration:none; color:var(--tierra); }
+  .sub{ margin:0; font-size:14px; color:var(--muted); max-width:680px; line-height:1.26; }
+  .quote-callout{ flex:none; max-width:260px; background:#FDF3EA; border:1px solid #EAD2B7; border-radius:10px; padding:6px 10px; font-size:14px; font-style:italic; color:#7A4A21; line-height:1.24; }
+  .quote-callout b{ font-style:normal; }
+
+  .flow{ display:flex; align-items:center; gap:4px; margin-bottom:7px; }
+  .fnode{ flex:1; background:var(--white); border:1px solid var(--line); border-radius:8px; padding:5px 4px; text-align:center; }
+  .fnode.on{ background:#12241A; border-color:#12241A; }
+  .fnode.on span{ color:#8FE0B6; }
+  .fnode span{ font-size:14px; font-weight:800; color:var(--ink); }
+  .farrow{ width:12px; height:12px; color:#B7C4BA; flex:none; }
+
+  .body-grid{ flex:1; display:grid; grid-template-columns:1.1fr 1.3fr 1fr; gap:9px; min-height:0; }
+  .panel{ background:var(--white); border:1px solid var(--line); border-radius:10px; padding:8px 10px; display:flex; flex-direction:column; overflow:hidden; }
+  .panel h2{ margin:0 0 5px; font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.4px; color:var(--ink); }
+  .item{ display:flex; gap:5px; align-items:flex-start; font-size:14px; line-height:1.24; margin-bottom:4px; color:var(--muted); }
+  .item svg{ width:13px; height:13px; flex:none; margin-top:2px; color:var(--green); }
+  .item b{ color:var(--ink); }
+
+  .techgrid{ display:grid; grid-template-columns:repeat(3,1fr); gap:5px; }
+  .tech{ background:var(--paper); border:1px solid var(--line); border-radius:7px; padding:5px; display:flex; flex-direction:column; align-items:center; gap:2px; }
+  .tech svg{ width:22px; height:16px; color:var(--green); }
+  .tech span{ font-size:14px; color:var(--ink); font-weight:700; }
+
+  .right-col{ display:flex; flex-direction:column; gap:9px; min-height:0; }
+  .right-col .panel{ flex:1; }
+  .colstack{ display:flex; flex-direction:column; gap:9px; min-height:0; }
+  .colstack .panel{ flex:1; }
+
+  .footer{ display:flex; align-items:center; justify-content:space-between; margin-top:8px; }
+  .qkey{ display:flex; gap:6px; }
+  .qchip{ background:var(--white); border:1px solid var(--line); border-radius:16px; padding:3px 9px; font-size:14px; color:var(--muted); }
+  .sig{ display:flex; align-items:center; gap:6px; flex:none; }
+  .li-badge{ width:17px; height:17px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:800; font-family:Arial,sans-serif; }
+  .sig span{ font-size:14px; font-weight:700; color:var(--muted); }
+</style>
+</head>
+<body>
+<div class="canvas-wrap">
+  <div class="canvas">
+
+    <div class="header-top">
+      <div>
+        <div class="eyebrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+          Ciencia de Datos
+        </div>
+        <h1>EDA: <u>Análisis Exploratorio de Datos</u> — la Base de Todo Proyecto</h1>
+        <p class="sub">Entender los datos antes de modelar es comprender el problema antes de resolverlo.</p>
+      </div>
+      <div class="quote-callout">Un buen EDA no busca respuestas: busca <b>las preguntas correctas</b> antes de modelar.</div>
+    </div>
+
+    <div class="flow">
+      <div class="fnode"><span>Datos</span></div><svg class="farrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      <div class="fnode on"><span>EDA</span></div><svg class="farrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      <div class="fnode"><span>Preparación</span></div><svg class="farrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      <div class="fnode"><span>Feature Eng.</span></div><svg class="farrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      <div class="fnode"><span>Machine Learning</span></div><svg class="farrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      <div class="fnode"><span>Evaluación</span></div><svg class="farrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      <div class="fnode"><span>Resultados</span></div>
+    </div>
+
+    <div class="body-grid">
+      <div class="colstack">
+        <div class="panel">
+          <h2>¿Qué Hacemos en EDA?</h2>
+          <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>Entender la <b>estructura</b> de los datos.</span></div>
+          <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg><span>Analizar <b>distribuciones</b> y variables.</span></div>
+          <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg><span>Detectar <b>faltantes y atípicos</b>.</span></div>
+          <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="18" r="2"/><path d="M8 6h4a4 4 0 0 1 4 4v4"/></svg><span>Explorar <b>relaciones</b> entre variables.</span></div>
+          <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><span>Identificar <b>patrones</b> y comportamiento.</span></div>
+          <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.5-2.5 2-2.5 3.5M12 17h.01"/></svg><span>Generar <b>hipótesis</b> y preguntas nuevas.</span></div>
+        </div>
+        <div class="panel">
+          <h2>Cómo Influye en Machine Learning</h2>
+          <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg><span><b>Selección de variables</b> — elimina las irrelevantes o redundantes.</span></div>
+          <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Tratamiento de datos</b> — decide cómo manejar faltantes y errores.</span></div>
+          <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17l6-6-4-4-6 6v4h4z"/><path d="M14 7l3-3 6 6-3 3"/></svg><span><b>Transformaciones</b> — mejoran distribución y escala de variables.</span></div>
+          <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.5-2.5 2-2.5 3.5M12 17h.01"/></svg><span><b>Elección del modelo</b> — algoritmo más apropiado según los datos.</span></div>
+        </div>
+      </div>
+
+      <div class="colstack">
+        <div class="panel">
+          <h2>Técnicas y Visualizaciones Clave</h2>
+          <div class="techgrid">
+            <div class="tech"><svg viewBox="0 0 40 26" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="14" width="4" height="8"/><rect x="11" y="8" width="4" height="14"/><rect x="18" y="4" width="4" height="18"/><rect x="25" y="11" width="4" height="11"/><rect x="32" y="16" width="4" height="6"/></svg><span>Histograma</span></div>
+            <div class="tech"><svg viewBox="0 0 40 26" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 6h12v8H14z"/><path d="M20 6V2M20 14v10M16 2h8M16 24h8"/></svg><span>Boxplot</span></div>
+            <div class="tech"><svg viewBox="0 0 40 26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 22c4-16 12-18 16-18s12 2 16 18"/></svg><span>Distribución</span></div>
+            <div class="tech"><svg viewBox="0 0 40 26" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="18" r="1.4" fill="currentColor" stroke="none"/><circle cx="14" cy="12" r="1.4" fill="currentColor" stroke="none"/><circle cx="19" cy="16" r="1.4" fill="currentColor" stroke="none"/><circle cx="24" cy="8" r="1.4" fill="currentColor" stroke="none"/><circle cx="30" cy="10" r="1.4" fill="currentColor" stroke="none"/><circle cx="33" cy="5" r="1.4" fill="currentColor" stroke="none"/></svg><span>Scatter Plot</span></div>
+            <div class="tech"><svg viewBox="0 0 40 26" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="4" y="4" width="8" height="8" fill="currentColor" opacity="0.3"/><rect x="12" y="4" width="8" height="8" fill="currentColor" opacity="0.7"/><rect x="20" y="4" width="8" height="8" fill="currentColor" opacity="0.4"/><rect x="4" y="12" width="8" height="8" fill="currentColor" opacity="0.6"/><rect x="12" y="12" width="8" height="8" fill="currentColor" opacity="0.9"/><rect x="20" y="12" width="8" height="8" fill="currentColor" opacity="0.3"/></svg><span>Mapa de Calor</span></div>
+            <div class="tech"><svg viewBox="0 0 40 26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 6h20M6 12h16M6 18h24M6 22h12"/></svg><span>Barras (Categ.)</span></div>
+            <div class="tech"><svg viewBox="0 0 40 26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 6v16h32"/><path d="M10 20l4-4M22 10l-2 2" stroke-dasharray="1 2"/><circle cx="10" cy="20" r="1.6" fill="currentColor" stroke="none"/><circle cx="22" cy="10" r="1.6" fill="currentColor" stroke="none"/></svg><span>Valores Faltantes</span></div>
+            <div class="tech"><svg viewBox="0 0 40 26" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="10" cy="14" r="1.4" fill="currentColor" stroke="none"/><circle cx="16" cy="12" r="1.4" fill="currentColor" stroke="none"/><circle cx="20" cy="15" r="1.4" fill="currentColor" stroke="none"/><circle cx="26" cy="13" r="1.4" fill="currentColor" stroke="none"/><circle cx="33" cy="4" r="2.2" fill="none"/></svg><span>Outliers</span></div>
+            <div class="tech"><svg viewBox="0 0 40 26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 18c4-2 6 4 10 2s6-10 10-8 8 4 12 2"/></svg><span>Serie de Tiempo</span></div>
+          </div>
+        </div>
+        <div class="panel">
+          <h2>Principios del Buen EDA</h2>
+          <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14"/></svg><span>Conocer <b>el negocio y el contexto</b> antes de explorar.</span></div>
+          <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.5-2.5 2-2.5 3.5M12 17h.01"/></svg><span><b>Hacer preguntas</b> a los datos, no solo describirlos.</span></div>
+          <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg><span><b>Visualizar antes de modelar</b>, siempre.</span></div>
+          <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg><span><b>Ser iterativo y flexible</b> — repetir con lo que se descubre.</span></div>
+        </div>
+      </div>
+
+      <div class="right-col">
+        <div class="panel">
+          <h2>¿Por qué es tan Importante?</h2>
+          <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span><b>Mejora la calidad</b> — detecta errores e inconsistencias.</span></div>
+          <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Guía mejores decisiones</b> sobre variables y modelo.</span></div>
+          <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg><span><b>Impacta el modelo</b> — mejora rendimiento y robustez.</span></div>
+          <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg><span><b>Reduce riesgos</b> — evita conclusiones incorrectas.</span></div>
+        </div>
+        <div class="panel" style="background:#12241A; border-color:#12241A;">
+          <h2 style="color:#8FE0B6;">Combina Estadística + Dominio</h2>
+          <div class="item" style="color:#D9E7DE;"><svg viewBox="0 0 24 24" fill="none" stroke="#7FDDA8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6.2 4.5L18 21l-6-4.4L6 21l2.2-7.1L2 9.4h7.6z"/></svg><span>El número sin contexto de negocio es solo un dato — <b style="color:#fff">cruzarlos es lo que genera insight real</b>.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="qkey">
+        <div class="qchip">¿Qué datos tenemos?</div>
+        <div class="qchip">¿Hay problemas de calidad?</div>
+        <div class="qchip">¿Qué patrones importan?</div>
+      </div>
+      <div class="sig"><div class="li-badge">in</div><span>cacm523</span></div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

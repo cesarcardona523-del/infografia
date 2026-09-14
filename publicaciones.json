@@ -2714,5 +2714,149 @@
       "likes": 0,
       "shares": 0
     }
+  },
+  {
+    "id": "como-elaborar-peti",
+    "imagen": "Construidos/Estrategia_de_Datos/como-elaborar-peti.png",
+    "fechaPublicacion": "2026-09-17T09:10:00",
+    "categoriaPrincipal": "profesion-y-negocio",
+    "temas": [
+      "estrategia-datos",
+      "gestion-proyectos"
+    ],
+    "tipoContenido": "infografia",
+    "es": {
+      "topico": "¿Cómo Elaborar un PETI?",
+      "descripcion": "El PETI (Plan Estratégico de Tecnologías de la Información) es el proceso mediante el cual un líder de TI alinea la tecnología con la estrategia del negocio y genera valor medible, no solo infraestructura. El proceso tiene 9 pasos, pensados como un ciclo continuo y no como un documento que se archiva: conocer la organización (entender su estrategia, objetivos y necesidades), realizar un diagnóstico de TI (infraestructura, sistemas, servicios, seguridad, datos, personal y proveedores), identificar las brechas entre lo que se tiene y lo que se necesita, definir la visión de hacia dónde debe evolucionar TI, definir los objetivos estratégicos de TI alineados con los del negocio, construir el portafolio de iniciativas (proyectos con beneficios, recursos, costos, riesgos y plazos), construir el roadmap ordenando las iniciativas en el tiempo, definir indicadores (KPIs) para medir el avance y el impacto, y finalmente aprobar, ejecutar y actualizar el plan periódicamente. El PETI se apoya en marcos de referencia reconocidos: COBIT para gobierno y gestión de TI, ISO/IEC 27001 para seguridad de la información, ITIL para gestión de servicios de TI, TOGAF para arquitectura empresarial e ISO 38500 para gobierno corporativo de TI. Entre sus beneficios prácticos: reduce inversiones tecnológicas a ciegas (cada proyecto queda justificado por una brecha real), da horizonte de largo plazo, facilita auditorías y cumplimiento normativo, y vuelve medible el aporte de TI al negocio. La idea central: el PETI no empieza con tecnología, empieza con la estrategia."
+    },
+    "en": {
+      "topico": "How to Build an IT Strategic Plan (ITSP)",
+      "descripcion": "An IT Strategic Plan is the process through which an IT leader aligns technology with business strategy and generates measurable value, not just infrastructure. The process has 9 steps, meant as a continuous cycle rather than a document that gets filed away: know the organization (understand its strategy, goals and needs), run an IT diagnostic (infrastructure, systems, services, security, data, staff and vendors), identify the gaps between what you have and what you need, define the vision for where IT should evolve, define IT strategic objectives aligned with business goals, build the initiative portfolio (projects with benefits, resources, costs, risks and timelines), build the roadmap ordering initiatives over time, define KPIs to measure progress and impact, and finally approve, execute and periodically update the plan. The plan relies on recognized reference frameworks: COBIT for IT governance and management, ISO/IEC 27001 for information security, ITIL for service management, TOGAF for enterprise architecture, and ISO 38500 for corporate IT governance. Among its practical benefits: it reduces blind technology investments (every project is justified by a real gap), gives a long-term horizon, eases audits and regulatory compliance, and makes IT's contribution to the business measurable. The core idea: the plan does not start with technology, it starts with strategy."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "algoritmos-regresion-data-science",
+    "imagen": "Construidos/Ciencia_Datos/algoritmos-regresion-data-science.png",
+    "fechaPublicacion": "2026-09-19T09:10:00",
+    "categoriaPrincipal": "analisis-de-datos",
+    "temas": [
+      "machine-learning",
+      "estadistica"
+    ],
+    "tipoContenido": "infografia",
+    "es": {
+      "topico": "9 Algoritmos de Regresión más Usados en Data Science",
+      "descripcion": "Los algoritmos de regresión predicen valores numéricos continuos a partir de variables predictoras, buscando la mejor relación entre variables para resultados continuos. Los 9 más utilizados: Regresión Lineal Simple (relación lineal, rápida e interpretable), Regresión Polinómica (relaciones no lineales, ideal con curvatura), Árboles de Decisión (reglas condicionales, fáciles de interpretar), Random Forest (ensamble de árboles que reduce el sobreajuste), Support Vector Regression o SVR (mejor línea dentro de un margen de error), K-Nearest Neighbors (predice con el promedio de los k vecinos más cercanos), Descenso de Gradiente Estocástico o SGD (optimiza parámetros de forma iterativa, escalable), Redes Neuronales (relaciones complejas y no lineales, gran poder predictivo), y XGBoost (boosting basado en árboles, de alta precisión, muy usado en competencias). Para evaluar estos modelos se usan cuatro métricas: MAE (error absoluto medio, fácil de interpretar), MSE (error cuadrático medio, penaliza más los errores grandes), RMSE (raíz del MSE, interpretable en la escala original) y R² (proporción de varianza explicada, entre 0 y 1). La recomendación central: no existe el mejor algoritmo, sino el más adecuado para el problema, los datos y los objetivos de cada caso — conocer los datos, empezar simple, incrementar la complejidad gradualmente y validar siempre con datos no vistos."
+    },
+    "en": {
+      "topico": "9 Most Used Regression Algorithms in Data Science",
+      "descripcion": "Regression algorithms predict continuous numeric values from predictor variables, finding the best relationship between variables for continuous outcomes. The 9 most used: Simple Linear Regression (basic model assuming a linear relationship, fast and interpretable), Polynomial Regression (captures non-linear relationships by adding polynomial terms, ideal when data shows curvature), Decision Trees (split data into conditional rules, easy to interpret and visualize), Random Forest (ensemble of multiple trees that reduces overfitting and improves accuracy), Support Vector Regression or SVR (finds the best line within a margin that minimizes error, works well on complex data), K-Nearest Neighbors (predicts the average value of the k nearest neighbors, simple and effective for local patterns), Stochastic Gradient Descent or SGD (optimizes parameters iteratively, scalable for large data volumes), Neural Networks (model complex, non-linear relationships, require more data and compute but have strong predictive power), and XGBoost (tree-based boosting algorithm, highly accurate and widely used in competitions). Four metrics are used to evaluate these models: MAE (mean absolute error, easy to interpret in the target's own units), MSE (mean squared error, penalizes large errors more), RMSE (square root of MSE, interpretable on the original scale) and R² (coefficient of determination, proportion of variance explained by the model, between 0 and 1). The core takeaway: there is no single best algorithm, only the one best suited to the problem, the data and the goals at hand — know your data, start simple, increase complexity gradually, and always validate on unseen data."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "no-necesitas-aprender-todo-data",
+    "imagen": "Construidos/Roles/no-necesitas-aprender-todo-data.png",
+    "fechaPublicacion": "2026-09-21T09:10:00",
+    "categoriaPrincipal": "profesion-y-negocio",
+    "temas": [
+      "roles-datos",
+      "roadmaps"
+    ],
+    "tipoContenido": "infografia",
+    "es": {
+      "topico": "No Necesitas Aprender Todo para Trabajar en Data",
+      "descripcion": "Qué priorizar si se apunta a Data Analytics, Business Intelligence o Business Analytics, combatiendo el mito del roadmap infinito de herramientas. El error común: convertir una lista de tecnologías (SQL, Excel, Python, Power BI, estadística, ETL, Cloud, Spark, Machine Learning) en un inventario que hay que dominar por completo antes de postularse a un puesto — el problema no es aprender herramientas, es creer que hay que dominarlas todas de entrada. Una forma más sana de pensarlo es por capas: Fundamentos (Excel, SQL, limpieza de datos), Análisis (métricas, tendencias, segmentación), Visualización y BI (dashboards, KPIs, modelado), Negocio (procesos, objetivos, decisiones) y Especialización (Python, Cloud, Machine Learning, Big Data) — no todas las capas tienen la misma prioridad para empezar. Además, no todos los roles priorizan las mismas competencias: un Data Analyst necesita SQL, Power BI/Tableau y estadística en nivel alto; un BI Analyst prioriza aún más Power BI/Tableau (nivel muy alto) sobre estadística (nivel medio); y un Business Analyst prioriza procesos de negocio y requisitos/stakeholders por sobre las herramientas técnicas. Solo KPIs y métricas resultan prioridad muy alta para los tres roles por igual. La conclusión: el objetivo no es aprender todo, es construir una base sólida, resolver problemas reales y desarrollar criterio para saber qué aprender después, según el rol al que se apunta."
+    },
+    "en": {
+      "topico": "You Don't Need to Learn Everything to Work in Data",
+      "descripcion": "What to prioritize when aiming for Data Analytics, Business Intelligence or Business Analytics, pushing back on the myth of the infinite tools roadmap. The common mistake: turning a list of technologies (SQL, Excel, Python, Power BI, statistics, ETL, Cloud, Spark, Machine Learning) into an inventory you must fully master before applying to a job — the problem isn't learning tools, it's believing you must master all of them upfront. A healthier way to think about it is in layers: Fundamentals (Excel, SQL, data cleaning), Analysis (metrics, trends, segmentation), Visualization and BI (dashboards, KPIs, modeling), Business (processes, goals, decisions) and Specialization (Python, Cloud, Machine Learning, Big Data) — not every layer carries the same priority to get started. On top of that, not every role prioritizes the same competencies: a Data Analyst needs SQL, Power BI/Tableau and statistics at a high level; a BI Analyst prioritizes Power BI/Tableau even more (very high) over statistics (medium); and a Business Analyst prioritizes business processes and stakeholder requirements over technical tools. Only KPIs and metrics rank as very high priority for all three roles alike. The takeaway: the goal isn't to learn everything, it's to build a solid foundation, solve real problems, and develop the judgment to know what to learn next, depending on the role you're aiming for."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "eda-analisis-exploratorio-datos",
+    "imagen": "Construidos/Ciencia_Datos/eda-analisis-exploratorio-datos.png",
+    "fechaPublicacion": "2026-09-23T09:10:00",
+    "categoriaPrincipal": "analisis-de-datos",
+    "temas": [
+      "ciencia-datos",
+      "analitica"
+    ],
+    "tipoContenido": "infografia",
+    "es": {
+      "topico": "EDA: Análisis Exploratorio de Datos",
+      "descripcion": "El EDA (Exploratory Data Analysis) es el proceso de explorar, visualizar y comprender los datos antes de modelar — entender los datos es comprender el problema antes de resolverlo. Se ubica justo después de la etapa de datos y antes de la preparación, en el flujo de un proyecto de ciencia de datos: Datos → EDA → Preparación → Feature Engineering → Machine Learning → Evaluación → Resultados. Durante el EDA se entiende la estructura de los datos, se analizan distribuciones y variables, se detectan valores faltantes y atípicos, se exploran relaciones entre variables, se identifican patrones y se generan hipótesis nuevas. Las técnicas clave incluyen histogramas, boxplots, curvas de distribución, scatter plots, mapas de calor de correlación, gráficos de barras, visualización de valores faltantes, detección de outliers y series de tiempo. El EDA influye directamente en machine learning: guía la selección de variables, el tratamiento de faltantes y outliers, las transformaciones adecuadas, la elección del modelo y una mejor interpretación de resultados. Los principios de un buen EDA: conocer el negocio y el contexto, hacer preguntas a los datos en vez de solo describirlos, visualizar antes de modelar, ser iterativo y flexible, y combinar estadística con conocimiento de dominio — un número sin contexto de negocio es solo un dato; cruzarlo con ese contexto es lo que genera un insight real. Importa porque mejora la calidad de los datos, guía mejores decisiones, impacta el rendimiento del modelo y reduce el riesgo de conclusiones incorrectas."
+    },
+    "en": {
+      "topico": "EDA: Exploratory Data Analysis",
+      "descripcion": "EDA (Exploratory Data Analysis) is the process of exploring, visualizing and understanding data before modeling — understanding the data means understanding the problem before solving it. It sits right after the data stage and before data preparation in a typical data science project flow: Data → EDA → Data Preparation → Feature Engineering → Machine Learning → Evaluation → Results and Insights. During EDA you understand the data's structure, analyze distributions and variables, detect missing values and outliers, explore relationships between variables, identify patterns and behavior, and generate hypotheses and new questions. Key techniques and visualizations include histograms, boxplots, distribution curves, scatter plots, correlation heatmaps, bar charts for categorical variables, missing-value visualization, outlier detection and time series. EDA directly influences machine learning: it guides variable selection (removing irrelevant or redundant ones), data treatment (deciding how to handle missing values, outliers and errors), proper transformations (improving distribution and scale), the choice of the most appropriate model, and better interpretation of results. The principles of good EDA: know the business and context, ask questions of the data instead of just describing it, visualize before modeling, be iterative and flexible, and combine statistics with domain knowledge — a number without business context is just data; crossing it with that context is what generates a real insight. It matters because it improves data quality, guides better decisions, directly impacts model performance, and reduces the risk of incorrect conclusions."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "metodo-rocaf-prompts",
+    "imagen": "Construidos/IA/metodo-rocaf-prompts.png",
+    "fechaPublicacion": "2026-09-16T09:10:00",
+    "categoriaPrincipal": "inteligencia-artificial",
+    "temas": [
+      "prompt-engineering",
+      "ia"
+    ],
+    "tipoContenido": "infografia",
+    "es": {
+      "topico": "Prompts que Funcionan: el Método ROCAF",
+      "descripcion": "ROCAF es un método de 5 componentes -más 2 complementos- para escribir prompts más claros y efectivos con cualquier IA generativa: más claridad, mejor dirección y mejores respuestas. Rol define quién es la IA, desde qué experiencia responde (ej.: \"actúa como analista de datos senior especializado en retail\"). Objetivo explica qué resultado se necesita lograr con esa respuesta (ej.: \"quiero identificar por qué cayeron las ventas en julio\"). Contexto da la información necesaria para entender bien la situación (ej.: \"tenemos datos mensuales de 2023-2025 en 5 tiendas\"). Acción indica qué debe hacer exactamente la IA, paso a paso si hace falta (ej.: \"compara julio vs. el resto del año y lista 3 causas posibles\"). Formato especifica la estructura o el estilo en que se quiere la respuesta (ej.: \"responde en una tabla con causa, evidencia e impacto\"). A estos 5 se suman dos complementos igual de importantes: Audiencia, que define para quién es la respuesta y su nivel de conocimiento (ej.: \"explica para un gerente sin conocimiento técnico\"), y Restricciones, que aclara límites, longitud o condiciones importantes que no deben pasarse por alto (ej.: \"no asumas causas externas sin dato que las respalde\"). La idea central: un buen prompt no es más largo, es el que responde estas 7 preguntas antes de que la IA tenga que adivinar — el resultado es más claridad en la solicitud, respuestas más útiles y mejores resultados en general."
+    },
+    "en": {
+      "topico": "Prompts That Work: the ROCAF Method",
+      "descripcion": "ROCAF is a 5-component method -plus 2 complements- for writing clearer, more effective prompts with any generative AI: more clarity, better direction, better answers. Role defines who the AI is, from what expertise it responds (e.g., \"act as a senior data analyst specialized in retail\"). Objective explains what outcome you need from that response (e.g., \"I want to identify why sales dropped in July\"). Context gives the information needed to understand the situation properly (e.g., \"we have monthly data from 2023-2025 across 5 stores\"). Action states exactly what the AI should do, step by step if needed (e.g., \"compare July against the rest of the year and list 3 possible causes\"). Format specifies the structure or style you want the answer in (e.g., \"answer in a table with cause, evidence and impact\"). Two equally important complements round out the method: Audience, which defines who the answer is for and their level of knowledge (e.g., \"explain for a manager with no technical background\"), and Constraints, which clarifies limits, length or important conditions that shouldn't be overlooked (e.g., \"don't assume external causes without data to back them\"). The core idea: a good prompt isn't longer, it's the one that answers these 7 questions before the AI has to guess — the result is more clarity in your request, more useful answers, and better results overall."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
+  },
+  {
+    "id": "asesor-ia-educativo-gemini",
+    "imagen": "Construidos/Docencia/asesor-ia-educativo-gemini.png",
+    "fechaPublicacion": "2026-09-18T09:10:00",
+    "categoriaPrincipal": "aprendizaje-y-recursos",
+    "temas": [
+      "docencia",
+      "ia"
+    ],
+    "tipoContenido": "infografia",
+    "es": {
+      "topico": "Crea tu Asesor de IA Educativo con Gemini",
+      "descripcion": "Guía de 10 pasos para configurar, 100% gratis, un asesor educativo personalizado dentro de Gemini (una \"Gem\") usando solo una cuenta de Google. Los pasos: abrir Gemini en gemini.google.com e iniciar sesión; crear una nueva Gem desde el botón correspondiente, lo que abre el panel de configuración; definir el rol escribiendo instrucciones como \"eres un Asesor Educativo de IA que explica conceptos complejos de forma clara y amigable\"; especificar las tareas que debe poder resolver, como crear cuestionarios de práctica y resumir documentos, con un tono motivador y paciente; ajustar el estilo de las respuestas, usando analogías y ejemplos de la vida real adaptados al nivel del estudiante; definir límites y seguridad, por ejemplo indicando que nunca debe dar respuestas a tareas o exámenes sin antes hacer una pregunta de seguimiento, y que la información debe venir de fuentes académicas o consensuadas; nombrar la Gem con algo descriptivo y memorable, como \"Mentor Académico\" o \"Edu-Guía\"; elegir una imagen de perfil que le dé identidad visual; guardar y finalizar revisando todas las instrucciones antes de confirmar; y por último probar la Gem abriendo un chat nuevo y verificando que el tono y el estilo de respuesta coincidan con lo esperado. El resultado no es un chatbot genérico: es un asesor con rol, tono y límites definidos por quien lo configura, pensado específicamente para acompañar el aprendizaje de estudiantes."
+    },
+    "en": {
+      "topico": "Build Your Educational AI Advisor with Gemini",
+      "descripcion": "A 10-step guide to setting up, for free, a personalized educational advisor inside Gemini (a \"Gem\") using nothing but a Google account. The steps: open Gemini at gemini.google.com and sign in; create a new Gem from the corresponding button, which opens the configuration panel; define the role by writing instructions such as \"you are an Educational AI Advisor that explains complex concepts clearly and in a friendly way\"; specify the tasks it should handle, like creating practice quizzes and summarizing documents, with a motivating and patient tone; adjust the response style, using real-life analogies and examples matched to the student's level; define limits and safety, for example stating it should never answer homework or exam questions without first asking a follow-up question, and that information must come from academic or consensus sources; name the Gem with something descriptive and memorable, like \"Academic Mentor\" or \"Study Guide\"; choose a profile image to give it visual identity; save and finish by reviewing all the instructions before confirming; and finally test the Gem by opening a new chat and checking that tone and response style match expectations. The result isn't a generic chatbot: it's an advisor with role, tone and limits defined by whoever configures it, built specifically to support student learning."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
   }
 ]
