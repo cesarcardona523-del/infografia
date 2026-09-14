@@ -251,6 +251,7 @@ Antes de crear una entrada nueva, el proyecto analiza si el contenido amplía o 
 - ✅ Modelos de IA en 2026: Quién Lidera en Inteligencia y Quién Domina el Mercado — tema `IA` — fuentes: Artificial Analysis · First Page Sage — [HTML](Construidos/IA/modelos-ia-lideres-mercado-2026.html) · [PNG](Construidos/IA/modelos-ia-lideres-mercado-2026.png)
 - ✅ Herramientas para la Investigación Científica: Cualitativa vs. Cuantitativa — tema `Cultura_Datos` — [HTML](Construidos/Cultura_Datos/herramientas-investigacion-cientifica.html) · [PNG](Construidos/Cultura_Datos/herramientas-investigacion-cientifica.png)
 - ✅ ETL, ELT, ETLT y Reverse ETL: Cuándo Transformar el Dato — tema `Data_Engineering` — [HTML](Construidos/Data_Engineering/etl-elt-etlt-reverse-etl.html) · [PNG](Construidos/Data_Engineering/etl-elt-etlt-reverse-etl.png)
+- ✅ Data Lake vs Data Warehouse vs Data Lakehouse — tema `Data_Engineering` — [HTML](Construidos/Data_Engineering/data-lake-warehouse-lakehouse.html) · [PNG](Construidos/Data_Engineering/data-lake-warehouse-lakehouse.png)
 
 Este README se irá actualizando con un enlace por cada infografía nueva.
 
@@ -261,11 +262,11 @@ Este README se irá actualizando con un enlace por cada infografía nueva.
 Cifras reales de este repositorio (calculadas con `git log`/`git shortlog` sobre este mismo git — sin servicios externos ni redirecciones a otros sitios, instantánea al 2026-09-13):
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Commits-140-00C9A7?style=for-the-badge&logo=git&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Commits-142-00C9A7?style=for-the-badge&logo=git&logoColor=white"/>
   &nbsp;
-  <img src="https://img.shields.io/badge/Archivos-556-1A56E8?style=for-the-badge&logo=files&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Archivos-558-1A56E8?style=for-the-badge&logo=files&logoColor=white"/>
   &nbsp;
-  <img src="https://img.shields.io/badge/Líneas%20%2B%2F%E2%88%92-104%2C763%20%2F%205%2C506-0B1426?style=for-the-badge&logo=git&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Líneas%20%2B%2F%E2%88%92-104%2C995%20%2F%205%2C513-0B1426?style=for-the-badge&logo=git&logoColor=white"/>
 </p>
 
 <p align="center">
@@ -277,7 +278,7 @@ Cifras reales de este repositorio (calculadas con `git log`/`git shortlog` sobre
 **Commits por autor:**
 
 <p align="center">
-  <img src="https://img.shields.io/badge/caesar523__dev-140%20commits-00C9A7?style=flat&logo=github&logoColor=white"/>
+  <img src="https://img.shields.io/badge/caesar523__dev-142%20commits-00C9A7?style=flat&logo=github&logoColor=white"/>
 </p>
 
 > Esta sección se debe recalcular y actualizar cada vez que se agregue o modifique contenido en este repositorio — ver la regla correspondiente en [CLAUDE.md](CLAUDE.md).
