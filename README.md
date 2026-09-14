@@ -22,7 +22,7 @@ Este repositorio es la **fábrica de contenido** detrás de las infografías té
 
 ```text
 📁  30 temas          → Construidos/<Tema>/, cada uno con varias infografías a lo largo del tiempo
-🖼️  120 infografías    → HTML/CSS puro (1200×627px), exportadas automáticamente a PNG en alta resolución
+🖼️  121 infografías    → HTML/CSS puro (1200×627px), exportadas automáticamente a PNG en alta resolución
 📄  publicaciones.json → catálogo único e incremental, espejado en paginaweb/publications/publicaciones.js
 🏷️  Taxonomía cerrada  → 10 categorías · 45 temas · 13 tipos de contenido (taxonomia.json)
 🔁  2 flujos de trabajo → creación desde cero, o HTML+JSON ya resueltos entregados por el usuario
@@ -138,7 +138,7 @@ Antes de crear una entrada nueva, el proyecto analiza si el contenido amplía o 
 
 ## 🗺️ Estado
 
-**120 infografías publicadas en 30 temas**, listadas en orden de creación:
+**121 infografías publicadas en 30 temas**, listadas en orden de creación:
 
 - ✅ Automatización vs Autonomía: Arquitectura de Sistemas de IA Agénticos — tema `Automatización` — [HTML](Construidos/Automatización/automatizacion-agentesia.html) · [PNG](Construidos/Automatización/automatizacion-agentesia.png)
 - ✅ Automatización de Reportes con Python: de Excel a Producción — tema `Automatización` — [HTML](Construidos/Automatización/automatizacion-python.html) · [PNG](Construidos/Automatización/automatizacion-python.png)
@@ -260,6 +260,7 @@ Antes de crear una entrada nueva, el proyecto analiza si el contenido amplía o 
 - ✅ No Necesitas Aprender Todo para Trabajar en Data — tema `Roles` — [HTML](Construidos/Roles/no-necesitas-aprender-todo-data.html) · [PNG](Construidos/Roles/no-necesitas-aprender-todo-data.png)
 - ✅ Crea tu Asesor de IA Educativo con Gemini — tema `Docencia` — [HTML](Construidos/Docencia/asesor-ia-educativo-gemini.html) · [PNG](Construidos/Docencia/asesor-ia-educativo-gemini.png)
 - ✅ EDA: Análisis Exploratorio de Datos — tema `Ciencia_Datos` — [HTML](Construidos/Ciencia_Datos/eda-analisis-exploratorio-datos.html) · [PNG](Construidos/Ciencia_Datos/eda-analisis-exploratorio-datos.png)
+- ✅ 25 Formas de Usar Claude como un Pro — tema `Claude` — [HTML](Construidos/Claude/25-formas-usar-claude.html) · [PNG](Construidos/Claude/25-formas-usar-claude.png)
 
 Este README se irá actualizando con un enlace por cada infografía nueva.
 
@@ -270,11 +271,11 @@ Este README se irá actualizando con un enlace por cada infografía nueva.
 Cifras reales de este repositorio (calculadas con `git log`/`git shortlog` sobre este mismo git — sin servicios externos ni redirecciones a otros sitios, instantánea al 2026-09-13):
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Commits-150-00C9A7?style=for-the-badge&logo=git&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Commits-152-00C9A7?style=for-the-badge&logo=git&logoColor=white"/>
   &nbsp;
-  <img src="https://img.shields.io/badge/Archivos-582-1A56E8?style=for-the-badge&logo=files&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Archivos-585-1A56E8?style=for-the-badge&logo=files&logoColor=white"/>
   &nbsp;
-  <img src="https://img.shields.io/badge/Líneas%20%2B%2F%E2%88%92-106%2C379%20%2F%205%2C535-0B1426?style=for-the-badge&logo=git&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Líneas%20%2B%2F%E2%88%92-106%2C540%20%2F%205%2C541-0B1426?style=for-the-badge&logo=git&logoColor=white"/>
 </p>
 
 <p align="center">
@@ -286,7 +287,7 @@ Cifras reales de este repositorio (calculadas con `git log`/`git shortlog` sobre
 **Commits por autor:**
 
 <p align="center">
-  <img src="https://img.shields.io/badge/caesar523__dev-150%20commits-00C9A7?style=flat&logo=github&logoColor=white"/>
+  <img src="https://img.shields.io/badge/caesar523__dev-152%20commits-00C9A7?style=flat&logo=github&logoColor=white"/>
 </p>
 
 > Esta sección se debe recalcular y actualizar cada vez que se agregue o modifique contenido en este repositorio — ver la regla correspondiente en [CLAUDE.md](CLAUDE.md).
