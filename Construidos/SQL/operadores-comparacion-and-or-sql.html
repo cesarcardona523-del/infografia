@@ -6,95 +6,83 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   :root{
-    --green:#1E7A4F; --green-dark:#125C39; --green-pale:#E2F2E8; --green-line:#BFE0CC;
-    --earth:#C1620E; --earth-dark:#8C480A; --earth-pale:#FBEADD; --earth-line:#F0CBA0;
-    --blue:#2C63C9; --blue-pale:#E7EEFB;
-    --ink:#1D2129; --muted:#5C6470; --line:#E4E9E6; --white:#FFFFFF; --paper:#F5F8F6;
-    --editor:#151A21; --editor-line:#2A313B;
-    --kw:#7AA2F7; --str:#9ECE6A; --num:#E0AF68; --com:#6A7488;
+    --bg:#1E1E2E; --bg2:#181825; --editor:#14141F; --panel:rgba(255,255,255,0.04); --line:#2A2A3D;
+    --keyword:#7AA2F7; --type:#BB9AF7; --string:#9ECE6A; --comment:#565F89; --func:#E0AF68;
+    --text:#C0CAF5; --white:#fff; --muted:#8B93B8; --accent:#EE352E;
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
   body{
     min-height:627px; display:flex; align-items:center; justify-content:center;
-    padding:32px 16px; background:#F0F6F2;
+    padding:32px 16px; background:#111018;
     font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   }
   .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
   .canvas{
     position:relative; width:1200px; height:627px; margin:0 auto;
-    background:linear-gradient(160deg, #FAFDFB 0%, var(--paper) 55%, #EFF6F1 100%);
-    border-radius:16px; box-shadow:0 20px 50px rgba(14,40,26,0.16); overflow:hidden;
-    padding:18px 30px 12px; color:var(--ink);
-    display:flex; flex-direction:column;
+    background:linear-gradient(165deg, var(--bg) 0%, var(--bg2) 100%);
+    border-radius:16px; box-shadow:0 24px 60px rgba(0,0,0,0.5); overflow:hidden;
+    padding:16px 28px 12px; color:var(--text);
+    display:flex; flex-direction:column; min-height:0;
   }
 
-  /* Header */
-  .header{ display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:10px; gap:14px; }
-  .header-l{ flex:1; }
-  .eyebrow{ display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:800; letter-spacing:1.6px; color:var(--green-dark); text-transform:uppercase; background:var(--green-pale); border:1px solid var(--green-line); padding:2.5px 8px; border-radius:20px; margin-bottom:6px; }
-  .eyebrow svg{ width:13px; height:13px; flex:none; }
-  .header h1{ font-size:21px; margin:0 0 3px; font-weight:800; letter-spacing:-0.3px; line-height:1.15; }
-  .header h1 span{ color:var(--green-dark); }
-  .header p.sub{ margin:0; font-size:12px; color:var(--muted); max-width:700px; line-height:1.35; }
-  .where-chip{ flex:none; background:var(--editor); border-radius:10px; padding:8px 12px; box-shadow:0 3px 10px rgba(14,40,26,0.12); }
-  .where-chip .lbl{ font-size:12px; font-weight:800; letter-spacing:0.5px; text-transform:uppercase; color:var(--com); margin-bottom:3px; }
-  .where-chip code{ font-family:"SF Mono","Menlo","Consolas",monospace; font-size:12px; color:#C0CAF5; }
-  .where-chip .kw{ color:var(--kw); }
+  .header{ text-align:center; margin-bottom:8px; }
+  .header .eyebrow{ display:inline-flex; align-items:center; gap:6px; font-size:14px; font-weight:700; letter-spacing:1.8px; color:var(--accent); text-transform:uppercase; margin-bottom:3px; }
+  .header .eyebrow svg{ width:15px; height:15px; flex:none; }
+  .header h1{ font-size:19px; margin:0 0 3px; font-weight:800; letter-spacing:-0.2px; color:#fff; }
+  .header h1 span{ color:var(--func); }
+  .header p{ margin:0 auto; font-size:14px; color:var(--muted); max-width:760px; }
 
-  /* Body */
-  .body-grid{ flex:1; display:grid; grid-template-columns: 420px 1fr; gap:12px; min-height:0; }
+  .body-grid{ flex:1; display:grid; grid-template-columns: 400px 1fr; gap:12px; min-height:0; }
 
-  /* ===== Left: operators table ===== */
-  .op-panel{ background:var(--white); border:1px solid var(--line); border-radius:12px; padding:12px 14px 10px; display:flex; flex-direction:column; box-shadow:0 2px 8px rgba(14,40,26,0.04); }
-  .op-panel h2{ display:flex; align-items:center; gap:6px; margin:0 0 8px; font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:0.3px; color:var(--green-dark); }
-  .op-panel h2 svg{ width:14px; height:14px; }
+  .op-panel{ background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:11px 14px 10px; display:flex; flex-direction:column; }
+  .op-panel h2{ display:flex; align-items:center; gap:6px; margin:0 0 8px; font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.3px; color:#fff; }
+  .op-panel h2 svg{ width:14px; height:14px; color:var(--func); }
 
-  .op-table{ width:100%; border-collapse:separate; border-spacing:0; font-size:12px; }
-  .op-table thead th{ text-align:left; font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:0.3px; color:var(--muted); padding:0 6px 5px; border-bottom:1.5px solid var(--line); }
+  .op-table{ width:100%; border-collapse:separate; border-spacing:0; font-size:14px; }
+  .op-table thead th{ text-align:left; font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.3px; color:var(--muted); padding:0 6px 5px; border-bottom:1.5px solid var(--line); }
   .op-table thead th.center{ text-align:center; }
   .op-table tbody td{ padding:6px 6px; border-bottom:1px solid var(--line); vertical-align:middle; }
   .op-table tbody tr:last-child td{ border-bottom:none; }
-  .op-table .sym{ font-family:"SF Mono","Menlo","Consolas",monospace; font-weight:800; font-size:13px; color:var(--green-dark); background:var(--green-pale); border:1px solid var(--green-line); border-radius:6px; padding:2px 8px; display:inline-block; min-width:26px; text-align:center; }
-  .op-table .nm{ font-weight:700; font-size:12px; color:var(--ink); }
+  .op-table .sym{ font-family:"SF Mono","Menlo","Consolas",monospace; font-weight:800; font-size:14px; color:var(--func); background:rgba(224,175,104,0.12); border:1px solid rgba(224,175,104,0.3); border-radius:6px; padding:2px 8px; display:inline-block; min-width:26px; text-align:center; }
+  .op-table .nm{ font-weight:700; font-size:14px; color:#fff; }
   .op-table .center{ text-align:center; }
-  .yes{ display:inline-flex; width:16px; height:16px; border-radius:50%; background:var(--green-pale); color:var(--green-dark); align-items:center; justify-content:center; font-size:12px; font-weight:800; }
-  .no{ display:inline-flex; width:16px; height:16px; border-radius:50%; background:#F3E7E4; color:#B0453A; align-items:center; justify-content:center; font-size:12px; font-weight:800; }
+  .yes{ display:inline-flex; width:16px; height:16px; border-radius:50%; background:rgba(158,206,106,0.15); color:var(--string); align-items:center; justify-content:center; font-size:14px; font-weight:800; }
+  .no{ display:inline-flex; width:16px; height:16px; border-radius:50%; background:rgba(238,53,46,0.15); color:#F07178; align-items:center; justify-content:center; font-size:14px; font-weight:800; }
 
-  .op-note{ margin-top:8px; background:var(--earth-pale); border-left:3px solid var(--earth); border-radius:6px; padding:6px 8px; font-size:12px; color:var(--ink); line-height:1.4; }
-  .op-note b{ color:var(--earth-dark); }
+  .op-note{ margin-top:8px; background:rgba(224,175,104,0.08); border-left:3px solid var(--func); border-radius:6px; padding:6px 8px; font-size:14px; color:var(--text); line-height:1.4; }
+  .op-note b{ color:var(--func); }
 
   .op-legend{ display:flex; gap:10px; margin-top:8px; padding-top:7px; border-top:1px dashed var(--line); }
-  .op-legend div{ display:flex; align-items:center; gap:4px; font-size:12px; color:var(--muted); font-weight:700; }
+  .op-legend div{ display:flex; align-items:center; gap:4px; font-size:14px; color:var(--muted); font-weight:700; }
 
-  /* ===== Right: AND / OR ===== */
   .logic-col{ display:flex; flex-direction:column; gap:10px; min-height:0; }
-  .logic-card{ flex:1; background:var(--white); border:1px solid var(--line); border-radius:12px; padding:10px 14px; display:grid; grid-template-columns: 108px 1fr 176px; gap:12px; align-items:center; box-shadow:0 2px 8px rgba(14,40,26,0.04); }
-  .logic-card.and{ border-top:3px solid var(--green); }
-  .logic-card.or{ border-top:3px solid var(--earth); }
+  .logic-card{ flex:1; background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:10px 14px; display:grid; grid-template-columns: 92px 1fr 235px; gap:10px; align-items:center; }
+  .logic-card.and{ border-top:3px solid var(--keyword); }
+  .logic-card.or{ border-top:3px solid var(--func); }
 
   .venn-wrap{ display:flex; flex-direction:column; align-items:center; gap:3px; }
-  .venn-wrap .vlabel{ font-size:12px; color:var(--muted); font-weight:800; text-transform:uppercase; letter-spacing:0.4px; }
+  .venn-wrap .vlabel{ font-size:14px; color:var(--muted); font-weight:800; text-transform:uppercase; letter-spacing:0.4px; }
 
-  .logic-mid h3{ margin:0 0 4px; font-size:12.5px; font-weight:800; display:flex; align-items:center; gap:6px; }
-  .logic-mid h3 .tag{ font-family:"SF Mono",monospace; font-size:12px; font-weight:800; padding:2px 7px; border-radius:5px; }
-  .logic-card.and .tag{ background:var(--green-pale); color:var(--green-dark); border:1px solid var(--green-line); }
-  .logic-card.or .tag{ background:var(--earth-pale); color:var(--earth-dark); border:1px solid var(--earth-line); }
-  .logic-mid p{ margin:0; font-size:12px; color:var(--ink); line-height:1.4; }
-  .logic-mid p b{ color:var(--green-dark); }
-  .logic-card.or .logic-mid p b{ color:var(--earth-dark); }
+  .logic-mid h3{ margin:0 0 4px; font-size:14px; font-weight:800; display:flex; align-items:center; gap:6px; color:#fff; }
+  .logic-mid h3 .tag{ font-family:"SF Mono",monospace; font-size:14px; font-weight:800; padding:2px 7px; border-radius:5px; }
+  .logic-card.and .tag{ background:rgba(122,162,247,0.15); color:var(--keyword); border:1px solid rgba(122,162,247,0.3); }
+  .logic-card.or .tag{ background:rgba(224,175,104,0.15); color:var(--func); border:1px solid rgba(224,175,104,0.3); }
+  .logic-mid p{ margin:0; font-size:14px; color:var(--text); line-height:1.4; }
+  .logic-mid p b{ color:var(--keyword); }
+  .logic-card.or .logic-mid p b{ color:var(--func); }
 
-  .code-box{ background:var(--editor); border-radius:8px; padding:8px 9px; }
-  .code-box .flabel{ font-size:12px; font-weight:800; color:var(--com); text-transform:uppercase; letter-spacing:0.4px; margin-bottom:4px; }
-  .code-box code{ display:block; font-family:"SF Mono","Menlo","Consolas",monospace; font-size:12px; line-height:1.55; color:#C0CAF5; white-space:pre; }
-  .code-box .kw{ color:var(--kw); } .code-box .str{ color:var(--str); } .code-box .num{ color:var(--num); } .code-box .com{ color:var(--com); }
+  .code-box{ background:var(--editor); border:1px solid var(--line); border-radius:8px; padding:8px 9px; }
+  .code-box .flabel{ font-size:14px; font-weight:800; color:var(--comment); text-transform:uppercase; letter-spacing:0.4px; margin-bottom:4px; }
+  .code-box code{ display:block; font-family:"SF Mono","Menlo","Consolas",monospace; font-size:14px; line-height:1.5; color:var(--text); white-space:pre-wrap; word-break:break-word; }
+  .code-box .kw{ color:var(--keyword); } .code-box .str{ color:var(--string); } .code-box .num{ color:var(--func); } .code-box .com{ color:var(--comment); }
 
-  /* Footer */
   .footer{ display:flex; align-items:center; justify-content:space-between; margin-top:9px; padding-top:6px; border-top:1px solid var(--line); }
-  .footer .note{ font-size:12px; color:var(--muted); }
+  .footer .note{ font-size:14px; color:var(--muted); }
+  .footer .note code{ font-family:"SF Mono",monospace; color:var(--text); }
   .sig{ display:flex; align-items:center; gap:6px; flex:none; }
-  .li-badge{ width:16px; height:16px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800; font-family: Arial, sans-serif; }
-  .sig span{ font-size:12px; font-weight:700; color:var(--muted); }
+  .li-badge{ width:16px; height:16px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:800; font-family: Arial, sans-serif; }
+  .sig span{ font-size:14px; font-weight:700; color:var(--muted); }
 </style>
 </head>
 <body>
@@ -102,26 +90,17 @@
 <div class="canvas-wrap">
   <div class="canvas">
 
-    <!-- Header -->
     <div class="header">
-      <div class="header-l">
-        <div class="eyebrow">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 5v14c0 1.1 3.6 2 8 2s8-.9 8-2V5"/><path d="M3 5c0 1.1 3.6 2 8 2s8-.9 8-2-3.6-2-8-2-8 .9-8 2Z"/><path d="M3 12c0 1.1 3.6 2 8 2s8-.9 8-2"/></svg>
-          SQL · Cláusula WHERE
-        </div>
-        <h1>Operadores de Comparación y <span>Conectores Lógicos AND / OR</span></h1>
-        <p class="sub">Cómo filtra realmente una consulta SQL: qué operadores aplican a texto y a números, y cómo AND/OR se comportan como intersección y unión de conjuntos.</p>
+      <div class="eyebrow">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 5v14c0 1.1 3.6 2 8 2s8-.9 8-2V5"/><path d="M3 5c0 1.1 3.6 2 8 2s8-.9 8-2-3.6-2-8-2-8 .9-8 2Z"/><path d="M3 12c0 1.1 3.6 2 8 2s8-.9 8-2"/></svg>
+        SQL · Cláusula WHERE
       </div>
-      <div class="where-chip">
-        <div class="lbl">Sintaxis base</div>
-        <code><span class="kw">SELECT</span> * <span class="kw">FROM</span> tabla<br><span class="kw">WHERE</span> columna <span style="color:#E0AF68">op</span> valor</code>
-      </div>
+      <h1>Operadores de Comparación y <span>Conectores Lógicos AND / OR</span></h1>
+      <p>Cómo filtra realmente una consulta SQL: qué operadores aplican a texto y a números, y cómo AND/OR se comportan como intersección y unión de conjuntos.</p>
     </div>
 
-    <!-- Body -->
     <div class="body-grid">
 
-      <!-- Left: operators table -->
       <div class="op-panel">
         <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>Los 6 operadores de comparación</h2>
         <table class="op-table">
@@ -139,23 +118,22 @@
         </table>
         <div class="op-note"><b>Por qué importa:</b> los operadores de orden (<code style="font-family:'SF Mono',monospace">&lt; &gt; &lt;= &gt;=</code>) solo tienen sentido sobre valores numéricos o de fecha — un motor SQL no puede decidir si "Bogotá" es "mayor" que "Cali". Con texto, solo <code style="font-family:'SF Mono',monospace">=</code> y <code style="font-family:'SF Mono',monospace">&lt;&gt;</code> aplican.</div>
         <div class="op-legend">
-          <div><span class="yes" style="width:12px;height:12px;font-size:12px;">✓</span> Aplica</div>
-          <div><span class="no" style="width:12px;height:12px;font-size:12px;">✕</span> No aplica</div>
+          <div><span class="yes" style="width:12px;height:12px;font-size:14px;">✓</span> Aplica</div>
+          <div><span class="no" style="width:12px;height:12px;font-size:14px;">✕</span> No aplica</div>
         </div>
       </div>
 
-      <!-- Right: AND / OR -->
       <div class="logic-col">
 
         <div class="logic-card and">
           <div class="venn-wrap">
-            <svg viewBox="0 0 100 70" width="98" height="68">
-              <circle cx="38" cy="35" r="26" fill="#BFE0CC" fill-opacity="0.55" stroke="#1E7A4F" stroke-width="1.6"/>
-              <circle cx="62" cy="35" r="26" fill="#BFE0CC" fill-opacity="0.55" stroke="#1E7A4F" stroke-width="1.6"/>
+            <svg viewBox="0 0 100 70" width="82" height="57">
+              <circle cx="38" cy="35" r="26" fill="#7AA2F7" fill-opacity="0.22" stroke="#7AA2F7" stroke-width="1.6"/>
+              <circle cx="62" cy="35" r="26" fill="#7AA2F7" fill-opacity="0.22" stroke="#7AA2F7" stroke-width="1.6"/>
               <clipPath id="clipA"><circle cx="38" cy="35" r="26"/></clipPath>
-              <circle cx="62" cy="35" r="26" fill="#125C39" clip-path="url(#clipA)"/>
-              <text x="22" y="20" font-size="7" font-weight="700" fill="#125C39" font-family="Inter,sans-serif">País</text>
-              <text x="68" y="20" font-size="7" font-weight="700" fill="#125C39" font-family="Inter,sans-serif" text-anchor="end">Edad</text>
+              <circle cx="62" cy="35" r="26" fill="#7AA2F7" clip-path="url(#clipA)"/>
+              <text x="22" y="20" font-size="7" font-weight="700" fill="#C0CAF5" font-family="Inter,sans-serif">País</text>
+              <text x="68" y="20" font-size="7" font-weight="700" fill="#C0CAF5" font-family="Inter,sans-serif" text-anchor="end">Edad</text>
             </svg>
             <div class="vlabel">Intersección</div>
           </div>
@@ -172,11 +150,11 @@
 
         <div class="logic-card or">
           <div class="venn-wrap">
-            <svg viewBox="0 0 100 70" width="98" height="68">
-              <circle cx="38" cy="35" r="26" fill="#F0CBA0" fill-opacity="0.65" stroke="#C1620E" stroke-width="1.6"/>
-              <circle cx="62" cy="35" r="26" fill="#F0CBA0" fill-opacity="0.65" stroke="#C1620E" stroke-width="1.6"/>
-              <text x="22" y="20" font-size="7" font-weight="700" fill="#8C480A" font-family="Inter,sans-serif">Col.</text>
-              <text x="68" y="20" font-size="7" font-weight="700" fill="#8C480A" font-family="Inter,sans-serif" text-anchor="end">Méx.</text>
+            <svg viewBox="0 0 100 70" width="82" height="57">
+              <circle cx="38" cy="35" r="26" fill="#E0AF68" fill-opacity="0.25" stroke="#E0AF68" stroke-width="1.6"/>
+              <circle cx="62" cy="35" r="26" fill="#E0AF68" fill-opacity="0.25" stroke="#E0AF68" stroke-width="1.6"/>
+              <text x="22" y="20" font-size="7" font-weight="700" fill="#C0CAF5" font-family="Inter,sans-serif">Col.</text>
+              <text x="68" y="20" font-size="7" font-weight="700" fill="#C0CAF5" font-family="Inter,sans-serif" text-anchor="end">Méx.</text>
             </svg>
             <div class="vlabel">Unión</div>
           </div>
@@ -192,11 +170,10 @@
         </div>
 
       </div>
-    </div><!-- /.body-grid -->
+    </div>
 
-    <!-- Footer -->
     <div class="footer">
-      <div class="note">Buena práctica: al mezclar <b>AND</b> y <b>OR</b> en el mismo <code style="font-family:'SF Mono',monospace">WHERE</code>, usar paréntesis explícitos — SQL evalúa AND antes que OR por precedencia, igual que la multiplicación antes que la suma.</div>
+      <div class="note">Buena práctica: al mezclar <b style="color:#fff">AND</b> y <b style="color:#fff">OR</b> en el mismo <code>WHERE</code>, usar paréntesis explícitos — SQL evalúa AND antes que OR por precedencia, igual que la multiplicación antes que la suma.</div>
       <div class="sig">
         <div class="li-badge">in</div>
         <span>cacm523</span>
