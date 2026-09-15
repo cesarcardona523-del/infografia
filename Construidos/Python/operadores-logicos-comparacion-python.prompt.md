@@ -13,6 +13,6 @@
   - `is` / `is not` comparan **identidad** (mismo objeto en memoria), no valor — distinto de `==`/`!=` que comparan valor. Caso de uso real y muy común: `x is None` en vez de `x == None`.
   - `in` / `not in` comprueban **pertenencia** a una secuencia (lista, tupla, string, set, dict) — sin equivalente de una sola palabra en SQL estándar (el más cercano es la cláusula `IN (...)`, pero conceptualmente distinta: en SQL es sintaxis de la cláusula WHERE, en Python es un operador de propósito general sobre cualquier iterable).
 
-**Paleta**: verde+tierra por defecto (igual que la pieza SQL de referencia) — no se usa el azul/amarillo de marca de Python porque el tema central es la sintaxis/semántica de comparación, no la aplicación Python en sí (mismo criterio que la pieza SQL original tampoco usa colores de marca de motores de base de datos).
+**Paleta — corregida (2026-09-15, señalado por el usuario)**: Python es el lenguaje/aplicación protagonista y exclusiva de esta pieza → aplica la excepción de "Colores de marca por aplicación" de CLAUDE.md: azul y amarillo de marca (`#3776AB`, `#FFD43B`), no el verde+tierra por defecto. El ícono oficial de Python (`assets/iconos-apps/python.svg`) también debe usarse en el eyebrow, embebido inline — un error de la primera versión de esta pieza fue usar la paleta por defecto y un ícono genérico dibujado a mano en vez del real, corregido en esta revisión.
 
 **Catálogo**: `categoriaPrincipal: "programacion"`, `temas: ["python"]`.

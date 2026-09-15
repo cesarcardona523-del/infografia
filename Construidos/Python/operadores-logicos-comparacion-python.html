@@ -6,10 +6,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   :root{
-    --green:#1E7A4F; --green-dark:#125C39; --green-pale:#E2F2E8; --green-line:#BFE0CC;
-    --earth:#C1620E; --earth-dark:#8C480A; --earth-pale:#FBEADD; --earth-line:#F0CBA0;
-    --blue:#2C63C9; --blue-dark:#1D4694; --blue-pale:#E7EEFB; --blue-line:#C6D7F5;
-    --violet:#6B4FA0; --violet-dark:#4B3573; --violet-pale:#EEE7F7; --violet-line:#D6C6EC;
+    --pyblue:#2C6E9E; --pyblue-dark:#1D4B73; --pyblue-pale:#E5EFF8; --pyblue-line:#BFD6EC;
+    --pyyellow:#9C7A00; --pyyellow-dark:#7A5E00; --pyyellow-pale:#FFF6D9; --pyyellow-line:#F0DFA0;
     --ink:#1D2129; --muted:#5C6470; --line:#E4E9E6; --white:#FFFFFF; --paper:#F5F8F6;
     --editor:#151A21; --com:#6A7488;
     --kw:#7AA2F7; --str:#9ECE6A; --num:#E0AF68;
@@ -32,10 +30,10 @@
 
   .header{ display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:7px; gap:14px; }
   .header-l{ flex:1; }
-  .eyebrow{ display:inline-flex; align-items:center; gap:6px; font-size:14px; font-weight:800; letter-spacing:1.4px; color:var(--green-dark); text-transform:uppercase; background:var(--green-pale); border:1px solid var(--green-line); padding:2.5px 8px; border-radius:20px; margin-bottom:5px; }
+  .eyebrow{ display:inline-flex; align-items:center; gap:6px; font-size:14px; font-weight:800; letter-spacing:1.4px; color:var(--pyblue-dark); text-transform:uppercase; background:var(--pyblue-pale); border:1px solid var(--pyblue-line); padding:2.5px 8px; border-radius:20px; margin-bottom:5px; }
   .eyebrow svg{ width:13px; height:13px; flex:none; }
   .header h1{ font-size:19px; margin:0 0 2px; font-weight:800; letter-spacing:-0.2px; line-height:1.15; }
-  .header h1 span{ color:var(--green-dark); }
+  .header h1 span{ color:var(--pyblue-dark); }
   .header p.sub{ margin:0; font-size:14px; color:var(--muted); max-width:660px; line-height:1.28; }
   .where-chip{ flex:none; background:var(--editor); border-radius:10px; padding:7px 11px; box-shadow:0 3px 10px rgba(14,40,26,0.12); }
   .where-chip .lbl{ font-size:14px; font-weight:800; letter-spacing:0.4px; text-transform:uppercase; color:var(--com); margin-bottom:2px; }
@@ -45,7 +43,7 @@
   .body-grid{ flex:1; display:grid; grid-template-columns: 400px 1fr; gap:10px; min-height:0; }
 
   .op-panel{ background:var(--white); border:1px solid var(--line); border-radius:11px; padding:9px 12px 8px; display:flex; flex-direction:column; box-shadow:0 2px 8px rgba(14,40,26,0.04); }
-  .op-panel h2{ display:flex; align-items:center; gap:6px; margin:0 0 6px; font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.3px; color:var(--green-dark); }
+  .op-panel h2{ display:flex; align-items:center; gap:6px; margin:0 0 6px; font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.3px; color:var(--pyblue-dark); }
   .op-panel h2 svg{ width:14px; height:14px; }
 
   .op-table{ width:100%; border-collapse:separate; border-spacing:0; font-size:14px; }
@@ -53,38 +51,38 @@
   .op-table thead th.center{ text-align:center; }
   .op-table tbody td{ padding:4px 5px; border-bottom:1px solid var(--line); vertical-align:middle; }
   .op-table tbody tr:last-child td{ border-bottom:none; }
-  .op-table .sym{ font-family:"SF Mono","Menlo","Consolas",monospace; font-weight:800; font-size:14px; color:var(--green-dark); background:var(--green-pale); border:1px solid var(--green-line); border-radius:6px; padding:1px 7px; display:inline-block; min-width:24px; text-align:center; }
+  .op-table .sym{ font-family:"SF Mono","Menlo","Consolas",monospace; font-weight:800; font-size:14px; color:var(--pyblue-dark); background:var(--pyblue-pale); border:1px solid var(--pyblue-line); border-radius:6px; padding:1px 7px; display:inline-block; min-width:24px; text-align:center; }
   .op-table .nm{ font-weight:700; font-size:14px; color:var(--ink); }
   .op-table .center{ text-align:center; }
-  .yes{ display:inline-flex; width:16px; height:16px; border-radius:50%; background:var(--green-pale); color:var(--green-dark); align-items:center; justify-content:center; font-size:14px; font-weight:800; }
+  .yes{ display:inline-flex; width:16px; height:16px; border-radius:50%; background:var(--pyblue-pale); color:var(--pyblue-dark); align-items:center; justify-content:center; font-size:14px; font-weight:800; }
   .no{ display:inline-flex; width:16px; height:16px; border-radius:50%; background:#F3E7E4; color:#B0453A; align-items:center; justify-content:center; font-size:14px; font-weight:800; }
 
-  .op-note{ margin-top:6px; background:var(--earth-pale); border-left:3px solid var(--earth); border-radius:6px; padding:5px 8px; font-size:14px; color:var(--ink); line-height:1.32; }
-  .op-note b{ color:var(--earth-dark); }
+  .op-note{ margin-top:6px; background:var(--pyyellow-pale); border-left:3px solid var(--pyyellow); border-radius:6px; padding:5px 8px; font-size:14px; color:var(--ink); line-height:1.32; }
+  .op-note b{ color:var(--pyyellow-dark); }
 
   .idpanel{ margin-top:6px; padding-top:6px; border-top:1px dashed var(--line); }
-  .idpanel h2{ display:flex; align-items:center; gap:6px; margin:0 0 5px; font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.3px; color:var(--violet-dark); }
+  .idpanel h2{ display:flex; align-items:center; gap:6px; margin:0 0 5px; font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.3px; color:var(--pyyellow-dark); }
   .idpanel h2 svg{ width:14px; height:14px; }
   .idgrid{ display:grid; grid-template-columns:1fr 1fr; gap:5px; }
-  .idcell{ background:var(--violet-pale); border:1px solid var(--violet-line); border-radius:7px; padding:5px 7px; }
-  .idcell .sym2{ font-family:"SF Mono",monospace; font-weight:800; font-size:14px; color:var(--violet-dark); }
+  .idcell{ background:var(--pyyellow-pale); border:1px solid var(--pyyellow-line); border-radius:7px; padding:5px 7px; }
+  .idcell .sym2{ font-family:"SF Mono",monospace; font-weight:800; font-size:14px; color:var(--pyyellow-dark); }
   .idcell p{ margin:2px 0 0; font-size:14px; color:var(--ink); line-height:1.26; }
 
   .logic-col{ display:flex; flex-direction:column; gap:8px; min-height:0; }
   .logic-card{ flex:1; background:var(--white); border:1px solid var(--line); border-radius:11px; padding:8px 13px; display:grid; grid-template-columns: 100px 1fr 190px; gap:11px; align-items:center; box-shadow:0 2px 8px rgba(14,40,26,0.04); }
-  .logic-card.and{ border-top:3px solid var(--green); }
-  .logic-card.or{ border-top:3px solid var(--earth); }
+  .logic-card.and{ border-top:3px solid var(--pyblue); }
+  .logic-card.or{ border-top:3px solid var(--pyyellow); }
 
   .venn-wrap{ display:flex; flex-direction:column; align-items:center; gap:2px; }
   .venn-wrap .vlabel{ font-size:14px; color:var(--muted); font-weight:800; text-transform:uppercase; letter-spacing:0.3px; }
 
   .logic-mid h3{ margin:0 0 3px; font-size:14px; font-weight:800; display:flex; align-items:center; gap:6px; }
   .logic-mid h3 .tag{ font-family:"SF Mono",monospace; font-size:14px; font-weight:800; padding:1px 7px; border-radius:5px; }
-  .logic-card.and .tag{ background:var(--green-pale); color:var(--green-dark); border:1px solid var(--green-line); }
-  .logic-card.or .tag{ background:var(--earth-pale); color:var(--earth-dark); border:1px solid var(--earth-line); }
+  .logic-card.and .tag{ background:var(--pyblue-pale); color:var(--pyblue-dark); border:1px solid var(--pyblue-line); }
+  .logic-card.or .tag{ background:var(--pyyellow-pale); color:var(--pyyellow-dark); border:1px solid var(--pyyellow-line); }
   .logic-mid p{ margin:0; font-size:14px; color:var(--ink); line-height:1.3; }
-  .logic-mid p b{ color:var(--green-dark); }
-  .logic-card.or .logic-mid p b{ color:var(--earth-dark); }
+  .logic-mid p b{ color:var(--pyblue-dark); }
+  .logic-card.or .logic-mid p b{ color:var(--pyyellow-dark); }
 
   .code-box{ background:var(--editor); border-radius:8px; padding:6px 9px; }
   .code-box .flabel{ font-size:14px; font-weight:800; color:var(--com); text-transform:uppercase; letter-spacing:0.3px; margin-bottom:3px; }
@@ -93,9 +91,9 @@
 
   .idrow{ background:var(--white); border:1px solid var(--line); border-radius:11px; padding:7px 13px; display:grid; grid-template-columns:repeat(4,1fr); gap:9px; box-shadow:0 2px 8px rgba(14,40,26,0.04); }
   .idbox{ display:flex; flex-direction:column; gap:2px; }
-  .idbox .tag2{ font-family:"SF Mono",monospace; font-weight:800; font-size:14px; color:var(--violet-dark); background:var(--violet-pale); border:1px solid var(--violet-line); border-radius:5px; padding:1px 6px; display:inline-block; width:fit-content; }
+  .idbox .tag2{ font-family:"SF Mono",monospace; font-weight:800; font-size:14px; color:var(--pyyellow-dark); background:var(--pyyellow-pale); border:1px solid var(--pyyellow-line); border-radius:5px; padding:1px 6px; display:inline-block; width:fit-content; }
   .idbox p{ margin:0; font-size:14px; color:var(--ink); line-height:1.24; }
-  .idbox code{ font-family:"SF Mono",monospace; font-size:14px; color:var(--violet-dark); }
+  .idbox code{ font-family:"SF Mono",monospace; font-size:14px; color:var(--pyyellow-dark); }
 
   .footer{ display:flex; align-items:center; justify-content:space-between; margin-top:7px; padding-top:5px; border-top:1px solid var(--line); }
   .footer .note{ font-size:14px; color:var(--muted); }
@@ -112,7 +110,7 @@
     <div class="header">
       <div class="header-l">
         <div class="eyebrow">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4v3H8V6a4 4 0 0 1 4-4z"/><path d="M8 9h8v6a4 4 0 0 1-8 0z"/></svg>
+          <svg viewBox="0 0 512 512" style="width:13px;height:13px"><linearGradient id="icpy-a" x1="47.667" x2="544.303" y1="363.376" y2="-63.912" gradientTransform="matrix(.5625 0 0 -.568 -36.442 220.966)" gradientUnits="userSpaceOnUse"><stop offset="0" style="stop-color:#5a9fd4"/><stop offset="1" style="stop-color:#306998"/></linearGradient><path d="M253 0c-20.9.1-40.8 1.9-58.4 5-51.7 9.1-61.1 28.2-61.1 63.5V115h122.1v15.5H87.7c-35.5 0-66.6 21.3-76.3 61.9C.2 239-.3 268 11.4 316.6c8.7 36.2 29.4 61.9 64.9 61.9h42v-55.8c0-40.3 34.9-75.9 76.3-75.9h122c34 0 61.1-28 61.1-62.1V68.5c0-33.1-27.9-58-61.1-63.5-21-3.5-42.7-5.1-63.6-5m-66.1 37.4c12.6 0 22.9 10.5 22.9 23.3s-10.3 23.2-22.9 23.2C174.3 84 164 73.6 164 60.8c0-12.9 10.3-23.4 22.9-23.4" style="fill:url(#icpy-a)"/><linearGradient id="icpy-b" x1="736.305" x2="558.957" y1="-322.524" y2="-71.607" gradientTransform="matrix(.5625 0 0 -.568 -36.442 220.966)" gradientUnits="userSpaceOnUse"><stop offset="0" style="stop-color:#ffd43b"/><stop offset="1" style="stop-color:#ffe873"/></linearGradient><path d="M392.9 130.6v54.2c0 42.1-35.7 77.4-76.3 77.4h-122c-33.4 0-61.1 28.6-61.1 62.1v116.3c0 33.1 28.8 52.6 61.1 62.1 38.7 11.4 75.7 13.4 122 0 30.8-8.9 61.1-26.8 61.1-62.1V394h-122v-15.5h183.1c35.5 0 48.7-24.8 61.1-61.9 12.8-38.3 12.2-75.1 0-124.1-8.8-35.3-25.5-61.9-61.1-61.9zm-68.6 294.5c12.7 0 22.9 10.4 22.9 23.2 0 12.9-10.3 23.3-22.9 23.3s-22.9-10.5-22.9-23.3 10.3-23.2 22.9-23.2" style="fill:url(#icpy-b)"/></svg>
           Python · Expresiones booleanas
         </div>
         <h1>Operadores de Comparación y <span>Lógicos en Python</span></h1>
@@ -157,12 +155,12 @@
         <div class="logic-card and">
           <div class="venn-wrap">
             <svg viewBox="0 0 100 70" width="94" height="66">
-              <circle cx="38" cy="35" r="26" fill="#BFE0CC" fill-opacity="0.55" stroke="#1E7A4F" stroke-width="1.6"/>
-              <circle cx="62" cy="35" r="26" fill="#BFE0CC" fill-opacity="0.55" stroke="#1E7A4F" stroke-width="1.6"/>
+              <circle cx="38" cy="35" r="26" fill="#BFD6EC" fill-opacity="0.55" stroke="#2C6E9E" stroke-width="1.6"/>
+              <circle cx="62" cy="35" r="26" fill="#BFD6EC" fill-opacity="0.55" stroke="#2C6E9E" stroke-width="1.6"/>
               <clipPath id="clipA"><circle cx="38" cy="35" r="26"/></clipPath>
-              <circle cx="62" cy="35" r="26" fill="#125C39" clip-path="url(#clipA)"/>
-              <text x="22" y="20" font-size="7" font-weight="700" fill="#125C39" font-family="Inter,sans-serif">edad</text>
-              <text x="68" y="20" font-size="7" font-weight="700" fill="#125C39" font-family="Inter,sans-serif" text-anchor="end">pais</text>
+              <circle cx="62" cy="35" r="26" fill="#1D4B73" clip-path="url(#clipA)"/>
+              <text x="22" y="20" font-size="7" font-weight="700" fill="#1D4B73" font-family="Inter,sans-serif">edad</text>
+              <text x="68" y="20" font-size="7" font-weight="700" fill="#1D4B73" font-family="Inter,sans-serif" text-anchor="end">pais</text>
             </svg>
             <div class="vlabel">Intersección</div>
           </div>
@@ -180,10 +178,10 @@
         <div class="logic-card or">
           <div class="venn-wrap">
             <svg viewBox="0 0 100 70" width="94" height="66">
-              <circle cx="38" cy="35" r="26" fill="#F0CBA0" fill-opacity="0.65" stroke="#C1620E" stroke-width="1.6"/>
-              <circle cx="62" cy="35" r="26" fill="#F0CBA0" fill-opacity="0.65" stroke="#C1620E" stroke-width="1.6"/>
-              <text x="22" y="20" font-size="7" font-weight="700" fill="#8C480A" font-family="Inter,sans-serif">Col.</text>
-              <text x="68" y="20" font-size="7" font-weight="700" fill="#8C480A" font-family="Inter,sans-serif" text-anchor="end">Méx.</text>
+              <circle cx="38" cy="35" r="26" fill="#F0DFA0" fill-opacity="0.65" stroke="#9C7A00" stroke-width="1.6"/>
+              <circle cx="62" cy="35" r="26" fill="#F0DFA0" fill-opacity="0.65" stroke="#9C7A00" stroke-width="1.6"/>
+              <text x="22" y="20" font-size="7" font-weight="700" fill="#7A5E00" font-family="Inter,sans-serif">Col.</text>
+              <text x="68" y="20" font-size="7" font-weight="700" fill="#7A5E00" font-family="Inter,sans-serif" text-anchor="end">Méx.</text>
             </svg>
             <div class="vlabel">Unión</div>
           </div>
