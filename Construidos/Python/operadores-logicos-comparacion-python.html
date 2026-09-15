@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Operadores de Comparación y Lógicos en Python</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --green:#1E7A4F; --green-dark:#125C39; --green-pale:#E2F2E8; --green-line:#BFE0CC;
+    --earth:#C1620E; --earth-dark:#8C480A; --earth-pale:#FBEADD; --earth-line:#F0CBA0;
+    --blue:#2C63C9; --blue-dark:#1D4694; --blue-pale:#E7EEFB; --blue-line:#C6D7F5;
+    --violet:#6B4FA0; --violet-dark:#4B3573; --violet-pale:#EEE7F7; --violet-line:#D6C6EC;
+    --ink:#1D2129; --muted:#5C6470; --line:#E4E9E6; --white:#FFFFFF; --paper:#F5F8F6;
+    --editor:#151A21; --com:#6A7488;
+    --kw:#7AA2F7; --str:#9ECE6A; --num:#E0AF68;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    min-height:627px; display:flex; align-items:center; justify-content:center;
+    padding:32px 16px; background:#F0F6F2;
+    font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
+  .canvas{
+    position:relative; width:1200px; height:627px; margin:0 auto;
+    background:linear-gradient(160deg, #FAFDFB 0%, var(--paper) 55%, #EFF6F1 100%);
+    border-radius:16px; box-shadow:0 20px 50px rgba(14,40,26,0.16); overflow:hidden;
+    padding:14px 26px 10px; color:var(--ink);
+    display:flex; flex-direction:column;
+  }
+
+  .header{ display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:7px; gap:14px; }
+  .header-l{ flex:1; }
+  .eyebrow{ display:inline-flex; align-items:center; gap:6px; font-size:14px; font-weight:800; letter-spacing:1.4px; color:var(--green-dark); text-transform:uppercase; background:var(--green-pale); border:1px solid var(--green-line); padding:2.5px 8px; border-radius:20px; margin-bottom:5px; }
+  .eyebrow svg{ width:13px; height:13px; flex:none; }
+  .header h1{ font-size:19px; margin:0 0 2px; font-weight:800; letter-spacing:-0.2px; line-height:1.15; }
+  .header h1 span{ color:var(--green-dark); }
+  .header p.sub{ margin:0; font-size:14px; color:var(--muted); max-width:660px; line-height:1.28; }
+  .where-chip{ flex:none; background:var(--editor); border-radius:10px; padding:7px 11px; box-shadow:0 3px 10px rgba(14,40,26,0.12); }
+  .where-chip .lbl{ font-size:14px; font-weight:800; letter-spacing:0.4px; text-transform:uppercase; color:var(--com); margin-bottom:2px; }
+  .where-chip code{ font-family:"SF Mono","Menlo","Consolas",monospace; font-size:14px; color:#C0CAF5; }
+  .where-chip .kw{ color:var(--kw); }
+
+  .body-grid{ flex:1; display:grid; grid-template-columns: 400px 1fr; gap:10px; min-height:0; }
+
+  .op-panel{ background:var(--white); border:1px solid var(--line); border-radius:11px; padding:9px 12px 8px; display:flex; flex-direction:column; box-shadow:0 2px 8px rgba(14,40,26,0.04); }
+  .op-panel h2{ display:flex; align-items:center; gap:6px; margin:0 0 6px; font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.3px; color:var(--green-dark); }
+  .op-panel h2 svg{ width:14px; height:14px; }
+
+  .op-table{ width:100%; border-collapse:separate; border-spacing:0; font-size:14px; }
+  .op-table thead th{ text-align:left; font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.2px; color:var(--muted); padding:0 5px 4px; border-bottom:1.5px solid var(--line); }
+  .op-table thead th.center{ text-align:center; }
+  .op-table tbody td{ padding:4px 5px; border-bottom:1px solid var(--line); vertical-align:middle; }
+  .op-table tbody tr:last-child td{ border-bottom:none; }
+  .op-table .sym{ font-family:"SF Mono","Menlo","Consolas",monospace; font-weight:800; font-size:14px; color:var(--green-dark); background:var(--green-pale); border:1px solid var(--green-line); border-radius:6px; padding:1px 7px; display:inline-block; min-width:24px; text-align:center; }
+  .op-table .nm{ font-weight:700; font-size:14px; color:var(--ink); }
+  .op-table .center{ text-align:center; }
+  .yes{ display:inline-flex; width:16px; height:16px; border-radius:50%; background:var(--green-pale); color:var(--green-dark); align-items:center; justify-content:center; font-size:14px; font-weight:800; }
+  .no{ display:inline-flex; width:16px; height:16px; border-radius:50%; background:#F3E7E4; color:#B0453A; align-items:center; justify-content:center; font-size:14px; font-weight:800; }
+
+  .op-note{ margin-top:6px; background:var(--earth-pale); border-left:3px solid var(--earth); border-radius:6px; padding:5px 8px; font-size:14px; color:var(--ink); line-height:1.32; }
+  .op-note b{ color:var(--earth-dark); }
+
+  .idpanel{ margin-top:6px; padding-top:6px; border-top:1px dashed var(--line); }
+  .idpanel h2{ display:flex; align-items:center; gap:6px; margin:0 0 5px; font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.3px; color:var(--violet-dark); }
+  .idpanel h2 svg{ width:14px; height:14px; }
+  .idgrid{ display:grid; grid-template-columns:1fr 1fr; gap:5px; }
+  .idcell{ background:var(--violet-pale); border:1px solid var(--violet-line); border-radius:7px; padding:5px 7px; }
+  .idcell .sym2{ font-family:"SF Mono",monospace; font-weight:800; font-size:14px; color:var(--violet-dark); }
+  .idcell p{ margin:2px 0 0; font-size:14px; color:var(--ink); line-height:1.26; }
+
+  .logic-col{ display:flex; flex-direction:column; gap:8px; min-height:0; }
+  .logic-card{ flex:1; background:var(--white); border:1px solid var(--line); border-radius:11px; padding:8px 13px; display:grid; grid-template-columns: 100px 1fr 190px; gap:11px; align-items:center; box-shadow:0 2px 8px rgba(14,40,26,0.04); }
+  .logic-card.and{ border-top:3px solid var(--green); }
+  .logic-card.or{ border-top:3px solid var(--earth); }
+
+  .venn-wrap{ display:flex; flex-direction:column; align-items:center; gap:2px; }
+  .venn-wrap .vlabel{ font-size:14px; color:var(--muted); font-weight:800; text-transform:uppercase; letter-spacing:0.3px; }
+
+  .logic-mid h3{ margin:0 0 3px; font-size:14px; font-weight:800; display:flex; align-items:center; gap:6px; }
+  .logic-mid h3 .tag{ font-family:"SF Mono",monospace; font-size:14px; font-weight:800; padding:1px 7px; border-radius:5px; }
+  .logic-card.and .tag{ background:var(--green-pale); color:var(--green-dark); border:1px solid var(--green-line); }
+  .logic-card.or .tag{ background:var(--earth-pale); color:var(--earth-dark); border:1px solid var(--earth-line); }
+  .logic-mid p{ margin:0; font-size:14px; color:var(--ink); line-height:1.3; }
+  .logic-mid p b{ color:var(--green-dark); }
+  .logic-card.or .logic-mid p b{ color:var(--earth-dark); }
+
+  .code-box{ background:var(--editor); border-radius:8px; padding:6px 9px; }
+  .code-box .flabel{ font-size:14px; font-weight:800; color:var(--com); text-transform:uppercase; letter-spacing:0.3px; margin-bottom:3px; }
+  .code-box code{ display:block; font-family:"SF Mono","Menlo","Consolas",monospace; font-size:14px; line-height:1.5; color:#C0CAF5; white-space:pre; }
+  .code-box .kw{ color:var(--kw); } .code-box .str{ color:var(--str); } .code-box .num{ color:var(--num); }
+
+  .idrow{ background:var(--white); border:1px solid var(--line); border-radius:11px; padding:7px 13px; display:grid; grid-template-columns:repeat(4,1fr); gap:9px; box-shadow:0 2px 8px rgba(14,40,26,0.04); }
+  .idbox{ display:flex; flex-direction:column; gap:2px; }
+  .idbox .tag2{ font-family:"SF Mono",monospace; font-weight:800; font-size:14px; color:var(--violet-dark); background:var(--violet-pale); border:1px solid var(--violet-line); border-radius:5px; padding:1px 6px; display:inline-block; width:fit-content; }
+  .idbox p{ margin:0; font-size:14px; color:var(--ink); line-height:1.24; }
+  .idbox code{ font-family:"SF Mono",monospace; font-size:14px; color:var(--violet-dark); }
+
+  .footer{ display:flex; align-items:center; justify-content:space-between; margin-top:7px; padding-top:5px; border-top:1px solid var(--line); }
+  .footer .note{ font-size:14px; color:var(--muted); }
+  .sig{ display:flex; align-items:center; gap:6px; flex:none; }
+  .li-badge{ width:16px; height:16px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:800; font-family: Arial, sans-serif; }
+  .sig span{ font-size:14px; font-weight:700; color:var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="canvas-wrap">
+  <div class="canvas">
+
+    <div class="header">
+      <div class="header-l">
+        <div class="eyebrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4v3H8V6a4 4 0 0 1 4-4z"/><path d="M8 9h8v6a4 4 0 0 1-8 0z"/></svg>
+          Python · Expresiones booleanas
+        </div>
+        <h1>Operadores de Comparación y <span>Lógicos en Python</span></h1>
+        <p class="sub">Los mismos 6 operadores que en SQL, pero con reglas propias — más identidad (<code style="font-family:'SF Mono',monospace">is</code>) y pertenencia (<code style="font-family:'SF Mono',monospace">in</code>), sin equivalente directo en SQL.</p>
+      </div>
+      <div class="where-chip">
+        <div class="lbl">Sintaxis base</div>
+        <code><span class="kw">if</span> variable op valor:<br>&nbsp;&nbsp;&nbsp;&nbsp;...</code>
+      </div>
+    </div>
+
+    <div class="body-grid">
+
+      <div class="op-panel">
+        <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>Los 6 operadores de comparación</h2>
+        <table class="op-table">
+          <thead>
+            <tr><th>Op.</th><th>Significado</th><th class="center">Texto</th><th class="center">Números</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="sym">==</span></td><td class="nm">Igual</td><td class="center"><span class="yes">✓</span></td><td class="center"><span class="yes">✓</span></td></tr>
+            <tr><td><span class="sym">!=</span></td><td class="nm">Diferente</td><td class="center"><span class="yes">✓</span></td><td class="center"><span class="yes">✓</span></td></tr>
+            <tr><td><span class="sym">&lt;</span></td><td class="nm">Menor que</td><td class="center"><span class="yes">✓</span></td><td class="center"><span class="yes">✓</span></td></tr>
+            <tr><td><span class="sym">&gt;</span></td><td class="nm">Mayor que</td><td class="center"><span class="yes">✓</span></td><td class="center"><span class="yes">✓</span></td></tr>
+            <tr><td><span class="sym">&lt;=</span></td><td class="nm">Menor o igual</td><td class="center"><span class="yes">✓</span></td><td class="center"><span class="yes">✓</span></td></tr>
+            <tr><td><span class="sym">&gt;=</span></td><td class="nm">Mayor o igual</td><td class="center"><span class="yes">✓</span></td><td class="center"><span class="yes">✓</span></td></tr>
+          </tbody>
+        </table>
+        <div class="op-note"><b>Diferencia clave con SQL:</b> en Python <code style="font-family:'SF Mono',monospace">&lt; &gt; &lt;= &gt;=</code> también aplican a texto — compara cadenas de forma lexicográfica (alfabética/Unicode): <code style="font-family:'SF Mono',monospace">'ana' &lt; 'bruno'</code> es <b>True</b>.</div>
+
+        <div class="idpanel">
+          <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.5-2.5 2-2.5 3.5M12 17h.01"/></svg>Potenciado: identidad y pertenencia</h2>
+          <div class="idgrid">
+            <div class="idcell"><span class="sym2">is / is not</span><p>Compara <b>identidad</b> (mismo objeto en memoria), no valor. Uso real: <code>x is None</code>.</p></div>
+            <div class="idcell"><span class="sym2">in / not in</span><p>Comprueba <b>pertenencia</b> a una lista, string, set o dict. Sin equivalente de una palabra en SQL.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="logic-col">
+
+        <div class="logic-card and">
+          <div class="venn-wrap">
+            <svg viewBox="0 0 100 70" width="94" height="66">
+              <circle cx="38" cy="35" r="26" fill="#BFE0CC" fill-opacity="0.55" stroke="#1E7A4F" stroke-width="1.6"/>
+              <circle cx="62" cy="35" r="26" fill="#BFE0CC" fill-opacity="0.55" stroke="#1E7A4F" stroke-width="1.6"/>
+              <clipPath id="clipA"><circle cx="38" cy="35" r="26"/></clipPath>
+              <circle cx="62" cy="35" r="26" fill="#125C39" clip-path="url(#clipA)"/>
+              <text x="22" y="20" font-size="7" font-weight="700" fill="#125C39" font-family="Inter,sans-serif">edad</text>
+              <text x="68" y="20" font-size="7" font-weight="700" fill="#125C39" font-family="Inter,sans-serif" text-anchor="end">pais</text>
+            </svg>
+            <div class="vlabel">Intersección</div>
+          </div>
+          <div class="logic-mid">
+            <h3><span class="tag">and</span> Ambas condiciones</h3>
+            <p>Cortocircuito: si la primera es <b>falsy</b>, ni evalúa la segunda — devuelve esa; si no, devuelve el valor de la segunda.</p>
+          </div>
+          <div class="code-box">
+            <div class="flabel">Ejemplo</div>
+            <code><span class="kw">if</span> pais == <span class="str">'Colombia'</span>
+<span class="kw">and</span> edad &gt;= <span class="num">30</span>:</code>
+          </div>
+        </div>
+
+        <div class="logic-card or">
+          <div class="venn-wrap">
+            <svg viewBox="0 0 100 70" width="94" height="66">
+              <circle cx="38" cy="35" r="26" fill="#F0CBA0" fill-opacity="0.65" stroke="#C1620E" stroke-width="1.6"/>
+              <circle cx="62" cy="35" r="26" fill="#F0CBA0" fill-opacity="0.65" stroke="#C1620E" stroke-width="1.6"/>
+              <text x="22" y="20" font-size="7" font-weight="700" fill="#8C480A" font-family="Inter,sans-serif">Col.</text>
+              <text x="68" y="20" font-size="7" font-weight="700" fill="#8C480A" font-family="Inter,sans-serif" text-anchor="end">Méx.</text>
+            </svg>
+            <div class="vlabel">Unión</div>
+          </div>
+          <div class="logic-mid">
+            <h3><span class="tag">or</span> Cualquiera de las dos</h3>
+            <p>Cortocircuito: si la primera es <b>truthy</b>, devuelve esa sin evaluar la segunda; si no, devuelve la segunda.</p>
+          </div>
+          <div class="code-box">
+            <div class="flabel">Ejemplo</div>
+            <code><span class="kw">if</span> pais == <span class="str">'Colombia'</span>
+<span class="kw">or</span> pais == <span class="str">'México'</span>:</code>
+          </div>
+        </div>
+
+        <div class="idrow">
+          <div class="idbox"><span class="tag2">is</span><p>Mismo objeto en memoria.</p><code>x is None</code></div>
+          <div class="idbox"><span class="tag2">is not</span><p>Objetos distintos en memoria.</p><code>x is not None</code></div>
+          <div class="idbox"><span class="tag2">in</span><p>Elemento presente en la secuencia.</p><code>'a' in lista</code></div>
+          <div class="idbox"><span class="tag2">not in</span><p>Elemento ausente de la secuencia.</p><code>'z' not in lista</code></div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="note">Buena práctica: usar <code style="font-family:'SF Mono',monospace">is</code>/<code style="font-family:'SF Mono',monospace">is not</code> solo con <code style="font-family:'SF Mono',monospace">None</code>, <code style="font-family:'SF Mono',monospace">True</code> o <code style="font-family:'SF Mono',monospace">False</code> — para comparar valores normales, usar siempre <code style="font-family:'SF Mono',monospace">==</code>.</div>
+      <div class="sig">
+        <div class="li-badge">in</div>
+        <span>cacm523</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

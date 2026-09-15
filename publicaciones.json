@@ -2905,5 +2905,28 @@
       "likes": 0,
       "shares": 0
     }
+  },
+  {
+    "id": "operadores-logicos-comparacion-python",
+    "imagen": "Construidos/Python/operadores-logicos-comparacion-python.png",
+    "fechaPublicacion": "2026-09-23T09:11:00",
+    "categoriaPrincipal": "programacion",
+    "temas": [
+      "python"
+    ],
+    "tipoContenido": "infografia",
+    "es": {
+      "topico": "Operadores de Comparación y Lógicos en Python",
+      "descripcion": "Los seis operadores de comparación de Python -igual, diferente, menor que, mayor que, menor o igual, mayor o igual- y los conectores lógicos and/or, con una diferencia clave frente a SQL: en Python los operadores de orden (menor que, mayor que, menor o igual, mayor o igual) también aplican a texto, no solo a números, porque Python compara cadenas de forma lexicográfica (alfabética/Unicode) -'ana' es menor que 'bruno'-, mientras que en SQL esos operadores solo tienen sentido sobre valores numéricos o de fecha. Los conectores and/or en Python van en minúscula y tienen evaluación de cortocircuito: and devuelve el primer valor falsy o el último, or devuelve el primer valor truthy o el último -no son simples booleanos, devuelven el valor real involucrado en la expresión-. La pieza se potencia con dos operadores que no tienen equivalente directo en el WHERE de SQL: is/is not, que comparan identidad -si dos nombres apuntan al mismo objeto en memoria- en vez de valor, con el caso de uso más común siendo comprobar x is None en vez de x == None; e in/not in, que comprueban si un elemento pertenece a una secuencia -una lista, una cadena de texto, un set o un diccionario- sin necesitar una cláusula especial como en SQL. La buena práctica de cierre: usar is/is not solo con None, True o False, y == para comparar cualquier otro valor."
+    },
+    "en": {
+      "topico": "Comparison and Logical Operators in Python",
+      "descripcion": "Python's six comparison operators -equal, not equal, less than, greater than, less than or equal, greater than or equal- and the and/or logical connectors, with a key difference from SQL: in Python the ordering operators (less than, greater than, less/greater than or equal) also apply to text, not just numbers, because Python compares strings lexicographically (alphabetically/Unicode) -'ana' is less than 'bruno'-, while in SQL those operators only make sense on numeric or date values. Python's and/or connectors are lowercase and use short-circuit evaluation: and returns the first falsy value or the last one, or returns the first truthy value or the last one -they aren't simple booleans, they return the actual value involved in the expression-. The piece is enhanced with two operators that have no direct equivalent in SQL's WHERE clause: is/is not, which compare identity -whether two names point to the same object in memory- rather than value, with the most common use case being checking x is None instead of x == None; and in/not in, which check whether an element belongs to a sequence -a list, a string, a set, or a dictionary- without needing a special clause like in SQL. The closing best practice: use is/is not only with None, True or False, and == to compare any other value."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
   }
 ]
