@@ -2928,5 +2928,28 @@
       "likes": 0,
       "shares": 0
     }
+  },
+  {
+    "id": "optimizacion-tiempos-ejecucion-indices",
+    "imagen": "Construidos/SQL/optimizacion-tiempos-ejecucion-indices.png",
+    "fechaPublicacion": "2026-09-25T09:11:00",
+    "categoriaPrincipal": "bases-de-datos",
+    "temas": [
+      "sql"
+    ],
+    "tipoContenido": "infografia",
+    "es": {
+      "topico": "Optimización de Tiempos de Ejecución en SQL: Índices",
+      "descripcion": "Cómo un índice cambia la forma en que una base de datos encuentra los datos -de revisar fila por fila a localizar directamente-, ilustrado con la diferencia de orden de magnitud entre un escaneo secuencial y una búsqueda indexada sobre la misma consulta y los mismos datos. Sin índice, la base de datos revisa potencialmente todas las filas hasta encontrar el registro -con un millón de registros, es como revisar fila por fila hasta el final-. Con un índice, una estructura ordenada (típicamente un B-Tree) permite saltar directamente a la ubicación del registro: el índice permite localizar, no revisar, por eso la respuesta es del orden de cien veces más rápida en este ejemplo ilustrativo. El proceso tiene 4 pasos: se crea una estructura ordenada con los valores de la columna indexada, la base de datos busca en ella el valor buscado, el índice indica dónde está el registro en la tabla, y se lee directamente ese registro sin revisar los demás -el índice agrega una capa de búsqueda, nunca modifica ni duplica los datos originales-. Pero indexar no es gratis: implica más almacenamiento, encarece INSERT, UPDATE y DELETE, y requiere mantenimiento -por eso conviene indexar solo columnas usadas en WHERE, JOIN, ORDER BY o GROUP BY, en tablas grandes y consultas frecuentes-. La idea central: un índice no hace mágicamente rápida una base de datos, cambia la forma en que puede encontrar los datos."
+    },
+    "en": {
+      "topico": "SQL Query Optimization: Indexes",
+      "descripcion": "How an index changes the way a database finds data -from checking row by row to locating it directly-, illustrated with the order-of-magnitude difference between a sequential scan and an indexed search on the same query and data. Without an index, the database potentially checks every row until it finds the record -with a million records, that means scanning row by row to the end-. With an index, an ordered structure (typically a B-Tree) lets it jump straight to the record's location: the index lets it locate rather than scan, which is why the response is roughly a hundred times faster in this illustrative example. The process has 4 steps: an ordered structure is built from the indexed column's values, the database searches that structure for the value, the index points to where the record lives in the table, and that exact record is read without checking the rest -the index adds a search layer, it never modifies or duplicates the original data-. But indexing isn't free: it means more storage, makes INSERT, UPDATE and DELETE more expensive, and needs maintenance -so it only makes sense to index columns used in WHERE, JOINs, ORDER BY or GROUP BY, on large tables and frequent queries-. The core idea: an index doesn't magically make a database fast, it changes how it finds the data."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
   }
 ]
