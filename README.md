@@ -22,7 +22,7 @@ Este repositorio es la **fábrica de contenido** detrás de las infografías té
 
 ```text
 📁  31 temas          → Construidos/<Tema>/, cada uno con varias infografías a lo largo del tiempo
-🖼️  123 infografías    → HTML/CSS puro (1200×627px), exportadas automáticamente a PNG en alta resolución
+🖼️  124 infografías    → HTML/CSS puro (1200×627px), exportadas automáticamente a PNG en alta resolución
 📄  publicaciones.json → catálogo único e incremental, espejado en paginaweb/publications/publicaciones.js
 🏷️  Taxonomía cerrada  → 10 categorías · 45 temas · 13 tipos de contenido (taxonomia.json)
 🔁  2 flujos de trabajo → creación desde cero, o HTML+JSON ya resueltos entregados por el usuario
@@ -138,7 +138,7 @@ Antes de crear una entrada nueva, el proyecto analiza si el contenido amplía o 
 
 ## 🗺️ Estado
 
-**123 infografías publicadas en 31 temas**, listadas en orden de creación:
+**124 infografías publicadas en 31 temas**, listadas en orden de creación:
 
 - ✅ Automatización vs Autonomía: Arquitectura de Sistemas de IA Agénticos — tema `Automatización` — [HTML](Construidos/Automatización/automatizacion-agentesia.html) · [PNG](Construidos/Automatización/automatizacion-agentesia.png)
 - ✅ Automatización de Reportes con Python: de Excel a Producción — tema `Automatización` — [HTML](Construidos/Automatización/automatizacion-python.html) · [PNG](Construidos/Automatización/automatizacion-python.png)
@@ -263,6 +263,7 @@ Antes de crear una entrada nueva, el proyecto analiza si el contenido amplía o 
 - ✅ 25 Formas de Usar Claude como un Pro — tema `Claude` — [HTML](Construidos/Claude/25-formas-usar-claude.html) · [PNG](Construidos/Claude/25-formas-usar-claude.png)
 - ✅ Por Qué Gente Honesta Hace Cosas Indebidas — tema `Liderazgo` — investigación (Milgram, Bandura, Baron & Hershey, Ordóñez et al., Palazzo et al.) — [HTML](Construidos/Liderazgo/por-que-gente-honesta-hace-cosas-indebidas.html) · [PNG](Construidos/Liderazgo/por-que-gente-honesta-hace-cosas-indebidas.png)
 - ✅ Operadores de Comparación y Lógicos en Python — tema `Python` — [HTML](Construidos/Python/operadores-logicos-comparacion-python.html) · [PNG](Construidos/Python/operadores-logicos-comparacion-python.png)
+- ✅ Optimización de Tiempos de Ejecución en SQL (Índices) — tema `SQL` — [HTML](Construidos/SQL/optimizacion-tiempos-ejecucion-indices.html) · [PNG](Construidos/SQL/optimizacion-tiempos-ejecucion-indices.png)
 
 Este README se irá actualizando con un enlace por cada infografía nueva.
 
@@ -273,11 +274,11 @@ Este README se irá actualizando con un enlace por cada infografía nueva.
 Cifras reales de este repositorio (calculadas con `git log`/`git shortlog` sobre este mismo git — sin servicios externos ni redirecciones a otros sitios, instantánea al 2026-09-15):
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Commits-159-00C9A7?style=for-the-badge&logo=git&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Commits-163-00C9A7?style=for-the-badge&logo=git&logoColor=white"/>
   &nbsp;
   <img src="https://img.shields.io/badge/Archivos-592-1A56E8?style=for-the-badge&logo=files&logoColor=white"/>
   &nbsp;
-  <img src="https://img.shields.io/badge/Líneas%20%2B%2F%E2%88%92-107%2C623%20%2F%207%2C219-0B1426?style=for-the-badge&logo=git&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Líneas%20%2B%2F%E2%88%92-107%2C870%20%2F%207%2C264-0B1426?style=for-the-badge&logo=git&logoColor=white"/>
 </p>
 
 <p align="center">
@@ -289,7 +290,7 @@ Cifras reales de este repositorio (calculadas con `git log`/`git shortlog` sobre
 **Commits por autor:**
 
 <p align="center">
-  <img src="https://img.shields.io/badge/caesar523__dev-159%20commits-00C9A7?style=flat&logo=github&logoColor=white"/>
+  <img src="https://img.shields.io/badge/caesar523__dev-163%20commits-00C9A7?style=flat&logo=github&logoColor=white"/>
 </p>
 
 > Esta sección se debe recalcular y actualizar cada vez que se agregue o modifique contenido en este repositorio — ver la regla correspondiente en [CLAUDE.md](CLAUDE.md).
