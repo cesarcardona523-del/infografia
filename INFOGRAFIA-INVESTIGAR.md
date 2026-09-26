@@ -92,7 +92,7 @@ Una única clave de `taxonomia.json` → `tiposContenido` (ej. `articulo`, `tuto
 
 **`topico`** — título profesional, entre 40 y 90 caracteres, que despierte interés técnico, con apariencia de título de artículo especializado. No clickbait. No escribir completamente en mayúsculas.
 
-**`descripcion`** — abstract técnico profesional, no una descripción de la imagen. Entre 180 y 250 palabras. Debe explicar de forma natural: el concepto principal, el problema que resuelve, el funcionamiento general de la solución, las tecnologías involucradas, las ventajas técnicas, el impacto sobre procesos de negocio, escenarios de uso, recomendaciones o buenas prácticas, y posibles limitaciones cuando sean relevantes. Debe ser publicable directamente en un portal técnico o en LinkedIn.
+**`descripcion`** — abstract técnico profesional, no una descripción de la imagen. Entre 350 y 450 palabras (rango ampliado explícitamente por el usuario el 2026-09-25 — el anterior, 180-250, se quedaba corto para un resumen de LinkedIn con este nivel de detalle). Debe explicar de forma natural: el concepto principal, el problema que resuelve, el funcionamiento general de la solución, las tecnologías involucradas, las ventajas técnicas, el impacto sobre procesos de negocio, escenarios de uso, recomendaciones o buenas prácticas, y posibles limitaciones cuando sean relevantes. Debe ser publicable directamente en un portal técnico o en LinkedIn.
 
 ### Inglés (`en`)
 

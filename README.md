@@ -264,6 +264,9 @@ Antes de crear una entrada nueva, el proyecto analiza si el contenido amplía o 
 - ✅ Por Qué Gente Honesta Hace Cosas Indebidas — tema `Liderazgo` — investigación (Milgram, Bandura, Baron & Hershey, Ordóñez et al., Palazzo et al.) — [HTML](Construidos/Liderazgo/por-que-gente-honesta-hace-cosas-indebidas.html) · [PNG](Construidos/Liderazgo/por-que-gente-honesta-hace-cosas-indebidas.png)
 - ✅ Operadores de Comparación y Lógicos en Python — tema `Python` — [HTML](Construidos/Python/operadores-logicos-comparacion-python.html) · [PNG](Construidos/Python/operadores-logicos-comparacion-python.png)
 - ✅ Optimización de Tiempos de Ejecución en SQL (Índices) — tema `SQL` — [HTML](Construidos/SQL/optimizacion-tiempos-ejecucion-indices.html) · [PNG](Construidos/SQL/optimizacion-tiempos-ejecucion-indices.png)
+- ✅ Copilot Entra en la Era Multimodelo — tema `IA` — [HTML](Construidos/IA/microsoft-copilot-multimodelo.html) · [PNG](Construidos/IA/microsoft-copilot-multimodelo.png)
+- ✅ Qué Modelo de ChatGPT y Claude Usar Según la Tarea — tema `IA` — [HTML](Construidos/IA/que-modelo-chatgpt-claude-usar.html) · [PNG](Construidos/IA/que-modelo-chatgpt-claude-usar.png)
+- ✅ Desarrollo de Agentes de IA: el Stack Técnico Completo — tema `IA` — [HTML](Construidos/IA/stack-desarrollo-agentes-ia.html) · [PNG](Construidos/IA/stack-desarrollo-agentes-ia.png)
 
 Este README se irá actualizando con un enlace por cada infografía nueva.
 
