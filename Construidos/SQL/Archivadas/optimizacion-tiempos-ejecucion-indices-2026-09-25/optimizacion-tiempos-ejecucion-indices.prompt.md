@@ -1,0 +1,17 @@
+# Especificación de Diseño — Infografías Técnicas
+
+(Ver el archivo raíz `INFOGRAFIA-SPEC.md` para el contenido completo compartido por todo el catálogo.)
+
+## Contexto específico — Optimización de Tiempos de Ejecución en SQL (Índices)
+
+**Tema**: cómo un índice cambia la forma en que una base de datos encuentra los datos — de revisar fila por fila (escaneo secuencial) a localizar directamente (búsqueda indexada) — con el costo real que tiene indexar (no siempre conviene indexar todo).
+
+**Referencia** (1 imagen pegada en el chat): infografía con comparación "sin índice" (rojo, escaneo de 1.000.000 de filas, ~4.000 ms) vs "con índice" (verde, estructura ordenada tipo B-Tree, ~40 ms), + 3 paneles inferiores (cómo funciona en 4 pasos, por qué no indexar todo — costos reales, cuándo conviene crear un índice) + cierre con frase y ícono de tendencia.
+
+**Corrección aplicada sobre la referencia (regla de "no inventar información técnica")**: la referencia usa cifras específicas (~4.000 ms vs ~40 ms, 1.000.000 de registros) como ilustración pedagógica de una diferencia de orden de magnitud real y bien documentada (escaneo secuencial O(n) vs búsqueda indexada O(log n)) — se mantienen como **ejemplo ilustrativo explícito** (ver nota en el footer), no como benchmark de un sistema real, para no presentarlas como una medición verificada.
+
+**Estándar aplicado**: esta pieza sigue el estándar visual "Dark IDE" del tema SQL (ver `CLAUDE.md` → "Tema SQL — estándar visual Dark IDE"), igual que el resto del catálogo de SQL — fondo oscuro tipo editor de código, bloques de código con sintaxis resaltada, rojo como acento de "problema" y verde como acento de "solución" (coherente con el resto del catálogo, que usa rojo como acento de marca por defecto del tema).
+
+**Paleta**: SQL genérico (ANSI), sin dialecto de motor específico — rojo (`#F07178`/`#EE352E`) para "sin índice" y verde (`#9ECE6A`) para "con índice", sobre la base oscura `#1E1E2E`/`#181825` del estándar.
+
+**Catálogo**: `categoriaPrincipal: "bases-de-datos"`, `temas: ["sql"]`.

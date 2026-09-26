@@ -15,3 +15,9 @@
 **Paleta**: SQL genérico (ANSI), sin dialecto de motor específico — rojo (`#F07178`/`#EE352E`) para "sin índice" y verde (`#9ECE6A`) para "con índice", sobre la base oscura `#1E1E2E`/`#181825` del estándar.
 
 **Catálogo**: `categoriaPrincipal: "bases-de-datos"`, `temas: ["sql"]`.
+
+## Consolidación (2026-09-25)
+
+El usuario trajo una segunda referencia sobre el mismo tópico exacto (mismo titular "4 segundos → 40 ms", mismo ejemplo `SELECT * FROM clientes WHERE dni = 38750084`, misma nota "Con 1.000.000 de registros...", mismo panel "¿Cómo funciona?/¿Por qué no indexar todo?/¿Cuándo crear uno?") — se trató como actualización in-place (misma regla de "Gestión inteligente de publicaciones e infografías" de CLAUDE.md), no como pieza nueva. Versión anterior archivada en `Construidos/SQL/Archivadas/optimizacion-tiempos-ejecucion-indices-2026-09-25/` y en `paginaweb/publications/Archivadas/`.
+
+**Aporte real incorporado**: se agregaron las dos tablas de ejemplo concretas de la nueva referencia — la tabla de escaneo secuencial (`id/nombre/dni`, fila destacada del registro 1.000.000) y la tabla de estructura de índice (`dni → ubicación`) — que hacen tangible visualmente la diferencia entre "revisar" y "localizar". También se actualizó la frase de cierre a la variante de la nueva referencia ("Un buen índice no se nota cuando todo va bien: se nota cuando tu sistema empieza a crecer"). `fechaPublicacion` actualizada a la fecha/hora de esta actualización por tratarse de un aporte real de contenido, no una corrección menor.

@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Optimización de Tiempos de Ejecución en SQL</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --bg:#1E1E2E; --bg2:#181825; --editor:#14141F; --panel:rgba(255,255,255,0.04); --line:#2A2A3D;
+    --keyword:#7AA2F7; --func:#E0AF68; --string:#9ECE6A; --num:#E0AF68; --com:#565F89;
+    --text:#C0CAF5; --white:#fff; --muted:#8B93B8; --red:#F07178; --green:#9ECE6A;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    min-height:627px; display:flex; align-items:center; justify-content:center;
+    padding:32px 16px; background:#111018;
+    font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
+  .canvas{
+    position:relative; width:1200px; height:627px; margin:0 auto;
+    background:linear-gradient(165deg, var(--bg) 0%, var(--bg2) 100%);
+    border-radius:16px; box-shadow:0 24px 60px rgba(0,0,0,0.5); overflow:hidden;
+    padding:13px 26px 9px; color:var(--text);
+    display:flex; flex-direction:column; min-height:0;
+  }
+
+  .header{ display:flex; align-items:flex-start; justify-content:space-between; gap:14px; margin-bottom:8px; }
+  .eyebrow{ display:inline-flex; align-items:center; gap:6px; font-size:14px; font-weight:700; letter-spacing:1.6px; color:var(--red); text-transform:uppercase; margin-bottom:4px; }
+  .eyebrow svg{ width:14px; height:14px; }
+  h1{ font-size:18px; margin:0; font-weight:800; letter-spacing:-0.2px; color:#fff; line-height:1.22; }
+  h1 .g{ color:var(--green); }
+  .sub{ margin:4px 0 0; font-size:14px; color:var(--muted); max-width:640px; }
+  .quote{ flex:none; max-width:230px; font-size:14px; font-style:italic; color:#E8DFF5; line-height:1.32; text-align:right; border-right:2px solid var(--func); padding-right:10px; }
+
+  .cmp{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:8px; }
+  .ccard{ background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:9px 12px; }
+  .ccard.bad{ border-top:3px solid var(--red); }
+  .ccard.good{ border-top:3px solid var(--green); }
+  .ctop{ display:flex; align-items:center; gap:7px; margin-bottom:3px; }
+  .cico{ width:20px; height:20px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex:none; font-weight:800; font-size:14px; }
+  .ccard.bad .cico{ background:rgba(240,113,120,0.18); color:var(--red); }
+  .ccard.good .cico{ background:rgba(158,206,106,0.18); color:var(--green); }
+  .ctitle{ font-size:14px; font-weight:800; color:#fff; }
+  .cdesc{ font-size:14px; color:var(--muted); margin-bottom:6px; }
+  .crow{ display:grid; grid-template-columns:1fr 130px; gap:8px; align-items:stretch; }
+  .code{ background:var(--editor); border:1px solid var(--line); border-radius:6px; padding:6px 8px; font-family:"SF Mono",Menlo,Consolas,monospace; font-size:14px; line-height:1.35; }
+  .code .kw{ color:var(--keyword); font-weight:600; } .code .num{ color:var(--num); }
+  .timebox{ background:var(--editor); border:1px solid var(--line); border-radius:6px; padding:5px 7px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1px; text-align:center; }
+  .timebox .tl{ font-size:14px; color:var(--muted); }
+  .timebox .tv{ font-size:14px; font-weight:800; }
+  .ccard.bad .tv{ color:var(--red); } .ccard.good .tv{ color:var(--green); }
+  .timebox .ts{ font-size:14px; color:var(--muted); }
+
+  .cnote{ margin-top:6px; font-size:14px; color:var(--muted); line-height:1.28; }
+  .cnote b{ color:#fff; }
+
+  .bottom{ flex:1; display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; min-height:0; }
+  .bpanel{ background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:8px 11px; display:flex; flex-direction:column; }
+  .bpanel h3{ margin:0 0 5px; font-size:14px; font-weight:800; color:#fff; }
+  .steps{ display:flex; flex-direction:column; gap:4px; }
+  .step{ display:flex; gap:6px; align-items:flex-start; font-size:14px; color:var(--text); line-height:1.24; }
+  .step .sn{ width:16px; height:16px; border-radius:50%; background:var(--keyword); color:#0D1117; font-size:14px; font-weight:800; display:flex; align-items:center; justify-content:center; flex:none; }
+  .costs{ display:flex; flex-direction:column; gap:3px; }
+  .costitem{ display:flex; gap:6px; align-items:flex-start; font-size:14px; color:var(--text); line-height:1.22; }
+  .costitem svg{ width:12px; height:12px; flex:none; margin-top:2px; color:var(--red); }
+  .costitem.up svg{ color:var(--green); }
+  .checks{ display:flex; flex-direction:column; gap:3px; }
+  .chk{ display:flex; gap:6px; align-items:flex-start; font-size:14px; color:var(--text); line-height:1.22; }
+  .chk svg{ width:12px; height:12px; flex:none; margin-top:2px; color:var(--green); }
+  .binsight{ margin-top:auto; padding-top:6px; border-top:1px dashed var(--line); font-size:14px; font-style:italic; color:var(--muted); line-height:1.28; }
+  .binsight b{ color:#fff; font-style:normal; }
+
+  .ribbon{ margin-top:8px; background:linear-gradient(90deg,#12241C,#151A2E); border:1px solid var(--line); border-radius:10px; padding:7px 16px; display:flex; align-items:center; gap:14px; }
+  .ribbon .rl{ font-size:14px; color:#fff; font-weight:700; flex:none; }
+  .ribbon .rl b.r{ color:var(--red); } .ribbon .rl b.g{ color:var(--green); }
+  .ribbon .rq{ font-size:14px; font-style:italic; color:var(--muted); flex:1; }
+  .sig{ display:flex; align-items:center; gap:6px; flex:none; }
+  .li-badge{ width:16px; height:16px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:800; font-family: Arial, sans-serif; }
+  .sig span{ font-size:14px; font-weight:700; color:var(--muted); }
+</style>
+</head>
+<body>
+<div class="canvas-wrap">
+  <div class="canvas">
+
+    <div class="header">
+      <div>
+        <div class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>SQL · Rendimiento de Consultas</div>
+        <h1>Tu query tarda <span style="color:var(--red)">4 segundos</span>. Agregás un índice y ahora tarda <span class="g">40 ms</span>.</h1>
+        <p class="sub">¿Qué pasó? Un índice cambia la forma en que la base de datos encuentra los datos — ejemplo ilustrativo de la diferencia de orden de magnitud entre escanear y localizar.</p>
+      </div>
+      <div class="quote">Mismos datos. Misma query.<br>Resultados muy distintos.</div>
+    </div>
+
+    <div class="cmp">
+      <div class="ccard bad">
+        <div class="ctop"><span class="cico">✕</span><span class="ctitle">Sin Índice</span></div>
+        <div class="cdesc">La base de datos revisa fila por fila hasta encontrar el registro.</div>
+        <div class="crow">
+          <div class="code"><span class="kw">SELECT</span> * <span class="kw">FROM</span> clientes<br><span class="kw">WHERE</span> dni = <span class="num">38750084</span>;</div>
+          <div class="timebox"><span class="tl">Tiempo</span><span class="tv">~4.000 ms</span><span class="ts">escaneo de 1M filas</span></div>
+        </div>
+        <div class="cnote">Con <b>1.000.000 de registros</b>, buscar sin índice es como revisar fila por fila hasta el final.</div>
+      </div>
+      <div class="ccard good">
+        <div class="ctop"><span class="cico">✓</span><span class="ctitle">Con Índice</span></div>
+        <div class="cdesc">Una estructura ordenada (B-Tree) localiza el dato directamente.</div>
+        <div class="crow">
+          <div class="code"><span class="kw">SELECT</span> * <span class="kw">FROM</span> clientes<br><span class="kw">WHERE</span> dni = <span class="num">38750084</span>;</div>
+          <div class="timebox"><span class="tl">Tiempo</span><span class="tv">~40 ms</span><span class="ts">búsqueda indexada</span></div>
+        </div>
+        <div class="cnote">El índice permite <b>localizar, no revisar</b> — por eso la respuesta es del orden de 100x más rápida.</div>
+      </div>
+    </div>
+
+    <div class="bottom">
+      <div class="bpanel">
+        <h3>¿Cómo funciona?</h3>
+        <div class="steps">
+          <div class="step"><span class="sn">1</span>Se crea una estructura ordenada (ej. B-Tree) con los valores de la columna indexada.</div>
+          <div class="step"><span class="sn">2</span>La base de datos busca en el índice el valor que necesitamos.</div>
+          <div class="step"><span class="sn">3</span>El índice indica dónde está el registro en la tabla.</div>
+          <div class="step"><span class="sn">4</span>Se lee directamente ese registro, sin revisar los demás.</div>
+        </div>
+        <div class="binsight">El índice agrega una <b>capa de búsqueda</b> — nunca modifica ni duplica los datos originales de la tabla.</div>
+      </div>
+      <div class="bpanel">
+        <h3>¿Por qué no indexar todo?</h3>
+        <div class="costs">
+          <div class="costitem up"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Lecturas más rápidas, en general</div>
+          <div class="costitem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>Más almacenamiento requerido</div>
+          <div class="costitem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>INSERT más costoso</div>
+          <div class="costitem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>UPDATE más costoso</div>
+          <div class="costitem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>DELETE más costoso</div>
+          <div class="costitem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>Mantenimiento adicional del índice</div>
+        </div>
+        <div class="binsight">No siempre se usan en <b>todas las queries</b> — cada índice de más también tiene un costo real.</div>
+      </div>
+      <div class="bpanel">
+        <h3>¿Cuándo crear uno?</h3>
+        <div class="checks">
+          <div class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Columnas usadas en filtros (WHERE)</div>
+          <div class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Columnas usadas en JOIN</div>
+          <div class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Columnas en ORDER BY / GROUP BY</div>
+          <div class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Tablas con muchos registros</div>
+          <div class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Consultas que se ejecutan con frecuencia</div>
+        </div>
+        <div class="binsight">Un índice no hace mágicamente rápida una base de datos: <b>cambia cómo encuentra los datos</b>.</div>
+      </div>
+    </div>
+
+    <div class="ribbon">
+      <div class="rl"><b class="r">Sin índice</b> → buscar. <b class="g">Con índice</b> → localizar.</div>
+      <div class="rq">"Un índice no hace mágicamente rápida una base de datos: cambia la forma en que puede encontrar los datos."</div>
+      <div class="sig"><div class="li-badge">in</div><span>cacm523</span></div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

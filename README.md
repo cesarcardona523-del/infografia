@@ -269,6 +269,9 @@ Antes de crear una entrada nueva, el proyecto analiza si el contenido amplía o 
 - ✅ Desarrollo de Agentes de IA: el Stack Técnico Completo — tema `IA` — [HTML](Construidos/IA/stack-desarrollo-agentes-ia.html) · [PNG](Construidos/IA/stack-desarrollo-agentes-ia.png)
 - ✅ CTE (WITH): la Forma Moderna de Ordenar tus Consultas SQL — tema `SQL` — [HTML](Construidos/SQL/cte-with-consultas.html) · [PNG](Construidos/SQL/cte-with-consultas.png)
 - ✅ MCP + Power BI — tema `PowerBI` — [HTML](Construidos/PowerBI/mcp-power-bi-agentes-ia.html) · [PNG](Construidos/PowerBI/mcp-power-bi-agentes-ia.png)
+- ✅ Gobierno de Datos no es Gobierno de IA: 6 Diferencias — tema `Gobierno_de_Datos` — [HTML](Construidos/Gobierno_de_Datos/gobierno-datos-vs-gobierno-ia.html) · [PNG](Construidos/Gobierno_de_Datos/gobierno-datos-vs-gobierno-ia.png)
+- ✅ Inteligencia Artificial Jurídica — tema `IA` — [HTML](Construidos/IA/inteligencia-artificial-juridica.html) · [PNG](Construidos/IA/inteligencia-artificial-juridica.png)
+- ✅ GPT-6 Astra vs. Claude Fable 5.1 — tema `IA` — [HTML](Construidos/IA/gpt6-astra-vs-fable-5-1.html) · [PNG](Construidos/IA/gpt6-astra-vs-fable-5-1.png)
 
 Este README se irá actualizando con un enlace por cada infografía nueva.
 

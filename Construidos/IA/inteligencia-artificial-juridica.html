@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Inteligencia Artificial Jurídica</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --green:#2F6D4F; --green-dark:#1F4D38; --tierra:#B8834A; --ink:#151B26; --muted:#5B6570;
+    --line:#E2E8ED; --white:#FFFFFF; --paper:#F5F8F6;
+  }
+  *{box-sizing:border-box;} html,body{margin:0;padding:0;}
+  body{ min-height:627px; display:flex; align-items:center; justify-content:center; padding:32px 16px; background:#E9EFEA; font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
+  .canvas{ position:relative; width:1200px; height:627px; margin:0 auto; background:linear-gradient(160deg,#FDFEFD 0%, var(--paper) 55%, #EFF6F1 100%); border-radius:16px; box-shadow:0 20px 50px rgba(20,50,35,0.15); overflow:hidden; padding:12px 24px 9px; color:var(--ink); display:flex; flex-direction:column; }
+
+  .header{ margin-bottom:8px; }
+  .eyebrow{ display:inline-flex; align-items:center; gap:6px; font-size:14px; font-weight:800; letter-spacing:1.3px; color:var(--green); text-transform:uppercase; background:#E4F0E8; border:1px solid #CFE4D6; padding:3px 9px; border-radius:20px; margin-bottom:4px; }
+  .eyebrow svg{ width:14px; height:14px; flex:none; }
+  h1{ font-size:19px; margin:0 0 2px; font-weight:800; letter-spacing:-0.2px; }
+  h1 span{ color:var(--tierra); font-style:italic; }
+  .sub{ margin:0; font-size:14px; color:var(--muted); }
+
+  .cols{ flex:1; display:grid; grid-template-columns:repeat(4,1fr); gap:9px; min-height:0; }
+  .col{ background:var(--white); border:1px solid var(--line); border-radius:11px; padding:8px 10px; display:flex; flex-direction:column; box-shadow:0 2px 8px rgba(20,50,35,0.05); }
+  .col h2{ display:flex; align-items:center; gap:7px; margin:0 0 2px; font-size:14px; font-weight:800; color:var(--ink); }
+  .bn{ width:20px; height:20px; border-radius:50%; background:linear-gradient(135deg,var(--green),var(--green-dark)); color:#fff; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:800; flex:none; }
+  .col .tag{ font-size:14px; color:var(--tierra); font-weight:700; margin-bottom:6px; }
+
+  .flow{ display:flex; flex-direction:column; align-items:center; gap:2px; margin-bottom:6px; }
+  .fnode{ width:100%; background:var(--paper); border:1px solid var(--line); border-radius:7px; padding:3px 7px; text-align:center; font-size:14px; color:var(--ink); font-weight:700; }
+  .fnode.brain{ background:linear-gradient(135deg,var(--green),var(--green-dark)); color:#fff; }
+  .farr{ width:11px; height:11px; color:var(--green); }
+  .srcrow{ display:flex; gap:3px; flex-wrap:wrap; justify-content:center; margin-bottom:2px; }
+  .srcchip{ font-size:14px; background:var(--paper); border:1px solid var(--line); border-radius:5px; padding:1px 5px; color:var(--muted); }
+
+  .exlbl{ font-size:14px; font-weight:800; color:var(--muted); text-transform:uppercase; letter-spacing:.3px; margin:4px 0 3px; border-top:1px dashed var(--line); padding-top:4px; }
+  .ex{ display:flex; align-items:center; gap:6px; margin-bottom:2px; }
+  .ex img, .ex svg{ width:15px; height:15px; flex:none; }
+  .ex svg{ color:var(--green); }
+  .ex span{ font-size:14px; color:var(--ink); font-weight:600; line-height:1.15; }
+  .ex .nuevo{ font-size:14px; background:var(--tierra); color:#fff; font-weight:800; padding:0 4px; border-radius:4px; margin-left:3px; }
+  .coltip{ margin-top:auto; padding-top:6px; border-top:1px dashed var(--line); font-size:14px; color:var(--muted); line-height:1.28; font-style:italic; }
+  .coltip b{ color:var(--ink); font-style:normal; }
+
+  .axis{ margin-top:8px; background:var(--white); border:1px solid var(--line); border-radius:11px; padding:6px 20px; }
+  .axisline{ display:flex; align-items:center; justify-content:space-between; position:relative; }
+  .axisline::before{ content:""; position:absolute; left:8px; right:8px; top:50%; height:2px; background:linear-gradient(90deg,var(--green),var(--tierra)); transform:translateY(-50%); z-index:0; }
+  .axisdot{ position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; gap:2px; background:var(--white); padding:0 8px; }
+  .axisdot .d{ width:10px; height:10px; border-radius:50%; background:var(--green); }
+  .axisdot b{ font-size:14px; color:var(--ink); font-weight:800; }
+  .axissub{ display:flex; justify-content:space-between; font-size:14px; color:var(--muted); margin-top:2px; }
+
+  .footer{ display:flex; align-items:center; justify-content:space-between; margin-top:6px; }
+  .footer .note{ font-size:14px; color:var(--muted); }
+  .sig{ display:flex; align-items:center; gap:6px; }
+  .li-badge{ width:16px; height:16px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:800; font-family: Arial, sans-serif; }
+  .sig span{ font-size:14px; font-weight:700; color:var(--muted); }
+</style>
+</head>
+<body>
+<div class="canvas-wrap">
+  <div class="canvas">
+
+    <div class="header">
+      <div class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v18M5 8l-3 6a4 4 0 0 0 8 0zM19 8l-3 6a4 4 0 0 0 8 0zM5 8h14M3 21h18"/></svg>Derecho &amp; IA</div>
+      <h1>Inteligencia Artificial <span>Jurídica</span></h1>
+      <p class="sub">De modelos generales a inteligencia especializada para el trabajo legal.</p>
+    </div>
+
+    <div class="cols">
+
+      <div class="col">
+        <h2><span class="bn">1</span>LLM</h2>
+        <div class="tag">generalista</div>
+        <div class="flow">
+          <div class="fnode">Pregunta</div>
+          <svg class="farr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+          <div class="fnode brain">Modelo</div>
+          <svg class="farr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+          <div class="fnode">Respuesta</div>
+        </div>
+        <div class="exlbl">Ejemplos</div>
+        <div class="ex"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgMjQwNiAyNDA2Ij4KCTxwYXRoIGQ9Ik0xIDU3OC40QzEgMjU5LjUgMjU5LjUgMSA1NzguNCAxaDEyNDkuMWMzMTkgMCA1NzcuNSAyNTguNSA1NzcuNSA1NzcuNFYyNDA2SDU3OC40QzI1OS41IDI0MDYgMSAyMTQ3LjUgMSAxODI4LjZWNTc4LjR6IiBmaWxsPSIjNzRhYTljIi8+Cgk8cGF0aCBpZD0iYSIgZD0iTTExMDcuMyAyOTkuMWMtMTk3Ljk5OSAwLTM3My45IDEyNy4zLTQzNS4yIDMxNS4zTDY1MCA3NDMuNXY0MjcuOWMwIDIxLjQgMTEgNDAuNCAyOS40IDUxLjRsMzQ0LjUgMTk4LjUxNVY4MzMuM2guMXYtMjcuOUwxMzcyLjcgNjA0YzMzLjcxNS0xOS41MiA3MC40NC0zMi44NTcgMTA4LjQ3LTM5LjgyOEwxNDQ3LjYgNDUwLjNDMTM2MSAzNTMuNSAxMjM3LjEgMjk4LjUgMTEwNy4zIDI5OS4xem0wIDExNy41LS42LjZjNzkuNjk5IDAgMTU2LjMgMjcuNSAyMTcuNiA3OC40LTIuNSAxLjItNy40IDQuMy0xMSA2LjFMOTUyLjggNzA5LjNjLTE4LjQgMTAuNC0yOS40IDMwLTI5LjQgNTEuNFYxMjQ4bC0xNTUuMS04OS40Vjc1NS44Yy0uMS0xODcuMDk5IDE1MS42MDEtMzM4LjkgMzM5LTMzOS4yeiIgZmlsbD0iI2ZmZiIvPgoJPHVzZSB4bGluazpocmVmPSIjYSIgdHJhbnNmb3JtPSJyb3RhdGUoNjAgMTIwMyAxMjAzKSIvPgogIAk8dXNlIHhsaW5rOmhyZWY9IiNhIiB0cmFuc2Zvcm09InJvdGF0ZSgxMjAgMTIwMyAxMjAzKSIvPgoJPHVzZSB4bGluazpocmVmPSIjYSIgdHJhbnNmb3JtPSJyb3RhdGUoMTgwIDEyMDMgMTIwMykiLz4KCTx1c2UgeGxpbms6aHJlZj0iI2EiIHRyYW5zZm9ybT0icm90YXRlKDI0MCAxMjAzIDEyMDMpIi8+Cgk8dXNlIHhsaW5rOmhyZWY9IiNhIiB0cmFuc2Zvcm09InJvdGF0ZSgzMDAgMTIwMyAxMjAzKSIvPgoKPC9zdmc+" alt=""><span>ChatGPT</span></div>
+        <div class="ex"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPCEtLSBHZW5lcmF0ZWQgYnkgUGl4ZWxtYXRvciBQcm8gMy42LjE3IC0tPgo8c3ZnIHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjEyMDAiIHZpZXdCb3g9IjAgMCAxMjAwIDEyMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgICA8ZyBpZD0iZzMxNCI+CiAgICAgICAgPHBhdGggaWQ9InBhdGgxNDciIGZpbGw9IiNkOTc3NTciIHN0cm9rZT0ibm9uZSIgZD0iTSAyMzMuOTU5NzkzIDgwMC4yMTQ5MDUgTCA0NjguNjQ0Mjg3IDY2OC41MzY5ODcgTCA0NzIuNTkwNjM3IDY1Ny4xMDA2NDcgTCA0NjguNjQ0Mjg3IDY1MC43Mzg0MDMgTCA0NTcuMjA4MDY5IDY1MC43Mzg0MDMgTCA0MTcuOTg2NjMzIDY0OC4zMjIxNDQgTCAyODMuODkyNjM5IDY0NC42OTgxMiBMIDE2Ny41OTczMjEgNjM5Ljg2NTg0NSBMIDU0LjkyNjIwOCA2MzMuODI1NjIzIEwgMjYuNTc3MjM4IDYyNy43ODUzMzkgTCAzLjNlLTA1IDU5Mi43NTE3MDkgTCAyLjczODMyIDU3NS4yNzUzMyBMIDI2LjU3NzIzOCA1NTkuMjQ4MzUyIEwgNjAuNzI0ODczIDU2Mi4yMjgxNDkgTCAxMzYuMTg3OTczIDU2Ny4zODI2MjkgTCAyNDkuNDIyODY3IDU3NS4xOTQ3NjMgTCAzMzEuNTcwNDk2IDU4MC4wMjY5NzggTCA0NTMuMjYxODQxIDU5Mi42NzEwODIgTCA0NzIuNTkwNjM3IDU5Mi42NzEwODIgTCA0NzUuMzI4ODU3IDU4NC44NTkwMDkgTCA0NjguNzI0OTE1IDU4MC4wMjY5NzggTCA0NjMuNTcwNTU3IDU3NS4xOTQ3NjMgTCAzNDYuMzg5MzEzIDQ5NS43ODUyMTcgTCAyMTkuNTQzNjcxIDQxMS44NjU5MDYgTCAxNTMuMTAwNzIzIDM2My41NDM3NjIgTCAxMTcuMTgxMjY3IDMzOS4wNjA0MjUgTCA5OS4wNjA0NTUgMzE2LjEwNzM2MSBMIDkxLjI0ODM2NyAyNjYuMDEzNTUgTCAxMjMuODY1Nzg0IDIzMC4wOTM5OTQgTCAxNjcuNjc3ODg3IDIzMy4wNzM4NTMgTCAxNzguODcyNTEzIDIzNi4wNTM3NzIgTCAyMjMuMjQ4MzY3IDI3MC4yMDE0NzcgTCAzMTguMDQwMjgzIDM0My41NzA0OTYgTCA0NDEuODI1NTkyIDQzNC43MzgzNDIgTCA0NTkuOTQ2NDExIDQ0OS43OTg3MDYgTCA0NjcuMTk0NjcyIDQ0NC42NDQ0NyBMIDQ2OC4wODA1OTcgNDQxLjAyMDIwMyBMIDQ1OS45NDY0MTEgNDI3LjQwOTQ4NSBMIDM5Mi42MTc0OTMgMzA1LjcxODMyMyBMIDMyMC43Nzg1NjQgMTgxLjkzMjk4MyBMIDI4OC44MDU0MiAxMzAuNjMwODU5IEwgMjgwLjM0ODk5OSA5OS44NjU4NDUgQyAyNzcuMzY5MTcxIDg3LjIyMTQzNiAyNzUuMTk0NjQxIDc2LjU5MDY5OCAyNzUuMTk0NjQxIDYzLjYyNDI2OCBMIDMxMi4zMjIxNzQgMTMuMjA4MTMgTCAzMzIuODU5MSA2LjYwNDEyNiBMIDM4Mi4zODkzMTMgMTMuMjA4MTMgTCA0MDMuMjQ4MzUyIDMxLjMyODk3OSBMIDQzNC4wMTM1MTkgMTAxLjcxODE0IEwgNDgzLjg2NTc1MyAyMTIuNTM3MDQ4IEwgNTYxLjE4MTI3NCAzNjMuMjIxNDk3IEwgNTgzLjgxMjEzNCA0MDcuOTE5NDM0IEwgNTk1Ljg5MjYzOSA0NDkuMzE1NDkxIEwgNjAwLjQwMjcxIDQ2MS45NTk4MzkgTCA2MDguMjE0NzgzIDQ2MS45NTk4MzkgTCA2MDguMjE0NzgzIDQ1NC43MTE2MDkgTCA2MTQuNTc3MjcxIDM2OS44MjU2MjMgTCA2MjYuMzM1NjMyIDI2NS42MTA4NCBMIDYzNy43NzE4NTEgMTMxLjUxNjg0NiBMIDY0MS43MTgyMDEgOTMuNzQ1MTE3IEwgNjYwLjQwMjgzMiA0OC40ODMyNzYgTCA2OTcuNTMwMzM0IDI0LjAwMDEyMiBMIDcyNi41MjM1NiAzNy44NTI0MTcgTCA3NTAuMzYyNTQ5IDcyIEwgNzQ3LjA2MDQ4NiA5NC4wNjcxMzkgTCA3MzIuODg2MDQ3IDE4Ni4yMDE0MTYgTCA3MDUuMTAwNzA4IDMzMC41MjM1NiBMIDY4Ni45Nzk5MTkgNDI3LjE2Nzg0NyBMIDY5Ny41MzAzMzQgNDI3LjE2Nzg0NyBMIDcwOS42MTA4NCA0MTUuMDg3MzQxIEwgNzU4LjQ5NjcwNCAzNTAuMTc0NTYxIEwgODQwLjY0NDM0OCAyNDcuNDkwMDUxIEwgODc2Ljg4NTkyNSAyMDYuNzM4MzQyIEwgOTE5LjE2Nzg0NyAxNjEuNzE4MTQgTCA5NDYuMzA4ODM4IDE0MC4yOTU0MSBMIDk5Ny42MTA4NCAxNDAuMjk1NDEgTCAxMDM1LjM4MjY5IDE5Ni40Mjk2MjYgTCAxMDE4LjQ2OTg0OSAyNTQuNDE2MTk5IEwgOTY1LjYzNzYzNCAzMjEuNDIyODUyIEwgOTIxLjgyNTU2MiAzNzguMjAxNTM4IEwgODU5LjAwNjcxNCA0NjIuNzY1MjU5IEwgODE5Ljc4NTI3OCA1MzAuNDE2MjYgTCA4MjMuNDA5NDI0IDUzNS44MTIwNzMgTCA4MzIuNzUxNzcgNTM0LjkyNjI3IEwgOTc0LjY1Nzc3NiA1MDQuNzI0OTE1IEwgMTA1MS4zMjg5NzkgNDkwLjg3MjU1OSBMIDExNDIuODE4ODQ4IDQ3NS4xNjc3ODYgTCAxMTg0LjIxNDg0NCA0OTQuNDk2NTgyIEwgMTE4OC43MjQ4NTQgNTE0LjE0NzY0NCBMIDExNzIuNDU2NDIxIDU1NC4zMzU2OTMgTCAxMDc0LjYwNDEyNiA1NzguNDk2NzY1IEwgOTU5LjgzODk4OSA2MDEuNDQ5ODI5IEwgNzg4LjkzOTYzNiA2NDEuODc5MjcyIEwgNzg2Ljg0NTc2NCA2NDMuNDA5NDg1IEwgNzg5LjI2MTg0MSA2NDYuMzg5MzQzIEwgODY2LjI1NTEyNyA2NTMuNjM3NjM0IEwgODk5LjE5NDcwMiA2NTUuNDA5NDI0IEwgOTc5LjgxMjEzNCA2NTUuNDA5NDI0IEwgMTEyOS45MzI4NjEgNjY2LjYwNDE4NyBMIDExNjkuMTU0NDE5IDY5Mi41MzcxMDkgTCAxMTkyLjY3MTI2NSA3MjQuMjY4Njc3IEwgMTE4OC43MjQ4NTQgNzQ4LjQyOTY4OCBMIDExMjguMzIyMTQ0IDc3OS4xOTQ2NDEgTCAxMDQ2LjgxODg0OCA3NTkuODY1ODQ1IEwgODU2LjU5MDc1OSA3MTQuNjA0MTI2IEwgNzkxLjM1NTc3NCA2OTguMzM1NzU0IEwgNzgyLjMzNTY5MyA2OTguMzM1NzU0IEwgNzgyLjMzNTY5MyA3MDMuNzMxNTY3IEwgODM2LjY5ODEyIDc1Ni44ODU5ODYgTCA5MzYuMzIyMjA1IDg0Ni44NDU1ODEgTCAxMDYxLjA3Mzk3NSA5NjIuODE4OTcgTCAxMDY3LjQzNjI3OSA5OTEuNDkwMTEyIEwgMTA1MS40MDk0MjQgMTAxNC4xMjA5MTEgTCAxMDM0LjQ5NjcwNCAxMDExLjcwNDcxMiBMIDkyNC44ODU5ODYgOTI5LjIzNDkyNCBMIDg4Mi42MDQxMjYgODkyLjEwNzU0NCBMIDc4Ni44NDU3NjQgODExLjQ4OTk5IEwgNzgwLjQ4MzI3NiA4MTEuNDg5OTkgTCA3ODAuNDgzMjc2IDgxOS45NDYyODkgTCA4MDIuNTUwNDE1IDg1Mi4yNDE2OTkgTCA5MTkuMDg3MzQxIDEwMjcuNDA5NDI0IEwgOTI1LjEyNzYyNSAxMDgxLjEyNzY4NiBMIDkxNi42NzEyMDQgMTA5OC42MDQxMjYgTCA4ODYuNDY5ODQ5IDExMDkuMTU0NDE5IEwgODUzLjI4ODY5NiAxMTAzLjExNDEzNiBMIDc4NS4wNzM5MTQgMTAwNy4zNTU4MzUgTCA3MTQuNjg0NjMxIDg5OS41MTY3ODUgTCA2NTcuOTA2MDY3IDgwMi44NzI0OTggTCA2NTAuOTc5ODU4IDgwNi44MTg5NyBMIDYxNy40NzY2MjQgMTE2Ny43MDQ4MzQgTCA2MDEuNzcxODUxIDExODYuMTQ3NzA1IEwgNTY1LjUzMDIxMiAxMjAwIEwgNTM1LjMyODg1NyAxMTc3LjA0Njk5NyBMIDUxOS4zMDIxMjQgMTEzOS45MTk1NTYgTCA1MzUuMzI4ODU3IDEwNjYuNTUwNTM3IEwgNTU0LjY1Nzc3NiA5NzAuNzkyMDUzIEwgNTcwLjM2MjQ4OCA4OTQuNjg0NTcgTCA1ODQuNTM2OTI2IDgwMC4xMzQyNzcgTCA1OTIuOTkzMzQ3IDc2OC43MjQ5NzYgTCA1OTIuNDI5NjI2IDc2Ni42MzA4NTkgTCA1ODUuNTAzNDc5IDc2Ny41MTY5NjggTCA1MTQuMjI4MjEgODY1LjM2OTI2MyBMIDQwNS44MjU1MzEgMTAxMS44NjU5MDYgTCAzMjAuMDUzNzExIDExMDMuNjc3OTc5IEwgMjk5LjUxNjgxNSAxMTExLjgxMjI1NiBMIDI2My45MTk1MjUgMTA5My4zNjkyNjMgTCAyNjcuMjIxNDk3IDEwNjAuNDI5Njg4IEwgMjg3LjExNDEzNiAxMDMxLjExNDEzNiBMIDQwNS44MjU1MzEgODgwLjEwNzM2MSBMIDQ3Ny40MjI5MTMgNzg2LjUyMzU2IEwgNTIzLjY1MTA2MiA3MzIuNDgzMjc2IEwgNTIzLjMyODkxOCA3MjQuNjcxMjY1IEwgNTIwLjU5MDY5OCA3MjQuNjcxMjY1IEwgMjA1LjI4ODYwNSA5MjkuMzk1OTM1IEwgMTQ5LjE1NDQzNCA5MzYuNjQ0NDA5IEwgMTI0Ljk5MzM1NSA5MTQuMDEzNTUgTCAxMjcuOTczMTgzIDg3Ni44ODU5ODYgTCAxMzkuNDA5NDA5IDg2NC44MDU0MiBMIDIzNC4yMDEzODUgNzk5LjU3MDQzNSBMIDIzMy44NzkyMjcgNzk5Ljg5MjcgWiIvPgogICAgPC9nPgo8L3N2Zz4K" alt=""><span>Claude</span></div>
+        <div class="ex"><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NSA2NSI+PG1hc2sgaWQ9Im1hc2ttZSIgc3R5bGU9Im1hc2stdHlwZTphbHBoYSIgbWFza1VuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeD0iMCIgeT0iMCIgd2lkdGg9IjY1IiBoZWlnaHQ9IjY1Ij48cGF0aCBkPSJNMzIuNDQ3IDBjLjY4IDAgMS4yNzMuNDY1IDEuNDM5IDEuMTI1YTM4LjkwNCAzOC45MDQgMCAwMDEuOTk5IDUuOTA1YzIuMTUyIDUgNS4xMDUgOS4zNzYgOC44NTQgMTMuMTI1IDMuNzUxIDMuNzUgOC4xMjYgNi43MDMgMTMuMTI1IDguODU1YTM4Ljk4IDM4Ljk4IDAgMDA1LjkwNiAxLjk5OWMuNjYuMTY2IDEuMTI0Ljc1OCAxLjEyNCAxLjQzOCAwIC42OC0uNDY0IDEuMjczLTEuMTI1IDEuNDM5YTM4LjkwMiAzOC45MDIgMCAwMC01LjkwNSAxLjk5OWMtNSAyLjE1Mi05LjM3NSA1LjEwNS0xMy4xMjUgOC44NTQtMy43NDkgMy43NTEtNi43MDIgOC4xMjYtOC44NTQgMTMuMTI1YTM4Ljk3MyAzOC45NzMgMCAwMC0yIDUuOTA2IDEuNDg1IDEuNDg1IDAgMDEtMS40MzggMS4xMjRjLS42OCAwLTEuMjcyLS40NjQtMS40MzgtMS4xMjVhMzguOTEzIDM4LjkxMyAwIDAwLTItNS45MDVjLTIuMTUxLTUtNS4xMDMtOS4zNzUtOC44NTQtMTMuMTI1LTMuNzUtMy43NDktOC4xMjUtNi43MDItMTMuMTI1LTguODU0YTM4Ljk3MyAzOC45NzMgMCAwMC01LjkwNS0yQTEuNDg1IDEuNDg1IDAgMDEwIDMyLjQ0OGMwLS42OC40NjUtMS4yNzIgMS4xMjUtMS40MzhhMzguOTAzIDM4LjkwMyAwIDAwNS45MDUtMmM1LTIuMTUxIDkuMzc2LTUuMTA0IDEzLjEyNS04Ljg1NCAzLjc1LTMuNzQ5IDYuNzAzLTguMTI1IDguODU1LTEzLjEyNWEzOC45NzIgMzguOTcyIDAgMDAxLjk5OS01LjkwNUExLjQ4NSAxLjQ4NSAwIDAxMzIuNDQ3IDB6IiBmaWxsPSIjMDAwIi8+PHBhdGggZD0iTTMyLjQ0NyAwYy42OCAwIDEuMjczLjQ2NSAxLjQzOSAxLjEyNWEzOC45MDQgMzguOTA0IDAgMDAxLjk5OSA1LjkwNWMyLjE1MiA1IDUuMTA1IDkuMzc2IDguODU0IDEzLjEyNSAzLjc1MSAzLjc1IDguMTI2IDYuNzAzIDEzLjEyNSA4Ljg1NWEzOC45OCAzOC45OCAwIDAwNS45MDYgMS45OTljLjY2LjE2NiAxLjEyNC43NTggMS4xMjQgMS40MzggMCAuNjgtLjQ2NCAxLjI3My0xLjEyNSAxLjQzOWEzOC45MDIgMzguOTAyIDAgMDAtNS45MDUgMS45OTljLTUgMi4xNTItOS4zNzUgNS4xMDUtMTMuMTI1IDguODU0LTMuNzQ5IDMuNzUxLTYuNzAyIDguMTI2LTguODU0IDEzLjEyNWEzOC45NzMgMzguOTczIDAgMDAtMiA1LjkwNiAxLjQ4NSAxLjQ4NSAwIDAxLTEuNDM4IDEuMTI0Yy0uNjggMC0xLjI3Mi0uNDY0LTEuNDM4LTEuMTI1YTM4LjkxMyAzOC45MTMgMCAwMC0yLTUuOTA1Yy0yLjE1MS01LTUuMTAzLTkuMzc1LTguODU0LTEzLjEyNS0zLjc1LTMuNzQ5LTguMTI1LTYuNzAyLTEzLjEyNS04Ljg1NGEzOC45NzMgMzguOTczIDAgMDAtNS45MDUtMkExLjQ4NSAxLjQ4NSAwIDAxMCAzMi40NDhjMC0uNjguNDY1LTEuMjcyIDEuMTI1LTEuNDM4YTM4LjkwMyAzOC45MDMgMCAwMDUuOTA1LTJjNS0yLjE1MSA5LjM3Ni01LjEwNCAxMy4xMjUtOC44NTQgMy43NS0zLjc0OSA2LjcwMy04LjEyNSA4Ljg1NS0xMy4xMjVhMzguOTcyIDM4Ljk3MiAwIDAwMS45OTktNS45MDVBMS40ODUgMS40ODUgMCAwMTMyLjQ0NyAweiIgZmlsbD0idXJsKCNwcmVmaXhfX3BhaW50MF9saW5lYXJfMjAwMV82NykiLz48L21hc2s+PGcgbWFzaz0idXJsKCNtYXNrbWUpIj48ZyBmaWx0ZXI9InVybCgjcHJlZml4X19maWx0ZXIwX2ZfMjAwMV82NykiPjxwYXRoIGQ9Ik0tNS44NTkgNTAuNzM0YzcuNDk4IDIuNjYzIDE2LjExNi0yLjMzIDE5LjI0OS0xMS4xNTIgMy4xMzMtOC44MjEtLjQwNi0xOC4xMzEtNy45MDQtMjAuNzk0LTcuNDk4LTIuNjYzLTE2LjExNiAyLjMzLTE5LjI1IDExLjE1MS0zLjEzMiA4LjgyMi40MDcgMTguMTMyIDcuOTA1IDIwLjc5NXoiIGZpbGw9IiNGRkU0MzIiLz48L2c+PGcgZmlsdGVyPSJ1cmwoI3ByZWZpeF9fZmlsdGVyMV9mXzIwMDFfNjcpIj48cGF0aCBkPSJNMjcuNDMzIDIxLjY0OWMxMC4zIDAgMTguNjUxLTguNTM1IDE4LjY1MS0xOS4wNjIgMC0xMC41MjgtOC4zNS0xOS4wNjItMTguNjUxLTE5LjA2MlM4Ljc4LTcuOTQgOC43OCAyLjU4N2MwIDEwLjUyNyA4LjM1IDE5LjA2MiAxOC42NTIgMTkuMDYyeiIgZmlsbD0iI0ZDNDEzRCIvPjwvZz48ZyBmaWx0ZXI9InVybCgjcHJlZml4X19maWx0ZXIyX2ZfMjAwMV82NykiPjxwYXRoIGQ9Ik0yMC4xODQgODIuNjA4YzEwLjc1My0uNTI1IDE4LjkxOC0xMi4yNDQgMTguMjM3LTI2LjE3NC0uNjgtMTMuOTMtOS45NS0yNC43OTctMjAuNzAzLTI0LjI3MUM2Ljk2NSAzMi42ODktMS4yIDQ0LjQwNy0uNTE5IDU4LjMzN2MuNjgxIDEzLjkzIDkuOTUgMjQuNzk3IDIwLjcwMyAyNC4yNzF6IiBmaWxsPSIjMDBCOTVDIi8+PC9nPjxnIGZpbHRlcj0idXJsKCNwcmVmaXhfX2ZpbHRlcjNfZl8yMDAxXzY3KSI+PHBhdGggZD0iTTIwLjE4NCA4Mi42MDhjMTAuNzUzLS41MjUgMTguOTE4LTEyLjI0NCAxOC4yMzctMjYuMTc0LS42OC0xMy45My05Ljk1LTI0Ljc5Ny0yMC43MDMtMjQuMjcxQzYuOTY1IDMyLjY4OS0xLjIgNDQuNDA3LS41MTkgNTguMzM3Yy42ODEgMTMuOTMgOS45NSAyNC43OTcgMjAuNzAzIDI0LjI3MXoiIGZpbGw9IiMwMEI5NUMiLz48L2c+PGcgZmlsdGVyPSJ1cmwoI3ByZWZpeF9fZmlsdGVyNF9mXzIwMDFfNjcpIj48cGF0aCBkPSJNMzAuOTU0IDc0LjE4MWM5LjAxNC01LjQ4NSAxMS40MjctMTcuOTc2IDUuMzg5LTI3LjktNi4wMzgtOS45MjUtMTguMjQxLTEzLjUyNC0yNy4yNTYtOC4wNC05LjAxNSA1LjQ4Ni0xMS40MjggMTcuOTc3LTUuMzkgMjcuOTAyIDYuMDQgOS45MjQgMTguMjQyIDEzLjUyMyAyNy4yNTcgOC4wMzh6IiBmaWxsPSIjMDBCOTVDIi8+PC9nPjxnIGZpbHRlcj0idXJsKCNwcmVmaXhfX2ZpbHRlcjVfZl8yMDAxXzY3KSI+PHBhdGggZD0iTTY3LjM5MSA0Mi45OTNjMTAuMTMyIDAgMTguMzQ2LTcuOTEgMTguMzQ2LTE3LjY2NiAwLTkuNzU3LTguMjE0LTE3LjY2Ny0xOC4zNDYtMTcuNjY3cy0xOC4zNDYgNy45MS0xOC4zNDYgMTcuNjY3YzAgOS43NTcgOC4yMTQgMTcuNjY2IDE4LjM0NiAxNy42NjZ6IiBmaWxsPSIjMzE4NkZGIi8+PC9nPjxnIGZpbHRlcj0idXJsKCNwcmVmaXhfX2ZpbHRlcjZfZl8yMDAxXzY3KSI+PHBhdGggZD0iTS0xMy4wNjUgNDAuOTQ0YzkuMzMgNy4wOTQgMjIuOTU5IDQuODY5IDMwLjQ0Mi00Ljk3MiA3LjQ4My05Ljg0IDUuOTg3LTIzLjU2OS0zLjM0My0zMC42NjNDNC43MDQtMS43ODYtOC45MjQuNDM5LTE2LjQwOCAxMC4yOGMtNy40ODMgOS44NC01Ljk4NiAyMy41NyAzLjM0MyAzMC42NjR6IiBmaWxsPSIjRkJCQzA0Ii8+PC9nPjxnIGZpbHRlcj0idXJsKCNwcmVmaXhfX2ZpbHRlcjdfZl8yMDAxXzY3KSI+PHBhdGggZD0iTTM0Ljc0IDUxLjQzYzExLjEzNSA3LjY1NiAyNS44OTYgNS41MjQgMzIuOTY4LTQuNzY0IDcuMDczLTEwLjI4NyAzLjc3OS0yNC44MzItNy4zNTctMzIuNDg4QzQ5LjIxNSA2LjUyIDM0LjQ1NSA4LjY1NCAyNy4zODIgMTguOTRjLTcuMDcyIDEwLjI4OC0zLjc3OSAyNC44MzMgNy4zNTcgMzIuNDl6IiBmaWxsPSIjMzE4NkZGIi8+PC9nPjxnIGZpbHRlcj0idXJsKCNwcmVmaXhfX2ZpbHRlcjhfZl8yMDAxXzY3KSI+PHBhdGggZD0iTTU0Ljk4NC0yLjMzNmMyLjgzMyAzLjg1Mi0uODA4IDExLjM0LTguMTMxIDE2LjcyNy03LjMyNCA1LjM4Ny0xNS41NTcgNi42MzEtMTguMzkgMi43OC0yLjgzMy0zLjg1My44MDctMTEuMzQyIDguMTMtMTYuNzI4IDcuMzI0LTUuMzg3IDE1LjU1OC02LjYzMSAxOC4zOS0yLjc4eiIgZmlsbD0iIzc0OUJGRiIvPjwvZz48ZyBmaWx0ZXI9InVybCgjcHJlZml4X19maWx0ZXI5X2ZfMjAwMV82NykiPjxwYXRoIGQ9Ik0zMS43MjcgMTYuMTA0QzQzLjA1MyA1LjU5OCA0Ni45NC04LjYyNiA0MC40MS0xNS42NjZjLTYuNTMtNy4wNC0yMS4wMDYtNC4yMzItMzIuMzMyIDYuMjc0cy0xNS4yMTQgMjQuNzMtOC42ODMgMzEuNzdjNi41MyA3LjA0IDIxLjAwNiA0LjIzMiAzMi4zMzItNi4yNzR6IiBmaWxsPSIjRkM0MTNEIi8+PC9nPjxnIGZpbHRlcj0idXJsKCNwcmVmaXhfX2ZpbHRlcjEwX2ZfMjAwMV82NykiPjxwYXRoIGQ9Ik04LjUxIDUzLjgzOGM2LjczMiA0LjgxOCAxNC40NiA1LjU1IDE3LjI2MiAxLjYzNiAyLjgwMi0zLjkxNS0uMzg0LTEwLjk5NC03LjExNi0xNS44MTItNi43MzEtNC44MTgtMTQuNDYtNS41NS0xNy4yNjEtMS42MzYtMi44MDIgMy45MTUuMzgzIDEwLjk5NCA3LjExNSAxNS44MTJ6IiBmaWxsPSIjRkZFRTQ4Ii8+PC9nPjwvZz48ZGVmcz48ZmlsdGVyIGlkPSJwcmVmaXhfX2ZpbHRlcjBfZl8yMDAxXzY3IiB4PSItMTkuODI0IiB5PSIxMy4xNTIiIHdpZHRoPSIzOS4yNzQiIGhlaWdodD0iNDMuMjE3IiBmaWx0ZXJVbml0cz0idXNlclNwYWNlT25Vc2UiIGNvbG9yLWludGVycG9sYXRpb24tZmlsdGVycz0ic1JHQiI+PGZlRmxvb2QgZmxvb2Qtb3BhY2l0eT0iMCIgcmVzdWx0PSJCYWNrZ3JvdW5kSW1hZ2VGaXgiLz48ZmVCbGVuZCBpbj0iU291cmNlR3JhcGhpYyIgaW4yPSJCYWNrZ3JvdW5kSW1hZ2VGaXgiIHJlc3VsdD0ic2hhcGUiLz48ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPSIyLjQ2IiByZXN1bHQ9ImVmZmVjdDFfZm9yZWdyb3VuZEJsdXJfMjAwMV82NyIvPjwvZmlsdGVyPjxmaWx0ZXIgaWQ9InByZWZpeF9fZmlsdGVyMV9mXzIwMDFfNjciIHg9Ii0xNS4wMDEiIHk9Ii00MC4yNTciIHdpZHRoPSI4NC44NjgiIGhlaWdodD0iODUuNjg4IiBmaWx0ZXJVbml0cz0idXNlclNwYWNlT25Vc2UiIGNvbG9yLWludGVycG9sYXRpb24tZmlsdGVycz0ic1JHQiI+PGZlRmxvb2QgZmxvb2Qtb3BhY2l0eT0iMCIgcmVzdWx0PSJCYWNrZ3JvdW5kSW1hZ2VGaXgiLz48ZmVCbGVuZCBpbj0iU291cmNlR3JhcGhpYyIgaW4yPSJCYWNrZ3JvdW5kSW1hZ2VGaXgiIHJlc3VsdD0ic2hhcGUiLz48ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPSIxMS44OTEiIHJlc3VsdD0iZWZmZWN0MV9mb3JlZ3JvdW5kQmx1cl8yMDAxXzY3Ii8+PC9maWx0ZXI+PGZpbHRlciBpZD0icHJlZml4X19maWx0ZXIyX2ZfMjAwMV82NyIgeD0iLTIwLjc3NiIgeT0iMTEuOTI3IiB3aWR0aD0iNzkuNDU0IiBoZWlnaHQ9IjkwLjkxNiIgZmlsdGVyVW5pdHM9InVzZXJTcGFjZU9uVXNlIiBjb2xvci1pbnRlcnBvbGF0aW9uLWZpbHRlcnM9InNSR0IiPjxmZUZsb29kIGZsb29kLW9wYWNpdHk9IjAiIHJlc3VsdD0iQmFja2dyb3VuZEltYWdlRml4Ii8+PGZlQmxlbmQgaW49IlNvdXJjZUdyYXBoaWMiIGluMj0iQmFja2dyb3VuZEltYWdlRml4IiByZXN1bHQ9InNoYXBlIi8+PGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iMTAuMTA5IiByZXN1bHQ9ImVmZmVjdDFfZm9yZWdyb3VuZEJsdXJfMjAwMV82NyIvPjwvZmlsdGVyPjxmaWx0ZXIgaWQ9InByZWZpeF9fZmlsdGVyM19mXzIwMDFfNjciIHg9Ii0yMC43NzYiIHk9IjExLjkyNyIgd2lkdGg9Ijc5LjQ1NCIgaGVpZ2h0PSI5MC45MTYiIGZpbHRlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY29sb3ItaW50ZXJwb2xhdGlvbi1maWx0ZXJzPSJzUkdCIj48ZmVGbG9vZCBmbG9vZC1vcGFjaXR5PSIwIiByZXN1bHQ9IkJhY2tncm91bmRJbWFnZUZpeCIvPjxmZUJsZW5kIGluPSJTb3VyY2VHcmFwaGljIiBpbjI9IkJhY2tncm91bmRJbWFnZUZpeCIgcmVzdWx0PSJzaGFwZSIvPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjEwLjEwOSIgcmVzdWx0PSJlZmZlY3QxX2ZvcmVncm91bmRCbHVyXzIwMDFfNjciLz48L2ZpbHRlcj48ZmlsdGVyIGlkPSJwcmVmaXhfX2ZpbHRlcjRfZl8yMDAxXzY3IiB4PSItMTkuODQ1IiB5PSIxNS40NTkiIHdpZHRoPSI3OS43MzEiIGhlaWdodD0iODEuNTA1IiBmaWx0ZXJVbml0cz0idXNlclNwYWNlT25Vc2UiIGNvbG9yLWludGVycG9sYXRpb24tZmlsdGVycz0ic1JHQiI+PGZlRmxvb2QgZmxvb2Qtb3BhY2l0eT0iMCIgcmVzdWx0PSJCYWNrZ3JvdW5kSW1hZ2VGaXgiLz48ZmVCbGVuZCBpbj0iU291cmNlR3JhcGhpYyIgaW4yPSJCYWNrZ3JvdW5kSW1hZ2VGaXgiIHJlc3VsdD0ic2hhcGUiLz48ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPSIxMC4xMDkiIHJlc3VsdD0iZWZmZWN0MV9mb3JlZ3JvdW5kQmx1cl8yMDAxXzY3Ii8+PC9maWx0ZXI+PGZpbHRlciBpZD0icHJlZml4X19maWx0ZXI1X2ZfMjAwMV82NyIgeD0iMjkuODMyIiB5PSItMTEuNTUyIiB3aWR0aD0iNzUuMTE3IiBoZWlnaHQ9IjczLjc1OCIgZmlsdGVyVW5pdHM9InVzZXJTcGFjZU9uVXNlIiBjb2xvci1pbnRlcnBvbGF0aW9uLWZpbHRlcnM9InNSR0IiPjxmZUZsb29kIGZsb29kLW9wYWNpdHk9IjAiIHJlc3VsdD0iQmFja2dyb3VuZEltYWdlRml4Ii8+PGZlQmxlbmQgaW49IlNvdXJjZUdyYXBoaWMiIGluMj0iQmFja2dyb3VuZEltYWdlRml4IiByZXN1bHQ9InNoYXBlIi8+PGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iOS42MDYiIHJlc3VsdD0iZWZmZWN0MV9mb3JlZ3JvdW5kQmx1cl8yMDAxXzY3Ii8+PC9maWx0ZXI+PGZpbHRlciBpZD0icHJlZml4X19maWx0ZXI2X2ZfMjAwMV82NyIgeD0iLTM4LjU4MyIgeT0iLTE2LjI1MyIgd2lkdGg9Ijc4LjEzNSIgaGVpZ2h0PSI3OC43NTgiIGZpbHRlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY29sb3ItaW50ZXJwb2xhdGlvbi1maWx0ZXJzPSJzUkdCIj48ZmVGbG9vZCBmbG9vZC1vcGFjaXR5PSIwIiByZXN1bHQ9IkJhY2tncm91bmRJbWFnZUZpeCIvPjxmZUJsZW5kIGluPSJTb3VyY2VHcmFwaGljIiBpbjI9IkJhY2tncm91bmRJbWFnZUZpeCIgcmVzdWx0PSJzaGFwZSIvPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjguNzA2IiByZXN1bHQ9ImVmZmVjdDFfZm9yZWdyb3VuZEJsdXJfMjAwMV82NyIvPjwvZmlsdGVyPjxmaWx0ZXIgaWQ9InByZWZpeF9fZmlsdGVyN19mXzIwMDFfNjciIHg9IjguMTA3IiB5PSItNS45NjYiIHdpZHRoPSI3OC44NzciIGhlaWdodD0iNzcuNTM5IiBmaWx0ZXJVbml0cz0idXNlclNwYWNlT25Vc2UiIGNvbG9yLWludGVycG9sYXRpb24tZmlsdGVycz0ic1JHQiI+PGZlRmxvb2QgZmxvb2Qtb3BhY2l0eT0iMCIgcmVzdWx0PSJCYWNrZ3JvdW5kSW1hZ2VGaXgiLz48ZmVCbGVuZCBpbj0iU291cmNlR3JhcGhpYyIgaW4yPSJCYWNrZ3JvdW5kSW1hZ2VGaXgiIHJlc3VsdD0ic2hhcGUiLz48ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPSI3Ljc3NSIgcmVzdWx0PSJlZmZlY3QxX2ZvcmVncm91bmRCbHVyXzIwMDFfNjciLz48L2ZpbHRlcj48ZmlsdGVyIGlkPSJwcmVmaXhfX2ZpbHRlcjhfZl8yMDAxXzY3IiB4PSIxMy41ODciIHk9Ii0xOC40ODgiIHdpZHRoPSI1Ni4yNzIiIGhlaWdodD0iNTEuODEiIGZpbHRlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY29sb3ItaW50ZXJwb2xhdGlvbi1maWx0ZXJzPSJzUkdCIj48ZmVGbG9vZCBmbG9vZC1vcGFjaXR5PSIwIiByZXN1bHQ9IkJhY2tncm91bmRJbWFnZUZpeCIvPjxmZUJsZW5kIGluPSJTb3VyY2VHcmFwaGljIiBpbjI9IkJhY2tncm91bmRJbWFnZUZpeCIgcmVzdWx0PSJzaGFwZSIvPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjYuOTU3IiByZXN1bHQ9ImVmZmVjdDFfZm9yZWdyb3VuZEJsdXJfMjAwMV82NyIvPjwvZmlsdGVyPjxmaWx0ZXIgaWQ9InByZWZpeF9fZmlsdGVyOV9mXzIwMDFfNjciIHg9Ii0xNS41MjYiIHk9Ii0zMS4yOTciIHdpZHRoPSI3MC44NTYiIGhlaWdodD0iNjkuMzA2IiBmaWx0ZXJVbml0cz0idXNlclNwYWNlT25Vc2UiIGNvbG9yLWludGVycG9sYXRpb24tZmlsdGVycz0ic1JHQiI+PGZlRmxvb2QgZmxvb2Qtb3BhY2l0eT0iMCIgcmVzdWx0PSJCYWNrZ3JvdW5kSW1hZ2VGaXgiLz48ZmVCbGVuZCBpbj0iU291cmNlR3JhcGhpYyIgaW4yPSJCYWNrZ3JvdW5kSW1hZ2VGaXgiIHJlc3VsdD0ic2hhcGUiLz48ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPSI1Ljg3NiIgcmVzdWx0PSJlZmZlY3QxX2ZvcmVncm91bmRCbHVyXzIwMDFfNjciLz48L2ZpbHRlcj48ZmlsdGVyIGlkPSJwcmVmaXhfX2ZpbHRlcjEwX2ZfMjAwMV82NyIgeD0iLTE0LjE2OCIgeT0iMjAuOTY0IiB3aWR0aD0iNTUuNTAxIiBoZWlnaHQ9IjUxLjU3MSIgZmlsdGVyVW5pdHM9InVzZXJTcGFjZU9uVXNlIiBjb2xvci1pbnRlcnBvbGF0aW9uLWZpbHRlcnM9InNSR0IiPjxmZUZsb29kIGZsb29kLW9wYWNpdHk9IjAiIHJlc3VsdD0iQmFja2dyb3VuZEltYWdlRml4Ii8+PGZlQmxlbmQgaW49IlNvdXJjZUdyYXBoaWMiIGluMj0iQmFja2dyb3VuZEltYWdlRml4IiByZXN1bHQ9InNoYXBlIi8+PGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iNy4yNzMiIHJlc3VsdD0iZWZmZWN0MV9mb3JlZ3JvdW5kQmx1cl8yMDAxXzY3Ii8+PC9maWx0ZXI+PGxpbmVhckdyYWRpZW50IGlkPSJwcmVmaXhfX3BhaW50MF9saW5lYXJfMjAwMV82NyIgeDE9IjE4LjQ0NyIgeTE9IjQzLjQyIiB4Mj0iNTIuMTUzIiB5Mj0iMTUuMDA0IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHN0b3Agc3RvcC1jb2xvcj0iIzQ4OTNGQyIvPjxzdG9wIG9mZnNldD0iLjI3IiBzdG9wLWNvbG9yPSIjNDg5M0ZDIi8+PHN0b3Agb2Zmc2V0PSIuNzc3IiBzdG9wLWNvbG9yPSIjOTY5REZGIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjQkQ5OUZFIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PC9zdmc+" alt=""><span>Gemini</span></div>
+        <div class="coltip">Sin acceso a fuentes jurídicas propias: <b>responde con lo que ya sabe</b> el modelo base.</div>
+      </div>
+
+      <div class="col">
+        <h2><span class="bn">2</span>RAG</h2>
+        <div class="tag">con conocimiento</div>
+        <div class="srcrow"><span class="srcchip">Normas</span><span class="srcchip">Jurisprudencia</span><span class="srcchip">Contratos</span></div>
+        <div class="flow">
+          <div class="fnode">Busca y recupera</div>
+          <svg class="farr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+          <div class="fnode brain">Modelo</div>
+          <svg class="farr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+          <div class="fnode">Respuesta con fuentes</div>
+        </div>
+        <div class="exlbl">Ejemplos</div>
+        <div class="ex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><span>Westlaw</span></div>
+        <div class="ex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg><span>Lexis+ AI</span></div>
+        <div class="ex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span>Harvey Knowledge</span></div>
+        <div class="coltip">Cada respuesta <b>cita su fuente</b>: menos alucinación, más verificable en la práctica legal.</div>
+      </div>
+
+      <div class="col">
+        <h2><span class="bn">3</span>Fine-tuning</h2>
+        <div class="tag">especializado</div>
+        <div class="srcrow"><span class="srcchip">Contrato→Clasificación</span><span class="srcchip">Cláusula→Extracción</span></div>
+        <div class="flow">
+          <div class="fnode">Ejemplos jurídicos</div>
+          <svg class="farr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+          <div class="fnode brain">Modelo</div>
+          <svg class="farr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+          <div class="fnode">Respuesta especializada</div>
+        </div>
+        <div class="exlbl">Ejemplos</div>
+        <div class="ex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg><span>Modelos legales de firmas</span></div>
+        <div class="ex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v18M5 8l-3 6a4 4 0 0 0 8 0zM19 8l-3 6a4 4 0 0 0 8 0zM5 8h14"/></svg><span>LEGAL-BERT</span></div>
+        <div class="ex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.87l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.87-.34 1.7 1.7 0 0 0-1 1.55V21a2 2 0 0 1-4 0v-.09A1.7 1.7 0 0 0 9 19.36a1.7 1.7 0 0 0-1.87.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.7 1.7 0 0 0 4.64 15a1.7 1.7 0 0 0-1.55-1H3a2 2 0 0 1 0-4h.09A1.7 1.7 0 0 0 4.64 9a1.7 1.7 0 0 0-.34-1.87l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.7 1.7 0 0 0 9 4.64a1.7 1.7 0 0 0 1-1.55V3a2 2 0 0 1 4 0v.09a1.7 1.7 0 0 0 1 1.55 1.7 1.7 0 0 0 1.87-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.7 1.7 0 0 0 19.36 9a1.7 1.7 0 0 0 1.55 1H21a2 2 0 0 1 0 4h-.09a1.7 1.7 0 0 0-1.55 1z"/></svg><span>Soluciones con fine-tuning</span></div>
+        <div class="coltip">Requiere <b>datos de entrenamiento etiquetados</b> por expertos legales — mayor costo inicial, mayor precisión.</div>
+      </div>
+
+      <div class="col">
+        <h2><span class="bn">4</span>Post-training</h2>
+        <div class="tag">para ejecutar</div>
+        <div class="flow">
+          <div class="fnode">Tarea jurídica compleja</div>
+          <svg class="farr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+          <div class="fnode brain">Modelo + herramientas</div>
+          <svg class="farr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+          <div class="fnode">Evaluación + feedback</div>
+        </div>
+        <div class="exlbl">Ejemplos</div>
+        <div class="ex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="7" r="4"/></svg><span>Harvey Tenet<span class="nuevo">NUEVO</span></span></div>
+        <div class="ex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="12" cy="18" r="3"/><path d="M8.5 7.5L11 16M15.5 7.5L13 16M9 6h6"/></svg><span>Otros modelos post-entrenados</span></div>
+        <div class="coltip">Cierra el ciclo con <b>evaluación experta humana</b>: el modelo aprende de cada corrección real.</div>
+      </div>
+
+    </div>
+
+    <div class="axis">
+      <div class="axisline">
+        <div class="axisdot"><div class="d"></div><b>Usar</b></div>
+        <div class="axisdot"><div class="d"></div><b>Contextualizar</b></div>
+        <div class="axisdot"><div class="d"></div><b>Adaptar</b></div>
+        <div class="axisdot" style="background:none;"><div class="d" style="background:var(--tierra)"></div><b>Entrenar</b></div>
+      </div>
+      <div class="axissub"><span>Menor intervención en el modelo</span><span>Mayor intervención en el modelo</span></div>
+    </div>
+
+    <div class="footer">
+      <div class="note">La diferencia no está solo en qué modelo usamos, sino en cuánto y cómo intervenimos sobre él.</div>
+      <div class="sig"><div class="li-badge">in</div><span>cacm523</span></div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

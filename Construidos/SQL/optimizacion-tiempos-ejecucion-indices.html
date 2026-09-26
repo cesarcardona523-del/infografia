@@ -26,7 +26,7 @@
     display:flex; flex-direction:column; min-height:0;
   }
 
-  .header{ display:flex; align-items:flex-start; justify-content:space-between; gap:14px; margin-bottom:8px; }
+  .header{ display:flex; align-items:flex-start; justify-content:space-between; gap:14px; margin-bottom:5px; }
   .eyebrow{ display:inline-flex; align-items:center; gap:6px; font-size:14px; font-weight:700; letter-spacing:1.6px; color:var(--red); text-transform:uppercase; margin-bottom:4px; }
   .eyebrow svg{ width:14px; height:14px; }
   h1{ font-size:18px; margin:0; font-weight:800; letter-spacing:-0.2px; color:#fff; line-height:1.22; }
@@ -34,8 +34,8 @@
   .sub{ margin:4px 0 0; font-size:14px; color:var(--muted); max-width:640px; }
   .quote{ flex:none; max-width:230px; font-size:14px; font-style:italic; color:#E8DFF5; line-height:1.32; text-align:right; border-right:2px solid var(--func); padding-right:10px; }
 
-  .cmp{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:8px; }
-  .ccard{ background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:9px 12px; }
+  .cmp{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:5px; }
+  .ccard{ background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:6px 12px; }
   .ccard.bad{ border-top:3px solid var(--red); }
   .ccard.good{ border-top:3px solid var(--green); }
   .ctop{ display:flex; align-items:center; gap:7px; margin-bottom:3px; }
@@ -43,7 +43,7 @@
   .ccard.bad .cico{ background:rgba(240,113,120,0.18); color:var(--red); }
   .ccard.good .cico{ background:rgba(158,206,106,0.18); color:var(--green); }
   .ctitle{ font-size:14px; font-weight:800; color:#fff; }
-  .cdesc{ font-size:14px; color:var(--muted); margin-bottom:6px; }
+  .cdesc{ font-size:14px; color:var(--muted); margin-bottom:4px; }
   .crow{ display:grid; grid-template-columns:1fr 130px; gap:8px; align-items:stretch; }
   .code{ background:var(--editor); border:1px solid var(--line); border-radius:6px; padding:6px 8px; font-family:"SF Mono",Menlo,Consolas,monospace; font-size:14px; line-height:1.35; }
   .code .kw{ color:var(--keyword); font-weight:600; } .code .num{ color:var(--num); }
@@ -53,26 +53,34 @@
   .ccard.bad .tv{ color:var(--red); } .ccard.good .tv{ color:var(--green); }
   .timebox .ts{ font-size:14px; color:var(--muted); }
 
-  .cnote{ margin-top:6px; font-size:14px; color:var(--muted); line-height:1.28; }
+  .cnote{ margin-top:4px; font-size:14px; color:var(--muted); line-height:1.22; }
   .cnote b{ color:#fff; }
 
+  .mini{ margin-top:3px; width:100%; border-collapse:collapse; }
+  .mini th, .mini td{ font-size:14px; padding:1px 6px; text-align:left; border-bottom:1px solid var(--line); line-height:1.15; }
+  .mini th{ color:var(--muted); font-weight:700; }
+  .mini td{ color:var(--text); font-family:"SF Mono",Menlo,Consolas,monospace; }
+  .mini tr.hit td{ color:var(--red); font-weight:700; background:rgba(240,113,120,0.08); }
+  .ccard.good .mini tr.hit td{ color:var(--green); background:rgba(158,206,106,0.08); }
+  .mini tr.dots td{ color:var(--muted); }
+
   .bottom{ flex:1; display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; min-height:0; }
-  .bpanel{ background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:8px 11px; display:flex; flex-direction:column; }
-  .bpanel h3{ margin:0 0 5px; font-size:14px; font-weight:800; color:#fff; }
-  .steps{ display:flex; flex-direction:column; gap:4px; }
+  .bpanel{ background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:6px 11px; display:flex; flex-direction:column; }
+  .bpanel h3{ margin:0 0 3px; font-size:14px; font-weight:800; color:#fff; }
+  .steps{ display:flex; flex-direction:column; gap:2px; }
   .step{ display:flex; gap:6px; align-items:flex-start; font-size:14px; color:var(--text); line-height:1.24; }
   .step .sn{ width:16px; height:16px; border-radius:50%; background:var(--keyword); color:#0D1117; font-size:14px; font-weight:800; display:flex; align-items:center; justify-content:center; flex:none; }
-  .costs{ display:flex; flex-direction:column; gap:3px; }
+  .costs{ display:flex; flex-direction:column; gap:1px; }
   .costitem{ display:flex; gap:6px; align-items:flex-start; font-size:14px; color:var(--text); line-height:1.22; }
   .costitem svg{ width:12px; height:12px; flex:none; margin-top:2px; color:var(--red); }
   .costitem.up svg{ color:var(--green); }
-  .checks{ display:flex; flex-direction:column; gap:3px; }
+  .checks{ display:flex; flex-direction:column; gap:1px; }
   .chk{ display:flex; gap:6px; align-items:flex-start; font-size:14px; color:var(--text); line-height:1.22; }
   .chk svg{ width:12px; height:12px; flex:none; margin-top:2px; color:var(--green); }
-  .binsight{ margin-top:auto; padding-top:6px; border-top:1px dashed var(--line); font-size:14px; font-style:italic; color:var(--muted); line-height:1.28; }
+  .binsight{ margin-top:auto; padding-top:4px; border-top:1px dashed var(--line); font-size:14px; font-style:italic; color:var(--muted); line-height:1.22; }
   .binsight b{ color:#fff; font-style:normal; }
 
-  .ribbon{ margin-top:8px; background:linear-gradient(90deg,#12241C,#151A2E); border:1px solid var(--line); border-radius:10px; padding:7px 16px; display:flex; align-items:center; gap:14px; }
+  .ribbon{ margin-top:5px; background:linear-gradient(90deg,#12241C,#151A2E); border:1px solid var(--line); border-radius:10px; padding:7px 16px; display:flex; align-items:center; gap:14px; }
   .ribbon .rl{ font-size:14px; color:#fff; font-weight:700; flex:none; }
   .ribbon .rl b.r{ color:var(--red); } .ribbon .rl b.g{ color:var(--green); }
   .ribbon .rq{ font-size:14px; font-style:italic; color:var(--muted); flex:1; }
@@ -103,6 +111,12 @@
           <div class="timebox"><span class="tl">Tiempo</span><span class="tv">~4.000 ms</span><span class="ts">escaneo de 1M filas</span></div>
         </div>
         <div class="cnote">Con <b>1.000.000 de registros</b>, buscar sin índice es como revisar fila por fila hasta el final.</div>
+        <table class="mini">
+          <tr><th>id</th><th>nombre</th><th>dni</th></tr>
+          <tr><td>1</td><td>Juan Pérez</td><td>12345678</td></tr>
+          <tr class="dots"><td>…</td><td>…</td><td>…</td></tr>
+          <tr class="hit"><td>1.000.000</td><td>Pedro López</td><td>38750084</td></tr>
+        </table>
       </div>
       <div class="ccard good">
         <div class="ctop"><span class="cico">✓</span><span class="ctitle">Con Índice</span></div>
@@ -112,6 +126,11 @@
           <div class="timebox"><span class="tl">Tiempo</span><span class="tv">~40 ms</span><span class="ts">búsqueda indexada</span></div>
         </div>
         <div class="cnote">El índice permite <b>localizar, no revisar</b> — por eso la respuesta es del orden de 100x más rápida.</div>
+        <table class="mini">
+          <tr><th>dni (índice)</th><th>→</th><th>ubicación</th></tr>
+          <tr class="dots"><td>…</td><td>→</td><td>…</td></tr>
+          <tr class="hit"><td>38750084</td><td>→</td><td>1.000.000</td></tr>
+        </table>
       </div>
     </div>
 
@@ -153,7 +172,7 @@
 
     <div class="ribbon">
       <div class="rl"><b class="r">Sin índice</b> → buscar. <b class="g">Con índice</b> → localizar.</div>
-      <div class="rq">"Un índice no hace mágicamente rápida una base de datos: cambia la forma en que puede encontrar los datos."</div>
+      <div class="rq">"Un buen índice no se nota cuando todo va bien: se nota cuando tu sistema empieza a crecer."</div>
       <div class="sig"><div class="li-badge">in</div><span>cacm523</span></div>
     </div>
 
