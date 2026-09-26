@@ -267,6 +267,8 @@ Antes de crear una entrada nueva, el proyecto analiza si el contenido amplía o 
 - ✅ Copilot Entra en la Era Multimodelo — tema `IA` — [HTML](Construidos/IA/microsoft-copilot-multimodelo.html) · [PNG](Construidos/IA/microsoft-copilot-multimodelo.png)
 - ✅ Qué Modelo de ChatGPT y Claude Usar Según la Tarea — tema `IA` — [HTML](Construidos/IA/que-modelo-chatgpt-claude-usar.html) · [PNG](Construidos/IA/que-modelo-chatgpt-claude-usar.png)
 - ✅ Desarrollo de Agentes de IA: el Stack Técnico Completo — tema `IA` — [HTML](Construidos/IA/stack-desarrollo-agentes-ia.html) · [PNG](Construidos/IA/stack-desarrollo-agentes-ia.png)
+- ✅ CTE (WITH): la Forma Moderna de Ordenar tus Consultas SQL — tema `SQL` — [HTML](Construidos/SQL/cte-with-consultas.html) · [PNG](Construidos/SQL/cte-with-consultas.png)
+- ✅ MCP + Power BI — tema `PowerBI` — [HTML](Construidos/PowerBI/mcp-power-bi-agentes-ia.html) · [PNG](Construidos/PowerBI/mcp-power-bi-agentes-ia.png)
 
 Este README se irá actualizando con un enlace por cada infografía nueva.
 

@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>CTE (WITH): la Forma Moderna de Ordenar tus Consultas</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --bg:#1E1E2E; --bg2:#181825; --editor:#14141F; --panel:rgba(255,255,255,0.04); --line:#2A2A3D;
+    --keyword:#7AA2F7; --func:#E0AF68; --string:#9ECE6A; --comment:#565F89; --text:#C0CAF5; --white:#fff; --muted:#8B93B8; --accent:#EE352E;
+    --bad:#F7768E; --good:#7AA2F7;
+  }
+  *{box-sizing:border-box;} html,body{margin:0;padding:0;}
+  body{ min-height:627px; display:flex; align-items:center; justify-content:center; padding:32px 16px; background:#111018; font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
+  .canvas{ position:relative; width:1200px; height:627px; margin:0 auto; background:linear-gradient(165deg, var(--bg) 0%, var(--bg2) 100%); border-radius:16px; box-shadow:0 24px 60px rgba(0,0,0,0.5); overflow:hidden; padding:13px 26px 9px; color:var(--text); display:flex; flex-direction:column; min-height:0; }
+
+  .header{ text-align:center; margin-bottom:7px; }
+  .header .eyebrow{ font-size:14px; font-weight:800; letter-spacing:1.8px; color:var(--accent); text-transform:uppercase; margin-bottom:2px; }
+  .header h1{ font-size:19px; margin:0 0 3px; font-weight:800; letter-spacing:-0.2px; color:#fff; }
+  .header h1 span{ color:var(--func); }
+  .header p{ margin:0; font-size:14px; color:var(--muted); }
+
+  .code{ font-family:"SF Mono", Menlo, Consolas, monospace; font-size:14px; line-height:1.42; background:var(--editor); border:1px solid var(--line); border-radius:8px; padding:8px 10px; white-space:pre-wrap; word-break:break-word; }
+  .kw{ color:var(--keyword); font-weight:700; } .fn{ color:var(--func); } .str{ color:var(--string); } .cm{ color:var(--comment); }
+
+  .row1{ background:var(--panel); border:1px solid var(--line); border-radius:11px; padding:8px 14px; display:flex; align-items:center; gap:16px; margin-bottom:8px; }
+  .row1 .txt{ flex:0 0 300px; }
+  .row1 .code{ flex:1; margin:0; }
+  .ttl{ display:flex; align-items:center; gap:7px; font-size:15px; font-weight:800; color:#fff; margin-bottom:4px; }
+  .ttl .ic{ width:22px; height:22px; border-radius:6px; display:flex; align-items:center; justify-content:center; flex:none; }
+  .ttl .ic svg{ width:14px; height:14px; }
+  .desc{ font-size:14px; color:var(--muted); line-height:1.32; }
+  .desc b{ color:var(--text); }
+
+  .row2{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:8px; }
+  .panel{ border-radius:11px; padding:8px 12px; display:flex; flex-direction:column; }
+  .panel.bad{ background:rgba(247,118,142,0.08); border:1px solid rgba(247,118,142,0.35); }
+  .panel.good{ background:rgba(122,162,247,0.08); border:1px solid rgba(122,162,247,0.35); }
+  .panel .ttl{ margin-bottom:5px; }
+  .panel.bad .ttl .ic{ background:rgba(247,118,142,0.18); color:var(--bad); }
+  .panel.good .ttl .ic{ background:rgba(122,162,247,0.18); color:var(--good); }
+  .panel .sub{ font-size:14px; color:var(--muted); margin:-3px 0 6px 29px; }
+  .panel .code{ margin-bottom:6px; flex:1; }
+  .tag{ display:flex; align-items:center; gap:6px; font-size:14px; font-weight:700; padding:4px 9px; border-radius:7px; width:fit-content; }
+  .tag svg{ width:13px; height:13px; flex:none; }
+  .panel.bad .tag{ background:rgba(247,118,142,0.15); color:var(--bad); }
+  .panel.good .tag{ background:rgba(122,162,247,0.15); color:var(--good); }
+
+  .row3{ background:var(--panel); border:1px solid var(--line); border-radius:11px; padding:8px 14px; display:flex; align-items:center; gap:16px; }
+  .row3 .txt{ flex:0 0 260px; }
+  .row3 .code{ flex:1; margin:0; }
+
+  .ribbon{ margin-top:8px; background:linear-gradient(90deg,#16321F,#1D4429); border:1px solid rgba(158,206,106,0.35); border-radius:11px; padding:7px 16px; display:flex; align-items:center; gap:22px; }
+  .check{ display:flex; align-items:center; gap:6px; font-size:14px; color:var(--text); }
+  .check svg{ width:15px; height:15px; color:var(--string); flex:none; }
+  .footer{ display:flex; align-items:center; justify-content:flex-end; margin-top:7px; }
+  .li-badge{ width:16px; height:16px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:800; font-family: Arial, sans-serif; }
+  .sig{ display:flex; align-items:center; gap:6px; }
+  .sig span{ font-size:14px; font-weight:600; color:var(--muted); }
+</style>
+</head>
+<body>
+<div class="canvas-wrap">
+  <div class="canvas">
+
+    <div class="header">
+      <div class="eyebrow">SQL &middot; Consultas</div>
+      <h1>CTE (<span>WITH</span>): la Forma Moderna de Ordenar tus Consultas</h1>
+      <p>Qué problema resuelve frente a las subconsultas anidadas</p>
+    </div>
+
+    <div class="row1">
+      <div class="txt">
+        <div class="ttl"><div class="ic" style="background:rgba(122,162,247,0.18);color:var(--keyword)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg></div>Qué es un CTE</div>
+        <div class="desc">Una tabla temporal con nombre, definida con <b>WITH</b>, que existe solo durante esa consulta y se puede reutilizar dentro de ella.</div>
+      </div>
+      <div class="code"><span class="kw">WITH</span> resumen <span class="kw">AS</span> (
+  <span class="kw">SELECT</span> categoria, <span class="fn">SUM</span>(monto) <span class="kw">AS</span> total_ventas <span class="kw">FROM</span> ventas <span class="kw">GROUP BY</span> categoria
+)
+<span class="kw">SELECT</span> categoria, total_ventas <span class="kw">FROM</span> resumen <span class="kw">WHERE</span> total_ventas &gt; <span class="str">1000</span></div>
+    </div>
+
+    <div class="row2">
+      <div class="panel bad">
+        <div class="ttl"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg></div>Antes &middot; Subconsulta anidada</div>
+        <div class="code"><span class="kw">SELECT</span> categoria, total_ventas
+<span class="kw">FROM</span> (
+  <span class="kw">SELECT</span> categoria, <span class="fn">SUM</span>(monto) <span class="kw">AS</span> total_ventas
+  <span class="kw">FROM</span> ventas <span class="kw">GROUP BY</span> categoria
+) <span class="kw">AS</span> resumen
+<span class="kw">WHERE</span> total_ventas &gt; <span class="str">1000</span></div>
+        <div class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Se lee de adentro hacia afuera</div>
+      </div>
+      <div class="panel good">
+        <div class="ttl"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg></div>Ahora &middot; CTE</div>
+        <div class="code"><span class="kw">WITH</span> resumen <span class="kw">AS</span> (
+  <span class="kw">SELECT</span> categoria, <span class="fn">SUM</span>(monto) <span class="kw">AS</span> total_ventas
+  <span class="kw">FROM</span> ventas <span class="kw">GROUP BY</span> categoria
+)
+<span class="kw">SELECT</span> categoria, total_ventas
+<span class="kw">FROM</span> resumen <span class="kw">WHERE</span> total_ventas &gt; <span class="str">1000</span></div>
+        <div class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>Se lee de arriba hacia abajo, por pasos</div>
+      </div>
+    </div>
+
+    <div class="row3">
+      <div class="txt">
+        <div class="ttl"><div class="ic" style="background:rgba(158,206,106,0.18);color:var(--string)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg></div>Se puede encadenar</div>
+        <div class="desc">Un CTE se puede reutilizar varias veces en la misma consulta, y se pueden encadenar varios, cada uno con su propio nombre.</div>
+      </div>
+      <div class="code"><span class="kw">WITH</span> resumen <span class="kw">AS</span> (<span class="kw">SELECT</span> categoria, <span class="fn">SUM</span>(monto) <span class="kw">AS</span> total_ventas <span class="kw">FROM</span> ventas <span class="kw">GROUP BY</span> categoria),
+     top_categorias <span class="kw">AS</span> (<span class="kw">SELECT</span> * <span class="kw">FROM</span> resumen <span class="kw">WHERE</span> total_ventas &gt; <span class="str">1000</span>)
+<span class="kw">SELECT</span> * <span class="kw">FROM</span> top_categorias</div>
+    </div>
+
+    <div class="ribbon">
+      <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Mismo resultado, más legible</div>
+      <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Reutilizable dentro de la misma consulta</div>
+      <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Se pueden encadenar varios CTEs por pasos</div>
+    </div>
+
+    <div class="footer">
+      <div class="sig"><div class="li-badge">in</div><span>cacm523</span></div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

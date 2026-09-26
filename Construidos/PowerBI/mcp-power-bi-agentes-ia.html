@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>MCP + Power BI</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --amber:#F2C811; --amber-dark:#C99A00; --ink:#151B26; --muted:#5B6570; --line:#E2E8ED; --white:#FFFFFF; --paper:#F7F5EE;
+    --blue:#0067B8; --cyan:#50E6FF;
+  }
+  *{box-sizing:border-box;} html,body{margin:0;padding:0;}
+  body{ min-height:627px; display:flex; align-items:center; justify-content:center; padding:32px 16px; background:#EDEAE0; font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
+  .canvas{ position:relative; width:1200px; height:627px; margin:0 auto; background:linear-gradient(160deg,#FFFEFA 0%, var(--paper) 55%, #F5F1E4 100%); border-radius:16px; box-shadow:0 20px 50px rgba(40,30,0,0.15); overflow:hidden; padding:12px 24px 9px; color:var(--ink); display:flex; flex-direction:column; }
+
+  .header{ display:flex; align-items:flex-start; justify-content:space-between; gap:14px; margin-bottom:7px; }
+  .eyebrow{ display:inline-flex; align-items:center; gap:6px; font-size:14px; font-weight:800; letter-spacing:1.3px; color:var(--amber-dark); text-transform:uppercase; background:#FBF1CC; border:1px solid #EFDD8F; padding:3px 9px; border-radius:20px; margin-bottom:4px; }
+  .eyebrow svg{ width:14px; height:14px; flex:none; }
+  h1{ font-size:19px; margin:0 0 3px; font-weight:800; letter-spacing:-0.2px; line-height:1.15; }
+  h1 span{ color:var(--amber-dark); }
+  .sub{ margin:0; font-size:14px; color:var(--muted); max-width:640px; line-height:1.28; }
+  .srcbadge{ font-size:14px; color:var(--muted); background:var(--white); border:1px solid var(--line); border-radius:8px; padding:4px 10px; text-align:right; line-height:1.22; flex:none; }
+
+  .row1{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:8px; }
+  .qa{ background:var(--white); border:1px solid var(--line); border-left:4px solid var(--amber); border-radius:9px; padding:8px 12px; }
+  .qa h2{ margin:0 0 4px; font-size:14px; font-weight:800; color:var(--amber-dark); text-transform:uppercase; letter-spacing:.3px; }
+  .qa p{ margin:0; font-size:14px; color:var(--ink); line-height:1.3; }
+  .qa p b{ color:var(--amber-dark); }
+
+  .flow-lbl{ font-size:14px; font-weight:800; color:var(--muted); text-transform:uppercase; letter-spacing:.5px; margin-bottom:5px; }
+  .flow{ background:var(--white); border:1px solid var(--line); border-radius:11px; padding:9px 16px 10px; margin-bottom:8px; display:flex; align-items:center; gap:6px; }
+  .fnode{ flex:1; display:flex; flex-direction:column; align-items:center; text-align:center; gap:4px; }
+  .fnode .ico{ width:38px; height:38px; border-radius:10px; display:flex; align-items:center; justify-content:center; background:var(--paper); border:1px solid var(--line); }
+  .fnode .ico img, .fnode .ico svg{ width:22px; height:22px; }
+  .fnode b{ font-size:14px; color:var(--ink); }
+  .fnode span{ font-size:14px; color:var(--muted); line-height:1.15; }
+  .farrow{ width:16px; height:16px; color:var(--amber-dark); flex:none; }
+
+  .row3{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:8px; }
+  .srv{ border-radius:11px; padding:8px 12px; }
+  .srv.remote{ background:#FBF1CC; border:1px solid #EFDD8F; }
+  .srv.local{ background:var(--white); border:1px solid var(--line); }
+  .srv h2{ display:flex; align-items:center; gap:6px; margin:0 0 3px; font-size:14px; font-weight:800; color:var(--ink); }
+  .srv h2 svg{ width:15px; height:15px; color:var(--amber-dark); flex:none; }
+  .srv p{ margin:0; font-size:14px; color:var(--muted); line-height:1.28; }
+  .srv p b{ color:var(--ink); }
+
+  .why{ background:var(--ink); border-radius:11px; padding:12px 18px; flex:1; display:grid; grid-template-columns:1fr 1fr; gap:9px 24px; align-content:center; }
+  .why .whyhead{ grid-column:1/3; font-size:15px; font-weight:800; color:var(--amber); text-transform:uppercase; letter-spacing:.5px; margin-bottom:1px; }
+  .why .whysub{ grid-column:1/3; font-size:14px; color:#B9C0CC; line-height:1.32; margin-bottom:4px; max-width:920px; }
+  .bullet{ display:flex; align-items:flex-start; gap:8px; font-size:16px; color:#EDEAE0; line-height:1.35; }
+  .bullet svg{ width:16px; height:16px; color:var(--amber); flex:none; margin-top:2px; }
+  .bullet b{ color:#fff; }
+
+  .footer{ display:flex; align-items:center; justify-content:flex-end; margin-top:7px; gap:6px; }
+  .li-badge{ width:16px; height:16px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:800; font-family: Arial, sans-serif; }
+  .sig{ display:flex; align-items:center; gap:6px; }
+  .sig span{ font-size:14px; font-weight:600; color:var(--muted); }
+</style>
+</head>
+<body>
+<div class="canvas-wrap">
+  <div class="canvas">
+
+    <div class="header">
+      <div>
+        <div class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2l8 3v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V5z"/></svg>Datos &amp; IA</div>
+        <h1>MCP <span>+</span> Power BI</h1>
+        <p class="sub">Cómo los agentes de IA se conectan — de forma segura — a tus datos empresariales.</p>
+      </div>
+      <div class="srcbadge">Fuente: Microsoft Learn<br>documentación del Power BI MCP server (preview)</div>
+    </div>
+
+    <div class="row1">
+      <div class="qa">
+        <h2>¿Qué es MCP?</h2>
+        <p><b>Model Context Protocol</b>: un estándar abierto para que los agentes de IA se conecten a sistemas externos, entiendan su contexto y ejecuten acciones de forma gobernada.</p>
+      </div>
+      <div class="qa">
+        <h2>¿Qué es el Power BI MCP?</h2>
+        <p>Servidores de Microsoft (hoy en <b>preview público</b>) que permiten a un agente interactuar con tus modelos semánticos: consultar, generar DAX y, en el caso local, modelar.</p>
+      </div>
+    </div>
+
+    <div class="flow-lbl">Cómo funciona</div>
+    <div class="flow">
+      <div class="fnode"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#5B6570" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-3.3 3.1-6 8-6s8 2.7 8 6"/></svg></div><b>Usuario</b><span>Pregunta en lenguaje natural</span></div>
+      <svg class="farrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      <div class="fnode"><div class="ico"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbDpzcGFjZT0icHJlc2VydmUiIHZpZXdCb3g9IjAgMjMuMyA1MTIuMSA0NjUuNCI+PHJhZGlhbEdyYWRpZW50IGlkPSJhIiBjeD0iLTc5LjY3NCIgY3k9IjY0NS41NTEiIHI9IjExLjYzNyIgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgtMTAuOTYwNSAtMTMuMzg5MiAtMTIuNTkwMSAxMC4zMDY0IDc2NzMuMjkxIC03NTA0LjYxNCkiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj48c3RvcCBvZmZzZXQ9Ii4wOTYiIHN0eWxlPSJzdG9wLWNvbG9yOiMwMGFlZmYiLz48c3RvcCBvZmZzZXQ9Ii43NzMiIHN0eWxlPSJzdG9wLWNvbG9yOiMyMjUzY2UiLz48c3RvcCBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiMwNzM2YzQiLz48L3JhZGlhbEdyYWRpZW50PjxwYXRoIGQ9Ik0zNzQgNjJjLTYuNy0yMi45LTI3LjgtMzguNy01MS43LTM4LjdoLTE1LjdjLTI2IDAtNDguMyAxOC42LTUzIDQ0LjJsLTI2LjkgMTQ2LjggNi43LTIyLjljNi43LTIzIDI3LjgtMzguOCA1MS43LTM4LjhoOTEuNGwzOC4zIDE0LjkgMzYuOS0xNC45SDQ0MWMtMjMuOSAwLTQ1LTE1LjgtNTEuNy0zOC43eiIgc3R5bGU9ImZpbGw6dXJsKCNhKSIvPjxyYWRpYWxHcmFkaWVudCBpZD0iYiIgY3g9Ii0yMC41ODEiIGN5PSI2NDEuNzg4IiByPSIxMS42MzciIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoOS44ODAzIDEyLjU3MzcgMTIuMTk2OCAtOS41ODQyIC03NTE4LjI3MSA2NzY4LjM5NSkiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj48c3RvcCBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiNmZmI2NTciLz48c3RvcCBvZmZzZXQ9Ii42MzQiIHN0eWxlPSJzdG9wLWNvbG9yOiNmZjVmM2QiLz48c3RvcCBvZmZzZXQ9Ii45MjMiIHN0eWxlPSJzdG9wLWNvbG9yOiNjMDJiM2MiLz48L3JhZGlhbEdyYWRpZW50PjxwYXRoIGQ9Ik0xNDMuNSA0NDkuOGM2LjcgMjMgMjcuOCAzOC45IDUxLjggMzguOWgzMy40YzI5LjIgMCA1My4xLTIzLjMgNTMuOS01Mi41bDMuNi0xNDEuNS03LjYgMjZjLTYuNyAyMy0yNy44IDM4LjctNTEuNyAzOC43aC05Mi4ybC0zMi45LTE3LjgtMzUuNiAxNy44aDEwLjZjMjQgMCA0NS4xIDE1LjkgNTEuOCAzOC45eiIgc3R5bGU9ImZpbGw6dXJsKCNiKSIvPjxsaW5lYXJHcmFkaWVudCBpZD0iYyIgeDE9IjE1MS40NzYiIHgyPSIxNzguMTA2IiB5MT0iNDUyLjU0MyIgeTI9IjE0NC40NTEiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA1MTQpIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHN0b3Agb2Zmc2V0PSIuMTU2IiBzdHlsZT0ic3RvcC1jb2xvcjojMGQ5MWUxIi8+PHN0b3Agb2Zmc2V0PSIuNDg3IiBzdHlsZT0ic3RvcC1jb2xvcjojNTJiNDcxIi8+PHN0b3Agb2Zmc2V0PSIuNjUyIiBzdHlsZT0ic3RvcC1jb2xvcjojOThiZDQyIi8+PHN0b3Agb2Zmc2V0PSIuOTM3IiBzdHlsZT0ic3RvcC1jb2xvcjojZmZjODAwIi8+PC9saW5lYXJHcmFkaWVudD48cGF0aCBkPSJNMzIwIDIzLjNIMTMzLjRDODAgMjMuMyA0OCA5My43IDI2LjcgMTY0LjIgMS40IDI0Ny43LTMxLjYgMzU5LjQgNjQgMzU5LjRoODAuNmMyNC4xIDAgNDUuMi0xNS45IDUxLjgtMzkuMSAxNC00OSAzOC42LTEzNC41IDU3LjktMTk5LjYgOS44LTMzLjEgMTgtNjEuNSAzMC41LTc5LjIgNy4xLTkuOSAxOC44LTE4LjIgMzUuMi0xOC4yIiBzdHlsZT0iZmlsbDp1cmwoI2MpIi8+PGxpbmVhckdyYWRpZW50IGlkPSJkIiB4MT0iMTU0LjEyOSIgeDI9IjE2OC42NjkiIHkxPSI0OTEuMTE2IiB5Mj0iMTU1LjAxMiIgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgxIDAgMCAtMSAwIDUxNCkiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj48c3RvcCBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiMzZGNiZmYiLz48c3RvcCBvZmZzZXQ9Ii4yNDciIHN0eWxlPSJzdG9wLWNvbG9yOiMwNTg4Zjc7c3RvcC1vcGFjaXR5OjAiLz48L2xpbmVhckdyYWRpZW50PjxwYXRoIGQ9Ik0zMjAgMjMuM0gxMzMuNEM4MCAyMy4zIDQ4IDkzLjcgMjYuNyAxNjQuMiAxLjQgMjQ3LjctMzEuNiAzNTkuNCA2NCAzNTkuNGg4MC42YzI0LjEgMCA0NS4yLTE1LjkgNTEuOC0zOS4xIDE0LTQ5IDM4LjYtMTM0LjUgNTcuOS0xOTkuNiA5LjgtMzMuMSAxOC02MS41IDMwLjUtNzkuMiA3LjEtOS45IDE4LjgtMTguMiAzNS4yLTE4LjIiIHN0eWxlPSJmaWxsOnVybCgjZCkiLz48cmFkaWFsR3JhZGllbnQgaWQ9ImUiIGN4PSItNDYuOTQzIiBjeT0iNjY0LjMxOCIgcj0iMTEuNjM3IiBncmFkaWVudFRyYW5zZm9ybT0ibWF0cml4KC0xMi42NzExIDM2LjIzNTcgNDMuNDA5MiAxNS4xNzk2IC0yODk3NC43NjQgLTgyNjMuNDI4KSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIG9mZnNldD0iLjA2NiIgc3R5bGU9InN0b3AtY29sb3I6IzhjNDhmZiIvPjxzdG9wIG9mZnNldD0iLjUiIHN0eWxlPSJzdG9wLWNvbG9yOiNmMjU5OGEiLz48c3RvcCBvZmZzZXQ9Ii44OTYiIHN0eWxlPSJzdG9wLWNvbG9yOiNmZmIxNTIiLz48L3JhZGlhbEdyYWRpZW50PjxwYXRoIGQ9Ik0xOTIgNDg4LjdoMTg2LjdjNTMuMyAwIDg1LjMtNzAuNSAxMDYuNy0xNDEgMjUuMy04My41IDU4LjMtMTk1LjItMzcuMy0xOTUuMmgtODAuNmMtMjQuMSAwLTQ1LjIgMTUuOS01MS44IDM5LjEtMTQgNDktMzguNiAxMzQuNi01Ny45IDE5OS43LTkuOCAzMy4xLTE4IDYxLjUtMzAuNSA3OS4yLTcuMiA5LjktMTguOSAxOC4yLTM1LjMgMTguMiIgc3R5bGU9ImZpbGw6dXJsKCNlKSIvPjxsaW5lYXJHcmFkaWVudCBpZD0iZiIgeDE9IjM1Mi40NTkiIHgyPSIzNTIuMjY4IiB5MT0iMzgyLjIzMSIgeTI9IjI5MC42NjMiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA1MTQpIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHN0b3Agb2Zmc2V0PSIuMDU4IiBzdHlsZT0ic3RvcC1jb2xvcjojZjhhZGZhIi8+PHN0b3Agb2Zmc2V0PSIuNzA4IiBzdHlsZT0ic3RvcC1jb2xvcjojYTg2ZWRkO3N0b3Atb3BhY2l0eTowIi8+PC9saW5lYXJHcmFkaWVudD48cGF0aCBkPSJNMTkyIDQ4OC43aDE4Ni43YzUzLjMgMCA4NS4zLTcwLjUgMTA2LjctMTQxIDI1LjMtODMuNSA1OC4zLTE5NS4yLTM3LjMtMTk1LjJoLTgwLjZjLTI0LjEgMC00NS4yIDE1LjktNTEuOCAzOS4xLTE0IDQ5LTM4LjYgMTM0LjYtNTcuOSAxOTkuNy05LjggMzMuMS0xOCA2MS41LTMwLjUgNzkuMi03LjIgOS45LTE4LjkgMTguMi0zNS4zIDE4LjIiIHN0eWxlPSJmaWxsOnVybCgjZikiLz48L3N2Zz4=" alt=""></div><b>Agente IA</b><span>Copilot / Claude / cliente MCP</span></div>
+      <svg class="farrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      <div class="fnode"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#5B6570" stroke-width="2" stroke-linecap="round"><path d="M17 3a2 2 0 0 1 2 2v3.5L22 12l-3 3.5V19a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-3.5L2 12l3-3.5V5a2 2 0 0 1 2-2z"/></svg></div><b>Servidor MCP</b><span>Remoto e local</span></div>
+      <svg class="farrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      <div class="fnode"><div class="ico"><img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgOTYgOTYiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9Ijk2IiBoZWlnaHQ9Ijk2IiBmaWxsPSJub25lIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImMiIHgxPSI0Ni42NjciIHgyPSI4OC44NjUiIHkxPSIwIiB5Mj0iODkuNDQ3IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHN0b3Agc3RvcC1jb2xvcj0iI0U2QUQxMCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI0M4N0UwRSIvPjwvbGluZWFyR3JhZGllbnQ+PGxpbmVhckdyYWRpZW50IGlkPSJmIiB4MT0iMzEuOTk3IiB4Mj0iNjcuNDg2IiB5MT0iMjQiIHkyPSI5Mi44MjYiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj48c3RvcCBzdG9wLWNvbG9yPSIjRjZENzUxIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjRTZBRDEwIi8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIxMS45OTciIHgyPSIzMS42MDgiIHkxPSI0OCIgeTI9Ijk0LjQ3OCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIHN0b3AtY29sb3I9IiNGOUU1ODkiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNGNkQ3NTEiLz48L2xpbmVhckdyYWRpZW50PjxmaWx0ZXIgaWQ9ImQiPjxmZUZsb29kIGZsb29kLW9wYWNpdHk9IjAiIHJlc3VsdD0iQmFja2dyb3VuZEltYWdlRml4Ii8+PGZlQmxlbmQgaW49IlNvdXJjZUdyYXBoaWMiIGluMj0iQmFja2dyb3VuZEltYWdlRml4IiByZXN1bHQ9InNoYXBlIi8+PGZlR2F1c3NpYW5CbHVyIHJlc3VsdD0iZWZmZWN0MV9mb3JlZ3JvdW5kQmx1ciIgc3RkRGV2aWF0aW9uPSIuNCIvPjwvZmlsdGVyPjxmaWx0ZXIgaWQ9ImUiPjxmZUZsb29kIGZsb29kLW9wYWNpdHk9IjAiIHJlc3VsdD0iQmFja2dyb3VuZEltYWdlRml4Ii8+PGZlQmxlbmQgaW49IlNvdXJjZUdyYXBoaWMiIGluMj0iQmFja2dyb3VuZEltYWdlRml4IiByZXN1bHQ9InNoYXBlIi8+PGZlR2F1c3NpYW5CbHVyIHJlc3VsdD0iZWZmZWN0MV9mb3JlZ3JvdW5kQmx1ciIgc3RkRGV2aWF0aW9uPSI0Ii8+PC9maWx0ZXI+PGNsaXBQYXRoIGlkPSJhIj48cGF0aCBmaWxsPSIjZmZmIiBkPSJNMCAwaDk2djk2SDB6Ii8+PC9jbGlwUGF0aD48L2RlZnM+PGcgY2xpcC1wYXRoPSJ1cmwoI2EpIj48bWFzayBpZD0iYiIgd2lkdGg9IjcyIiBoZWlnaHQ9Ijk2IiB4PSIxMiIgeT0iMCIgbWFzay10eXBlPSJhbHBoYSIgbWFza1VuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTUyIDRhNCA0IDAgMCAxIDQtNGgyNGE0IDQgMCAwIDEgNCA0djg4YTQgNCAwIDAgMS00IDRIMTZhNCA0IDAgMCAxLTQtNFY1MmE0IDQgMCAwIDEgNC00aDE2VjI4YTQgNCAwIDAgMSA0LTRoMTZ6Ii8+PC9tYXNrPjxnIG1hc2s9InVybCgjYikiPjxwYXRoIGZpbGw9InVybCgjYykiIGQ9Ik04NCAwdjk2SDUyVjB6Ii8+PGcgZmlsdGVyPSJ1cmwoI2QpIj48cGF0aCBmaWxsPSIjMDAwIiBmaWxsLW9wYWNpdHk9Ii4yIiBkPSJNNjQgMjguNHY2OEgzMnYtNzJoMjhhNCA0IDAgMCAxIDQgNCIvPjwvZz48ZyBmaWx0ZXI9InVybCgjZSkiPjxwYXRoIGZpbGw9IiMwMDAiIGZpbGwtb3BhY2l0eT0iLjE4IiBkPSJNNjQgMzB2NjhIMzJWMjZoMjhhNCA0IDAgMCAxIDQgNCIvPjwvZz48cGF0aCBmaWxsPSJ1cmwoI2YpIiBkPSJNNjQgMjh2NjhIMzJWMjRoMjhhNCA0IDAgMCAxIDQgNCIvPjxwYXRoIGZpbGw9InVybCgjZykiIGQ9Ik0xMiA0OHY0OGgzMlY1MmE0IDQgMCAwIDAtNC00eiIvPjwvZz48L2c+PC9zdmc+" alt=""></div><b>Modelo semántico</b><span>Tablas, medidas, DAX</span></div>
+      <svg class="farrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      <div class="fnode"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#C99A00" stroke-width="2" stroke-linecap="round"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg></div><b>Insights</b><span>Respuestas y acciones</span></div>
+    </div>
+
+    <div class="row3">
+      <div class="srv remote">
+        <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>Servidor remoto</h2>
+        <p>Para agentes: chatea con tus datos en lenguaje natural, genera y ejecuta consultas <b>DAX</b> respetando permisos. Requiere licencia Copilot y aprobación del admin del tenant.</p>
+      </div>
+      <div class="srv local">
+        <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>Servidor local</h2>
+        <p>Para desarrolladores BI: crea y modifica <b>modelos semánticos</b>, gestiona tablas y medidas, valida y optimiza DAX directo sobre archivos de proyecto Power BI.</p>
+      </div>
+    </div>
+
+    <div class="why">
+      <div class="whyhead">Por qué importa para tu organización</div>
+      <div class="whysub">El servidor MCP actúa como la capa de gobierno entre el agente de IA y el modelo semántico: nada se copia fuera de Power BI, y cada consulta sigue respetando los permisos ya configurados.</div>
+      <div class="bullet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Lleva la IA a datos <b>gobernados</b>, no a copias sueltas</div>
+      <div class="bullet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Preguntas en lenguaje natural respetando <b>permisos y seguridad</b></div>
+      <div class="bullet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Acelera el desarrollo y la <b>iteración</b> de modelos semánticos</div>
+      <div class="bullet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Reduce tareas repetitivas y libera tiempo del equipo</div>
+    </div>
+
+    <div class="footer">
+      <div class="sig"><div class="li-badge">in</div><span>cacm523</span></div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
