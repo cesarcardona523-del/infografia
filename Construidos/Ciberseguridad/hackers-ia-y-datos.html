@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Hackers, IA y Datos</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --blue:#0F62FE; --blue-pale:#0F62FE22; --cyan:#25D9D9; --orange:#FF6B35; --red:#F0405A;
+    --bg:#161616; --bg2:#0E0E0E; --panel:rgba(255,255,255,0.045); --line:#333333;
+    --ink:#F4F4F4; --muted:#A8A8A8; --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;} html,body{margin:0;padding:0;}
+  body{ min-height:627px; display:flex; align-items:center; justify-content:center; padding:32px 16px; background:#0A0A0A; font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  .canvas-wrap{ width:100%; max-width:1200px; overflow-x:auto; }
+  .canvas{ position:relative; width:1200px; height:627px; margin:0 auto; background:linear-gradient(160deg,var(--bg) 0%, var(--bg2) 100%); border-radius:16px; box-shadow:0 24px 60px rgba(0,0,0,0.55); overflow:hidden; padding:12px 24px 9px; color:var(--ink); display:flex; flex-direction:column; }
+
+  .header{ display:flex; align-items:flex-start; justify-content:space-between; gap:14px; margin-bottom:5px; }
+  .eyebrow{ display:inline-flex; align-items:center; gap:6px; font-size:14px; font-weight:800; letter-spacing:1.3px; color:var(--cyan); text-transform:uppercase; background:rgba(37,217,217,0.1); border:1px solid rgba(37,217,217,0.3); padding:3px 9px; border-radius:20px; margin-bottom:4px; }
+  .eyebrow svg{ width:14px; height:14px; flex:none; }
+  h1{ font-size:20px; margin:0 0 2px; font-weight:800; letter-spacing:-0.2px; color:#fff; }
+  h1 span{ color:var(--blue); }
+  .sub{ margin:0; font-size:14px; color:var(--muted); max-width:640px; line-height:1.2; }
+  .eventbox{ flex:none; display:flex; align-items:center; gap:9px; background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:6px 12px; }
+  .eventbox img{ width:56px; height:auto; }
+  .eventbox .et{ font-size:14px; color:var(--muted); line-height:1.25; }
+  .eventbox .et b{ color:#fff; display:block; }
+
+  .blk{ background:var(--panel); border:1px solid var(--line); border-radius:11px; padding:6px 12px; }
+  .blk h2{ display:flex; align-items:center; gap:7px; margin:0 0 4px; font-size:14px; font-weight:800; color:#fff; }
+  .bn{ width:19px; height:19px; border-radius:50%; background:var(--blue); color:#fff; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:800; flex:none; }
+
+  .row1{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:9px; margin-bottom:5px; }
+  .tri{ text-align:left; }
+  .tri .tag{ font-size:14px; color:var(--muted); text-transform:uppercase; letter-spacing:.5px; font-weight:700; }
+  .tri b{ display:block; font-size:18px; font-weight:800; margin:1px 0 2px; }
+  .tri.hackers b{ color:#fff; } .tri.ia b{ color:var(--blue); } .tri.datos b{ color:var(--orange); }
+  .tri span{ font-size:14px; color:var(--muted); line-height:1.25; }
+
+  .row2{ display:flex; align-items:center; gap:4px; margin-bottom:0; }
+  .tnode{ flex:1; text-align:center; }
+  .tnode .ty{ font-size:14px; color:var(--muted); }
+  .tnode b{ display:block; font-size:14px; color:#fff; font-weight:800; margin:1px 0; }
+  .tnode span{ font-size:14px; color:var(--muted); line-height:1.15; }
+  .tnode.now b{ color:var(--orange); }
+  .tarrow{ width:12px; height:12px; color:var(--muted); flex:none; }
+
+  .row3{ display:grid; grid-template-columns:1fr 1fr; gap:9px; margin-bottom:5px; }
+  .atk, .dfn{ border-radius:11px; padding:6px 12px; }
+  .atk{ background:rgba(240,64,90,0.08); border:1px solid rgba(240,64,90,0.3); }
+  .dfn{ background:rgba(37,217,217,0.08); border:1px solid rgba(37,217,217,0.3); }
+  .atk h2{ color:var(--red); } .dfn h2{ color:var(--cyan); }
+  .li{ display:flex; align-items:flex-start; gap:6px; margin-bottom:1px; }
+  .li svg{ width:13px; height:13px; flex:none; margin-top:2px; }
+  .atk .li svg{ color:var(--red); } .dfn .li svg{ color:var(--cyan); }
+  .li span{ font-size:14px; color:var(--ink); line-height:1.22; }
+
+  .stats{ flex:1; display:grid; grid-template-columns:repeat(4,1fr); gap:9px; }
+  .stat{ background:var(--panel); border:1px solid var(--line); border-radius:11px; padding:5px 8px; display:flex; flex-direction:column; justify-content:center; text-align:center; }
+  .stat .v{ font-size:21px; font-weight:800; color:var(--blue); line-height:1.1; }
+  .stat .l{ font-size:14px; color:var(--muted); line-height:1.22; margin-top:2px; }
+
+  .ribbon{ margin-top:5px; background:linear-gradient(90deg,var(--blue),#0043CE); border-radius:11px; padding:6px 18px; display:flex; align-items:center; gap:18px; }
+  .plan{ display:flex; gap:14px; flex:none; }
+  .plan b{ font-size:14px; color:#fff; }
+  .fuentes{ font-size:14px; color:#D6E4FF; flex:1; line-height:1.2; }
+  .sig{ display:flex; align-items:center; gap:6px; flex:none; }
+  .li-badge{ width:16px; height:16px; border-radius:4px; background:#fff; color:#0A66C2; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:800; font-family: Arial, sans-serif; }
+  .sig span{ font-size:14px; font-weight:700; color:#fff; }
+</style>
+</head>
+<body>
+<div class="canvas-wrap">
+  <div class="canvas">
+
+    <div class="header">
+      <div>
+        <div class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2l8 3v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V5z"/></svg>Masterclass · Evento</div>
+        <h1>Hackers, IA y <span>Datos</span></h1>
+        <p class="sub">Cómo la inteligencia artificial cambió el ataque y la defensa en ciberseguridad — y qué hacer al respecto desde hoy.</p>
+      </div>
+      <div class="eventbox">
+        <img src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iYzRkLS1mb290ZXItbG9nb19fbG9nbyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBhcmlhLWxhYmVsbGVkYnk9ImZvb3Rlci1sb2dvIiB3aWR0aD0iMTU3IiBoZWlnaHQ9IjY1IiB2aWV3Qm94PSIwIDAgMTU3IDY1IiBmaWxsPSIjZmZmIj48cGF0aCBkPSJNMzAuNDQ0IDYwLjIwOHY0LjAzSDB2LTQuMDN6bTc4LjI5MS0uMDAxdjQuMDNIODYuOTgzdi00LjAzem00Ny44NTggMHY0LjAzSDEzNC44NHYtNC4wM3ptLTMzLjQxNiAwLTEuMzk4IDQuMDMtMS4zOC00LjAzem0tODguMzg0IDBoNDIuNzc1Yy0yLjc5NyAyLjQyNi02LjM5IDMuOTI1LTEwLjMyNyA0LjAyNWwtLjQyMy4wMDZIMzQuNzkzemg0Mi43NzVabS00LjM1LTguNDZ2NC4wM0gwdi00LjAzem01Mi40MDIgMGMtLjMzMiAxLjI0OC0uOCAyLjQ0LTEuMzg5IDMuNTU1bC0uMjU5LjQ3NEgzNC43OTN2LTQuMDI5em03My43NDgtLjAwNXY0LjAzMUgxMzQuODR2LTQuMDN6bS00Ny44NTggMHY0LjAzMUg4Ni45ODN2LTQuMDN6bTE3LjM3NSAwLTEuMzk4IDQuMDMxaC01Ljg1bC0xLjM5NS00LjAzek0yMS43NDUgNDMuMjg1djQuMDNIOC42OTh2LTQuMDN6bTYxLjE5NSAwYTE3LjMgMTcuMyAwIDAgMSAuNDc2IDMuNTFsLjAwOC41Mkg2OC43OTZ2LTQuMDN6bS0yNi40MDEgMHY0LjAzSDQzLjQ5MXYtNC4wM3ptNzIuNTAyLS4wMDctMS4zOTYgNC4wM0gxMTUuOTNsLTEuMzk3LTQuMDN6bTE4Ljg1IDB2NC4wM2gtMTMuMDV2LTQuMDN6bS0zOS4xNTYgMHY0LjAzSDk1LjY4NHYtNC4wM3ptLTg2Ljk5LTguNDU0djQuMDNIOC42OTh2LTQuMDN6bTU2LjExNyAwYTE3IDE3IDAgMCAxIDIuOTI2IDMuNTgybC4yNjQuNDQ3aC0zNy41NnYtNC4wM3ptMzAuODczLS4wMXY0LjAzSDk1LjY4NHYtNC4wM3ptMzkuMTU3IDB2NC4wM0gxMzQuODR2LTQuMDN6bS0xNS45MTkgMC0xLjM5NiA0LjAzaC0xNy41NzlsLTEuMzk2LTQuMDN6bS01MC43NzgtOC40NTJhMTcgMTcgMCAwIDEtMi44MiAzLjY3NGwtLjM3LjM1NUg0My40OXYtNC4wMjl6bS01OS40NSAwdjQuMDNIOC42OTh2LTQuMDN6bTEyNi4xNDctLjAxM3Y0LjAzMUgxMzQuODR2LTMuODM5bC0xLjMzIDMuODM5aC0xMS40NTZsMS4zNzMtNC4wM3ptLTI3Ljc0MyAwIDEuMzcyIDQuMDMxaC0xMS40NTZsLTEuMzMtMy44Mzl2My44NEg5NS42ODR2LTQuMDMyem0tOTguNDA0LTguNDQ4djQuMDNIOC42OThWMTcuOXptNjEuNjggMGMwIDEuMjE1LS4xMzQgMi4zOTktLjM3NSAzLjU0MmwtLjExLjQ4N0g2OC43OTZWMTcuOXpNNTYuNTM4IDE3Ljl2NC4wM0g0My40OTFWMTcuOXptOTEuMzUyLS4wMTV2NC4wM2gtMjIuOTU0bDEuMzctNC4wM3ptLTMwLjYyNCAwIDEuMzcyIDQuMDNIOTUuNjg0di00LjAzek0zMC40NDQgOS40Mzd2NC4wM0gwdi00LjAzem01MC43NTMgMGExNyAxNyAwIDAgMSAxLjQ5OCAzLjQ5OWwuMTUuNTMxSDM0Ljc5NHYtNC4wM3ptNzUuMzk2LS4wMTh2NC4wM2gtMjguNzc2bDEuMzczLTQuMDN6bS00Mi4yMDcgMCAxLjM3MiA0LjAzMUg4Ni45ODJWOS40MnpNMzAuNDQ0Ljk3OHY0LjAzSDBWLjk3N3ptMzYuMzc0IDBjMy45NiAwIDcuNTk0IDEuNDE1IDEwLjQ0OCAzLjc3MmwuMzAzLjI1N0gzNC43OTRWLjk3N3ptODkuNzc1LS4wMjJ2NC4wMzFoLTI1Ljg5NGwxLjM3Mi00LjAzem0tNDUuMDk4IDAgMS4zNzIgNC4wM0g4Ni45ODJWLjk1NXoiLz48L3N2Zz4=" alt="IBM">
+        <div class="et">AVANZATEC<br><b>Realizado por: IBM</b></div>
+      </div>
+    </div>
+
+    <div class="row1">
+      <div class="tri hackers"><div class="tag">01 · Quién ataca</div><b>Hackers</b><span>Personas y grupos que hoy operan como empresas.</span></div>
+      <div class="tri ia"><div class="tag">02 · Con qué</div><b>IA</b><span>La herramienta que abarata y perfecciona el engaño.</span></div>
+      <div class="tri datos"><div class="tag">03 · Qué buscan</div><b>Datos</b><span>El botín: tu voz, tu agenda, tu identidad.</span></div>
+    </div>
+
+    <div class="blk" style="margin-bottom:5px;">
+      <h2><span class="bn">1</span>Del curioso solitario al atacante aumentado por IA</h2>
+      <div class="row2">
+        <div class="tnode"><div class="ty">80s–90s</div><b>Los curiosos</b><span>Exploraban sistemas por reto y reputación.</span></div>
+        <svg class="tarrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        <div class="tnode"><div class="ty">2000s</div><b>Los oportunistas</b><span>Virus masivos y fraude bancario en volumen.</span></div>
+        <svg class="tarrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        <div class="tnode"><div class="ty">2010s</div><b>Crimen organizado</b><span>Ransomware como servicio: unos crean, otros alquilan.</span></div>
+        <svg class="tarrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        <div class="tnode"><div class="ty">En paralelo</div><b>Estados y hacktivistas</b><span>Espionaje, sabotaje y causas políticas.</span></div>
+        <svg class="tarrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        <div class="tnode now"><div class="ty">2024 →</div><b>Atacante aumentado</b><span>Una persona con IA hace el trabajo de un equipo.</span></div>
+      </div>
+    </div>
+
+    <div class="row3">
+      <div class="atk">
+        <h2><span class="bn" style="background:var(--red);">2</span>Cómo ataca la IA</h2>
+        <div class="li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg><span><b>Phishing perfecto:</b> sin errores, en tu idioma, con el tono exacto de tu banco.</span></div>
+        <div class="li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M10 8l6 4-6 4z"/></svg><span><b>Voz y video clonados:</b> segundos de audio público bastan para imitarte.</span></div>
+        <div class="li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><span><b>Perfilado automático:</b> tu perfil armado en minutos con redes y filtraciones.</span></div>
+        <div class="li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg><span><b>Explotación en horas:</b> de meses a horas para encontrar y usar una falla.</span></div>
+      </div>
+      <div class="dfn">
+        <h2><span class="bn" style="background:var(--cyan); color:#0A2E2E;">3</span>Cómo defiende la IA</h2>
+        <div class="li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg><span><b>Detección por comportamiento:</b> aprende qué es normal y alerta sobre lo raro.</span></div>
+        <div class="li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.4-4 8-9 8a10 10 0 0 1-3-.5L3 21l1.5-4A7.8 7.8 0 0 1 3 12c0-4.4 4-8 9-8s9 3.6 9 8z"/></svg><span><b>Analista con copiloto:</b> resume, correlaciona y prioriza — el humano decide.</span></div>
+        <div class="li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg><span><b>Respuesta en segundos:</b> aísla un equipo o bloquea una cuenta al instante.</span></div>
+        <div class="li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><span><b>Encuentra fallas primero:</b> Big Sleep, de Google, halló una falla en SQLite antes que los atacantes (2024).</span></div>
+      </div>
+    </div>
+
+    <div class="blk" style="margin-bottom:0;">
+      <h2><span class="bn">4</span>Lo que dicen los datos · 2026</h2>
+      <div class="stats">
+        <div class="stat"><div class="v">1 de 4</div><div class="l">brechas maliciosas ya usa IA</div></div>
+        <div class="stat"><div class="v">US$4,99M</div><div class="l">costo promedio global de una brecha (récord)</div></div>
+        <div class="stat"><div class="v">65 días</div><div class="l">para contener una brecha usando IA a fondo, frente a 247 días en promedio</div></div>
+        <div class="stat"><div class="v">19.182</div><div class="l">denuncias por delitos informáticos en Colombia, Q1 2026</div></div>
+      </div>
+    </div>
+
+    <div class="ribbon">
+      <div class="plan"><b>Pausa.</b><b>Verifica.</b><b>Protege.</b></div>
+      <div class="fuentes">Fuentes: IBM Cost of a Data Breach Report 2026 · Verizon DBIR 2026 · Policía Nacional y Ministerio de Defensa, vía El Tiempo (may. 2026)</div>
+      <div class="sig"><div class="li-badge">in</div><span>cacm523</span></div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

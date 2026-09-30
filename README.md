@@ -272,6 +272,7 @@ Antes de crear una entrada nueva, el proyecto analiza si el contenido amplía o 
 - ✅ Gobierno de Datos no es Gobierno de IA: 6 Diferencias — tema `Gobierno_de_Datos` — [HTML](Construidos/Gobierno_de_Datos/gobierno-datos-vs-gobierno-ia.html) · [PNG](Construidos/Gobierno_de_Datos/gobierno-datos-vs-gobierno-ia.png)
 - ✅ Inteligencia Artificial Jurídica — tema `IA` — [HTML](Construidos/IA/inteligencia-artificial-juridica.html) · [PNG](Construidos/IA/inteligencia-artificial-juridica.png)
 - ✅ GPT-6 Astra vs. Claude Fable 5.1 — tema `IA` — [HTML](Construidos/IA/gpt6-astra-vs-fable-5-1.html) · [PNG](Construidos/IA/gpt6-astra-vs-fable-5-1.png)
+- ✅ Hackers, IA y Datos — evento AVANZATEC × IBM — tema `Ciberseguridad` — [HTML](Construidos/Ciberseguridad/hackers-ia-y-datos.html) · [PNG](Construidos/Ciberseguridad/hackers-ia-y-datos.png)
 
 Este README se irá actualizando con un enlace por cada infografía nueva.
 
