@@ -16,3 +16,7 @@
 **Paleta — corregida (2026-09-15, señalado por el usuario)**: Python es el lenguaje/aplicación protagonista y exclusiva de esta pieza → aplica la excepción de "Colores de marca por aplicación" de CLAUDE.md: azul y amarillo de marca (`#3776AB`, `#FFD43B`), no el verde+tierra por defecto. El ícono oficial de Python (`assets/iconos-apps/python.svg`) también debe usarse en el eyebrow, embebido inline — un error de la primera versión de esta pieza fue usar la paleta por defecto y un ícono genérico dibujado a mano en vez del real, corregido en esta revisión.
 
 **Catálogo**: `categoriaPrincipal: "programacion"`, `temas: ["python"]`.
+
+## Corrección (2026-10-06)
+
+El usuario pidió revisar la afirmación sobre operadores de orden con texto. Verificado: en Python `<`, `>`, `<=`, `>=` **sí** funcionan con cadenas (comparación por código Unicode: `'ana' < 'bruno'` y `'Z' < 'a'` son `True`), y en SQL ANSI también aplican a `CHAR`/`VARCHAR` según la collation de la base (`'Bogotá' < 'Cali'` es verdadero; `'10' < '9'` también, por comparar como texto). La versión anterior de la pieza SQL afirmaba lo contrario (✕ en texto, "solo `=` y `<>` aplican") y la pieza Python repetía esa falsa diferencia frente a SQL — ambas corregidas, con insignia "Actualizada". Versiones previas archivadas en `Archivadas/*-2026-10-06/`.

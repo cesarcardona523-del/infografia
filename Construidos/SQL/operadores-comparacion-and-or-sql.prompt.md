@@ -197,3 +197,7 @@ Evitar repetir la estructura de grid/tarjetas ya usada en otras piezas de `Const
 ### Paleta
 
 Paleta verde + tierra por defecto del proyecto (no es una pieza sobre una aplicación de marca específica — SQL Server no es el tema central, solo el motor de referencia para la sintaxis). El bloque de código puede usar fondo oscuro tipo editor localmente (patrón habitual: bloque de código oscuro dentro de canvas claro), sin activar la excepción de dark-mode total porque la pieza no es predominantemente código — es una explicación conceptual con ejemplos de código como apoyo.
+
+## Corrección (2026-10-06)
+
+El usuario pidió revisar la afirmación sobre operadores de orden con texto. Verificado: en Python `<`, `>`, `<=`, `>=` **sí** funcionan con cadenas (comparación por código Unicode: `'ana' < 'bruno'` y `'Z' < 'a'` son `True`), y en SQL ANSI también aplican a `CHAR`/`VARCHAR` según la collation de la base (`'Bogotá' < 'Cali'` es verdadero; `'10' < '9'` también, por comparar como texto). La versión anterior de la pieza SQL afirmaba lo contrario (✕ en texto, "solo `=` y `<>` aplican") y la pieza Python repetía esa falsa diferencia frente a SQL — ambas corregidas, con insignia "Actualizada". Versiones previas archivadas en `Archivadas/*-2026-10-06/`.

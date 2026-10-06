@@ -83,12 +83,14 @@
   .sig{ display:flex; align-items:center; gap:6px; flex:none; }
   .li-badge{ width:16px; height:16px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:800; font-family: Arial, sans-serif; }
   .sig span{ font-size:14px; font-weight:700; color:var(--muted); }
+  .updated-badge{ position:absolute; top:8px; right:26px; background:var(--keyword); color:#0D1117; font-size:14px; font-weight:800; letter-spacing:.4px; text-transform:uppercase; padding:3px 10px; border-radius:20px; }
 </style>
 </head>
 <body>
 
 <div class="canvas-wrap">
   <div class="canvas">
+    <span class="updated-badge">Actualizada</span>
 
     <div class="header">
       <div class="eyebrow">
@@ -96,7 +98,7 @@
         SQL · Cláusula WHERE
       </div>
       <h1>Operadores de Comparación y <span>Conectores Lógicos AND / OR</span></h1>
-      <p>Cómo filtra realmente una consulta SQL: qué operadores aplican a texto y a números, y cómo AND/OR se comportan como intersección y unión de conjuntos.</p>
+      <p>Cómo filtra realmente una consulta SQL: cómo se comparan texto y números, y cómo AND/OR se comportan como intersección y unión de conjuntos.</p>
     </div>
 
     <div class="body-grid">
@@ -110,17 +112,16 @@
           <tbody>
             <tr><td><span class="sym">=</span></td><td class="nm">Igual</td><td class="center"><span class="yes">✓</span></td><td class="center"><span class="yes">✓</span></td></tr>
             <tr><td><span class="sym">&lt;&gt;</span></td><td class="nm">Diferente</td><td class="center"><span class="yes">✓</span></td><td class="center"><span class="yes">✓</span></td></tr>
-            <tr><td><span class="sym">&lt;</span></td><td class="nm">Menor que</td><td class="center"><span class="no">✕</span></td><td class="center"><span class="yes">✓</span></td></tr>
-            <tr><td><span class="sym">&gt;</span></td><td class="nm">Mayor que</td><td class="center"><span class="no">✕</span></td><td class="center"><span class="yes">✓</span></td></tr>
-            <tr><td><span class="sym">&lt;=</span></td><td class="nm">Menor o igual</td><td class="center"><span class="no">✕</span></td><td class="center"><span class="yes">✓</span></td></tr>
-            <tr><td><span class="sym">&gt;=</span></td><td class="nm">Mayor o igual</td><td class="center"><span class="no">✕</span></td><td class="center"><span class="yes">✓</span></td></tr>
+            <tr><td><span class="sym">&lt;</span></td><td class="nm">Menor que</td><td class="center"><span class="yes">✓</span></td><td class="center"><span class="yes">✓</span></td></tr>
+            <tr><td><span class="sym">&gt;</span></td><td class="nm">Mayor que</td><td class="center"><span class="yes">✓</span></td><td class="center"><span class="yes">✓</span></td></tr>
+            <tr><td><span class="sym">&lt;=</span></td><td class="nm">Menor o igual</td><td class="center"><span class="yes">✓</span></td><td class="center"><span class="yes">✓</span></td></tr>
+            <tr><td><span class="sym">&gt;=</span></td><td class="nm">Mayor o igual</td><td class="center"><span class="yes">✓</span></td><td class="center"><span class="yes">✓</span></td></tr>
           </tbody>
         </table>
-        <div class="op-note"><b>Por qué importa:</b> los operadores de orden (<code style="font-family:'SF Mono',monospace">&lt; &gt; &lt;= &gt;=</code>) solo tienen sentido sobre valores numéricos o de fecha — un motor SQL no puede decidir si "Bogotá" es "mayor" que "Cali". Con texto, solo <code style="font-family:'SF Mono',monospace">=</code> y <code style="font-family:'SF Mono',monospace">&lt;&gt;</code> aplican.</div>
-        <div class="op-legend">
-          <div><span class="yes" style="width:12px;height:12px;font-size:14px;">✓</span> Aplica</div>
-          <div><span class="no" style="width:12px;height:12px;font-size:14px;">✕</span> No aplica</div>
-        </div>
+        <div class="op-note"><b>Ojo con el texto:</b> <code style="font-family:'SF Mono',monospace">&lt; &gt; &lt;= &gt;=</code> sí aplican a texto, pero comparan según la <b>intercalación (collation)</b> de la base: <code style="font-family:'SF Mono',monospace">'Bogotá' &lt; 'Cali'</code> es verdadero, y <code style="font-family:'SF Mono',monospace">'10' &lt; '9'</code> también (se compara carácter a carácter, no como número).</div>
+        
+          
+        
       </div>
 
       <div class="logic-col">
