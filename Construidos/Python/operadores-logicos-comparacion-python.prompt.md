@@ -20,3 +20,5 @@
 ## Corrección (2026-10-06)
 
 El usuario pidió revisar la afirmación sobre operadores de orden con texto. Verificado: en Python `<`, `>`, `<=`, `>=` **sí** funcionan con cadenas (comparación por código Unicode: `'ana' < 'bruno'` y `'Z' < 'a'` son `True`), y en SQL ANSI también aplican a `CHAR`/`VARCHAR` según la collation de la base (`'Bogotá' < 'Cali'` es verdadero; `'10' < '9'` también, por comparar como texto). La versión anterior de la pieza SQL afirmaba lo contrario (✕ en texto, "solo `=` y `<>` aplican") y la pieza Python repetía esa falsa diferencia frente a SQL — ambas corregidas, con insignia "Actualizada". Versiones previas archivadas en `Archivadas/*-2026-10-06/`.
+
+**Ajuste final (mismo día)**: el usuario aclaró que comparar texto con operadores de orden no es una práctica correcta. Se mantiene la precisión técnica (funcionan) pero ambas piezas ahora marcan `< > <= >=` con texto como "!" (válido pero no recomendado) y recomiendan `=`/`<>` (SQL) y `==`/`!=` (Python) para texto.

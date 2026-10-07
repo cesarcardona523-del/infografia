@@ -101,6 +101,7 @@
   .li-badge{ width:16px; height:16px; border-radius:4px; background:#0A66C2; color:#fff; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:800; font-family: Arial, sans-serif; }
   .sig span{ font-size:14px; font-weight:700; color:var(--muted); }
   .updated-badge{ position:absolute; top:11px; left:385px; background:var(--pyblue-dark); color:#fff; font-size:14px; font-weight:800; letter-spacing:.4px; text-transform:uppercase; padding:3px 10px; border-radius:20px; }
+  .warn{ display:inline-flex; width:16px; height:16px; border-radius:50%; background:rgba(180,130,0,0.18); color:#8A6500; align-items:center; justify-content:center; font-size:14px; font-weight:800; }
 </style>
 </head>
 <body>
@@ -135,13 +136,13 @@
           <tbody>
             <tr><td><span class="sym">==</span></td><td class="nm">Igual</td><td class="center"><span class="yes">✓</span></td><td class="center"><span class="yes">✓</span></td></tr>
             <tr><td><span class="sym">!=</span></td><td class="nm">Diferente</td><td class="center"><span class="yes">✓</span></td><td class="center"><span class="yes">✓</span></td></tr>
-            <tr><td><span class="sym">&lt;</span></td><td class="nm">Menor que</td><td class="center"><span class="yes">✓</span></td><td class="center"><span class="yes">✓</span></td></tr>
-            <tr><td><span class="sym">&gt;</span></td><td class="nm">Mayor que</td><td class="center"><span class="yes">✓</span></td><td class="center"><span class="yes">✓</span></td></tr>
-            <tr><td><span class="sym">&lt;=</span></td><td class="nm">Menor o igual</td><td class="center"><span class="yes">✓</span></td><td class="center"><span class="yes">✓</span></td></tr>
-            <tr><td><span class="sym">&gt;=</span></td><td class="nm">Mayor o igual</td><td class="center"><span class="yes">✓</span></td><td class="center"><span class="yes">✓</span></td></tr>
+            <tr><td><span class="sym">&lt;</span></td><td class="nm">Menor que</td><td class="center"><span class="warn">!</span></td><td class="center"><span class="yes">✓</span></td></tr>
+            <tr><td><span class="sym">&gt;</span></td><td class="nm">Mayor que</td><td class="center"><span class="warn">!</span></td><td class="center"><span class="yes">✓</span></td></tr>
+            <tr><td><span class="sym">&lt;=</span></td><td class="nm">Menor o igual</td><td class="center"><span class="warn">!</span></td><td class="center"><span class="yes">✓</span></td></tr>
+            <tr><td><span class="sym">&gt;=</span></td><td class="nm">Mayor o igual</td><td class="center"><span class="warn">!</span></td><td class="center"><span class="yes">✓</span></td></tr>
           </tbody>
         </table>
-        <div class="op-note"><b>Texto en Python:</b> <code style="font-family:'SF Mono',monospace">&lt; &gt; &lt;= &gt;=</code> comparan cadenas por código Unicode — <code style="font-family:'SF Mono',monospace">'ana' &lt; 'bruno'</code> es <b>True</b>, pero <code style="font-family:'SF Mono',monospace">'Z' &lt; 'a'</code> también (mayúsculas antes que minúsculas). En SQL el orden depende de la collation de la base.</div>
+        <div class="op-note"><b>! Con texto, no recomendado:</b> <code style="font-family:'SF Mono',monospace">&lt; &gt; &lt;= &gt;=</code> funcionan (comparan por Unicode), pero <code style="font-family:'SF Mono',monospace">'Z' &lt; 'a'</code> y <code style="font-family:'SF Mono',monospace">'10' &lt; '9'</code> son <b>True</b>. Para texto usa <code style="font-family:'SF Mono',monospace">==</code> y <code style="font-family:'SF Mono',monospace">!=</code>; deja el orden para números.</div>
 
         <div class="idpanel">
           <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.5-2.5 2-2.5 3.5M12 17h.01"/></svg>Potenciado: identidad y pertenencia</h2>
