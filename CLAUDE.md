@@ -43,10 +43,8 @@ Toda infografía cuyo tema sea **cultura del dato / cultura de datos** (clave de
 | Red | `#EA4335` | `#FCE8E6` | `#C5221F` |
 
 - Base neutra estilo Google: fondo blanco/`#F8F9FA`, texto `#202124`, secundario `#5F6368`, líneas `#DADCE0`.
-- Usar los cuatro colores como sistema (un color por tarjeta/nivel/paso, en ese orden de preferencia: azul, rojo, amarillo, verde), no un solo color de acento. Texto sobre amarillo siempre oscuro (`#202124`); sobre azul/verde/rojo blanco.
-- Los tonos "oscuro" y "pálido" son derivaciones de la misma familia (Material), solo para contraste de texto y fondos — nunca introducir otro matiz.
-- Consistencia entre piezas del tema: en las jerarquías de nivel, cima = azul, nivel medio = amarillo, base = rojo (y verde cuando haya un cuarto nivel entre azul y amarillo, como en DIKW: Sabiduría azul, Conocimiento verde, Información amarilla, Datos rojo).
-- Cierre/ribbon oscuro `#202124` con una franja de 4 colores; firma (LinkedIn + `cacm523`) dentro del ribbon para que no se superponga.
+- **Rojo = solo para resaltar** (aclaración del usuario, 2026-10-07): el rojo (`#EA4335`, texto `#C5221F`) se reserva para llamar la atención sobre un dato clave, una cifra o una pregunta — nunca como color estructural de tarjetas, niveles, pasos o iconos. La estructura usa azul, verde y amarillo (en ese orden de preferencia; si hacen falta más categorías, repetir el ciclo o usar el gris neutro `#5F6368`, tinte `#F1F3F4`, texto `#3C4043`, p. ej. para el nivel "crudo/base"). Texto sobre amarillo siempre oscuro (`#202124`); sobre azul/verde/gris blanco.
+- Cierre/ribbon oscuro `#202124` con una franja de 3 colores (azul, amarillo, verde — sin rojo); firma (LinkedIn + `cacm523`) dentro del ribbon para que no se superponga.
 - Nota: la fila "Google Cloud" de la tabla de marcas de abajo conserva los hex antiguos (`#DB4437`, `#F4B400`, `#0F9D58`) para piezas sobre Google Cloud; esta paleta (`#EA4335`, `#FBBC05`, `#34A853`) rige solo para Cultura del Dato.
 
 ### Colores de marca por aplicación (excepción a la paleta verde+tierra)

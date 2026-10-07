@@ -3,7 +3,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 :root{--blue:#4285F4;--blue-d:#1967D2;--blue-p:#E8F0FE;--ink:#202124;--muted:#5F6368;--line:#DADCE0;--paper:#F8F9FA;
---t1:#EA4335;--t2:#FBBC05;--t3:#34A853;--t4:#4285F4;}
+--t1:#5F6368;--t2:#FBBC05;--t3:#34A853;--t4:#4285F4;}
 *{box-sizing:border-box}html,body{margin:0;padding:0}
 body{min-height:627px;display:flex;align-items:center;justify-content:center;padding:32px 16px;background:#F1F3F4;font-family:Inter,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
 .canvas-wrap{width:100%;max-width:1200px;overflow-x:auto}
@@ -23,7 +23,7 @@ h1{font-size:22px;margin:0 0 2px;font-weight:800;letter-spacing:-.3px}h1 span{co
 .tier.k2{background:var(--t2);color:var(--ink);clip-path:polygon(22.22% 0,77.78% 0,88.89% 100%,11.11% 100%)}
 .tier.k1{background:var(--t1);color:#fff;clip-path:polygon(11.11% 0,88.89% 0,100% 100%,0 100%)}
 .card{flex:1;display:grid;grid-template-columns:185px 1fr 285px;gap:14px;align-items:center;background:#fff;border:1px solid var(--line);border-left:6px solid var(--c);border-radius:10px;padding:5px 12px;box-shadow:0 2px 6px rgba(20,50,35,.05)}
-.k4c{--c:var(--t4);--cd:#1967D2;flex:1.5}.k3c{--c:var(--t3);--cd:#137333}.k2c{--c:var(--t2);--cd:#B06000}.k1c{--c:var(--t1);--cd:#C5221F}
+.k4c{--c:var(--t4);--cd:#1967D2;flex:1.5}.k3c{--c:var(--t3);--cd:#137333}.k2c{--c:var(--t2);--cd:#B06000}.k1c{--c:var(--t1);--cd:#3C4043}
 .nm{display:flex;align-items:center;gap:8px}
 .num{width:24px;height:24px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;flex:none}
 .k2c .num{color:var(--ink)}
@@ -34,7 +34,7 @@ h1{font-size:22px;margin:0 0 2px;font-weight:800;letter-spacing:-.3px}h1 span{co
 .def{font-size:14px;color:var(--ink);line-height:1.28}.def i{display:block;font-style:normal;font-size:14px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-bottom:1px}
 .ex{font-size:14px;line-height:1.26;background:var(--paper);border:1px dashed var(--line);border-radius:8px;padding:4px 9px;color:var(--ink)}
 .ex i{display:block;font-style:normal;font-size:14px;font-weight:800;color:var(--cd);text-transform:uppercase;letter-spacing:.4px}
-.ribbon{margin-top:7px;background:var(--ink);border-radius:11px;border-top:4px solid transparent;border-image:linear-gradient(90deg,#4285F4 25%,#EA4335 25% 50%,#FBBC05 50% 75%,#34A853 75%) 1;padding:6px 16px;display:flex;align-items:center;gap:12px}
+.ribbon{margin-top:7px;background:var(--ink);border-radius:11px;border-top:4px solid transparent;border-image:linear-gradient(90deg,#4285F4 33.33%,#FBBC05 33.33% 66.66%,#34A853 66.66%) 1;padding:6px 16px;display:flex;align-items:center;gap:12px}
 .thread{flex:1;display:flex;align-items:center;gap:8px;flex-wrap:nowrap;font-size:14px;color:#fff}
 .thread b{color:#FBBC05}.thread svg{width:13px;height:13px;color:#FBBC05;flex:none}
 .sig{display:flex;align-items:center;gap:6px;flex:none}.li-badge{width:16px;height:16px;border-radius:4px;background:#fff;color:#0A66C2;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;font-family:Arial,sans-serif}.sig span{font-size:14px;font-weight:700;color:#fff}
@@ -62,8 +62,8 @@ h1{font-size:22px;margin:0 0 2px;font-weight:800;letter-spacing:-.3px}h1 span{co
 <div class="ex"><i>Ejemplo</i>“El paciente tiene una temperatura corporal de 39 °C.” Ahora el dato tiene sentido.</div></div>
 <div class="card k1c"><div><div class="nm"><span class="num">1</span><div><b>Datos</b><small>Data</small></div></div><div class="q"><span>¿Qué?</span></div></div>
 <div class="def"><i>¿Qué es?</i>Hechos puros, crudos, objetivos y sin procesar. No tienen contexto ni significado por sí mismos.</div>
-<div class="ex"><i>Ejemplo</i>El número <b>39</b>. Por sí solo no dice nada: puede ser una edad, un precio o una temperatura.</div></div>
+<div class="ex"><i>Ejemplo</i>El número <b style="color:#C5221F">39</b>. Por sí solo no dice nada: puede ser una edad, un precio o una temperatura.</div></div>
 </div></div>
-<div class="ribbon"><div class="thread"><b>Un solo número, cuatro niveles:</b> 39 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg> 39 °C del paciente <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg> fiebre alta <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg> tratamiento integral</div>
+<div class="ribbon"><div class="thread"><b>Un solo número, cuatro niveles:</b> <b style="color:#EA4335">39</b> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg> 39 °C del paciente <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg> fiebre alta <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg> tratamiento integral</div>
 <div class="sig"><div class="li-badge">in</div><span>cacm523</span></div></div>
 </div></div></body></html>
