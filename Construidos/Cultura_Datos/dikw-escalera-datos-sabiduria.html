@@ -14,14 +14,14 @@ body{min-height:627px;display:flex;align-items:center;justify-content:center;pad
 h1{font-size:22px;margin:0 0 2px;font-weight:800;letter-spacing:-.3px}h1 span{color:var(--tierra)}
 .sub{margin:0;font-size:14px;color:var(--muted);line-height:1.25;max-width:720px}
 .hint{flex:none;font-size:14px;color:var(--muted);background:#fff;border:1px solid var(--line);border-radius:8px;padding:4px 10px;text-align:right;line-height:1.2}
-.main{flex:1;display:grid;grid-template-columns:370px 1fr;gap:14px;min-height:0}
+.main{flex:1;display:grid;grid-template-columns:390px 1fr;gap:14px;min-height:0}
 .pyr,.cards{display:flex;flex-direction:column;gap:6px;min-height:0}
 .tier{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;line-height:1.15}
 .tier b{font-size:16px;font-weight:800}.tier span{font-size:14px;font-weight:700}
-.tier.k4{background:var(--t4);color:#fff;clip-path:polygon(35% 0,65% 0,73.75% 100%,26.25% 100%)}
-.tier.k3{background:var(--t3);color:#fff;clip-path:polygon(26.25% 0,73.75% 0,82.5% 100%,17.5% 100%)}
-.tier.k2{background:var(--t2);color:var(--ink);clip-path:polygon(17.5% 0,82.5% 0,91.25% 100%,8.75% 100%)}
-.tier.k1{background:var(--t1);color:var(--ink);clip-path:polygon(8.75% 0,91.25% 0,100% 100%,0 100%)}
+.tier.k4{background:var(--t4);color:#fff;clip-path:polygon(50% 0,66.67% 100%,33.33% 100%);flex:1.5;justify-content:flex-end;padding-bottom:9px}
+.tier.k3{background:var(--t3);color:#fff;clip-path:polygon(33.33% 0,66.67% 0,77.78% 100%,22.22% 100%)}
+.tier.k2{background:var(--t2);color:var(--ink);clip-path:polygon(22.22% 0,77.78% 0,88.89% 100%,11.11% 100%)}
+.tier.k1{background:var(--t1);color:var(--ink);clip-path:polygon(11.11% 0,88.89% 0,100% 100%,0 100%)}
 .card{flex:1;display:grid;grid-template-columns:185px 1fr 285px;gap:14px;align-items:center;background:#fff;border:1px solid var(--line);border-left:6px solid var(--c);border-radius:10px;padding:5px 12px;box-shadow:0 2px 6px rgba(20,50,35,.05)}
 .k4c{--c:var(--t4)}.k3c{--c:var(--t3)}.k2c{--c:var(--t2)}.k1c{--c:var(--t1)}
 .nm{display:flex;align-items:center;gap:8px}
@@ -48,7 +48,7 @@ h1{font-size:22px;margin:0 0 2px;font-weight:800;letter-spacing:-.3px}h1 span{co
 <div class="pyr">
 <div class="tier k4"><b>Sabiduría</b><span>¿Por qué?</span></div>
 <div class="tier k3"><b>Conocimiento</b><span>¿Cómo?</span></div>
-<div class="tier k2"><b>Información</b><span>¿Quién? ¿Dónde? ¿Cuándo?</span></div>
+<div class="tier k2"><b>Información</b><span>¿Quién? ¿Qué?<br>¿Dónde? ¿Cuándo?</span></div>
 <div class="tier k1"><b>Datos</b><span>¿Qué?</span></div></div>
 <div class="cards">
 <div class="card k4c"><div><div class="nm"><span class="num">4</span><div><b>Sabiduría</b><small>Wisdom</small></div></div><div class="q"><span>¿Por qué?</span></div></div>
