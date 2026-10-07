@@ -13,3 +13,5 @@
 **Relación con piezas existentes**: complementa `dikw-escalera-datos-sabiduria` (esa detalla los 4 niveles de DIKW; esta cruza la pirámide de información con la estructura organizacional) — tópico distinto, pieza nueva.
 
 **Catálogo**: `categoriaPrincipal: "profesion-y-negocio"`, `temas: ["cultura-dato", "estrategia-datos"]`; cola normal (+2 días).
+
+**Paleta (2026-10-07)**: pieza migrada a la paleta Google del tema Cultura del Dato (ver CLAUDE.md → "Tema Cultura del Dato — paleta Google"): azul `#4285F4`, rojo `#EA4335`, amarillo `#FBBC05`, verde `#34A853`.

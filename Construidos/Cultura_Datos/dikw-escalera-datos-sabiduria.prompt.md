@@ -15,3 +15,5 @@
 **Catálogo**: `categoriaPrincipal: "analisis-de-datos"`, `temas: ["cultura-dato", "ciencia-datos"]`. Publicación pedida por el usuario: a más tardar el 2026-10-08 (prevalece sobre la cola normal de +2 días).
 
 **Ajustes (2026-10-07)**: punta de la pirámide en vértice real (antes truncada); `fechaPublicacion` adelantada a 2026-10-08 por pedido del usuario (publicar ambas piezas de pirámides mañana).
+
+**Paleta (2026-10-07)**: pieza migrada a la paleta Google del tema Cultura del Dato (ver CLAUDE.md → "Tema Cultura del Dato — paleta Google"): azul `#4285F4`, rojo `#EA4335`, amarillo `#FBBC05`, verde `#34A853`.

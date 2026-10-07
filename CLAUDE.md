@@ -31,6 +31,24 @@ Además del flujo puntual de cada infografía, se asume permanentemente el rol d
 - **Visualización de datos**: para cualquier gráfico dentro de una infografía, aplicar las recomendaciones del skill `dataviz` (claridad, jerarquía, escalas, color, etiquetas) antes de exportar.
 - **Estilo visual**: la base es el lenguaje ya definido en INFOGRAFIA-SPEC.md (paleta verde + acento tierra, referencias tipo Microsoft Learn/Azure Architecture Center/Databricks). Se admite glassmorphism moderado en tarjetas/paneles y layouts tipo Bento Grid como una opción más de composición, siempre sin contradecir esas reglas. No se adopta dark-mode general (no aplica a una imagen exportada una sola vez) ni paletas tipo Apple/Vercel/Linear/Stripe/OpenAI por defecto — son referencias de producto web, no del brief editorial ya validado. Ver las dos excepciones controladas de paleta abajo ("Colores de marca por aplicación" y "Dark-mode para zonas de código").
 
+### Tema Cultura del Dato — paleta Google (pedido explícito del usuario, 2026-10-07)
+
+Toda infografía cuyo tema sea **cultura del dato / cultura de datos** (clave de catálogo `cultura-dato`; ej. `beneficios-cultura-dato`, `construir-cultura-dato`, `dikw-escalera-datos-sabiduria`, `piramides-empresarial-laboral-informacion`) usa los cuatro colores de la paleta Google en su versión actualizada — es la segunda excepción de paleta ligada a un `<Tema>` completo (junto con el Dark IDE de SQL), pedida para que este tema sea "super atractivo":
+
+| Color | Hex (fuente) | Tinte pálido (fondos) | Tono oscuro (texto sobre pálido) |
+|---|---|---|---|
+| Blue | `#4285F4` | `#E8F0FE` | `#1967D2` |
+| Green | `#34A853` | `#E6F4EA` | `#137333` |
+| Yellow | `#FBBC05` | `#FEF7E0` | `#B06000` |
+| Red | `#EA4335` | `#FCE8E6` | `#C5221F` |
+
+- Base neutra estilo Google: fondo blanco/`#F8F9FA`, texto `#202124`, secundario `#5F6368`, líneas `#DADCE0`.
+- Usar los cuatro colores como sistema (un color por tarjeta/nivel/paso, en ese orden de preferencia: azul, rojo, amarillo, verde), no un solo color de acento. Texto sobre amarillo siempre oscuro (`#202124`); sobre azul/verde/rojo blanco.
+- Los tonos "oscuro" y "pálido" son derivaciones de la misma familia (Material), solo para contraste de texto y fondos — nunca introducir otro matiz.
+- Consistencia entre piezas del tema: en las jerarquías de nivel, cima = azul, nivel medio = amarillo, base = rojo (y verde cuando haya un cuarto nivel entre azul y amarillo, como en DIKW: Sabiduría azul, Conocimiento verde, Información amarilla, Datos rojo).
+- Cierre/ribbon oscuro `#202124` con una franja de 4 colores; firma (LinkedIn + `cacm523`) dentro del ribbon para que no se superponga.
+- Nota: la fila "Google Cloud" de la tabla de marcas de abajo conserva los hex antiguos (`#DB4437`, `#F4B400`, `#0F9D58`) para piezas sobre Google Cloud; esta paleta (`#EA4335`, `#FBBC05`, `#34A853`) rige solo para Cultura del Dato.
+
 ### Colores de marca por aplicación (excepción a la paleta verde+tierra)
 
 Cuando una infografía trata específicamente sobre **una aplicación o herramienta con identidad de marca propia** (el tema central es esa herramienta, no solo la menciona de paso), usar los colores representativos oficiales de esa aplicación en vez de la paleta verde+tierra por defecto — el verde+tierra sigue siendo el default para todo lo demás (temas generales de datos, gobierno, procesos, comparativas entre herramientas, etc.).

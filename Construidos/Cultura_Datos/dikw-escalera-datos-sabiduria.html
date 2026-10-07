@@ -2,16 +2,16 @@
 <html lang="es"><head><meta charset="UTF-8"><title>La Escalera DIKW</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-:root{--green:#2F6D4F;--green-dark:#1F4D38;--tierra:#B8834A;--ink:#151B26;--muted:#5B6570;--line:#E2E8ED;--paper:#F5F8F6;
---t1:#E3CFA8;--t2:#9CC4A8;--t3:#4F8F6B;--t4:#1F4D38;}
+:root{--blue:#4285F4;--blue-d:#1967D2;--blue-p:#E8F0FE;--ink:#202124;--muted:#5F6368;--line:#DADCE0;--paper:#F8F9FA;
+--t1:#EA4335;--t2:#FBBC05;--t3:#34A853;--t4:#4285F4;}
 *{box-sizing:border-box}html,body{margin:0;padding:0}
-body{min-height:627px;display:flex;align-items:center;justify-content:center;padding:32px 16px;background:#E9EFEA;font-family:Inter,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+body{min-height:627px;display:flex;align-items:center;justify-content:center;padding:32px 16px;background:#F1F3F4;font-family:Inter,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
 .canvas-wrap{width:100%;max-width:1200px;overflow-x:auto}
-.canvas{position:relative;width:1200px;height:627px;margin:0 auto;background:linear-gradient(160deg,#FDFEFD 0%,var(--paper) 55%,#EFF6F1 100%);border-radius:16px;box-shadow:0 20px 50px rgba(20,50,35,.15);overflow:hidden;padding:12px 24px 9px;color:var(--ink);display:flex;flex-direction:column}
+.canvas{position:relative;width:1200px;height:627px;margin:0 auto;background:#fff;border-radius:16px;box-shadow:0 20px 50px rgba(32,33,36,.16);overflow:hidden;padding:12px 24px 9px;color:var(--ink);display:flex;flex-direction:column}
 .header{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;margin-bottom:7px}
-.eyebrow{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:800;letter-spacing:1.3px;color:var(--green);text-transform:uppercase;background:#E4F0E8;border:1px solid #CFE4D6;padding:3px 9px;border-radius:20px;margin-bottom:4px}
+.eyebrow{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:800;letter-spacing:1.3px;color:var(--blue-d);text-transform:uppercase;background:var(--blue-p);border:1px solid #C6DAFC;padding:3px 9px;border-radius:20px;margin-bottom:4px}
 .eyebrow svg{width:14px;height:14px;flex:none}
-h1{font-size:22px;margin:0 0 2px;font-weight:800;letter-spacing:-.3px}h1 span{color:var(--tierra)}
+h1{font-size:22px;margin:0 0 2px;font-weight:800;letter-spacing:-.3px}h1 span{color:var(--blue)}
 .sub{margin:0;font-size:14px;color:var(--muted);line-height:1.25;max-width:720px}
 .hint{flex:none;font-size:14px;color:var(--muted);background:#fff;border:1px solid var(--line);border-radius:8px;padding:4px 10px;text-align:right;line-height:1.2}
 .main{flex:1;display:grid;grid-template-columns:390px 1fr;gap:14px;min-height:0}
@@ -21,22 +21,22 @@ h1{font-size:22px;margin:0 0 2px;font-weight:800;letter-spacing:-.3px}h1 span{co
 .tier.k4{background:var(--t4);color:#fff;clip-path:polygon(50% 0,66.67% 100%,33.33% 100%);flex:1.5;justify-content:flex-end;padding-bottom:9px}
 .tier.k3{background:var(--t3);color:#fff;clip-path:polygon(33.33% 0,66.67% 0,77.78% 100%,22.22% 100%)}
 .tier.k2{background:var(--t2);color:var(--ink);clip-path:polygon(22.22% 0,77.78% 0,88.89% 100%,11.11% 100%)}
-.tier.k1{background:var(--t1);color:var(--ink);clip-path:polygon(11.11% 0,88.89% 0,100% 100%,0 100%)}
+.tier.k1{background:var(--t1);color:#fff;clip-path:polygon(11.11% 0,88.89% 0,100% 100%,0 100%)}
 .card{flex:1;display:grid;grid-template-columns:185px 1fr 285px;gap:14px;align-items:center;background:#fff;border:1px solid var(--line);border-left:6px solid var(--c);border-radius:10px;padding:5px 12px;box-shadow:0 2px 6px rgba(20,50,35,.05)}
-.k4c{--c:var(--t4);flex:1.5}.k3c{--c:var(--t3)}.k2c{--c:var(--t2)}.k1c{--c:var(--t1)}
+.k4c{--c:var(--t4);--cd:#1967D2;flex:1.5}.k3c{--c:var(--t3);--cd:#137333}.k2c{--c:var(--t2);--cd:#B06000}.k1c{--c:var(--t1);--cd:#C5221F}
 .nm{display:flex;align-items:center;gap:8px}
 .num{width:24px;height:24px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;flex:none}
-.k1c .num,.k2c .num{color:var(--ink)}
+.k2c .num{color:var(--ink)}
 .nm b{font-size:16px;font-weight:800;line-height:1.1}.nm small{display:block;font-size:14px;color:var(--muted);font-weight:600}
 .q{margin-top:4px;display:flex;gap:4px;flex-wrap:wrap}
 .q span{font-size:14px;font-weight:800;background:var(--c);color:#fff;border-radius:20px;padding:1px 9px}
-.k1c .q span,.k2c .q span{color:var(--ink)}
+.k2c .q span{color:var(--ink)}
 .def{font-size:14px;color:var(--ink);line-height:1.28}.def i{display:block;font-style:normal;font-size:14px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-bottom:1px}
-.ex{font-size:14px;line-height:1.26;background:var(--paper);border:1px dashed #C9D6CD;border-radius:8px;padding:4px 9px;color:var(--ink)}
-.ex i{display:block;font-style:normal;font-size:14px;font-weight:800;color:var(--tierra);text-transform:uppercase;letter-spacing:.4px}
-.ribbon{margin-top:7px;background:linear-gradient(90deg,var(--green-dark),var(--green));border-radius:11px;padding:6px 16px;display:flex;align-items:center;gap:12px}
+.ex{font-size:14px;line-height:1.26;background:var(--paper);border:1px dashed var(--line);border-radius:8px;padding:4px 9px;color:var(--ink)}
+.ex i{display:block;font-style:normal;font-size:14px;font-weight:800;color:var(--cd);text-transform:uppercase;letter-spacing:.4px}
+.ribbon{margin-top:7px;background:var(--ink);border-radius:11px;border-top:4px solid transparent;border-image:linear-gradient(90deg,#4285F4 25%,#EA4335 25% 50%,#FBBC05 50% 75%,#34A853 75%) 1;padding:6px 16px;display:flex;align-items:center;gap:12px}
 .thread{flex:1;display:flex;align-items:center;gap:8px;flex-wrap:nowrap;font-size:14px;color:#fff}
-.thread b{color:#F3D9B4}.thread svg{width:13px;height:13px;color:#F3D9B4;flex:none}
+.thread b{color:#FBBC05}.thread svg{width:13px;height:13px;color:#FBBC05;flex:none}
 .sig{display:flex;align-items:center;gap:6px;flex:none}.li-badge{width:16px;height:16px;border-radius:4px;background:#fff;color:#0A66C2;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;font-family:Arial,sans-serif}.sig span{font-size:14px;font-weight:700;color:#fff}
 </style></head><body><div class="canvas-wrap"><div class="canvas">
 <div class="header"><div>
