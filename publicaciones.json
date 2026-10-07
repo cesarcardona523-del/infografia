@@ -3191,5 +3191,29 @@
       "likes": 0,
       "shares": 0
     }
+  },
+  {
+    "id": "piramides-empresarial-laboral-informacion",
+    "imagen": "Construidos/Cultura_Datos/piramides-empresarial-laboral-informacion.png",
+    "fechaPublicacion": "2026-10-10T09:10:00",
+    "categoriaPrincipal": "profesion-y-negocio",
+    "temas": [
+      "cultura-dato",
+      "estrategia-datos"
+    ],
+    "tipoContenido": "infografia",
+    "es": {
+      "topico": "Tres Pirámides Alineadas: Áreas, Cargos e Información en la Empresa",
+      "descripcion": "Las organizaciones suelen describirse con tres pirámides distintas que, puestas lado a lado, cuentan una misma historia: la pirámide empresarial, que ordena las áreas de la compañía; la pirámide laboral, que ordena los cargos y las personas; y la pirámide de información, que ordena el tipo de dato que cada nivel necesita y produce. Leerlas en paralelo, nivel contra nivel, ayuda a entender por qué una estrategia de datos solo funciona cuando respeta la estructura de la organización.\n\nEn el vértice está el nivel estratégico. En la pirámide empresarial corresponde al área estratégica, que define el rumbo mediante la visión, los objetivos y las políticas de largo plazo y responde a la pregunta hacia dónde vamos. En la pirámide laboral lo ocupa la alta dirección, es decir, la gerencia general, la junta y los directores, cuyas decisiones comprometen a toda la empresa. En la pirámide de información le corresponde el conocimiento y la sabiduría: decisiones con criterio, experiencia y valores que guían la dirección.\n\nEn el nivel intermedio está lo táctico. El área táctica convierte la estrategia en planes, presupuestos y coordinación entre áreas, con horizonte de mediano plazo; los mandos medios, como jefes, coordinadores y supervisores, funcionan como puente entre la dirección y los equipos; y la información, entendida como datos con contexto en forma de reportes, indicadores y tableros, sostiene el control y la planeación.\n\nEn la base está lo operativo. El área operativa ejecuta el día a día, como la producción, las ventas, la atención y los procesos, con foco en el corto plazo; el nivel operativo reúne a analistas, técnicos y auxiliares que ejecutan esos procesos; y los datos, registros crudos como transacciones, formularios o lecturas de sensores, nacen precisamente en esa operación diaria.\n\nLa lectura conjunta deja una idea práctica: los datos se generan abajo, la información se construye en el medio y el conocimiento se aplica arriba. Por eso la calidad de lo que se decide en la cima depende de la calidad de lo que se registra en la base, y una iniciativa de datos que ignore alguno de los tres niveles produce reportes que nadie usa o decisiones que no llegan a ejecutarse. Para aplicarlo, conviene identificar en cada nivel quién consume qué información, qué decisiones toma con ella y quién es responsable de la calidad del dato que la origina. Como todo modelo, es una simplificación: en organizaciones planas o ágiles los niveles se difuminan, aunque las tres preguntas que plantea siguen siendo útiles."
+    },
+    "en": {
+      "topico": "Three Aligned Pyramids: Areas, Roles and Information in the Company",
+      "descripcion": "Organizations are usually described with three different pyramids that, placed side by side, tell the same story: the business pyramid, which orders the company's areas; the labor pyramid, which orders roles and people; and the information pyramid, which orders the kind of data each level needs and produces. Reading them in parallel, level against level, helps explain why a data strategy only works when it respects the structure of the organization.\n\nAt the apex is the strategic level. In the business pyramid it corresponds to the strategic area, which sets the direction through vision, objectives and long-term policies and answers the question of where we are going. In the labor pyramid it is held by senior management, that is, the general manager, the board and directors, whose decisions commit the whole company. In the information pyramid it corresponds to knowledge and wisdom: decisions made with judgment, experience and values that guide the direction.\n\nIn the middle is the tactical level. The tactical area turns strategy into plans, budgets and coordination between areas, on a medium-term horizon; middle managers, such as heads, coordinators and supervisors, act as the bridge between leadership and teams; and information, understood as data with context in the form of reports, indicators and dashboards, supports control and planning.\n\nAt the base is the operational level. The operational area carries out day-to-day work, such as production, sales, service and processes, with a short-term focus; the operational level brings together analysts, technicians and assistants who run those processes; and data, raw records such as transactions, forms or sensor readings, is born precisely in that daily operation.\n\nRead together, the pyramids leave a practical idea: data is generated at the bottom, information is built in the middle and knowledge is applied at the top. That is why the quality of what is decided at the top depends on the quality of what is recorded at the base, and a data initiative that ignores any of the three levels produces reports nobody uses or decisions that never get executed. To apply it, identify at each level who consumes which information, what decisions they make with it and who is accountable for the quality of the data behind it. Like any model, it is a simplification: in flat or agile organizations the levels blur, although the three questions it raises remain useful."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
   }
 ]
