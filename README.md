@@ -273,6 +273,7 @@ Antes de crear una entrada nueva, el proyecto analiza si el contenido amplía o 
 - ✅ Inteligencia Artificial Jurídica — tema `IA` — [HTML](Construidos/IA/inteligencia-artificial-juridica.html) · [PNG](Construidos/IA/inteligencia-artificial-juridica.png)
 - ✅ GPT-6 Astra vs. Claude Fable 5.1 — tema `IA` — [HTML](Construidos/IA/gpt6-astra-vs-fable-5-1.html) · [PNG](Construidos/IA/gpt6-astra-vs-fable-5-1.png)
 - ✅ Hackers, IA y Datos — evento AVANZATEC × IBM — tema `Ciberseguridad` — [HTML](Construidos/Ciberseguridad/hackers-ia-y-datos.html) · [PNG](Construidos/Ciberseguridad/hackers-ia-y-datos.png)
+- ✅ La Escalera DIKW: del Dato a la Sabiduría — tema `Cultura_Datos` — [HTML](Construidos/Cultura_Datos/dikw-escalera-datos-sabiduria.html) · [PNG](Construidos/Cultura_Datos/dikw-escalera-datos-sabiduria.png)
 
 Este README se irá actualizando con un enlace por cada infografía nueva.
 

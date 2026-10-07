@@ -3167,5 +3167,29 @@
       "likes": 0,
       "shares": 0
     }
+  },
+  {
+    "id": "dikw-escalera-datos-sabiduria",
+    "imagen": "Construidos/Cultura_Datos/dikw-escalera-datos-sabiduria.png",
+    "fechaPublicacion": "2026-10-08T09:10:00",
+    "categoriaPrincipal": "analisis-de-datos",
+    "temas": [
+      "cultura-dato",
+      "ciencia-datos"
+    ],
+    "tipoContenido": "infografia",
+    "es": {
+      "topico": "La Escalera DIKW: del Dato a la Sabiduría, una Pregunta por Nivel",
+      "descripcion": "La jerarquía DIKW (Data, Information, Knowledge, Wisdom) describe cómo un hecho aislado se transforma, peldaño a peldaño, en una decisión acertada, y resulta útil para entender qué agrega valor en cada etapa de una estrategia de datos. Cada nivel responde a una pregunta distinta y se apoya en el anterior, de modo que saltarse un escalón produce conclusiones frágiles.\n\nEl primer nivel son los datos: hechos puros, crudos, objetivos y sin procesar, que por sí mismos no tienen contexto ni significado y responden apenas a la pregunta qué. El número 39, aislado, puede ser una edad, un precio o una temperatura. El segundo nivel es la información: datos procesados, organizados y con contexto, que adquieren significado y utilidad y permiten responder quién, qué, dónde y cuándo; decir que el paciente tiene una temperatura corporal de 39 °C ya convierte el número en algo interpretable.\n\nEl tercer nivel es el conocimiento: la información combinada con experiencia, análisis, aprendizaje y comprensión crítica, que permite interpretarla y resolver problemas, y que responde a cómo. Saber que 39 °C en un adulto representa fiebre alta, y que la fiebre es una respuesta inmunológica a una posible infección, es conocimiento aplicado. El cuarto nivel es la sabiduría, la cima de la jerarquía: el uso sistémico y ético del conocimiento para tomar decisiones acertadas, anticipar consecuencias y actuar correctamente, incorporando el juicio humano y los valores, y responde a por qué. En el ejemplo, no basta con recetar un antipirético: se evalúa el historial del paciente, se busca el origen de la infección y se plantea un tratamiento integral que no ponga en riesgo su salud.\n\nPara una organización, el modelo ayuda a diagnosticar dónde se queda atascado su valor analítico: muchas empresas acumulan datos y producen reportes (información), pero pocas convierten esa información en conocimiento compartido, y menos aún en decisiones con criterio y responsabilidad. La recomendación práctica es asociar a cada producto de datos la pregunta que debe contestar, documentar el contexto que convierte un dato en información, capturar la experiencia de los analistas como conocimiento reutilizable y reservar las decisiones de mayor impacto para procesos donde el juicio humano y los valores de la organización estén explícitos. Como todo modelo conceptual, DIKW es una simplificación: describe una progresión lógica, no un proceso lineal, y en la práctica los niveles se retroalimentan constantemente."
+    },
+    "en": {
+      "topico": "The DIKW Ladder: From Data to Wisdom, One Question per Level",
+      "descripcion": "The DIKW hierarchy (Data, Information, Knowledge, Wisdom) describes how an isolated fact is transformed, step by step, into a sound decision, and it is useful for understanding what adds value at each stage of a data strategy. Each level answers a different question and builds on the previous one, so skipping a step produces fragile conclusions.\n\nThe first level is data: pure, raw, objective, unprocessed facts that have no context or meaning on their own and answer only the question of what. The number 39, in isolation, could be an age, a price or a temperature. The second level is information: processed, organized data with context, which gains meaning and usefulness and lets us answer who, what, where and when; saying the patient has a body temperature of 39 °C already turns the number into something interpretable.\n\nThe third level is knowledge: information combined with experience, analysis, learning and critical understanding, which makes it possible to interpret it and solve problems, and answers how. Knowing that 39 °C in an adult is a high fever, and that fever is an immune response to a possible infection, is applied knowledge. The fourth level is wisdom, the top of the hierarchy: the systemic and ethical use of knowledge to make sound decisions, anticipate consequences and act correctly, incorporating human judgment and values, and it answers why. In the example, prescribing a fever reducer is not enough: the patient's history is reviewed, the source of the infection is sought, and a comprehensive treatment that does not put their health at risk is planned.\n\nFor an organization, the model helps diagnose where its analytical value gets stuck: many companies accumulate data and produce reports (information), but few turn that information into shared knowledge, and even fewer into decisions made with judgment and accountability. The practical recommendation is to attach to each data product the question it must answer, document the context that turns a data point into information, capture analysts' experience as reusable knowledge, and reserve the highest-impact decisions for processes where human judgment and the organization's values are explicit. Like any conceptual model, DIKW is a simplification: it describes a logical progression, not a linear process, and in practice the levels continuously feed back into one another."
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
   }
 ]
