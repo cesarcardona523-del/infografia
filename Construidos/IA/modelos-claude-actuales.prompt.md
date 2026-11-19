@@ -23,3 +23,7 @@ Por pedido del usuario, la pieza replica el estilo de una referencia (infografí
 - **Eje = precio de salida** (no «esfuerzo»): es el único criterio verificable y no obliga a rankear modelos cuando las fuentes se contradicen.
 - ✓/✗ y múltiplos («2×», «20×») se derivan solo de precios y descripciones oficiales; los ejemplos de tarea son ilustrativos.
 - Colores: Claude (referencia), GPT-6 (verdes y negro de ChatGPT), Gemini (azul, rojo, amarillo y verde de Google).
+
+## Ranking de inteligencia (2026-11-19)
+
+Pedido del usuario: ubicar cada modelo en el ranking de https://artificialanalysis.ai/. Se usó la tabla de https://artificialanalysis.ai/leaderboards/models (Artificial Analysis Intelligence Index v5.0.1, consultada el 2026-11-19): puesto = posición en la tabla, puntaje y configuración de razonamiento tal como los lista el sitio (Max; Gemini: High/Xhigh). El sitio no muestra fecha de corte ni un total consistente de modelos, por eso no se cita «de N». Dato notable: el índice pone a Gemini 4 Neon (#3) por encima de Carbon (#4), contrario a la descripción de Google; la pieza lo dice explícitamente.
