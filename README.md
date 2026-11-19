@@ -275,6 +275,9 @@ Antes de crear una entrada nueva, el proyecto analiza si el contenido amplía o 
 - ✅ Hackers, IA y Datos — evento AVANZATEC × IBM — tema `Ciberseguridad` — [HTML](Construidos/Ciberseguridad/hackers-ia-y-datos.html) · [PNG](Construidos/Ciberseguridad/hackers-ia-y-datos.png)
 - ✅ La Escalera DIKW: del Dato a la Sabiduría — tema `Cultura_Datos` — [HTML](Construidos/Cultura_Datos/dikw-escalera-datos-sabiduria.html) · [PNG](Construidos/Cultura_Datos/dikw-escalera-datos-sabiduria.png)
 - ✅ Tres Pirámides Alineadas: Áreas, Cargos e Información — tema `Cultura_Datos` — [HTML](Construidos/Cultura_Datos/piramides-empresarial-laboral-informacion.html) · [PNG](Construidos/Cultura_Datos/piramides-empresarial-laboral-informacion.png)
+- ✅ Claude hoy: 4 modelos y para qué sirve cada uno — tema `IA` — [HTML](Construidos/IA/modelos-claude-actuales.html) · [PNG](Construidos/IA/modelos-claude-actuales.png)
+- ✅ GPT-6 hoy: 4 modelos y para qué sirve cada uno — tema `IA` — [HTML](Construidos/IA/modelos-gpt-6-actuales.html) · [PNG](Construidos/IA/modelos-gpt-6-actuales.png)
+- ✅ Gemini 4 hoy: 4 modelos y para qué sirve cada uno — tema `IA` — [HTML](Construidos/IA/modelos-gemini-4-actuales.html) · [PNG](Construidos/IA/modelos-gemini-4-actuales.png)
 
 Este README se irá actualizando con un enlace por cada infografía nueva.
 
