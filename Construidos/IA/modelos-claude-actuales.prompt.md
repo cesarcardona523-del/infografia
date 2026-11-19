@@ -15,3 +15,11 @@
 **Paleta**: colores de marca de la aplicación (`#D97757` (marca Claude)) según CLAUDE.md; un color por nivel (más oscuro = más capaz). Íconos reales de `assets/iconos-apps/`.
 
 **Catálogo**: `categoriaPrincipal: "inteligencia-artificial"`; tema IA → publicación al día siguiente (2026-11-20/21), máximo 2 por día.
+
+## Diseño (2026-11-19) — patrón «¿Qué modelo uso?»
+
+Por pedido del usuario, la pieza replica el estilo de una referencia (infografía «¿Qué modelo de Claude uso?»): fondo crema con cuadrícula tenue, título serif con la marca en cursiva y color de marca, eje superior con pastillas, 4 tarjetas con borde superior de color y borde oscuro, etiqueta en mono, titular, 3 ejemplos, ✓ (a favor) y ✗ (en contra), y banda azul marino con múltiplos de precio resaltados. Adaptado al lienzo horizontal 1200×627 (en la referencia el eje es vertical y las tarjetas 2×2).
+
+- **Eje = precio de salida** (no «esfuerzo»): es el único criterio verificable y no obliga a rankear modelos cuando las fuentes se contradicen.
+- ✓/✗ y múltiplos («2×», «20×») se derivan solo de precios y descripciones oficiales; los ejemplos de tarea son ilustrativos.
+- Colores: Claude (referencia), GPT-6 (verdes y negro de ChatGPT), Gemini (azul, rojo, amarillo y verde de Google).

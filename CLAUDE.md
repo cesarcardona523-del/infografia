@@ -47,6 +47,16 @@ Toda infografía cuyo tema sea **cultura del dato / cultura de datos** (clave de
 - Cierre/ribbon oscuro `#202124` con una franja de 3 colores (azul, amarillo, verde — sin rojo); firma (LinkedIn + `cacm523`) dentro del ribbon para que no se superponga.
 - Nota: la fila "Google Cloud" de la tabla de marcas de abajo conserva los hex antiguos (`#DB4437`, `#F4B400`, `#0F9D58`) para piezas sobre Google Cloud; esta paleta (`#EA4335`, `#FBBC05`, `#34A853`) rige solo para Cultura del Dato.
 
+### Patrón "¿Qué modelo uso?" para comparar modelos de IA (pedido del usuario, 2026-11-19)
+
+Toda infografía que **compare modelos de una misma familia de IA** (Claude, GPT, Gemini, etc.) replica el estilo de la referencia «¿Qué modelo de Claude uso?», adaptado al lienzo 1200×627 (generador reutilizable: ver `Construidos/IA/modelos-claude-actuales.html` como pieza de partida):
+
+- Fondo crema `#F5F0E6` con cuadrícula tenue, texto azul marino `#1B2A4B`; título serif (Georgia) «¿Qué modelo de *Marca* uso?» con la marca en cursiva y en su color; subtítulo «Primero eliges el modelo. **Después, …**».
+- Ícono real de la marca en un círculo blanco al inicio de un eje horizontal en degradado, con una pastilla (mono, borde oscuro) sobre cada tarjeta. El eje es un criterio **verificable** (precio de salida); no usar un eje de «esfuerzo/inteligencia» si las fuentes no lo respaldan.
+- 4 tarjetas ordenadas de menor a mayor en el eje: borde superior grueso de color, borde oscuro, punto + nombre + insignia de versión, etiqueta mono en mayúsculas, titular, 3 ejemplos de tarea, barras de precio entrada/salida, ✓ a favor y ✗ en contra (solo derivados de precios o descripciones oficiales).
+- Banda inferior azul marino con los múltiplos de precio resaltados en naranja y la firma (LinkedIn + `cacm523`) dentro de la banda.
+- Colores por marca según la tabla de abajo (Gemini/Google: azul `#4285F4`, rojo `#EA4335`, amarillo `#FBBC05`, verde `#34A853`; texto sobre amarillo siempre oscuro). Datos siempre de la documentación oficial, con fecha de consulta; nunca benchmarks del proveedor sin contraste.
+
 ### Colores de marca por aplicación (excepción a la paleta verde+tierra)
 
 Cuando una infografía trata específicamente sobre **una aplicación o herramienta con identidad de marca propia** (el tema central es esa herramienta, no solo la menciona de paso), usar los colores representativos oficiales de esa aplicación en vez de la paleta verde+tierra por defecto — el verde+tierra sigue siendo el default para todo lo demás (temas generales de datos, gobierno, procesos, comparativas entre herramientas, etc.).

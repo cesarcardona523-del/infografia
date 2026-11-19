@@ -1,66 +1,60 @@
 <!doctype html>
-<html lang="es"><head><meta charset="UTF-8"><title>GPT-6: modelos actuales y para qué sirve cada uno</title>
+<html lang="es"><head><meta charset="UTF-8"><title>GPT-6: modelos actuales</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-:root{--brand:#10A37F;--dark:#0B6B55;--ink:#202124;--muted:#5F6368;--line:#E3E5E8}
+:root{--brand:#10A37F;--navy:#1B2A4B;--ink:#1B2A4B;--muted:#5B6475}
 *{box-sizing:border-box}html,body{margin:0;padding:0}
-body{min-height:627px;display:flex;align-items:center;justify-content:center;padding:32px 16px;background:#E8F1EE;font-family:Inter,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+body{min-height:627px;display:flex;align-items:center;justify-content:center;padding:32px 16px;background:#E6E0D4;font-family:Inter,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
 .canvas-wrap{width:100%;max-width:1200px;overflow-x:auto}
-.canvas{position:relative;width:1200px;height:627px;margin:0 auto;background:#F9FDFB;border-radius:16px;box-shadow:0 20px 50px rgba(32,33,36,.16);overflow:hidden;padding:11px 24px 8px;color:var(--ink);display:flex;flex-direction:column}
-.header{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;margin-bottom:6px}
-.eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:800;letter-spacing:1.2px;color:var(--dark);text-transform:uppercase;background:#E3F6F0;border:1px solid #BFE6DA;padding:2px 10px 2px 6px;border-radius:20px;margin-bottom:3px}
-.eyebrow img{width:18px;height:18px;flex:none}
-h1{font-size:22px;margin:0 0 1px;font-weight:800;letter-spacing:-.3px}h1 span{color:var(--brand)}
-.sub{margin:0;font-size:14px;color:var(--muted);line-height:1.25;max-width:800px}
-.src{flex:none;font-size:14px;color:var(--muted);background:#fff;border:1px solid var(--line);border-radius:8px;padding:4px 10px;text-align:right;line-height:1.22}
-.grid{flex:1;min-height:0;display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
-.card{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 2px 8px rgba(32,33,36,.07)}
-.band{background:var(--bg);color:var(--fg);padding:6px 11px 6px}
-.tier{font-size:14px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;opacity:.95}
-.nm{font-size:21px;font-weight:800;line-height:1.1;margin:1px 0}
-.meta{font-size:14px;font-weight:600;opacity:.92}
-.body{flex:1;padding:6px 11px 7px;display:flex;flex-direction:column;background:#fff}
-.lbl{font-size:14px;font-weight:800;color:var(--dark);text-transform:uppercase;letter-spacing:.5px;margin-bottom:1px}
-.body p{margin:0;font-size:14px;line-height:1.28;color:var(--ink)}
-.ex{margin:6px 0;background:var(--lt);border-radius:8px;padding:4px 8px}
-.ex p{font-style:italic}
-.rel{margin-top:auto;display:flex;align-items:center;gap:8px;padding:4px 0 6px}.rel b{font-size:30px;font-weight:800;color:var(--brand);line-height:1}.rel span{font-size:14px;color:var(--muted);line-height:1.2}
-.pl2{color:var(--muted)}
-.pr{display:flex;align-items:center;gap:6px;margin-top:2px}
-.pl{font-size:14px;color:var(--muted);width:54px;flex:none}
-.tr{flex:1;height:10px;background:#EEF0F2;border-radius:6px;overflow:hidden}
-.tr i{display:block;height:100%;background:var(--brand);border-radius:6px}
-.pv{font-size:14px;font-weight:800;width:58px;text-align:right;flex:none}
-.strip{margin-top:7px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:5px 10px;display:flex;align-items:center;gap:10px}
-.stl{flex:none;width:150px;font-size:14px;font-weight:800;color:var(--dark);text-transform:uppercase;letter-spacing:.4px;line-height:1.2}
-.chips{flex:1;display:grid;grid-template-columns:repeat(5,1fr);gap:7px}
-.chip{background:#E3F6F0;border-radius:8px;padding:3px 7px;line-height:1.2}
-.chip b{display:block;font-size:14px}.chip span{font-size:14px;color:var(--muted)}
-.ribbon{margin-top:7px;background:#202124;border-radius:11px;padding:6px 14px;display:flex;align-items:center;gap:14px;border-top:4px solid var(--brand)}
-.choose{flex:1;display:flex;gap:16px;flex-wrap:wrap;font-size:14px;color:#E8EAED;line-height:1.25}.choose b{color:#fff}.choose em{font-style:normal;color:#5CDDB9;font-weight:800}
-.sig{display:flex;align-items:center;gap:6px;flex:none}.li{width:16px;height:16px;border-radius:4px;background:#fff;color:#0A66C2;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;font-family:Arial,sans-serif}.sig span{font-size:14px;font-weight:700;color:#fff}
-.note{margin-top:3px;font-size:14px;color:var(--muted);line-height:1.2}
+.canvas{position:relative;width:1200px;height:627px;margin:0 auto;border-radius:16px;box-shadow:0 20px 50px rgba(27,42,75,.18);overflow:hidden;padding:12px 24px 10px;color:var(--ink);display:flex;flex-direction:column;
+background-color:#F5F0E6;background-image:linear-gradient(rgba(27,42,75,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(27,42,75,.045) 1px,transparent 1px);background-size:26px 26px}
+.head{text-align:center;margin-bottom:6px}
+h1{font-family:Georgia,"Times New Roman",serif;font-size:38px;line-height:1.05;margin:0;font-weight:800;letter-spacing:-.5px}
+h1 em{color:var(--brand);font-style:italic}
+.sub{margin:3px 0 0;font-size:17px;color:var(--muted)}.sub b{color:var(--ink)}
+.axis{position:relative;display:flex;align-items:center;gap:0;margin:2px 0 4px}
+.ico{width:46px;height:46px;border-radius:50%;background:#fff;box-shadow:0 2px 10px rgba(27,42,75,.15);display:flex;align-items:center;justify-content:center;flex:none;z-index:2}
+.ico img{width:28px;height:28px}
+.bar{position:absolute;left:23px;right:0;top:50%;height:8px;margin-top:-4px;border-radius:6px;background:linear-gradient(90deg,#BFE9DE,#7FD8C1,#10A37F,#202123)}
+.axl{flex:none;width:96px;font-family:"SF Mono",Menlo,Consolas,monospace;font-size:14px;letter-spacing:1.5px;color:var(--muted);z-index:2;padding-left:8px;background:linear-gradient(90deg,#F5F0E6 70%,transparent)}
+.pills{flex:1;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;z-index:2}
+.pill{text-align:center;font-family:"SF Mono",Menlo,Consolas,monospace;font-size:14px;font-weight:700;letter-spacing:.8px;border:2px solid var(--ink);background:#F5F0E6;border-radius:20px;padding:2px 0;margin:0 auto 6px;width:78%}
+.grid{flex:1;min-height:0;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-left:0}
+.col{display:flex;flex-direction:column;min-height:0}
+.card{flex:1;background:#FBF8F1;border:2px solid var(--ink);border-top:8px solid var(--c);border-radius:16px 16px 14px 14px;padding:9px 14px 8px;box-shadow:0 3px 0 rgba(27,42,75,.18);display:flex;flex-direction:column}
+.nm{display:flex;align-items:center;gap:8px;font-size:28px;font-weight:800;line-height:1}
+.nm i{width:14px;height:14px;border-radius:50%;background:var(--c);flex:none}
+.nm em{font-style:normal;font-size:14px;font-weight:800;color:var(--b);background:var(--c);border-radius:6px;padding:2px 7px}
+.tag{font-family:"SF Mono",Menlo,Consolas,monospace;font-size:14px;letter-spacing:1px;color:var(--t);font-weight:700;margin:5px 0 4px;text-transform:uppercase;line-height:1.15}
+h3{margin:0 0 4px;font-size:21px;line-height:1.15}
+ul{margin:0 0 6px;padding-left:18px;font-size:16px;line-height:1.28;color:var(--muted)}ul li{margin-bottom:2px}
+.pro,.con{display:flex;gap:7px;font-size:15px;line-height:1.22;margin-top:4px;font-weight:600}
+.pro b{color:#2E9C5A}.con b{color:#D9433B}
+.pro{margin-top:6px;min-height:38px;align-items:flex-start}.con{min-height:38px;align-items:flex-start}
+.spec{margin-top:auto;border-top:2px dashed rgba(27,42,75,.25);padding-top:6px}.sl{font-family:"SF Mono",Menlo,Consolas,monospace;font-size:14px;letter-spacing:.6px;color:var(--muted);text-transform:uppercase;margin-bottom:3px}.br{display:flex;align-items:center;gap:7px;margin-top:3px;font-size:15px}.br span{width:58px;color:var(--muted);flex:none}.br i{flex:1;height:11px;background:#E7E1D4;border-radius:6px;overflow:hidden;display:block}.br u{display:block;height:100%;background:var(--c);border-radius:6px}.br b{width:56px;text-align:right;flex:none}
+.ban{margin-top:8px;background:var(--navy);border-radius:16px;padding:8px 18px 7px;text-align:center;color:#fff}
+.ban p{margin:0;font-size:24px;font-weight:800;line-height:1.2;letter-spacing:-.2px}.ban p u{text-decoration:none;color:#F08A63}
+.ban small{display:flex;justify-content:center;align-items:center;gap:14px;font-family:"SF Mono",Menlo,Consolas,monospace;font-size:14px;letter-spacing:1.2px;color:#AEB8D0;text-transform:uppercase;margin-top:2px}
+.sig{display:inline-flex;align-items:center;gap:6px;color:#fff;letter-spacing:0;text-transform:none;font-family:Inter,sans-serif}.li{width:16px;height:16px;border-radius:4px;background:#fff;color:#0A66C2;display:inline-flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;font-family:Arial,sans-serif}
 </style></head><body><div class="canvas-wrap"><div class="canvas">
-<div class="header"><div><div class="eyebrow"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgMjQwNiAyNDA2Ij4KCTxwYXRoIGQ9Ik0xIDU3OC40QzEgMjU5LjUgMjU5LjUgMSA1NzguNCAxaDEyNDkuMWMzMTkgMCA1NzcuNSAyNTguNSA1NzcuNSA1NzcuNFYyNDA2SDU3OC40QzI1OS41IDI0MDYgMSAyMTQ3LjUgMSAxODI4LjZWNTc4LjR6IiBmaWxsPSIjNzRhYTljIi8+Cgk8cGF0aCBpZD0iYSIgZD0iTTExMDcuMyAyOTkuMWMtMTk3Ljk5OSAwLTM3My45IDEyNy4zLTQzNS4yIDMxNS4zTDY1MCA3NDMuNXY0MjcuOWMwIDIxLjQgMTEgNDAuNCAyOS40IDUxLjRsMzQ0LjUgMTk4LjUxNVY4MzMuM2guMXYtMjcuOUwxMzcyLjcgNjA0YzMzLjcxNS0xOS41MiA3MC40NC0zMi44NTcgMTA4LjQ3LTM5LjgyOEwxNDQ3LjYgNDUwLjNDMTM2MSAzNTMuNSAxMjM3LjEgMjk4LjUgMTEwNy4zIDI5OS4xem0wIDExNy41LS42LjZjNzkuNjk5IDAgMTU2LjMgMjcuNSAyMTcuNiA3OC40LTIuNSAxLjItNy40IDQuMy0xMSA2LjFMOTUyLjggNzA5LjNjLTE4LjQgMTAuNC0yOS40IDMwLTI5LjQgNTEuNFYxMjQ4bC0xNTUuMS04OS40Vjc1NS44Yy0uMS0xODcuMDk5IDE1MS42MDEtMzM4LjkgMzM5LTMzOS4yeiIgZmlsbD0iI2ZmZiIvPgoJPHVzZSB4bGluazpocmVmPSIjYSIgdHJhbnNmb3JtPSJyb3RhdGUoNjAgMTIwMyAxMjAzKSIvPgogIAk8dXNlIHhsaW5rOmhyZWY9IiNhIiB0cmFuc2Zvcm09InJvdGF0ZSgxMjAgMTIwMyAxMjAzKSIvPgoJPHVzZSB4bGluazpocmVmPSIjYSIgdHJhbnNmb3JtPSJyb3RhdGUoMTgwIDEyMDMgMTIwMykiLz4KCTx1c2UgeGxpbms6aHJlZj0iI2EiIHRyYW5zZm9ybT0icm90YXRlKDI0MCAxMjAzIDEyMDMpIi8+Cgk8dXNlIHhsaW5rOmhyZWY9IiNhIiB0cmFuc2Zvcm09InJvdGF0ZSgzMDAgMTIwMyAxMjAzKSIvPgoKPC9zdmc+" alt="">OpenAI · GPT-6</div>
-<h1>GPT-6 hoy: <span>4 modelos</span>, cada uno para algo distinto</h1><p class="sub">Los cuatro reciben texto e imagen, razonan, tienen 1,05 M de tokens de contexto y hasta 128 K de salida; cambian la capacidad, el costo y la velocidad.</p></div>
-<div class="src">Datos al 19-nov-2026<br>Documentación oficial de la API de OpenAI</div></div>
-<div class="grid"><div class="card" style="--bg:#0B5E4B;--fg:#FFFFFF;--lt:#E3F3EE">
-<div class="band"><div class="tier">Más capaz</div><div class="nm">GPT-6.2 Astra</div><div class="meta">Conocimiento hasta may 2026</div></div>
-<div class="body"><div class="lbl">Ideal para</div><p>Los proyectos más difíciles: programación, uso del computador y trabajo con documentos.</p>
-<div class="ex"><div class="lbl">Ejemplo de tarea</div><p>Revisar un repositorio grande, proponer el cambio y validar que las pruebas pasen.</p></div>
-<div class="rel"><b>80×</b><span>costo de salida frente al modelo más económico de la familia</span></div><div class="lbl pl2">US$ por millón de tokens</div><div class="pr"><span class="pl">Entrada</span><span class="tr"><i style="width:20%"></i></span><b class="pv">$8</b></div><div class="pr"><span class="pl">Salida</span><span class="tr"><i style="width:100%"></i></span><b class="pv">$40</b></div></div></div><div class="card" style="--bg:#10A37F;--fg:#04261E;--lt:#E3F6F0">
-<div class="band"><div class="tier">Diario y agentes</div><div class="nm">GPT-6.2 Sol</div><div class="meta">Conocimiento hasta jun 2026</div></div>
-<div class="body"><div class="lbl">Ideal para</div><p>Trabajo cotidiano, programación y agentes que funcionan a gran escala.</p>
-<div class="ex"><div class="lbl">Ejemplo de tarea</div><p>Un asistente interno que responde consultas y llama herramientas todo el día.</p></div>
-<div class="rel"><b>20×</b><span>costo de salida frente al modelo más económico de la familia</span></div><div class="lbl pl2">US$ por millón de tokens</div><div class="pr"><span class="pl">Entrada</span><span class="tr"><i style="width:5%"></i></span><b class="pv">$2</b></div><div class="pr"><span class="pl">Salida</span><span class="tr"><i style="width:25%"></i></span><b class="pv">$10</b></div></div></div><div class="card" style="--bg:#5CC6A9;--fg:#0B2E26;--lt:#EAF8F3">
-<div class="band"><div class="tier">Rápido y eficiente</div><div class="nm">GPT-6.1 Terra</div><div class="meta">Conocimiento hasta jun 2026</div></div>
-<div class="body"><div class="lbl">Ideal para</div><p>Razonamiento visual, uso preciso del computador y escritura natural.</p>
-<div class="ex"><div class="lbl">Ejemplo de tarea</div><p>Emparejar fotos de productos con su ficha del catálogo o interpretar planos técnicos.</p></div>
-<div class="rel"><b>10×</b><span>costo de salida frente al modelo más económico de la familia</span></div><div class="lbl pl2">US$ por millón de tokens</div><div class="pr"><span class="pl">Entrada</span><span class="tr"><i style="width:3%"></i></span><b class="pv">$1</b></div><div class="pr"><span class="pl">Salida</span><span class="tr"><i style="width:12%"></i></span><b class="pv">$5</b></div></div></div><div class="card" style="--bg:#BDE7DB;--fg:#0B2E26;--lt:#F2FBF8">
-<div class="band"><div class="tier">Más eficiente</div><div class="nm">GPT-6 Luna</div><div class="meta">Conocimiento hasta may 2026</div></div>
-<div class="body"><div class="lbl">Ideal para</div><p>Tareas enfocadas y de alto volumen donde importa el costo.</p>
-<div class="ex"><div class="lbl">Ejemplo de tarea</div><p>Clasificar miles de tickets de soporte por tema.</p></div>
-<div class="rel"><b>1×</b><span>costo de salida frente al modelo más económico de la familia</span></div><div class="lbl pl2">US$ por millón de tokens</div><div class="pr"><span class="pl">Entrada</span><span class="tr"><i style="width:3%"></i></span><b class="pv">$0,10</b></div><div class="pr"><span class="pl">Salida</span><span class="tr"><i style="width:3%"></i></span><b class="pv">$0,50</b></div></div></div></div><div class="strip"><div class="stl">También en la familia</div><div class="chips"><div class="chip"><b>GPT-Image-2.6</b><span>generación de imágenes</span></div><div class="chip"><b>GPT-Realtime-2.1</b><span>voz en tiempo real</span></div><div class="chip"><b>GPT-Transcribe</b><span>transcripción de audio</span></div><div class="chip"><b>GPT-6 Cyber</b><span>seguridad informática</span></div><div class="chip"><b>GPT-Rosalind</b><span>ciencias de la vida (orgs. aprobadas)</span></div></div></div>
-<div class="ribbon"><div class="choose"><em>Cómo elegir:</em><span><b>Máxima capacidad</b> → Astra</span><span><b>Uso diario y agentes</b> → Sol</span><span><b>Visión y precisión</b> → Terra</span><span><b>Alto volumen</b> → Luna</span></div><div class="sig"><div class="li">in</div><span>cacm523</span></div></div>
-<div class="note">Lista según la documentación de la API; no se verificó el selector de modelos dentro de la app ChatGPT. Fechas de lanzamiento no publicadas: se muestra el corte de conocimiento. Ejemplos ilustrativos.</div>
+<div class="head"><h1>¿Qué modelo de <em>GPT-6</em> uso?</h1><p class="sub">Primero eliges el modelo. <b>Después, cuánto quieres pagar.</b></p></div>
+<div class="axis"><div class="ico"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgMjQwNiAyNDA2Ij4KCTxwYXRoIGQ9Ik0xIDU3OC40QzEgMjU5LjUgMjU5LjUgMSA1NzguNCAxaDEyNDkuMWMzMTkgMCA1NzcuNSAyNTguNSA1NzcuNSA1NzcuNFYyNDA2SDU3OC40QzI1OS41IDI0MDYgMSAyMTQ3LjUgMSAxODI4LjZWNTc4LjR6IiBmaWxsPSIjNzRhYTljIi8+Cgk8cGF0aCBpZD0iYSIgZD0iTTExMDcuMyAyOTkuMWMtMTk3Ljk5OSAwLTM3My45IDEyNy4zLTQzNS4yIDMxNS4zTDY1MCA3NDMuNXY0MjcuOWMwIDIxLjQgMTEgNDAuNCAyOS40IDUxLjRsMzQ0LjUgMTk4LjUxNVY4MzMuM2guMXYtMjcuOUwxMzcyLjcgNjA0YzMzLjcxNS0xOS41MiA3MC40NC0zMi44NTcgMTA4LjQ3LTM5LjgyOEwxNDQ3LjYgNDUwLjNDMTM2MSAzNTMuNSAxMjM3LjEgMjk4LjUgMTEwNy4zIDI5OS4xem0wIDExNy41LS42LjZjNzkuNjk5IDAgMTU2LjMgMjcuNSAyMTcuNiA3OC40LTIuNSAxLjItNy40IDQuMy0xMSA2LjFMOTUyLjggNzA5LjNjLTE4LjQgMTAuNC0yOS40IDMwLTI5LjQgNTEuNFYxMjQ4bC0xNTUuMS04OS40Vjc1NS44Yy0uMS0xODcuMDk5IDE1MS42MDEtMzM4LjkgMzM5LTMzOS4yeiIgZmlsbD0iI2ZmZiIvPgoJPHVzZSB4bGluazpocmVmPSIjYSIgdHJhbnNmb3JtPSJyb3RhdGUoNjAgMTIwMyAxMjAzKSIvPgogIAk8dXNlIHhsaW5rOmhyZWY9IiNhIiB0cmFuc2Zvcm09InJvdGF0ZSgxMjAgMTIwMyAxMjAzKSIvPgoJPHVzZSB4bGluazpocmVmPSIjYSIgdHJhbnNmb3JtPSJyb3RhdGUoMTgwIDEyMDMgMTIwMykiLz4KCTx1c2UgeGxpbms6aHJlZj0iI2EiIHRyYW5zZm9ybT0icm90YXRlKDI0MCAxMjAzIDEyMDMpIi8+Cgk8dXNlIHhsaW5rOmhyZWY9IiNhIiB0cmFuc2Zvcm09InJvdGF0ZSgzMDAgMTIwMyAxMjAzKSIvPgoKPC9zdmc+" alt=""></div><div class="bar"></div><div class="axl">PRECIO ›</div><div class="pills"><div class="pill" style="margin:0 auto">SALIDA $0,50</div><div class="pill" style="margin:0 auto">SALIDA $5</div><div class="pill" style="margin:0 auto">SALIDA $10</div><div class="pill" style="margin:0 auto">SALIDA $40</div></div></div>
+<div class="grid"><div class="col">
+<div class="card" style="--c:#10A37F;--t:#0B7A5E;--b:#fff"><div class="nm"><i></i>Luna<em>6</em></div>
+<div class="tag">El más eficiente</div><h3>Lo enfocado y de volumen</h3><ul><li>Clasificar tickets de soporte</li><li>Extraer campos de documentos</li><li>Etiquetar contenido</li></ul>
+<div class="spec"><div class="sl">US$ por millón de tokens</div><div class="br"><span>Entrada</span><i><u style="width:4%"></u></i><b>$0,10</b></div><div class="br"><span>Salida</span><i><u style="width:4%"></u></i><b>$0,50</b></div></div>
+<div class="pro"><b>✓</b><span>El más barato: $0,10 / $0,50</span></div><div class="con"><b>✗</b><span>El menos capaz de la familia</span></div></div></div><div class="col">
+<div class="card" style="--c:#0B5E4B;--t:#0B5E4B;--b:#fff"><div class="nm"><i></i>Terra<em>6.1</em></div>
+<div class="tag">Rápido y preciso</div><h3>Visión y precisión</h3><ul><li>Emparejar fotos con el catálogo</li><li>Interpretar planos técnicos</li><li>Operar una pantalla</li></ul>
+<div class="spec"><div class="sl">US$ por millón de tokens</div><div class="br"><span>Entrada</span><i><u style="width:4%"></u></i><b>$1</b></div><div class="br"><span>Salida</span><i><u style="width:12%"></u></i><b>$5</b></div></div>
+<div class="pro"><b>✓</b><span>Razonamiento visual y escritura natural</span></div><div class="con"><b>✗</b><span>Menos capaz que Sol y Astra</span></div></div></div><div class="col">
+<div class="card" style="--c:#202123;--t:#202123;--b:#fff"><div class="nm"><i></i>Sol<em>6.2</em></div>
+<div class="tag">El de todos los días</div><h3>Trabajo diario y agentes</h3><ul><li>Un asistente interno</li><li>Programar a diario</li><li>Agentes con herramientas</li></ul>
+<div class="spec"><div class="sl">US$ por millón de tokens</div><div class="br"><span>Entrada</span><i><u style="width:5%"></u></i><b>$2</b></div><div class="br"><span>Salida</span><i><u style="width:25%"></u></i><b>$10</b></div></div>
+<div class="pro"><b>✓</b><span>Buen equilibrio capacidad-precio</span></div><div class="con"><b>✗</b><span>Cuesta 2× Terra</span></div></div></div><div class="col">
+<div class="card" style="--c:#7FD8C1;--t:#0B7A5E;--b:#0B2E26"><div class="nm"><i></i>Astra<em>6.2</em></div>
+<div class="tag">El más capaz</div><h3>Los proyectos más difíciles</h3><ul><li>Revisar un repositorio grande</li><li>Usar el computador</li><li>Trabajar con documentos</li></ul>
+<div class="spec"><div class="sl">US$ por millón de tokens</div><div class="br"><span>Entrada</span><i><u style="width:20%"></u></i><b>$8</b></div><div class="br"><span>Salida</span><i><u style="width:100%"></u></i><b>$40</b></div></div>
+<div class="pro"><b>✓</b><span>El más capaz de los cuatro</span></div><div class="con"><b>✗</b><span>Cuesta 4× Sol</span></div></div></div></div>
+<div class="ban"><p>Astra cuesta <u>4×</u> Sol · Sol <u>2×</u> Terra · Luna <u>10×</u> menos</p><small><span>Precios oficiales de OpenAI por millón de tokens · nov 2026</span><span class="sig"><span class="li">in</span>cacm523</span></small></div>
 </div></div></body></html>
