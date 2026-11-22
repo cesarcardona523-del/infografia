@@ -278,6 +278,7 @@ Antes de crear una entrada nueva, el proyecto analiza si el contenido amplía o 
 - ✅ Claude hoy: 4 modelos y para qué sirve cada uno — tema `IA` — [HTML](Construidos/IA/modelos-claude-actuales.html) · [PNG](Construidos/IA/modelos-claude-actuales.png)
 - ✅ GPT-6 hoy: 4 modelos y para qué sirve cada uno — tema `IA` — [HTML](Construidos/IA/modelos-gpt-6-actuales.html) · [PNG](Construidos/IA/modelos-gpt-6-actuales.png)
 - ✅ Gemini 4 hoy: 4 modelos y para qué sirve cada uno — tema `IA` — [HTML](Construidos/IA/modelos-gemini-4-actuales.html) · [PNG](Construidos/IA/modelos-gemini-4-actuales.png)
+- ✅ Todos los modelos de Google: Gemini 4 y la familia completa — tema `IA` — [HTML](Construidos/IA/familia-modelos-google.html) · [PNG](Construidos/IA/familia-modelos-google.png)
 
 Este README se irá actualizando con un enlace por cada infografía nueva.
 
