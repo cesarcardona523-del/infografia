@@ -3309,5 +3309,29 @@
       "likes": 0,
       "shares": 0
     }
+  },
+  {
+    "id": "de-codigo-a-contexto-ceiba",
+    "imagen": "Construidos/IA/de-codigo-a-contexto-ceiba.png",
+    "fechaPublicacion": "2026-11-27T14:00:00",
+    "categoriaPrincipal": "inteligencia-artificial",
+    "temas": [
+      "ia",
+      "agentes-ia"
+    ],
+    "tipoContenido": "infografia",
+    "es": {
+      "topico": "De escribir código a diseñar contexto: el estándar de ingeniería con IA en Ceiba",
+      "descripcion": "¿Qué cambia en la ingeniería de software cuando escribir código deja de ser lo caro? Esa es la idea que me llevo del artículo de Ceiba Software sobre su estándar de ingeniería con IA, construido a partir de lo que compartió Juan Esteban Castaño Rincón, arquitecto principal de software, en el ceibaDEVFEST.\n\nLa diapositiva de Ceiba lo resume con una comparación: en 2019, escribir código representaba el 55 %, verificar y revisar el 25 % y diseñar contexto y decidir el 20 %. En 2026 las proporciones pasan a 15, 45 y 40 %. Un punto importante: son proporciones ilustrativas tomadas de la experiencia de Ceiba, no un estudio. El número exacto importa menos que la dirección.\n\nLa principal trampa es la ambigüedad. Lo que la especificación no deja explícito, el agente lo adivina, y si se desvía temprano puede acumular deuda técnica con mucha velocidad. Para evitar bucles infinitos de corrección, el artículo describe tres frenos de Harness Engineering dentro del Método Ceiba. El primero son topes de iteración y presupuestos de tokens: si el error persiste, el arnés se detiene y escala al humano. El segundo es la trazabilidad en archivos, para que cada decisión e incidencia quede escrita en el repositorio. El tercero es la inmutabilidad de las pruebas: el agente no puede modificarlas ni borrarlas para forzar un resultado exitoso.\n\nTambién aclara un error común: un prompt largo no es una especificación de ingeniería. Una buena restricción define qué está prohibido tocar, mantiene un alcance atómico y exige evidencia comprobable, como criterios de aceptación, cobertura de pruebas, linters limpios y contratos de API.\n\nPara empezar hay tres pasos: construir arneses en lugar de prompts sueltos, llevar una tarea pequeña desde la terminal hasta un Pull Request listo para revisión y definir cómo se auditará el resultado antes de dar autonomía al agente.\n\nMi lectura es que delegar la ejecución no significa delegar la responsabilidad. Los agentes pueden avanzar en paralelo mientras las personas se concentran en arquitectura, negocio y bloqueos difíciles, pero el sello de calidad sigue siendo humano. ¿Tu equipo todavía mide el avance por líneas de código?"
+    },
+    "en": {
+      "topico": "From writing code to designing context: Ceiba's AI engineering standard",
+      "descripcion": "What changes in software engineering when writing code stops being the expensive part? That is the idea I take from Ceiba Software's article about its AI engineering standard, based on what Juan Esteban Castaño Rincón, principal software architect, shared at ceibaDEVFEST.\n\nCeiba's slide sums it up with a comparison: in 2019, writing code accounted for 55%, verifying and reviewing for 25%, and designing context and deciding for 20%. In 2026 the shares become 15%, 45% and 40%. One important caveat: these are illustrative proportions drawn from Ceiba's own experience, not a study. The exact number matters less than the direction.\n\nThe main trap is ambiguity. Whatever the specification leaves unstated, the agent guesses, and if it drifts early it can pile up technical debt very quickly. To avoid endless correction loops, the article describes three Harness Engineering brakes within the Ceiba Method. The first is iteration caps and token budgets: if the error persists, the harness stops and escalates to a human. The second is traceability in files, so every decision and incident is written into the repository. The third is immutable tests: the agent may not modify or delete them to force a passing result.\n\nIt also clarifies a common mistake: a long prompt is not an engineering specification. A good constraint defines what must not be touched, keeps the scope atomic and requires verifiable evidence, such as acceptance criteria, test coverage, clean linters and API contracts.\n\nThere are three steps to begin: build harnesses instead of loose prompts, take a small task from the terminal to a Pull Request ready for review, and define how the result will be audited before granting the agent autonomy.\n\nMy reading is that delegating execution does not mean delegating responsibility. Agents can move in parallel while people focus on architecture, business understanding and hard blockers, but the quality seal remains human. That does not mean handing our thinking over to the machine. It means working at a higher level of abstraction, so that complex problems are solved on firmer ground, with clearer specifications and stricter validation. Does your team still measure progress in lines of code?"
+    },
+    "baseStats": {
+      "views": 0,
+      "likes": 0,
+      "shares": 0
+    }
   }
 ]
